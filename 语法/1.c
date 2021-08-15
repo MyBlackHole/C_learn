@@ -114,7 +114,14 @@ int func1() {
 }
 
 
+void func10() {
+    if (1) {
+        printf("%d\n", 0);
+    }
+    return;
+}
+
 int main() {
-    func9();
+    func10();
     exit(0);
 }

@@ -5,19 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "sourceFileMap":{
-                ".": "/usr/src/glibc"
-            },
-            "name": "gcc-10 - 生成和调试活动文件",
-            "type": "cppdbg",
+            "name": "Launch Debug", //名称
+            "type": "cppdbg", //调试类型，除使用msvc进行调试外，均为该类型
             "request": "launch",
-            "program": "${fileDirname}/${fileBasenameNoExtension}.build",
-            "args": [],
+            "program": "${workspaceFolder}/build/${fileBasenameNoExtension}", //指定C/C++程序位置
+            // "program": "${workspaceFolder}/build/test", //指定C/C++程序位置
+            "args": [], //指定运行参数
             "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
+            // "targetArchitecture": "rsicv",
+            "cwd": "${workspaceFolder}/build", //指定工作目录
             "environment": [],
             "externalConsole": false,
-            "MIMode": "gdb",
+            "MIMode": "gdb", //指定使用gdb调试
             "setupCommands": [
                 {
                     "description": "为 gdb 启用整齐打印",
@@ -25,8 +24,11 @@
                     "ignoreFailures": true
                 }
             ],
-            "preLaunchTask": "C/C++: gcc-10 生成活动文件",
-            "miDebuggerPath": "/usr/bin/gdb"
+            "preLaunchTask": "compile", //在调试前会先调用这个task编译构建程序
+            "sourceFileMap":{  // 源文件映射
+                ".": "/usr/src/glibc"
+            },
+            "miDebuggerPath": "/usr/bin/gdb" // 指定调试路径
         }
     ]
 }
