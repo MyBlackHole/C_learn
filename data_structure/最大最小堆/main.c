@@ -39,7 +39,7 @@ void InitHeap(struct HeapSq *HBT, int MS) {
         printf("数组长度参数不合适，需重新给定！\n");
         exit(1);
     }
-    HBT->heap = malloc(MS * sizeof(ElemType));
+    HBT->heap = (ElemType *)malloc(MS * sizeof(ElemType));
     if (!HBT->heap) {
         printf("用于动态分配的内存空间用完，退出运行！\n");
         exit(1);
@@ -71,7 +71,7 @@ void InsertHeap(struct HeapSq *HBT, ElemType x) {
     if (HBT->len == HBT->MaxSize) //若堆满，将数组空间扩展为原来的2倍
     {
         ElemType *p;
-        p = realloc(HBT->heap, 2 * HBT->MaxSize * sizeof(ElemType));
+        p = (ElemType *)realloc(HBT->heap, 2 * HBT->MaxSize * sizeof(ElemType));
         if (!p) {
             printf("存储空间用完！\n");
             exit(1);
@@ -80,6 +80,7 @@ void InsertHeap(struct HeapSq *HBT, ElemType x) {
         HBT->heap = p;
         HBT->MaxSize = 2 * HBT->MaxSize;
     }
+
     HBT->heap[HBT->len] = x; //向堆尾添加新元素
     HBT->len++; //堆长度加1
     i = HBT->len - 1; //i指向待调整元素的位置，即其数组下标，初始指向新元素所在的堆尾位置

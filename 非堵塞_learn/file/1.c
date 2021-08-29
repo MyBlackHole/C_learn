@@ -3,6 +3,7 @@
 #include <errno.h> // 定义错误码
 #include <string.h> // 字符串处理
 #include <stdlib.h> // 定义输入输出函数
+#include <stdio.h>
  
 #define MSG_TRY "try again\n"
 #define MSG_TIMEOUT "timeout\n"
@@ -13,19 +14,22 @@ int main(void) {
     // 只读方式打开|以不可阻断的方式打开文件，也就是无论有无数据读取或等待，都会立即返回进程之中。
     fd = open("/home/black/Documents/Code/C_CJJ/C-C++_learn/非堵塞_learn/file/test.txt", O_RDONLY|O_NONBLOCK);
     if (fd < 0) {
+        printf("%s\n", "exit(1)");
         exit(1);
     }
     for(i=0; i<5; i++) {
         n = read(fd, buf, 10);
-        if (n>=0) {
+        if (n>0) {
+            printf("%s - %d\n", "break", n);
             break;
         }
         // errno 记录系统最后一次错误
         // EAGAIN 如果你连续做read操作而没有数据可读，此时程序不会阻塞起来等待数据准备就绪返回，read函数会返回一个错误EAGAIN，提示你的应用程序现在没有数据可读请稍后再试。
-        if (errno != EAGAIN) {
-            exit(1);
-        }
-        sleep(1);
+        // if (errno != EAGAIN) {
+        //     printf("%s - %d\n", "exit(1)", 29);
+        //     exit(1);
+        // }
+        sleep(9);
         write(STDOUT_FILENO, MSG_TRY, strlen(MSG_TRY));
     }
     if(i==5) {
