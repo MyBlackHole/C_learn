@@ -7,7 +7,9 @@
 
 #define QueueMaxSize 20 //定义队列数组长度
 #define StackMaxSize 10 //定义栈数组长度
+
 typedef int ElemType;
+
 struct BTreeNode {
     ElemType data;
     struct BTreeNode *left;

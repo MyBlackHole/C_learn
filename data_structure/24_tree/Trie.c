@@ -50,7 +50,6 @@ void Insert(TriePtr T, char *str) {
 
 
 Status Search(TriePtr T, char *str) {
-
     int index;
     char c;
 
