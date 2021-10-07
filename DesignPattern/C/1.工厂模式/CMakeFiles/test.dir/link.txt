@@ -1,0 +1,1 @@
+/usr/bin/cc  -pedantic CMakeFiles/test.dir/src/Circle.c.o CMakeFiles/test.dir/src/Rectangle.c.o CMakeFiles/test.dir/src/Shape.c.o CMakeFiles/test.dir/src/ShapeFactory.c.o CMakeFiles/test.dir/src/Square.c.o CMakeFiles/test.dir/test/FactoryPatternDemo.c.o -o test 
