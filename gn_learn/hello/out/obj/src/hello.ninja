@@ -1,0 +1,15 @@
+defines =
+include_dirs =
+cflags =
+cflags_cc = -std=c++11
+target_out_dir = obj/src
+target_output_name = hello
+
+build obj/src/hello.hello.o: cxx ../src/hello.cpp
+
+build obj/src/hello: link obj/src/hello.hello.o
+  ldflags =
+  libs =
+  frameworks =
+  output_extension = 
+  output_dir = .

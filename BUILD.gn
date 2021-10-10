@@ -1,0 +1,5 @@
+group("default"){
+  deps = [
+    "//hello_word:hello_word",
+  ]
+}

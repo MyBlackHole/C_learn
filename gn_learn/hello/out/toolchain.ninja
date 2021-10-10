@@ -1,0 +1,34 @@
+rule cxx
+  command = g++ -MMD -MF ${out}.d ${defines} ${include_dirs} ${cflags} ${cflags_cc} -c ${in} -o ${out}
+  description = CXX ${out}
+  depfile = ${out}.d
+  deps = gcc
+rule alink
+  command = rm -f ${out} && ar rcs ${out} @${out}.rsp
+  description = AR ${target_output_name}${output_extension}
+  rspfile = ${out}.rsp
+  rspfile_content = ${in}
+rule link
+  command = g++ ${ldflags} -o ${target_out_dir}/${target_output_name}${output_extension} @${target_out_dir}/${target_output_name}${output_extension}.rsp ${solibs} ${libs}
+  description = LINK ${target_out_dir}/${target_output_name}${output_extension}
+  rspfile = ${target_out_dir}/${target_output_name}${output_extension}.rsp
+  rspfile_content = ${in}
+rule solink
+  command = g++ -shared ${ldflags} -o ${output_dir}/${target_output_name}${output_extension} -Wl,-soname=${target_output_name}${output_extension} @${target_output_name}${output_extension}.rsp
+  description = SOLINK ${target_output_name}${output_extension}
+  rspfile = ${target_output_name}${output_extension}.rsp
+  rspfile_content = -Wl,--whole-archive ${in} ${solibs} -Wl,--no-whole-archive ${libs}
+rule stamp
+  command = touch ${out}
+  description = STAMP ${out}
+rule cc
+  command = gcc -MMD -MF ${out}.d ${defines} ${include_dirs} ${cflags} ${cflags_c} -c ${in} -o ${out}
+  description = CC ${out}
+  depfile = ${out}.d
+  deps = gcc
+rule copy
+  command = cp -af ${in} ${out}
+  description = COPY ${in} ${out}
+
+build obj/default.stamp: stamp obj/src/hello
+subninja obj/src/hello.ninja

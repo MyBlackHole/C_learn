@@ -1,5 +1,0 @@
-group("default"){
-  deps = [
-    "//src:hello",
-  ]
-}

@@ -1,0 +1,5 @@
+executable("hello_word") {
+  sources = [
+    "hello.c",
+  ]
+}

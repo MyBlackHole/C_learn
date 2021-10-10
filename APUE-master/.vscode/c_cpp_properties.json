@@ -1,0 +1,17 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [],
+            "compilerPath": "/home/black/Documents/Code/OpenHarmonyCode/llvm/bin/clang",
+            "cStandard": "c11",
+            "cppStandard": "c++14",
+            "intelliSenseMode": "linux-clang-x64",
+            "compileCommands": "${workspaceFolder}/compile_commands.json"
+        }
+    ],
+    "version": 4
+}
