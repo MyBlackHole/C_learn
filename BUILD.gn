@@ -2,9 +2,8 @@ group("default"){
   deps = [
     "//hello_word:hello_word",
     "//pipe_learn:pipe1",
-    "//unistd_learn:getpid_test"
+    "//unistd_learn:getpid_test",
+    "//env_learn:env_test",
   ]
-
-
 }
 
