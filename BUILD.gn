@@ -4,6 +4,7 @@ group("default"){
     "//pipe_learn:pipe1",
     "//unistd_learn:getpid_test",
     "//env_learn:env_test",
+    "//sys_select_learn:select_test",
   ]
 }
 
