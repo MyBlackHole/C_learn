@@ -1,0 +1,7 @@
+executable("getpid_test") {
+  sources = [
+    "getpid_test.c",
+  ]
+
+  include_dirs = ["//include"]
+}
