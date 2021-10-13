@@ -1,16 +1,18 @@
-#include<iostream>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 
 
-using namespace std;
 int main()
 {
 	char *env="USER_HOME";
+	/* 设置环境变量 */
 	putenv("USER_HOME=/user/root");
+
+	/* 读取环境变量 */
 	char *a=getenv(env);
 	if(a!=NULL)
-	   cout<<"env :"<<a<<endl;
+		printf("env :%s\n", a);
 	pause();
 	return 0;
 }

@@ -5,6 +5,7 @@ group("default"){
     "//unistd_learn:getpid_test",
     "//env_learn:env_test",
     "//sys_select_learn:select_test",
+    "//stdlib_learn:getenv_test",
   ]
 }
 

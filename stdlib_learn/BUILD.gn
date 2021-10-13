@@ -1,0 +1,7 @@
+executable("getenv_test") {
+  cflags = ["-g"]
+
+  sources = [
+    "getenv_test.c",
+  ]
+}
