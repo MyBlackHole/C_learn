@@ -5,3 +5,11 @@ executable("getpid_test") {
 
   include_dirs = ["//include"]
 }
+
+executable("read_test") {
+  sources = [
+    "read_test.c",
+  ]
+
+  include_dirs = ["//include"]
+}

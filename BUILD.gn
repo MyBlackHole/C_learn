@@ -3,6 +3,7 @@ group("default"){
     "//hello_word:hello_word",
     "//pipe_learn:pipe1",
     "//unistd_learn:getpid_test",
+    "//unistd_learn:read_test",
     "//env_learn:env_test",
     "//sys_select_learn:select_test",
     "//stdlib_learn:getenv_test",
