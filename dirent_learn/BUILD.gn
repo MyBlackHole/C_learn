@@ -1,0 +1,7 @@
+executable("readdir_test") {
+  sources = [
+    "./readdir_test.c",
+  ]
+
+  include_dirs = ["//include"]
+}

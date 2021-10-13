@@ -6,6 +6,7 @@ group("default"){
     "//env_learn:env_test",
     "//sys_select_learn:select_test",
     "//stdlib_learn:getenv_test",
+    "//dirent_learn:readdir_test",
   ]
 }
 
