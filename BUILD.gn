@@ -7,6 +7,7 @@ group("default"){
     "//sys_select_learn:select_test",
     "//stdlib_learn:getenv_test",
     "//dirent_learn:readdir_test",
+    "//errno_learn:errno_learn",
   ]
 }
 

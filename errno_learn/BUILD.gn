@@ -1,0 +1,5 @@
+executable("errno_learn") {
+  sources = [
+    "errno_learn.c",
+  ]
+}
