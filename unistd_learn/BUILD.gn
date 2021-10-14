@@ -13,3 +13,17 @@ executable("read_test") {
 
   include_dirs = ["//include"]
 }
+
+executable("getuid_test") {
+  sources = [
+    "getuid_test.c",
+  ]
+}
+
+executable("execlp_test") {
+  sources = [
+    "execlp_test.c",
+  ]
+
+  include_dirs = ["//include"]
+}

@@ -10,3 +10,6 @@ build/
 .cache/
 *.build
 .ccls-cache
+
+
+tags

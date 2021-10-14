@@ -1,5 +1,7 @@
 #include"apue.h"
 #include<sys/wait.h>
+#include <unistd.h>
+
 int main(int argc,char **argv)
 {
 	char buf[MAXLINE];// from apue.h referrnce

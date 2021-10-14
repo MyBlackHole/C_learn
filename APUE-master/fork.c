@@ -2,6 +2,8 @@
 #include<unistd.h>
 #include<fcntl.h>
 #include<stdlib.h>
+
+
 int main(int argc,char** argv)
 {
 	int fd;
@@ -11,7 +13,7 @@ int main(int argc,char** argv)
 	{
 	 	perror("fork");
 	}
-	else if(pid>0)
+    else if(pid>0)
 	{	
 		wait(NULL);
 		exit(EXIT_FAILURE);
