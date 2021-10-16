@@ -1,0 +1,19 @@
+executable("creat_test") {
+  cflags = ["-g"]
+
+  sources = [
+    "creat_test.c",
+  ]
+
+  include_dirs = ["//include"]
+}
+
+executable("fcntl_test") {
+  cflags = ["-g"]
+
+  sources = [
+    "fcntl_test.c",
+  ]
+
+  include_dirs = ["//include"]
+}
