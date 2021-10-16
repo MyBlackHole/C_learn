@@ -8,11 +8,18 @@ group("default"){
     "//unistd_learn:getuid_test",
     "//unistd_learn:execlp_test",
 
+    "//signal_learn:signal_test",
+
+    "//fcntl_learn:creat_test",
+    "//fcntl_learn:fcntl_test",
+
     "//env_learn:env_test",
     "//sys_select_learn:select_test",
     "//stdlib_learn:getenv_test",
     "//dirent_learn:readdir_test",
     "//errno_learn:errno_learn",
+
+    "//grammar:2",
   ]
 }
 

@@ -1,0 +1,9 @@
+executable("signal_test") {
+  cflags = ["-g"]
+
+  include_dirs = ["//include"]
+
+  sources = [
+    "signal_test.c",
+  ]
+}
