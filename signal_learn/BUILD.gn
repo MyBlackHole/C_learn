@@ -6,4 +6,7 @@ executable("signal_test") {
   sources = [
     "signal_test.c",
   ]
+  deps = [
+    "//lib:libc",
+  ]
 }

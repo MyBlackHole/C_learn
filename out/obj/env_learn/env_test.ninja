@@ -1,0 +1,15 @@
+defines =
+include_dirs =
+cflags = -g
+cflags_c =
+target_out_dir = obj/env_learn
+target_output_name = env_test
+
+build obj/env_learn/env_test.env_test.o: cc ../env_learn/env_test.c
+
+build obj/env_learn/env_test: link obj/env_learn/env_test.env_test.o
+  ldflags =
+  libs =
+  frameworks =
+  output_extension = 
+  output_dir = .

@@ -1,0 +1,15 @@
+defines =
+include_dirs = -I../include
+cflags = -g
+cflags_c =
+target_out_dir = obj/string_learn
+target_output_name = memset_test
+
+build obj/string_learn/memset_test.memset_test.o: cc ../string_learn/memset_test.c
+
+build obj/string_learn/memset_test: link obj/string_learn/memset_test.memset_test.o obj/lib/libc.a
+  ldflags =
+  libs =
+  frameworks =
+  output_extension = 
+  output_dir = .

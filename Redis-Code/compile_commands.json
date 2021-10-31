@@ -1,0 +1,17 @@
+[
+{
+  "directory": "/home/black/Documents/Code/C/C_learn/Redis-Code",
+  "command": "/usr/bin/cc  -I/home/black/Documents/Code/C/C_learn/Redis-Code/include/adlist_test -std=gnu11 -o CMakeFiles/list.dir/wrapper/zmalloc.c.o -c /home/black/Documents/Code/C/C_learn/Redis-Code/wrapper/zmalloc.c",
+  "file": "/home/black/Documents/Code/C/C_learn/Redis-Code/wrapper/zmalloc.c"
+},
+{
+  "directory": "/home/black/Documents/Code/C/C_learn/Redis-Code",
+  "command": "/usr/bin/cc  -I/home/black/Documents/Code/C/C_learn/Redis-Code/include/adlist_test -std=gnu11 -o CMakeFiles/list.dir/struct/adlist.c.o -c /home/black/Documents/Code/C/C_learn/Redis-Code/struct/adlist.c",
+  "file": "/home/black/Documents/Code/C/C_learn/Redis-Code/struct/adlist.c"
+},
+{
+  "directory": "/home/black/Documents/Code/C/C_learn/Redis-Code",
+  "command": "/usr/bin/cc  -I/home/black/Documents/Code/C/C_learn/Redis-Code/include/adlist_test -std=gnu11 -o CMakeFiles/list.dir/test/struct_test/adlist_test.c.o -c /home/black/Documents/Code/C/C_learn/Redis-Code/test/struct_test/adlist_test.c",
+  "file": "/home/black/Documents/Code/C/C_learn/Redis-Code/test/struct_test/adlist_test.c"
+}
+]

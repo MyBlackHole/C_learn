@@ -1,0 +1,13 @@
+executable("memset_test") {
+  cflags = ["-g"]
+
+  sources = [
+    "memset_test.c",
+  ]
+  
+  include_dirs = ["//include"]
+
+  deps = [
+    "//lib:libc",
+  ]
+}

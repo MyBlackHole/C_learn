@@ -6,6 +6,10 @@ executable("creat_test") {
   ]
 
   include_dirs = ["//include"]
+
+  deps = [
+    "//lib:libc",
+  ]
 }
 
 executable("fcntl_test") {
@@ -16,4 +20,7 @@ executable("fcntl_test") {
   ]
 
   include_dirs = ["//include"]
+  deps = [
+    "//lib:libc",
+  ]
 }

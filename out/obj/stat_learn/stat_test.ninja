@@ -1,0 +1,15 @@
+defines =
+include_dirs = -I../include
+cflags =
+cflags_c =
+target_out_dir = obj/stat_learn
+target_output_name = stat_test
+
+build obj/stat_learn/stat_test.stat_test.o: cc ../stat_learn/stat_test.c
+
+build obj/stat_learn/stat_test: link obj/stat_learn/stat_test.stat_test.o obj/lib/libc.a
+  ldflags =
+  libs =
+  frameworks =
+  output_extension = 
+  output_dir = .

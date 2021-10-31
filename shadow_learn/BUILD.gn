@@ -1,0 +1,13 @@
+executable("getspnam_test") {
+  cflags = ["-g"]
+
+  include_dirs = ["//include"]
+
+  sources = [
+    "getspnam_test.c",
+  ]
+
+  deps = [
+    "//lib:libc",
+  ]
+}

@@ -1,0 +1,15 @@
+defines =
+include_dirs =
+cflags = -g
+cflags_c =
+target_out_dir = obj/pipe_learn
+target_output_name = pipe1
+
+build obj/pipe_learn/pipe1.main.o: cc ../pipe_learn/main.c
+
+build obj/pipe_learn/pipe1: link obj/pipe_learn/pipe1.main.o
+  ldflags =
+  libs =
+  frameworks =
+  output_extension = 
+  output_dir = .

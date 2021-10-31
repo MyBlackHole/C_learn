@@ -1,3 +1,25 @@
+executable("helloworld2_test") {
+  sources = [
+    "helloworld2_test.c",
+  ]
+
+  include_dirs = ["//include"]
+}
+
+executable("helloworld1_test") {
+  sources = [
+    "helloworld1_test.c",
+  ]
+
+  include_dirs = ["//include"]
+}
+
+executable("helloworld_test") {
+  sources = [
+    "helloworld_test.c",
+  ]
+}
+
 executable("hello_word") {
   sources = [
     "hello.c",

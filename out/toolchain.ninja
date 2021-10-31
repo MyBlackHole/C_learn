@@ -1,0 +1,79 @@
+rule cxx
+  command = g++ -MMD -MF ${out}.d ${defines} ${include_dirs} ${cflags} ${cflags_cc} -c ${in} -o ${out}
+  description = CXX ${out}
+  depfile = ${out}.d
+  deps = gcc
+rule alink
+  command = rm -f ${out} && ar rcs ${out} @${out}.rsp
+  description = AR ${target_output_name}${output_extension}
+  rspfile = ${out}.rsp
+  rspfile_content = ${in}
+rule link
+  command = g++ ${ldflags} -o ${target_out_dir}/${target_output_name}${output_extension} @${target_out_dir}/${target_output_name}${output_extension}.rsp ${solibs} ${libs}
+  description = LINK ${target_out_dir}/${target_output_name}${output_extension}
+  rspfile = ${target_out_dir}/${target_output_name}${output_extension}.rsp
+  rspfile_content = ${in}
+rule solink
+  command = g++ -shared ${ldflags} -o ${output_dir}/${target_output_name}${output_extension} -Wl,-soname=${target_output_name}${output_extension} @${target_output_name}${output_extension}.rsp
+  description = SOLINK ${target_output_name}${output_extension}
+  rspfile = ${target_output_name}${output_extension}.rsp
+  rspfile_content = -Wl,--whole-archive ${in} ${solibs} -Wl,--no-whole-archive ${libs}
+rule stamp
+  command = touch ${out}
+  description = STAMP ${out}
+rule cc
+  command = gcc -MMD -MF ${out}.d ${defines} ${include_dirs} ${cflags} ${cflags_c} -c ${in} -o ${out}
+  description = CC ${out}
+  depfile = ${out}.d
+  deps = gcc
+rule copy
+  command = cp -af ${in} ${out}
+  description = COPY ${in} ${out}
+
+build obj/default.stamp: stamp obj/hello_word/hello_word obj/hello_word/helloworld_test obj/hello_word/helloworld1_test obj/hello_word/helloworld2_test obj/setjmp_learn/setjmp_test obj/setjmp_learn/longjmp_test obj/pipe_learn/pipe1 obj/utsname_learn/uname_test obj/time_learn/localtime_test obj/pwd_learn/getpwent_test obj/shadow_learn/getspnam_test obj/string_learn/memset_test obj/stdlib_learn/getenv_test obj/stdlib_learn/mkstemp_test obj/stdlib_learn/atexit_test obj/unistd_learn/getpid_test obj/unistd_learn/read_test obj/unistd_learn/getuid_test obj/unistd_learn/execlp_test obj/unistd_learn/lseek_test obj/unistd_learn/lseek1_test obj/unistd_learn/access_test obj/unistd_learn/chdir_test obj/unistd_learn/sysconf_test obj/unistd_learn/unlink_test obj/unistd_learn/fork_test obj/stdio_learn/write_test obj/stdio_learn/getc_test obj/stdio_learn/fgets_test obj/stdio_learn/tmpfile_test obj/signal_learn/signal_test obj/stat_learn/stat_test obj/stat_learn/stat1_test obj/stat_learn/chmod_test obj/stat_learn/futimens_test obj/stat_learn/umask_test obj/fcntl_learn/creat_test obj/fcntl_learn/fcntl_test obj/env_learn/env_test obj/sys_select_learn/select_test obj/dirent_learn/readdir_test obj/errno_learn/errno_learn obj/grammar/2
+subninja obj/dirent_learn/readdir_test.ninja
+subninja obj/env_learn/env_test.ninja
+subninja obj/errno_learn/errno_learn.ninja
+subninja obj/fcntl_learn/creat_test.ninja
+subninja obj/fcntl_learn/fcntl_test.ninja
+subninja obj/grammar/2.ninja
+subninja obj/hello_word/hello_word.ninja
+subninja obj/hello_word/helloworld1_test.ninja
+subninja obj/hello_word/helloworld2_test.ninja
+subninja obj/hello_word/helloworld_test.ninja
+subninja obj/lib/libc.ninja
+subninja obj/pipe_learn/pipe1.ninja
+subninja obj/pwd_learn/getpwent_test.ninja
+subninja obj/setjmp_learn/longjmp_test.ninja
+subninja obj/setjmp_learn/setjmp_test.ninja
+subninja obj/shadow_learn/getspnam_test.ninja
+subninja obj/signal_learn/signal_test.ninja
+subninja obj/stat_learn/chmod_test.ninja
+subninja obj/stat_learn/futimens_test.ninja
+subninja obj/stat_learn/stat1_test.ninja
+subninja obj/stat_learn/stat_test.ninja
+subninja obj/stat_learn/umask_test.ninja
+subninja obj/stdio_learn/fgets_test.ninja
+subninja obj/stdio_learn/fopen_test.ninja
+subninja obj/stdio_learn/getc_test.ninja
+subninja obj/stdio_learn/tmpfile_test.ninja
+subninja obj/stdio_learn/write_test.ninja
+subninja obj/stdlib_learn/atexit_test.ninja
+subninja obj/stdlib_learn/getenv_test.ninja
+subninja obj/stdlib_learn/mkstemp_test.ninja
+subninja obj/string_learn/memset_test.ninja
+subninja obj/sys_select_learn/select_test.ninja
+subninja obj/time_learn/localtime_test.ninja
+subninja obj/unistd_learn/access_test.ninja
+subninja obj/unistd_learn/chdir_test.ninja
+subninja obj/unistd_learn/execlp_test.ninja
+subninja obj/unistd_learn/fork_test.ninja
+subninja obj/unistd_learn/getcwd_test.ninja
+subninja obj/unistd_learn/getpid_test.ninja
+subninja obj/unistd_learn/getuid_test.ninja
+subninja obj/unistd_learn/lseek1_test.ninja
+subninja obj/unistd_learn/lseek_test.ninja
+subninja obj/unistd_learn/read_test.ninja
+subninja obj/unistd_learn/sysconf_test.ninja
+subninja obj/unistd_learn/unlink_test.ninja
+subninja obj/utsname_learn/uname_test.ninja

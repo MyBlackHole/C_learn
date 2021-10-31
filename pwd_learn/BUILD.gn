@@ -1,0 +1,9 @@
+executable("getpwent_test") {
+  cflags = ["-g"]
+
+  include_dirs = ["//include"]
+
+  sources = [
+    "getpwent_test.c",
+  ]
+}

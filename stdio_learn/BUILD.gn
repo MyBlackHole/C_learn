@@ -1,0 +1,53 @@
+executable("tmpfile_test") {
+  sources = [
+    "tmpfile_test.c",
+  ]
+  
+  include_dirs = ["//include"]
+  deps = [
+    "//lib:libc",
+  ]
+}
+
+executable("fopen_test") {
+  sources = [
+    "fopen_test.c",
+  ]
+  
+  include_dirs = ["//include"]
+  deps = [
+    "//lib:libc",
+  ]
+}
+
+executable("fgets_test") {
+  sources = [
+    "fgets_test.c",
+  ]
+  
+  include_dirs = ["//include"]
+  deps = [
+    "//lib:libc",
+  ]
+}
+
+executable("getc_test") {
+  sources = [
+    "getc_test.c",
+  ]
+  
+  include_dirs = ["//include"]
+
+  deps = [
+    "//lib:libc",
+  ]
+}
+
+executable("write_test") {
+  sources = [
+    "write_test.c",
+  ]
+  deps = [
+    "//lib:libc",
+  ]
+}

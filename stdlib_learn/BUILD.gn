@@ -1,7 +1,37 @@
+executable("atexit_test") {
+  cflags = ["-g"]
+
+  sources = [
+    "atexit_test.c",
+  ]
+  
+  include_dirs = ["//include"]
+  deps = [
+    "//lib:libc",
+  ]
+}
+
+executable("mkstemp_test") {
+  cflags = ["-g"]
+
+  sources = [
+    "mkstemp_test.c",
+  ]
+  
+  include_dirs = ["//include"]
+
+  deps = [
+    "//lib:libc",
+  ]
+}
+
 executable("getenv_test") {
   cflags = ["-g"]
 
   sources = [
     "getenv_test.c",
+  ]
+  deps = [
+    "//lib:libc",
   ]
 }

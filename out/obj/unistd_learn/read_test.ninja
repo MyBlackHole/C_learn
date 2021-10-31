@@ -1,0 +1,15 @@
+defines =
+include_dirs = -I../include
+cflags =
+cflags_c =
+target_out_dir = obj/unistd_learn
+target_output_name = read_test
+
+build obj/unistd_learn/read_test.read_test.o: cc ../unistd_learn/read_test.c
+
+build obj/unistd_learn/read_test: link obj/unistd_learn/read_test.read_test.o obj/lib/libc.a
+  ldflags =
+  libs =
+  frameworks =
+  output_extension = 
+  output_dir = .

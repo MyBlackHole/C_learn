@@ -1,0 +1,15 @@
+defines =
+include_dirs = -I../include
+cflags = -g
+cflags_c =
+target_out_dir = obj/setjmp_learn
+target_output_name = longjmp_test
+
+build obj/setjmp_learn/longjmp_test.longjmp_test.o: cc ../setjmp_learn/longjmp_test.c
+
+build obj/setjmp_learn/longjmp_test: link obj/setjmp_learn/longjmp_test.longjmp_test.o
+  ldflags =
+  libs =
+  frameworks =
+  output_extension = 
+  output_dir = .

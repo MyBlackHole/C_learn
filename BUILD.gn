@@ -1,22 +1,64 @@
 group("default"){
   deps = [
     "//hello_word:hello_word",
+    "//hello_word:helloworld_test",
+    "//hello_word:helloworld1_test",
+    "//hello_word:helloworld2_test",
+
+    "//setjmp_learn:setjmp_test",
+    "//setjmp_learn:longjmp_test",
+
     "//pipe_learn:pipe1",
+
+    "//utsname_learn:uname_test",
+
+    "//time_learn:localtime_test",
+
+    "//pwd_learn:getpwent_test",
+
+    "//shadow_learn:getspnam_test",
+
+    "//string_learn:memset_test",
+
+    "//stdlib_learn:getenv_test",
+    "//stdlib_learn:mkstemp_test",
+    "//stdlib_learn:atexit_test",
 
     "//unistd_learn:getpid_test",
     "//unistd_learn:read_test",
     "//unistd_learn:getuid_test",
     "//unistd_learn:execlp_test",
+    "//unistd_learn:lseek_test",
+    "//unistd_learn:lseek1_test",
+    "//unistd_learn:access_test",
+    "//unistd_learn:chdir_test",
+    "//unistd_learn:sysconf_test",
+    "//unistd_learn:unlink_test",
+    "//unistd_learn:fork_test",
+    # "//unistd_learn:getcwd_test",
+
+    "//stdio_learn:write_test",
+    "//stdio_learn:getc_test",
+    "//stdio_learn:fgets_test",
+    # "//stdio_learn:fopen_test",
+    "//stdio_learn:tmpfile_test",
 
     "//signal_learn:signal_test",
+
+    "//stat_learn:stat_test",
+    "//stat_learn:stat1_test",
+    "//stat_learn:chmod_test",
+    "//stat_learn:futimens_test",
+    "//stat_learn:umask_test",
 
     "//fcntl_learn:creat_test",
     "//fcntl_learn:fcntl_test",
 
     "//env_learn:env_test",
     "//sys_select_learn:select_test",
-    "//stdlib_learn:getenv_test",
+
     "//dirent_learn:readdir_test",
+
     "//errno_learn:errno_learn",
 
     "//grammar:2",

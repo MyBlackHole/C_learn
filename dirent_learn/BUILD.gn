@@ -4,4 +4,8 @@ executable("readdir_test") {
   ]
 
   include_dirs = ["//include"]
+
+  deps = [
+    "//lib:libc",
+  ]
 }

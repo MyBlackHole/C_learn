@@ -1,0 +1,15 @@
+defines =
+include_dirs = -I../include
+cflags = -g
+cflags_c =
+target_out_dir = obj/sys_select_learn
+target_output_name = select_test
+
+build obj/sys_select_learn/select_test.select_test.o: cc ../sys_select_learn/select_test.c
+
+build obj/sys_select_learn/select_test: link obj/sys_select_learn/select_test.select_test.o
+  ldflags =
+  libs =
+  frameworks =
+  output_extension = 
+  output_dir = .

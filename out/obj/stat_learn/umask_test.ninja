@@ -1,0 +1,15 @@
+defines =
+include_dirs = -I../include
+cflags =
+cflags_c =
+target_out_dir = obj/stat_learn
+target_output_name = umask_test
+
+build obj/stat_learn/umask_test.umask_test.o: cc ../stat_learn/umask_test.c
+
+build obj/stat_learn/umask_test: link obj/stat_learn/umask_test.umask_test.o obj/lib/libc.a
+  ldflags =
+  libs =
+  frameworks =
+  output_extension = 
+  output_dir = .

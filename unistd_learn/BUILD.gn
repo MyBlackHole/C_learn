@@ -1,9 +1,84 @@
+executable("fork_test") {
+  sources = [
+    "fork_test.c",
+  ]
+
+  include_dirs = ["//include"]
+
+  deps = [
+    "//lib:libc",
+  ]
+}
+
+executable("unlink_test") {
+  sources = [
+    "unlink_test.c",
+  ]
+
+  include_dirs = ["//include"]
+
+  deps = [
+    "//lib:libc",
+  ]
+}
+
+executable("getcwd_test") {
+  sources = [
+    "getcwd_test.c",
+  ]
+
+  include_dirs = ["//include"]
+
+  deps = [
+    "//lib:libc",
+  ]
+}
+
+executable("sysconf_test") {
+  sources = [
+    "sysconf_test.c",
+  ]
+
+  include_dirs = ["//include"]
+
+  deps = [
+    "//lib:libc",
+  ]
+}
+
+executable("chdir_test") {
+  sources = [
+    "chdir_test.c",
+  ]
+
+  include_dirs = ["//include"]
+
+  deps = [
+    "//lib:libc",
+  ]
+}
+
+executable("access_test") {
+  sources = [
+    "access_test.c",
+  ]
+
+  include_dirs = ["//include"]
+
+  deps = [
+    "//lib:libc",
+  ]
+}
+
 executable("getpid_test") {
   sources = [
     "getpid_test.c",
   ]
 
   include_dirs = ["//include"]
+  deps = [
+    "//lib:libc",
+  ]
 }
 
 executable("read_test") {
@@ -12,11 +87,19 @@ executable("read_test") {
   ]
 
   include_dirs = ["//include"]
+
+  deps = [
+    "//lib:libc",
+  ]
 }
 
 executable("getuid_test") {
   sources = [
     "getuid_test.c",
+  ]
+
+  deps = [
+    "//lib:libc",
   ]
 }
 
@@ -26,4 +109,32 @@ executable("execlp_test") {
   ]
 
   include_dirs = ["//include"]
+
+  deps = [
+    "//lib:libc",
+  ]
+}
+
+executable("lseek_test") {
+  sources = [
+    "lseek_test.c",
+  ]
+
+  include_dirs = ["//include"]
+
+  deps = [
+    "//lib:libc",
+  ]
+}
+
+executable("lseek1_test") {
+  sources = [
+    "lseek1_test.c",
+  ]
+
+  include_dirs = ["//include"]
+
+  deps = [
+    "//lib:libc",
+  ]
 }

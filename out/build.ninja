@@ -1,0 +1,157 @@
+ninja_required_version = 1.7.2
+
+rule gn
+  command = ../../../../../../../usr/bin/gn --root=./.. -q gen .
+  description = Regenerating ninja files
+
+build build.ninja: gn
+  generator = 1
+  depfile = build.ninja.d
+
+subninja toolchain.ninja
+
+build default: phony obj/default.stamp
+build errno_learn: phony obj/errno_learn/errno_learn
+build hello_word: phony obj/hello_word/hello_word
+build 2: phony obj/grammar/2
+build access_test: phony obj/unistd_learn/access_test
+build atexit_test: phony obj/stdlib_learn/atexit_test
+build chdir_test: phony obj/unistd_learn/chdir_test
+build chmod_test: phony obj/stat_learn/chmod_test
+build creat_test: phony obj/fcntl_learn/creat_test
+build env_test: phony obj/env_learn/env_test
+build execlp_test: phony obj/unistd_learn/execlp_test
+build fcntl_test: phony obj/fcntl_learn/fcntl_test
+build fgets_test: phony obj/stdio_learn/fgets_test
+build fopen_test: phony obj/stdio_learn/fopen_test
+build fork_test: phony obj/unistd_learn/fork_test
+build futimens_test: phony obj/stat_learn/futimens_test
+build getc_test: phony obj/stdio_learn/getc_test
+build getcwd_test: phony obj/unistd_learn/getcwd_test
+build getenv_test: phony obj/stdlib_learn/getenv_test
+build getpid_test: phony obj/unistd_learn/getpid_test
+build getpwent_test: phony obj/pwd_learn/getpwent_test
+build getspnam_test: phony obj/shadow_learn/getspnam_test
+build getuid_test: phony obj/unistd_learn/getuid_test
+build helloworld1_test: phony obj/hello_word/helloworld1_test
+build helloworld2_test: phony obj/hello_word/helloworld2_test
+build helloworld_test: phony obj/hello_word/helloworld_test
+build localtime_test: phony obj/time_learn/localtime_test
+build longjmp_test: phony obj/setjmp_learn/longjmp_test
+build lseek1_test: phony obj/unistd_learn/lseek1_test
+build lseek_test: phony obj/unistd_learn/lseek_test
+build memset_test: phony obj/string_learn/memset_test
+build mkstemp_test: phony obj/stdlib_learn/mkstemp_test
+build pipe1: phony obj/pipe_learn/pipe1
+build read_test: phony obj/unistd_learn/read_test
+build readdir_test: phony obj/dirent_learn/readdir_test
+build select_test: phony obj/sys_select_learn/select_test
+build setjmp_test: phony obj/setjmp_learn/setjmp_test
+build signal_test: phony obj/signal_learn/signal_test
+build stat1_test: phony obj/stat_learn/stat1_test
+build stat_test: phony obj/stat_learn/stat_test
+build sysconf_test: phony obj/unistd_learn/sysconf_test
+build tmpfile_test: phony obj/stdio_learn/tmpfile_test
+build umask_test: phony obj/stat_learn/umask_test
+build uname_test: phony obj/utsname_learn/uname_test
+build unlink_test: phony obj/unistd_learn/unlink_test
+build write_test: phony obj/stdio_learn/write_test
+build libc: phony obj/lib/libc.a
+build $:default: phony obj/default.stamp
+build dirent_learn$:readdir_test: phony obj/dirent_learn/readdir_test
+build env_learn$:env_test: phony obj/env_learn/env_test
+build errno_learn$:errno_learn: phony obj/errno_learn/errno_learn
+build fcntl_learn$:creat_test: phony obj/fcntl_learn/creat_test
+build fcntl_learn$:fcntl_test: phony obj/fcntl_learn/fcntl_test
+build grammar$:2: phony obj/grammar/2
+build hello_word$:hello_word: phony obj/hello_word/hello_word
+build hello_word$:helloworld1_test: phony obj/hello_word/helloworld1_test
+build hello_word$:helloworld2_test: phony obj/hello_word/helloworld2_test
+build hello_word$:helloworld_test: phony obj/hello_word/helloworld_test
+build lib$:libc: phony obj/lib/libc.a
+build pipe_learn$:pipe1: phony obj/pipe_learn/pipe1
+build pwd_learn$:getpwent_test: phony obj/pwd_learn/getpwent_test
+build setjmp_learn$:longjmp_test: phony obj/setjmp_learn/longjmp_test
+build setjmp_learn$:setjmp_test: phony obj/setjmp_learn/setjmp_test
+build shadow_learn$:getspnam_test: phony obj/shadow_learn/getspnam_test
+build signal_learn$:signal_test: phony obj/signal_learn/signal_test
+build stat_learn$:chmod_test: phony obj/stat_learn/chmod_test
+build stat_learn$:futimens_test: phony obj/stat_learn/futimens_test
+build stat_learn$:stat1_test: phony obj/stat_learn/stat1_test
+build stat_learn$:stat_test: phony obj/stat_learn/stat_test
+build stat_learn$:umask_test: phony obj/stat_learn/umask_test
+build stdio_learn$:fgets_test: phony obj/stdio_learn/fgets_test
+build stdio_learn$:fopen_test: phony obj/stdio_learn/fopen_test
+build stdio_learn$:getc_test: phony obj/stdio_learn/getc_test
+build stdio_learn$:tmpfile_test: phony obj/stdio_learn/tmpfile_test
+build stdio_learn$:write_test: phony obj/stdio_learn/write_test
+build stdlib_learn$:atexit_test: phony obj/stdlib_learn/atexit_test
+build stdlib_learn$:getenv_test: phony obj/stdlib_learn/getenv_test
+build stdlib_learn$:mkstemp_test: phony obj/stdlib_learn/mkstemp_test
+build string_learn$:memset_test: phony obj/string_learn/memset_test
+build sys_select_learn$:select_test: phony obj/sys_select_learn/select_test
+build time_learn$:localtime_test: phony obj/time_learn/localtime_test
+build unistd_learn$:access_test: phony obj/unistd_learn/access_test
+build unistd_learn$:chdir_test: phony obj/unistd_learn/chdir_test
+build unistd_learn$:execlp_test: phony obj/unistd_learn/execlp_test
+build unistd_learn$:fork_test: phony obj/unistd_learn/fork_test
+build unistd_learn$:getcwd_test: phony obj/unistd_learn/getcwd_test
+build unistd_learn$:getpid_test: phony obj/unistd_learn/getpid_test
+build unistd_learn$:getuid_test: phony obj/unistd_learn/getuid_test
+build unistd_learn$:lseek1_test: phony obj/unistd_learn/lseek1_test
+build unistd_learn$:lseek_test: phony obj/unistd_learn/lseek_test
+build unistd_learn$:read_test: phony obj/unistd_learn/read_test
+build unistd_learn$:sysconf_test: phony obj/unistd_learn/sysconf_test
+build unistd_learn$:unlink_test: phony obj/unistd_learn/unlink_test
+build utsname_learn$:uname_test: phony obj/utsname_learn/uname_test
+
+build all: phony $
+    obj/default.stamp $
+    obj/dirent_learn/readdir_test $
+    obj/env_learn/env_test $
+    obj/errno_learn/errno_learn $
+    obj/fcntl_learn/creat_test $
+    obj/fcntl_learn/fcntl_test $
+    obj/grammar/2 $
+    obj/hello_word/hello_word $
+    obj/hello_word/helloworld1_test $
+    obj/hello_word/helloworld2_test $
+    obj/hello_word/helloworld_test $
+    obj/lib/libc.a $
+    obj/pipe_learn/pipe1 $
+    obj/pwd_learn/getpwent_test $
+    obj/setjmp_learn/longjmp_test $
+    obj/setjmp_learn/setjmp_test $
+    obj/shadow_learn/getspnam_test $
+    obj/signal_learn/signal_test $
+    obj/stat_learn/chmod_test $
+    obj/stat_learn/futimens_test $
+    obj/stat_learn/stat1_test $
+    obj/stat_learn/stat_test $
+    obj/stat_learn/umask_test $
+    obj/stdio_learn/fgets_test $
+    obj/stdio_learn/fopen_test $
+    obj/stdio_learn/getc_test $
+    obj/stdio_learn/tmpfile_test $
+    obj/stdio_learn/write_test $
+    obj/stdlib_learn/atexit_test $
+    obj/stdlib_learn/getenv_test $
+    obj/stdlib_learn/mkstemp_test $
+    obj/string_learn/memset_test $
+    obj/sys_select_learn/select_test $
+    obj/time_learn/localtime_test $
+    obj/unistd_learn/access_test $
+    obj/unistd_learn/chdir_test $
+    obj/unistd_learn/execlp_test $
+    obj/unistd_learn/fork_test $
+    obj/unistd_learn/getcwd_test $
+    obj/unistd_learn/getpid_test $
+    obj/unistd_learn/getuid_test $
+    obj/unistd_learn/lseek1_test $
+    obj/unistd_learn/lseek_test $
+    obj/unistd_learn/read_test $
+    obj/unistd_learn/sysconf_test $
+    obj/unistd_learn/unlink_test $
+    obj/utsname_learn/uname_test
+
+default default

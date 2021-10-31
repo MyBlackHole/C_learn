@@ -1,0 +1,15 @@
+defines =
+include_dirs =
+cflags =
+cflags_c =
+target_out_dir = obj/hello_word
+target_output_name = hello_word
+
+build obj/hello_word/hello_word.hello.o: cc ../hello_word/hello.c
+
+build obj/hello_word/hello_word: link obj/hello_word/hello_word.hello.o
+  ldflags =
+  libs =
+  frameworks =
+  output_extension = 
+  output_dir = .
