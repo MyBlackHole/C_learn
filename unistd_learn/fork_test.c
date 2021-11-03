@@ -1,5 +1,6 @@
 #include"apue.h"
 #include<sys/wait.h>
+#include <signal.h>
 
 int main(void)
 {
@@ -11,8 +12,11 @@ int main(void)
 		exit(7);
 	
 
+    // 等待返回子进程状态码
 	if(wait(&status)!=pid)
 		err_sys("wait error");
+
+    // 打印退出状态号 6 SIGABRT
 	pr_exit(status);
 	
 	if((pid=fork())<0)

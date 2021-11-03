@@ -1,3 +1,15 @@
+executable("gettimeofday_test") {
+  sources = [
+    "gettimeofday_test.c",
+  ]
+
+  include_dirs = ["//include"]
+
+  deps = [
+    "//lib:libc",
+  ]
+}
+
 executable("localtime_test") {
   sources = [
     "localtime_test.c",

@@ -1,3 +1,55 @@
+executable("system3_test") {
+  cflags = ["-g"]
+
+  sources = [
+    "system3_test.c",
+  ]
+  
+  include_dirs = ["//include"]
+  deps = [
+    "//lib:libc",
+  ]
+}
+
+executable("system2_test") {
+  cflags = ["-g"]
+
+  sources = [
+    "system2_test.c",
+  ]
+  
+  include_dirs = ["//include"]
+  deps = [
+    "//lib:libc",
+  ]
+}
+
+executable("system1_test") {
+  cflags = ["-g"]
+
+  sources = [
+    "system1_test.c",
+  ]
+  
+  include_dirs = ["//include"]
+  deps = [
+    "//lib:libc",
+  ]
+}
+
+executable("system_test") {
+  cflags = ["-g"]
+
+  sources = [
+    "system_test.c",
+  ]
+  
+  include_dirs = ["//include"]
+  deps = [
+    "//lib:libc",
+  ]
+}
+
 executable("atexit_test") {
   cflags = ["-g"]
 

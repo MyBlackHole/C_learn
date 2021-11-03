@@ -1,4 +1,6 @@
 #include"apue.h"
+#include <sys/wait.h>
+
 //通过调用fork()函数两次来解决僵尸进程的出现
 int main(void)
 {
@@ -18,8 +20,6 @@ int main(void)
 	if(waitpid(pid ,NULL,0)!=pid)	
 		err_sys("waitpid error");
 //we're the parent  we continue executing ,knowing that we are not the parent of the second child
-
-
-
 	exit(0);
 }
+

@@ -13,7 +13,5 @@ int main(int argc,char ** argv)
 		err_sys("system() error");
 	pr_exit(status);
 	exit(0);
-
-
-
 }
+

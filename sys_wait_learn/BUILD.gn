@@ -1,0 +1,12 @@
+executable("waitpid_test") {
+  sources = [
+    "waitpid_test.c",
+  ]
+
+  include_dirs = ["//include"]
+
+  deps = [
+    "//lib:libc",
+  ]
+}
+

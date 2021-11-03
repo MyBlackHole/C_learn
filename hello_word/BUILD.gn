@@ -1,3 +1,15 @@
+executable("env_test") {
+  sources = [
+    "env_test.c",
+  ]
+
+  include_dirs = ["//include"]
+
+  deps = [
+    "//lib:libc",
+  ]
+}
+
 executable("helloworld2_test") {
   sources = [
     "helloworld2_test.c",
