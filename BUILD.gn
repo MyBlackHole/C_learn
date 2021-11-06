@@ -1,6 +1,11 @@
 group("default"){
   deps = [
+    "//redis-3.0-annotated:redis",
+
+    "//locale_learn:setlocale_test",
+
     "//sys_wait_learn:waitpid_test",
+
     "//hello_word:hello_word",
     "//hello_word:helloworld_test",
     "//hello_word:helloworld1_test",
@@ -30,6 +35,7 @@ group("default"){
     "//stdlib_learn:system1_test",
     "//stdlib_learn:system2_test",
     "//stdlib_learn:system3_test",
+    "//stdlib_learn:srand_test",
 
     "//unistd_learn:getpid_test",
     "//unistd_learn:read_test",

@@ -1,3 +1,16 @@
+executable("srand_test") {
+  cflags = ["-g"]
+
+  sources = [
+    "srand_test.c",
+  ]
+  
+  include_dirs = ["//include"]
+  deps = [
+    "//lib:libc",
+  ]
+}
+
 executable("system3_test") {
   cflags = ["-g"]
 

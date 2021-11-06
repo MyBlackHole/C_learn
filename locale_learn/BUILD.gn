@@ -1,0 +1,7 @@
+executable("setlocale_test") {
+  sources = [
+    "setlocale_test.c",
+  ]
+  
+}
+

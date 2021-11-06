@@ -1,0 +1,913 @@
+static_library("adlist") {
+  sources = [
+    "adlist.c",
+    "adlist.h",
+    "zmalloc.h"
+  ]
+}
+
+static_library("ae") {
+  sources = [
+    "ae.c",
+    "ae.h",
+    "zmalloc.h",
+    "config.h",
+    "ae_kqueue.c",
+    "ae_epoll.c",
+    "ae_select.c",
+    "ae_evport.c",
+  ]
+}
+
+static_library("ae_epoll") {
+  sources = [
+    "ae_epoll.c",
+  ]
+}
+
+static_library("ae_evport") {
+  sources = [
+    "ae_evport.c",
+  ]
+}
+
+static_library("ae_kqueue") {
+  sources = [
+    "ae_kqueue.c",
+  ]
+}
+
+static_library("ae_select") {
+  sources = [
+    "ae_select.c",
+  ]
+}
+
+static_library("anet") {
+  sources = [
+    "anet.c",
+    "fmacros.h",
+    "anet.h",
+  ]
+}
+
+static_library("aof") {
+  sources = [
+    "aof.c",
+    "redis.h",
+    "fmacros.h",
+    "config.h",
+    "../deps/lua/src/lua.h",
+    "../deps/lua/src/luaconf.h",
+    "ae.h",
+    "sds.h",
+    "dict.h",
+    "adlist.h",
+    "zmalloc.h",
+    "anet.h",
+    "ziplist.h",
+    "intset.h",
+    "version.h",
+    "util.h",
+    "rdb.h",
+    "rio.h",
+    "bio.h",
+  ]
+}
+
+static_library("bio") {
+  sources = [
+    "bio.c",
+    "redis.h",
+    "fmacros.h",
+    "config.h",
+    "../deps/lua/src/lua.h",
+    "../deps/lua/src/luaconf.h",
+    "ae.h",
+    "sds.h",
+    "dict.h",
+    "adlist.h",
+    "zmalloc.h",
+    "anet.h",
+    "ziplist.h",
+    "intset.h",
+    "version.h",
+    "util.h",
+    "rdb.h",
+    "rio.h",
+    "bio.h",
+  ]
+}
+
+static_library("bitops") {
+  sources = [
+    "bitops.c",
+    "redis.h",
+    "fmacros.h",
+    "config.h",
+    "../deps/lua/src/lua.h",
+    "../deps/lua/src/luaconf.h",
+    "ae.h",
+    "sds.h",
+    "dict.h",
+    "adlist.h",
+    "zmalloc.h",
+    "anet.h",
+    "ziplist.h",
+    "intset.h",
+    "version.h",
+    "util.h",
+    "rdb.h",
+    "rio.h",
+    "bio.h",
+  ]
+}
+
+static_library("blocked") {
+  sources = [
+    "blocked.c",
+    "redis.h",
+    "fmacros.h",
+    "config.h",
+    "../deps/lua/src/lua.h",
+    "../deps/lua/src/luaconf.h",
+    "ae.h",
+    "sds.h",
+    "dict.h",
+    "adlist.h",
+    "zmalloc.h",
+    "anet.h",
+    "ziplist.h",
+    "intset.h",
+    "version.h",
+    "util.h",
+    "rdb.h",
+    "rio.h",
+    "bio.h",
+  ]
+}
+
+static_library("cluster") {
+  sources = [
+    "cluster.c",
+    "redis.h",
+    "fmacros.h",
+    "config.h",
+    "../deps/lua/src/lua.h",
+    "../deps/lua/src/luaconf.h",
+    "ae.h",
+    "sds.h",
+    "dict.h",
+    "adlist.h",
+    "zmalloc.h",
+    "anet.h",
+    "ziplist.h",
+    "intset.h",
+    "version.h",
+    "util.h",
+    "rdb.h",
+    "rio.h",
+    "cluster.h",
+    "endianconv.h",
+  ]
+}
+
+static_library("config") {
+  sources = [
+    "config.c",
+    "redis.h",
+    "fmacros.h",
+    "config.h",
+    "../deps/lua/src/lua.h",
+    "../deps/lua/src/luaconf.h",
+    "ae.h",
+    "sds.h",
+    "dict.h",
+    "adlist.h",
+    "zmalloc.h",
+    "anet.h",
+    "ziplist.h",
+    "intset.h",
+    "version.h",
+    "util.h",
+    "rdb.h",
+    "rio.h",
+    "cluster.h",
+  ]
+}
+
+static_library("crc16") {
+  sources = [
+    "crc16.c",
+    "redis.h",
+    "fmacros.h",
+    "config.h",
+    "../deps/lua/src/lua.h",
+    "../deps/lua/src/luaconf.h",
+    "ae.h",
+    "sds.h",
+    "dict.h",
+    "adlist.h",
+    "zmalloc.h",
+    "anet.h",
+    "ziplist.h",
+    "intset.h",
+    "version.h",
+    "util.h",
+    "rdb.h",
+    "rio.h",
+  ]
+}
+
+static_library("db") {
+  sources = [
+    "db.c",
+    "redis.h",
+    "fmacros.h",
+    "config.h",
+    "../deps/lua/src/lua.h",
+    "../deps/lua/src/luaconf.h",
+    "ae.h",
+    "sds.h",
+    "dict.h",
+    "adlist.h",
+    "zmalloc.h",
+    "anet.h",
+    "ziplist.h",
+    "intset.h",
+    "version.h",
+    "util.h",
+    "rdb.h",
+    "rio.h",
+    "cluster.h",
+  ]
+}
+
+static_library("crc64") {
+  sources = [
+    "crc64.c",
+  ]
+}
+
+static_library("endianconv") {
+  sources = [
+    "endianconv.c",
+  ]
+}
+
+static_library("debug") {
+  sources = [
+    "debug.c",
+    "redis.h",
+    "fmacros.h",
+    "config.h",
+    "../deps/lua/src/lua.h",
+    "../deps/lua/src/luaconf.h",
+    "ae.h",
+    "sds.h",
+    "dict.h",
+    "adlist.h",
+    "zmalloc.h",
+    "anet.h",
+    "ziplist.h",
+    "intset.h",
+    "version.h",
+    "util.h",
+    "rdb.h",
+    "rio.h",
+    "sha1.h",
+    "crc64.h",
+    "bio.h",
+  ]
+}
+
+static_library("dict") {
+  sources = [
+    "dict.c",
+    "fmacros.h",
+    "dict.h",
+    "zmalloc.h",
+    "redisassert.h",
+  ]
+}
+
+static_library("lzf_c") {
+  sources = [
+    "lzf_c.c",
+    "lzfP.h",
+  ]
+}
+
+static_library("lzf_d") {
+  sources = [
+    "lzf_d.c",
+    "lzfP.h",
+  ]
+}
+
+static_library("memtest") {
+  sources = [
+    "memtest.c",
+    "config.h",
+  ]
+}
+
+static_library("intset") {
+  sources = [
+    "intset.c",
+    "intset.h",
+    "zmalloc.h",
+    "endianconv.h",
+    "config.h",
+  ]
+}
+
+static_library("hyperloglog") {
+  sources = [
+    "hyperloglog.c",
+    "redis.h",
+    "fmacros.h",
+    "config.h",
+    "../deps/lua/src/lua.h",
+    "../deps/lua/src/luaconf.h",
+    "ae.h",
+    "sds.h",
+    "dict.h",
+    "adlist.h",
+    "zmalloc.h",
+    "anet.h",
+    "ziplist.h",
+    "intset.h",
+    "version.h",
+    "util.h",
+    "rdb.h",
+    "rio.h",
+  ]
+}
+
+static_library("multi") {
+  sources = [
+    "multi.c",
+    "redis.h",
+    "fmacros.h",
+    "config.h",
+    "../deps/lua/src/lua.h",
+    "../deps/lua/src/luaconf.h",
+    "ae.h",
+    "sds.h",
+    "dict.h",
+    "adlist.h",
+    "zmalloc.h",
+    "anet.h",
+    "ziplist.h",
+    "intset.h",
+    "version.h",
+    "util.h",
+    "rdb.h",
+    "rio.h",
+  ]
+}
+
+static_library("networking") {
+  sources = [
+    "networking.c",
+    "redis.h",
+    "fmacros.h",
+    "config.h",
+    "../deps/lua/src/lua.h",
+    "../deps/lua/src/luaconf.h",
+    "ae.h",
+    "sds.h",
+    "dict.h",
+    "adlist.h",
+    "zmalloc.h",
+    "anet.h",
+    "ziplist.h",
+    "intset.h",
+    "version.h",
+    "util.h",
+    "rdb.h",
+    "rio.h",
+  ]
+}
+
+static_library("notify") {
+  sources = [
+    "notify.c",
+    "redis.h",
+    "fmacros.h",
+    "config.h",
+    "../deps/lua/src/lua.h",
+    "../deps/lua/src/luaconf.h",
+    "ae.h",
+    "sds.h",
+    "dict.h",
+    "adlist.h",
+    "zmalloc.h",
+    "anet.h",
+    "ziplist.h",
+    "intset.h",
+    "version.h",
+    "util.h",
+    "rdb.h",
+    "rio.h",
+  ]
+}
+
+static_library("object") {
+  sources = [
+    "object.c",
+    "redis.h",
+    "fmacros.h",
+    "config.h",
+    "../deps/lua/src/lua.h",
+    "../deps/lua/src/luaconf.h",
+    "ae.h",
+    "sds.h",
+    "dict.h",
+    "adlist.h",
+    "zmalloc.h",
+    "anet.h",
+    "ziplist.h",
+    "intset.h",
+    "version.h",
+    "util.h",
+    "rdb.h",
+    "rio.h",
+  ]
+}
+
+static_library("pubsub") {
+  sources = [
+    "pubsub.c",
+    "redis.h",
+    "fmacros.h",
+    "config.h",
+    "../deps/lua/src/lua.h",
+    "../deps/lua/src/luaconf.h",
+    "ae.h",
+    "sds.h",
+    "dict.h",
+    "adlist.h",
+    "zmalloc.h",
+    "anet.h",
+    "ziplist.h",
+    "intset.h",
+    "version.h",
+    "util.h",
+    "rdb.h",
+    "rio.h",
+  ]
+}
+
+static_library("pqsort") {
+  sources = [
+    "pqsort.c",
+  ]
+}
+
+static_library("rand") {
+  sources = [
+    "rand.c",
+  ]
+}
+
+static_library("setproctitle") {
+  sources = [
+    "setproctitle.c",
+  ]
+}
+
+static_library("sha1") {
+  sources = [
+    "sha1.c",
+    "sha1.h",
+    "config.h",
+  ]
+}
+
+static_library("release") {
+  sources = [
+    "release.c",
+    "release.h",
+    "version.h",
+    "crc64.h",
+  ]
+}
+
+static_library("redis-check-dump") {
+  sources = [
+    "redis-check-dump.c",
+    "lzf.h",
+    "crc64.h",
+  ]
+}
+
+static_library("zipmap") {
+  sources = [
+    "zipmap.c",
+    "zmalloc.h",
+    "endianconv.h",
+    "config.h",
+  ]
+}
+
+static_library("zmalloc") {
+  sources = [
+    "zmalloc.c",
+    "zmalloc.h",
+    "config.h",
+  ]
+}
+
+static_library("sds") {
+  sources = [
+    "sds.c",
+    "sds.h",
+    "zmalloc.h",
+  ]
+}
+
+static_library("util") {
+  sources = [
+    "util.c",
+    "util.h",
+    "fmacros.h",
+    "sds.h",
+  ]
+}
+
+static_library("redis-check-aof") {
+  sources = [
+    "redis-check-aof.c",
+    "fmacros.h",
+    "config.h",
+  ]
+}
+
+static_library("scripting") {
+  sources = [
+    "scripting.c",
+    "redis.h",
+    "fmacros.h",
+    "config.h",
+    "../deps/lua/src/lua.h",
+    "../deps/lua/src/luaconf.h",
+    "ae.h",
+    "sds.h",
+    "dict.h",
+    "adlist.h",
+    "zmalloc.h",
+    "anet.h",
+    "ziplist.h",
+    "intset.h",
+    "version.h",
+    "util.h",
+    "rdb.h",
+    "rio.h",
+    "sha1.h",
+    "rand.h",
+    "../deps/lua/src/lauxlib.h",
+    "../deps/lua/src/lualib.h",
+  ]
+}
+
+static_library("sentinel") {
+  sources = [
+    "sentinel.c",
+    "redis.h",
+    "fmacros.h",
+    "config.h",
+    "../deps/lua/src/lua.h",
+    "../deps/lua/src/luaconf.h",
+    "ae.h",
+    "sds.h",
+    "dict.h",
+    "adlist.h",
+    "zmalloc.h",
+    "anet.h",
+    "ziplist.h",
+    "intset.h",
+    "version.h",
+    "util.h",
+    "rdb.h",
+    "rio.h",
+    "../deps/hiredis/async.h",
+    "../deps/hiredis/hiredis.h",
+  ]
+}
+
+static_library("slowlog") {
+  sources = [
+    "slowlog.c",
+    "redis.h",
+    "fmacros.h",
+    "config.h",
+    "../deps/lua/src/lua.h",
+    "../deps/lua/src/luaconf.h",
+    "ae.h",
+    "sds.h",
+    "dict.h",
+    "adlist.h",
+    "zmalloc.h",
+    "anet.h",
+    "ziplist.h",
+    "intset.h",
+    "version.h",
+    "util.h",
+    "rdb.h",
+    "rio.h",
+    "slowlog.h",
+  ]
+}
+
+static_library("sort") {
+  sources = [
+    "sort.c",
+    "redis.h",
+    "fmacros.h",
+    "config.h",
+    "../deps/lua/src/lua.h",
+    "../deps/lua/src/luaconf.h",
+    "ae.h",
+    "sds.h",
+    "dict.h",
+    "adlist.h",
+    "zmalloc.h",
+    "anet.h",
+    "ziplist.h",
+    "intset.h",
+    "version.h",
+    "util.h",
+    "rdb.h",
+    "rio.h",
+    "pqsort.h",
+  ]
+}
+
+static_library("syncio") {
+  sources = [
+    "syncio.c",
+    "redis.h",
+    "fmacros.h",
+    "config.h",
+    "../deps/lua/src/lua.h",
+    "../deps/lua/src/luaconf.h",
+    "ae.h",
+    "sds.h",
+    "dict.h",
+    "adlist.h",
+    "zmalloc.h",
+    "anet.h",
+    "ziplist.h",
+    "intset.h",
+    "version.h",
+    "util.h",
+    "rdb.h",
+    "rio.h",
+  ]
+}
+
+static_library("t_hash") {
+  sources = [
+    "t_hash.c",
+    "redis.h",
+    "fmacros.h",
+    "config.h",
+    "../deps/lua/src/lua.h",
+    "../deps/lua/src/luaconf.h",
+    "ae.h",
+    "sds.h",
+    "dict.h",
+    "adlist.h",
+    "zmalloc.h",
+    "anet.h",
+    "ziplist.h",
+    "intset.h",
+    "version.h",
+    "util.h",
+    "rdb.h",
+    "rio.h",
+  ]
+}
+
+static_library("t_list") {
+  sources = [
+    "t_list.c",
+    "redis.h",
+    "fmacros.h",
+    "config.h",
+    "../deps/lua/src/lua.h",
+    "../deps/lua/src/luaconf.h",
+    "ae.h",
+    "sds.h",
+    "dict.h",
+    "adlist.h",
+    "zmalloc.h",
+    "anet.h",
+    "ziplist.h",
+    "intset.h",
+    "version.h",
+    "util.h",
+    "rdb.h",
+    "rio.h",
+  ]
+}
+
+static_library("t_set") {
+  sources = [
+    "t_set.c",
+    "redis.h",
+    "fmacros.h",
+    "config.h",
+    "../deps/lua/src/lua.h",
+    "../deps/lua/src/luaconf.h",
+    "ae.h",
+    "sds.h",
+    "dict.h",
+    "adlist.h",
+    "zmalloc.h",
+    "anet.h",
+    "ziplist.h",
+    "intset.h",
+    "version.h",
+    "util.h",
+    "rdb.h",
+    "rio.h",
+  ]
+}
+
+static_library("t_string") {
+  sources = [
+    "t_string.c",
+    "redis.h",
+    "fmacros.h",
+    "config.h",
+    "../deps/lua/src/lua.h",
+    "../deps/lua/src/luaconf.h",
+    "ae.h",
+    "sds.h",
+    "dict.h",
+    "adlist.h",
+    "zmalloc.h",
+    "anet.h",
+    "ziplist.h",
+    "intset.h",
+    "version.h",
+    "util.h",
+    "rdb.h",
+    "rio.h",
+  ]
+}
+
+static_library("t_zset") {
+  sources = [
+    "t_zset.c",
+    "redis.h",
+    "fmacros.h",
+    "config.h",
+    "../deps/lua/src/lua.h",
+    "../deps/lua/src/luaconf.h",
+    "ae.h",
+    "sds.h",
+    "dict.h",
+    "adlist.h",
+    "zmalloc.h",
+    "anet.h",
+    "ziplist.h",
+    "intset.h",
+    "version.h",
+    "util.h",
+    "rdb.h",
+    "rio.h",
+  ]
+}
+
+static_library("rdb") {
+  sources = [
+    "rdb.c",
+    "redis.h",
+    "fmacros.h",
+    "config.h",
+    "../deps/lua/src/lua.h",
+    "../deps/lua/src/luaconf.h",
+    "ae.h",
+    "sds.h",
+    "dict.h",
+    "adlist.h",
+    "zmalloc.h",
+    "anet.h",
+    "ziplist.h",
+    "intset.h",
+    "version.h",
+    "util.h",
+    "rdb.h",
+    "rio.h",
+    "lzf.h",
+    "zipmap.h",
+    "endianconv.h",
+  ]
+}
+
+static_library("redis-cli") {
+  sources = [
+    "redis-cli.c",
+    "fmacros.h",
+    "version.h",
+    "../deps/hiredis/hiredis.h",
+    "sds.h",
+    "zmalloc.h",
+    "../deps/linenoise/linenoise.h",
+    "help.h",
+    "anet.h",
+    "ae.h",
+  ]
+}
+
+static_library("redis") {
+  sources = [
+    "redis.c",
+    "redis.h",
+    "fmacros.h",
+    "config.h",
+    "../deps/lua/src/lua.h",
+    "../deps/lua/src/luaconf.h",
+    "ae.h",
+    "sds.h",
+    "dict.h",
+    "adlist.h",
+    "zmalloc.h",
+    "anet.h",
+    "ziplist.h",
+    "intset.h",
+    "version.h",
+    "util.h",
+    "rdb.h",
+    "rio.h",
+    "cluster.h",
+    "slowlog.h",
+    "bio.h",
+    "asciilogo.h",
+  ]
+}
+
+static_library("replication") {
+  sources = [
+    "replication.c",
+    "replication.h",
+    "redis.h",
+    "fmacros.h",
+    "config.h",
+    "../deps/lua/src/lua.h",
+    "../deps/lua/src/luaconf.h",
+    "ae.h",
+    "sds.h",
+    "dict.h",
+    "adlist.h",
+    "zmalloc.h",
+    "anet.h",
+    "ziplist.h",
+    "intset.h",
+    "version.h",
+    "util.h",
+    "rdb.h",
+    "rio.h",
+  ]
+}
+
+static_library("redis-benchmark") {
+  sources = [
+    "rio.c",
+    "fmacros.h",
+    "rio.h",
+    "sds.h",
+    "util.h",
+    "crc64.h",
+    "config.h",
+    "redis.h",
+    "../deps/lua/src/lua.h",
+    "../deps/lua/src/luaconf.h",
+    "ae.h",
+    "dict.h",
+    "adlist.h",
+    "zmalloc.h",
+    "anet.h",
+    "ziplist.h",
+    "intset.h",
+    "version.h",
+    "rdb.h",
+  ]
+}
+
+static_library("ziplist") {
+  sources = [
+    "ziplist.c",
+    "zmalloc.h",
+    "util.h",
+    "sds.h",
+    "ziplist.h",
+    "endianconv.h",
+    "config.h",
+    "redisassert.h",
+  ]
+}

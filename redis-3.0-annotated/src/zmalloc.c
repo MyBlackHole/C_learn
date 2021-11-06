@@ -234,10 +234,12 @@ size_t zmalloc_used_memory(void) {
     return um;
 }
 
+/* 是否设置线程安全模式 */
 void zmalloc_enable_thread_safeness(void) {
     zmalloc_thread_safe = 1;
 }
 
+/* 可自定义设置内存溢出的处理方法 */
 void zmalloc_set_oom_handler(void (*oom_handler)(size_t)) {
     zmalloc_oom_handler = oom_handler;
 }

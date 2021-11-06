@@ -3938,6 +3938,8 @@ int main(int argc, char **argv) {
 #ifdef INIT_SETPROCTITLE_REPLACEMENT
     spt_init(argc, argv);
 #endif
+
+    /* 区域名称将根据环境变量值来设置 */
     setlocale(LC_COLLATE,"");
     zmalloc_enable_thread_safeness();
     zmalloc_set_oom_handler(redisOutOfMemoryHandler);
