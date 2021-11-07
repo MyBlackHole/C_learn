@@ -62,6 +62,32 @@
 #include "version.h" /* Version macro */
 #include "util.h"    /* Misc functions useful in many places */
 
+
+/*-----------------------------------------------------------------------------
+ * Functions prototypes 方法原型
+ *----------------------------------------------------------------------------*/
+/* 1.Utils 通用类的方法*/
+/* 2.networking.c -- Networking and Client related operations 网络操作类方法*/
+/* 3.List data type 列表操作方法*/
+/* 4.MULTI/EXEC/WATCH... 命令执行方法*/
+/* 5.Redis object implementation Redis Object对象方法*/
+/* 6.Synchronous I/O with timeout I/O同步类方法*/
+/* 7.Replication 主从复制方法*/
+/* 8.Generic persistence functions 持久化加载的一些方法*/
+/* 9.AOF persistence AOF日志文件持久化方法*/
+/* 10.Core functions 核心类方法*/
+/* 11.Sorted sets data type 排序set集合方法*/
+/* 12.Set data type set类型数据操作方法*/
+/* 13.Hash data type 哈希类型方法操作方法*/
+/* 14.Pub / Sub 发布订阅方法*/
+/* 15.Keyspace events notification ketSpace事件通知方法*/
+/* 16.Configuration 配置类方法*/
+/* 17.db.c -- Keyspace access API db相关的方法*/
+/* 18.Sentinel */
+/* 19.Scripting */
+/* 20.Git SHA1 */
+/* 21.Commands prototypes 命令原型方法*/
+
 /* Error codes */
 #define REDIS_OK                0
 #define REDIS_ERR               -1

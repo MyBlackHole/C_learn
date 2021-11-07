@@ -77,6 +77,7 @@ static dict *dictCreate(dictType *type, void *privDataPtr) {
 }
 
 /* Initialize the hash table */
+/* 初始化dict类中的type，ht等变量 */
 static int _dictInit(dict *ht, dictType *type, void *privDataPtr) {
     _dictReset(ht);
     ht->type = type;

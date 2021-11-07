@@ -1,3 +1,17 @@
+executable("setsid_test") {
+  sources = [
+    "setsid_test.c",
+  ]
+
+}
+
+executable("fork4_test") {
+  sources = [
+    "fork4_test.c",
+  ]
+
+}
+
 executable("fork3_test") {
   sources = [
     "fork3_test.c",

@@ -1,0 +1,6 @@
+executable("gettimeofday_test") {
+  sources = [
+    "gettimeofday_test.c",
+  ]
+ }
+

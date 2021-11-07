@@ -2,6 +2,8 @@ group("default"){
   deps = [
     "//redis-3.0-annotated:redis",
 
+    "//pthread_learn:pthread_mutex_lock_test",
+
     "//locale_learn:setlocale_test",
 
     "//sys_wait_learn:waitpid_test",
@@ -53,6 +55,8 @@ group("default"){
     "//unistd_learn:execl_test",
     "//unistd_learn:fork3_test",
     # "//unistd_learn:getcwd_test",
+    "//unistd_learn:fork4_test",
+    "//unistd_learn:setsid_test",
 
     "//stdio_learn:write_test",
     "//stdio_learn:getc_test",
@@ -84,6 +88,9 @@ group("default"){
     "//errno_learn:errno_learn",
 
     "//grammar:2",
+    "//grammar:union_test",
+
+    "//sys_time_learn:gettimeofday_test"
   ]
 }
 

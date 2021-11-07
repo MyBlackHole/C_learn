@@ -1,3 +1,9 @@
+executable("union_test") {
+  sources = [
+    "union_test.c",
+  ]
+}
+
 executable("2") {
   sources = [
     "2.c",

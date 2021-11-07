@@ -92,6 +92,7 @@ unsigned int dictIntHashFunction(unsigned int key)
 }
 
 /* Identity hash function for integer keys */
+//哈希方法种子，跟产生随机数的种子作用应该是一样的
 unsigned int dictIdentityHashFunction(unsigned int key)
 {
     return key;
@@ -99,10 +100,12 @@ unsigned int dictIdentityHashFunction(unsigned int key)
 
 static uint32_t dict_hash_function_seed = 5381;
 
+/* 重设哈希种子 */
 void dictSetHashFunctionSeed(uint32_t seed) {
     dict_hash_function_seed = seed;
 }
 
+/* 获取哈希种子 */
 uint32_t dictGetHashFunctionSeed(void) {
     return dict_hash_function_seed;
 }

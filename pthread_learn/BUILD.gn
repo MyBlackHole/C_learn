@@ -1,0 +1,7 @@
+executable("pthread_mutex_lock_test") {
+  sources = [
+    "pthread_mutex_lock_test.c",
+  ]
+  
+}
+

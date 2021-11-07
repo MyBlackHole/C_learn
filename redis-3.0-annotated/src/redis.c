@@ -65,6 +65,7 @@ double R_Zero, R_PosInf, R_NegInf, R_Nan;
 /*================================= Globals ================================= */
 
 /* Global vars */
+/* 全局的RedisServer */
 struct redisServer server; /* server global state */
 struct redisCommand *commandTable;
 
@@ -3943,7 +3944,9 @@ int main(int argc, char **argv) {
     setlocale(LC_COLLATE,"");
     zmalloc_enable_thread_safeness();
     zmalloc_set_oom_handler(redisOutOfMemoryHandler);
+    /* 初始化随机生成器 */
     srand(time(NULL)^getpid());
+    /* 获取当前时间 */
     gettimeofday(&tv,NULL);
     dictSetHashFunctionSeed(tv.tv_sec^tv.tv_usec^getpid());
 

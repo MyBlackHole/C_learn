@@ -73,6 +73,7 @@ void appendServerSaveParams(time_t seconds, int changes) {
     server.saveparamslen++;
 }
 
+/* 重置server的save参数，即释放server的serverParams */
 void resetServerSaveParams() {
     zfree(server.saveparams);
     server.saveparams = NULL;

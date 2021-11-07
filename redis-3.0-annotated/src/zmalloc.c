@@ -71,6 +71,8 @@ void zlibc_free(void *ptr) {
 #define update_zmalloc_stat_add(__n) __sync_add_and_fetch(&used_memory, (__n))
 #define update_zmalloc_stat_sub(__n) __sync_sub_and_fetch(&used_memory, (__n))
 #else
+
+/* 在对内存空间做使用的时候，进行了加锁控制 */
 #define update_zmalloc_stat_add(__n) do { \
     pthread_mutex_lock(&used_memory_mutex); \
     used_memory += (__n); \
@@ -109,6 +111,7 @@ static size_t used_memory = 0;
 static int zmalloc_thread_safe = 0;
 pthread_mutex_t used_memory_mutex = PTHREAD_MUTEX_INITIALIZER;
 
+/* 申请空间时，发送oom内存溢出错误，终止操作 */
 static void zmalloc_default_oom(size_t size) {
     fprintf(stderr, "zmalloc: Out of memory trying to allocate %zu bytes\n",
         size);
@@ -118,11 +121,15 @@ static void zmalloc_default_oom(size_t size) {
 
 static void (*zmalloc_oom_handler)(size_t) = zmalloc_default_oom;
 
+/* 调用zmalloc申请size个大小的空间 */
 void *zmalloc(size_t size) {
+	//实际调用的还是malloc函数
     void *ptr = malloc(size+PREFIX_SIZE);
 
+	//如果申请的结果为null，说明发生了oom,调用oom的处理方法
     if (!ptr) zmalloc_oom_handler(size);
 #ifdef HAVE_MALLOC_SIZE
+	//更新used_memory的大小
     update_zmalloc_stat_alloc(zmalloc_size(ptr));
     return ptr;
 #else
@@ -189,6 +196,7 @@ size_t zmalloc_size(void *ptr) {
 }
 #endif
 
+/* 释放空间方法，并更新used_memory的值 */
 void zfree(void *ptr) {
 #ifndef HAVE_MALLOC_SIZE
     void *realptr;
@@ -207,6 +215,7 @@ void zfree(void *ptr) {
 #endif
 }
 
+/* 字符串复制方法 */
 char *zstrdup(const char *s) {
     size_t l = strlen(s)+1;
     char *p = zmalloc(l);

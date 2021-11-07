@@ -72,6 +72,7 @@ sds sdsempty(void) {
 }
 
 /* Create a new sds string starting from a null termined C string. */
+/* 根据init函数指针创建字符串 */
 sds sdsnew(const char *init) {
     size_t initlen = (init == NULL) ? 0 : strlen(init);
     return sdsnewlen(init, initlen);
