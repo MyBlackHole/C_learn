@@ -1,5 +1,11 @@
 group("default"){
   deps = [
+
+    "//sys_signalfd_learn:signalfd_test",
+
+    "//ev_learn:ev1_test",
+    "//ev_learn:ev_signal_test",
+
     "//redis-3.0-annotated:redis",
 
     "//pthread_learn:pthread_mutex_lock_test",
@@ -89,6 +95,7 @@ group("default"){
 
     "//grammar:2",
     "//grammar:union_test",
+    "//grammar:continue_test",
 
     "//sys_time_learn:gettimeofday_test"
   ]

@@ -412,6 +412,7 @@ void getRandomHexChars(char *p, unsigned int len) {
  * The function does not try to normalize everything, but only the obvious
  * case of one or more "../" appearning at the start of "filename"
  * relative path. */
+/* 获取输入文件名的绝对路径 */
 sds getAbsolutePath(char *filename) {
     char cwd[1024];
     sds abspath;
