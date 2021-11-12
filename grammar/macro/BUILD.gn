@@ -1,0 +1,3 @@
+executable("2") {
+  sources = [ "2.c" ]
+}
