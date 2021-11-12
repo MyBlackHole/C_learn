@@ -90,6 +90,7 @@ group("default"){
     "//signal_learn:sigaction_test",
     "//signal_learn:signal2_test",
     "//signal_learn:signal3_test",
+    "//signal_learn:SIG_IGN_test",
 
     "//stat_learn:stat_test",
     "//stat_learn:stat1_test",

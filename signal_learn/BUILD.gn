@@ -1,3 +1,7 @@
+executable("SIG_IGN_test") {
+  sources = ["SIG_IGN_test.c"]
+}
+
 executable("signal3_test") {
   cflags = ["-g"]
 

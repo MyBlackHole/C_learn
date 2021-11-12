@@ -17,8 +17,8 @@ int main()
     printf("NetIP: 0x%x\n", netAddr.s_addr);
 
     char *strAddr = inet_ntoa(netAddr);
-
     printf("StrIP: %s\n", strAddr);
+
     int ret = inet_aton(strAddr, &netAddr);
     printf("NetIP: 0x%x\n", netAddr.s_addr);
     return 0;
