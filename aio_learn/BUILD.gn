@@ -1,0 +1,15 @@
+executable("lio_listio_test") {
+  sources = [ "lio_listio_test.c" ]
+}
+
+executable("aio_suspend_test") {
+  sources = [ "aio_suspend_test.c" ]
+}
+
+executable("aio_write_test") {
+  sources = [ "aio_write_test.c" ]
+}
+
+executable("aio_read_test") {
+  sources = [ "aio_read_test.c" ]
+}

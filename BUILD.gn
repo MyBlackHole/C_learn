@@ -1,5 +1,11 @@
 group("default"){
   deps = [
+    "//aio_learn:aio_read_test",
+    "//aio_learn:aio_write_test",
+    "//aio_learn:aio_suspend_test",
+    "//aio_learn:lio_listio_test",
+
+    "//grammar/macro:2",
 
     "//sys_signalfd_learn:signalfd_test",
 
