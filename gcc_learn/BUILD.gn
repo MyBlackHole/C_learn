@@ -1,0 +1,3 @@
+executable("__builtin_clz_test") {
+  sources = [ "__builtin_clz_test.c" ]
+}
