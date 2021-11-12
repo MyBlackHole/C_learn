@@ -1,0 +1,11 @@
+executable("inet_aton_test") {
+  sources = [ "inet_aton_test.c" ]
+}
+
+executable("inet_addr_test") {
+  sources = [ "inet_addr_test.c" ]
+}
+
+executable("inet_ntoa_test") {
+  sources = [ "inet_ntoa_test.c" ]
+}

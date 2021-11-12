@@ -1,11 +1,19 @@
 group("default"){
   deps = [
+    "//sys_epoll_learn:test",
+
+    "//arpa_inet_learn:inet_ntoa_test",
+    "//arpa_inet_learn:inet_aton_test",
+    "//arpa_inet_learn:inet_addr_test",
+
+    "//gcc_learn:__builtin_clz_test",
+
     "//aio_learn:aio_read_test",
     "//aio_learn:aio_write_test",
     "//aio_learn:aio_suspend_test",
     "//aio_learn:lio_listio_test",
 
-    "//grammar/macro:2",
+    "//grammar/macro:define_test",
 
     "//sys_signalfd_learn:signalfd_test",
 

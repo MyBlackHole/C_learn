@@ -1,3 +1,3 @@
-executable("2") {
-  sources = [ "2.c" ]
+executable("define_test") {
+  sources = [ "define_test.c" ]
 }
