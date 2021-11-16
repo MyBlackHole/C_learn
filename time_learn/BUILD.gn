@@ -1,3 +1,9 @@
+executable("clock_gettime_test") {
+  sources = [
+    "clock_gettime_test.c",
+  ]
+}
+
 executable("gettimeofday_test") {
   sources = [
     "gettimeofday_test.c",

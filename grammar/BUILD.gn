@@ -1,3 +1,21 @@
+executable("1") {
+  sources = [
+    "1.c",
+  ]
+}
+
+executable("long_int_test") {
+  sources = [
+    "long_int_test.c",
+  ]
+}
+
+executable("do_while_test") {
+  sources = [
+    "do_while_test.c",
+  ]
+}
+
 executable("continue_test") {
   sources = [
     "continue_test.c",

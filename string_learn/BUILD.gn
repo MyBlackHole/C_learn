@@ -1,3 +1,11 @@
+executable("memmove_test") {
+  cflags = ["-g"]
+
+  sources = [
+    "memmove_test.c",
+  ]
+}
+
 executable("memset_test") {
   cflags = ["-g"]
 

@@ -1,3 +1,7 @@
+executable("SIGFPE_test") {
+  sources = ["SIGFPE_test.c"]
+}
+
 executable("SIG_IGN_test") {
   sources = ["SIG_IGN_test.c"]
 }

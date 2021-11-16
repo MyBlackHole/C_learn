@@ -1,3 +1,7 @@
+executable("inet_ntop_test") {
+  sources = [ "inet_ntop_test.c" ]
+}
+
 executable("inet_aton_test") {
   sources = [ "inet_aton_test.c" ]
 }

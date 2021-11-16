@@ -2,9 +2,14 @@ group("default"){
   deps = [
     "//sys_epoll_learn:test",
 
+    "//netdb_learn:getaddrinfo_test",
+
+    "//assert_learn:assert_test",
+
     "//arpa_inet_learn:inet_ntoa_test",
     "//arpa_inet_learn:inet_aton_test",
     "//arpa_inet_learn:inet_addr_test",
+    "//arpa_inet_learn:inet_ntop_test",
 
     "//gcc_learn:__builtin_clz_test",
 
@@ -14,6 +19,8 @@ group("default"){
     "//aio_learn:lio_listio_test",
 
     "//grammar/macro:define_test",
+    "//grammar:long_int_test",
+    "//grammar:1",
 
     "//sys_signalfd_learn:signalfd_test",
 
@@ -43,12 +50,14 @@ group("default"){
 
     "//time_learn:localtime_test",
     "//time_learn:gettimeofday_test",
+    "//time_learn:clock_gettime_test",
 
     "//pwd_learn:getpwent_test",
 
     "//shadow_learn:getspnam_test",
 
     "//string_learn:memset_test",
+    "//string_learn:memmove_test",
 
     "//stdlib_learn:getenv_test",
     "//stdlib_learn:mkstemp_test",
@@ -91,6 +100,7 @@ group("default"){
     "//signal_learn:signal2_test",
     "//signal_learn:signal3_test",
     "//signal_learn:SIG_IGN_test",
+    "//signal_learn:SIGFPE_test",
 
     "//stat_learn:stat_test",
     "//stat_learn:stat1_test",
@@ -111,6 +121,7 @@ group("default"){
     "//grammar:2",
     "//grammar:union_test",
     "//grammar:continue_test",
+    "//grammar:do_while_test",
 
     "//sys_time_learn:gettimeofday_test"
   ]

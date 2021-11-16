@@ -121,7 +121,17 @@ void func10() {
     return;
 }
 
+void func11() {
+    int i = 1;
+    printf("%d", 1 + --i);
+}
+
+void func12() {
+    int i = 1;
+    printf("%d", 1 + --i), printf("ok");
+}
+
 int main() {
-    func10();
+    func12();
     exit(0);
 }
