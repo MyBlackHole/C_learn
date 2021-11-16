@@ -1,0 +1,6 @@
+executable("assert_test") {
+  sources = [
+    "assert_test.c",
+  ]
+}
+
