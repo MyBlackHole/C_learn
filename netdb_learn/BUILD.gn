@@ -1,0 +1,3 @@
+executable("getaddrinfo_test") {
+  sources = ["getaddrinfo_test.c"]
+}
