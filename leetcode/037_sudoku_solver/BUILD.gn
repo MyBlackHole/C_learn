@@ -1,0 +1,3 @@
+executable("sudoku_solver") {
+  sources = [ "sudoku_solver.c" ]
+}

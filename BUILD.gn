@@ -1,5 +1,8 @@
 group("default"){
   deps = [
+    "//leetcode/001_two_sum:two_sum",
+    "//leetcode/037_sudoku_solver:sudoku_solver",
+
     "//sys_epoll_learn:test",
 
     "//netdb_learn:getaddrinfo_test",
