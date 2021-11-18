@@ -1,3 +1,0 @@
-/home/black/Documents/Code/C_CJJ/crypto-algorithms/CMakeFiles/rebuild_cache.dir
-/home/black/Documents/Code/C_CJJ/crypto-algorithms/CMakeFiles/edit_cache.dir
-/home/black/Documents/Code/C_CJJ/crypto-algorithms/CMakeFiles/aes.dir
