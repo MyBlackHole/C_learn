@@ -1,0 +1,18 @@
+executable("FactoryPatternDemo") {
+  sources = [ "test/FactoryPatternDemo.c" ]
+  deps = [":FactoryPatternbin"]
+  include_dirs = ["include"]
+}
+
+static_library("FactoryPatternbin") {
+  include_dirs = ["include"]
+
+  sources = [
+    "src/Shape.c",
+    "src/Circle.c",
+    "src/Square.c",
+    "src/Rectangle.c",
+    "src/ShapeStruct.h",
+    "src/ShapeFactory.c",
+  ]
+}

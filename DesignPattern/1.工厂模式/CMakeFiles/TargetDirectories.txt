@@ -1,3 +1,0 @@
-/home/black/Documents/Code/C_CJJ/DesignPattern/C/1.工厂模式/CMakeFiles/rebuild_cache.dir
-/home/black/Documents/Code/C_CJJ/DesignPattern/C/1.工厂模式/CMakeFiles/edit_cache.dir
-/home/black/Documents/Code/C_CJJ/DesignPattern/C/1.工厂模式/CMakeFiles/test.dir

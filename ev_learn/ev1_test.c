@@ -36,7 +36,7 @@ int main(void) {
 
   // initialise a timer watcher, then start it
   // simple non-repeating 5.5 second timeout
-  ev_timer_init(&timeout_watcher, timeout_cb, 5.5, 0.);
+  ev_timer_init(&timeout_watcher, timeout_cb, 5.5, 2.);
   ev_timer_start(EV_A_ & timeout_watcher);
 
   ev_run(EV_A_ 0); /* now wait for events to arrive */

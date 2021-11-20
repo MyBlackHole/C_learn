@@ -1,5 +1,7 @@
 group("default"){
   deps = [
+    "//DesignPattern/Factory_Pattern:FactoryPatternDemo",
+
     "//leetcode/001_two_sum:two_sum",
     "//leetcode/037_sudoku_solver:sudoku_solver",
 
