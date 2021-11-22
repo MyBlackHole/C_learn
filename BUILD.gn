@@ -1,6 +1,12 @@
 group("default"){
-  print()
   deps = [
+    "//net_learn/chap-5:tcp_server",
+    "//net_learn/chap-5:tcpclient",
+
+    "//ucontext_learn:main_test",
+
+    "//coroutine_learn:main",
+
     "//DesignPattern/Factory_Pattern:FactoryPatternDemo",
     "//DesignPattern/Abstract_Factory_Pattern:AbstractFactoryPatternDemo",
     "//DesignPattern/Singleton_Pattern:SingletonPatternDemo",
@@ -83,6 +89,7 @@ group("default"){
     "//stdlib_learn:malloc_test",
     "//stdlib_learn:realloc_test",
 
+    "//unistd_learn:sleep_test1",
     "//unistd_learn:sleep_test",
     "//unistd_learn:getpid_test",
     "//unistd_learn:read_test",

@@ -1,0 +1,16 @@
+executable("main") {
+  sources = [
+    "main.c",
+  ]
+
+  deps = [
+    ":coroutine",
+  ]
+}
+
+static_library("coroutine") {
+  sources = [
+    "coroutine.c",
+    "coroutine.h",
+  ]
+}

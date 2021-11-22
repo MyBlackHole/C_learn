@@ -1,4 +1,5 @@
-#include "lib/common.h"
+#include "common.h"
+
 
 void read_data(int sockfd) {
   ssize_t n;

@@ -1,0 +1,20 @@
+executable("tcpclient") {
+  sources = [
+    "tcpclient.c",
+  ]
+
+  include_dirs = ["../include"]
+
+  lib_dirs = ["../lib:lib"]
+}
+
+executable("tcp_server") {
+  sources = [
+    "tcp_server.c",
+  ]
+
+  include_dirs = ["../include"]
+
+  lib_dirs = ["../lib:lib"]
+}
+

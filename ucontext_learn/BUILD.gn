@@ -1,0 +1,6 @@
+executable("main_test") {
+  sources = [
+    "main_test.c",
+  ]
+}
+

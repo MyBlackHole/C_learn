@@ -1,3 +1,9 @@
+executable("sleep_test1") {
+  sources = [
+    "sleep_test1.c",
+  ]
+}
+
 executable("sleep_test") {
   sources = [
     "sleep_test.c",
