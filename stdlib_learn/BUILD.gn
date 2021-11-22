@@ -1,3 +1,21 @@
+executable("realloc_test") {
+  sources = [
+    "realloc_test.c",
+  ]
+}
+
+executable("malloc_test") {
+  sources = [
+    "malloc_test.c",
+  ]
+}
+
+executable("calloc_test") {
+  sources = [
+    "calloc_test.c",
+  ]
+}
+
 executable("srand_test") {
   cflags = ["-g"]
 

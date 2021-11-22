@@ -1,7 +1,18 @@
+executable("pthread_self_test") {
+  sources = [
+    "pthread_self_test.c",
+  ]
+}
+
+executable("pthread_once_test") {
+  sources = [
+    "pthread_once_test.c",
+  ]
+}
+
 executable("pthread_mutex_lock_test") {
   sources = [
     "pthread_mutex_lock_test.c",
   ]
-  
 }
 

@@ -1,8 +1,13 @@
+executable("sleep_test") {
+  sources = [
+    "sleep_test.c",
+  ]
+}
+
 executable("setsid_test") {
   sources = [
     "setsid_test.c",
   ]
-
 }
 
 executable("fork4_test") {
