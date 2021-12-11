@@ -1,3 +1,9 @@
+executable("atoi_test") {
+  sources = [
+    "atoi_test.c",
+  ]
+}
+
 executable("realloc_test") {
   sources = [
     "realloc_test.c",

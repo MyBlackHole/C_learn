@@ -1,3 +1,21 @@
+executable("fflush_test") {
+  sources = [
+    "fflush_test.c",
+  ]
+}
+
+executable("fseek_test") {
+  sources = [
+    "fseek_test.c",
+  ]
+}
+
+executable("sprintf_test") {
+  sources = [
+    "sprintf_test.c",
+  ]
+}
+
 executable("fread_test") {
   sources = [
     "fread_test.c",

@@ -79,6 +79,7 @@ group("default"){
 
     "//strings_learn:strcasecmp_test",
 
+    "//stdlib_learn:atoi_test",
     "//stdlib_learn:getenv_test",
     "//stdlib_learn:mkstemp_test",
     "//stdlib_learn:atexit_test",
@@ -114,6 +115,9 @@ group("default"){
     "//unistd_learn:fork4_test",
     "//unistd_learn:setsid_test",
 
+    "//stdio_learn:fflush_test",
+    "//stdio_learn:fseek_test",
+    "//stdio_learn:sprintf_test",
     "//stdio_learn:write_test",
     "//stdio_learn:getc_test",
     "//stdio_learn:fgets_test",
