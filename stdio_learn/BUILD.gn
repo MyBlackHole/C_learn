@@ -1,3 +1,9 @@
+executable("fopen_test") {
+  sources = [
+    "fopen_test.c",
+  ]
+}
+
 executable("fopen1_test") {
   sources = [
     "fopen1_test.c",
@@ -12,17 +18,6 @@ executable("fopen1_test") {
 executable("tmpfile_test") {
   sources = [
     "tmpfile_test.c",
-  ]
-  
-  include_dirs = ["//include"]
-  deps = [
-    "//lib:libc",
-  ]
-}
-
-executable("fopen_test") {
-  sources = [
-    "fopen_test.c",
   ]
   
   include_dirs = ["//include"]

@@ -117,7 +117,7 @@ group("default"){
     "//stdio_learn:write_test",
     "//stdio_learn:getc_test",
     "//stdio_learn:fgets_test",
-    # "//stdio_learn:fopen_test",
+    "//stdio_learn:fopen_test",
     "//stdio_learn:tmpfile_test",
     "//stdio_learn:fopen1_test",
 
