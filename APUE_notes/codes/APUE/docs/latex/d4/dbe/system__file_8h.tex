@@ -1,0 +1,468 @@
+\hypertarget{system__file_8h}{}\section{src/6\+\_\+\+System\+\_\+\+Info/system\+\_\+file.h File Reference}
+\label{system__file_8h}\index{src/6\+\_\+\+System\+\_\+\+Info/system\+\_\+file.\+h@{src/6\+\_\+\+System\+\_\+\+Info/system\+\_\+file.\+h}}
+{\ttfamily \#include $<$pwd.\+h$>$}\\*
+{\ttfamily \#include $<$shadow.\+h$>$}\\*
+{\ttfamily \#include $<$grp.\+h$>$}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include $<$sys/utsname.\+h$>$}\\*
+{\ttfamily \#include $<$netdb.\+h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct passwd $\ast$ \hyperlink{system__file_8h_abfe2f1a241a702d0bb68e439c1c69daa}{My\+\_\+getpwuid} (uid\+\_\+t uid)
+\begin{DoxyCompactList}\small\item\em My\+\_\+getpwuid ： 包装了 getpwuid 函数 \end{DoxyCompactList}\item 
+struct passwd $\ast$ \hyperlink{system__file_8h_a012ab94dd14d92e15769149395934df3}{My\+\_\+getpwnam} (const char $\ast$name)
+\begin{DoxyCompactList}\small\item\em My\+\_\+getpwnam ： 包装了 getpwnam 函数 \end{DoxyCompactList}\item 
+struct passwd $\ast$ \hyperlink{system__file_8h_a72c1143540e84590dbe4888d19468309}{My\+\_\+getpwent} (void)
+\begin{DoxyCompactList}\small\item\em My\+\_\+getpwent ： 包装了 getpwent 函数 \end{DoxyCompactList}\item 
+struct spwd $\ast$ \hyperlink{system__file_8h_ac8d24ed9e132f67499e32add2ea8bc83}{My\+\_\+getspnam} (const char $\ast$name)
+\begin{DoxyCompactList}\small\item\em My\+\_\+getspnam ： 包装了 getspnam 函数 \end{DoxyCompactList}\item 
+struct spwd $\ast$ \hyperlink{system__file_8h_af8a69be33c07849c9ee46dde0ca8b7a0}{My\+\_\+getspent} (void)
+\begin{DoxyCompactList}\small\item\em My\+\_\+getspent ： 包装了 getspent 函数 \end{DoxyCompactList}\item 
+struct group $\ast$ \hyperlink{system__file_8h_ad9269c241779a9bfa056e32a51549def}{My\+\_\+getgrgid} (gid\+\_\+t gid)
+\begin{DoxyCompactList}\small\item\em My\+\_\+getgrgid ： 包装了 getgrgid 函数 \end{DoxyCompactList}\item 
+struct group $\ast$ \hyperlink{system__file_8h_a64d3ef5367da605b7414f99640e54578}{My\+\_\+getgrnam} (const char $\ast$name)
+\begin{DoxyCompactList}\small\item\em My\+\_\+getgrnam ： 包装了 getgrnam 函数 \end{DoxyCompactList}\item 
+struct group $\ast$ \hyperlink{system__file_8h_a5b8408b4c29a8ac999cc2bbd6c7d2176}{My\+\_\+getgrent} (void)
+\begin{DoxyCompactList}\small\item\em My\+\_\+getgrent ： 包装了 getgrent 函数 \end{DoxyCompactList}\item 
+int \hyperlink{system__file_8h_afe0c1acb078fd67b526e89ca35faa077}{My\+\_\+getgroups} (int gidsetsize, gid\+\_\+t grouplist\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em My\+\_\+getgroups ： 包装了 getgroups 函数 \end{DoxyCompactList}\item 
+int \hyperlink{system__file_8h_affebcdceec7a9e84e271328ed2e77af6}{My\+\_\+setgroups} (int ngroups, const gid\+\_\+t grouplist\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em My\+\_\+setgroups ： 包装了 setgroups 函数 \end{DoxyCompactList}\item 
+int \hyperlink{system__file_8h_a2389418074c6ea7dfdd2c52eb1e5d2a5}{My\+\_\+initgroups} (const char $\ast$username, gid\+\_\+t basegid)
+\begin{DoxyCompactList}\small\item\em My\+\_\+initgroups ： 包装了 initgroups 函数 \end{DoxyCompactList}\item 
+struct hostent $\ast$ \hyperlink{system__file_8h_a9904a5ed053dbf446fbc824dafb7e2be}{My\+\_\+gethostent} (void)
+\begin{DoxyCompactList}\small\item\em My\+\_\+gethostent ： 包装了 gethostent 函数 \end{DoxyCompactList}\item 
+int \hyperlink{system__file_8h_ad17c5f981a1d4d85f7552f0b1ae4fbe7}{My\+\_\+uname} (struct utsname $\ast$name)
+\begin{DoxyCompactList}\small\item\em My\+\_\+uname ： 包装了 uname 函数 \end{DoxyCompactList}\item 
+int \hyperlink{system__file_8h_a7926800d07ebe6613ca32eaab39d39e5}{My\+\_\+gethostname} (char $\ast$name, int namelen)
+\begin{DoxyCompactList}\small\item\em My\+\_\+gethostname ： 包装了 gethostname 函数 \end{DoxyCompactList}\item 
+void \hyperlink{system__file_8h_a90f7aa7fd7a333c7e1bb986e10ec3428}{print\+\_\+passwd} (const struct passwd $\ast$data)
+\begin{DoxyCompactList}\small\item\em print\+\_\+passwd \+: 打印 passwd 结构 \end{DoxyCompactList}\item 
+void \hyperlink{system__file_8h_a32af6a89f754326d69c4efa1711f809a}{print\+\_\+spwd} (const struct spwd $\ast$data)
+\begin{DoxyCompactList}\small\item\em print\+\_\+spwd \+: 打印 spwd 结构 \end{DoxyCompactList}\item 
+void \hyperlink{system__file_8h_ac0359c1f08e1a56b6110eb8d0b0ac8f9}{print\+\_\+group} (const struct group $\ast$data)
+\begin{DoxyCompactList}\small\item\em print\+\_\+group \+: 打印 group 结构 \end{DoxyCompactList}\item 
+void \hyperlink{system__file_8h_a41af82f4402260c834efd081a819ee15}{print\+\_\+utsname} (const struct utsname $\ast$data)
+\begin{DoxyCompactList}\small\item\em print\+\_\+utsname \+: 打印 utsname 结构 \end{DoxyCompactList}\item 
+void \hyperlink{system__file_8h_a22eed47e928cbd3af22c1b3d2cc60fb3}{print\+\_\+hostent} (const struct hostent $\ast$data)
+\begin{DoxyCompactList}\small\item\em print\+\_\+hostent \+: 打印 hostent 结构 \end{DoxyCompactList}\item 
+void \hyperlink{system__file_8h_a73cb466bbb25c60a00656823e3f5726c}{\+\_\+test\+\_\+passwd} ()
+\begin{DoxyCompactList}\small\item\em \+\_\+test\+\_\+passwd \+: 测试 struct passwd 相关的函数 \end{DoxyCompactList}\item 
+void \hyperlink{system__file_8h_ae117a625543ed37e33bf0984c42d8481}{\+\_\+test\+\_\+shadow} ()
+\begin{DoxyCompactList}\small\item\em \+\_\+test\+\_\+shadow \+: 测试 struct spwd 相关的函数 \end{DoxyCompactList}\item 
+void \hyperlink{system__file_8h_ad3351cb4eac5ca61577fed48ed47d92c}{\+\_\+test\+\_\+group} ()
+\begin{DoxyCompactList}\small\item\em \+\_\+test\+\_\+group \+: 测试 struct group 相关的函数 \end{DoxyCompactList}\item 
+void \hyperlink{system__file_8h_a092591efd47ab15226724da8d8886bf5}{\+\_\+test\+\_\+attach\+\_\+groups} ()
+\begin{DoxyCompactList}\small\item\em \+\_\+test\+\_\+attach\+\_\+groups \+: 测试附属组\+ID 相关的函数 \end{DoxyCompactList}\item 
+void \hyperlink{system__file_8h_aad92646da822e2c9e1f2304bbbec37ab}{\+\_\+test\+\_\+host} ()
+\begin{DoxyCompactList}\small\item\em \+\_\+test\+\_\+host \+: 测试主机名和 host 相关的函数 \end{DoxyCompactList}\item 
+void \hyperlink{system__file_8h_a477b5b9ae9f01fa9760fc9dfc15c8414}{test\+\_\+system\+\_\+file} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+system\+\_\+file \+: 测试系统数据文件相关的函数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{system\+\_\+file.\+h@{system\+\_\+file.\+h}!\+\_\+test\+\_\+attach\+\_\+groups@{\+\_\+test\+\_\+attach\+\_\+groups}}
+\index{\+\_\+test\+\_\+attach\+\_\+groups@{\+\_\+test\+\_\+attach\+\_\+groups}!system\+\_\+file.\+h@{system\+\_\+file.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+test\+\_\+attach\+\_\+groups()}{_test_attach_groups()}}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+test\+\_\+attach\+\_\+groups (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{system__file_8h_a092591efd47ab15226724da8d8886bf5}{}\label{system__file_8h_a092591efd47ab15226724da8d8886bf5}
+
+
+\+\_\+test\+\_\+attach\+\_\+groups \+: 测试附属组\+ID 相关的函数 
+
+\index{system\+\_\+file.\+h@{system\+\_\+file.\+h}!\+\_\+test\+\_\+group@{\+\_\+test\+\_\+group}}
+\index{\+\_\+test\+\_\+group@{\+\_\+test\+\_\+group}!system\+\_\+file.\+h@{system\+\_\+file.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+test\+\_\+group()}{_test_group()}}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+test\+\_\+group (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{system__file_8h_ad3351cb4eac5ca61577fed48ed47d92c}{}\label{system__file_8h_ad3351cb4eac5ca61577fed48ed47d92c}
+
+
+\+\_\+test\+\_\+group \+: 测试 struct group 相关的函数 
+
+\index{system\+\_\+file.\+h@{system\+\_\+file.\+h}!\+\_\+test\+\_\+host@{\+\_\+test\+\_\+host}}
+\index{\+\_\+test\+\_\+host@{\+\_\+test\+\_\+host}!system\+\_\+file.\+h@{system\+\_\+file.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+test\+\_\+host()}{_test_host()}}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+test\+\_\+host (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{system__file_8h_aad92646da822e2c9e1f2304bbbec37ab}{}\label{system__file_8h_aad92646da822e2c9e1f2304bbbec37ab}
+
+
+\+\_\+test\+\_\+host \+: 测试主机名和 host 相关的函数 
+
+\index{system\+\_\+file.\+h@{system\+\_\+file.\+h}!\+\_\+test\+\_\+passwd@{\+\_\+test\+\_\+passwd}}
+\index{\+\_\+test\+\_\+passwd@{\+\_\+test\+\_\+passwd}!system\+\_\+file.\+h@{system\+\_\+file.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+test\+\_\+passwd()}{_test_passwd()}}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+test\+\_\+passwd (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{system__file_8h_a73cb466bbb25c60a00656823e3f5726c}{}\label{system__file_8h_a73cb466bbb25c60a00656823e3f5726c}
+
+
+\+\_\+test\+\_\+passwd \+: 测试 struct passwd 相关的函数 
+
+\index{system\+\_\+file.\+h@{system\+\_\+file.\+h}!\+\_\+test\+\_\+shadow@{\+\_\+test\+\_\+shadow}}
+\index{\+\_\+test\+\_\+shadow@{\+\_\+test\+\_\+shadow}!system\+\_\+file.\+h@{system\+\_\+file.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+test\+\_\+shadow()}{_test_shadow()}}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+test\+\_\+shadow (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{system__file_8h_ae117a625543ed37e33bf0984c42d8481}{}\label{system__file_8h_ae117a625543ed37e33bf0984c42d8481}
+
+
+\+\_\+test\+\_\+shadow \+: 测试 struct spwd 相关的函数 
+
+\index{system\+\_\+file.\+h@{system\+\_\+file.\+h}!My\+\_\+getgrent@{My\+\_\+getgrent}}
+\index{My\+\_\+getgrent@{My\+\_\+getgrent}!system\+\_\+file.\+h@{system\+\_\+file.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+getgrent(void)}{My_getgrent(void)}}]{\setlength{\rightskip}{0pt plus 5cm}struct group$\ast$ My\+\_\+getgrent (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{system__file_8h_a5b8408b4c29a8ac999cc2bbd6c7d2176}{}\label{system__file_8h_a5b8408b4c29a8ac999cc2bbd6c7d2176}
+
+
+My\+\_\+getgrent ： 包装了 getgrent 函数 
+
+\begin{DoxyReturn}{Returns}
+\+: 返回 getgrent 函数的值 
+\end{DoxyReturn}
+\index{system\+\_\+file.\+h@{system\+\_\+file.\+h}!My\+\_\+getgrgid@{My\+\_\+getgrgid}}
+\index{My\+\_\+getgrgid@{My\+\_\+getgrgid}!system\+\_\+file.\+h@{system\+\_\+file.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+getgrgid(gid\+\_\+t gid)}{My_getgrgid(gid_t gid)}}]{\setlength{\rightskip}{0pt plus 5cm}struct group$\ast$ My\+\_\+getgrgid (
+\begin{DoxyParamCaption}
+\item[{gid\+\_\+t}]{gid}
+\end{DoxyParamCaption}
+)}\hypertarget{system__file_8h_ad9269c241779a9bfa056e32a51549def}{}\label{system__file_8h_ad9269c241779a9bfa056e32a51549def}
+
+
+My\+\_\+getgrgid ： 包装了 getgrgid 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em gid} & \+: 传递给 getgrgid 函数的 gid 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 getgrgid 函数的值 
+\end{DoxyReturn}
+\index{system\+\_\+file.\+h@{system\+\_\+file.\+h}!My\+\_\+getgrnam@{My\+\_\+getgrnam}}
+\index{My\+\_\+getgrnam@{My\+\_\+getgrnam}!system\+\_\+file.\+h@{system\+\_\+file.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+getgrnam(const char $\ast$name)}{My_getgrnam(const char *name)}}]{\setlength{\rightskip}{0pt plus 5cm}struct group$\ast$ My\+\_\+getgrnam (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{name}
+\end{DoxyParamCaption}
+)}\hypertarget{system__file_8h_a64d3ef5367da605b7414f99640e54578}{}\label{system__file_8h_a64d3ef5367da605b7414f99640e54578}
+
+
+My\+\_\+getgrnam ： 包装了 getgrnam 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \+: 传递给 getgrnam 函数的 name 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 getgrnam 函数的值 
+\end{DoxyReturn}
+\index{system\+\_\+file.\+h@{system\+\_\+file.\+h}!My\+\_\+getgroups@{My\+\_\+getgroups}}
+\index{My\+\_\+getgroups@{My\+\_\+getgroups}!system\+\_\+file.\+h@{system\+\_\+file.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+getgroups(int gidsetsize, gid\+\_\+t grouplist[])}{My_getgroups(int gidsetsize, gid_t grouplist[])}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+getgroups (
+\begin{DoxyParamCaption}
+\item[{int}]{gidsetsize, }
+\item[{gid\+\_\+t}]{grouplist\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}\hypertarget{system__file_8h_afe0c1acb078fd67b526e89ca35faa077}{}\label{system__file_8h_afe0c1acb078fd67b526e89ca35faa077}
+
+
+My\+\_\+getgroups ： 包装了 getgroups 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em gidsetsize} & \+: 传递给 getgroups 函数的 gidsetsize 参数 \\
+\hline
+{\em grouplist} & \+: 传递给 getgroups 函数的 grouplist 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 getgroups 函数的值 
+\end{DoxyReturn}
+\index{system\+\_\+file.\+h@{system\+\_\+file.\+h}!My\+\_\+gethostent@{My\+\_\+gethostent}}
+\index{My\+\_\+gethostent@{My\+\_\+gethostent}!system\+\_\+file.\+h@{system\+\_\+file.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+gethostent(void)}{My_gethostent(void)}}]{\setlength{\rightskip}{0pt plus 5cm}struct hostent$\ast$ My\+\_\+gethostent (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{system__file_8h_a9904a5ed053dbf446fbc824dafb7e2be}{}\label{system__file_8h_a9904a5ed053dbf446fbc824dafb7e2be}
+
+
+My\+\_\+gethostent ： 包装了 gethostent 函数 
+
+\begin{DoxyReturn}{Returns}
+\+: 返回 gethostent 函数的值 
+\end{DoxyReturn}
+\index{system\+\_\+file.\+h@{system\+\_\+file.\+h}!My\+\_\+gethostname@{My\+\_\+gethostname}}
+\index{My\+\_\+gethostname@{My\+\_\+gethostname}!system\+\_\+file.\+h@{system\+\_\+file.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+gethostname(char $\ast$name, int namelen)}{My_gethostname(char *name, int namelen)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+gethostname (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{name, }
+\item[{int}]{namelen}
+\end{DoxyParamCaption}
+)}\hypertarget{system__file_8h_a7926800d07ebe6613ca32eaab39d39e5}{}\label{system__file_8h_a7926800d07ebe6613ca32eaab39d39e5}
+
+
+My\+\_\+gethostname ： 包装了 gethostname 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \+: 传递给 gethostname 函数的 name 参数 \\
+\hline
+{\em namelen} & \+: 传递给 gethostname 函数的 namelen 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 gethostname 函数的值 
+\end{DoxyReturn}
+\index{system\+\_\+file.\+h@{system\+\_\+file.\+h}!My\+\_\+getpwent@{My\+\_\+getpwent}}
+\index{My\+\_\+getpwent@{My\+\_\+getpwent}!system\+\_\+file.\+h@{system\+\_\+file.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+getpwent(void)}{My_getpwent(void)}}]{\setlength{\rightskip}{0pt plus 5cm}struct passwd$\ast$ My\+\_\+getpwent (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{system__file_8h_a72c1143540e84590dbe4888d19468309}{}\label{system__file_8h_a72c1143540e84590dbe4888d19468309}
+
+
+My\+\_\+getpwent ： 包装了 getpwent 函数 
+
+\begin{DoxyReturn}{Returns}
+\+: 返回 getpwent 函数的值 
+\end{DoxyReturn}
+\index{system\+\_\+file.\+h@{system\+\_\+file.\+h}!My\+\_\+getpwnam@{My\+\_\+getpwnam}}
+\index{My\+\_\+getpwnam@{My\+\_\+getpwnam}!system\+\_\+file.\+h@{system\+\_\+file.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+getpwnam(const char $\ast$name)}{My_getpwnam(const char *name)}}]{\setlength{\rightskip}{0pt plus 5cm}struct passwd$\ast$ My\+\_\+getpwnam (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{name}
+\end{DoxyParamCaption}
+)}\hypertarget{system__file_8h_a012ab94dd14d92e15769149395934df3}{}\label{system__file_8h_a012ab94dd14d92e15769149395934df3}
+
+
+My\+\_\+getpwnam ： 包装了 getpwnam 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \+: 传递给 getpwnam 函数的 name 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 getpwnam 函数的值 
+\end{DoxyReturn}
+\index{system\+\_\+file.\+h@{system\+\_\+file.\+h}!My\+\_\+getpwuid@{My\+\_\+getpwuid}}
+\index{My\+\_\+getpwuid@{My\+\_\+getpwuid}!system\+\_\+file.\+h@{system\+\_\+file.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+getpwuid(uid\+\_\+t uid)}{My_getpwuid(uid_t uid)}}]{\setlength{\rightskip}{0pt plus 5cm}struct passwd$\ast$ My\+\_\+getpwuid (
+\begin{DoxyParamCaption}
+\item[{uid\+\_\+t}]{uid}
+\end{DoxyParamCaption}
+)}\hypertarget{system__file_8h_abfe2f1a241a702d0bb68e439c1c69daa}{}\label{system__file_8h_abfe2f1a241a702d0bb68e439c1c69daa}
+
+
+My\+\_\+getpwuid ： 包装了 getpwuid 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em uid} & \+: 传递给 getpwuid 函数的 uid 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 getpwuid 函数的值 
+\end{DoxyReturn}
+\index{system\+\_\+file.\+h@{system\+\_\+file.\+h}!My\+\_\+getspent@{My\+\_\+getspent}}
+\index{My\+\_\+getspent@{My\+\_\+getspent}!system\+\_\+file.\+h@{system\+\_\+file.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+getspent(void)}{My_getspent(void)}}]{\setlength{\rightskip}{0pt plus 5cm}struct spwd$\ast$ My\+\_\+getspent (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{system__file_8h_af8a69be33c07849c9ee46dde0ca8b7a0}{}\label{system__file_8h_af8a69be33c07849c9ee46dde0ca8b7a0}
+
+
+My\+\_\+getspent ： 包装了 getspent 函数 
+
+\begin{DoxyReturn}{Returns}
+\+: 返回 getspent 函数的值 
+\end{DoxyReturn}
+\index{system\+\_\+file.\+h@{system\+\_\+file.\+h}!My\+\_\+getspnam@{My\+\_\+getspnam}}
+\index{My\+\_\+getspnam@{My\+\_\+getspnam}!system\+\_\+file.\+h@{system\+\_\+file.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+getspnam(const char $\ast$name)}{My_getspnam(const char *name)}}]{\setlength{\rightskip}{0pt plus 5cm}struct spwd$\ast$ My\+\_\+getspnam (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{name}
+\end{DoxyParamCaption}
+)}\hypertarget{system__file_8h_ac8d24ed9e132f67499e32add2ea8bc83}{}\label{system__file_8h_ac8d24ed9e132f67499e32add2ea8bc83}
+
+
+My\+\_\+getspnam ： 包装了 getspnam 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \+: 传递给 getspnam 函数的 name 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 getspnam 函数的值 
+\end{DoxyReturn}
+\index{system\+\_\+file.\+h@{system\+\_\+file.\+h}!My\+\_\+initgroups@{My\+\_\+initgroups}}
+\index{My\+\_\+initgroups@{My\+\_\+initgroups}!system\+\_\+file.\+h@{system\+\_\+file.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+initgroups(const char $\ast$username, gid\+\_\+t basegid)}{My_initgroups(const char *username, gid_t basegid)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+initgroups (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{username, }
+\item[{gid\+\_\+t}]{basegid}
+\end{DoxyParamCaption}
+)}\hypertarget{system__file_8h_a2389418074c6ea7dfdd2c52eb1e5d2a5}{}\label{system__file_8h_a2389418074c6ea7dfdd2c52eb1e5d2a5}
+
+
+My\+\_\+initgroups ： 包装了 initgroups 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & \+: 传递给 initgroups 函数的 username 参数 \\
+\hline
+{\em basegid} & \+: 传递给 initgroups 函数的 basegid 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 initgroups 函数的值 
+\end{DoxyReturn}
+\index{system\+\_\+file.\+h@{system\+\_\+file.\+h}!My\+\_\+setgroups@{My\+\_\+setgroups}}
+\index{My\+\_\+setgroups@{My\+\_\+setgroups}!system\+\_\+file.\+h@{system\+\_\+file.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+setgroups(int ngroups, const gid\+\_\+t grouplist[])}{My_setgroups(int ngroups, const gid_t grouplist[])}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+setgroups (
+\begin{DoxyParamCaption}
+\item[{int}]{ngroups, }
+\item[{const gid\+\_\+t}]{grouplist\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}\hypertarget{system__file_8h_affebcdceec7a9e84e271328ed2e77af6}{}\label{system__file_8h_affebcdceec7a9e84e271328ed2e77af6}
+
+
+My\+\_\+setgroups ： 包装了 setgroups 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ngroups} & \+: 传递给 setgroups 函数的 ngroups 参数 \\
+\hline
+{\em grouplist} & \+: 传递给 setgroups 函数的 grouplist 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 setgroups 函数的值 
+\end{DoxyReturn}
+\index{system\+\_\+file.\+h@{system\+\_\+file.\+h}!My\+\_\+uname@{My\+\_\+uname}}
+\index{My\+\_\+uname@{My\+\_\+uname}!system\+\_\+file.\+h@{system\+\_\+file.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+uname(struct utsname $\ast$name)}{My_uname(struct utsname *name)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+uname (
+\begin{DoxyParamCaption}
+\item[{struct utsname $\ast$}]{name}
+\end{DoxyParamCaption}
+)}\hypertarget{system__file_8h_ad17c5f981a1d4d85f7552f0b1ae4fbe7}{}\label{system__file_8h_ad17c5f981a1d4d85f7552f0b1ae4fbe7}
+
+
+My\+\_\+uname ： 包装了 uname 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \+: 传递给 uname 函数的 name 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 uname 函数的值 
+\end{DoxyReturn}
+\index{system\+\_\+file.\+h@{system\+\_\+file.\+h}!print\+\_\+group@{print\+\_\+group}}
+\index{print\+\_\+group@{print\+\_\+group}!system\+\_\+file.\+h@{system\+\_\+file.\+h}}
+\subsubsection[{\texorpdfstring{print\+\_\+group(const struct group $\ast$data)}{print_group(const struct group *data)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+group (
+\begin{DoxyParamCaption}
+\item[{const struct group $\ast$}]{data}
+\end{DoxyParamCaption}
+)}\hypertarget{system__file_8h_ac0359c1f08e1a56b6110eb8d0b0ac8f9}{}\label{system__file_8h_ac0359c1f08e1a56b6110eb8d0b0ac8f9}
+
+
+print\+\_\+group \+: 打印 group 结构 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & \+: 指向 group 结构的指针 \\
+\hline
+\end{DoxyParams}
+\index{system\+\_\+file.\+h@{system\+\_\+file.\+h}!print\+\_\+hostent@{print\+\_\+hostent}}
+\index{print\+\_\+hostent@{print\+\_\+hostent}!system\+\_\+file.\+h@{system\+\_\+file.\+h}}
+\subsubsection[{\texorpdfstring{print\+\_\+hostent(const struct hostent $\ast$data)}{print_hostent(const struct hostent *data)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+hostent (
+\begin{DoxyParamCaption}
+\item[{const struct hostent $\ast$}]{data}
+\end{DoxyParamCaption}
+)}\hypertarget{system__file_8h_a22eed47e928cbd3af22c1b3d2cc60fb3}{}\label{system__file_8h_a22eed47e928cbd3af22c1b3d2cc60fb3}
+
+
+print\+\_\+hostent \+: 打印 hostent 结构 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & \+: 指向 hostent 结构的指针 \\
+\hline
+\end{DoxyParams}
+\index{system\+\_\+file.\+h@{system\+\_\+file.\+h}!print\+\_\+passwd@{print\+\_\+passwd}}
+\index{print\+\_\+passwd@{print\+\_\+passwd}!system\+\_\+file.\+h@{system\+\_\+file.\+h}}
+\subsubsection[{\texorpdfstring{print\+\_\+passwd(const struct passwd $\ast$data)}{print_passwd(const struct passwd *data)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+passwd (
+\begin{DoxyParamCaption}
+\item[{const struct passwd $\ast$}]{data}
+\end{DoxyParamCaption}
+)}\hypertarget{system__file_8h_a90f7aa7fd7a333c7e1bb986e10ec3428}{}\label{system__file_8h_a90f7aa7fd7a333c7e1bb986e10ec3428}
+
+
+print\+\_\+passwd \+: 打印 passwd 结构 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & \+: 指向 passwd 结构的指针 \\
+\hline
+\end{DoxyParams}
+\index{system\+\_\+file.\+h@{system\+\_\+file.\+h}!print\+\_\+spwd@{print\+\_\+spwd}}
+\index{print\+\_\+spwd@{print\+\_\+spwd}!system\+\_\+file.\+h@{system\+\_\+file.\+h}}
+\subsubsection[{\texorpdfstring{print\+\_\+spwd(const struct spwd $\ast$data)}{print_spwd(const struct spwd *data)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+spwd (
+\begin{DoxyParamCaption}
+\item[{const struct spwd $\ast$}]{data}
+\end{DoxyParamCaption}
+)}\hypertarget{system__file_8h_a32af6a89f754326d69c4efa1711f809a}{}\label{system__file_8h_a32af6a89f754326d69c4efa1711f809a}
+
+
+print\+\_\+spwd \+: 打印 spwd 结构 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & \+: 指向 spwd 结构的指针 \\
+\hline
+\end{DoxyParams}
+\index{system\+\_\+file.\+h@{system\+\_\+file.\+h}!print\+\_\+utsname@{print\+\_\+utsname}}
+\index{print\+\_\+utsname@{print\+\_\+utsname}!system\+\_\+file.\+h@{system\+\_\+file.\+h}}
+\subsubsection[{\texorpdfstring{print\+\_\+utsname(const struct utsname $\ast$data)}{print_utsname(const struct utsname *data)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+utsname (
+\begin{DoxyParamCaption}
+\item[{const struct utsname $\ast$}]{data}
+\end{DoxyParamCaption}
+)}\hypertarget{system__file_8h_a41af82f4402260c834efd081a819ee15}{}\label{system__file_8h_a41af82f4402260c834efd081a819ee15}
+
+
+print\+\_\+utsname \+: 打印 utsname 结构 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & \+: 指向 utsname 结构的指针 \\
+\hline
+\end{DoxyParams}
+\index{system\+\_\+file.\+h@{system\+\_\+file.\+h}!test\+\_\+system\+\_\+file@{test\+\_\+system\+\_\+file}}
+\index{test\+\_\+system\+\_\+file@{test\+\_\+system\+\_\+file}!system\+\_\+file.\+h@{system\+\_\+file.\+h}}
+\subsubsection[{\texorpdfstring{test\+\_\+system\+\_\+file()}{test_system_file()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+system\+\_\+file (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{system__file_8h_a477b5b9ae9f01fa9760fc9dfc15c8414}{}\label{system__file_8h_a477b5b9ae9f01fa9760fc9dfc15c8414}
+
+
+test\+\_\+system\+\_\+file \+: 测试系统数据文件相关的函数 
+

@@ -1,0 +1,194 @@
+\hypertarget{rwlock___8h}{}\section{src/11\+\_\+\+Thread/rwlock\+\_\+.h File Reference}
+\label{rwlock___8h}\index{src/11\+\_\+\+Thread/rwlock\+\_\+.\+h@{src/11\+\_\+\+Thread/rwlock\+\_\+.\+h}}
+{\ttfamily \#include $<$time.\+h$>$}\\*
+{\ttfamily \#include $<$pthread.\+h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{rwlock___8h_a2416f1bd5709ce9dc8e97385c7f21441}{My\+\_\+pthread\+\_\+rwlock\+\_\+init} (pthread\+\_\+rwlock\+\_\+t $\ast$\hyperlink{rwlock___8c_a35d5b530590186674c727415b0dd3282}{rwlock}, const pthread\+\_\+rwlockattr\+\_\+t $\ast$attr)
+\begin{DoxyCompactList}\small\item\em My\+\_\+pthread\+\_\+rwlock\+\_\+init \+: 包装了 pthread\+\_\+rwlock\+\_\+init 函数 \end{DoxyCompactList}\item 
+int \hyperlink{rwlock___8h_aa6ae36b61a02b5101d7bd50fd2e862dc}{My\+\_\+pthread\+\_\+rwlock\+\_\+destroy} (pthread\+\_\+rwlock\+\_\+t $\ast$\hyperlink{rwlock___8c_a35d5b530590186674c727415b0dd3282}{rwlock})
+\begin{DoxyCompactList}\small\item\em My\+\_\+pthread\+\_\+rwlock\+\_\+destroy \+: 包装了 pthread\+\_\+rwlock\+\_\+destroy 函数 \end{DoxyCompactList}\item 
+int \hyperlink{rwlock___8h_a0d6495d75563af051652cdee76c8acdb}{My\+\_\+pthread\+\_\+rwlock\+\_\+rdlock} (pthread\+\_\+rwlock\+\_\+t $\ast$\hyperlink{rwlock___8c_a35d5b530590186674c727415b0dd3282}{rwlock})
+\begin{DoxyCompactList}\small\item\em My\+\_\+pthread\+\_\+rwlock\+\_\+rdlock \+: 包装了 pthread\+\_\+rwlock\+\_\+rdlock 函数 \end{DoxyCompactList}\item 
+int \hyperlink{rwlock___8h_a2ead230ad6d42daf7085ca28c2d5c19c}{My\+\_\+pthread\+\_\+rwlock\+\_\+wrlock} (pthread\+\_\+rwlock\+\_\+t $\ast$\hyperlink{rwlock___8c_a35d5b530590186674c727415b0dd3282}{rwlock})
+\begin{DoxyCompactList}\small\item\em My\+\_\+pthread\+\_\+rwlock\+\_\+wrlock \+: 包装了 pthread\+\_\+rwlock\+\_\+wrlock 函数 \end{DoxyCompactList}\item 
+int \hyperlink{rwlock___8h_aeeca6233c416a5e57f84d3245e3065d1}{My\+\_\+pthread\+\_\+rwlock\+\_\+unlock} (pthread\+\_\+rwlock\+\_\+t $\ast$\hyperlink{rwlock___8c_a35d5b530590186674c727415b0dd3282}{rwlock})
+\begin{DoxyCompactList}\small\item\em My\+\_\+pthread\+\_\+rwlock\+\_\+unlock \+: 包装了 pthread\+\_\+rwlock\+\_\+unlock 函数 \end{DoxyCompactList}\item 
+int \hyperlink{rwlock___8h_a8c9b673a785e3d908072ca8472abcd5d}{My\+\_\+pthread\+\_\+rwlock\+\_\+tryrdlock} (pthread\+\_\+rwlock\+\_\+t $\ast$\hyperlink{rwlock___8c_a35d5b530590186674c727415b0dd3282}{rwlock})
+\begin{DoxyCompactList}\small\item\em My\+\_\+pthread\+\_\+rwlock\+\_\+tryrdlock \+: 包装了 pthread\+\_\+rwlock\+\_\+tryrdlock 函数 \end{DoxyCompactList}\item 
+int \hyperlink{rwlock___8h_a27b29813f7db14cbf0162023f40c9285}{My\+\_\+pthread\+\_\+rwlock\+\_\+trywrlock} (pthread\+\_\+rwlock\+\_\+t $\ast$\hyperlink{rwlock___8c_a35d5b530590186674c727415b0dd3282}{rwlock})
+\begin{DoxyCompactList}\small\item\em My\+\_\+pthread\+\_\+rwlock\+\_\+trywrlock \+: 包装了 pthread\+\_\+rwlock\+\_\+trywrlock 函数 \end{DoxyCompactList}\item 
+void \hyperlink{rwlock___8h_a9f642147462f146a92b15c7977dd5a70}{test\+\_\+rwlock} ()
+\begin{DoxyCompactList}\small\item\em My\+\_\+pthread\+\_\+rwlock\+\_\+timedrdlock \+: 包装了 pthread\+\_\+rwlock\+\_\+timedrdlock 函数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{rwlock\+\_\+.\+h@{rwlock\+\_\+.\+h}!My\+\_\+pthread\+\_\+rwlock\+\_\+destroy@{My\+\_\+pthread\+\_\+rwlock\+\_\+destroy}}
+\index{My\+\_\+pthread\+\_\+rwlock\+\_\+destroy@{My\+\_\+pthread\+\_\+rwlock\+\_\+destroy}!rwlock\+\_\+.\+h@{rwlock\+\_\+.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+pthread\+\_\+rwlock\+\_\+destroy(pthread\+\_\+rwlock\+\_\+t $\ast$rwlock)}{My_pthread_rwlock_destroy(pthread_rwlock_t *rwlock)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+pthread\+\_\+rwlock\+\_\+destroy (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+rwlock\+\_\+t $\ast$}]{rwlock}
+\end{DoxyParamCaption}
+)}\hypertarget{rwlock___8h_aa6ae36b61a02b5101d7bd50fd2e862dc}{}\label{rwlock___8h_aa6ae36b61a02b5101d7bd50fd2e862dc}
+
+
+My\+\_\+pthread\+\_\+rwlock\+\_\+destroy \+: 包装了 pthread\+\_\+rwlock\+\_\+destroy 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rwlock} & \+: 传递给 pthread\+\_\+rwlock\+\_\+destroy 函数的 rwlock 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 pthread\+\_\+rwlock\+\_\+destroy 函数的值 
+\end{DoxyReturn}
+\index{rwlock\+\_\+.\+h@{rwlock\+\_\+.\+h}!My\+\_\+pthread\+\_\+rwlock\+\_\+init@{My\+\_\+pthread\+\_\+rwlock\+\_\+init}}
+\index{My\+\_\+pthread\+\_\+rwlock\+\_\+init@{My\+\_\+pthread\+\_\+rwlock\+\_\+init}!rwlock\+\_\+.\+h@{rwlock\+\_\+.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+pthread\+\_\+rwlock\+\_\+init(pthread\+\_\+rwlock\+\_\+t $\ast$rwlock, const pthread\+\_\+rwlockattr\+\_\+t $\ast$attr)}{My_pthread_rwlock_init(pthread_rwlock_t *rwlock, const pthread_rwlockattr_t *attr)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+pthread\+\_\+rwlock\+\_\+init (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+rwlock\+\_\+t $\ast$}]{rwlock, }
+\item[{const pthread\+\_\+rwlockattr\+\_\+t $\ast$}]{attr}
+\end{DoxyParamCaption}
+)}\hypertarget{rwlock___8h_a2416f1bd5709ce9dc8e97385c7f21441}{}\label{rwlock___8h_a2416f1bd5709ce9dc8e97385c7f21441}
+
+
+My\+\_\+pthread\+\_\+rwlock\+\_\+init \+: 包装了 pthread\+\_\+rwlock\+\_\+init 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rwlock} & \+: 传递给 pthread\+\_\+rwlock\+\_\+init 函数的 rwlock 参数 \\
+\hline
+{\em attr} & \+: 传递给 pthread\+\_\+rwlock\+\_\+init 函数的 attr 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 pthread\+\_\+rwlock\+\_\+init 函数的值 
+\end{DoxyReturn}
+\index{rwlock\+\_\+.\+h@{rwlock\+\_\+.\+h}!My\+\_\+pthread\+\_\+rwlock\+\_\+rdlock@{My\+\_\+pthread\+\_\+rwlock\+\_\+rdlock}}
+\index{My\+\_\+pthread\+\_\+rwlock\+\_\+rdlock@{My\+\_\+pthread\+\_\+rwlock\+\_\+rdlock}!rwlock\+\_\+.\+h@{rwlock\+\_\+.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+pthread\+\_\+rwlock\+\_\+rdlock(pthread\+\_\+rwlock\+\_\+t $\ast$rwlock)}{My_pthread_rwlock_rdlock(pthread_rwlock_t *rwlock)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+pthread\+\_\+rwlock\+\_\+rdlock (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+rwlock\+\_\+t $\ast$}]{rwlock}
+\end{DoxyParamCaption}
+)}\hypertarget{rwlock___8h_a0d6495d75563af051652cdee76c8acdb}{}\label{rwlock___8h_a0d6495d75563af051652cdee76c8acdb}
+
+
+My\+\_\+pthread\+\_\+rwlock\+\_\+rdlock \+: 包装了 pthread\+\_\+rwlock\+\_\+rdlock 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rwlock} & \+: 传递给 pthread\+\_\+rwlock\+\_\+rdlock 函数的 rwlock 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 pthread\+\_\+rwlock\+\_\+rdlock 函数的值 
+\end{DoxyReturn}
+\index{rwlock\+\_\+.\+h@{rwlock\+\_\+.\+h}!My\+\_\+pthread\+\_\+rwlock\+\_\+tryrdlock@{My\+\_\+pthread\+\_\+rwlock\+\_\+tryrdlock}}
+\index{My\+\_\+pthread\+\_\+rwlock\+\_\+tryrdlock@{My\+\_\+pthread\+\_\+rwlock\+\_\+tryrdlock}!rwlock\+\_\+.\+h@{rwlock\+\_\+.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+pthread\+\_\+rwlock\+\_\+tryrdlock(pthread\+\_\+rwlock\+\_\+t $\ast$rwlock)}{My_pthread_rwlock_tryrdlock(pthread_rwlock_t *rwlock)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+pthread\+\_\+rwlock\+\_\+tryrdlock (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+rwlock\+\_\+t $\ast$}]{rwlock}
+\end{DoxyParamCaption}
+)}\hypertarget{rwlock___8h_a8c9b673a785e3d908072ca8472abcd5d}{}\label{rwlock___8h_a8c9b673a785e3d908072ca8472abcd5d}
+
+
+My\+\_\+pthread\+\_\+rwlock\+\_\+tryrdlock \+: 包装了 pthread\+\_\+rwlock\+\_\+tryrdlock 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rwlock} & \+: 传递给 pthread\+\_\+rwlock\+\_\+tryrdlock 函数的 rwlock 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 pthread\+\_\+rwlock\+\_\+tryrdlock 函数的值 
+\end{DoxyReturn}
+\index{rwlock\+\_\+.\+h@{rwlock\+\_\+.\+h}!My\+\_\+pthread\+\_\+rwlock\+\_\+trywrlock@{My\+\_\+pthread\+\_\+rwlock\+\_\+trywrlock}}
+\index{My\+\_\+pthread\+\_\+rwlock\+\_\+trywrlock@{My\+\_\+pthread\+\_\+rwlock\+\_\+trywrlock}!rwlock\+\_\+.\+h@{rwlock\+\_\+.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+pthread\+\_\+rwlock\+\_\+trywrlock(pthread\+\_\+rwlock\+\_\+t $\ast$rwlock)}{My_pthread_rwlock_trywrlock(pthread_rwlock_t *rwlock)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+pthread\+\_\+rwlock\+\_\+trywrlock (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+rwlock\+\_\+t $\ast$}]{rwlock}
+\end{DoxyParamCaption}
+)}\hypertarget{rwlock___8h_a27b29813f7db14cbf0162023f40c9285}{}\label{rwlock___8h_a27b29813f7db14cbf0162023f40c9285}
+
+
+My\+\_\+pthread\+\_\+rwlock\+\_\+trywrlock \+: 包装了 pthread\+\_\+rwlock\+\_\+trywrlock 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rwlock} & \+: 传递给 pthread\+\_\+rwlock\+\_\+trywrlock 函数的 rwlock 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 pthread\+\_\+rwlock\+\_\+trywrlock 函数的值 
+\end{DoxyReturn}
+\index{rwlock\+\_\+.\+h@{rwlock\+\_\+.\+h}!My\+\_\+pthread\+\_\+rwlock\+\_\+unlock@{My\+\_\+pthread\+\_\+rwlock\+\_\+unlock}}
+\index{My\+\_\+pthread\+\_\+rwlock\+\_\+unlock@{My\+\_\+pthread\+\_\+rwlock\+\_\+unlock}!rwlock\+\_\+.\+h@{rwlock\+\_\+.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+pthread\+\_\+rwlock\+\_\+unlock(pthread\+\_\+rwlock\+\_\+t $\ast$rwlock)}{My_pthread_rwlock_unlock(pthread_rwlock_t *rwlock)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+pthread\+\_\+rwlock\+\_\+unlock (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+rwlock\+\_\+t $\ast$}]{rwlock}
+\end{DoxyParamCaption}
+)}\hypertarget{rwlock___8h_aeeca6233c416a5e57f84d3245e3065d1}{}\label{rwlock___8h_aeeca6233c416a5e57f84d3245e3065d1}
+
+
+My\+\_\+pthread\+\_\+rwlock\+\_\+unlock \+: 包装了 pthread\+\_\+rwlock\+\_\+unlock 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rwlock} & \+: 传递给 pthread\+\_\+rwlock\+\_\+unlock 函数的 rwlock 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 pthread\+\_\+rwlock\+\_\+unlock 函数的值 
+\end{DoxyReturn}
+\index{rwlock\+\_\+.\+h@{rwlock\+\_\+.\+h}!My\+\_\+pthread\+\_\+rwlock\+\_\+wrlock@{My\+\_\+pthread\+\_\+rwlock\+\_\+wrlock}}
+\index{My\+\_\+pthread\+\_\+rwlock\+\_\+wrlock@{My\+\_\+pthread\+\_\+rwlock\+\_\+wrlock}!rwlock\+\_\+.\+h@{rwlock\+\_\+.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+pthread\+\_\+rwlock\+\_\+wrlock(pthread\+\_\+rwlock\+\_\+t $\ast$rwlock)}{My_pthread_rwlock_wrlock(pthread_rwlock_t *rwlock)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+pthread\+\_\+rwlock\+\_\+wrlock (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+rwlock\+\_\+t $\ast$}]{rwlock}
+\end{DoxyParamCaption}
+)}\hypertarget{rwlock___8h_a2ead230ad6d42daf7085ca28c2d5c19c}{}\label{rwlock___8h_a2ead230ad6d42daf7085ca28c2d5c19c}
+
+
+My\+\_\+pthread\+\_\+rwlock\+\_\+wrlock \+: 包装了 pthread\+\_\+rwlock\+\_\+wrlock 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rwlock} & \+: 传递给 pthread\+\_\+rwlock\+\_\+wrlock 函数的 rwlock 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 pthread\+\_\+rwlock\+\_\+wrlock 函数的值 
+\end{DoxyReturn}
+\index{rwlock\+\_\+.\+h@{rwlock\+\_\+.\+h}!test\+\_\+rwlock@{test\+\_\+rwlock}}
+\index{test\+\_\+rwlock@{test\+\_\+rwlock}!rwlock\+\_\+.\+h@{rwlock\+\_\+.\+h}}
+\subsubsection[{\texorpdfstring{test\+\_\+rwlock()}{test_rwlock()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+rwlock (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{rwlock___8h_a9f642147462f146a92b15c7977dd5a70}{}\label{rwlock___8h_a9f642147462f146a92b15c7977dd5a70}
+
+
+My\+\_\+pthread\+\_\+rwlock\+\_\+timedrdlock \+: 包装了 pthread\+\_\+rwlock\+\_\+timedrdlock 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rwlock} & \+: 传递给 pthread\+\_\+rwlock\+\_\+timedrdlock 函数的 rwlock 参数 \\
+\hline
+{\em tsptr} & \+: 传递给 pthread\+\_\+rwlock\+\_\+timedrdlock 函数的 tsptr 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 pthread\+\_\+rwlock\+\_\+timedrdlock 函数的值
+\end{DoxyReturn}
+My\+\_\+pthread\+\_\+rwlock\+\_\+timedwrlock \+: 包装了 pthread\+\_\+rwlock\+\_\+timedwrlock 函数 
+\begin{DoxyParams}{Parameters}
+{\em rwlock} & \+: 传递给 pthread\+\_\+rwlock\+\_\+timedwrlock 函数的 rwlock 参数 \\
+\hline
+{\em tsptr} & \+: 传递给 pthread\+\_\+rwlock\+\_\+timedwrlock 函数的 tsptr 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 pthread\+\_\+rwlock\+\_\+timedwrlock 函数的值
+\end{DoxyReturn}
+test\+\_\+rwlock \+:测试 pthread\+\_\+rwlock\+\_\+t 相关函数的用法 

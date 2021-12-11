@@ -1,0 +1,160 @@
+\hypertarget{kill__raise_8c}{}\section{src/10\+\_\+\+Signal/kill\+\_\+raise.c File Reference}
+\label{kill__raise_8c}\index{src/10\+\_\+\+Signal/kill\+\_\+raise.\+c@{src/10\+\_\+\+Signal/kill\+\_\+raise.\+c}}
+{\ttfamily \#include \char`\"{}kill\+\_\+raise.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../header.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$signal.\+h$>$}\\*
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef void \hyperlink{kill__raise_8c_a41f7fa3cd174bb624d8b38ed224ab7d6}{Hanlder\+\_\+\+Func}(int signo, siginfo\+\_\+t $\ast$info, void $\ast$context)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{kill__raise_8c_aec229dbc1924b697e5e6b55d598399ed}{add\+\_\+sigaction} (int signo, sigset\+\_\+t $\ast$set, int no\+\_\+deffer, int restart, \hyperlink{sleep__nanosleep_8c_a41f7fa3cd174bb624d8b38ed224ab7d6}{Hanlder\+\_\+\+Func} handler)
+\item 
+static void \hyperlink{kill__raise_8c_aab33dde15dc4bfdfa3410f3dd9af4a57}{sig\+\_\+print} (int signo, siginfo\+\_\+t $\ast$info, void $\ast$context)
+\begin{DoxyCompactList}\small\item\em sig\+\_\+print \+: 信号处理函数 \end{DoxyCompactList}\item 
+void \hyperlink{kill__raise_8c_a0bd76e6d502075e830f62080f42f1a76}{print\+\_\+pid} ()
+\item 
+void \hyperlink{kill__raise_8c_a2781199e9afe7ddf4d7a8bf1034b17af}{print\+\_\+parent\+\_\+pid} ()
+\item 
+void \hyperlink{kill__raise_8c_aa863bed5e7fc54e1518675efcf72f855}{check\+\_\+waitpid\+\_\+signal} ()
+\item 
+int \hyperlink{kill__raise_8c_a55fcf2c052330058bec25f35570f502b}{My\+\_\+kill} (pid\+\_\+t pid, int signo)
+\begin{DoxyCompactList}\small\item\em My\+\_\+kill \+: 包装了 kill 函数 \end{DoxyCompactList}\item 
+int \hyperlink{kill__raise_8c_aba1888d3f0d5700ca56d4236b450b2a6}{My\+\_\+raise} (int signo)
+\begin{DoxyCompactList}\small\item\em My\+\_\+raise \+: 包装了 raise 函数 \end{DoxyCompactList}\item 
+static pid\+\_\+t \hyperlink{kill__raise_8c_a91d22fdab508ae9804eb76d15237da6b}{create\+\_\+child} ()
+\begin{DoxyCompactList}\small\item\em create\+\_\+child \+: 创建子进程 \end{DoxyCompactList}\item 
+void \hyperlink{kill__raise_8c_a0b9ea932dcd5f4007a29fe785a41cf3a}{test\+\_\+kill\+\_\+raise} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+kill\+\_\+raise \+: 测试 kill 函数、raise 函数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\index{kill\+\_\+raise.\+c@{kill\+\_\+raise.\+c}!Hanlder\+\_\+\+Func@{Hanlder\+\_\+\+Func}}
+\index{Hanlder\+\_\+\+Func@{Hanlder\+\_\+\+Func}!kill\+\_\+raise.\+c@{kill\+\_\+raise.\+c}}
+\subsubsection[{\texorpdfstring{Hanlder\+\_\+\+Func}{Hanlder_Func}}]{\setlength{\rightskip}{0pt plus 5cm}typedef void Hanlder\+\_\+\+Func(int signo, siginfo\+\_\+t $\ast$info, void $\ast$context)}\hypertarget{kill__raise_8c_a41f7fa3cd174bb624d8b38ed224ab7d6}{}\label{kill__raise_8c_a41f7fa3cd174bb624d8b38ed224ab7d6}
+
+
+\subsection{Function Documentation}
+\index{kill\+\_\+raise.\+c@{kill\+\_\+raise.\+c}!add\+\_\+sigaction@{add\+\_\+sigaction}}
+\index{add\+\_\+sigaction@{add\+\_\+sigaction}!kill\+\_\+raise.\+c@{kill\+\_\+raise.\+c}}
+\subsubsection[{\texorpdfstring{add\+\_\+sigaction(int signo, sigset\+\_\+t $\ast$set, int no\+\_\+deffer, int restart, Hanlder\+\_\+\+Func handler)}{add_sigaction(int signo, sigset_t *set, int no_deffer, int restart, Hanlder_Func handler)}}]{\setlength{\rightskip}{0pt plus 5cm}void add\+\_\+sigaction (
+\begin{DoxyParamCaption}
+\item[{int}]{signo, }
+\item[{sigset\+\_\+t $\ast$}]{set, }
+\item[{int}]{no\+\_\+deffer, }
+\item[{int}]{restart, }
+\item[{{\bf Hanlder\+\_\+\+Func}}]{handler}
+\end{DoxyParamCaption}
+)}\hypertarget{kill__raise_8c_aec229dbc1924b697e5e6b55d598399ed}{}\label{kill__raise_8c_aec229dbc1924b697e5e6b55d598399ed}
+\index{kill\+\_\+raise.\+c@{kill\+\_\+raise.\+c}!check\+\_\+waitpid\+\_\+signal@{check\+\_\+waitpid\+\_\+signal}}
+\index{check\+\_\+waitpid\+\_\+signal@{check\+\_\+waitpid\+\_\+signal}!kill\+\_\+raise.\+c@{kill\+\_\+raise.\+c}}
+\subsubsection[{\texorpdfstring{check\+\_\+waitpid\+\_\+signal()}{check_waitpid_signal()}}]{\setlength{\rightskip}{0pt plus 5cm}void check\+\_\+waitpid\+\_\+signal (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{kill__raise_8c_aa863bed5e7fc54e1518675efcf72f855}{}\label{kill__raise_8c_aa863bed5e7fc54e1518675efcf72f855}
+\index{kill\+\_\+raise.\+c@{kill\+\_\+raise.\+c}!create\+\_\+child@{create\+\_\+child}}
+\index{create\+\_\+child@{create\+\_\+child}!kill\+\_\+raise.\+c@{kill\+\_\+raise.\+c}}
+\subsubsection[{\texorpdfstring{create\+\_\+child()}{create_child()}}]{\setlength{\rightskip}{0pt plus 5cm}static pid\+\_\+t create\+\_\+child (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{kill__raise_8c_a91d22fdab508ae9804eb76d15237da6b}{}\label{kill__raise_8c_a91d22fdab508ae9804eb76d15237da6b}
+
+
+create\+\_\+child \+: 创建子进程 
+
+\begin{DoxyReturn}{Returns}
+\+: fork 的返回值 
+\end{DoxyReturn}
+\index{kill\+\_\+raise.\+c@{kill\+\_\+raise.\+c}!My\+\_\+kill@{My\+\_\+kill}}
+\index{My\+\_\+kill@{My\+\_\+kill}!kill\+\_\+raise.\+c@{kill\+\_\+raise.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+kill(pid\+\_\+t pid, int signo)}{My_kill(pid_t pid, int signo)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+kill (
+\begin{DoxyParamCaption}
+\item[{pid\+\_\+t}]{pid, }
+\item[{int}]{signo}
+\end{DoxyParamCaption}
+)}\hypertarget{kill__raise_8c_a55fcf2c052330058bec25f35570f502b}{}\label{kill__raise_8c_a55fcf2c052330058bec25f35570f502b}
+
+
+My\+\_\+kill \+: 包装了 kill 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pid} & \+: 传递给 kill 函数的 pid 参数 \\
+\hline
+{\em signo} & \+: 传递给 kill 函数的 signo 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 kill 函数的值 
+\end{DoxyReturn}
+\index{kill\+\_\+raise.\+c@{kill\+\_\+raise.\+c}!My\+\_\+raise@{My\+\_\+raise}}
+\index{My\+\_\+raise@{My\+\_\+raise}!kill\+\_\+raise.\+c@{kill\+\_\+raise.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+raise(int signo)}{My_raise(int signo)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+raise (
+\begin{DoxyParamCaption}
+\item[{int}]{signo}
+\end{DoxyParamCaption}
+)}\hypertarget{kill__raise_8c_aba1888d3f0d5700ca56d4236b450b2a6}{}\label{kill__raise_8c_aba1888d3f0d5700ca56d4236b450b2a6}
+
+
+My\+\_\+raise \+: 包装了 raise 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em signo} & \+: 传递给 raise 函数的 signo 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 raise 函数的值 
+\end{DoxyReturn}
+\index{kill\+\_\+raise.\+c@{kill\+\_\+raise.\+c}!print\+\_\+parent\+\_\+pid@{print\+\_\+parent\+\_\+pid}}
+\index{print\+\_\+parent\+\_\+pid@{print\+\_\+parent\+\_\+pid}!kill\+\_\+raise.\+c@{kill\+\_\+raise.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+parent\+\_\+pid()}{print_parent_pid()}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+parent\+\_\+pid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{kill__raise_8c_a2781199e9afe7ddf4d7a8bf1034b17af}{}\label{kill__raise_8c_a2781199e9afe7ddf4d7a8bf1034b17af}
+\index{kill\+\_\+raise.\+c@{kill\+\_\+raise.\+c}!print\+\_\+pid@{print\+\_\+pid}}
+\index{print\+\_\+pid@{print\+\_\+pid}!kill\+\_\+raise.\+c@{kill\+\_\+raise.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+pid()}{print_pid()}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+pid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{kill__raise_8c_a0bd76e6d502075e830f62080f42f1a76}{}\label{kill__raise_8c_a0bd76e6d502075e830f62080f42f1a76}
+\index{kill\+\_\+raise.\+c@{kill\+\_\+raise.\+c}!sig\+\_\+print@{sig\+\_\+print}}
+\index{sig\+\_\+print@{sig\+\_\+print}!kill\+\_\+raise.\+c@{kill\+\_\+raise.\+c}}
+\subsubsection[{\texorpdfstring{sig\+\_\+print(int signo, siginfo\+\_\+t $\ast$info, void $\ast$context)}{sig_print(int signo, siginfo_t *info, void *context)}}]{\setlength{\rightskip}{0pt plus 5cm}static void sig\+\_\+print (
+\begin{DoxyParamCaption}
+\item[{int}]{signo, }
+\item[{siginfo\+\_\+t $\ast$}]{info, }
+\item[{void $\ast$}]{context}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{kill__raise_8c_aab33dde15dc4bfdfa3410f3dd9af4a57}{}\label{kill__raise_8c_aab33dde15dc4bfdfa3410f3dd9af4a57}
+
+
+sig\+\_\+print \+: 信号处理函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em signo} & \+: 信号值 \\
+\hline
+{\em info} & \+: 指向 siginfo\+\_\+t 的指针 \\
+\hline
+{\em context} & \+: 指向 ucontext\+\_\+t $\ast$ 的指针 \\
+\hline
+\end{DoxyParams}
+\index{kill\+\_\+raise.\+c@{kill\+\_\+raise.\+c}!test\+\_\+kill\+\_\+raise@{test\+\_\+kill\+\_\+raise}}
+\index{test\+\_\+kill\+\_\+raise@{test\+\_\+kill\+\_\+raise}!kill\+\_\+raise.\+c@{kill\+\_\+raise.\+c}}
+\subsubsection[{\texorpdfstring{test\+\_\+kill\+\_\+raise()}{test_kill_raise()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+kill\+\_\+raise (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{kill__raise_8c_a0b9ea932dcd5f4007a29fe785a41cf3a}{}\label{kill__raise_8c_a0b9ea932dcd5f4007a29fe785a41cf3a}
+
+
+test\+\_\+kill\+\_\+raise \+: 测试 kill 函数、raise 函数 
+

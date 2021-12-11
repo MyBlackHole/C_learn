@@ -1,5 +1,8 @@
+#include <unistd.h>
+#include <stdio.h>
+#include <sys/socket.h>
+#include <netdb.h>
 #include "common.h"
-
 
 void read_data(int sockfd) {
   ssize_t n;

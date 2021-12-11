@@ -1,0 +1,94 @@
+\hypertarget{alarm___8c}{}\section{src/10\+\_\+\+Signal/alarm\+\_\+.c File Reference}
+\label{alarm___8c}\index{src/10\+\_\+\+Signal/alarm\+\_\+.\+c@{src/10\+\_\+\+Signal/alarm\+\_\+.\+c}}
+{\ttfamily \#include \char`\"{}alarm\+\_\+.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../header.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include $<$signal.\+h$>$}\\*
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef void \hyperlink{alarm___8c_a41f7fa3cd174bb624d8b38ed224ab7d6}{Hanlder\+\_\+\+Func}(int signo, siginfo\+\_\+t $\ast$info, void $\ast$context)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{alarm___8c_aec229dbc1924b697e5e6b55d598399ed}{add\+\_\+sigaction} (int signo, sigset\+\_\+t $\ast$set, int no\+\_\+deffer, int restart, \hyperlink{sleep__nanosleep_8c_a41f7fa3cd174bb624d8b38ed224ab7d6}{Hanlder\+\_\+\+Func} handler)
+\item 
+static void \hyperlink{alarm___8c_aab33dde15dc4bfdfa3410f3dd9af4a57}{sig\+\_\+print} (int signo, siginfo\+\_\+t $\ast$info, void $\ast$context)
+\begin{DoxyCompactList}\small\item\em sig\+\_\+print \+: 信号处理函数 \end{DoxyCompactList}\item 
+unsigned int \hyperlink{alarm___8c_a146903454eb0e14fc538b21a1a5f7e39}{My\+\_\+alarm} (unsigned int seconds)
+\begin{DoxyCompactList}\small\item\em My\+\_\+alarm \+: 包装了 alarm 函数 \end{DoxyCompactList}\item 
+void \hyperlink{alarm___8c_afda5c321584b8b1bbbd3ab30e6a796b6}{test\+\_\+alarm} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+alarm \+: 测试 alarm 函数的用法 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\index{alarm\+\_\+.\+c@{alarm\+\_\+.\+c}!Hanlder\+\_\+\+Func@{Hanlder\+\_\+\+Func}}
+\index{Hanlder\+\_\+\+Func@{Hanlder\+\_\+\+Func}!alarm\+\_\+.\+c@{alarm\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{Hanlder\+\_\+\+Func}{Hanlder_Func}}]{\setlength{\rightskip}{0pt plus 5cm}typedef void Hanlder\+\_\+\+Func(int signo, siginfo\+\_\+t $\ast$info, void $\ast$context)}\hypertarget{alarm___8c_a41f7fa3cd174bb624d8b38ed224ab7d6}{}\label{alarm___8c_a41f7fa3cd174bb624d8b38ed224ab7d6}
+
+
+\subsection{Function Documentation}
+\index{alarm\+\_\+.\+c@{alarm\+\_\+.\+c}!add\+\_\+sigaction@{add\+\_\+sigaction}}
+\index{add\+\_\+sigaction@{add\+\_\+sigaction}!alarm\+\_\+.\+c@{alarm\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{add\+\_\+sigaction(int signo, sigset\+\_\+t $\ast$set, int no\+\_\+deffer, int restart, Hanlder\+\_\+\+Func handler)}{add_sigaction(int signo, sigset_t *set, int no_deffer, int restart, Hanlder_Func handler)}}]{\setlength{\rightskip}{0pt plus 5cm}void add\+\_\+sigaction (
+\begin{DoxyParamCaption}
+\item[{int}]{signo, }
+\item[{sigset\+\_\+t $\ast$}]{set, }
+\item[{int}]{no\+\_\+deffer, }
+\item[{int}]{restart, }
+\item[{{\bf Hanlder\+\_\+\+Func}}]{handler}
+\end{DoxyParamCaption}
+)}\hypertarget{alarm___8c_aec229dbc1924b697e5e6b55d598399ed}{}\label{alarm___8c_aec229dbc1924b697e5e6b55d598399ed}
+\index{alarm\+\_\+.\+c@{alarm\+\_\+.\+c}!My\+\_\+alarm@{My\+\_\+alarm}}
+\index{My\+\_\+alarm@{My\+\_\+alarm}!alarm\+\_\+.\+c@{alarm\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+alarm(unsigned int seconds)}{My_alarm(unsigned int seconds)}}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int My\+\_\+alarm (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{seconds}
+\end{DoxyParamCaption}
+)}\hypertarget{alarm___8c_a146903454eb0e14fc538b21a1a5f7e39}{}\label{alarm___8c_a146903454eb0e14fc538b21a1a5f7e39}
+
+
+My\+\_\+alarm \+: 包装了 alarm 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em seconds} & \+: 传递给 alarm 函数的 seconds 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 alarm 函数的值 
+\end{DoxyReturn}
+\index{alarm\+\_\+.\+c@{alarm\+\_\+.\+c}!sig\+\_\+print@{sig\+\_\+print}}
+\index{sig\+\_\+print@{sig\+\_\+print}!alarm\+\_\+.\+c@{alarm\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{sig\+\_\+print(int signo, siginfo\+\_\+t $\ast$info, void $\ast$context)}{sig_print(int signo, siginfo_t *info, void *context)}}]{\setlength{\rightskip}{0pt plus 5cm}static void sig\+\_\+print (
+\begin{DoxyParamCaption}
+\item[{int}]{signo, }
+\item[{siginfo\+\_\+t $\ast$}]{info, }
+\item[{void $\ast$}]{context}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{alarm___8c_aab33dde15dc4bfdfa3410f3dd9af4a57}{}\label{alarm___8c_aab33dde15dc4bfdfa3410f3dd9af4a57}
+
+
+sig\+\_\+print \+: 信号处理函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em signo} & \+: 信号值 \\
+\hline
+{\em info} & \+: 指向 siginfo\+\_\+t 的指针 \\
+\hline
+{\em context} & \+: 指向 ucontext\+\_\+t $\ast$ 的指针 \\
+\hline
+\end{DoxyParams}
+\index{alarm\+\_\+.\+c@{alarm\+\_\+.\+c}!test\+\_\+alarm@{test\+\_\+alarm}}
+\index{test\+\_\+alarm@{test\+\_\+alarm}!alarm\+\_\+.\+c@{alarm\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{test\+\_\+alarm()}{test_alarm()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+alarm (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{alarm___8c_afda5c321584b8b1bbbd3ab30e6a796b6}{}\label{alarm___8c_afda5c321584b8b1bbbd3ab30e6a796b6}
+
+
+test\+\_\+alarm \+: 测试 alarm 函数的用法 
+

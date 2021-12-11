@@ -1,0 +1,301 @@
+\hypertarget{rwlock___8c}{}\section{src/11\+\_\+\+Thread/rwlock\+\_\+.c File Reference}
+\label{rwlock___8c}\index{src/11\+\_\+\+Thread/rwlock\+\_\+.\+c@{src/11\+\_\+\+Thread/rwlock\+\_\+.\+c}}
+{\ttfamily \#include \char`\"{}rwlock\+\_\+.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../header.\+h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{rwlock___8c_a2416f1bd5709ce9dc8e97385c7f21441}{My\+\_\+pthread\+\_\+rwlock\+\_\+init} (pthread\+\_\+rwlock\+\_\+t $\ast$\hyperlink{rwlock___8c_a35d5b530590186674c727415b0dd3282}{rwlock}, const pthread\+\_\+rwlockattr\+\_\+t $\ast$attr)
+\begin{DoxyCompactList}\small\item\em My\+\_\+pthread\+\_\+rwlock\+\_\+init \+: 包装了 pthread\+\_\+rwlock\+\_\+init 函数 \end{DoxyCompactList}\item 
+int \hyperlink{rwlock___8c_aa6ae36b61a02b5101d7bd50fd2e862dc}{My\+\_\+pthread\+\_\+rwlock\+\_\+destroy} (pthread\+\_\+rwlock\+\_\+t $\ast$\hyperlink{rwlock___8c_a35d5b530590186674c727415b0dd3282}{rwlock})
+\begin{DoxyCompactList}\small\item\em My\+\_\+pthread\+\_\+rwlock\+\_\+destroy \+: 包装了 pthread\+\_\+rwlock\+\_\+destroy 函数 \end{DoxyCompactList}\item 
+int \hyperlink{rwlock___8c_a0d6495d75563af051652cdee76c8acdb}{My\+\_\+pthread\+\_\+rwlock\+\_\+rdlock} (pthread\+\_\+rwlock\+\_\+t $\ast$\hyperlink{rwlock___8c_a35d5b530590186674c727415b0dd3282}{rwlock})
+\begin{DoxyCompactList}\small\item\em My\+\_\+pthread\+\_\+rwlock\+\_\+rdlock \+: 包装了 pthread\+\_\+rwlock\+\_\+rdlock 函数 \end{DoxyCompactList}\item 
+int \hyperlink{rwlock___8c_a2ead230ad6d42daf7085ca28c2d5c19c}{My\+\_\+pthread\+\_\+rwlock\+\_\+wrlock} (pthread\+\_\+rwlock\+\_\+t $\ast$\hyperlink{rwlock___8c_a35d5b530590186674c727415b0dd3282}{rwlock})
+\begin{DoxyCompactList}\small\item\em My\+\_\+pthread\+\_\+rwlock\+\_\+wrlock \+: 包装了 pthread\+\_\+rwlock\+\_\+wrlock 函数 \end{DoxyCompactList}\item 
+int \hyperlink{rwlock___8c_aeeca6233c416a5e57f84d3245e3065d1}{My\+\_\+pthread\+\_\+rwlock\+\_\+unlock} (pthread\+\_\+rwlock\+\_\+t $\ast$\hyperlink{rwlock___8c_a35d5b530590186674c727415b0dd3282}{rwlock})
+\begin{DoxyCompactList}\small\item\em My\+\_\+pthread\+\_\+rwlock\+\_\+unlock \+: 包装了 pthread\+\_\+rwlock\+\_\+unlock 函数 \end{DoxyCompactList}\item 
+int \hyperlink{rwlock___8c_a8c9b673a785e3d908072ca8472abcd5d}{My\+\_\+pthread\+\_\+rwlock\+\_\+tryrdlock} (pthread\+\_\+rwlock\+\_\+t $\ast$\hyperlink{rwlock___8c_a35d5b530590186674c727415b0dd3282}{rwlock})
+\begin{DoxyCompactList}\small\item\em My\+\_\+pthread\+\_\+rwlock\+\_\+tryrdlock \+: 包装了 pthread\+\_\+rwlock\+\_\+tryrdlock 函数 \end{DoxyCompactList}\item 
+int \hyperlink{rwlock___8c_a27b29813f7db14cbf0162023f40c9285}{My\+\_\+pthread\+\_\+rwlock\+\_\+trywrlock} (pthread\+\_\+rwlock\+\_\+t $\ast$\hyperlink{rwlock___8c_a35d5b530590186674c727415b0dd3282}{rwlock})
+\begin{DoxyCompactList}\small\item\em My\+\_\+pthread\+\_\+rwlock\+\_\+trywrlock \+: 包装了 pthread\+\_\+rwlock\+\_\+trywrlock 函数 \end{DoxyCompactList}\item 
+int \hyperlink{rwlock___8c_a67249506ec32dd3615dd21eef3eb931a}{My\+\_\+pthread\+\_\+rwlock\+\_\+timedrdlock} (pthread\+\_\+rwlock\+\_\+t $\ast$\hyperlink{rwlock___8c_a35d5b530590186674c727415b0dd3282}{rwlock}, const struct timespect $\ast$tsptr)
+\item 
+int \hyperlink{rwlock___8c_ac36e7e05f0ca49738a33848fab540df0}{My\+\_\+pthread\+\_\+rwlock\+\_\+timedwrlock} (pthread\+\_\+rwlock\+\_\+t $\ast$\hyperlink{rwlock___8c_a35d5b530590186674c727415b0dd3282}{rwlock}, const struct timespect $\ast$tsptr)
+\item 
+void \hyperlink{rwlock___8c_a8a7d00c14fd678fd27174f4059038a9f}{thread\+\_\+join\+\_\+int} (pthread\+\_\+t tid, int $\ast$rval\+\_\+pptr)
+\item 
+int \hyperlink{rwlock___8c_ad82c2337fd9f01a075f17bbff5568a64}{My\+\_\+pthread\+\_\+create} (pthread\+\_\+t $\ast$tidp, const pthread\+\_\+attr\+\_\+t $\ast$attr, void $\ast$($\ast$start\+\_\+rtn)(void $\ast$), void $\ast$arg)
+\item 
+struct timespec $\ast$ \hyperlink{rwlock___8c_a1704f470e48f1c4c5e87d5e192a163ad}{rel\+\_\+to\+\_\+abs\+\_\+time} (int seconds)
+\begin{DoxyCompactList}\small\item\em rel\+\_\+to\+\_\+abs\+\_\+time \+: 相对时间转换为绝对时间 \end{DoxyCompactList}\item 
+static void $\ast$ \hyperlink{rwlock___8c_af7d7e0f438cee37253e8678d442e0c35}{thread\+\_\+func} (void $\ast$arg)
+\begin{DoxyCompactList}\small\item\em thread\+\_\+func \+: 线程的工作例程 \end{DoxyCompactList}\item 
+void \hyperlink{rwlock___8c_a9f642147462f146a92b15c7977dd5a70}{test\+\_\+rwlock} ()
+\begin{DoxyCompactList}\small\item\em My\+\_\+pthread\+\_\+rwlock\+\_\+timedrdlock \+: 包装了 pthread\+\_\+rwlock\+\_\+timedrdlock 函数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static pthread\+\_\+rwlock\+\_\+t \hyperlink{rwlock___8c_a35d5b530590186674c727415b0dd3282}{rwlock}
+\begin{DoxyCompactList}\small\item\em rwlock \+: 读写锁 \end{DoxyCompactList}\item 
+static int \hyperlink{rwlock___8c_a350c92ecddc755fdf9a124eb9915e3ff}{shared\+\_\+int}
+\begin{DoxyCompactList}\small\item\em shared\+\_\+int \+: 全局共享数据 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{rwlock\+\_\+.\+c@{rwlock\+\_\+.\+c}!My\+\_\+pthread\+\_\+create@{My\+\_\+pthread\+\_\+create}}
+\index{My\+\_\+pthread\+\_\+create@{My\+\_\+pthread\+\_\+create}!rwlock\+\_\+.\+c@{rwlock\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+pthread\+\_\+create(pthread\+\_\+t $\ast$tidp, const pthread\+\_\+attr\+\_\+t $\ast$attr, void $\ast$($\ast$start\+\_\+rtn)(void $\ast$), void $\ast$arg)}{My_pthread_create(pthread_t *tidp, const pthread_attr_t *attr, void *(*start_rtn)(void *), void *arg)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+pthread\+\_\+create (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+t $\ast$}]{tidp, }
+\item[{const pthread\+\_\+attr\+\_\+t $\ast$}]{attr, }
+\item[{void $\ast$($\ast$)(void $\ast$)}]{start\+\_\+rtn, }
+\item[{void $\ast$}]{arg}
+\end{DoxyParamCaption}
+)}\hypertarget{rwlock___8c_ad82c2337fd9f01a075f17bbff5568a64}{}\label{rwlock___8c_ad82c2337fd9f01a075f17bbff5568a64}
+\index{rwlock\+\_\+.\+c@{rwlock\+\_\+.\+c}!My\+\_\+pthread\+\_\+rwlock\+\_\+destroy@{My\+\_\+pthread\+\_\+rwlock\+\_\+destroy}}
+\index{My\+\_\+pthread\+\_\+rwlock\+\_\+destroy@{My\+\_\+pthread\+\_\+rwlock\+\_\+destroy}!rwlock\+\_\+.\+c@{rwlock\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+pthread\+\_\+rwlock\+\_\+destroy(pthread\+\_\+rwlock\+\_\+t $\ast$rwlock)}{My_pthread_rwlock_destroy(pthread_rwlock_t *rwlock)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+pthread\+\_\+rwlock\+\_\+destroy (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+rwlock\+\_\+t $\ast$}]{rwlock}
+\end{DoxyParamCaption}
+)}\hypertarget{rwlock___8c_aa6ae36b61a02b5101d7bd50fd2e862dc}{}\label{rwlock___8c_aa6ae36b61a02b5101d7bd50fd2e862dc}
+
+
+My\+\_\+pthread\+\_\+rwlock\+\_\+destroy \+: 包装了 pthread\+\_\+rwlock\+\_\+destroy 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rwlock} & \+: 传递给 pthread\+\_\+rwlock\+\_\+destroy 函数的 rwlock 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 pthread\+\_\+rwlock\+\_\+destroy 函数的值 
+\end{DoxyReturn}
+\index{rwlock\+\_\+.\+c@{rwlock\+\_\+.\+c}!My\+\_\+pthread\+\_\+rwlock\+\_\+init@{My\+\_\+pthread\+\_\+rwlock\+\_\+init}}
+\index{My\+\_\+pthread\+\_\+rwlock\+\_\+init@{My\+\_\+pthread\+\_\+rwlock\+\_\+init}!rwlock\+\_\+.\+c@{rwlock\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+pthread\+\_\+rwlock\+\_\+init(pthread\+\_\+rwlock\+\_\+t $\ast$rwlock, const pthread\+\_\+rwlockattr\+\_\+t $\ast$attr)}{My_pthread_rwlock_init(pthread_rwlock_t *rwlock, const pthread_rwlockattr_t *attr)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+pthread\+\_\+rwlock\+\_\+init (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+rwlock\+\_\+t $\ast$}]{rwlock, }
+\item[{const pthread\+\_\+rwlockattr\+\_\+t $\ast$}]{attr}
+\end{DoxyParamCaption}
+)}\hypertarget{rwlock___8c_a2416f1bd5709ce9dc8e97385c7f21441}{}\label{rwlock___8c_a2416f1bd5709ce9dc8e97385c7f21441}
+
+
+My\+\_\+pthread\+\_\+rwlock\+\_\+init \+: 包装了 pthread\+\_\+rwlock\+\_\+init 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rwlock} & \+: 传递给 pthread\+\_\+rwlock\+\_\+init 函数的 rwlock 参数 \\
+\hline
+{\em attr} & \+: 传递给 pthread\+\_\+rwlock\+\_\+init 函数的 attr 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 pthread\+\_\+rwlock\+\_\+init 函数的值 
+\end{DoxyReturn}
+\index{rwlock\+\_\+.\+c@{rwlock\+\_\+.\+c}!My\+\_\+pthread\+\_\+rwlock\+\_\+rdlock@{My\+\_\+pthread\+\_\+rwlock\+\_\+rdlock}}
+\index{My\+\_\+pthread\+\_\+rwlock\+\_\+rdlock@{My\+\_\+pthread\+\_\+rwlock\+\_\+rdlock}!rwlock\+\_\+.\+c@{rwlock\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+pthread\+\_\+rwlock\+\_\+rdlock(pthread\+\_\+rwlock\+\_\+t $\ast$rwlock)}{My_pthread_rwlock_rdlock(pthread_rwlock_t *rwlock)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+pthread\+\_\+rwlock\+\_\+rdlock (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+rwlock\+\_\+t $\ast$}]{rwlock}
+\end{DoxyParamCaption}
+)}\hypertarget{rwlock___8c_a0d6495d75563af051652cdee76c8acdb}{}\label{rwlock___8c_a0d6495d75563af051652cdee76c8acdb}
+
+
+My\+\_\+pthread\+\_\+rwlock\+\_\+rdlock \+: 包装了 pthread\+\_\+rwlock\+\_\+rdlock 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rwlock} & \+: 传递给 pthread\+\_\+rwlock\+\_\+rdlock 函数的 rwlock 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 pthread\+\_\+rwlock\+\_\+rdlock 函数的值 
+\end{DoxyReturn}
+\index{rwlock\+\_\+.\+c@{rwlock\+\_\+.\+c}!My\+\_\+pthread\+\_\+rwlock\+\_\+timedrdlock@{My\+\_\+pthread\+\_\+rwlock\+\_\+timedrdlock}}
+\index{My\+\_\+pthread\+\_\+rwlock\+\_\+timedrdlock@{My\+\_\+pthread\+\_\+rwlock\+\_\+timedrdlock}!rwlock\+\_\+.\+c@{rwlock\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+pthread\+\_\+rwlock\+\_\+timedrdlock(pthread\+\_\+rwlock\+\_\+t $\ast$rwlock, const struct timespect $\ast$tsptr)}{My_pthread_rwlock_timedrdlock(pthread_rwlock_t *rwlock, const struct timespect *tsptr)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+pthread\+\_\+rwlock\+\_\+timedrdlock (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+rwlock\+\_\+t $\ast$}]{rwlock, }
+\item[{const struct timespect $\ast$}]{tsptr}
+\end{DoxyParamCaption}
+)}\hypertarget{rwlock___8c_a67249506ec32dd3615dd21eef3eb931a}{}\label{rwlock___8c_a67249506ec32dd3615dd21eef3eb931a}
+\index{rwlock\+\_\+.\+c@{rwlock\+\_\+.\+c}!My\+\_\+pthread\+\_\+rwlock\+\_\+timedwrlock@{My\+\_\+pthread\+\_\+rwlock\+\_\+timedwrlock}}
+\index{My\+\_\+pthread\+\_\+rwlock\+\_\+timedwrlock@{My\+\_\+pthread\+\_\+rwlock\+\_\+timedwrlock}!rwlock\+\_\+.\+c@{rwlock\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+pthread\+\_\+rwlock\+\_\+timedwrlock(pthread\+\_\+rwlock\+\_\+t $\ast$rwlock, const struct timespect $\ast$tsptr)}{My_pthread_rwlock_timedwrlock(pthread_rwlock_t *rwlock, const struct timespect *tsptr)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+pthread\+\_\+rwlock\+\_\+timedwrlock (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+rwlock\+\_\+t $\ast$}]{rwlock, }
+\item[{const struct timespect $\ast$}]{tsptr}
+\end{DoxyParamCaption}
+)}\hypertarget{rwlock___8c_ac36e7e05f0ca49738a33848fab540df0}{}\label{rwlock___8c_ac36e7e05f0ca49738a33848fab540df0}
+\index{rwlock\+\_\+.\+c@{rwlock\+\_\+.\+c}!My\+\_\+pthread\+\_\+rwlock\+\_\+tryrdlock@{My\+\_\+pthread\+\_\+rwlock\+\_\+tryrdlock}}
+\index{My\+\_\+pthread\+\_\+rwlock\+\_\+tryrdlock@{My\+\_\+pthread\+\_\+rwlock\+\_\+tryrdlock}!rwlock\+\_\+.\+c@{rwlock\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+pthread\+\_\+rwlock\+\_\+tryrdlock(pthread\+\_\+rwlock\+\_\+t $\ast$rwlock)}{My_pthread_rwlock_tryrdlock(pthread_rwlock_t *rwlock)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+pthread\+\_\+rwlock\+\_\+tryrdlock (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+rwlock\+\_\+t $\ast$}]{rwlock}
+\end{DoxyParamCaption}
+)}\hypertarget{rwlock___8c_a8c9b673a785e3d908072ca8472abcd5d}{}\label{rwlock___8c_a8c9b673a785e3d908072ca8472abcd5d}
+
+
+My\+\_\+pthread\+\_\+rwlock\+\_\+tryrdlock \+: 包装了 pthread\+\_\+rwlock\+\_\+tryrdlock 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rwlock} & \+: 传递给 pthread\+\_\+rwlock\+\_\+tryrdlock 函数的 rwlock 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 pthread\+\_\+rwlock\+\_\+tryrdlock 函数的值 
+\end{DoxyReturn}
+\index{rwlock\+\_\+.\+c@{rwlock\+\_\+.\+c}!My\+\_\+pthread\+\_\+rwlock\+\_\+trywrlock@{My\+\_\+pthread\+\_\+rwlock\+\_\+trywrlock}}
+\index{My\+\_\+pthread\+\_\+rwlock\+\_\+trywrlock@{My\+\_\+pthread\+\_\+rwlock\+\_\+trywrlock}!rwlock\+\_\+.\+c@{rwlock\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+pthread\+\_\+rwlock\+\_\+trywrlock(pthread\+\_\+rwlock\+\_\+t $\ast$rwlock)}{My_pthread_rwlock_trywrlock(pthread_rwlock_t *rwlock)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+pthread\+\_\+rwlock\+\_\+trywrlock (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+rwlock\+\_\+t $\ast$}]{rwlock}
+\end{DoxyParamCaption}
+)}\hypertarget{rwlock___8c_a27b29813f7db14cbf0162023f40c9285}{}\label{rwlock___8c_a27b29813f7db14cbf0162023f40c9285}
+
+
+My\+\_\+pthread\+\_\+rwlock\+\_\+trywrlock \+: 包装了 pthread\+\_\+rwlock\+\_\+trywrlock 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rwlock} & \+: 传递给 pthread\+\_\+rwlock\+\_\+trywrlock 函数的 rwlock 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 pthread\+\_\+rwlock\+\_\+trywrlock 函数的值 
+\end{DoxyReturn}
+\index{rwlock\+\_\+.\+c@{rwlock\+\_\+.\+c}!My\+\_\+pthread\+\_\+rwlock\+\_\+unlock@{My\+\_\+pthread\+\_\+rwlock\+\_\+unlock}}
+\index{My\+\_\+pthread\+\_\+rwlock\+\_\+unlock@{My\+\_\+pthread\+\_\+rwlock\+\_\+unlock}!rwlock\+\_\+.\+c@{rwlock\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+pthread\+\_\+rwlock\+\_\+unlock(pthread\+\_\+rwlock\+\_\+t $\ast$rwlock)}{My_pthread_rwlock_unlock(pthread_rwlock_t *rwlock)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+pthread\+\_\+rwlock\+\_\+unlock (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+rwlock\+\_\+t $\ast$}]{rwlock}
+\end{DoxyParamCaption}
+)}\hypertarget{rwlock___8c_aeeca6233c416a5e57f84d3245e3065d1}{}\label{rwlock___8c_aeeca6233c416a5e57f84d3245e3065d1}
+
+
+My\+\_\+pthread\+\_\+rwlock\+\_\+unlock \+: 包装了 pthread\+\_\+rwlock\+\_\+unlock 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rwlock} & \+: 传递给 pthread\+\_\+rwlock\+\_\+unlock 函数的 rwlock 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 pthread\+\_\+rwlock\+\_\+unlock 函数的值 
+\end{DoxyReturn}
+\index{rwlock\+\_\+.\+c@{rwlock\+\_\+.\+c}!My\+\_\+pthread\+\_\+rwlock\+\_\+wrlock@{My\+\_\+pthread\+\_\+rwlock\+\_\+wrlock}}
+\index{My\+\_\+pthread\+\_\+rwlock\+\_\+wrlock@{My\+\_\+pthread\+\_\+rwlock\+\_\+wrlock}!rwlock\+\_\+.\+c@{rwlock\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+pthread\+\_\+rwlock\+\_\+wrlock(pthread\+\_\+rwlock\+\_\+t $\ast$rwlock)}{My_pthread_rwlock_wrlock(pthread_rwlock_t *rwlock)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+pthread\+\_\+rwlock\+\_\+wrlock (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+rwlock\+\_\+t $\ast$}]{rwlock}
+\end{DoxyParamCaption}
+)}\hypertarget{rwlock___8c_a2ead230ad6d42daf7085ca28c2d5c19c}{}\label{rwlock___8c_a2ead230ad6d42daf7085ca28c2d5c19c}
+
+
+My\+\_\+pthread\+\_\+rwlock\+\_\+wrlock \+: 包装了 pthread\+\_\+rwlock\+\_\+wrlock 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rwlock} & \+: 传递给 pthread\+\_\+rwlock\+\_\+wrlock 函数的 rwlock 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 pthread\+\_\+rwlock\+\_\+wrlock 函数的值 
+\end{DoxyReturn}
+\index{rwlock\+\_\+.\+c@{rwlock\+\_\+.\+c}!rel\+\_\+to\+\_\+abs\+\_\+time@{rel\+\_\+to\+\_\+abs\+\_\+time}}
+\index{rel\+\_\+to\+\_\+abs\+\_\+time@{rel\+\_\+to\+\_\+abs\+\_\+time}!rwlock\+\_\+.\+c@{rwlock\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{rel\+\_\+to\+\_\+abs\+\_\+time(int seconds)}{rel_to_abs_time(int seconds)}}]{\setlength{\rightskip}{0pt plus 5cm}struct timespec$\ast$ rel\+\_\+to\+\_\+abs\+\_\+time (
+\begin{DoxyParamCaption}
+\item[{int}]{seconds}
+\end{DoxyParamCaption}
+)}\hypertarget{rwlock___8c_a1704f470e48f1c4c5e87d5e192a163ad}{}\label{rwlock___8c_a1704f470e48f1c4c5e87d5e192a163ad}
+
+
+rel\+\_\+to\+\_\+abs\+\_\+time \+: 相对时间转换为绝对时间 
+
+
+\begin{DoxyParams}{Parameters}
+{\em seconds} & ：相对于当前时间的秒数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+：存放绝对时间的 timespec 结构的指针；如果失败则返回 N\+U\+LL 
+\end{DoxyReturn}
+\index{rwlock\+\_\+.\+c@{rwlock\+\_\+.\+c}!test\+\_\+rwlock@{test\+\_\+rwlock}}
+\index{test\+\_\+rwlock@{test\+\_\+rwlock}!rwlock\+\_\+.\+c@{rwlock\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{test\+\_\+rwlock()}{test_rwlock()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+rwlock (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{rwlock___8c_a9f642147462f146a92b15c7977dd5a70}{}\label{rwlock___8c_a9f642147462f146a92b15c7977dd5a70}
+
+
+My\+\_\+pthread\+\_\+rwlock\+\_\+timedrdlock \+: 包装了 pthread\+\_\+rwlock\+\_\+timedrdlock 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rwlock} & \+: 传递给 pthread\+\_\+rwlock\+\_\+timedrdlock 函数的 rwlock 参数 \\
+\hline
+{\em tsptr} & \+: 传递给 pthread\+\_\+rwlock\+\_\+timedrdlock 函数的 tsptr 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 pthread\+\_\+rwlock\+\_\+timedrdlock 函数的值
+\end{DoxyReturn}
+My\+\_\+pthread\+\_\+rwlock\+\_\+timedwrlock \+: 包装了 pthread\+\_\+rwlock\+\_\+timedwrlock 函数 
+\begin{DoxyParams}{Parameters}
+{\em rwlock} & \+: 传递给 pthread\+\_\+rwlock\+\_\+timedwrlock 函数的 rwlock 参数 \\
+\hline
+{\em tsptr} & \+: 传递给 pthread\+\_\+rwlock\+\_\+timedwrlock 函数的 tsptr 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 pthread\+\_\+rwlock\+\_\+timedwrlock 函数的值
+\end{DoxyReturn}
+test\+\_\+rwlock \+:测试 pthread\+\_\+rwlock\+\_\+t 相关函数的用法 \index{rwlock\+\_\+.\+c@{rwlock\+\_\+.\+c}!thread\+\_\+func@{thread\+\_\+func}}
+\index{thread\+\_\+func@{thread\+\_\+func}!rwlock\+\_\+.\+c@{rwlock\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{thread\+\_\+func(void $\ast$arg)}{thread_func(void *arg)}}]{\setlength{\rightskip}{0pt plus 5cm}static void$\ast$ thread\+\_\+func (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{arg}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{rwlock___8c_af7d7e0f438cee37253e8678d442e0c35}{}\label{rwlock___8c_af7d7e0f438cee37253e8678d442e0c35}
+
+
+thread\+\_\+func \+: 线程的工作例程 
+
+
+\begin{DoxyParams}{Parameters}
+{\em arg} & \+: 参数，这里是个整数，如果 arg=0 则不加锁；如果 arg=1 则加读锁；如果arg=2 则加读锁；如果 arg=3 则 tryrdlock； 如果 arg=4 则 trywrlock； 如果 arg=5 则 timedrdlock ； 如果 arg=6 则 timedwrlock \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+:返回读到的 shared\+\_\+int 值（如果加锁失败则返回 -\/1） 
+\end{DoxyReturn}
+\index{rwlock\+\_\+.\+c@{rwlock\+\_\+.\+c}!thread\+\_\+join\+\_\+int@{thread\+\_\+join\+\_\+int}}
+\index{thread\+\_\+join\+\_\+int@{thread\+\_\+join\+\_\+int}!rwlock\+\_\+.\+c@{rwlock\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{thread\+\_\+join\+\_\+int(pthread\+\_\+t tid, int $\ast$rval\+\_\+pptr)}{thread_join_int(pthread_t tid, int *rval_pptr)}}]{\setlength{\rightskip}{0pt plus 5cm}void thread\+\_\+join\+\_\+int (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+t}]{tid, }
+\item[{int $\ast$}]{rval\+\_\+pptr}
+\end{DoxyParamCaption}
+)}\hypertarget{rwlock___8c_a8a7d00c14fd678fd27174f4059038a9f}{}\label{rwlock___8c_a8a7d00c14fd678fd27174f4059038a9f}
+
+
+\subsection{Variable Documentation}
+\index{rwlock\+\_\+.\+c@{rwlock\+\_\+.\+c}!rwlock@{rwlock}}
+\index{rwlock@{rwlock}!rwlock\+\_\+.\+c@{rwlock\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{rwlock}{rwlock}}]{\setlength{\rightskip}{0pt plus 5cm}pthread\+\_\+rwlock\+\_\+t rwlock\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{rwlock___8c_a35d5b530590186674c727415b0dd3282}{}\label{rwlock___8c_a35d5b530590186674c727415b0dd3282}
+
+
+rwlock \+: 读写锁 
+
+\index{rwlock\+\_\+.\+c@{rwlock\+\_\+.\+c}!shared\+\_\+int@{shared\+\_\+int}}
+\index{shared\+\_\+int@{shared\+\_\+int}!rwlock\+\_\+.\+c@{rwlock\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{shared\+\_\+int}{shared_int}}]{\setlength{\rightskip}{0pt plus 5cm}int shared\+\_\+int\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{rwlock___8c_a350c92ecddc755fdf9a124eb9915e3ff}{}\label{rwlock___8c_a350c92ecddc755fdf9a124eb9915e3ff}
+
+
+shared\+\_\+int \+: 全局共享数据 
+

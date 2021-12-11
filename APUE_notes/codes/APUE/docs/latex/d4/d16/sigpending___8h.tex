@@ -1,0 +1,56 @@
+\hypertarget{sigpending___8h}{}\section{src/10\+\_\+\+Signal/sigpending\+\_\+.h File Reference}
+\label{sigpending___8h}\index{src/10\+\_\+\+Signal/sigpending\+\_\+.\+h@{src/10\+\_\+\+Signal/sigpending\+\_\+.\+h}}
+{\ttfamily \#include $<$signal.\+h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{sigpending___8h_aad6cc67298077c81cb8d2fed7207355a}{My\+\_\+sigpending} (sigset\+\_\+t $\ast$set)
+\begin{DoxyCompactList}\small\item\em My\+\_\+sigpending \+: 包装了 sigpending 函数 \end{DoxyCompactList}\item 
+void \hyperlink{sigpending___8h_a37c389f4a689b58ea68d4913fb5ce162}{print\+\_\+progress\+\_\+pending\+\_\+sigset} ()
+\begin{DoxyCompactList}\small\item\em print\+\_\+progress\+\_\+pending\+\_\+sigset \+: 打印进程当前的未决的信号集 \end{DoxyCompactList}\item 
+void \hyperlink{sigpending___8h_ab23f788efa367ee2ac6d5ef9c78e7276}{test\+\_\+sigpending} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+sigpending \+:测试 sigpending 函数的用法 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{sigpending\+\_\+.\+h@{sigpending\+\_\+.\+h}!My\+\_\+sigpending@{My\+\_\+sigpending}}
+\index{My\+\_\+sigpending@{My\+\_\+sigpending}!sigpending\+\_\+.\+h@{sigpending\+\_\+.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+sigpending(sigset\+\_\+t $\ast$set)}{My_sigpending(sigset_t *set)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+sigpending (
+\begin{DoxyParamCaption}
+\item[{sigset\+\_\+t $\ast$}]{set}
+\end{DoxyParamCaption}
+)}\hypertarget{sigpending___8h_aad6cc67298077c81cb8d2fed7207355a}{}\label{sigpending___8h_aad6cc67298077c81cb8d2fed7207355a}
+
+
+My\+\_\+sigpending \+: 包装了 sigpending 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em set} & \+: 传递给 sigpending 函数的 set 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 sigpending 函数的值 
+\end{DoxyReturn}
+\index{sigpending\+\_\+.\+h@{sigpending\+\_\+.\+h}!print\+\_\+progress\+\_\+pending\+\_\+sigset@{print\+\_\+progress\+\_\+pending\+\_\+sigset}}
+\index{print\+\_\+progress\+\_\+pending\+\_\+sigset@{print\+\_\+progress\+\_\+pending\+\_\+sigset}!sigpending\+\_\+.\+h@{sigpending\+\_\+.\+h}}
+\subsubsection[{\texorpdfstring{print\+\_\+progress\+\_\+pending\+\_\+sigset()}{print_progress_pending_sigset()}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+progress\+\_\+pending\+\_\+sigset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{sigpending___8h_a37c389f4a689b58ea68d4913fb5ce162}{}\label{sigpending___8h_a37c389f4a689b58ea68d4913fb5ce162}
+
+
+print\+\_\+progress\+\_\+pending\+\_\+sigset \+: 打印进程当前的未决的信号集 
+
+\index{sigpending\+\_\+.\+h@{sigpending\+\_\+.\+h}!test\+\_\+sigpending@{test\+\_\+sigpending}}
+\index{test\+\_\+sigpending@{test\+\_\+sigpending}!sigpending\+\_\+.\+h@{sigpending\+\_\+.\+h}}
+\subsubsection[{\texorpdfstring{test\+\_\+sigpending()}{test_sigpending()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+sigpending (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{sigpending___8h_ab23f788efa367ee2ac6d5ef9c78e7276}{}\label{sigpending___8h_ab23f788efa367ee2ac6d5ef9c78e7276}
+
+
+test\+\_\+sigpending \+:测试 sigpending 函数的用法 
+

@@ -1,0 +1,115 @@
+\hypertarget{truncate__size_8c}{}\section{src/4\+\_\+\+File\+\_\+\+Dir/truncate\+\_\+size.c File Reference}
+\label{truncate__size_8c}\index{src/4\+\_\+\+File\+\_\+\+Dir/truncate\+\_\+size.\+c@{src/4\+\_\+\+File\+\_\+\+Dir/truncate\+\_\+size.\+c}}
+{\ttfamily \#include \char`\"{}../header.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}truncate\+\_\+size.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$fcntl.\+h$>$}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{truncate__size_8c_a109174695052377dc9f748ea2fb4a999}{My\+\_\+open} (const char $\ast$path, int oflag)
+\begin{DoxyCompactList}\small\item\em My\+\_\+open \+: 包装了 open 函数（不带 mode参数） \end{DoxyCompactList}\item 
+void \hyperlink{truncate__size_8c_a6a0e34a60b701b84ffded988e1485019}{print\+\_\+file\+\_\+size} (const char $\ast$pathname)
+\begin{DoxyCompactList}\small\item\em print\+\_\+file\+\_\+size \+: 打印文件大小 \end{DoxyCompactList}\item 
+int \hyperlink{truncate__size_8c_aba4e29208075c883c52d1003e87998f9}{My\+\_\+truncate} (const char $\ast$pathname, off\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em My\+\_\+truncate \+: 包装了 truncate 函数 \end{DoxyCompactList}\item 
+void \hyperlink{truncate__size_8c_a52d711b613fbdf49cabe5594238eafe0}{truncate\+\_\+and\+\_\+read} (const char $\ast$pathname, int fd, off\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em truncate\+\_\+and\+\_\+read \+: 截断文件病读取文件内容 \end{DoxyCompactList}\item 
+void \hyperlink{truncate__size_8c_ad53fcbca22a9da0252fb850b92091759}{test\+\_\+truncate\+\_\+size} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+truncate\+\_\+size \+: 测试 truncate 函数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{truncate\+\_\+size.\+c@{truncate\+\_\+size.\+c}!My\+\_\+open@{My\+\_\+open}}
+\index{My\+\_\+open@{My\+\_\+open}!truncate\+\_\+size.\+c@{truncate\+\_\+size.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+open(const char $\ast$path, int oflag)}{My_open(const char *path, int oflag)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+open (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{path, }
+\item[{int}]{oflag}
+\end{DoxyParamCaption}
+)}\hypertarget{truncate__size_8c_a109174695052377dc9f748ea2fb4a999}{}\label{truncate__size_8c_a109174695052377dc9f748ea2fb4a999}
+
+
+My\+\_\+open \+: 包装了 open 函数（不带 mode参数） 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & \+: 传递给 open 函数的 path 参数 \\
+\hline
+{\em oflag} & \+: 传递给 open 函数的 oflag 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 open 函数的值 
+\end{DoxyReturn}
+\index{truncate\+\_\+size.\+c@{truncate\+\_\+size.\+c}!My\+\_\+truncate@{My\+\_\+truncate}}
+\index{My\+\_\+truncate@{My\+\_\+truncate}!truncate\+\_\+size.\+c@{truncate\+\_\+size.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+truncate(const char $\ast$pathname, off\+\_\+t length)}{My_truncate(const char *pathname, off_t length)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+truncate (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{pathname, }
+\item[{off\+\_\+t}]{length}
+\end{DoxyParamCaption}
+)}\hypertarget{truncate__size_8c_aba4e29208075c883c52d1003e87998f9}{}\label{truncate__size_8c_aba4e29208075c883c52d1003e87998f9}
+
+
+My\+\_\+truncate \+: 包装了 truncate 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pathname} & \+: 传递给 truncate 函数的 pathname 参数 \\
+\hline
+{\em length} & \+: 传递给 truncate 函数的 length 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 truncate 函数的值 
+\end{DoxyReturn}
+\index{truncate\+\_\+size.\+c@{truncate\+\_\+size.\+c}!print\+\_\+file\+\_\+size@{print\+\_\+file\+\_\+size}}
+\index{print\+\_\+file\+\_\+size@{print\+\_\+file\+\_\+size}!truncate\+\_\+size.\+c@{truncate\+\_\+size.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+file\+\_\+size(const char $\ast$pathname)}{print_file_size(const char *pathname)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+file\+\_\+size (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{pathname}
+\end{DoxyParamCaption}
+)}\hypertarget{truncate__size_8c_a6a0e34a60b701b84ffded988e1485019}{}\label{truncate__size_8c_a6a0e34a60b701b84ffded988e1485019}
+
+
+print\+\_\+file\+\_\+size \+: 打印文件大小 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pathname} & \+: 文件名 \\
+\hline
+\end{DoxyParams}
+\index{truncate\+\_\+size.\+c@{truncate\+\_\+size.\+c}!test\+\_\+truncate\+\_\+size@{test\+\_\+truncate\+\_\+size}}
+\index{test\+\_\+truncate\+\_\+size@{test\+\_\+truncate\+\_\+size}!truncate\+\_\+size.\+c@{truncate\+\_\+size.\+c}}
+\subsubsection[{\texorpdfstring{test\+\_\+truncate\+\_\+size()}{test_truncate_size()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+truncate\+\_\+size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{truncate__size_8c_ad53fcbca22a9da0252fb850b92091759}{}\label{truncate__size_8c_ad53fcbca22a9da0252fb850b92091759}
+
+
+test\+\_\+truncate\+\_\+size \+: 测试 truncate 函数 
+
+\index{truncate\+\_\+size.\+c@{truncate\+\_\+size.\+c}!truncate\+\_\+and\+\_\+read@{truncate\+\_\+and\+\_\+read}}
+\index{truncate\+\_\+and\+\_\+read@{truncate\+\_\+and\+\_\+read}!truncate\+\_\+size.\+c@{truncate\+\_\+size.\+c}}
+\subsubsection[{\texorpdfstring{truncate\+\_\+and\+\_\+read(const char $\ast$pathname, int fd, off\+\_\+t length)}{truncate_and_read(const char *pathname, int fd, off_t length)}}]{\setlength{\rightskip}{0pt plus 5cm}void truncate\+\_\+and\+\_\+read (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{pathname, }
+\item[{int}]{fd, }
+\item[{off\+\_\+t}]{length}
+\end{DoxyParamCaption}
+)}\hypertarget{truncate__size_8c_a52d711b613fbdf49cabe5594238eafe0}{}\label{truncate__size_8c_a52d711b613fbdf49cabe5594238eafe0}
+
+
+truncate\+\_\+and\+\_\+read \+: 截断文件病读取文件内容 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pathname} & \+: 文件名 \\
+\hline
+{\em fd} & 文件描述符 \\
+\hline
+{\em length} & \+: 文件被劫断后的长度 \\
+\hline
+\end{DoxyParams}

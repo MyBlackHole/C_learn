@@ -1,0 +1,217 @@
+\hypertarget{wait__waitpid_8c}{}\section{src/8\+\_\+\+Progress\+\_\+\+Control/wait\+\_\+waitpid.c File Reference}
+\label{wait__waitpid_8c}\index{src/8\+\_\+\+Progress\+\_\+\+Control/wait\+\_\+waitpid.\+c@{src/8\+\_\+\+Progress\+\_\+\+Control/wait\+\_\+waitpid.\+c}}
+{\ttfamily \#include \char`\"{}wait\+\_\+waitpid.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../header.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$sys/wait.\+h$>$}\\*
+{\ttfamily \#include $<$signal.\+h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{wait__waitpid_8c_ab6ca4dbe2aeb24807b32561ab63b84c3}{prgress\+\_\+func} (int fd, const char $\ast$append\+\_\+str)
+\begin{DoxyCompactList}\small\item\em prgress\+\_\+func \+: 完成每个进程中的主要工作 \end{DoxyCompactList}\item 
+pid\+\_\+t \hyperlink{wait__waitpid_8c_aa473e6d7203dc5cf780f4f3a9f584c93}{My\+\_\+wait} (int $\ast$staloc)
+\begin{DoxyCompactList}\small\item\em My\+\_\+wait \+: 包装了 wait 函数 \end{DoxyCompactList}\item 
+pid\+\_\+t \hyperlink{wait__waitpid_8c_aeaf6199b6e19ff90aa6bb7c7e825ea5f}{My\+\_\+waitpid} (pid\+\_\+t pid, int $\ast$staloc, int options)
+\begin{DoxyCompactList}\small\item\em My\+\_\+waitpid \+: 包装了 waitpid 函数 \end{DoxyCompactList}\item 
+void \hyperlink{wait__waitpid_8c_a28501dc3f40af75aa56bc1f51cce7140}{print\+\_\+return\+\_\+status} (int staloc)
+\begin{DoxyCompactList}\small\item\em print\+\_\+return\+\_\+status \+: 打印进程终止状态码 \end{DoxyCompactList}\item 
+void \hyperlink{wait__waitpid_8c_a8740192c1895dda03affc7ada95cb6eb}{check\+\_\+wait} ()
+\begin{DoxyCompactList}\small\item\em check\+\_\+wait \+: 使用 wait 等待所有子进程 \end{DoxyCompactList}\item 
+void \hyperlink{wait__waitpid_8c_a05c3b92d18cad5803dbe4e586f77c444}{check\+\_\+waitpid} ()
+\begin{DoxyCompactList}\small\item\em check\+\_\+waitpid \+: 使用 waitpid 等待所有子进程 \end{DoxyCompactList}\item 
+void \hyperlink{wait__waitpid_8c_aa863bed5e7fc54e1518675efcf72f855}{check\+\_\+waitpid\+\_\+signal} ()
+\begin{DoxyCompactList}\small\item\em check\+\_\+waitpid\+\_\+signal \+: 用于信号中断的 check\+\_\+waitpid 函数 \end{DoxyCompactList}\item 
+pid\+\_\+t \hyperlink{wait__waitpid_8c_ad6f3c11326d46076c499709534ed4560}{child\+\_\+exit} (int fd, int exit\+\_\+code)
+\begin{DoxyCompactList}\small\item\em child\+\_\+exit \+: 创建一个子进程，其退出方式是 \+\_\+exit \end{DoxyCompactList}\item 
+pid\+\_\+t \hyperlink{wait__waitpid_8c_aef6cb8b8f99f0497dce7529a5e5c3b24}{child\+\_\+abort} (int fd)
+\begin{DoxyCompactList}\small\item\em child\+\_\+abort \+: 创建一个子进程，其退出方式是 abort \end{DoxyCompactList}\item 
+pid\+\_\+t \hyperlink{wait__waitpid_8c_a86458d20b937c3ab01fc641f970f5412}{child\+\_\+signal} (int fd)
+\begin{DoxyCompactList}\small\item\em child\+\_\+signal \+: 创建一个子进程，其退出方式是信号终止 \end{DoxyCompactList}\item 
+void \hyperlink{wait__waitpid_8c_a92370f31ee4fb870c3873d8477c216b3}{test\+\_\+wait\+\_\+waitpid} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+wait\+\_\+waitpid \+:测试 wait 函数、 waitpid 函数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{wait\+\_\+waitpid.\+c@{wait\+\_\+waitpid.\+c}!check\+\_\+wait@{check\+\_\+wait}}
+\index{check\+\_\+wait@{check\+\_\+wait}!wait\+\_\+waitpid.\+c@{wait\+\_\+waitpid.\+c}}
+\subsubsection[{\texorpdfstring{check\+\_\+wait()}{check_wait()}}]{\setlength{\rightskip}{0pt plus 5cm}void check\+\_\+wait (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{wait__waitpid_8c_a8740192c1895dda03affc7ada95cb6eb}{}\label{wait__waitpid_8c_a8740192c1895dda03affc7ada95cb6eb}
+
+
+check\+\_\+wait \+: 使用 wait 等待所有子进程 
+
+\index{wait\+\_\+waitpid.\+c@{wait\+\_\+waitpid.\+c}!check\+\_\+waitpid@{check\+\_\+waitpid}}
+\index{check\+\_\+waitpid@{check\+\_\+waitpid}!wait\+\_\+waitpid.\+c@{wait\+\_\+waitpid.\+c}}
+\subsubsection[{\texorpdfstring{check\+\_\+waitpid()}{check_waitpid()}}]{\setlength{\rightskip}{0pt plus 5cm}void check\+\_\+waitpid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{wait__waitpid_8c_a05c3b92d18cad5803dbe4e586f77c444}{}\label{wait__waitpid_8c_a05c3b92d18cad5803dbe4e586f77c444}
+
+
+check\+\_\+waitpid \+: 使用 waitpid 等待所有子进程 
+
+\index{wait\+\_\+waitpid.\+c@{wait\+\_\+waitpid.\+c}!check\+\_\+waitpid\+\_\+signal@{check\+\_\+waitpid\+\_\+signal}}
+\index{check\+\_\+waitpid\+\_\+signal@{check\+\_\+waitpid\+\_\+signal}!wait\+\_\+waitpid.\+c@{wait\+\_\+waitpid.\+c}}
+\subsubsection[{\texorpdfstring{check\+\_\+waitpid\+\_\+signal()}{check_waitpid_signal()}}]{\setlength{\rightskip}{0pt plus 5cm}void check\+\_\+waitpid\+\_\+signal (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{wait__waitpid_8c_aa863bed5e7fc54e1518675efcf72f855}{}\label{wait__waitpid_8c_aa863bed5e7fc54e1518675efcf72f855}
+
+
+check\+\_\+waitpid\+\_\+signal \+: 用于信号中断的 check\+\_\+waitpid 函数 
+
+主要是进程在执行 {\ttfamily waitpid}调用而阻塞期间捕捉到一个信号，则该系统调用就会被中断而不再继续执行。 此时{\ttfamily waitpid}返回出错，其{\ttfamily errno}设置为{\ttfamily E\+I\+N\+TR} \index{wait\+\_\+waitpid.\+c@{wait\+\_\+waitpid.\+c}!child\+\_\+abort@{child\+\_\+abort}}
+\index{child\+\_\+abort@{child\+\_\+abort}!wait\+\_\+waitpid.\+c@{wait\+\_\+waitpid.\+c}}
+\subsubsection[{\texorpdfstring{child\+\_\+abort(int fd)}{child_abort(int fd)}}]{\setlength{\rightskip}{0pt plus 5cm}pid\+\_\+t child\+\_\+abort (
+\begin{DoxyParamCaption}
+\item[{int}]{fd}
+\end{DoxyParamCaption}
+)}\hypertarget{wait__waitpid_8c_aef6cb8b8f99f0497dce7529a5e5c3b24}{}\label{wait__waitpid_8c_aef6cb8b8f99f0497dce7529a5e5c3b24}
+
+
+child\+\_\+abort \+: 创建一个子进程，其退出方式是 abort 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fd} & \+: 用于记录锁的文件描述符 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: fork 的返回值 
+\end{DoxyReturn}
+\index{wait\+\_\+waitpid.\+c@{wait\+\_\+waitpid.\+c}!child\+\_\+exit@{child\+\_\+exit}}
+\index{child\+\_\+exit@{child\+\_\+exit}!wait\+\_\+waitpid.\+c@{wait\+\_\+waitpid.\+c}}
+\subsubsection[{\texorpdfstring{child\+\_\+exit(int fd, int exit\+\_\+code)}{child_exit(int fd, int exit_code)}}]{\setlength{\rightskip}{0pt plus 5cm}pid\+\_\+t child\+\_\+exit (
+\begin{DoxyParamCaption}
+\item[{int}]{fd, }
+\item[{int}]{exit\+\_\+code}
+\end{DoxyParamCaption}
+)}\hypertarget{wait__waitpid_8c_ad6f3c11326d46076c499709534ed4560}{}\label{wait__waitpid_8c_ad6f3c11326d46076c499709534ed4560}
+
+
+child\+\_\+exit \+: 创建一个子进程，其退出方式是 \+\_\+exit 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fd} & \+: 用于记录锁的文件描述符 \\
+\hline
+{\em exit\+\_\+code} & \+: 子进程调用 \+\_\+exit 的参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: fork 的返回值 
+\end{DoxyReturn}
+\index{wait\+\_\+waitpid.\+c@{wait\+\_\+waitpid.\+c}!child\+\_\+signal@{child\+\_\+signal}}
+\index{child\+\_\+signal@{child\+\_\+signal}!wait\+\_\+waitpid.\+c@{wait\+\_\+waitpid.\+c}}
+\subsubsection[{\texorpdfstring{child\+\_\+signal(int fd)}{child_signal(int fd)}}]{\setlength{\rightskip}{0pt plus 5cm}pid\+\_\+t child\+\_\+signal (
+\begin{DoxyParamCaption}
+\item[{int}]{fd}
+\end{DoxyParamCaption}
+)}\hypertarget{wait__waitpid_8c_a86458d20b937c3ab01fc641f970f5412}{}\label{wait__waitpid_8c_a86458d20b937c3ab01fc641f970f5412}
+
+
+child\+\_\+signal \+: 创建一个子进程，其退出方式是信号终止 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fd} & \+: 用于记录锁的文件描述符 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: fork 的返回值 
+\end{DoxyReturn}
+\index{wait\+\_\+waitpid.\+c@{wait\+\_\+waitpid.\+c}!My\+\_\+wait@{My\+\_\+wait}}
+\index{My\+\_\+wait@{My\+\_\+wait}!wait\+\_\+waitpid.\+c@{wait\+\_\+waitpid.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+wait(int $\ast$staloc)}{My_wait(int *staloc)}}]{\setlength{\rightskip}{0pt plus 5cm}pid\+\_\+t My\+\_\+wait (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{staloc}
+\end{DoxyParamCaption}
+)}\hypertarget{wait__waitpid_8c_aa473e6d7203dc5cf780f4f3a9f584c93}{}\label{wait__waitpid_8c_aa473e6d7203dc5cf780f4f3a9f584c93}
+
+
+My\+\_\+wait \+: 包装了 wait 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em staloc} & \+: 传递给 wait 函数的 staloc 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 wait 函数的值 
+\end{DoxyReturn}
+\index{wait\+\_\+waitpid.\+c@{wait\+\_\+waitpid.\+c}!My\+\_\+waitpid@{My\+\_\+waitpid}}
+\index{My\+\_\+waitpid@{My\+\_\+waitpid}!wait\+\_\+waitpid.\+c@{wait\+\_\+waitpid.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+waitpid(pid\+\_\+t pid, int $\ast$staloc, int options)}{My_waitpid(pid_t pid, int *staloc, int options)}}]{\setlength{\rightskip}{0pt plus 5cm}pid\+\_\+t My\+\_\+waitpid (
+\begin{DoxyParamCaption}
+\item[{pid\+\_\+t}]{pid, }
+\item[{int $\ast$}]{staloc, }
+\item[{int}]{options}
+\end{DoxyParamCaption}
+)}\hypertarget{wait__waitpid_8c_aeaf6199b6e19ff90aa6bb7c7e825ea5f}{}\label{wait__waitpid_8c_aeaf6199b6e19ff90aa6bb7c7e825ea5f}
+
+
+My\+\_\+waitpid \+: 包装了 waitpid 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pid} & \+: 传递给 waitpid 函数的 pid 参数 \\
+\hline
+{\em staloc} & \+: 传递给 waitpid 函数的 staloc 参数 \\
+\hline
+{\em options} & \+: 传递给 waitpid 函数的 options 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 waitpid 函数的值 
+\end{DoxyReturn}
+\index{wait\+\_\+waitpid.\+c@{wait\+\_\+waitpid.\+c}!prgress\+\_\+func@{prgress\+\_\+func}}
+\index{prgress\+\_\+func@{prgress\+\_\+func}!wait\+\_\+waitpid.\+c@{wait\+\_\+waitpid.\+c}}
+\subsubsection[{\texorpdfstring{prgress\+\_\+func(int fd, const char $\ast$append\+\_\+str)}{prgress_func(int fd, const char *append_str)}}]{\setlength{\rightskip}{0pt plus 5cm}static void prgress\+\_\+func (
+\begin{DoxyParamCaption}
+\item[{int}]{fd, }
+\item[{const char $\ast$}]{append\+\_\+str}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{wait__waitpid_8c_ab6ca4dbe2aeb24807b32561ab63b84c3}{}\label{wait__waitpid_8c_ab6ca4dbe2aeb24807b32561ab63b84c3}
+
+
+prgress\+\_\+func \+: 完成每个进程中的主要工作 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fd} & \+: 打开的文件描述符，用于记录锁 \\
+\hline
+{\em append\+\_\+str} & \+: 说明每个进程的字符串 \\
+\hline
+\end{DoxyParams}
+\index{wait\+\_\+waitpid.\+c@{wait\+\_\+waitpid.\+c}!print\+\_\+return\+\_\+status@{print\+\_\+return\+\_\+status}}
+\index{print\+\_\+return\+\_\+status@{print\+\_\+return\+\_\+status}!wait\+\_\+waitpid.\+c@{wait\+\_\+waitpid.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+return\+\_\+status(int staloc)}{print_return_status(int staloc)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+return\+\_\+status (
+\begin{DoxyParamCaption}
+\item[{int}]{staloc}
+\end{DoxyParamCaption}
+)}\hypertarget{wait__waitpid_8c_a28501dc3f40af75aa56bc1f51cce7140}{}\label{wait__waitpid_8c_a28501dc3f40af75aa56bc1f51cce7140}
+
+
+print\+\_\+return\+\_\+status \+: 打印进程终止状态码 
+
+
+\begin{DoxyParams}{Parameters}
+{\em staloc} & \+: 进程终止状态码 \\
+\hline
+\end{DoxyParams}
+\index{wait\+\_\+waitpid.\+c@{wait\+\_\+waitpid.\+c}!test\+\_\+wait\+\_\+waitpid@{test\+\_\+wait\+\_\+waitpid}}
+\index{test\+\_\+wait\+\_\+waitpid@{test\+\_\+wait\+\_\+waitpid}!wait\+\_\+waitpid.\+c@{wait\+\_\+waitpid.\+c}}
+\subsubsection[{\texorpdfstring{test\+\_\+wait\+\_\+waitpid()}{test_wait_waitpid()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+wait\+\_\+waitpid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{wait__waitpid_8c_a92370f31ee4fb870c3873d8477c216b3}{}\label{wait__waitpid_8c_a92370f31ee4fb870c3873d8477c216b3}
+
+
+test\+\_\+wait\+\_\+waitpid \+:测试 wait 函数、 waitpid 函数 
+

@@ -1,0 +1,67 @@
+\hypertarget{kill__raise_8h}{}\section{src/10\+\_\+\+Signal/kill\+\_\+raise.h File Reference}
+\label{kill__raise_8h}\index{src/10\+\_\+\+Signal/kill\+\_\+raise.\+h@{src/10\+\_\+\+Signal/kill\+\_\+raise.\+h}}
+{\ttfamily \#include $<$signal.\+h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{kill__raise_8h_a55fcf2c052330058bec25f35570f502b}{My\+\_\+kill} (pid\+\_\+t pid, int signo)
+\begin{DoxyCompactList}\small\item\em My\+\_\+kill \+: 包装了 kill 函数 \end{DoxyCompactList}\item 
+int \hyperlink{kill__raise_8h_aba1888d3f0d5700ca56d4236b450b2a6}{My\+\_\+raise} (int signo)
+\begin{DoxyCompactList}\small\item\em My\+\_\+raise \+: 包装了 raise 函数 \end{DoxyCompactList}\item 
+void \hyperlink{kill__raise_8h_a0b9ea932dcd5f4007a29fe785a41cf3a}{test\+\_\+kill\+\_\+raise} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+kill\+\_\+raise \+: 测试 kill 函数、raise 函数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{kill\+\_\+raise.\+h@{kill\+\_\+raise.\+h}!My\+\_\+kill@{My\+\_\+kill}}
+\index{My\+\_\+kill@{My\+\_\+kill}!kill\+\_\+raise.\+h@{kill\+\_\+raise.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+kill(pid\+\_\+t pid, int signo)}{My_kill(pid_t pid, int signo)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+kill (
+\begin{DoxyParamCaption}
+\item[{pid\+\_\+t}]{pid, }
+\item[{int}]{signo}
+\end{DoxyParamCaption}
+)}\hypertarget{kill__raise_8h_a55fcf2c052330058bec25f35570f502b}{}\label{kill__raise_8h_a55fcf2c052330058bec25f35570f502b}
+
+
+My\+\_\+kill \+: 包装了 kill 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pid} & \+: 传递给 kill 函数的 pid 参数 \\
+\hline
+{\em signo} & \+: 传递给 kill 函数的 signo 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 kill 函数的值 
+\end{DoxyReturn}
+\index{kill\+\_\+raise.\+h@{kill\+\_\+raise.\+h}!My\+\_\+raise@{My\+\_\+raise}}
+\index{My\+\_\+raise@{My\+\_\+raise}!kill\+\_\+raise.\+h@{kill\+\_\+raise.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+raise(int signo)}{My_raise(int signo)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+raise (
+\begin{DoxyParamCaption}
+\item[{int}]{signo}
+\end{DoxyParamCaption}
+)}\hypertarget{kill__raise_8h_aba1888d3f0d5700ca56d4236b450b2a6}{}\label{kill__raise_8h_aba1888d3f0d5700ca56d4236b450b2a6}
+
+
+My\+\_\+raise \+: 包装了 raise 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em signo} & \+: 传递给 raise 函数的 signo 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 raise 函数的值 
+\end{DoxyReturn}
+\index{kill\+\_\+raise.\+h@{kill\+\_\+raise.\+h}!test\+\_\+kill\+\_\+raise@{test\+\_\+kill\+\_\+raise}}
+\index{test\+\_\+kill\+\_\+raise@{test\+\_\+kill\+\_\+raise}!kill\+\_\+raise.\+h@{kill\+\_\+raise.\+h}}
+\subsubsection[{\texorpdfstring{test\+\_\+kill\+\_\+raise()}{test_kill_raise()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+kill\+\_\+raise (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{kill__raise_8h_a0b9ea932dcd5f4007a29fe785a41cf3a}{}\label{kill__raise_8h_a0b9ea932dcd5f4007a29fe785a41cf3a}
+
+
+test\+\_\+kill\+\_\+raise \+: 测试 kill 函数、raise 函数 
+

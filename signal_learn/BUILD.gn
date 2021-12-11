@@ -1,3 +1,15 @@
+executable("sigemptyset_test") {
+  sources = ["sigemptyset_test.c"]
+}
+
+executable("signal4_test") {
+  sources = ["signal4_test.c"]
+  include_dirs = ["//include"]
+  deps = [
+    "//lib:libc",
+  ]
+}
+
 executable("SIGFPE_test") {
   sources = ["SIGFPE_test.c"]
 }

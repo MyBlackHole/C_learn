@@ -1,0 +1,138 @@
+\hypertarget{thread__detach_8c}{}\section{src/11\+\_\+\+Thread/thread\+\_\+detach.c File Reference}
+\label{thread__detach_8c}\index{src/11\+\_\+\+Thread/thread\+\_\+detach.\+c@{src/11\+\_\+\+Thread/thread\+\_\+detach.\+c}}
+{\ttfamily \#include \char`\"{}thread\+\_\+detach.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../header.\+h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{thread__detach_8c_a8a7d00c14fd678fd27174f4059038a9f}{thread\+\_\+join\+\_\+int} (pthread\+\_\+t tid, int $\ast$rval\+\_\+pptr)
+\begin{DoxyCompactList}\small\item\em thread\+\_\+join\+\_\+int ： 包装了 pthread\+\_\+join 函数，但是子返回值为 int \end{DoxyCompactList}\item 
+int \hyperlink{thread__detach_8c_ad82c2337fd9f01a075f17bbff5568a64}{My\+\_\+pthread\+\_\+create} (pthread\+\_\+t $\ast$tidp, const pthread\+\_\+attr\+\_\+t $\ast$attr, void $\ast$($\ast$start\+\_\+rtn)(void $\ast$), void $\ast$arg)
+\begin{DoxyCompactList}\small\item\em My\+\_\+pthread\+\_\+create \+: 包装了 pthread\+\_\+create 函数 \end{DoxyCompactList}\item 
+int \hyperlink{thread__detach_8c_a56369a131f5926f20e703464e4f79704}{My\+\_\+pthread\+\_\+detach} (pthread\+\_\+t tid)
+\begin{DoxyCompactList}\small\item\em My\+\_\+pthread\+\_\+detach \+: 包装了 pthread\+\_\+detach 函数 \end{DoxyCompactList}\item 
+static void $\ast$ \hyperlink{thread__detach_8c_af7d7e0f438cee37253e8678d442e0c35}{thread\+\_\+func} (void $\ast$arg)
+\begin{DoxyCompactList}\small\item\em thread\+\_\+func \+: 线程的工作例程 \end{DoxyCompactList}\item 
+void \hyperlink{thread__detach_8c_ad59385fa6c41945130fe3555e90c5fd3}{test\+\_\+thread\+\_\+detach} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+thread\+\_\+detach \+:测试 pthread\+\_\+detach 函数的用法 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static pthread\+\_\+mutex\+\_\+t \hyperlink{thread__detach_8c_a4acff8232e4aec9cd5c6dc200ac55ef3}{mutex} =P\+T\+H\+R\+E\+A\+D\+\_\+\+M\+U\+T\+E\+X\+\_\+\+I\+N\+I\+T\+I\+A\+L\+I\+Z\+ER
+\begin{DoxyCompactList}\small\item\em mutex \+: 互斥量，每个线程用它来完成串行工作 \end{DoxyCompactList}\item 
+static pthread\+\_\+t \hyperlink{thread__detach_8c_ab5fee3d9b8f09c1ac442c5611e046413}{threads} \mbox{[}3\mbox{]}
+\begin{DoxyCompactList}\small\item\em threads \+: 存放三个子线程\+ID \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{thread\+\_\+detach.\+c@{thread\+\_\+detach.\+c}!My\+\_\+pthread\+\_\+create@{My\+\_\+pthread\+\_\+create}}
+\index{My\+\_\+pthread\+\_\+create@{My\+\_\+pthread\+\_\+create}!thread\+\_\+detach.\+c@{thread\+\_\+detach.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+pthread\+\_\+create(pthread\+\_\+t $\ast$tidp, const pthread\+\_\+attr\+\_\+t $\ast$attr, void $\ast$($\ast$start\+\_\+rtn)(void $\ast$), void $\ast$arg)}{My_pthread_create(pthread_t *tidp, const pthread_attr_t *attr, void *(*start_rtn)(void *), void *arg)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+pthread\+\_\+create (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+t $\ast$}]{tidp, }
+\item[{const pthread\+\_\+attr\+\_\+t $\ast$}]{attr, }
+\item[{void $\ast$($\ast$)(void $\ast$)}]{start\+\_\+rtn, }
+\item[{void $\ast$}]{arg}
+\end{DoxyParamCaption}
+)}\hypertarget{thread__detach_8c_ad82c2337fd9f01a075f17bbff5568a64}{}\label{thread__detach_8c_ad82c2337fd9f01a075f17bbff5568a64}
+
+
+My\+\_\+pthread\+\_\+create \+: 包装了 pthread\+\_\+create 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tidp} & \+: 传递给 pthread\+\_\+create 函数的 tidp 参数 \\
+\hline
+{\em attr} & \+: 传递给 pthread\+\_\+create 函数的 attr 参数 \\
+\hline
+{\em arg} & \+: 传递给 pthread\+\_\+create 函数的 arg 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+： 返回 pthread\+\_\+create 函数的值 
+\end{DoxyReturn}
+\index{thread\+\_\+detach.\+c@{thread\+\_\+detach.\+c}!My\+\_\+pthread\+\_\+detach@{My\+\_\+pthread\+\_\+detach}}
+\index{My\+\_\+pthread\+\_\+detach@{My\+\_\+pthread\+\_\+detach}!thread\+\_\+detach.\+c@{thread\+\_\+detach.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+pthread\+\_\+detach(pthread\+\_\+t tid)}{My_pthread_detach(pthread_t tid)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+pthread\+\_\+detach (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+t}]{tid}
+\end{DoxyParamCaption}
+)}\hypertarget{thread__detach_8c_a56369a131f5926f20e703464e4f79704}{}\label{thread__detach_8c_a56369a131f5926f20e703464e4f79704}
+
+
+My\+\_\+pthread\+\_\+detach \+: 包装了 pthread\+\_\+detach 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tid} & ： 传递给 pthread\+\_\+detach 函数的 tid 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+： 返回 pthread\+\_\+detach 参数的值 
+\end{DoxyReturn}
+\index{thread\+\_\+detach.\+c@{thread\+\_\+detach.\+c}!test\+\_\+thread\+\_\+detach@{test\+\_\+thread\+\_\+detach}}
+\index{test\+\_\+thread\+\_\+detach@{test\+\_\+thread\+\_\+detach}!thread\+\_\+detach.\+c@{thread\+\_\+detach.\+c}}
+\subsubsection[{\texorpdfstring{test\+\_\+thread\+\_\+detach()}{test_thread_detach()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+thread\+\_\+detach (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{thread__detach_8c_ad59385fa6c41945130fe3555e90c5fd3}{}\label{thread__detach_8c_ad59385fa6c41945130fe3555e90c5fd3}
+
+
+test\+\_\+thread\+\_\+detach \+:测试 pthread\+\_\+detach 函数的用法 
+
+\index{thread\+\_\+detach.\+c@{thread\+\_\+detach.\+c}!thread\+\_\+func@{thread\+\_\+func}}
+\index{thread\+\_\+func@{thread\+\_\+func}!thread\+\_\+detach.\+c@{thread\+\_\+detach.\+c}}
+\subsubsection[{\texorpdfstring{thread\+\_\+func(void $\ast$arg)}{thread_func(void *arg)}}]{\setlength{\rightskip}{0pt plus 5cm}static void$\ast$ thread\+\_\+func (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{arg}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{thread__detach_8c_af7d7e0f438cee37253e8678d442e0c35}{}\label{thread__detach_8c_af7d7e0f438cee37253e8678d442e0c35}
+
+
+thread\+\_\+func \+: 线程的工作例程 
+
+
+\begin{DoxyParams}{Parameters}
+{\em arg} & \+: 参数，这里是个整数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+:直接返回参数 
+\end{DoxyReturn}
+\index{thread\+\_\+detach.\+c@{thread\+\_\+detach.\+c}!thread\+\_\+join\+\_\+int@{thread\+\_\+join\+\_\+int}}
+\index{thread\+\_\+join\+\_\+int@{thread\+\_\+join\+\_\+int}!thread\+\_\+detach.\+c@{thread\+\_\+detach.\+c}}
+\subsubsection[{\texorpdfstring{thread\+\_\+join\+\_\+int(pthread\+\_\+t tid, int $\ast$rval\+\_\+pptr)}{thread_join_int(pthread_t tid, int *rval_pptr)}}]{\setlength{\rightskip}{0pt plus 5cm}void thread\+\_\+join\+\_\+int (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+t}]{tid, }
+\item[{int $\ast$}]{rval\+\_\+pptr}
+\end{DoxyParamCaption}
+)}\hypertarget{thread__detach_8c_a8a7d00c14fd678fd27174f4059038a9f}{}\label{thread__detach_8c_a8a7d00c14fd678fd27174f4059038a9f}
+
+
+thread\+\_\+join\+\_\+int ： 包装了 pthread\+\_\+join 函数，但是子返回值为 int 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tid} & \+: 线程 ID \\
+\hline
+{\em rval\+\_\+pptr} & \+:存放子线程返回值 \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Variable Documentation}
+\index{thread\+\_\+detach.\+c@{thread\+\_\+detach.\+c}!mutex@{mutex}}
+\index{mutex@{mutex}!thread\+\_\+detach.\+c@{thread\+\_\+detach.\+c}}
+\subsubsection[{\texorpdfstring{mutex}{mutex}}]{\setlength{\rightskip}{0pt plus 5cm}pthread\+\_\+mutex\+\_\+t mutex =P\+T\+H\+R\+E\+A\+D\+\_\+\+M\+U\+T\+E\+X\+\_\+\+I\+N\+I\+T\+I\+A\+L\+I\+Z\+ER\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{thread__detach_8c_a4acff8232e4aec9cd5c6dc200ac55ef3}{}\label{thread__detach_8c_a4acff8232e4aec9cd5c6dc200ac55ef3}
+
+
+mutex \+: 互斥量，每个线程用它来完成串行工作 
+
+\index{thread\+\_\+detach.\+c@{thread\+\_\+detach.\+c}!threads@{threads}}
+\index{threads@{threads}!thread\+\_\+detach.\+c@{thread\+\_\+detach.\+c}}
+\subsubsection[{\texorpdfstring{threads}{threads}}]{\setlength{\rightskip}{0pt plus 5cm}pthread\+\_\+t threads\mbox{[}3\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{thread__detach_8c_ab5fee3d9b8f09c1ac442c5611e046413}{}\label{thread__detach_8c_ab5fee3d9b8f09c1ac442c5611e046413}
+
+
+threads \+: 存放三个子线程\+ID 
+

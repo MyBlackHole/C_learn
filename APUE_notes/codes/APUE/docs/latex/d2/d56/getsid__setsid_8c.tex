@@ -1,0 +1,136 @@
+\hypertarget{getsid__setsid_8c}{}\section{src/9\+\_\+\+Progress\+\_\+\+Relation/getsid\+\_\+setsid.c File Reference}
+\label{getsid__setsid_8c}\index{src/9\+\_\+\+Progress\+\_\+\+Relation/getsid\+\_\+setsid.\+c@{src/9\+\_\+\+Progress\+\_\+\+Relation/getsid\+\_\+setsid.\+c}}
+{\ttfamily \#include \char`\"{}getsid\+\_\+setsid.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../header.\+h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{getsid__setsid_8c_a0bd76e6d502075e830f62080f42f1a76}{print\+\_\+pid} ()
+\begin{DoxyCompactList}\small\item\em print\+\_\+pid \+: 打印进程 id \end{DoxyCompactList}\item 
+void \hyperlink{getsid__setsid_8c_a2781199e9afe7ddf4d7a8bf1034b17af}{print\+\_\+parent\+\_\+pid} ()
+\begin{DoxyCompactList}\small\item\em print\+\_\+parent\+\_\+pid \+: 打印进程的父进程 id \end{DoxyCompactList}\item 
+void \hyperlink{getsid__setsid_8c_a05c3b92d18cad5803dbe4e586f77c444}{check\+\_\+waitpid} ()
+\begin{DoxyCompactList}\small\item\em check\+\_\+waitpid \+: 使用 waitpid 等待所有子进程 \end{DoxyCompactList}\item 
+pid\+\_\+t \hyperlink{getsid__setsid_8c_af281cb4de8d5b5951dc27c864f2fb912}{My\+\_\+getpgid} (pid\+\_\+t pid)
+\begin{DoxyCompactList}\small\item\em My\+\_\+getpgid \+: 包装了 getpgid 函数 \end{DoxyCompactList}\item 
+pid\+\_\+t \hyperlink{getsid__setsid_8c_ac0c5d6954367eefba0a9d188579c113f}{My\+\_\+setsid} ()
+\begin{DoxyCompactList}\small\item\em My\+\_\+setsid \+: 包装了 setsid 函数的值 \end{DoxyCompactList}\item 
+pid\+\_\+t \hyperlink{getsid__setsid_8c_a45346a7cf6f23d6f4c2393da361660ff}{My\+\_\+getsid} (pid\+\_\+t pid)
+\begin{DoxyCompactList}\small\item\em My\+\_\+getsid \+: 包装了 getsid 函数的值 \end{DoxyCompactList}\item 
+static pid\+\_\+t \hyperlink{getsid__setsid_8c_a91d22fdab508ae9804eb76d15237da6b}{create\+\_\+child} ()
+\begin{DoxyCompactList}\small\item\em create\+\_\+child \+: 创建子进程 \end{DoxyCompactList}\item 
+void \hyperlink{getsid__setsid_8c_a654ff8b5dbce877e9f808f386c135385}{test\+\_\+getsid\+\_\+setsid} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+getsid\+\_\+setsid \+:测试 getsid 函数、setsid 函数的用法 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{getsid\+\_\+setsid.\+c@{getsid\+\_\+setsid.\+c}!check\+\_\+waitpid@{check\+\_\+waitpid}}
+\index{check\+\_\+waitpid@{check\+\_\+waitpid}!getsid\+\_\+setsid.\+c@{getsid\+\_\+setsid.\+c}}
+\subsubsection[{\texorpdfstring{check\+\_\+waitpid()}{check_waitpid()}}]{\setlength{\rightskip}{0pt plus 5cm}void check\+\_\+waitpid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{getsid__setsid_8c_a05c3b92d18cad5803dbe4e586f77c444}{}\label{getsid__setsid_8c_a05c3b92d18cad5803dbe4e586f77c444}
+
+
+check\+\_\+waitpid \+: 使用 waitpid 等待所有子进程 
+
+\index{getsid\+\_\+setsid.\+c@{getsid\+\_\+setsid.\+c}!create\+\_\+child@{create\+\_\+child}}
+\index{create\+\_\+child@{create\+\_\+child}!getsid\+\_\+setsid.\+c@{getsid\+\_\+setsid.\+c}}
+\subsubsection[{\texorpdfstring{create\+\_\+child()}{create_child()}}]{\setlength{\rightskip}{0pt plus 5cm}static pid\+\_\+t create\+\_\+child (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{getsid__setsid_8c_a91d22fdab508ae9804eb76d15237da6b}{}\label{getsid__setsid_8c_a91d22fdab508ae9804eb76d15237da6b}
+
+
+create\+\_\+child \+: 创建子进程 
+
+\begin{DoxyReturn}{Returns}
+\+: fork 的返回值 
+\end{DoxyReturn}
+\index{getsid\+\_\+setsid.\+c@{getsid\+\_\+setsid.\+c}!My\+\_\+getpgid@{My\+\_\+getpgid}}
+\index{My\+\_\+getpgid@{My\+\_\+getpgid}!getsid\+\_\+setsid.\+c@{getsid\+\_\+setsid.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+getpgid(pid\+\_\+t pid)}{My_getpgid(pid_t pid)}}]{\setlength{\rightskip}{0pt plus 5cm}pid\+\_\+t My\+\_\+getpgid (
+\begin{DoxyParamCaption}
+\item[{pid\+\_\+t}]{pid}
+\end{DoxyParamCaption}
+)}\hypertarget{getsid__setsid_8c_af281cb4de8d5b5951dc27c864f2fb912}{}\label{getsid__setsid_8c_af281cb4de8d5b5951dc27c864f2fb912}
+
+
+My\+\_\+getpgid \+: 包装了 getpgid 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pid} & \+: 传递给 getpgid 函数的 pid 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 getpgid 函数的值 
+\end{DoxyReturn}
+\index{getsid\+\_\+setsid.\+c@{getsid\+\_\+setsid.\+c}!My\+\_\+getsid@{My\+\_\+getsid}}
+\index{My\+\_\+getsid@{My\+\_\+getsid}!getsid\+\_\+setsid.\+c@{getsid\+\_\+setsid.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+getsid(pid\+\_\+t pid)}{My_getsid(pid_t pid)}}]{\setlength{\rightskip}{0pt plus 5cm}pid\+\_\+t My\+\_\+getsid (
+\begin{DoxyParamCaption}
+\item[{pid\+\_\+t}]{pid}
+\end{DoxyParamCaption}
+)}\hypertarget{getsid__setsid_8c_a45346a7cf6f23d6f4c2393da361660ff}{}\label{getsid__setsid_8c_a45346a7cf6f23d6f4c2393da361660ff}
+
+
+My\+\_\+getsid \+: 包装了 getsid 函数的值 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pid} & \+: 传递给 getsid 函数的 pid 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 getsid 函数的值 
+\end{DoxyReturn}
+\index{getsid\+\_\+setsid.\+c@{getsid\+\_\+setsid.\+c}!My\+\_\+setsid@{My\+\_\+setsid}}
+\index{My\+\_\+setsid@{My\+\_\+setsid}!getsid\+\_\+setsid.\+c@{getsid\+\_\+setsid.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+setsid()}{My_setsid()}}]{\setlength{\rightskip}{0pt plus 5cm}pid\+\_\+t My\+\_\+setsid (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{getsid__setsid_8c_ac0c5d6954367eefba0a9d188579c113f}{}\label{getsid__setsid_8c_ac0c5d6954367eefba0a9d188579c113f}
+
+
+My\+\_\+setsid \+: 包装了 setsid 函数的值 
+
+\begin{DoxyReturn}{Returns}
+\+: 返回 setsid 函数的值 
+\end{DoxyReturn}
+\index{getsid\+\_\+setsid.\+c@{getsid\+\_\+setsid.\+c}!print\+\_\+parent\+\_\+pid@{print\+\_\+parent\+\_\+pid}}
+\index{print\+\_\+parent\+\_\+pid@{print\+\_\+parent\+\_\+pid}!getsid\+\_\+setsid.\+c@{getsid\+\_\+setsid.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+parent\+\_\+pid()}{print_parent_pid()}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+parent\+\_\+pid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{getsid__setsid_8c_a2781199e9afe7ddf4d7a8bf1034b17af}{}\label{getsid__setsid_8c_a2781199e9afe7ddf4d7a8bf1034b17af}
+
+
+print\+\_\+parent\+\_\+pid \+: 打印进程的父进程 id 
+
+\index{getsid\+\_\+setsid.\+c@{getsid\+\_\+setsid.\+c}!print\+\_\+pid@{print\+\_\+pid}}
+\index{print\+\_\+pid@{print\+\_\+pid}!getsid\+\_\+setsid.\+c@{getsid\+\_\+setsid.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+pid()}{print_pid()}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+pid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{getsid__setsid_8c_a0bd76e6d502075e830f62080f42f1a76}{}\label{getsid__setsid_8c_a0bd76e6d502075e830f62080f42f1a76}
+
+
+print\+\_\+pid \+: 打印进程 id 
+
+\index{getsid\+\_\+setsid.\+c@{getsid\+\_\+setsid.\+c}!test\+\_\+getsid\+\_\+setsid@{test\+\_\+getsid\+\_\+setsid}}
+\index{test\+\_\+getsid\+\_\+setsid@{test\+\_\+getsid\+\_\+setsid}!getsid\+\_\+setsid.\+c@{getsid\+\_\+setsid.\+c}}
+\subsubsection[{\texorpdfstring{test\+\_\+getsid\+\_\+setsid()}{test_getsid_setsid()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+getsid\+\_\+setsid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{getsid__setsid_8c_a654ff8b5dbce877e9f808f386c135385}{}\label{getsid__setsid_8c_a654ff8b5dbce877e9f808f386c135385}
+
+
+test\+\_\+getsid\+\_\+setsid \+:测试 getsid 函数、setsid 函数的用法 
+

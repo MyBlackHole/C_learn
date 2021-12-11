@@ -1,0 +1,278 @@
+\hypertarget{stat__lstat_8h}{}\section{src/4\+\_\+\+File\+\_\+\+Dir/stat\+\_\+lstat.h File Reference}
+\label{stat__lstat_8h}\index{src/4\+\_\+\+File\+\_\+\+Dir/stat\+\_\+lstat.\+h@{src/4\+\_\+\+File\+\_\+\+Dir/stat\+\_\+lstat.\+h}}
+{\ttfamily \#include $<$sys/stat.\+h$>$}\\*
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct stat \hyperlink{stat__lstat_8h_a70550a334c20cfbcb7cf17e6ea6152db}{Stat}
+\begin{DoxyCompactList}\small\item\em Stat \+: struct stat 的别名 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{stat__lstat_8h_a1007427d76121a17457cda563ecfbc95}{My\+\_\+stat} (const char $\ast$pathname, \hyperlink{stat__lstat_8h_a70550a334c20cfbcb7cf17e6ea6152db}{Stat} $\ast$\hyperlink{setjmp__longjmp_8c_a02df3e2f0291bf06f3a685829975efec}{buf})
+\begin{DoxyCompactList}\small\item\em My\+\_\+stat \+: 包装了 stat 函数 \end{DoxyCompactList}\item 
+int \hyperlink{stat__lstat_8h_a9e3ab7cc4160e5a370753e9ebe70150a}{My\+\_\+lstat} (const char $\ast$pathname, \hyperlink{stat__lstat_8h_a70550a334c20cfbcb7cf17e6ea6152db}{Stat} $\ast$\hyperlink{setjmp__longjmp_8c_a02df3e2f0291bf06f3a685829975efec}{buf})
+\begin{DoxyCompactList}\small\item\em My\+\_\+lstat \+: 包装了 lstat 函数 \end{DoxyCompactList}\item 
+void \hyperlink{stat__lstat_8h_a9f28cbdfbebe48f3ee6537c06d62f4f6}{print\+\_\+stat\+\_\+type} (const \hyperlink{stat__lstat_8h_a70550a334c20cfbcb7cf17e6ea6152db}{Stat} $\ast$file\+\_\+stat, const char $\ast$file\+\_\+name)
+\begin{DoxyCompactList}\small\item\em print\+\_\+stat\+\_\+type \+: 打印文件类型 \end{DoxyCompactList}\item 
+void \hyperlink{stat__lstat_8h_a4c4a82e2f1a3f878d2f004b884999ef3}{print\+\_\+stat\+\_\+owners} (const \hyperlink{stat__lstat_8h_a70550a334c20cfbcb7cf17e6ea6152db}{Stat} $\ast$file\+\_\+stat, const char $\ast$file\+\_\+name)
+\begin{DoxyCompactList}\small\item\em print\+\_\+stat\+\_\+owners \+: 打印文件的相关\+ID \end{DoxyCompactList}\item 
+void \hyperlink{stat__lstat_8h_a298d29491d91d32a37ba3cff6eb4c86f}{print\+\_\+mode\+\_\+perms} (mode\+\_\+t mode, const char $\ast$file\+\_\+name)
+\begin{DoxyCompactList}\small\item\em print\+\_\+mode\+\_\+perms \+: 打印文件的权限 \end{DoxyCompactList}\item 
+void \hyperlink{stat__lstat_8h_aa988cd26ce91a3bd80013539d5360772}{print\+\_\+file\+\_\+type} (const char $\ast$pathname)
+\begin{DoxyCompactList}\small\item\em print\+\_\+file\+\_\+type \+: 打印文件类型 \end{DoxyCompactList}\item 
+void \hyperlink{stat__lstat_8h_a12de5518f0a21dbee83be262c020bdfc}{print\+\_\+file\+\_\+perm} (const char $\ast$pathname)
+\begin{DoxyCompactList}\small\item\em print\+\_\+file\+\_\+perm \+: 打印文件的权限 \end{DoxyCompactList}\item 
+void \hyperlink{stat__lstat_8h_a4df57b7a04542ed92d3c0bed08eebe4d}{print\+\_\+file\+\_\+owner} (const char $\ast$pathname)
+\begin{DoxyCompactList}\small\item\em print\+\_\+file\+\_\+owner \+: 打印文件的相关\+ID \end{DoxyCompactList}\item 
+void \hyperlink{stat__lstat_8h_a6a0e34a60b701b84ffded988e1485019}{print\+\_\+file\+\_\+size} (const char $\ast$pathname)
+\begin{DoxyCompactList}\small\item\em print\+\_\+file\+\_\+size \+: 打印文件大小 \end{DoxyCompactList}\item 
+void \hyperlink{stat__lstat_8h_a118710ec5d5dd5774ee841fdb0caff49}{print\+\_\+file\+\_\+link\+\_\+num} (const char $\ast$pathname)
+\begin{DoxyCompactList}\small\item\em print\+\_\+file\+\_\+link\+\_\+num \+: 打印文件硬链接数量 \end{DoxyCompactList}\item 
+void \hyperlink{stat__lstat_8h_a25271e615cce6c8f31d32093e7fdda1d}{print\+\_\+file\+\_\+time} (const char $\ast$pathname)
+\begin{DoxyCompactList}\small\item\em print\+\_\+file\+\_\+time \+: 打印文件的最后访问时间、最后修改时间、 i 节点状态的最后修改时间 \end{DoxyCompactList}\item 
+void \hyperlink{stat__lstat_8h_a121dc364ab321578d62fc34501feb3b5}{test\+\_\+stat\+\_\+lstat} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+stat\+\_\+lstat \+: 测试 stat 函数和 lstat 函数 \end{DoxyCompactList}\item 
+int \hyperlink{stat__lstat_8h_a7bcb1733a29c52776c8af89c41adcad1}{file\+\_\+is\+\_\+dir} (const char $\ast$pathname)
+\begin{DoxyCompactList}\small\item\em file\+\_\+is\+\_\+dir \+: 判断指定路径名是否是个目录 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\index{stat\+\_\+lstat.\+h@{stat\+\_\+lstat.\+h}!Stat@{Stat}}
+\index{Stat@{Stat}!stat\+\_\+lstat.\+h@{stat\+\_\+lstat.\+h}}
+\subsubsection[{\texorpdfstring{Stat}{Stat}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct stat {\bf Stat}}\hypertarget{stat__lstat_8h_a70550a334c20cfbcb7cf17e6ea6152db}{}\label{stat__lstat_8h_a70550a334c20cfbcb7cf17e6ea6152db}
+
+
+Stat \+: struct stat 的别名 
+
+
+
+\subsection{Function Documentation}
+\index{stat\+\_\+lstat.\+h@{stat\+\_\+lstat.\+h}!file\+\_\+is\+\_\+dir@{file\+\_\+is\+\_\+dir}}
+\index{file\+\_\+is\+\_\+dir@{file\+\_\+is\+\_\+dir}!stat\+\_\+lstat.\+h@{stat\+\_\+lstat.\+h}}
+\subsubsection[{\texorpdfstring{file\+\_\+is\+\_\+dir(const char $\ast$pathname)}{file_is_dir(const char *pathname)}}]{\setlength{\rightskip}{0pt plus 5cm}int file\+\_\+is\+\_\+dir (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{pathname}
+\end{DoxyParamCaption}
+)}\hypertarget{stat__lstat_8h_a7bcb1733a29c52776c8af89c41adcad1}{}\label{stat__lstat_8h_a7bcb1733a29c52776c8af89c41adcad1}
+
+
+file\+\_\+is\+\_\+dir \+: 判断指定路径名是否是个目录 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pathname} & \+: 文件名 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 如果指定文件名是目录，则返回 1 ; 如果该文件名不是目录，则返回 0; 如果异常则返回 -\/1 
+\end{DoxyReturn}
+\index{stat\+\_\+lstat.\+h@{stat\+\_\+lstat.\+h}!My\+\_\+lstat@{My\+\_\+lstat}}
+\index{My\+\_\+lstat@{My\+\_\+lstat}!stat\+\_\+lstat.\+h@{stat\+\_\+lstat.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+lstat(const char $\ast$pathname, Stat $\ast$buf)}{My_lstat(const char *pathname, Stat *buf)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+lstat (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{pathname, }
+\item[{{\bf Stat} $\ast$}]{buf}
+\end{DoxyParamCaption}
+)}\hypertarget{stat__lstat_8h_a9e3ab7cc4160e5a370753e9ebe70150a}{}\label{stat__lstat_8h_a9e3ab7cc4160e5a370753e9ebe70150a}
+
+
+My\+\_\+lstat \+: 包装了 lstat 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pathname} & \+: 传递给 lstat 函数的 pathname 参数 \\
+\hline
+{\em buf} & \+: 传递给 lstat 函数的 buf 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 lstat 函数值 
+\end{DoxyReturn}
+\index{stat\+\_\+lstat.\+h@{stat\+\_\+lstat.\+h}!My\+\_\+stat@{My\+\_\+stat}}
+\index{My\+\_\+stat@{My\+\_\+stat}!stat\+\_\+lstat.\+h@{stat\+\_\+lstat.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+stat(const char $\ast$pathname, Stat $\ast$buf)}{My_stat(const char *pathname, Stat *buf)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+stat (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{pathname, }
+\item[{{\bf Stat} $\ast$}]{buf}
+\end{DoxyParamCaption}
+)}\hypertarget{stat__lstat_8h_a1007427d76121a17457cda563ecfbc95}{}\label{stat__lstat_8h_a1007427d76121a17457cda563ecfbc95}
+
+
+My\+\_\+stat \+: 包装了 stat 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pathname} & \+: 传递给 stat 函数的 pathname 参数 \\
+\hline
+{\em buf} & \+: 传递给 stat 函数的 buf 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 stat 函数值 
+\end{DoxyReturn}
+\index{stat\+\_\+lstat.\+h@{stat\+\_\+lstat.\+h}!print\+\_\+file\+\_\+link\+\_\+num@{print\+\_\+file\+\_\+link\+\_\+num}}
+\index{print\+\_\+file\+\_\+link\+\_\+num@{print\+\_\+file\+\_\+link\+\_\+num}!stat\+\_\+lstat.\+h@{stat\+\_\+lstat.\+h}}
+\subsubsection[{\texorpdfstring{print\+\_\+file\+\_\+link\+\_\+num(const char $\ast$pathname)}{print_file_link_num(const char *pathname)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+file\+\_\+link\+\_\+num (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{pathname}
+\end{DoxyParamCaption}
+)}\hypertarget{stat__lstat_8h_a118710ec5d5dd5774ee841fdb0caff49}{}\label{stat__lstat_8h_a118710ec5d5dd5774ee841fdb0caff49}
+
+
+print\+\_\+file\+\_\+link\+\_\+num \+: 打印文件硬链接数量 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pathname} & \+: 文件名 \\
+\hline
+\end{DoxyParams}
+\index{stat\+\_\+lstat.\+h@{stat\+\_\+lstat.\+h}!print\+\_\+file\+\_\+owner@{print\+\_\+file\+\_\+owner}}
+\index{print\+\_\+file\+\_\+owner@{print\+\_\+file\+\_\+owner}!stat\+\_\+lstat.\+h@{stat\+\_\+lstat.\+h}}
+\subsubsection[{\texorpdfstring{print\+\_\+file\+\_\+owner(const char $\ast$pathname)}{print_file_owner(const char *pathname)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+file\+\_\+owner (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{pathname}
+\end{DoxyParamCaption}
+)}\hypertarget{stat__lstat_8h_a4df57b7a04542ed92d3c0bed08eebe4d}{}\label{stat__lstat_8h_a4df57b7a04542ed92d3c0bed08eebe4d}
+
+
+print\+\_\+file\+\_\+owner \+: 打印文件的相关\+ID 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pathname} & \+: 文件名 \\
+\hline
+\end{DoxyParams}
+\index{stat\+\_\+lstat.\+h@{stat\+\_\+lstat.\+h}!print\+\_\+file\+\_\+perm@{print\+\_\+file\+\_\+perm}}
+\index{print\+\_\+file\+\_\+perm@{print\+\_\+file\+\_\+perm}!stat\+\_\+lstat.\+h@{stat\+\_\+lstat.\+h}}
+\subsubsection[{\texorpdfstring{print\+\_\+file\+\_\+perm(const char $\ast$pathname)}{print_file_perm(const char *pathname)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+file\+\_\+perm (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{pathname}
+\end{DoxyParamCaption}
+)}\hypertarget{stat__lstat_8h_a12de5518f0a21dbee83be262c020bdfc}{}\label{stat__lstat_8h_a12de5518f0a21dbee83be262c020bdfc}
+
+
+print\+\_\+file\+\_\+perm \+: 打印文件的权限 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pathname} & \+: 文件名 \\
+\hline
+\end{DoxyParams}
+\index{stat\+\_\+lstat.\+h@{stat\+\_\+lstat.\+h}!print\+\_\+file\+\_\+size@{print\+\_\+file\+\_\+size}}
+\index{print\+\_\+file\+\_\+size@{print\+\_\+file\+\_\+size}!stat\+\_\+lstat.\+h@{stat\+\_\+lstat.\+h}}
+\subsubsection[{\texorpdfstring{print\+\_\+file\+\_\+size(const char $\ast$pathname)}{print_file_size(const char *pathname)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+file\+\_\+size (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{pathname}
+\end{DoxyParamCaption}
+)}\hypertarget{stat__lstat_8h_a6a0e34a60b701b84ffded988e1485019}{}\label{stat__lstat_8h_a6a0e34a60b701b84ffded988e1485019}
+
+
+print\+\_\+file\+\_\+size \+: 打印文件大小 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pathname} & \+: 文件名 \\
+\hline
+\end{DoxyParams}
+\index{stat\+\_\+lstat.\+h@{stat\+\_\+lstat.\+h}!print\+\_\+file\+\_\+time@{print\+\_\+file\+\_\+time}}
+\index{print\+\_\+file\+\_\+time@{print\+\_\+file\+\_\+time}!stat\+\_\+lstat.\+h@{stat\+\_\+lstat.\+h}}
+\subsubsection[{\texorpdfstring{print\+\_\+file\+\_\+time(const char $\ast$pathname)}{print_file_time(const char *pathname)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+file\+\_\+time (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{pathname}
+\end{DoxyParamCaption}
+)}\hypertarget{stat__lstat_8h_a25271e615cce6c8f31d32093e7fdda1d}{}\label{stat__lstat_8h_a25271e615cce6c8f31d32093e7fdda1d}
+
+
+print\+\_\+file\+\_\+time \+: 打印文件的最后访问时间、最后修改时间、 i 节点状态的最后修改时间 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pathname} & \+: 文件名 \\
+\hline
+\end{DoxyParams}
+\index{stat\+\_\+lstat.\+h@{stat\+\_\+lstat.\+h}!print\+\_\+file\+\_\+type@{print\+\_\+file\+\_\+type}}
+\index{print\+\_\+file\+\_\+type@{print\+\_\+file\+\_\+type}!stat\+\_\+lstat.\+h@{stat\+\_\+lstat.\+h}}
+\subsubsection[{\texorpdfstring{print\+\_\+file\+\_\+type(const char $\ast$pathname)}{print_file_type(const char *pathname)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+file\+\_\+type (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{pathname}
+\end{DoxyParamCaption}
+)}\hypertarget{stat__lstat_8h_aa988cd26ce91a3bd80013539d5360772}{}\label{stat__lstat_8h_aa988cd26ce91a3bd80013539d5360772}
+
+
+print\+\_\+file\+\_\+type \+: 打印文件类型 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pathname} & \+: 文件名 \\
+\hline
+\end{DoxyParams}
+\index{stat\+\_\+lstat.\+h@{stat\+\_\+lstat.\+h}!print\+\_\+mode\+\_\+perms@{print\+\_\+mode\+\_\+perms}}
+\index{print\+\_\+mode\+\_\+perms@{print\+\_\+mode\+\_\+perms}!stat\+\_\+lstat.\+h@{stat\+\_\+lstat.\+h}}
+\subsubsection[{\texorpdfstring{print\+\_\+mode\+\_\+perms(mode\+\_\+t mode, const char $\ast$file\+\_\+name)}{print_mode_perms(mode_t mode, const char *file_name)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+mode\+\_\+perms (
+\begin{DoxyParamCaption}
+\item[{mode\+\_\+t}]{mode, }
+\item[{const char $\ast$}]{file\+\_\+name}
+\end{DoxyParamCaption}
+)}\hypertarget{stat__lstat_8h_a298d29491d91d32a37ba3cff6eb4c86f}{}\label{stat__lstat_8h_a298d29491d91d32a37ba3cff6eb4c86f}
+
+
+print\+\_\+mode\+\_\+perms \+: 打印文件的权限 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & \+: mode\+\_\+t 类型 \\
+\hline
+{\em file\+\_\+name} & \+: 文件名 \\
+\hline
+\end{DoxyParams}
+\index{stat\+\_\+lstat.\+h@{stat\+\_\+lstat.\+h}!print\+\_\+stat\+\_\+owners@{print\+\_\+stat\+\_\+owners}}
+\index{print\+\_\+stat\+\_\+owners@{print\+\_\+stat\+\_\+owners}!stat\+\_\+lstat.\+h@{stat\+\_\+lstat.\+h}}
+\subsubsection[{\texorpdfstring{print\+\_\+stat\+\_\+owners(const Stat $\ast$file\+\_\+stat, const char $\ast$file\+\_\+name)}{print_stat_owners(const Stat *file_stat, const char *file_name)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+stat\+\_\+owners (
+\begin{DoxyParamCaption}
+\item[{const {\bf Stat} $\ast$}]{file\+\_\+stat, }
+\item[{const char $\ast$}]{file\+\_\+name}
+\end{DoxyParamCaption}
+)}\hypertarget{stat__lstat_8h_a4c4a82e2f1a3f878d2f004b884999ef3}{}\label{stat__lstat_8h_a4c4a82e2f1a3f878d2f004b884999ef3}
+
+
+print\+\_\+stat\+\_\+owners \+: 打印文件的相关\+ID 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+\_\+stat} & \+: 文件的 struct stat 结构 \\
+\hline
+{\em file\+\_\+name} & \+: 文件名 \\
+\hline
+\end{DoxyParams}
+\index{stat\+\_\+lstat.\+h@{stat\+\_\+lstat.\+h}!print\+\_\+stat\+\_\+type@{print\+\_\+stat\+\_\+type}}
+\index{print\+\_\+stat\+\_\+type@{print\+\_\+stat\+\_\+type}!stat\+\_\+lstat.\+h@{stat\+\_\+lstat.\+h}}
+\subsubsection[{\texorpdfstring{print\+\_\+stat\+\_\+type(const Stat $\ast$file\+\_\+stat, const char $\ast$file\+\_\+name)}{print_stat_type(const Stat *file_stat, const char *file_name)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+stat\+\_\+type (
+\begin{DoxyParamCaption}
+\item[{const {\bf Stat} $\ast$}]{file\+\_\+stat, }
+\item[{const char $\ast$}]{file\+\_\+name}
+\end{DoxyParamCaption}
+)}\hypertarget{stat__lstat_8h_a9f28cbdfbebe48f3ee6537c06d62f4f6}{}\label{stat__lstat_8h_a9f28cbdfbebe48f3ee6537c06d62f4f6}
+
+
+print\+\_\+stat\+\_\+type \+: 打印文件类型 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+\_\+stat} & \+: 文件的 struct stat 结构 \\
+\hline
+{\em file\+\_\+name} & \+: 文件名 \\
+\hline
+\end{DoxyParams}
+\index{stat\+\_\+lstat.\+h@{stat\+\_\+lstat.\+h}!test\+\_\+stat\+\_\+lstat@{test\+\_\+stat\+\_\+lstat}}
+\index{test\+\_\+stat\+\_\+lstat@{test\+\_\+stat\+\_\+lstat}!stat\+\_\+lstat.\+h@{stat\+\_\+lstat.\+h}}
+\subsubsection[{\texorpdfstring{test\+\_\+stat\+\_\+lstat()}{test_stat_lstat()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+stat\+\_\+lstat (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{stat__lstat_8h_a121dc364ab321578d62fc34501feb3b5}{}\label{stat__lstat_8h_a121dc364ab321578d62fc34501feb3b5}
+
+
+test\+\_\+stat\+\_\+lstat \+: 测试 stat 函数和 lstat 函数 
+
+其中要求 {\ttfamily /home/huaxz1986/\+A\+P\+U\+E/main.c} 文件存在 

@@ -1,0 +1,150 @@
+\hypertarget{barrier___8c}{}\section{src/11\+\_\+\+Thread/barrier\+\_\+.c File Reference}
+\label{barrier___8c}\index{src/11\+\_\+\+Thread/barrier\+\_\+.\+c@{src/11\+\_\+\+Thread/barrier\+\_\+.\+c}}
+{\ttfamily \#include \char`\"{}barrier\+\_\+.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../header.\+h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{barrier___8c_aac3b30f3d5a03315818200f88a7467b7}{My\+\_\+pthread\+\_\+barrier\+\_\+init} (pthread\+\_\+barrier\+\_\+t $\ast$\hyperlink{barrier___8c_a779bfbbb688cf46720cfb65109ea4858}{barrier}, const pthread\+\_\+barrierattr\+\_\+t $\ast$attr, int count)
+\begin{DoxyCompactList}\small\item\em My\+\_\+pthread\+\_\+barrier\+\_\+init \+: 包装了 pthread\+\_\+barrier\+\_\+init 函数 \end{DoxyCompactList}\item 
+int \hyperlink{barrier___8c_a5d4ab1d9353b2018c1ae67ad744d5000}{My\+\_\+pthread\+\_\+barrier\+\_\+destroy} (pthread\+\_\+barrier\+\_\+t $\ast$\hyperlink{barrier___8c_a779bfbbb688cf46720cfb65109ea4858}{barrier})
+\begin{DoxyCompactList}\small\item\em My\+\_\+pthread\+\_\+barrier\+\_\+destroy \+: 包装了 pthread\+\_\+barrier\+\_\+destroy 函数 \end{DoxyCompactList}\item 
+int \hyperlink{barrier___8c_a0b7d5ea22b4fa38af666f8d57a68bf4c}{My\+\_\+pthread\+\_\+barrier\+\_\+wait} (pthread\+\_\+barrier\+\_\+t $\ast$\hyperlink{barrier___8c_a779bfbbb688cf46720cfb65109ea4858}{barrier})
+\begin{DoxyCompactList}\small\item\em My\+\_\+pthread\+\_\+barrier\+\_\+wait \+: 包装了 pthread\+\_\+barrier\+\_\+wait 函数 \end{DoxyCompactList}\item 
+void \hyperlink{barrier___8c_a8a7d00c14fd678fd27174f4059038a9f}{thread\+\_\+join\+\_\+int} (pthread\+\_\+t tid, int $\ast$rval\+\_\+pptr)
+\item 
+int \hyperlink{barrier___8c_ad82c2337fd9f01a075f17bbff5568a64}{My\+\_\+pthread\+\_\+create} (pthread\+\_\+t $\ast$tidp, const pthread\+\_\+attr\+\_\+t $\ast$attr, void $\ast$($\ast$start\+\_\+rtn)(void $\ast$), void $\ast$arg)
+\item 
+static void $\ast$ \hyperlink{barrier___8c_af7d7e0f438cee37253e8678d442e0c35}{thread\+\_\+func} (void $\ast$arg)
+\begin{DoxyCompactList}\small\item\em thread\+\_\+func \+: 线程的工作例程 \end{DoxyCompactList}\item 
+void \hyperlink{barrier___8c_af0cd72e18165fcca8c170d5b0a93c99b}{test\+\_\+barrier} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+barrier \+: 测试 pthread\+\_\+barrier\+\_\+t 相关函数的用法 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static pthread\+\_\+barrier\+\_\+t \hyperlink{barrier___8c_a779bfbbb688cf46720cfb65109ea4858}{barrier}
+\begin{DoxyCompactList}\small\item\em barrier \+: 屏障 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{barrier\+\_\+.\+c@{barrier\+\_\+.\+c}!My\+\_\+pthread\+\_\+barrier\+\_\+destroy@{My\+\_\+pthread\+\_\+barrier\+\_\+destroy}}
+\index{My\+\_\+pthread\+\_\+barrier\+\_\+destroy@{My\+\_\+pthread\+\_\+barrier\+\_\+destroy}!barrier\+\_\+.\+c@{barrier\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+pthread\+\_\+barrier\+\_\+destroy(pthread\+\_\+barrier\+\_\+t $\ast$barrier)}{My_pthread_barrier_destroy(pthread_barrier_t *barrier)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+pthread\+\_\+barrier\+\_\+destroy (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+barrier\+\_\+t $\ast$}]{barrier}
+\end{DoxyParamCaption}
+)}\hypertarget{barrier___8c_a5d4ab1d9353b2018c1ae67ad744d5000}{}\label{barrier___8c_a5d4ab1d9353b2018c1ae67ad744d5000}
+
+
+My\+\_\+pthread\+\_\+barrier\+\_\+destroy \+: 包装了 pthread\+\_\+barrier\+\_\+destroy 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em barrier} & \+: 传递给 pthread\+\_\+barrier\+\_\+destroy 函数的 barrier 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 pthread\+\_\+barrier\+\_\+destroy 函数的值 
+\end{DoxyReturn}
+\index{barrier\+\_\+.\+c@{barrier\+\_\+.\+c}!My\+\_\+pthread\+\_\+barrier\+\_\+init@{My\+\_\+pthread\+\_\+barrier\+\_\+init}}
+\index{My\+\_\+pthread\+\_\+barrier\+\_\+init@{My\+\_\+pthread\+\_\+barrier\+\_\+init}!barrier\+\_\+.\+c@{barrier\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+pthread\+\_\+barrier\+\_\+init(pthread\+\_\+barrier\+\_\+t $\ast$barrier, const pthread\+\_\+barrierattr\+\_\+t $\ast$attr, int count)}{My_pthread_barrier_init(pthread_barrier_t *barrier, const pthread_barrierattr_t *attr, int count)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+pthread\+\_\+barrier\+\_\+init (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+barrier\+\_\+t $\ast$}]{barrier, }
+\item[{const pthread\+\_\+barrierattr\+\_\+t $\ast$}]{attr, }
+\item[{int}]{count}
+\end{DoxyParamCaption}
+)}\hypertarget{barrier___8c_aac3b30f3d5a03315818200f88a7467b7}{}\label{barrier___8c_aac3b30f3d5a03315818200f88a7467b7}
+
+
+My\+\_\+pthread\+\_\+barrier\+\_\+init \+: 包装了 pthread\+\_\+barrier\+\_\+init 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em barrier} & \+: 传递给 pthread\+\_\+barrier\+\_\+init 函数的 barrier 参数 \\
+\hline
+{\em attr} & \+: 传递给 pthread\+\_\+barrier\+\_\+init 函数的 attr 参数 \\
+\hline
+{\em count} & \+: 传递给 pthread\+\_\+barrier\+\_\+init 函数的 count 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 pthread\+\_\+barrier\+\_\+init 函数的值 
+\end{DoxyReturn}
+\index{barrier\+\_\+.\+c@{barrier\+\_\+.\+c}!My\+\_\+pthread\+\_\+barrier\+\_\+wait@{My\+\_\+pthread\+\_\+barrier\+\_\+wait}}
+\index{My\+\_\+pthread\+\_\+barrier\+\_\+wait@{My\+\_\+pthread\+\_\+barrier\+\_\+wait}!barrier\+\_\+.\+c@{barrier\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+pthread\+\_\+barrier\+\_\+wait(pthread\+\_\+barrier\+\_\+t $\ast$barrier)}{My_pthread_barrier_wait(pthread_barrier_t *barrier)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+pthread\+\_\+barrier\+\_\+wait (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+barrier\+\_\+t $\ast$}]{barrier}
+\end{DoxyParamCaption}
+)}\hypertarget{barrier___8c_a0b7d5ea22b4fa38af666f8d57a68bf4c}{}\label{barrier___8c_a0b7d5ea22b4fa38af666f8d57a68bf4c}
+
+
+My\+\_\+pthread\+\_\+barrier\+\_\+wait \+: 包装了 pthread\+\_\+barrier\+\_\+wait 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em barrier} & \+: 传递给 pthread\+\_\+barrier\+\_\+wait 函数的 barrier 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 pthread\+\_\+barrier\+\_\+wait 函数的值 
+\end{DoxyReturn}
+\index{barrier\+\_\+.\+c@{barrier\+\_\+.\+c}!My\+\_\+pthread\+\_\+create@{My\+\_\+pthread\+\_\+create}}
+\index{My\+\_\+pthread\+\_\+create@{My\+\_\+pthread\+\_\+create}!barrier\+\_\+.\+c@{barrier\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+pthread\+\_\+create(pthread\+\_\+t $\ast$tidp, const pthread\+\_\+attr\+\_\+t $\ast$attr, void $\ast$($\ast$start\+\_\+rtn)(void $\ast$), void $\ast$arg)}{My_pthread_create(pthread_t *tidp, const pthread_attr_t *attr, void *(*start_rtn)(void *), void *arg)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+pthread\+\_\+create (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+t $\ast$}]{tidp, }
+\item[{const pthread\+\_\+attr\+\_\+t $\ast$}]{attr, }
+\item[{void $\ast$($\ast$)(void $\ast$)}]{start\+\_\+rtn, }
+\item[{void $\ast$}]{arg}
+\end{DoxyParamCaption}
+)}\hypertarget{barrier___8c_ad82c2337fd9f01a075f17bbff5568a64}{}\label{barrier___8c_ad82c2337fd9f01a075f17bbff5568a64}
+\index{barrier\+\_\+.\+c@{barrier\+\_\+.\+c}!test\+\_\+barrier@{test\+\_\+barrier}}
+\index{test\+\_\+barrier@{test\+\_\+barrier}!barrier\+\_\+.\+c@{barrier\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{test\+\_\+barrier()}{test_barrier()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+barrier (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{barrier___8c_af0cd72e18165fcca8c170d5b0a93c99b}{}\label{barrier___8c_af0cd72e18165fcca8c170d5b0a93c99b}
+
+
+test\+\_\+barrier \+: 测试 pthread\+\_\+barrier\+\_\+t 相关函数的用法 
+
+\index{barrier\+\_\+.\+c@{barrier\+\_\+.\+c}!thread\+\_\+func@{thread\+\_\+func}}
+\index{thread\+\_\+func@{thread\+\_\+func}!barrier\+\_\+.\+c@{barrier\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{thread\+\_\+func(void $\ast$arg)}{thread_func(void *arg)}}]{\setlength{\rightskip}{0pt plus 5cm}static void$\ast$ thread\+\_\+func (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{arg}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{barrier___8c_af7d7e0f438cee37253e8678d442e0c35}{}\label{barrier___8c_af7d7e0f438cee37253e8678d442e0c35}
+
+
+thread\+\_\+func \+: 线程的工作例程 
+
+
+\begin{DoxyParams}{Parameters}
+{\em arg} & \+: 参数，这里没有用处 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+:0 
+\end{DoxyReturn}
+\index{barrier\+\_\+.\+c@{barrier\+\_\+.\+c}!thread\+\_\+join\+\_\+int@{thread\+\_\+join\+\_\+int}}
+\index{thread\+\_\+join\+\_\+int@{thread\+\_\+join\+\_\+int}!barrier\+\_\+.\+c@{barrier\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{thread\+\_\+join\+\_\+int(pthread\+\_\+t tid, int $\ast$rval\+\_\+pptr)}{thread_join_int(pthread_t tid, int *rval_pptr)}}]{\setlength{\rightskip}{0pt plus 5cm}void thread\+\_\+join\+\_\+int (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+t}]{tid, }
+\item[{int $\ast$}]{rval\+\_\+pptr}
+\end{DoxyParamCaption}
+)}\hypertarget{barrier___8c_a8a7d00c14fd678fd27174f4059038a9f}{}\label{barrier___8c_a8a7d00c14fd678fd27174f4059038a9f}
+
+
+\subsection{Variable Documentation}
+\index{barrier\+\_\+.\+c@{barrier\+\_\+.\+c}!barrier@{barrier}}
+\index{barrier@{barrier}!barrier\+\_\+.\+c@{barrier\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{barrier}{barrier}}]{\setlength{\rightskip}{0pt plus 5cm}pthread\+\_\+barrier\+\_\+t barrier\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{barrier___8c_a779bfbbb688cf46720cfb65109ea4858}{}\label{barrier___8c_a779bfbbb688cf46720cfb65109ea4858}
+
+
+barrier \+: 屏障 
+

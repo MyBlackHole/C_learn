@@ -1,0 +1,7 @@
+executable("strcasecmp_test") {
+  cflags = ["-g"]
+
+  sources = [
+    "strcasecmp_test.c",
+  ]
+}

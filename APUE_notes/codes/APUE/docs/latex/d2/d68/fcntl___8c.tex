@@ -1,0 +1,240 @@
+\hypertarget{fcntl___8c}{}\section{src/3\+\_\+\+File\+\_\+\+I\+O/fcntl\+\_\+.c File Reference}
+\label{fcntl___8c}\index{src/3\+\_\+\+File\+\_\+\+I\+O/fcntl\+\_\+.\+c@{src/3\+\_\+\+File\+\_\+\+I\+O/fcntl\+\_\+.\+c}}
+{\ttfamily \#include \char`\"{}fcntl\+\_\+.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../header.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$fcntl.\+h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{fcntl___8c_a109174695052377dc9f748ea2fb4a999}{My\+\_\+open} (const char $\ast$path, int oflag)
+\item 
+int \hyperlink{fcntl___8c_aeca2d2b9d985fc7b3e50a7b30b385e82}{My\+\_\+fcntl\+\_\+\+D\+U\+P\+FD} (int fd, int arg)
+\begin{DoxyCompactList}\small\item\em My\+\_\+fcntl\+\_\+\+D\+U\+P\+FD \+: 包装了 fcntl 函数：fcntl 之复制文件描述符命令（ F\+\_\+\+D\+U\+P\+FD) \end{DoxyCompactList}\item 
+int \hyperlink{fcntl___8c_a0ee687cca8fe179c998be585a1571fe6}{My\+\_\+fcntl\+\_\+\+D\+U\+P\+F\+D\+\_\+\+C\+L\+O\+E\+X\+EC} (int fd, int arg)
+\begin{DoxyCompactList}\small\item\em My\+\_\+fcntl\+\_\+\+D\+U\+P\+F\+D\+\_\+\+C\+L\+O\+E\+X\+EC \+: 包装了 fcntl 函数：fcntl 之复制文件描述符命令（ F\+\_\+\+D\+U\+P\+F\+D\+\_\+\+C\+L\+O\+E\+X\+EC ) \end{DoxyCompactList}\item 
+int \hyperlink{fcntl___8c_a5dc770712606a34c8bb55d159aeb7750}{My\+\_\+fcntl\+\_\+\+G\+E\+T\+FD} (int fd)
+\begin{DoxyCompactList}\small\item\em My\+\_\+fcntl\+\_\+\+G\+E\+T\+FD \+: 包装了 fcntl 函数： fcntl 之获取文件描述符标志命令（ F\+\_\+\+G\+E\+T\+FD) \end{DoxyCompactList}\item 
+int \hyperlink{fcntl___8c_ad39b4673110fe7eb59b306294216ab44}{My\+\_\+fcntl\+\_\+\+S\+E\+T\+FD} (int fd, int arg)
+\begin{DoxyCompactList}\small\item\em My\+\_\+fcntl\+\_\+\+S\+E\+T\+FD \+: 包装了 fcntl 函数：fcntl 之设置文件描述符标志命令（ F\+\_\+\+G\+E\+T\+FD) \end{DoxyCompactList}\item 
+int \hyperlink{fcntl___8c_a09230f90888d32a1ef31079b645fb665}{My\+\_\+fcntl\+\_\+\+G\+E\+T\+FL} (int fd)
+\begin{DoxyCompactList}\small\item\em My\+\_\+fcntl\+\_\+\+G\+E\+T\+FL \+: 包装了 fcntl 函数： fcntl 之获取文件状态标志命令（ F\+\_\+\+G\+E\+T\+FL) \end{DoxyCompactList}\item 
+int \hyperlink{fcntl___8c_a08ef2a7210c19526cbae4ad314717560}{My\+\_\+fcntl\+\_\+\+S\+E\+T\+FL} (int fd, int arg)
+\begin{DoxyCompactList}\small\item\em My\+\_\+fcntl\+\_\+\+S\+E\+T\+FL \+: 包装了 fcntl 函数： fcntl 之设置文件状态标志命令（ F\+\_\+\+G\+E\+T\+FL) \end{DoxyCompactList}\item 
+int \hyperlink{fcntl___8c_a70a2540aeacb256d84a9ed78a671aaf4}{My\+\_\+fcntl\+\_\+\+G\+E\+T\+O\+WN} (int fd)
+\begin{DoxyCompactList}\small\item\em My\+\_\+fcntl\+\_\+\+G\+E\+T\+O\+WN \+: 包装了 fcntl 函数： fcntl 之获取接收{\ttfamily S\+I\+G\+IO}和{\ttfamily S\+I\+G\+U\+RG}信号进程命令 (F\+\_\+\+G\+E\+T\+O\+WN) \end{DoxyCompactList}\item 
+int \hyperlink{fcntl___8c_a70158cc21f180d8d1136a97e89b236f5}{My\+\_\+fcntl\+\_\+\+S\+E\+T\+O\+WN} (int fd, int arg)
+\begin{DoxyCompactList}\small\item\em My\+\_\+fcntl\+\_\+\+S\+E\+T\+O\+WN \+: 包装了 fcntl 函数：fcntl 之设置接收{\ttfamily S\+I\+G\+IO}和{\ttfamily S\+I\+G\+U\+RG}信号进程命令 (F\+\_\+\+G\+E\+T\+O\+WN) \end{DoxyCompactList}\item 
+void \hyperlink{fcntl___8c_a2e350613d5f2aa52d95ed3a3cf4e8bd4}{print\+\_\+fl} (int fd, int flag)
+\begin{DoxyCompactList}\small\item\em print\+\_\+fl \+: 打印文件描述符 fd 的文件状态标志 \end{DoxyCompactList}\item 
+void \hyperlink{fcntl___8c_a32cd07c149dd213c585622c90bf1e769}{test\+\_\+fcntl} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+fcntl \+: 测试 fcntl 函数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{fcntl\+\_\+.\+c@{fcntl\+\_\+.\+c}!My\+\_\+fcntl\+\_\+\+D\+U\+P\+FD@{My\+\_\+fcntl\+\_\+\+D\+U\+P\+FD}}
+\index{My\+\_\+fcntl\+\_\+\+D\+U\+P\+FD@{My\+\_\+fcntl\+\_\+\+D\+U\+P\+FD}!fcntl\+\_\+.\+c@{fcntl\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+fcntl\+\_\+\+D\+U\+P\+F\+D(int fd, int arg)}{My_fcntl_DUPFD(int fd, int arg)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+fcntl\+\_\+\+D\+U\+P\+FD (
+\begin{DoxyParamCaption}
+\item[{int}]{fd, }
+\item[{int}]{arg}
+\end{DoxyParamCaption}
+)}\hypertarget{fcntl___8c_aeca2d2b9d985fc7b3e50a7b30b385e82}{}\label{fcntl___8c_aeca2d2b9d985fc7b3e50a7b30b385e82}
+
+
+My\+\_\+fcntl\+\_\+\+D\+U\+P\+FD \+: 包装了 fcntl 函数：fcntl 之复制文件描述符命令（ F\+\_\+\+D\+U\+P\+FD) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fd} & \+: 待复制的文件描述符 \\
+\hline
+{\em arg} & \+: 新的文件描述符是尚未打开的文件描述符中大于或等于arg 中的最小值 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+： 成功：一个新的文件描述符，其中 F\+D\+\_\+\+C\+L\+O\+E\+X\+EC 标志被清除；失败： -\/1 
+\end{DoxyReturn}
+\index{fcntl\+\_\+.\+c@{fcntl\+\_\+.\+c}!My\+\_\+fcntl\+\_\+\+D\+U\+P\+F\+D\+\_\+\+C\+L\+O\+E\+X\+EC@{My\+\_\+fcntl\+\_\+\+D\+U\+P\+F\+D\+\_\+\+C\+L\+O\+E\+X\+EC}}
+\index{My\+\_\+fcntl\+\_\+\+D\+U\+P\+F\+D\+\_\+\+C\+L\+O\+E\+X\+EC@{My\+\_\+fcntl\+\_\+\+D\+U\+P\+F\+D\+\_\+\+C\+L\+O\+E\+X\+EC}!fcntl\+\_\+.\+c@{fcntl\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+fcntl\+\_\+\+D\+U\+P\+F\+D\+\_\+\+C\+L\+O\+E\+X\+E\+C(int fd, int arg)}{My_fcntl_DUPFD_CLOEXEC(int fd, int arg)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+fcntl\+\_\+\+D\+U\+P\+F\+D\+\_\+\+C\+L\+O\+E\+X\+EC (
+\begin{DoxyParamCaption}
+\item[{int}]{fd, }
+\item[{int}]{arg}
+\end{DoxyParamCaption}
+)}\hypertarget{fcntl___8c_a0ee687cca8fe179c998be585a1571fe6}{}\label{fcntl___8c_a0ee687cca8fe179c998be585a1571fe6}
+
+
+My\+\_\+fcntl\+\_\+\+D\+U\+P\+F\+D\+\_\+\+C\+L\+O\+E\+X\+EC \+: 包装了 fcntl 函数：fcntl 之复制文件描述符命令（ F\+\_\+\+D\+U\+P\+F\+D\+\_\+\+C\+L\+O\+E\+X\+EC ) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fd} & \+: 待复制的文件描述符 \\
+\hline
+{\em arg} & \+: 新的文件描述符是尚未打开的文件描述符中大于或等于arg 中的最小值 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+： 成功：一个新的文件描述符，其中 F\+D\+\_\+\+C\+L\+O\+E\+X\+EC 标志被设置；失败： -\/1 
+\end{DoxyReturn}
+\index{fcntl\+\_\+.\+c@{fcntl\+\_\+.\+c}!My\+\_\+fcntl\+\_\+\+G\+E\+T\+FD@{My\+\_\+fcntl\+\_\+\+G\+E\+T\+FD}}
+\index{My\+\_\+fcntl\+\_\+\+G\+E\+T\+FD@{My\+\_\+fcntl\+\_\+\+G\+E\+T\+FD}!fcntl\+\_\+.\+c@{fcntl\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+fcntl\+\_\+\+G\+E\+T\+F\+D(int fd)}{My_fcntl_GETFD(int fd)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+fcntl\+\_\+\+G\+E\+T\+FD (
+\begin{DoxyParamCaption}
+\item[{int}]{fd}
+\end{DoxyParamCaption}
+)}\hypertarget{fcntl___8c_a5dc770712606a34c8bb55d159aeb7750}{}\label{fcntl___8c_a5dc770712606a34c8bb55d159aeb7750}
+
+
+My\+\_\+fcntl\+\_\+\+G\+E\+T\+FD \+: 包装了 fcntl 函数： fcntl 之获取文件描述符标志命令（ F\+\_\+\+G\+E\+T\+FD) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fd} & \+: 待获取的文件描述符 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+： 成功：文件描述符的标志（目前仅有 F\+D\+\_\+\+C\+L\+O\+E\+XE 标志）；失败： -\/1 
+\end{DoxyReturn}
+\index{fcntl\+\_\+.\+c@{fcntl\+\_\+.\+c}!My\+\_\+fcntl\+\_\+\+G\+E\+T\+FL@{My\+\_\+fcntl\+\_\+\+G\+E\+T\+FL}}
+\index{My\+\_\+fcntl\+\_\+\+G\+E\+T\+FL@{My\+\_\+fcntl\+\_\+\+G\+E\+T\+FL}!fcntl\+\_\+.\+c@{fcntl\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+fcntl\+\_\+\+G\+E\+T\+F\+L(int fd)}{My_fcntl_GETFL(int fd)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+fcntl\+\_\+\+G\+E\+T\+FL (
+\begin{DoxyParamCaption}
+\item[{int}]{fd}
+\end{DoxyParamCaption}
+)}\hypertarget{fcntl___8c_a09230f90888d32a1ef31079b645fb665}{}\label{fcntl___8c_a09230f90888d32a1ef31079b645fb665}
+
+
+My\+\_\+fcntl\+\_\+\+G\+E\+T\+FL \+: 包装了 fcntl 函数： fcntl 之获取文件状态标志命令（ F\+\_\+\+G\+E\+T\+FL) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fd} & \+: 待获取的文件描述符 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 成功：文件状态标志（如读写方式、阻塞方式、同步方式等）；失败： 返回 -\/1 
+\end{DoxyReturn}
+\index{fcntl\+\_\+.\+c@{fcntl\+\_\+.\+c}!My\+\_\+fcntl\+\_\+\+G\+E\+T\+O\+WN@{My\+\_\+fcntl\+\_\+\+G\+E\+T\+O\+WN}}
+\index{My\+\_\+fcntl\+\_\+\+G\+E\+T\+O\+WN@{My\+\_\+fcntl\+\_\+\+G\+E\+T\+O\+WN}!fcntl\+\_\+.\+c@{fcntl\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+fcntl\+\_\+\+G\+E\+T\+O\+W\+N(int fd)}{My_fcntl_GETOWN(int fd)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+fcntl\+\_\+\+G\+E\+T\+O\+WN (
+\begin{DoxyParamCaption}
+\item[{int}]{fd}
+\end{DoxyParamCaption}
+)}\hypertarget{fcntl___8c_a70a2540aeacb256d84a9ed78a671aaf4}{}\label{fcntl___8c_a70a2540aeacb256d84a9ed78a671aaf4}
+
+
+My\+\_\+fcntl\+\_\+\+G\+E\+T\+O\+WN \+: 包装了 fcntl 函数： fcntl 之获取接收{\ttfamily S\+I\+G\+IO}和{\ttfamily S\+I\+G\+U\+RG}信号进程命令 (F\+\_\+\+G\+E\+T\+O\+WN) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fd} & \+: 待获取的文件描述符 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+： 成功：接收{\ttfamily S\+I\+G\+IO}和{\ttfamily S\+I\+G\+U\+RG}信号的进程或者进程组 ； 失败： 返回 -\/1 
+\end{DoxyReturn}
+\index{fcntl\+\_\+.\+c@{fcntl\+\_\+.\+c}!My\+\_\+fcntl\+\_\+\+S\+E\+T\+FD@{My\+\_\+fcntl\+\_\+\+S\+E\+T\+FD}}
+\index{My\+\_\+fcntl\+\_\+\+S\+E\+T\+FD@{My\+\_\+fcntl\+\_\+\+S\+E\+T\+FD}!fcntl\+\_\+.\+c@{fcntl\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+fcntl\+\_\+\+S\+E\+T\+F\+D(int fd, int arg)}{My_fcntl_SETFD(int fd, int arg)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+fcntl\+\_\+\+S\+E\+T\+FD (
+\begin{DoxyParamCaption}
+\item[{int}]{fd, }
+\item[{int}]{arg}
+\end{DoxyParamCaption}
+)}\hypertarget{fcntl___8c_ad39b4673110fe7eb59b306294216ab44}{}\label{fcntl___8c_ad39b4673110fe7eb59b306294216ab44}
+
+
+My\+\_\+fcntl\+\_\+\+S\+E\+T\+FD \+: 包装了 fcntl 函数：fcntl 之设置文件描述符标志命令（ F\+\_\+\+G\+E\+T\+FD) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fd} & \+: 待设置的文件描述符 \\
+\hline
+{\em arg} & ： 文件描述符的标志（目前仅有 F\+D\+\_\+\+C\+L\+O\+E\+XE 标志） \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+： 成功： 返回非 -\/1； 失败： 返回 -\/1 
+\end{DoxyReturn}
+\index{fcntl\+\_\+.\+c@{fcntl\+\_\+.\+c}!My\+\_\+fcntl\+\_\+\+S\+E\+T\+FL@{My\+\_\+fcntl\+\_\+\+S\+E\+T\+FL}}
+\index{My\+\_\+fcntl\+\_\+\+S\+E\+T\+FL@{My\+\_\+fcntl\+\_\+\+S\+E\+T\+FL}!fcntl\+\_\+.\+c@{fcntl\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+fcntl\+\_\+\+S\+E\+T\+F\+L(int fd, int arg)}{My_fcntl_SETFL(int fd, int arg)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+fcntl\+\_\+\+S\+E\+T\+FL (
+\begin{DoxyParamCaption}
+\item[{int}]{fd, }
+\item[{int}]{arg}
+\end{DoxyParamCaption}
+)}\hypertarget{fcntl___8c_a08ef2a7210c19526cbae4ad314717560}{}\label{fcntl___8c_a08ef2a7210c19526cbae4ad314717560}
+
+
+My\+\_\+fcntl\+\_\+\+S\+E\+T\+FL \+: 包装了 fcntl 函数： fcntl 之设置文件状态标志命令（ F\+\_\+\+G\+E\+T\+FL) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fd} & \+: 待设置的文件描述符 \\
+\hline
+{\em arg} & ： 文件状态标志 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+： 成功： 返回非 -\/1； 失败： 返回 -\/1 
+\end{DoxyReturn}
+\index{fcntl\+\_\+.\+c@{fcntl\+\_\+.\+c}!My\+\_\+fcntl\+\_\+\+S\+E\+T\+O\+WN@{My\+\_\+fcntl\+\_\+\+S\+E\+T\+O\+WN}}
+\index{My\+\_\+fcntl\+\_\+\+S\+E\+T\+O\+WN@{My\+\_\+fcntl\+\_\+\+S\+E\+T\+O\+WN}!fcntl\+\_\+.\+c@{fcntl\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+fcntl\+\_\+\+S\+E\+T\+O\+W\+N(int fd, int arg)}{My_fcntl_SETOWN(int fd, int arg)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+fcntl\+\_\+\+S\+E\+T\+O\+WN (
+\begin{DoxyParamCaption}
+\item[{int}]{fd, }
+\item[{int}]{arg}
+\end{DoxyParamCaption}
+)}\hypertarget{fcntl___8c_a70158cc21f180d8d1136a97e89b236f5}{}\label{fcntl___8c_a70158cc21f180d8d1136a97e89b236f5}
+
+
+My\+\_\+fcntl\+\_\+\+S\+E\+T\+O\+WN \+: 包装了 fcntl 函数：fcntl 之设置接收{\ttfamily S\+I\+G\+IO}和{\ttfamily S\+I\+G\+U\+RG}信号进程命令 (F\+\_\+\+G\+E\+T\+O\+WN) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fd} & \+: 待设置的文件描述符 \\
+\hline
+{\em arg} & \+: 如果是正数，则设定进程 I\+D；如果是负数，则设定进程组 ID \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 成功：返回非 -\/1 ； 失败 ： 返回 -\/1 
+\end{DoxyReturn}
+\index{fcntl\+\_\+.\+c@{fcntl\+\_\+.\+c}!My\+\_\+open@{My\+\_\+open}}
+\index{My\+\_\+open@{My\+\_\+open}!fcntl\+\_\+.\+c@{fcntl\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+open(const char $\ast$path, int oflag)}{My_open(const char *path, int oflag)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+open (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{path, }
+\item[{int}]{oflag}
+\end{DoxyParamCaption}
+)}\hypertarget{fcntl___8c_a109174695052377dc9f748ea2fb4a999}{}\label{fcntl___8c_a109174695052377dc9f748ea2fb4a999}
+\index{fcntl\+\_\+.\+c@{fcntl\+\_\+.\+c}!print\+\_\+fl@{print\+\_\+fl}}
+\index{print\+\_\+fl@{print\+\_\+fl}!fcntl\+\_\+.\+c@{fcntl\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+fl(int fd, int flag)}{print_fl(int fd, int flag)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+fl (
+\begin{DoxyParamCaption}
+\item[{int}]{fd, }
+\item[{int}]{flag}
+\end{DoxyParamCaption}
+)}\hypertarget{fcntl___8c_a2e350613d5f2aa52d95ed3a3cf4e8bd4}{}\label{fcntl___8c_a2e350613d5f2aa52d95ed3a3cf4e8bd4}
+
+
+print\+\_\+fl \+: 打印文件描述符 fd 的文件状态标志 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fd} & \+: 文件描述符 \\
+\hline
+{\em flag} & \+: 文件状态标志 \\
+\hline
+\end{DoxyParams}
+\index{fcntl\+\_\+.\+c@{fcntl\+\_\+.\+c}!test\+\_\+fcntl@{test\+\_\+fcntl}}
+\index{test\+\_\+fcntl@{test\+\_\+fcntl}!fcntl\+\_\+.\+c@{fcntl\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{test\+\_\+fcntl()}{test_fcntl()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+fcntl (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{fcntl___8c_a32cd07c149dd213c585622c90bf1e769}{}\label{fcntl___8c_a32cd07c149dd213c585622c90bf1e769}
+
+
+test\+\_\+fcntl \+: 测试 fcntl 函数 
+

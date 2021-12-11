@@ -1,0 +1,162 @@
+\hypertarget{sigsetjmp__siglongjmp_8c}{}\section{src/10\+\_\+\+Signal/sigsetjmp\+\_\+siglongjmp.c File Reference}
+\label{sigsetjmp__siglongjmp_8c}\index{src/10\+\_\+\+Signal/sigsetjmp\+\_\+siglongjmp.\+c@{src/10\+\_\+\+Signal/sigsetjmp\+\_\+siglongjmp.\+c}}
+{\ttfamily \#include \char`\"{}sigsetjmp\+\_\+siglongjmp.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../header.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$signal.\+h$>$}\\*
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef void \hyperlink{sigsetjmp__siglongjmp_8c_a41f7fa3cd174bb624d8b38ed224ab7d6}{Hanlder\+\_\+\+Func}(int signo, siginfo\+\_\+t $\ast$info, void $\ast$context)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{sigsetjmp__siglongjmp_8c_a6c60e9cf92940b1663341506a00d9480}{print\+\_\+sigset} (const sigset\+\_\+t $\ast$set)
+\begin{DoxyCompactList}\small\item\em print\+\_\+sigset \+: 打印信号集 \end{DoxyCompactList}\item 
+void \hyperlink{sigsetjmp__siglongjmp_8c_a37c389f4a689b58ea68d4913fb5ce162}{print\+\_\+progress\+\_\+pending\+\_\+sigset} ()
+\begin{DoxyCompactList}\small\item\em print\+\_\+progress\+\_\+pending\+\_\+sigset \+: 打印进程当前的未决的信号集 \end{DoxyCompactList}\item 
+void \hyperlink{sigsetjmp__siglongjmp_8c_af363bcba14e0b539c6882eee591d0580}{print\+\_\+progress\+\_\+mask\+\_\+sigset} ()
+\begin{DoxyCompactList}\small\item\em print\+\_\+progress\+\_\+mask\+\_\+sigset \+: 打印进程当前的信号屏蔽字 \end{DoxyCompactList}\item 
+void \hyperlink{sigsetjmp__siglongjmp_8c_aec229dbc1924b697e5e6b55d598399ed}{add\+\_\+sigaction} (int signo, sigset\+\_\+t $\ast$set, int no\+\_\+deffer, int restart, \hyperlink{sleep__nanosleep_8c_a41f7fa3cd174bb624d8b38ed224ab7d6}{Hanlder\+\_\+\+Func} handler)
+\begin{DoxyCompactList}\small\item\em add\+\_\+sigaction \+: 添加信号处理函数 \end{DoxyCompactList}\item 
+static void \hyperlink{sigsetjmp__siglongjmp_8c_aab33dde15dc4bfdfa3410f3dd9af4a57}{sig\+\_\+print} (int signo, siginfo\+\_\+t $\ast$info, void $\ast$context)
+\begin{DoxyCompactList}\small\item\em sig\+\_\+print \+: 信号处理函数 \end{DoxyCompactList}\item 
+void \hyperlink{sigsetjmp__siglongjmp_8c_ae7eb8489a147c3a35d480ecb5a1c3fac}{print\+\_\+sigjmp\+\_\+buf} (const sigjmp\+\_\+buf \hyperlink{sigsetjmp__siglongjmp_8c_a629714dad0da26c99604ee616c3c4d55}{env})
+\begin{DoxyCompactList}\small\item\em print\+\_\+sigjmp\+\_\+buf \+: 打印 sigjmp\+\_\+buf 对象 \end{DoxyCompactList}\item 
+void \hyperlink{sigsetjmp__siglongjmp_8c_a839b23e46af3407bd254dddd2afa2724}{test\+\_\+sigsetjmp\+\_\+siglongjmp} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+sigsetjmp\+\_\+siglongjmp \+:测试 sigsetjmp 函数、 siglongjmp 函数的用法 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static sigjmp\+\_\+buf \hyperlink{sigsetjmp__siglongjmp_8c_a629714dad0da26c99604ee616c3c4d55}{env}
+\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\index{sigsetjmp\+\_\+siglongjmp.\+c@{sigsetjmp\+\_\+siglongjmp.\+c}!Hanlder\+\_\+\+Func@{Hanlder\+\_\+\+Func}}
+\index{Hanlder\+\_\+\+Func@{Hanlder\+\_\+\+Func}!sigsetjmp\+\_\+siglongjmp.\+c@{sigsetjmp\+\_\+siglongjmp.\+c}}
+\subsubsection[{\texorpdfstring{Hanlder\+\_\+\+Func}{Hanlder_Func}}]{\setlength{\rightskip}{0pt plus 5cm}typedef void Hanlder\+\_\+\+Func(int signo, siginfo\+\_\+t $\ast$info, void $\ast$context)}\hypertarget{sigsetjmp__siglongjmp_8c_a41f7fa3cd174bb624d8b38ed224ab7d6}{}\label{sigsetjmp__siglongjmp_8c_a41f7fa3cd174bb624d8b38ed224ab7d6}
+
+
+\subsection{Function Documentation}
+\index{sigsetjmp\+\_\+siglongjmp.\+c@{sigsetjmp\+\_\+siglongjmp.\+c}!add\+\_\+sigaction@{add\+\_\+sigaction}}
+\index{add\+\_\+sigaction@{add\+\_\+sigaction}!sigsetjmp\+\_\+siglongjmp.\+c@{sigsetjmp\+\_\+siglongjmp.\+c}}
+\subsubsection[{\texorpdfstring{add\+\_\+sigaction(int signo, sigset\+\_\+t $\ast$set, int no\+\_\+deffer, int restart, Hanlder\+\_\+\+Func handler)}{add_sigaction(int signo, sigset_t *set, int no_deffer, int restart, Hanlder_Func handler)}}]{\setlength{\rightskip}{0pt plus 5cm}void add\+\_\+sigaction (
+\begin{DoxyParamCaption}
+\item[{int}]{signo, }
+\item[{sigset\+\_\+t $\ast$}]{set, }
+\item[{int}]{no\+\_\+deffer, }
+\item[{int}]{restart, }
+\item[{{\bf Hanlder\+\_\+\+Func}}]{handler}
+\end{DoxyParamCaption}
+)}\hypertarget{sigsetjmp__siglongjmp_8c_aec229dbc1924b697e5e6b55d598399ed}{}\label{sigsetjmp__siglongjmp_8c_aec229dbc1924b697e5e6b55d598399ed}
+
+
+add\+\_\+sigaction \+: 添加信号处理函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em signo} & \+: 信号值 \\
+\hline
+{\em set} & \+: 指向 sigset\+\_\+t 的指针 \\
+\hline
+{\em no\+\_\+deffer} & \+: 非 0 则表示在执行其信号处理函数时，系统并不自动阻塞此信号 \\
+\hline
+{\em restart} & \+: 为 0 表示不自动重启中断的系统调用；非0表示自动重启被中断的系统 \\
+\hline
+{\em handler} & \+: 信号处理函数 \\
+\hline
+\end{DoxyParams}
+\index{sigsetjmp\+\_\+siglongjmp.\+c@{sigsetjmp\+\_\+siglongjmp.\+c}!print\+\_\+progress\+\_\+mask\+\_\+sigset@{print\+\_\+progress\+\_\+mask\+\_\+sigset}}
+\index{print\+\_\+progress\+\_\+mask\+\_\+sigset@{print\+\_\+progress\+\_\+mask\+\_\+sigset}!sigsetjmp\+\_\+siglongjmp.\+c@{sigsetjmp\+\_\+siglongjmp.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+progress\+\_\+mask\+\_\+sigset()}{print_progress_mask_sigset()}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+progress\+\_\+mask\+\_\+sigset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{sigsetjmp__siglongjmp_8c_af363bcba14e0b539c6882eee591d0580}{}\label{sigsetjmp__siglongjmp_8c_af363bcba14e0b539c6882eee591d0580}
+
+
+print\+\_\+progress\+\_\+mask\+\_\+sigset \+: 打印进程当前的信号屏蔽字 
+
+\index{sigsetjmp\+\_\+siglongjmp.\+c@{sigsetjmp\+\_\+siglongjmp.\+c}!print\+\_\+progress\+\_\+pending\+\_\+sigset@{print\+\_\+progress\+\_\+pending\+\_\+sigset}}
+\index{print\+\_\+progress\+\_\+pending\+\_\+sigset@{print\+\_\+progress\+\_\+pending\+\_\+sigset}!sigsetjmp\+\_\+siglongjmp.\+c@{sigsetjmp\+\_\+siglongjmp.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+progress\+\_\+pending\+\_\+sigset()}{print_progress_pending_sigset()}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+progress\+\_\+pending\+\_\+sigset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{sigsetjmp__siglongjmp_8c_a37c389f4a689b58ea68d4913fb5ce162}{}\label{sigsetjmp__siglongjmp_8c_a37c389f4a689b58ea68d4913fb5ce162}
+
+
+print\+\_\+progress\+\_\+pending\+\_\+sigset \+: 打印进程当前的未决的信号集 
+
+\index{sigsetjmp\+\_\+siglongjmp.\+c@{sigsetjmp\+\_\+siglongjmp.\+c}!print\+\_\+sigjmp\+\_\+buf@{print\+\_\+sigjmp\+\_\+buf}}
+\index{print\+\_\+sigjmp\+\_\+buf@{print\+\_\+sigjmp\+\_\+buf}!sigsetjmp\+\_\+siglongjmp.\+c@{sigsetjmp\+\_\+siglongjmp.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+sigjmp\+\_\+buf(const sigjmp\+\_\+buf env)}{print_sigjmp_buf(const sigjmp_buf env)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+sigjmp\+\_\+buf (
+\begin{DoxyParamCaption}
+\item[{const sigjmp\+\_\+buf}]{env}
+\end{DoxyParamCaption}
+)}\hypertarget{sigsetjmp__siglongjmp_8c_ae7eb8489a147c3a35d480ecb5a1c3fac}{}\label{sigsetjmp__siglongjmp_8c_ae7eb8489a147c3a35d480ecb5a1c3fac}
+
+
+print\+\_\+sigjmp\+\_\+buf \+: 打印 sigjmp\+\_\+buf 对象 
+
+
+\begin{DoxyParams}{Parameters}
+{\em env} & \+: 待打印的 sigjmp\+\_\+buf 对象 \\
+\hline
+\end{DoxyParams}
+\index{sigsetjmp\+\_\+siglongjmp.\+c@{sigsetjmp\+\_\+siglongjmp.\+c}!print\+\_\+sigset@{print\+\_\+sigset}}
+\index{print\+\_\+sigset@{print\+\_\+sigset}!sigsetjmp\+\_\+siglongjmp.\+c@{sigsetjmp\+\_\+siglongjmp.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+sigset(const sigset\+\_\+t $\ast$set)}{print_sigset(const sigset_t *set)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+sigset (
+\begin{DoxyParamCaption}
+\item[{const sigset\+\_\+t $\ast$}]{set}
+\end{DoxyParamCaption}
+)}\hypertarget{sigsetjmp__siglongjmp_8c_a6c60e9cf92940b1663341506a00d9480}{}\label{sigsetjmp__siglongjmp_8c_a6c60e9cf92940b1663341506a00d9480}
+
+
+print\+\_\+sigset \+: 打印信号集 
+
+
+\begin{DoxyParams}{Parameters}
+{\em set} & \+: 指向信号集的指针 \\
+\hline
+\end{DoxyParams}
+\index{sigsetjmp\+\_\+siglongjmp.\+c@{sigsetjmp\+\_\+siglongjmp.\+c}!sig\+\_\+print@{sig\+\_\+print}}
+\index{sig\+\_\+print@{sig\+\_\+print}!sigsetjmp\+\_\+siglongjmp.\+c@{sigsetjmp\+\_\+siglongjmp.\+c}}
+\subsubsection[{\texorpdfstring{sig\+\_\+print(int signo, siginfo\+\_\+t $\ast$info, void $\ast$context)}{sig_print(int signo, siginfo_t *info, void *context)}}]{\setlength{\rightskip}{0pt plus 5cm}static void sig\+\_\+print (
+\begin{DoxyParamCaption}
+\item[{int}]{signo, }
+\item[{siginfo\+\_\+t $\ast$}]{info, }
+\item[{void $\ast$}]{context}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{sigsetjmp__siglongjmp_8c_aab33dde15dc4bfdfa3410f3dd9af4a57}{}\label{sigsetjmp__siglongjmp_8c_aab33dde15dc4bfdfa3410f3dd9af4a57}
+
+
+sig\+\_\+print \+: 信号处理函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em signo} & \+: 信号值 \\
+\hline
+{\em info} & \+: 指向 siginfo\+\_\+t 的指针 \\
+\hline
+{\em context} & \+: 指向 ucontext\+\_\+t $\ast$ 的指针 \\
+\hline
+\end{DoxyParams}
+\index{sigsetjmp\+\_\+siglongjmp.\+c@{sigsetjmp\+\_\+siglongjmp.\+c}!test\+\_\+sigsetjmp\+\_\+siglongjmp@{test\+\_\+sigsetjmp\+\_\+siglongjmp}}
+\index{test\+\_\+sigsetjmp\+\_\+siglongjmp@{test\+\_\+sigsetjmp\+\_\+siglongjmp}!sigsetjmp\+\_\+siglongjmp.\+c@{sigsetjmp\+\_\+siglongjmp.\+c}}
+\subsubsection[{\texorpdfstring{test\+\_\+sigsetjmp\+\_\+siglongjmp()}{test_sigsetjmp_siglongjmp()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+sigsetjmp\+\_\+siglongjmp (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{sigsetjmp__siglongjmp_8c_a839b23e46af3407bd254dddd2afa2724}{}\label{sigsetjmp__siglongjmp_8c_a839b23e46af3407bd254dddd2afa2724}
+
+
+test\+\_\+sigsetjmp\+\_\+siglongjmp \+:测试 sigsetjmp 函数、 siglongjmp 函数的用法 
+
+
+
+\subsection{Variable Documentation}
+\index{sigsetjmp\+\_\+siglongjmp.\+c@{sigsetjmp\+\_\+siglongjmp.\+c}!env@{env}}
+\index{env@{env}!sigsetjmp\+\_\+siglongjmp.\+c@{sigsetjmp\+\_\+siglongjmp.\+c}}
+\subsubsection[{\texorpdfstring{env}{env}}]{\setlength{\rightskip}{0pt plus 5cm}sigjmp\+\_\+buf env\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{sigsetjmp__siglongjmp_8c_a629714dad0da26c99604ee616c3c4d55}{}\label{sigsetjmp__siglongjmp_8c_a629714dad0da26c99604ee616c3c4d55}

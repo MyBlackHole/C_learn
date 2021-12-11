@@ -1,0 +1,397 @@
+\hypertarget{get__put__seek_8c}{}\section{src/5\+\_\+\+Std\+\_\+\+I\+O/get\+\_\+put\+\_\+seek.c File Reference}
+\label{get__put__seek_8c}\index{src/5\+\_\+\+Std\+\_\+\+I\+O/get\+\_\+put\+\_\+seek.\+c@{src/5\+\_\+\+Std\+\_\+\+I\+O/get\+\_\+put\+\_\+seek.\+c}}
+{\ttfamily \#include \char`\"{}get\+\_\+put\+\_\+seek.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../header.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}fcntl.\+h\char`\"{}}\\*
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_struct___data}{Struct\+\_\+\+Data}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+F\+I\+LE $\ast$ \hyperlink{get__put__seek_8c_a70ffcac29605cd1d62df44da9cb5540f}{My\+\_\+fopen} (const char $\ast$pathname, const char $\ast$type)
+\begin{DoxyCompactList}\small\item\em My\+\_\+fopen \+: 包装了 fopen 函数 \end{DoxyCompactList}\item 
+static \hyperlink{get__put__seek_8c_aafb8a53868efd5f592055e9c56d102fd}{print\+\_\+struct} (struct \hyperlink{struct_struct___data}{Struct\+\_\+\+Data} $\ast$data\+\_\+p)
+\item 
+static \hyperlink{get__put__seek_8c_a66e47855193ee317ae7804779992d40e}{print\+\_\+struct\+\_\+buffer} (struct \hyperlink{struct_struct___data}{Struct\+\_\+\+Data} $\ast$buffer, int n)
+\item 
+int \hyperlink{get__put__seek_8c_a77dbbd582df0dd29895ca88b10bd85d4}{My\+\_\+fgetc} (F\+I\+LE $\ast$fp)
+\begin{DoxyCompactList}\small\item\em My\+\_\+fgetc \+: 包装了 getc 函数 \end{DoxyCompactList}\item 
+int \hyperlink{get__put__seek_8c_a525fcc2cc1100327a6b0da07d2b7bd98}{My\+\_\+ferror} (F\+I\+LE $\ast$fp)
+\begin{DoxyCompactList}\small\item\em My\+\_\+ferror \+: 包装了 ferror 函数 \end{DoxyCompactList}\item 
+int \hyperlink{get__put__seek_8c_adb796c329a03a025bcc4fac1c10c2d7e}{My\+\_\+feof} (F\+I\+LE $\ast$fp)
+\begin{DoxyCompactList}\small\item\em My\+\_\+feof \+: 包装了 feof 函数 \end{DoxyCompactList}\item 
+int \hyperlink{get__put__seek_8c_acf3b8e84c8ecd1db5191c8a29c8f5edb}{My\+\_\+ungetc} (int c, F\+I\+LE $\ast$fp)
+\begin{DoxyCompactList}\small\item\em My\+\_\+ungetc \+: 包装了 ungetc 函数 \end{DoxyCompactList}\item 
+int \hyperlink{get__put__seek_8c_ab92b996a0c3dbbe4b048b21999941320}{My\+\_\+fputc} (int c, F\+I\+LE $\ast$fp)
+\begin{DoxyCompactList}\small\item\em My\+\_\+fputc \+: 包装了 fputc 函数 \end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{get__put__seek_8c_a423660e9a8413cb96e09c17274457c5b}{My\+\_\+fgets} (char $\ast$\hyperlink{setjmp__longjmp_8c_a02df3e2f0291bf06f3a685829975efec}{buf}, int n, F\+I\+LE $\ast$fp)
+\begin{DoxyCompactList}\small\item\em fgets \+: 包装了 fgets 函数 \end{DoxyCompactList}\item 
+int \hyperlink{get__put__seek_8c_a6ce6e9f96d907946ab30c27087906be2}{My\+\_\+fputs} (const char $\ast$str, F\+I\+LE $\ast$fp)
+\begin{DoxyCompactList}\small\item\em My\+\_\+fputs \+: 包装了 fputs 函数 \end{DoxyCompactList}\item 
+size\+\_\+t \hyperlink{get__put__seek_8c_a2726469a34cb5af6e74a9fae65fe7795}{My\+\_\+fread} (void $\ast$ptr, size\+\_\+t size, size\+\_\+t nobj, F\+I\+LE $\ast$fp)
+\begin{DoxyCompactList}\small\item\em My\+\_\+fread \+: 包装了 fread 函数 \end{DoxyCompactList}\item 
+size\+\_\+t \hyperlink{get__put__seek_8c_a96299dd1ec63ed4ae6eca4d4465ea9d6}{My\+\_\+fwrite} (const void $\ast$ptr, size\+\_\+t size, size\+\_\+t nobj, F\+I\+LE $\ast$fp)
+\begin{DoxyCompactList}\small\item\em My\+\_\+fwrite \+: 包装了 fwrite 函数 \end{DoxyCompactList}\item 
+off\+\_\+t \hyperlink{get__put__seek_8c_ab675ddebcebfdafd405d81f306e5684a}{My\+\_\+ftello} (F\+I\+LE $\ast$fp)
+\begin{DoxyCompactList}\small\item\em My\+\_\+ftello \+: 包装了 ftello 函数 \end{DoxyCompactList}\item 
+int \hyperlink{get__put__seek_8c_a15abfd4bde5f8c7268f2a85475947a0d}{My\+\_\+fseeko} (F\+I\+LE $\ast$fp, off\+\_\+t offset, int whence)
+\begin{DoxyCompactList}\small\item\em My\+\_\+fseeko \+: 包装了 fseeko 函数 \end{DoxyCompactList}\item 
+void \hyperlink{get__put__seek_8c_a6b850327036bc29ef16b2c867b81e1b0}{\+\_\+test\+\_\+read\+\_\+write\+\_\+char} (F\+I\+LE $\ast$fp)
+\begin{DoxyCompactList}\small\item\em test\+\_\+read\+\_\+write\+\_\+char \+: 测试读写单个字符 \end{DoxyCompactList}\item 
+void \hyperlink{get__put__seek_8c_adf8039a18827a928d7e699a15f1afd66}{\+\_\+test\+\_\+read\+\_\+write\+\_\+line} (F\+I\+LE $\ast$fp)
+\begin{DoxyCompactList}\small\item\em test\+\_\+read\+\_\+write\+\_\+line \+: 测试读写字符串 \end{DoxyCompactList}\item 
+void \hyperlink{get__put__seek_8c_abbc7f0182a39b96e92e701b0def39d74}{\+\_\+test\+\_\+read\+\_\+write\+\_\+binary} (F\+I\+LE $\ast$fp)
+\begin{DoxyCompactList}\small\item\em test\+\_\+read\+\_\+write\+\_\+binary \+: 测试读写二进制对象 \end{DoxyCompactList}\item 
+void \hyperlink{get__put__seek_8c_a93e524a9d0d4c0884440d07ee271096d}{test\+\_\+get\+\_\+put\+\_\+seek} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+get\+\_\+put\+\_\+seek \+: 测试 fgetc 函数、 fputc 函数、 fgets 函数、 fputs 函数 ... \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{get\+\_\+put\+\_\+seek.\+c@{get\+\_\+put\+\_\+seek.\+c}!\+\_\+test\+\_\+read\+\_\+write\+\_\+binary@{\+\_\+test\+\_\+read\+\_\+write\+\_\+binary}}
+\index{\+\_\+test\+\_\+read\+\_\+write\+\_\+binary@{\+\_\+test\+\_\+read\+\_\+write\+\_\+binary}!get\+\_\+put\+\_\+seek.\+c@{get\+\_\+put\+\_\+seek.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+test\+\_\+read\+\_\+write\+\_\+binary(\+F\+I\+L\+E $\ast$fp)}{_test_read_write_binary(FILE *fp)}}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+test\+\_\+read\+\_\+write\+\_\+binary (
+\begin{DoxyParamCaption}
+\item[{F\+I\+LE $\ast$}]{fp}
+\end{DoxyParamCaption}
+)}\hypertarget{get__put__seek_8c_abbc7f0182a39b96e92e701b0def39d74}{}\label{get__put__seek_8c_abbc7f0182a39b96e92e701b0def39d74}
+
+
+test\+\_\+read\+\_\+write\+\_\+binary \+: 测试读写二进制对象 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fp} & \+: F\+I\+LE 对象指针 \\
+\hline
+\end{DoxyParams}
+\index{get\+\_\+put\+\_\+seek.\+c@{get\+\_\+put\+\_\+seek.\+c}!\+\_\+test\+\_\+read\+\_\+write\+\_\+char@{\+\_\+test\+\_\+read\+\_\+write\+\_\+char}}
+\index{\+\_\+test\+\_\+read\+\_\+write\+\_\+char@{\+\_\+test\+\_\+read\+\_\+write\+\_\+char}!get\+\_\+put\+\_\+seek.\+c@{get\+\_\+put\+\_\+seek.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+test\+\_\+read\+\_\+write\+\_\+char(\+F\+I\+L\+E $\ast$fp)}{_test_read_write_char(FILE *fp)}}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+test\+\_\+read\+\_\+write\+\_\+char (
+\begin{DoxyParamCaption}
+\item[{F\+I\+LE $\ast$}]{fp}
+\end{DoxyParamCaption}
+)}\hypertarget{get__put__seek_8c_a6b850327036bc29ef16b2c867b81e1b0}{}\label{get__put__seek_8c_a6b850327036bc29ef16b2c867b81e1b0}
+
+
+test\+\_\+read\+\_\+write\+\_\+char \+: 测试读写单个字符 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fp} & \+: F\+I\+LE 对象指针 \\
+\hline
+\end{DoxyParams}
+\index{get\+\_\+put\+\_\+seek.\+c@{get\+\_\+put\+\_\+seek.\+c}!\+\_\+test\+\_\+read\+\_\+write\+\_\+line@{\+\_\+test\+\_\+read\+\_\+write\+\_\+line}}
+\index{\+\_\+test\+\_\+read\+\_\+write\+\_\+line@{\+\_\+test\+\_\+read\+\_\+write\+\_\+line}!get\+\_\+put\+\_\+seek.\+c@{get\+\_\+put\+\_\+seek.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+test\+\_\+read\+\_\+write\+\_\+line(\+F\+I\+L\+E $\ast$fp)}{_test_read_write_line(FILE *fp)}}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+test\+\_\+read\+\_\+write\+\_\+line (
+\begin{DoxyParamCaption}
+\item[{F\+I\+LE $\ast$}]{fp}
+\end{DoxyParamCaption}
+)}\hypertarget{get__put__seek_8c_adf8039a18827a928d7e699a15f1afd66}{}\label{get__put__seek_8c_adf8039a18827a928d7e699a15f1afd66}
+
+
+test\+\_\+read\+\_\+write\+\_\+line \+: 测试读写字符串 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fp} & \+: F\+I\+LE 对象指针 \\
+\hline
+\end{DoxyParams}
+\index{get\+\_\+put\+\_\+seek.\+c@{get\+\_\+put\+\_\+seek.\+c}!My\+\_\+feof@{My\+\_\+feof}}
+\index{My\+\_\+feof@{My\+\_\+feof}!get\+\_\+put\+\_\+seek.\+c@{get\+\_\+put\+\_\+seek.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+feof(\+F\+I\+L\+E $\ast$fp)}{My_feof(FILE *fp)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+feof (
+\begin{DoxyParamCaption}
+\item[{F\+I\+LE $\ast$}]{fp}
+\end{DoxyParamCaption}
+)}\hypertarget{get__put__seek_8c_adb796c329a03a025bcc4fac1c10c2d7e}{}\label{get__put__seek_8c_adb796c329a03a025bcc4fac1c10c2d7e}
+
+
+My\+\_\+feof \+: 包装了 feof 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fp} & \+: 传递给 feof 函数的 fp 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 feof 函数的值 
+\end{DoxyReturn}
+\index{get\+\_\+put\+\_\+seek.\+c@{get\+\_\+put\+\_\+seek.\+c}!My\+\_\+ferror@{My\+\_\+ferror}}
+\index{My\+\_\+ferror@{My\+\_\+ferror}!get\+\_\+put\+\_\+seek.\+c@{get\+\_\+put\+\_\+seek.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+ferror(\+F\+I\+L\+E $\ast$fp)}{My_ferror(FILE *fp)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+ferror (
+\begin{DoxyParamCaption}
+\item[{F\+I\+LE $\ast$}]{fp}
+\end{DoxyParamCaption}
+)}\hypertarget{get__put__seek_8c_a525fcc2cc1100327a6b0da07d2b7bd98}{}\label{get__put__seek_8c_a525fcc2cc1100327a6b0da07d2b7bd98}
+
+
+My\+\_\+ferror \+: 包装了 ferror 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fp} & \+: 传递给 ferror 函数的 fp 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 ferror 函数的值 
+\end{DoxyReturn}
+\index{get\+\_\+put\+\_\+seek.\+c@{get\+\_\+put\+\_\+seek.\+c}!My\+\_\+fgetc@{My\+\_\+fgetc}}
+\index{My\+\_\+fgetc@{My\+\_\+fgetc}!get\+\_\+put\+\_\+seek.\+c@{get\+\_\+put\+\_\+seek.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+fgetc(\+F\+I\+L\+E $\ast$fp)}{My_fgetc(FILE *fp)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+fgetc (
+\begin{DoxyParamCaption}
+\item[{F\+I\+LE $\ast$}]{fp}
+\end{DoxyParamCaption}
+)}\hypertarget{get__put__seek_8c_a77dbbd582df0dd29895ca88b10bd85d4}{}\label{get__put__seek_8c_a77dbbd582df0dd29895ca88b10bd85d4}
+
+
+My\+\_\+fgetc \+: 包装了 getc 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fp} & \+: 传递给 getc 函数的 fp 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 getc 函数的值 
+\end{DoxyReturn}
+\index{get\+\_\+put\+\_\+seek.\+c@{get\+\_\+put\+\_\+seek.\+c}!My\+\_\+fgets@{My\+\_\+fgets}}
+\index{My\+\_\+fgets@{My\+\_\+fgets}!get\+\_\+put\+\_\+seek.\+c@{get\+\_\+put\+\_\+seek.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+fgets(char $\ast$buf, int n, F\+I\+L\+E $\ast$fp)}{My_fgets(char *buf, int n, FILE *fp)}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ My\+\_\+fgets (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{buf, }
+\item[{int}]{n, }
+\item[{F\+I\+LE $\ast$}]{fp}
+\end{DoxyParamCaption}
+)}\hypertarget{get__put__seek_8c_a423660e9a8413cb96e09c17274457c5b}{}\label{get__put__seek_8c_a423660e9a8413cb96e09c17274457c5b}
+
+
+fgets \+: 包装了 fgets 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buf} & \+: 传递给 fgets 函数的 buf 参数 \\
+\hline
+{\em n} & \+: 传递给 fgets 函数的 n 参数 \\
+\hline
+{\em fp} & \+: 传递给 fgets 函数的 fp 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 fgets 函数的值 
+\end{DoxyReturn}
+\index{get\+\_\+put\+\_\+seek.\+c@{get\+\_\+put\+\_\+seek.\+c}!My\+\_\+fopen@{My\+\_\+fopen}}
+\index{My\+\_\+fopen@{My\+\_\+fopen}!get\+\_\+put\+\_\+seek.\+c@{get\+\_\+put\+\_\+seek.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+fopen(const char $\ast$pathname, const char $\ast$type)}{My_fopen(const char *pathname, const char *type)}}]{\setlength{\rightskip}{0pt plus 5cm}F\+I\+LE$\ast$ My\+\_\+fopen (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{pathname, }
+\item[{const char $\ast$}]{type}
+\end{DoxyParamCaption}
+)}\hypertarget{get__put__seek_8c_a70ffcac29605cd1d62df44da9cb5540f}{}\label{get__put__seek_8c_a70ffcac29605cd1d62df44da9cb5540f}
+
+
+My\+\_\+fopen \+: 包装了 fopen 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pathname} & \+: 传递给 fopen 函数的 pathname 参数 \\
+\hline
+{\em type} & \+: 传递给 fopen 函数的 type 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 fopen 函数的值 
+\end{DoxyReturn}
+\index{get\+\_\+put\+\_\+seek.\+c@{get\+\_\+put\+\_\+seek.\+c}!My\+\_\+fputc@{My\+\_\+fputc}}
+\index{My\+\_\+fputc@{My\+\_\+fputc}!get\+\_\+put\+\_\+seek.\+c@{get\+\_\+put\+\_\+seek.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+fputc(int c, F\+I\+L\+E $\ast$fp)}{My_fputc(int c, FILE *fp)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+fputc (
+\begin{DoxyParamCaption}
+\item[{int}]{c, }
+\item[{F\+I\+LE $\ast$}]{fp}
+\end{DoxyParamCaption}
+)}\hypertarget{get__put__seek_8c_ab92b996a0c3dbbe4b048b21999941320}{}\label{get__put__seek_8c_ab92b996a0c3dbbe4b048b21999941320}
+
+
+My\+\_\+fputc \+: 包装了 fputc 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & \+: 传递给 fputc 函数的 c 参数 \\
+\hline
+{\em fp} & \+: 传递给 fputc 函数的 fp 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 fputc 函数的值 
+\end{DoxyReturn}
+\index{get\+\_\+put\+\_\+seek.\+c@{get\+\_\+put\+\_\+seek.\+c}!My\+\_\+fputs@{My\+\_\+fputs}}
+\index{My\+\_\+fputs@{My\+\_\+fputs}!get\+\_\+put\+\_\+seek.\+c@{get\+\_\+put\+\_\+seek.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+fputs(const char $\ast$str, F\+I\+L\+E $\ast$fp)}{My_fputs(const char *str, FILE *fp)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+fputs (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{str, }
+\item[{F\+I\+LE $\ast$}]{fp}
+\end{DoxyParamCaption}
+)}\hypertarget{get__put__seek_8c_a6ce6e9f96d907946ab30c27087906be2}{}\label{get__put__seek_8c_a6ce6e9f96d907946ab30c27087906be2}
+
+
+My\+\_\+fputs \+: 包装了 fputs 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & \+: 传递给 fputs 函数的 str 参数 \\
+\hline
+{\em fp} & \+: 传递给 fputs 函数的 fp 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 fputs 函数的值 
+\end{DoxyReturn}
+\index{get\+\_\+put\+\_\+seek.\+c@{get\+\_\+put\+\_\+seek.\+c}!My\+\_\+fread@{My\+\_\+fread}}
+\index{My\+\_\+fread@{My\+\_\+fread}!get\+\_\+put\+\_\+seek.\+c@{get\+\_\+put\+\_\+seek.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+fread(void $\ast$ptr, size\+\_\+t size, size\+\_\+t nobj, F\+I\+L\+E $\ast$fp)}{My_fread(void *ptr, size_t size, size_t nobj, FILE *fp)}}]{\setlength{\rightskip}{0pt plus 5cm}size\+\_\+t My\+\_\+fread (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{ptr, }
+\item[{size\+\_\+t}]{size, }
+\item[{size\+\_\+t}]{nobj, }
+\item[{F\+I\+LE $\ast$}]{fp}
+\end{DoxyParamCaption}
+)}\hypertarget{get__put__seek_8c_a2726469a34cb5af6e74a9fae65fe7795}{}\label{get__put__seek_8c_a2726469a34cb5af6e74a9fae65fe7795}
+
+
+My\+\_\+fread \+: 包装了 fread 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ptr} & \+: 传递给 fread 函数的 ptr 参数 \\
+\hline
+{\em size} & \+: 传递给 fread 函数的 size 参数 \\
+\hline
+{\em nobj} & \+: 传递给 fread 函数的 nobj 参数 \\
+\hline
+{\em fp} & \+: 传递给 fread 函数的 fp 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 fread 函数的值 
+\end{DoxyReturn}
+\index{get\+\_\+put\+\_\+seek.\+c@{get\+\_\+put\+\_\+seek.\+c}!My\+\_\+fseeko@{My\+\_\+fseeko}}
+\index{My\+\_\+fseeko@{My\+\_\+fseeko}!get\+\_\+put\+\_\+seek.\+c@{get\+\_\+put\+\_\+seek.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+fseeko(\+F\+I\+L\+E $\ast$fp, off\+\_\+t offset, int whence)}{My_fseeko(FILE *fp, off_t offset, int whence)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+fseeko (
+\begin{DoxyParamCaption}
+\item[{F\+I\+LE $\ast$}]{fp, }
+\item[{off\+\_\+t}]{offset, }
+\item[{int}]{whence}
+\end{DoxyParamCaption}
+)}\hypertarget{get__put__seek_8c_a15abfd4bde5f8c7268f2a85475947a0d}{}\label{get__put__seek_8c_a15abfd4bde5f8c7268f2a85475947a0d}
+
+
+My\+\_\+fseeko \+: 包装了 fseeko 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fp} & \+: 传递给 fseeko 函数的 fp 参数 \\
+\hline
+{\em offset} & \+: 传递给 fseeko 函数的 offset 参数 \\
+\hline
+{\em whence} & \+: 传递给 fseeko 函数的 whence 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 fseeko 函数的值 
+\end{DoxyReturn}
+\index{get\+\_\+put\+\_\+seek.\+c@{get\+\_\+put\+\_\+seek.\+c}!My\+\_\+ftello@{My\+\_\+ftello}}
+\index{My\+\_\+ftello@{My\+\_\+ftello}!get\+\_\+put\+\_\+seek.\+c@{get\+\_\+put\+\_\+seek.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+ftello(\+F\+I\+L\+E $\ast$fp)}{My_ftello(FILE *fp)}}]{\setlength{\rightskip}{0pt plus 5cm}off\+\_\+t My\+\_\+ftello (
+\begin{DoxyParamCaption}
+\item[{F\+I\+LE $\ast$}]{fp}
+\end{DoxyParamCaption}
+)}\hypertarget{get__put__seek_8c_ab675ddebcebfdafd405d81f306e5684a}{}\label{get__put__seek_8c_ab675ddebcebfdafd405d81f306e5684a}
+
+
+My\+\_\+ftello \+: 包装了 ftello 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fp} & \+: 传递给 ftello 函数的 fp 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 ftello 函数的值 
+\end{DoxyReturn}
+\index{get\+\_\+put\+\_\+seek.\+c@{get\+\_\+put\+\_\+seek.\+c}!My\+\_\+fwrite@{My\+\_\+fwrite}}
+\index{My\+\_\+fwrite@{My\+\_\+fwrite}!get\+\_\+put\+\_\+seek.\+c@{get\+\_\+put\+\_\+seek.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+fwrite(const void $\ast$ptr, size\+\_\+t size, size\+\_\+t nobj, F\+I\+L\+E $\ast$fp)}{My_fwrite(const void *ptr, size_t size, size_t nobj, FILE *fp)}}]{\setlength{\rightskip}{0pt plus 5cm}size\+\_\+t My\+\_\+fwrite (
+\begin{DoxyParamCaption}
+\item[{const void $\ast$}]{ptr, }
+\item[{size\+\_\+t}]{size, }
+\item[{size\+\_\+t}]{nobj, }
+\item[{F\+I\+LE $\ast$}]{fp}
+\end{DoxyParamCaption}
+)}\hypertarget{get__put__seek_8c_a96299dd1ec63ed4ae6eca4d4465ea9d6}{}\label{get__put__seek_8c_a96299dd1ec63ed4ae6eca4d4465ea9d6}
+
+
+My\+\_\+fwrite \+: 包装了 fwrite 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ptr} & \+: 传递给 fwrite 函数的 ptr 参数 \\
+\hline
+{\em size} & \+: 传递给 fwrite 函数的 size 参数 \\
+\hline
+{\em nobj} & \+: 传递给 fwrite 函数的 nobj 参数 \\
+\hline
+{\em fp} & \+: 传递给 fwrite 函数的 fp 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 fwrite 函数的值 
+\end{DoxyReturn}
+\index{get\+\_\+put\+\_\+seek.\+c@{get\+\_\+put\+\_\+seek.\+c}!My\+\_\+ungetc@{My\+\_\+ungetc}}
+\index{My\+\_\+ungetc@{My\+\_\+ungetc}!get\+\_\+put\+\_\+seek.\+c@{get\+\_\+put\+\_\+seek.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+ungetc(int c, F\+I\+L\+E $\ast$fp)}{My_ungetc(int c, FILE *fp)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+ungetc (
+\begin{DoxyParamCaption}
+\item[{int}]{c, }
+\item[{F\+I\+LE $\ast$}]{fp}
+\end{DoxyParamCaption}
+)}\hypertarget{get__put__seek_8c_acf3b8e84c8ecd1db5191c8a29c8f5edb}{}\label{get__put__seek_8c_acf3b8e84c8ecd1db5191c8a29c8f5edb}
+
+
+My\+\_\+ungetc \+: 包装了 ungetc 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & \+: 传递给 ungetc 函数的 c 参数 \\
+\hline
+{\em fp} & \+: 传递给 ungetc 函数的 fp 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 ungetc 函数的值 
+\end{DoxyReturn}
+\index{get\+\_\+put\+\_\+seek.\+c@{get\+\_\+put\+\_\+seek.\+c}!print\+\_\+struct@{print\+\_\+struct}}
+\index{print\+\_\+struct@{print\+\_\+struct}!get\+\_\+put\+\_\+seek.\+c@{get\+\_\+put\+\_\+seek.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+struct(struct Struct\+\_\+\+Data $\ast$data\+\_\+p)}{print_struct(struct Struct_Data *data_p)}}]{\setlength{\rightskip}{0pt plus 5cm}static print\+\_\+struct (
+\begin{DoxyParamCaption}
+\item[{struct {\bf Struct\+\_\+\+Data} $\ast$}]{data\+\_\+p}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{get__put__seek_8c_aafb8a53868efd5f592055e9c56d102fd}{}\label{get__put__seek_8c_aafb8a53868efd5f592055e9c56d102fd}
+\index{get\+\_\+put\+\_\+seek.\+c@{get\+\_\+put\+\_\+seek.\+c}!print\+\_\+struct\+\_\+buffer@{print\+\_\+struct\+\_\+buffer}}
+\index{print\+\_\+struct\+\_\+buffer@{print\+\_\+struct\+\_\+buffer}!get\+\_\+put\+\_\+seek.\+c@{get\+\_\+put\+\_\+seek.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+struct\+\_\+buffer(struct Struct\+\_\+\+Data $\ast$buffer, int n)}{print_struct_buffer(struct Struct_Data *buffer, int n)}}]{\setlength{\rightskip}{0pt plus 5cm}static print\+\_\+struct\+\_\+buffer (
+\begin{DoxyParamCaption}
+\item[{struct {\bf Struct\+\_\+\+Data} $\ast$}]{buffer, }
+\item[{int}]{n}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{get__put__seek_8c_a66e47855193ee317ae7804779992d40e}{}\label{get__put__seek_8c_a66e47855193ee317ae7804779992d40e}
+\index{get\+\_\+put\+\_\+seek.\+c@{get\+\_\+put\+\_\+seek.\+c}!test\+\_\+get\+\_\+put\+\_\+seek@{test\+\_\+get\+\_\+put\+\_\+seek}}
+\index{test\+\_\+get\+\_\+put\+\_\+seek@{test\+\_\+get\+\_\+put\+\_\+seek}!get\+\_\+put\+\_\+seek.\+c@{get\+\_\+put\+\_\+seek.\+c}}
+\subsubsection[{\texorpdfstring{test\+\_\+get\+\_\+put\+\_\+seek()}{test_get_put_seek()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+get\+\_\+put\+\_\+seek (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{get__put__seek_8c_a93e524a9d0d4c0884440d07ee271096d}{}\label{get__put__seek_8c_a93e524a9d0d4c0884440d07ee271096d}
+
+
+test\+\_\+get\+\_\+put\+\_\+seek \+: 测试 fgetc 函数、 fputc 函数、 fgets 函数、 fputs 函数 ... 
+
+等函数的用法 

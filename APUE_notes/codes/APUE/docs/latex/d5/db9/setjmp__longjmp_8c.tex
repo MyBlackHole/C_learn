@@ -1,0 +1,67 @@
+\hypertarget{setjmp__longjmp_8c}{}\section{src/7\+\_\+\+Progress\+\_\+\+Env/setjmp\+\_\+longjmp.c File Reference}
+\label{setjmp__longjmp_8c}\index{src/7\+\_\+\+Progress\+\_\+\+Env/setjmp\+\_\+longjmp.\+c@{src/7\+\_\+\+Progress\+\_\+\+Env/setjmp\+\_\+longjmp.\+c}}
+{\ttfamily \#include \char`\"{}setjmp\+\_\+longjmp.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../header.\+h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{setjmp__longjmp_8c_a91d6afb96a1c91aca4adffb6ebc53000}{print\+\_\+jmp\+\_\+buf} (const jmp\+\_\+buf \hyperlink{sigsetjmp__siglongjmp_8c_a629714dad0da26c99604ee616c3c4d55}{env})
+\begin{DoxyCompactList}\small\item\em print\+\_\+jmp\+\_\+buf \+: 打印 jmp\+\_\+buf 对象 \end{DoxyCompactList}\item 
+void \hyperlink{setjmp__longjmp_8c_a91155c688d9388f1400a3c45aa6839e8}{My\+\_\+longjmp} (jmp\+\_\+buf \hyperlink{sigsetjmp__siglongjmp_8c_a629714dad0da26c99604ee616c3c4d55}{env}, int val)
+\item 
+void \hyperlink{setjmp__longjmp_8c_aa4d13e2e19ca08b146d725e9336abdb8}{test\+\_\+setjmp\+\_\+longjmp} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+setjmp\+\_\+longjmp \+:测试 setjmp 函数、 longjmp 函数的用法 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static jmp\+\_\+buf \hyperlink{setjmp__longjmp_8c_a02df3e2f0291bf06f3a685829975efec}{buf}
+\item 
+static int \hyperlink{setjmp__longjmp_8c_a86bf3e45b97134e4d4be9ca6fc1947d8}{global\+\_\+int}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{setjmp\+\_\+longjmp.\+c@{setjmp\+\_\+longjmp.\+c}!My\+\_\+longjmp@{My\+\_\+longjmp}}
+\index{My\+\_\+longjmp@{My\+\_\+longjmp}!setjmp\+\_\+longjmp.\+c@{setjmp\+\_\+longjmp.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+longjmp(jmp\+\_\+buf env, int val)}{My_longjmp(jmp_buf env, int val)}}]{\setlength{\rightskip}{0pt plus 5cm}void My\+\_\+longjmp (
+\begin{DoxyParamCaption}
+\item[{jmp\+\_\+buf}]{env, }
+\item[{int}]{val}
+\end{DoxyParamCaption}
+)}\hypertarget{setjmp__longjmp_8c_a91155c688d9388f1400a3c45aa6839e8}{}\label{setjmp__longjmp_8c_a91155c688d9388f1400a3c45aa6839e8}
+\index{setjmp\+\_\+longjmp.\+c@{setjmp\+\_\+longjmp.\+c}!print\+\_\+jmp\+\_\+buf@{print\+\_\+jmp\+\_\+buf}}
+\index{print\+\_\+jmp\+\_\+buf@{print\+\_\+jmp\+\_\+buf}!setjmp\+\_\+longjmp.\+c@{setjmp\+\_\+longjmp.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+jmp\+\_\+buf(const jmp\+\_\+buf env)}{print_jmp_buf(const jmp_buf env)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+jmp\+\_\+buf (
+\begin{DoxyParamCaption}
+\item[{const jmp\+\_\+buf}]{env}
+\end{DoxyParamCaption}
+)}\hypertarget{setjmp__longjmp_8c_a91d6afb96a1c91aca4adffb6ebc53000}{}\label{setjmp__longjmp_8c_a91d6afb96a1c91aca4adffb6ebc53000}
+
+
+print\+\_\+jmp\+\_\+buf \+: 打印 jmp\+\_\+buf 对象 
+
+
+\begin{DoxyParams}{Parameters}
+{\em env} & \+: 待打印的 jmp\+\_\+buf 对象 \\
+\hline
+\end{DoxyParams}
+\index{setjmp\+\_\+longjmp.\+c@{setjmp\+\_\+longjmp.\+c}!test\+\_\+setjmp\+\_\+longjmp@{test\+\_\+setjmp\+\_\+longjmp}}
+\index{test\+\_\+setjmp\+\_\+longjmp@{test\+\_\+setjmp\+\_\+longjmp}!setjmp\+\_\+longjmp.\+c@{setjmp\+\_\+longjmp.\+c}}
+\subsubsection[{\texorpdfstring{test\+\_\+setjmp\+\_\+longjmp()}{test_setjmp_longjmp()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+setjmp\+\_\+longjmp (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{setjmp__longjmp_8c_aa4d13e2e19ca08b146d725e9336abdb8}{}\label{setjmp__longjmp_8c_aa4d13e2e19ca08b146d725e9336abdb8}
+
+
+test\+\_\+setjmp\+\_\+longjmp \+:测试 setjmp 函数、 longjmp 函数的用法 
+
+
+
+\subsection{Variable Documentation}
+\index{setjmp\+\_\+longjmp.\+c@{setjmp\+\_\+longjmp.\+c}!buf@{buf}}
+\index{buf@{buf}!setjmp\+\_\+longjmp.\+c@{setjmp\+\_\+longjmp.\+c}}
+\subsubsection[{\texorpdfstring{buf}{buf}}]{\setlength{\rightskip}{0pt plus 5cm}jmp\+\_\+buf buf\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{setjmp__longjmp_8c_a02df3e2f0291bf06f3a685829975efec}{}\label{setjmp__longjmp_8c_a02df3e2f0291bf06f3a685829975efec}
+\index{setjmp\+\_\+longjmp.\+c@{setjmp\+\_\+longjmp.\+c}!global\+\_\+int@{global\+\_\+int}}
+\index{global\+\_\+int@{global\+\_\+int}!setjmp\+\_\+longjmp.\+c@{setjmp\+\_\+longjmp.\+c}}
+\subsubsection[{\texorpdfstring{global\+\_\+int}{global_int}}]{\setlength{\rightskip}{0pt plus 5cm}int global\+\_\+int\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{setjmp__longjmp_8c_a86bf3e45b97134e4d4be9ca6fc1947d8}{}\label{setjmp__longjmp_8c_a86bf3e45b97134e4d4be9ca6fc1947d8}

@@ -1,0 +1,67 @@
+\hypertarget{access__umask_8h}{}\section{src/4\+\_\+\+File\+\_\+\+Dir/access\+\_\+umask.h File Reference}
+\label{access__umask_8h}\index{src/4\+\_\+\+File\+\_\+\+Dir/access\+\_\+umask.\+h@{src/4\+\_\+\+File\+\_\+\+Dir/access\+\_\+umask.\+h}}
+{\ttfamily \#include $<$sys/stat.\+h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{access__umask_8h_ad159808503f54fc2c469e828887812ae}{My\+\_\+access} (const char $\ast$pathname, int mode)
+\begin{DoxyCompactList}\small\item\em My\+\_\+access \+: 包装了 access 函数 \end{DoxyCompactList}\item 
+mode\+\_\+t \hyperlink{access__umask_8h_acb3c0059bbfbea366f9c24cb569e3466}{My\+\_\+umask} (mode\+\_\+t cmask)
+\begin{DoxyCompactList}\small\item\em My\+\_\+umask \+: 包装了 umask 函数 \end{DoxyCompactList}\item 
+void \hyperlink{access__umask_8h_ac7430ff61e4093e76f3f7580bc866060}{test\+\_\+access\+\_\+umask} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+access\+\_\+umask \+: 测试 access 函数、 umask 函数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{access\+\_\+umask.\+h@{access\+\_\+umask.\+h}!My\+\_\+access@{My\+\_\+access}}
+\index{My\+\_\+access@{My\+\_\+access}!access\+\_\+umask.\+h@{access\+\_\+umask.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+access(const char $\ast$pathname, int mode)}{My_access(const char *pathname, int mode)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+access (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{pathname, }
+\item[{int}]{mode}
+\end{DoxyParamCaption}
+)}\hypertarget{access__umask_8h_ad159808503f54fc2c469e828887812ae}{}\label{access__umask_8h_ad159808503f54fc2c469e828887812ae}
+
+
+My\+\_\+access \+: 包装了 access 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pathname} & \+: 传递给 access 函数的 pathname 参数 \\
+\hline
+{\em mode} & \+: 传递给 access 函数的 mode 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 access 函数的值 
+\end{DoxyReturn}
+\index{access\+\_\+umask.\+h@{access\+\_\+umask.\+h}!My\+\_\+umask@{My\+\_\+umask}}
+\index{My\+\_\+umask@{My\+\_\+umask}!access\+\_\+umask.\+h@{access\+\_\+umask.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+umask(mode\+\_\+t cmask)}{My_umask(mode_t cmask)}}]{\setlength{\rightskip}{0pt plus 5cm}mode\+\_\+t My\+\_\+umask (
+\begin{DoxyParamCaption}
+\item[{mode\+\_\+t}]{cmask}
+\end{DoxyParamCaption}
+)}\hypertarget{access__umask_8h_acb3c0059bbfbea366f9c24cb569e3466}{}\label{access__umask_8h_acb3c0059bbfbea366f9c24cb569e3466}
+
+
+My\+\_\+umask \+: 包装了 umask 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cmask} & \+: 传递给 umask 函数的 cmask 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 umask 函数的值 
+\end{DoxyReturn}
+\index{access\+\_\+umask.\+h@{access\+\_\+umask.\+h}!test\+\_\+access\+\_\+umask@{test\+\_\+access\+\_\+umask}}
+\index{test\+\_\+access\+\_\+umask@{test\+\_\+access\+\_\+umask}!access\+\_\+umask.\+h@{access\+\_\+umask.\+h}}
+\subsubsection[{\texorpdfstring{test\+\_\+access\+\_\+umask()}{test_access_umask()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+access\+\_\+umask (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{access__umask_8h_ac7430ff61e4093e76f3f7580bc866060}{}\label{access__umask_8h_ac7430ff61e4093e76f3f7580bc866060}
+
+
+test\+\_\+access\+\_\+umask \+: 测试 access 函数、 umask 函数 
+

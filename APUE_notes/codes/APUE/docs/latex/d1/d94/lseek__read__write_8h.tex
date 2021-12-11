@@ -1,0 +1,105 @@
+\hypertarget{lseek__read__write_8h}{}\section{src/3\+\_\+\+File\+\_\+\+I\+O/lseek\+\_\+read\+\_\+write.h File Reference}
+\label{lseek__read__write_8h}\index{src/3\+\_\+\+File\+\_\+\+I\+O/lseek\+\_\+read\+\_\+write.\+h@{src/3\+\_\+\+File\+\_\+\+I\+O/lseek\+\_\+read\+\_\+write.\+h}}
+{\ttfamily \#include \char`\"{}../header.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}open\+\_\+creat.\+h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+off\+\_\+t \hyperlink{lseek__read__write_8h_a45c622972b7e51f9e74c5f51e1e8c91e}{My\+\_\+lseek} (int fd, off\+\_\+t offset, int whence)
+\begin{DoxyCompactList}\small\item\em My\+\_\+lseek \+:包装了 lseek 函数 \end{DoxyCompactList}\item 
+ssize\+\_\+t \hyperlink{lseek__read__write_8h_a8e13f1c48a45aa2a420245a8eb70d0f4}{My\+\_\+read} (int fd, void $\ast$\hyperlink{setjmp__longjmp_8c_a02df3e2f0291bf06f3a685829975efec}{buf}, size\+\_\+t nbytes)
+\begin{DoxyCompactList}\small\item\em My\+\_\+read \+: 包装了 read 函数 \end{DoxyCompactList}\item 
+ssize\+\_\+t \hyperlink{lseek__read__write_8h_a68e7b046933345703d3f8acc7290090a}{My\+\_\+write} (int fd, const void $\ast$\hyperlink{setjmp__longjmp_8c_a02df3e2f0291bf06f3a685829975efec}{buf}, size\+\_\+t nbytes)
+\begin{DoxyCompactList}\small\item\em My\+\_\+write \+: 包装了 write 函数 \end{DoxyCompactList}\item 
+void \hyperlink{lseek__read__write_8h_a3841dd660534dadea94f1f96f558aaf6}{test\+\_\+lseek\+\_\+read\+\_\+write} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+lseek\+\_\+read\+\_\+write ： 测试 lseek、read、write 函数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{lseek\+\_\+read\+\_\+write.\+h@{lseek\+\_\+read\+\_\+write.\+h}!My\+\_\+lseek@{My\+\_\+lseek}}
+\index{My\+\_\+lseek@{My\+\_\+lseek}!lseek\+\_\+read\+\_\+write.\+h@{lseek\+\_\+read\+\_\+write.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+lseek(int fd, off\+\_\+t offset, int whence)}{My_lseek(int fd, off_t offset, int whence)}}]{\setlength{\rightskip}{0pt plus 5cm}off\+\_\+t My\+\_\+lseek (
+\begin{DoxyParamCaption}
+\item[{int}]{fd, }
+\item[{off\+\_\+t}]{offset, }
+\item[{int}]{whence}
+\end{DoxyParamCaption}
+)}\hypertarget{lseek__read__write_8h_a45c622972b7e51f9e74c5f51e1e8c91e}{}\label{lseek__read__write_8h_a45c622972b7e51f9e74c5f51e1e8c91e}
+
+
+My\+\_\+lseek \+:包装了 lseek 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fd} & \+: 传递给 lseek 函数的 fd 参数 \\
+\hline
+{\em offset} & \+: 传递给 lseek 函数的 offset 参数 \\
+\hline
+{\em whence} & \+: 传递给 lseek 函数的 whence 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+： 返回 lseek 函数的值 
+\end{DoxyReturn}
+\index{lseek\+\_\+read\+\_\+write.\+h@{lseek\+\_\+read\+\_\+write.\+h}!My\+\_\+read@{My\+\_\+read}}
+\index{My\+\_\+read@{My\+\_\+read}!lseek\+\_\+read\+\_\+write.\+h@{lseek\+\_\+read\+\_\+write.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+read(int fd, void $\ast$buf, size\+\_\+t nbytes)}{My_read(int fd, void *buf, size_t nbytes)}}]{\setlength{\rightskip}{0pt plus 5cm}ssize\+\_\+t My\+\_\+read (
+\begin{DoxyParamCaption}
+\item[{int}]{fd, }
+\item[{void $\ast$}]{buf, }
+\item[{size\+\_\+t}]{nbytes}
+\end{DoxyParamCaption}
+)}\hypertarget{lseek__read__write_8h_a8e13f1c48a45aa2a420245a8eb70d0f4}{}\label{lseek__read__write_8h_a8e13f1c48a45aa2a420245a8eb70d0f4}
+
+
+My\+\_\+read \+: 包装了 read 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fd} & \+: 传递给 read 函数的 fd 参数 \\
+\hline
+{\em buf} & \+: 传递给 read 函数的 buf 参数 \\
+\hline
+{\em nbytes} & \+: 传递给 read 函数的 nbytes 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+： 返回 read 函数的值 
+\end{DoxyReturn}
+\index{lseek\+\_\+read\+\_\+write.\+h@{lseek\+\_\+read\+\_\+write.\+h}!My\+\_\+write@{My\+\_\+write}}
+\index{My\+\_\+write@{My\+\_\+write}!lseek\+\_\+read\+\_\+write.\+h@{lseek\+\_\+read\+\_\+write.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+write(int fd, const void $\ast$buf, size\+\_\+t nbytes)}{My_write(int fd, const void *buf, size_t nbytes)}}]{\setlength{\rightskip}{0pt plus 5cm}ssize\+\_\+t My\+\_\+write (
+\begin{DoxyParamCaption}
+\item[{int}]{fd, }
+\item[{const void $\ast$}]{buf, }
+\item[{size\+\_\+t}]{nbytes}
+\end{DoxyParamCaption}
+)}\hypertarget{lseek__read__write_8h_a68e7b046933345703d3f8acc7290090a}{}\label{lseek__read__write_8h_a68e7b046933345703d3f8acc7290090a}
+
+
+My\+\_\+write \+: 包装了 write 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fd} & \+: 传递给 write 函数的 fd 参数 \\
+\hline
+{\em buf} & \+: 传递给 write 函数的 buf 参数 \\
+\hline
+{\em nbytes} & \+: 传递给 write 函数的 nbytes 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+： 返回 write 函数的值 
+\end{DoxyReturn}
+\index{lseek\+\_\+read\+\_\+write.\+h@{lseek\+\_\+read\+\_\+write.\+h}!test\+\_\+lseek\+\_\+read\+\_\+write@{test\+\_\+lseek\+\_\+read\+\_\+write}}
+\index{test\+\_\+lseek\+\_\+read\+\_\+write@{test\+\_\+lseek\+\_\+read\+\_\+write}!lseek\+\_\+read\+\_\+write.\+h@{lseek\+\_\+read\+\_\+write.\+h}}
+\subsubsection[{\texorpdfstring{test\+\_\+lseek\+\_\+read\+\_\+write()}{test_lseek_read_write()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+lseek\+\_\+read\+\_\+write (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{lseek__read__write_8h_a3841dd660534dadea94f1f96f558aaf6}{}\label{lseek__read__write_8h_a3841dd660534dadea94f1f96f558aaf6}
+
+
+test\+\_\+lseek\+\_\+read\+\_\+write ： 测试 lseek、read、write 函数 
+

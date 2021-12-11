@@ -1,0 +1,118 @@
+\hypertarget{setpgid___8c}{}\section{src/9\+\_\+\+Progress\+\_\+\+Relation/setpgid\+\_\+.c File Reference}
+\label{setpgid___8c}\index{src/9\+\_\+\+Progress\+\_\+\+Relation/setpgid\+\_\+.\+c@{src/9\+\_\+\+Progress\+\_\+\+Relation/setpgid\+\_\+.\+c}}
+{\ttfamily \#include \char`\"{}setpgid\+\_\+.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../header.\+h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{setpgid___8c_a0bd76e6d502075e830f62080f42f1a76}{print\+\_\+pid} ()
+\begin{DoxyCompactList}\small\item\em print\+\_\+pid \+: 打印进程 id \end{DoxyCompactList}\item 
+void \hyperlink{setpgid___8c_a2781199e9afe7ddf4d7a8bf1034b17af}{print\+\_\+parent\+\_\+pid} ()
+\begin{DoxyCompactList}\small\item\em print\+\_\+parent\+\_\+pid \+: 打印进程的父进程 id \end{DoxyCompactList}\item 
+void \hyperlink{setpgid___8c_a05c3b92d18cad5803dbe4e586f77c444}{check\+\_\+waitpid} ()
+\begin{DoxyCompactList}\small\item\em check\+\_\+waitpid \+: 使用 waitpid 等待所有子进程 \end{DoxyCompactList}\item 
+pid\+\_\+t \hyperlink{setpgid___8c_aac21d3a60e7c97ea50d94b8cf424428d}{My\+\_\+getpgrp} ()
+\begin{DoxyCompactList}\small\item\em My\+\_\+getpgrp \+: 包装了 getpgrp 函数 \end{DoxyCompactList}\item 
+int \hyperlink{setpgid___8c_ae9ee68a1abd322838442916f67f24bdc}{My\+\_\+setpgid} (pid\+\_\+t pid, pid\+\_\+t pgid)
+\begin{DoxyCompactList}\small\item\em My\+\_\+setpgid \+: 包装了 setpgid 函数 \end{DoxyCompactList}\item 
+static pid\+\_\+t \hyperlink{setpgid___8c_a91d22fdab508ae9804eb76d15237da6b}{create\+\_\+child} ()
+\begin{DoxyCompactList}\small\item\em create\+\_\+child \+: 创建子进程 \end{DoxyCompactList}\item 
+void \hyperlink{setpgid___8c_adade770439aeeefce1b4ed2146466777}{test\+\_\+setpgid} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+setpgid \+: 测试 setpgid 函数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{setpgid\+\_\+.\+c@{setpgid\+\_\+.\+c}!check\+\_\+waitpid@{check\+\_\+waitpid}}
+\index{check\+\_\+waitpid@{check\+\_\+waitpid}!setpgid\+\_\+.\+c@{setpgid\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{check\+\_\+waitpid()}{check_waitpid()}}]{\setlength{\rightskip}{0pt plus 5cm}void check\+\_\+waitpid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{setpgid___8c_a05c3b92d18cad5803dbe4e586f77c444}{}\label{setpgid___8c_a05c3b92d18cad5803dbe4e586f77c444}
+
+
+check\+\_\+waitpid \+: 使用 waitpid 等待所有子进程 
+
+\index{setpgid\+\_\+.\+c@{setpgid\+\_\+.\+c}!create\+\_\+child@{create\+\_\+child}}
+\index{create\+\_\+child@{create\+\_\+child}!setpgid\+\_\+.\+c@{setpgid\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{create\+\_\+child()}{create_child()}}]{\setlength{\rightskip}{0pt plus 5cm}static pid\+\_\+t create\+\_\+child (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{setpgid___8c_a91d22fdab508ae9804eb76d15237da6b}{}\label{setpgid___8c_a91d22fdab508ae9804eb76d15237da6b}
+
+
+create\+\_\+child \+: 创建子进程 
+
+\begin{DoxyReturn}{Returns}
+\+: fork 的返回值 
+\end{DoxyReturn}
+\index{setpgid\+\_\+.\+c@{setpgid\+\_\+.\+c}!My\+\_\+getpgrp@{My\+\_\+getpgrp}}
+\index{My\+\_\+getpgrp@{My\+\_\+getpgrp}!setpgid\+\_\+.\+c@{setpgid\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+getpgrp()}{My_getpgrp()}}]{\setlength{\rightskip}{0pt plus 5cm}pid\+\_\+t My\+\_\+getpgrp (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{setpgid___8c_aac21d3a60e7c97ea50d94b8cf424428d}{}\label{setpgid___8c_aac21d3a60e7c97ea50d94b8cf424428d}
+
+
+My\+\_\+getpgrp \+: 包装了 getpgrp 函数 
+
+\begin{DoxyReturn}{Returns}
+\+: 返回 getpgrp 函数的值 
+\end{DoxyReturn}
+\index{setpgid\+\_\+.\+c@{setpgid\+\_\+.\+c}!My\+\_\+setpgid@{My\+\_\+setpgid}}
+\index{My\+\_\+setpgid@{My\+\_\+setpgid}!setpgid\+\_\+.\+c@{setpgid\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+setpgid(pid\+\_\+t pid, pid\+\_\+t pgid)}{My_setpgid(pid_t pid, pid_t pgid)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+setpgid (
+\begin{DoxyParamCaption}
+\item[{pid\+\_\+t}]{pid, }
+\item[{pid\+\_\+t}]{pgid}
+\end{DoxyParamCaption}
+)}\hypertarget{setpgid___8c_ae9ee68a1abd322838442916f67f24bdc}{}\label{setpgid___8c_ae9ee68a1abd322838442916f67f24bdc}
+
+
+My\+\_\+setpgid \+: 包装了 setpgid 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pid} & \+: 传递给 setpgid 函数的 pid 参数 \\
+\hline
+{\em pgid} & \+: 传递给 setpgid 函数的 pgid 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回了 setpgid 函数的值 
+\end{DoxyReturn}
+\index{setpgid\+\_\+.\+c@{setpgid\+\_\+.\+c}!print\+\_\+parent\+\_\+pid@{print\+\_\+parent\+\_\+pid}}
+\index{print\+\_\+parent\+\_\+pid@{print\+\_\+parent\+\_\+pid}!setpgid\+\_\+.\+c@{setpgid\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+parent\+\_\+pid()}{print_parent_pid()}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+parent\+\_\+pid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{setpgid___8c_a2781199e9afe7ddf4d7a8bf1034b17af}{}\label{setpgid___8c_a2781199e9afe7ddf4d7a8bf1034b17af}
+
+
+print\+\_\+parent\+\_\+pid \+: 打印进程的父进程 id 
+
+\index{setpgid\+\_\+.\+c@{setpgid\+\_\+.\+c}!print\+\_\+pid@{print\+\_\+pid}}
+\index{print\+\_\+pid@{print\+\_\+pid}!setpgid\+\_\+.\+c@{setpgid\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+pid()}{print_pid()}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+pid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{setpgid___8c_a0bd76e6d502075e830f62080f42f1a76}{}\label{setpgid___8c_a0bd76e6d502075e830f62080f42f1a76}
+
+
+print\+\_\+pid \+: 打印进程 id 
+
+\index{setpgid\+\_\+.\+c@{setpgid\+\_\+.\+c}!test\+\_\+setpgid@{test\+\_\+setpgid}}
+\index{test\+\_\+setpgid@{test\+\_\+setpgid}!setpgid\+\_\+.\+c@{setpgid\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{test\+\_\+setpgid()}{test_setpgid()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+setpgid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{setpgid___8c_adade770439aeeefce1b4ed2146466777}{}\label{setpgid___8c_adade770439aeeefce1b4ed2146466777}
+
+
+test\+\_\+setpgid \+: 测试 setpgid 函数 
+

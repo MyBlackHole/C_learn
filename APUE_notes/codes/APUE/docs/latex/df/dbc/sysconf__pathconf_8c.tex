@@ -1,0 +1,76 @@
+\hypertarget{sysconf__pathconf_8c}{}\section{src/2\+\_\+\+U\+N\+I\+X\+\_\+\+Standard/sysconf\+\_\+pathconf.c File Reference}
+\label{sysconf__pathconf_8c}\index{src/2\+\_\+\+U\+N\+I\+X\+\_\+\+Standard/sysconf\+\_\+pathconf.\+c@{src/2\+\_\+\+U\+N\+I\+X\+\_\+\+Standard/sysconf\+\_\+pathconf.\+c}}
+{\ttfamily \#include \char`\"{}sysconf\+\_\+pathconf.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../header.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$stdalign.\+h$>$}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+long \hyperlink{sysconf__pathconf_8c_a8413ae8187a9b7a1f46d515c7ff7a32b}{My\+\_\+pathconf} (const char $\ast$pathname, int name, const char $\ast$name\+\_\+str)
+\begin{DoxyCompactList}\small\item\em My\+\_\+pathconf \+: pathconf 函数的包装函数 \end{DoxyCompactList}\item 
+long \hyperlink{sysconf__pathconf_8c_a2296fdc04f21d2be0dd1d908a0d5df7d}{My\+\_\+sysconf} (int name, const char $\ast$name\+\_\+str)
+\begin{DoxyCompactList}\small\item\em My\+\_\+sysconf \+: sysconf 函数的包装函数 \end{DoxyCompactList}\item 
+void \hyperlink{sysconf__pathconf_8c_a0ea5e4987c80090e8efa37018c075a47}{test\+\_\+sycconf\+\_\+pathconf} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+sycconf\+\_\+pathconf \+: 执行 sysconf 的测试 和 pathconf 的测试 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{sysconf\+\_\+pathconf.\+c@{sysconf\+\_\+pathconf.\+c}!My\+\_\+pathconf@{My\+\_\+pathconf}}
+\index{My\+\_\+pathconf@{My\+\_\+pathconf}!sysconf\+\_\+pathconf.\+c@{sysconf\+\_\+pathconf.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+pathconf(const char $\ast$pathname, int name, const char $\ast$name\+\_\+str)}{My_pathconf(const char *pathname, int name, const char *name_str)}}]{\setlength{\rightskip}{0pt plus 5cm}long My\+\_\+pathconf (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{pathname, }
+\item[{int}]{name, }
+\item[{const char $\ast$}]{name\+\_\+str}
+\end{DoxyParamCaption}
+)}\hypertarget{sysconf__pathconf_8c_a8413ae8187a9b7a1f46d515c7ff7a32b}{}\label{sysconf__pathconf_8c_a8413ae8187a9b7a1f46d515c7ff7a32b}
+
+
+My\+\_\+pathconf \+: pathconf 函数的包装函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pathname} & \+: 传递给 pathconf 函数的 pathname 参数 \\
+\hline
+{\em name} & \+: 传递给 pathconf 函数的 name 参数 \\
+\hline
+{\em name\+\_\+str} & name 参数对应的字符串，方便人员理解 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 pathconf 函数的值 
+\end{DoxyReturn}
+\index{sysconf\+\_\+pathconf.\+c@{sysconf\+\_\+pathconf.\+c}!My\+\_\+sysconf@{My\+\_\+sysconf}}
+\index{My\+\_\+sysconf@{My\+\_\+sysconf}!sysconf\+\_\+pathconf.\+c@{sysconf\+\_\+pathconf.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+sysconf(int name, const char $\ast$name\+\_\+str)}{My_sysconf(int name, const char *name_str)}}]{\setlength{\rightskip}{0pt plus 5cm}long My\+\_\+sysconf (
+\begin{DoxyParamCaption}
+\item[{int}]{name, }
+\item[{const char $\ast$}]{name\+\_\+str}
+\end{DoxyParamCaption}
+)}\hypertarget{sysconf__pathconf_8c_a2296fdc04f21d2be0dd1d908a0d5df7d}{}\label{sysconf__pathconf_8c_a2296fdc04f21d2be0dd1d908a0d5df7d}
+
+
+My\+\_\+sysconf \+: sysconf 函数的包装函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \+: 传递给 sysconf 函数的 name 参数 \\
+\hline
+{\em name\+\_\+str} & name 参数对应的字符串，方便人员理解 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 sysconf 函数的值 
+\end{DoxyReturn}
+\index{sysconf\+\_\+pathconf.\+c@{sysconf\+\_\+pathconf.\+c}!test\+\_\+sycconf\+\_\+pathconf@{test\+\_\+sycconf\+\_\+pathconf}}
+\index{test\+\_\+sycconf\+\_\+pathconf@{test\+\_\+sycconf\+\_\+pathconf}!sysconf\+\_\+pathconf.\+c@{sysconf\+\_\+pathconf.\+c}}
+\subsubsection[{\texorpdfstring{test\+\_\+sycconf\+\_\+pathconf()}{test_sycconf_pathconf()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+sycconf\+\_\+pathconf (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{sysconf__pathconf_8c_a0ea5e4987c80090e8efa37018c075a47}{}\label{sysconf__pathconf_8c_a0ea5e4987c80090e8efa37018c075a47}
+
+
+test\+\_\+sycconf\+\_\+pathconf \+: 执行 sysconf 的测试 和 pathconf 的测试 
+

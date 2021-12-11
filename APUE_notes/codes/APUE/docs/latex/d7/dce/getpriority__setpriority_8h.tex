@@ -1,0 +1,94 @@
+\hypertarget{getpriority__setpriority_8h}{}\section{src/8\+\_\+\+Progress\+\_\+\+Control/getpriority\+\_\+setpriority.h File Reference}
+\label{getpriority__setpriority_8h}\index{src/8\+\_\+\+Progress\+\_\+\+Control/getpriority\+\_\+setpriority.\+h@{src/8\+\_\+\+Progress\+\_\+\+Control/getpriority\+\_\+setpriority.\+h}}
+{\ttfamily \#include $<$sys/resource.\+h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{getpriority__setpriority_8h_a2b504163a783f9589e25bb4559b4e3da}{My\+\_\+nice} (int incr)
+\begin{DoxyCompactList}\small\item\em My\+\_\+nice \+: 包装了 nice 函数 \end{DoxyCompactList}\item 
+int \hyperlink{getpriority__setpriority_8h_a45ab8541f9f497493722c29a10f5d612}{My\+\_\+getpriority} (int which, id\+\_\+t who)
+\begin{DoxyCompactList}\small\item\em My\+\_\+getpriority \+: 包装了 getpriority 函数 \end{DoxyCompactList}\item 
+int \hyperlink{getpriority__setpriority_8h_a987dfbc85eff8ed081ee1995708d5f87}{My\+\_\+setpriority} (int which, id\+\_\+t who, int value)
+\begin{DoxyCompactList}\small\item\em My\+\_\+setpriority \+: 包装了 setpriority 函数 \end{DoxyCompactList}\item 
+void \hyperlink{getpriority__setpriority_8h_a4b7176d606f5b11ba42520126ac5bba8}{test\+\_\+getpriority\+\_\+setpriority} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+getpriority\+\_\+setpriority\+:测试 nice 函数、 getpriority 函数、 setpriority 函数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{getpriority\+\_\+setpriority.\+h@{getpriority\+\_\+setpriority.\+h}!My\+\_\+getpriority@{My\+\_\+getpriority}}
+\index{My\+\_\+getpriority@{My\+\_\+getpriority}!getpriority\+\_\+setpriority.\+h@{getpriority\+\_\+setpriority.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+getpriority(int which, id\+\_\+t who)}{My_getpriority(int which, id_t who)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+getpriority (
+\begin{DoxyParamCaption}
+\item[{int}]{which, }
+\item[{id\+\_\+t}]{who}
+\end{DoxyParamCaption}
+)}\hypertarget{getpriority__setpriority_8h_a45ab8541f9f497493722c29a10f5d612}{}\label{getpriority__setpriority_8h_a45ab8541f9f497493722c29a10f5d612}
+
+
+My\+\_\+getpriority \+: 包装了 getpriority 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em which} & \+: 传递给 getpriority 函数的 which 参数 \\
+\hline
+{\em who} & \+: 传递给 getpriority 函数的 who 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 getpriority 函数的值 
+\end{DoxyReturn}
+\index{getpriority\+\_\+setpriority.\+h@{getpriority\+\_\+setpriority.\+h}!My\+\_\+nice@{My\+\_\+nice}}
+\index{My\+\_\+nice@{My\+\_\+nice}!getpriority\+\_\+setpriority.\+h@{getpriority\+\_\+setpriority.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+nice(int incr)}{My_nice(int incr)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+nice (
+\begin{DoxyParamCaption}
+\item[{int}]{incr}
+\end{DoxyParamCaption}
+)}\hypertarget{getpriority__setpriority_8h_a2b504163a783f9589e25bb4559b4e3da}{}\label{getpriority__setpriority_8h_a2b504163a783f9589e25bb4559b4e3da}
+
+
+My\+\_\+nice \+: 包装了 nice 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em incr} & \+: 传递给 nice 函数的 incr 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 nice 函数的值 
+\end{DoxyReturn}
+\index{getpriority\+\_\+setpriority.\+h@{getpriority\+\_\+setpriority.\+h}!My\+\_\+setpriority@{My\+\_\+setpriority}}
+\index{My\+\_\+setpriority@{My\+\_\+setpriority}!getpriority\+\_\+setpriority.\+h@{getpriority\+\_\+setpriority.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+setpriority(int which, id\+\_\+t who, int value)}{My_setpriority(int which, id_t who, int value)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+setpriority (
+\begin{DoxyParamCaption}
+\item[{int}]{which, }
+\item[{id\+\_\+t}]{who, }
+\item[{int}]{value}
+\end{DoxyParamCaption}
+)}\hypertarget{getpriority__setpriority_8h_a987dfbc85eff8ed081ee1995708d5f87}{}\label{getpriority__setpriority_8h_a987dfbc85eff8ed081ee1995708d5f87}
+
+
+My\+\_\+setpriority \+: 包装了 setpriority 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em which} & \+: 传递给 setpriority 函数的 which 参数 \\
+\hline
+{\em who} & \+: 传递给 setpriority 函数的 who 参数 \\
+\hline
+{\em value} & \+: 传递给 setpriority 函数的 value 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 setpriority 函数的值 
+\end{DoxyReturn}
+\index{getpriority\+\_\+setpriority.\+h@{getpriority\+\_\+setpriority.\+h}!test\+\_\+getpriority\+\_\+setpriority@{test\+\_\+getpriority\+\_\+setpriority}}
+\index{test\+\_\+getpriority\+\_\+setpriority@{test\+\_\+getpriority\+\_\+setpriority}!getpriority\+\_\+setpriority.\+h@{getpriority\+\_\+setpriority.\+h}}
+\subsubsection[{\texorpdfstring{test\+\_\+getpriority\+\_\+setpriority()}{test_getpriority_setpriority()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+getpriority\+\_\+setpriority (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{getpriority__setpriority_8h_a4b7176d606f5b11ba42520126ac5bba8}{}\label{getpriority__setpriority_8h_a4b7176d606f5b11ba42520126ac5bba8}
+
+
+test\+\_\+getpriority\+\_\+setpriority\+:测试 nice 函数、 getpriority 函数、 setpriority 函数 
+

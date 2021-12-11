@@ -1,0 +1,39 @@
+\hypertarget{sigsuspend___8h}{}\section{src/10\+\_\+\+Signal/sigsuspend\+\_\+.h File Reference}
+\label{sigsuspend___8h}\index{src/10\+\_\+\+Signal/sigsuspend\+\_\+.\+h@{src/10\+\_\+\+Signal/sigsuspend\+\_\+.\+h}}
+{\ttfamily \#include $<$signal.\+h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{sigsuspend___8h_a0682ebc206a6ee235f4797a5e640c098}{My\+\_\+sigsuspend} (const sigset\+\_\+t $\ast$sigmask)
+\begin{DoxyCompactList}\small\item\em My\+\_\+sigsuspend ：包装了 sigsuspend 函数 \end{DoxyCompactList}\item 
+void \hyperlink{sigsuspend___8h_a2874e74b2aed9da6073ea6e841670e22}{test\+\_\+sigsuspend} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{sigsuspend\+\_\+.\+h@{sigsuspend\+\_\+.\+h}!My\+\_\+sigsuspend@{My\+\_\+sigsuspend}}
+\index{My\+\_\+sigsuspend@{My\+\_\+sigsuspend}!sigsuspend\+\_\+.\+h@{sigsuspend\+\_\+.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+sigsuspend(const sigset\+\_\+t $\ast$sigmask)}{My_sigsuspend(const sigset_t *sigmask)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+sigsuspend (
+\begin{DoxyParamCaption}
+\item[{const sigset\+\_\+t $\ast$}]{sigmask}
+\end{DoxyParamCaption}
+)}\hypertarget{sigsuspend___8h_a0682ebc206a6ee235f4797a5e640c098}{}\label{sigsuspend___8h_a0682ebc206a6ee235f4797a5e640c098}
+
+
+My\+\_\+sigsuspend ：包装了 sigsuspend 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sigmask} & \+: 传递给 sigsuspend 函数的 sigmask 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 sigsuspend 函数的值 
+\end{DoxyReturn}
+\index{sigsuspend\+\_\+.\+h@{sigsuspend\+\_\+.\+h}!test\+\_\+sigsuspend@{test\+\_\+sigsuspend}}
+\index{test\+\_\+sigsuspend@{test\+\_\+sigsuspend}!sigsuspend\+\_\+.\+h@{sigsuspend\+\_\+.\+h}}
+\subsubsection[{\texorpdfstring{test\+\_\+sigsuspend()}{test_sigsuspend()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+sigsuspend (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{sigsuspend___8h_a2874e74b2aed9da6073ea6e841670e22}{}\label{sigsuspend___8h_a2874e74b2aed9da6073ea6e841670e22}

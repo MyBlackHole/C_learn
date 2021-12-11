@@ -1,3 +1,9 @@
+executable("fork5_test") {
+  sources = [
+    "fork5_test.c",
+  ]
+}
+
 executable("sleep_test1") {
   sources = [
     "sleep_test1.c",

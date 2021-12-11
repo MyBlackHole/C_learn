@@ -1,0 +1,196 @@
+\hypertarget{fopen__fclose_8c}{}\section{src/5\+\_\+\+Std\+\_\+\+I\+O/fopen\+\_\+fclose.c File Reference}
+\label{fopen__fclose_8c}\index{src/5\+\_\+\+Std\+\_\+\+I\+O/fopen\+\_\+fclose.\+c@{src/5\+\_\+\+Std\+\_\+\+I\+O/fopen\+\_\+fclose.\+c}}
+{\ttfamily \#include \char`\"{}fopen\+\_\+fclose.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../header.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$fcntl.\+h$>$}\\*
+{\ttfamily \#include $<$wchar.\+h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{fopen__fclose_8c_ae87f2334cbd10ad131e207258f9562c2}{My\+\_\+fwide} (F\+I\+LE $\ast$fp, int mode)
+\begin{DoxyCompactList}\small\item\em My\+\_\+fwide \+: 包装了 fwide 函数 \end{DoxyCompactList}\item 
+int \hyperlink{fopen__fclose_8c_a89e92a6d213dd7bf0d2d9597e30e66c9}{My\+\_\+setvbuf} (F\+I\+LE $\ast$fp, char $\ast$\hyperlink{setjmp__longjmp_8c_a02df3e2f0291bf06f3a685829975efec}{buf}, int mode, size\+\_\+t size)
+\begin{DoxyCompactList}\small\item\em My\+\_\+setvbuf \+: 包装了 setvbuf 函数 \end{DoxyCompactList}\item 
+int \hyperlink{fopen__fclose_8c_ab175502a02a6950924106b59cc92521a}{My\+\_\+fflush} (F\+I\+LE $\ast$fp)
+\begin{DoxyCompactList}\small\item\em My\+\_\+fflush \+: 包装了 fflush 函数 \end{DoxyCompactList}\item 
+F\+I\+LE $\ast$ \hyperlink{fopen__fclose_8c_a70ffcac29605cd1d62df44da9cb5540f}{My\+\_\+fopen} (const char $\ast$pathname, const char $\ast$type)
+\begin{DoxyCompactList}\small\item\em My\+\_\+fopen \+: 包装了 fopen 函数 \end{DoxyCompactList}\item 
+void \hyperlink{fopen__fclose_8c_a376e4c74bde869c53e3a4e08596cac1b}{set\+\_\+no\+\_\+buf} (F\+I\+LE $\ast$fp)
+\begin{DoxyCompactList}\small\item\em set\+\_\+no\+\_\+buf \+: 设置不带缓冲 \end{DoxyCompactList}\item 
+void \hyperlink{fopen__fclose_8c_a51b15543d28b01567652f9b3c5fbd6d7}{set\+\_\+line\+\_\+buf} (F\+I\+LE $\ast$fp)
+\begin{DoxyCompactList}\small\item\em set\+\_\+line\+\_\+buf \+: 设置行缓冲 \end{DoxyCompactList}\item 
+void \hyperlink{fopen__fclose_8c_a61720406ef6c811a391e3ca7ea1e6a4a}{set\+\_\+full\+\_\+buf} (F\+I\+LE $\ast$fp)
+\begin{DoxyCompactList}\small\item\em set\+\_\+full\+\_\+buf \+: 设置全缓冲 \end{DoxyCompactList}\item 
+void \hyperlink{fopen__fclose_8c_a26ec5d1bc52d7d19306dc64373aeba36}{print\+\_\+\+F\+I\+LE} (const F\+I\+LE $\ast$fp)
+\begin{DoxyCompactList}\small\item\em print\+\_\+\+F\+I\+LE \+: 打印 F\+I\+LE 结构 \end{DoxyCompactList}\item 
+void \hyperlink{fopen__fclose_8c_a80f7a4c9b6e100f4df64286b8bbeb10f}{test\+\_\+fopen\+\_\+fwide\+\_\+setvbuf} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+fopen\+\_\+fwide\+\_\+setvbuf \+: 测试 fopen函数、 fwide 函数、setvbuf函数、 fflush函数的用法 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{fopen\+\_\+fclose.\+c@{fopen\+\_\+fclose.\+c}!My\+\_\+fflush@{My\+\_\+fflush}}
+\index{My\+\_\+fflush@{My\+\_\+fflush}!fopen\+\_\+fclose.\+c@{fopen\+\_\+fclose.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+fflush(\+F\+I\+L\+E $\ast$fp)}{My_fflush(FILE *fp)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+fflush (
+\begin{DoxyParamCaption}
+\item[{F\+I\+LE $\ast$}]{fp}
+\end{DoxyParamCaption}
+)}\hypertarget{fopen__fclose_8c_ab175502a02a6950924106b59cc92521a}{}\label{fopen__fclose_8c_ab175502a02a6950924106b59cc92521a}
+
+
+My\+\_\+fflush \+: 包装了 fflush 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fp} & \+: 传递给 fflush 函数的 fp 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 fflush 函数的值 
+\end{DoxyReturn}
+\index{fopen\+\_\+fclose.\+c@{fopen\+\_\+fclose.\+c}!My\+\_\+fopen@{My\+\_\+fopen}}
+\index{My\+\_\+fopen@{My\+\_\+fopen}!fopen\+\_\+fclose.\+c@{fopen\+\_\+fclose.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+fopen(const char $\ast$pathname, const char $\ast$type)}{My_fopen(const char *pathname, const char *type)}}]{\setlength{\rightskip}{0pt plus 5cm}F\+I\+LE$\ast$ My\+\_\+fopen (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{pathname, }
+\item[{const char $\ast$}]{type}
+\end{DoxyParamCaption}
+)}\hypertarget{fopen__fclose_8c_a70ffcac29605cd1d62df44da9cb5540f}{}\label{fopen__fclose_8c_a70ffcac29605cd1d62df44da9cb5540f}
+
+
+My\+\_\+fopen \+: 包装了 fopen 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pathname} & \+: 传递给 fopen 函数的 pathname 参数 \\
+\hline
+{\em type} & \+: 传递给 fopen 函数的 type 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 fopen 函数的值 
+\end{DoxyReturn}
+\index{fopen\+\_\+fclose.\+c@{fopen\+\_\+fclose.\+c}!My\+\_\+fwide@{My\+\_\+fwide}}
+\index{My\+\_\+fwide@{My\+\_\+fwide}!fopen\+\_\+fclose.\+c@{fopen\+\_\+fclose.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+fwide(\+F\+I\+L\+E $\ast$fp, int mode)}{My_fwide(FILE *fp, int mode)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+fwide (
+\begin{DoxyParamCaption}
+\item[{F\+I\+LE $\ast$}]{fp, }
+\item[{int}]{mode}
+\end{DoxyParamCaption}
+)}\hypertarget{fopen__fclose_8c_ae87f2334cbd10ad131e207258f9562c2}{}\label{fopen__fclose_8c_ae87f2334cbd10ad131e207258f9562c2}
+
+
+My\+\_\+fwide \+: 包装了 fwide 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fp} & \+: 传递给 fwide 函数的 fp 参数 \\
+\hline
+{\em mode} & \+: 传递给 fwide 函数的 mode 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 fwide 函数的值 
+\end{DoxyReturn}
+\index{fopen\+\_\+fclose.\+c@{fopen\+\_\+fclose.\+c}!My\+\_\+setvbuf@{My\+\_\+setvbuf}}
+\index{My\+\_\+setvbuf@{My\+\_\+setvbuf}!fopen\+\_\+fclose.\+c@{fopen\+\_\+fclose.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+setvbuf(\+F\+I\+L\+E $\ast$fp, char $\ast$buf, int mode, size\+\_\+t size)}{My_setvbuf(FILE *fp, char *buf, int mode, size_t size)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+setvbuf (
+\begin{DoxyParamCaption}
+\item[{F\+I\+LE $\ast$}]{fp, }
+\item[{char $\ast$}]{buf, }
+\item[{int}]{mode, }
+\item[{size\+\_\+t}]{size}
+\end{DoxyParamCaption}
+)}\hypertarget{fopen__fclose_8c_a89e92a6d213dd7bf0d2d9597e30e66c9}{}\label{fopen__fclose_8c_a89e92a6d213dd7bf0d2d9597e30e66c9}
+
+
+My\+\_\+setvbuf \+: 包装了 setvbuf 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fp} & \+: 传递给 setvbuf 函数的 size 参数 \\
+\hline
+{\em buf} & \+: 传递给 setvbuf 函数的 size 参数 \\
+\hline
+{\em mode} & \+: 传递给 setvbuf 函数的 size 参数 \\
+\hline
+{\em size} & \+: 传递给 setvbuf 函数的 size 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 setvbuf 函数的值 
+\end{DoxyReturn}
+\index{fopen\+\_\+fclose.\+c@{fopen\+\_\+fclose.\+c}!print\+\_\+\+F\+I\+LE@{print\+\_\+\+F\+I\+LE}}
+\index{print\+\_\+\+F\+I\+LE@{print\+\_\+\+F\+I\+LE}!fopen\+\_\+fclose.\+c@{fopen\+\_\+fclose.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+\+F\+I\+L\+E(const F\+I\+L\+E $\ast$fp)}{print_FILE(const FILE *fp)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+\+F\+I\+LE (
+\begin{DoxyParamCaption}
+\item[{const F\+I\+LE $\ast$}]{fp}
+\end{DoxyParamCaption}
+)}\hypertarget{fopen__fclose_8c_a26ec5d1bc52d7d19306dc64373aeba36}{}\label{fopen__fclose_8c_a26ec5d1bc52d7d19306dc64373aeba36}
+
+
+print\+\_\+\+F\+I\+LE \+: 打印 F\+I\+LE 结构 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fp} & \+: 指向 F\+I\+LE 的指针 \\
+\hline
+\end{DoxyParams}
+\index{fopen\+\_\+fclose.\+c@{fopen\+\_\+fclose.\+c}!set\+\_\+full\+\_\+buf@{set\+\_\+full\+\_\+buf}}
+\index{set\+\_\+full\+\_\+buf@{set\+\_\+full\+\_\+buf}!fopen\+\_\+fclose.\+c@{fopen\+\_\+fclose.\+c}}
+\subsubsection[{\texorpdfstring{set\+\_\+full\+\_\+buf(\+F\+I\+L\+E $\ast$fp)}{set_full_buf(FILE *fp)}}]{\setlength{\rightskip}{0pt plus 5cm}void set\+\_\+full\+\_\+buf (
+\begin{DoxyParamCaption}
+\item[{F\+I\+LE $\ast$}]{fp}
+\end{DoxyParamCaption}
+)}\hypertarget{fopen__fclose_8c_a61720406ef6c811a391e3ca7ea1e6a4a}{}\label{fopen__fclose_8c_a61720406ef6c811a391e3ca7ea1e6a4a}
+
+
+set\+\_\+full\+\_\+buf \+: 设置全缓冲 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fp} & \+: 被设置的文件指针 \\
+\hline
+\end{DoxyParams}
+\index{fopen\+\_\+fclose.\+c@{fopen\+\_\+fclose.\+c}!set\+\_\+line\+\_\+buf@{set\+\_\+line\+\_\+buf}}
+\index{set\+\_\+line\+\_\+buf@{set\+\_\+line\+\_\+buf}!fopen\+\_\+fclose.\+c@{fopen\+\_\+fclose.\+c}}
+\subsubsection[{\texorpdfstring{set\+\_\+line\+\_\+buf(\+F\+I\+L\+E $\ast$fp)}{set_line_buf(FILE *fp)}}]{\setlength{\rightskip}{0pt plus 5cm}void set\+\_\+line\+\_\+buf (
+\begin{DoxyParamCaption}
+\item[{F\+I\+LE $\ast$}]{fp}
+\end{DoxyParamCaption}
+)}\hypertarget{fopen__fclose_8c_a51b15543d28b01567652f9b3c5fbd6d7}{}\label{fopen__fclose_8c_a51b15543d28b01567652f9b3c5fbd6d7}
+
+
+set\+\_\+line\+\_\+buf \+: 设置行缓冲 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fp} & \+: 被设置的文件指针 \\
+\hline
+\end{DoxyParams}
+\index{fopen\+\_\+fclose.\+c@{fopen\+\_\+fclose.\+c}!set\+\_\+no\+\_\+buf@{set\+\_\+no\+\_\+buf}}
+\index{set\+\_\+no\+\_\+buf@{set\+\_\+no\+\_\+buf}!fopen\+\_\+fclose.\+c@{fopen\+\_\+fclose.\+c}}
+\subsubsection[{\texorpdfstring{set\+\_\+no\+\_\+buf(\+F\+I\+L\+E $\ast$fp)}{set_no_buf(FILE *fp)}}]{\setlength{\rightskip}{0pt plus 5cm}void set\+\_\+no\+\_\+buf (
+\begin{DoxyParamCaption}
+\item[{F\+I\+LE $\ast$}]{fp}
+\end{DoxyParamCaption}
+)}\hypertarget{fopen__fclose_8c_a376e4c74bde869c53e3a4e08596cac1b}{}\label{fopen__fclose_8c_a376e4c74bde869c53e3a4e08596cac1b}
+
+
+set\+\_\+no\+\_\+buf \+: 设置不带缓冲 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fp} & \+: 被设置的文件指针 \\
+\hline
+\end{DoxyParams}
+\index{fopen\+\_\+fclose.\+c@{fopen\+\_\+fclose.\+c}!test\+\_\+fopen\+\_\+fwide\+\_\+setvbuf@{test\+\_\+fopen\+\_\+fwide\+\_\+setvbuf}}
+\index{test\+\_\+fopen\+\_\+fwide\+\_\+setvbuf@{test\+\_\+fopen\+\_\+fwide\+\_\+setvbuf}!fopen\+\_\+fclose.\+c@{fopen\+\_\+fclose.\+c}}
+\subsubsection[{\texorpdfstring{test\+\_\+fopen\+\_\+fwide\+\_\+setvbuf()}{test_fopen_fwide_setvbuf()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+fopen\+\_\+fwide\+\_\+setvbuf (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{fopen__fclose_8c_a80f7a4c9b6e100f4df64286b8bbeb10f}{}\label{fopen__fclose_8c_a80f7a4c9b6e100f4df64286b8bbeb10f}
+
+
+test\+\_\+fopen\+\_\+fwide\+\_\+setvbuf \+: 测试 fopen函数、 fwide 函数、setvbuf函数、 fflush函数的用法 
+

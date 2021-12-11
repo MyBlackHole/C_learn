@@ -1,0 +1,264 @@
+\hypertarget{sigsuspend___8c}{}\section{src/10\+\_\+\+Signal/sigsuspend\+\_\+.c File Reference}
+\label{sigsuspend___8c}\index{src/10\+\_\+\+Signal/sigsuspend\+\_\+.\+c@{src/10\+\_\+\+Signal/sigsuspend\+\_\+.\+c}}
+{\ttfamily \#include \char`\"{}sigsuspend\+\_\+.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../header.\+h\char`\"{}}\\*
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef void \hyperlink{sigsuspend___8c_a41f7fa3cd174bb624d8b38ed224ab7d6}{Hanlder\+\_\+\+Func}(int signo, siginfo\+\_\+t $\ast$info, void $\ast$context)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{sigsuspend___8c_a6c60e9cf92940b1663341506a00d9480}{print\+\_\+sigset} (const sigset\+\_\+t $\ast$set)
+\begin{DoxyCompactList}\small\item\em print\+\_\+sigset \+: 打印信号集 \end{DoxyCompactList}\item 
+void \hyperlink{sigsuspend___8c_a37c389f4a689b58ea68d4913fb5ce162}{print\+\_\+progress\+\_\+pending\+\_\+sigset} ()
+\begin{DoxyCompactList}\small\item\em print\+\_\+progress\+\_\+pending\+\_\+sigset \+: 打印进程当前的未决的信号集 \end{DoxyCompactList}\item 
+void \hyperlink{sigsuspend___8c_af363bcba14e0b539c6882eee591d0580}{print\+\_\+progress\+\_\+mask\+\_\+sigset} ()
+\begin{DoxyCompactList}\small\item\em print\+\_\+progress\+\_\+mask\+\_\+sigset \+: 打印进程当前的信号屏蔽字 \end{DoxyCompactList}\item 
+void \hyperlink{sigsuspend___8c_aec229dbc1924b697e5e6b55d598399ed}{add\+\_\+sigaction} (int signo, sigset\+\_\+t $\ast$set, int no\+\_\+deffer, int restart, \hyperlink{sleep__nanosleep_8c_a41f7fa3cd174bb624d8b38ed224ab7d6}{Hanlder\+\_\+\+Func} handler)
+\begin{DoxyCompactList}\small\item\em add\+\_\+sigaction \+: 添加信号处理函数 \end{DoxyCompactList}\item 
+int \hyperlink{sigsuspend___8c_a15c6978fdb8c7356c74158803246e84a}{My\+\_\+sigemptyset} (sigset\+\_\+t $\ast$set)
+\begin{DoxyCompactList}\small\item\em My\+\_\+sigemptyset \+: 包装了 sigemptyset 函数 \end{DoxyCompactList}\item 
+int \hyperlink{sigsuspend___8c_a236d1137ecfd9206b408e63ee25c8de5}{My\+\_\+sigaddset} (sigset\+\_\+t $\ast$set, int signo)
+\begin{DoxyCompactList}\small\item\em My\+\_\+sigaddset \+: 包装了 sigaddset 函数 \end{DoxyCompactList}\item 
+int \hyperlink{sigsuspend___8c_abbd7c12036b2d7d08b321fb204923eea}{My\+\_\+sigprocmask} (int how, const sigset\+\_\+t $\ast$set, sigset\+\_\+t $\ast$oset)
+\begin{DoxyCompactList}\small\item\em My\+\_\+sigprocmask \+: 包装了 sigprocmask 函数 \end{DoxyCompactList}\item 
+void \hyperlink{sigsuspend___8c_a0bd76e6d502075e830f62080f42f1a76}{print\+\_\+pid} ()
+\item 
+void \hyperlink{sigsuspend___8c_a2781199e9afe7ddf4d7a8bf1034b17af}{print\+\_\+parent\+\_\+pid} ()
+\item 
+void \hyperlink{sigsuspend___8c_aa863bed5e7fc54e1518675efcf72f855}{check\+\_\+waitpid\+\_\+signal} ()
+\item 
+static void \hyperlink{sigsuspend___8c_aab33dde15dc4bfdfa3410f3dd9af4a57}{sig\+\_\+print} (int signo, siginfo\+\_\+t $\ast$info, void $\ast$context)
+\begin{DoxyCompactList}\small\item\em sig\+\_\+print \+: 信号处理函数 \end{DoxyCompactList}\item 
+static pid\+\_\+t \hyperlink{sigsuspend___8c_a91d22fdab508ae9804eb76d15237da6b}{create\+\_\+child} ()
+\begin{DoxyCompactList}\small\item\em create\+\_\+child \+: 创建子进程 \end{DoxyCompactList}\item 
+int \hyperlink{sigsuspend___8c_a0682ebc206a6ee235f4797a5e640c098}{My\+\_\+sigsuspend} (const sigset\+\_\+t $\ast$sigmask)
+\begin{DoxyCompactList}\small\item\em My\+\_\+sigsuspend ：包装了 sigsuspend 函数 \end{DoxyCompactList}\item 
+void \hyperlink{sigsuspend___8c_a2874e74b2aed9da6073ea6e841670e22}{test\+\_\+sigsuspend} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\index{sigsuspend\+\_\+.\+c@{sigsuspend\+\_\+.\+c}!Hanlder\+\_\+\+Func@{Hanlder\+\_\+\+Func}}
+\index{Hanlder\+\_\+\+Func@{Hanlder\+\_\+\+Func}!sigsuspend\+\_\+.\+c@{sigsuspend\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{Hanlder\+\_\+\+Func}{Hanlder_Func}}]{\setlength{\rightskip}{0pt plus 5cm}typedef void Hanlder\+\_\+\+Func(int signo, siginfo\+\_\+t $\ast$info, void $\ast$context)}\hypertarget{sigsuspend___8c_a41f7fa3cd174bb624d8b38ed224ab7d6}{}\label{sigsuspend___8c_a41f7fa3cd174bb624d8b38ed224ab7d6}
+
+
+\subsection{Function Documentation}
+\index{sigsuspend\+\_\+.\+c@{sigsuspend\+\_\+.\+c}!add\+\_\+sigaction@{add\+\_\+sigaction}}
+\index{add\+\_\+sigaction@{add\+\_\+sigaction}!sigsuspend\+\_\+.\+c@{sigsuspend\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{add\+\_\+sigaction(int signo, sigset\+\_\+t $\ast$set, int no\+\_\+deffer, int restart, Hanlder\+\_\+\+Func handler)}{add_sigaction(int signo, sigset_t *set, int no_deffer, int restart, Hanlder_Func handler)}}]{\setlength{\rightskip}{0pt plus 5cm}void add\+\_\+sigaction (
+\begin{DoxyParamCaption}
+\item[{int}]{signo, }
+\item[{sigset\+\_\+t $\ast$}]{set, }
+\item[{int}]{no\+\_\+deffer, }
+\item[{int}]{restart, }
+\item[{{\bf Hanlder\+\_\+\+Func}}]{handler}
+\end{DoxyParamCaption}
+)}\hypertarget{sigsuspend___8c_aec229dbc1924b697e5e6b55d598399ed}{}\label{sigsuspend___8c_aec229dbc1924b697e5e6b55d598399ed}
+
+
+add\+\_\+sigaction \+: 添加信号处理函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em signo} & \+: 信号值 \\
+\hline
+{\em set} & \+: 指向 sigset\+\_\+t 的指针 \\
+\hline
+{\em no\+\_\+deffer} & \+: 非 0 则表示在执行其信号处理函数时，系统并不自动阻塞此信号 \\
+\hline
+{\em restart} & \+: 为 0 表示不自动重启中断的系统调用；非0表示自动重启被中断的系统 \\
+\hline
+{\em handler} & \+: 信号处理函数 \\
+\hline
+\end{DoxyParams}
+\index{sigsuspend\+\_\+.\+c@{sigsuspend\+\_\+.\+c}!check\+\_\+waitpid\+\_\+signal@{check\+\_\+waitpid\+\_\+signal}}
+\index{check\+\_\+waitpid\+\_\+signal@{check\+\_\+waitpid\+\_\+signal}!sigsuspend\+\_\+.\+c@{sigsuspend\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{check\+\_\+waitpid\+\_\+signal()}{check_waitpid_signal()}}]{\setlength{\rightskip}{0pt plus 5cm}void check\+\_\+waitpid\+\_\+signal (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{sigsuspend___8c_aa863bed5e7fc54e1518675efcf72f855}{}\label{sigsuspend___8c_aa863bed5e7fc54e1518675efcf72f855}
+\index{sigsuspend\+\_\+.\+c@{sigsuspend\+\_\+.\+c}!create\+\_\+child@{create\+\_\+child}}
+\index{create\+\_\+child@{create\+\_\+child}!sigsuspend\+\_\+.\+c@{sigsuspend\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{create\+\_\+child()}{create_child()}}]{\setlength{\rightskip}{0pt plus 5cm}static pid\+\_\+t create\+\_\+child (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{sigsuspend___8c_a91d22fdab508ae9804eb76d15237da6b}{}\label{sigsuspend___8c_a91d22fdab508ae9804eb76d15237da6b}
+
+
+create\+\_\+child \+: 创建子进程 
+
+\begin{DoxyReturn}{Returns}
+\+: fork 的返回值 
+\end{DoxyReturn}
+\index{sigsuspend\+\_\+.\+c@{sigsuspend\+\_\+.\+c}!My\+\_\+sigaddset@{My\+\_\+sigaddset}}
+\index{My\+\_\+sigaddset@{My\+\_\+sigaddset}!sigsuspend\+\_\+.\+c@{sigsuspend\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+sigaddset(sigset\+\_\+t $\ast$set, int signo)}{My_sigaddset(sigset_t *set, int signo)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+sigaddset (
+\begin{DoxyParamCaption}
+\item[{sigset\+\_\+t $\ast$}]{set, }
+\item[{int}]{signo}
+\end{DoxyParamCaption}
+)}\hypertarget{sigsuspend___8c_a236d1137ecfd9206b408e63ee25c8de5}{}\label{sigsuspend___8c_a236d1137ecfd9206b408e63ee25c8de5}
+
+
+My\+\_\+sigaddset \+: 包装了 sigaddset 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em set} & \+: 传递给 sigaddset 函数的 set 参数 \\
+\hline
+{\em signo} & \+: 传递给 sigaddset 函数的 signo 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 sigaddset 函数的值 
+\end{DoxyReturn}
+\index{sigsuspend\+\_\+.\+c@{sigsuspend\+\_\+.\+c}!My\+\_\+sigemptyset@{My\+\_\+sigemptyset}}
+\index{My\+\_\+sigemptyset@{My\+\_\+sigemptyset}!sigsuspend\+\_\+.\+c@{sigsuspend\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+sigemptyset(sigset\+\_\+t $\ast$set)}{My_sigemptyset(sigset_t *set)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+sigemptyset (
+\begin{DoxyParamCaption}
+\item[{sigset\+\_\+t $\ast$}]{set}
+\end{DoxyParamCaption}
+)}\hypertarget{sigsuspend___8c_a15c6978fdb8c7356c74158803246e84a}{}\label{sigsuspend___8c_a15c6978fdb8c7356c74158803246e84a}
+
+
+My\+\_\+sigemptyset \+: 包装了 sigemptyset 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em set} & \+: 传递给 sigemptyset 函数的 set 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 sigemptyset 函数的值 
+\end{DoxyReturn}
+\index{sigsuspend\+\_\+.\+c@{sigsuspend\+\_\+.\+c}!My\+\_\+sigprocmask@{My\+\_\+sigprocmask}}
+\index{My\+\_\+sigprocmask@{My\+\_\+sigprocmask}!sigsuspend\+\_\+.\+c@{sigsuspend\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+sigprocmask(int how, const sigset\+\_\+t $\ast$set, sigset\+\_\+t $\ast$oset)}{My_sigprocmask(int how, const sigset_t *set, sigset_t *oset)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+sigprocmask (
+\begin{DoxyParamCaption}
+\item[{int}]{how, }
+\item[{const sigset\+\_\+t $\ast$}]{set, }
+\item[{sigset\+\_\+t $\ast$}]{oset}
+\end{DoxyParamCaption}
+)}\hypertarget{sigsuspend___8c_abbd7c12036b2d7d08b321fb204923eea}{}\label{sigsuspend___8c_abbd7c12036b2d7d08b321fb204923eea}
+
+
+My\+\_\+sigprocmask \+: 包装了 sigprocmask 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em how} & \+: 传递给 sigprocmask 函数的 how 参数 \\
+\hline
+{\em set} & \+: 传递给 sigprocmask 函数的 set 参数 \\
+\hline
+{\em oset} & \+: 传递给 sigprocmask 函数的 oset 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 sigprocmask 函数的值 
+\end{DoxyReturn}
+\index{sigsuspend\+\_\+.\+c@{sigsuspend\+\_\+.\+c}!My\+\_\+sigsuspend@{My\+\_\+sigsuspend}}
+\index{My\+\_\+sigsuspend@{My\+\_\+sigsuspend}!sigsuspend\+\_\+.\+c@{sigsuspend\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+sigsuspend(const sigset\+\_\+t $\ast$sigmask)}{My_sigsuspend(const sigset_t *sigmask)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+sigsuspend (
+\begin{DoxyParamCaption}
+\item[{const sigset\+\_\+t $\ast$}]{sigmask}
+\end{DoxyParamCaption}
+)}\hypertarget{sigsuspend___8c_a0682ebc206a6ee235f4797a5e640c098}{}\label{sigsuspend___8c_a0682ebc206a6ee235f4797a5e640c098}
+
+
+My\+\_\+sigsuspend ：包装了 sigsuspend 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sigmask} & \+: 传递给 sigsuspend 函数的 sigmask 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 sigsuspend 函数的值 
+\end{DoxyReturn}
+\index{sigsuspend\+\_\+.\+c@{sigsuspend\+\_\+.\+c}!print\+\_\+parent\+\_\+pid@{print\+\_\+parent\+\_\+pid}}
+\index{print\+\_\+parent\+\_\+pid@{print\+\_\+parent\+\_\+pid}!sigsuspend\+\_\+.\+c@{sigsuspend\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+parent\+\_\+pid()}{print_parent_pid()}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+parent\+\_\+pid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{sigsuspend___8c_a2781199e9afe7ddf4d7a8bf1034b17af}{}\label{sigsuspend___8c_a2781199e9afe7ddf4d7a8bf1034b17af}
+\index{sigsuspend\+\_\+.\+c@{sigsuspend\+\_\+.\+c}!print\+\_\+pid@{print\+\_\+pid}}
+\index{print\+\_\+pid@{print\+\_\+pid}!sigsuspend\+\_\+.\+c@{sigsuspend\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+pid()}{print_pid()}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+pid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{sigsuspend___8c_a0bd76e6d502075e830f62080f42f1a76}{}\label{sigsuspend___8c_a0bd76e6d502075e830f62080f42f1a76}
+\index{sigsuspend\+\_\+.\+c@{sigsuspend\+\_\+.\+c}!print\+\_\+progress\+\_\+mask\+\_\+sigset@{print\+\_\+progress\+\_\+mask\+\_\+sigset}}
+\index{print\+\_\+progress\+\_\+mask\+\_\+sigset@{print\+\_\+progress\+\_\+mask\+\_\+sigset}!sigsuspend\+\_\+.\+c@{sigsuspend\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+progress\+\_\+mask\+\_\+sigset()}{print_progress_mask_sigset()}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+progress\+\_\+mask\+\_\+sigset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{sigsuspend___8c_af363bcba14e0b539c6882eee591d0580}{}\label{sigsuspend___8c_af363bcba14e0b539c6882eee591d0580}
+
+
+print\+\_\+progress\+\_\+mask\+\_\+sigset \+: 打印进程当前的信号屏蔽字 
+
+\index{sigsuspend\+\_\+.\+c@{sigsuspend\+\_\+.\+c}!print\+\_\+progress\+\_\+pending\+\_\+sigset@{print\+\_\+progress\+\_\+pending\+\_\+sigset}}
+\index{print\+\_\+progress\+\_\+pending\+\_\+sigset@{print\+\_\+progress\+\_\+pending\+\_\+sigset}!sigsuspend\+\_\+.\+c@{sigsuspend\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+progress\+\_\+pending\+\_\+sigset()}{print_progress_pending_sigset()}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+progress\+\_\+pending\+\_\+sigset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{sigsuspend___8c_a37c389f4a689b58ea68d4913fb5ce162}{}\label{sigsuspend___8c_a37c389f4a689b58ea68d4913fb5ce162}
+
+
+print\+\_\+progress\+\_\+pending\+\_\+sigset \+: 打印进程当前的未决的信号集 
+
+\index{sigsuspend\+\_\+.\+c@{sigsuspend\+\_\+.\+c}!print\+\_\+sigset@{print\+\_\+sigset}}
+\index{print\+\_\+sigset@{print\+\_\+sigset}!sigsuspend\+\_\+.\+c@{sigsuspend\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+sigset(const sigset\+\_\+t $\ast$set)}{print_sigset(const sigset_t *set)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+sigset (
+\begin{DoxyParamCaption}
+\item[{const sigset\+\_\+t $\ast$}]{set}
+\end{DoxyParamCaption}
+)}\hypertarget{sigsuspend___8c_a6c60e9cf92940b1663341506a00d9480}{}\label{sigsuspend___8c_a6c60e9cf92940b1663341506a00d9480}
+
+
+print\+\_\+sigset \+: 打印信号集 
+
+
+\begin{DoxyParams}{Parameters}
+{\em set} & \+: 指向信号集的指针 \\
+\hline
+\end{DoxyParams}
+\index{sigsuspend\+\_\+.\+c@{sigsuspend\+\_\+.\+c}!sig\+\_\+print@{sig\+\_\+print}}
+\index{sig\+\_\+print@{sig\+\_\+print}!sigsuspend\+\_\+.\+c@{sigsuspend\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{sig\+\_\+print(int signo, siginfo\+\_\+t $\ast$info, void $\ast$context)}{sig_print(int signo, siginfo_t *info, void *context)}}]{\setlength{\rightskip}{0pt plus 5cm}static void sig\+\_\+print (
+\begin{DoxyParamCaption}
+\item[{int}]{signo, }
+\item[{siginfo\+\_\+t $\ast$}]{info, }
+\item[{void $\ast$}]{context}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{sigsuspend___8c_aab33dde15dc4bfdfa3410f3dd9af4a57}{}\label{sigsuspend___8c_aab33dde15dc4bfdfa3410f3dd9af4a57}
+
+
+sig\+\_\+print \+: 信号处理函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em signo} & \+: 信号值 \\
+\hline
+{\em info} & \+: 指向 siginfo\+\_\+t 的指针 \\
+\hline
+{\em context} & \+: 指向 ucontext\+\_\+t $\ast$ 的指针 \\
+\hline
+\end{DoxyParams}
+\index{sigsuspend\+\_\+.\+c@{sigsuspend\+\_\+.\+c}!test\+\_\+sigsuspend@{test\+\_\+sigsuspend}}
+\index{test\+\_\+sigsuspend@{test\+\_\+sigsuspend}!sigsuspend\+\_\+.\+c@{sigsuspend\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{test\+\_\+sigsuspend()}{test_sigsuspend()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+sigsuspend (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{sigsuspend___8c_a2874e74b2aed9da6073ea6e841670e22}{}\label{sigsuspend___8c_a2874e74b2aed9da6073ea6e841670e22}

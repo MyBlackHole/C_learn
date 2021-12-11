@@ -1,0 +1,261 @@
+\hypertarget{times___8h}{}\section{src/6\+\_\+\+System\+\_\+\+Info/times\+\_\+.h File Reference}
+\label{times___8h}\index{src/6\+\_\+\+System\+\_\+\+Info/times\+\_\+.\+h@{src/6\+\_\+\+System\+\_\+\+Info/times\+\_\+.\+h}}
+{\ttfamily \#include $<$time.\+h$>$}\\*
+{\ttfamily \#include $<$sys/time.\+h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+time\+\_\+t \hyperlink{times___8h_ab44dd449158c5c8ad95071232afef304}{My\+\_\+time} (time\+\_\+t $\ast$calptr)
+\begin{DoxyCompactList}\small\item\em My\+\_\+time \+: 包装了 time 函数 \end{DoxyCompactList}\item 
+int \hyperlink{times___8h_a450ee325b4ad37b34d9a059a06776a80}{My\+\_\+clock\+\_\+gettime} (clockid\+\_\+t clock\+\_\+id, struct timespec $\ast$tsp)
+\begin{DoxyCompactList}\small\item\em My\+\_\+clock\+\_\+gettime \+: 包装了 clock\+\_\+gettime 函数 \end{DoxyCompactList}\item 
+int \hyperlink{times___8h_a3ddcfb690f5a081b49ff21971d29e764}{My\+\_\+clock\+\_\+getres} (clockid\+\_\+t clock\+\_\+id, struct timespec $\ast$tsp)
+\begin{DoxyCompactList}\small\item\em My\+\_\+clock\+\_\+getres \+: 包装了 clock\+\_\+getres 函数 \end{DoxyCompactList}\item 
+int \hyperlink{times___8h_abda87deb36e57838d47e51187227dc9d}{My\+\_\+gettimeofday} (struct timeval $\ast$tp, void $\ast$tzp)
+\begin{DoxyCompactList}\small\item\em My\+\_\+clock\+\_\+settime \+: 包装了 clock\+\_\+settime 函数 \end{DoxyCompactList}\item 
+struct tm $\ast$ \hyperlink{times___8h_a493f59f51d061434117452f9383f9309}{My\+\_\+gmtime} (const time\+\_\+t $\ast$calptr)
+\begin{DoxyCompactList}\small\item\em My\+\_\+gmtime \+: 包装了 gmtime 函数 \end{DoxyCompactList}\item 
+struct tm $\ast$ \hyperlink{times___8h_afc07ccf425f68c6fcef5f90bb9f2c7e8}{My\+\_\+localtime} (const time\+\_\+t $\ast$calptr)
+\begin{DoxyCompactList}\small\item\em My\+\_\+localtime \+: 包装了 localtime 函数 \end{DoxyCompactList}\item 
+time\+\_\+t \hyperlink{times___8h_a6dece2ca4ca451fcc909386f6b9bb5a9}{My\+\_\+mktime} (struct tm $\ast$tmptr)
+\begin{DoxyCompactList}\small\item\em My\+\_\+mktime \+: 包装了 mktime 函数 \end{DoxyCompactList}\item 
+void \hyperlink{times___8h_add22ed2e53c98b1816dab6ee868e0abf}{print\+\_\+timespec} (const struct timespec $\ast$tm\+\_\+tsp)
+\begin{DoxyCompactList}\small\item\em print\+\_\+timespec ： 打印 timespec 时间 \end{DoxyCompactList}\item 
+void \hyperlink{times___8h_a202b6172179aa85754e31b610b573f74}{print\+\_\+time\+\_\+t} (const time\+\_\+t tm\+\_\+t)
+\begin{DoxyCompactList}\small\item\em print\+\_\+time\+\_\+t ： 打印 time\+\_\+t 时间 \end{DoxyCompactList}\item 
+void \hyperlink{times___8h_a0cec1bfa5ee2b67ab24f5a2f65a831af}{print\+\_\+tm} (const struct tm $\ast$tm\+\_\+tm)
+\begin{DoxyCompactList}\small\item\em print\+\_\+tm ： 打印 tm 时间 \end{DoxyCompactList}\item 
+void \hyperlink{times___8h_ac2d69525f5d0cdb71e80ff534fb2ee9e}{print\+\_\+timeval} (const struct timeval $\ast$tm\+\_\+val)
+\begin{DoxyCompactList}\small\item\em print\+\_\+timeval ： 打印 timeval 时间 \end{DoxyCompactList}\item 
+void \hyperlink{times___8h_ae1df7723c29096d860f40da4a3ca50ce}{test\+\_\+times} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+times \+: 测试时间相关的函数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{times\+\_\+.\+h@{times\+\_\+.\+h}!My\+\_\+clock\+\_\+getres@{My\+\_\+clock\+\_\+getres}}
+\index{My\+\_\+clock\+\_\+getres@{My\+\_\+clock\+\_\+getres}!times\+\_\+.\+h@{times\+\_\+.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+clock\+\_\+getres(clockid\+\_\+t clock\+\_\+id, struct timespec $\ast$tsp)}{My_clock_getres(clockid_t clock_id, struct timespec *tsp)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+clock\+\_\+getres (
+\begin{DoxyParamCaption}
+\item[{clockid\+\_\+t}]{clock\+\_\+id, }
+\item[{struct timespec $\ast$}]{tsp}
+\end{DoxyParamCaption}
+)}\hypertarget{times___8h_a3ddcfb690f5a081b49ff21971d29e764}{}\label{times___8h_a3ddcfb690f5a081b49ff21971d29e764}
+
+
+My\+\_\+clock\+\_\+getres \+: 包装了 clock\+\_\+getres 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em clock\+\_\+id} & \+: 传递给 clock\+\_\+getres 函数的 clock\+\_\+id 参数 \\
+\hline
+{\em tsp} & \+: 传递给 clock\+\_\+getres 函数的 tsp 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 clock\+\_\+getres 函数的值 
+\end{DoxyReturn}
+\index{times\+\_\+.\+h@{times\+\_\+.\+h}!My\+\_\+clock\+\_\+gettime@{My\+\_\+clock\+\_\+gettime}}
+\index{My\+\_\+clock\+\_\+gettime@{My\+\_\+clock\+\_\+gettime}!times\+\_\+.\+h@{times\+\_\+.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+clock\+\_\+gettime(clockid\+\_\+t clock\+\_\+id, struct timespec $\ast$tsp)}{My_clock_gettime(clockid_t clock_id, struct timespec *tsp)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+clock\+\_\+gettime (
+\begin{DoxyParamCaption}
+\item[{clockid\+\_\+t}]{clock\+\_\+id, }
+\item[{struct timespec $\ast$}]{tsp}
+\end{DoxyParamCaption}
+)}\hypertarget{times___8h_a450ee325b4ad37b34d9a059a06776a80}{}\label{times___8h_a450ee325b4ad37b34d9a059a06776a80}
+
+
+My\+\_\+clock\+\_\+gettime \+: 包装了 clock\+\_\+gettime 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em clock\+\_\+id} & \+: 传递给 clock\+\_\+gettime 函数的 clock\+\_\+id 参数 \\
+\hline
+{\em tsp} & \+: 传递给 clock\+\_\+gettime 函数的 tsp 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 clock\+\_\+gettime 函数的值 
+\end{DoxyReturn}
+\index{times\+\_\+.\+h@{times\+\_\+.\+h}!My\+\_\+gettimeofday@{My\+\_\+gettimeofday}}
+\index{My\+\_\+gettimeofday@{My\+\_\+gettimeofday}!times\+\_\+.\+h@{times\+\_\+.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+gettimeofday(struct timeval $\ast$tp, void $\ast$tzp)}{My_gettimeofday(struct timeval *tp, void *tzp)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+gettimeofday (
+\begin{DoxyParamCaption}
+\item[{struct timeval $\ast$}]{tp, }
+\item[{void $\ast$}]{tzp}
+\end{DoxyParamCaption}
+)}\hypertarget{times___8h_abda87deb36e57838d47e51187227dc9d}{}\label{times___8h_abda87deb36e57838d47e51187227dc9d}
+
+
+My\+\_\+clock\+\_\+settime \+: 包装了 clock\+\_\+settime 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em clock\+\_\+id} & \+: 传递给 clock\+\_\+settime 函数的 clock\+\_\+id 参数 \\
+\hline
+{\em tsp} & \+: 传递给 clock\+\_\+settime 函数的 tsp 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 clock\+\_\+settime 函数的值
+\end{DoxyReturn}
+My\+\_\+gettimeofday \+: 包装了 gettimeofday 函数 
+\begin{DoxyParams}{Parameters}
+{\em tp} & \+: 传递给 gettimeofday 函数的 tp 参数 \\
+\hline
+{\em tzp} & \+: 传递给 gettimeofday 函数的 tzp 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 gettimeofday 函数的值 
+\end{DoxyReturn}
+\index{times\+\_\+.\+h@{times\+\_\+.\+h}!My\+\_\+gmtime@{My\+\_\+gmtime}}
+\index{My\+\_\+gmtime@{My\+\_\+gmtime}!times\+\_\+.\+h@{times\+\_\+.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+gmtime(const time\+\_\+t $\ast$calptr)}{My_gmtime(const time_t *calptr)}}]{\setlength{\rightskip}{0pt plus 5cm}struct tm$\ast$ My\+\_\+gmtime (
+\begin{DoxyParamCaption}
+\item[{const time\+\_\+t $\ast$}]{calptr}
+\end{DoxyParamCaption}
+)}\hypertarget{times___8h_a493f59f51d061434117452f9383f9309}{}\label{times___8h_a493f59f51d061434117452f9383f9309}
+
+
+My\+\_\+gmtime \+: 包装了 gmtime 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em calptr} & \+: 传递给 gmtime 函数的 calptr 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 gmtime 函数的值 
+\end{DoxyReturn}
+\index{times\+\_\+.\+h@{times\+\_\+.\+h}!My\+\_\+localtime@{My\+\_\+localtime}}
+\index{My\+\_\+localtime@{My\+\_\+localtime}!times\+\_\+.\+h@{times\+\_\+.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+localtime(const time\+\_\+t $\ast$calptr)}{My_localtime(const time_t *calptr)}}]{\setlength{\rightskip}{0pt plus 5cm}struct tm$\ast$ My\+\_\+localtime (
+\begin{DoxyParamCaption}
+\item[{const time\+\_\+t $\ast$}]{calptr}
+\end{DoxyParamCaption}
+)}\hypertarget{times___8h_afc07ccf425f68c6fcef5f90bb9f2c7e8}{}\label{times___8h_afc07ccf425f68c6fcef5f90bb9f2c7e8}
+
+
+My\+\_\+localtime \+: 包装了 localtime 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em calptr} & \+: 传递给 localtime 函数的 calptr 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 localtime 函数的值 
+\end{DoxyReturn}
+\index{times\+\_\+.\+h@{times\+\_\+.\+h}!My\+\_\+mktime@{My\+\_\+mktime}}
+\index{My\+\_\+mktime@{My\+\_\+mktime}!times\+\_\+.\+h@{times\+\_\+.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+mktime(struct tm $\ast$tmptr)}{My_mktime(struct tm *tmptr)}}]{\setlength{\rightskip}{0pt plus 5cm}time\+\_\+t My\+\_\+mktime (
+\begin{DoxyParamCaption}
+\item[{struct tm $\ast$}]{tmptr}
+\end{DoxyParamCaption}
+)}\hypertarget{times___8h_a6dece2ca4ca451fcc909386f6b9bb5a9}{}\label{times___8h_a6dece2ca4ca451fcc909386f6b9bb5a9}
+
+
+My\+\_\+mktime \+: 包装了 mktime 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tmptr} & \+: 传递给 mktime 函数的 tmptr 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 mktime 函数的值 
+\end{DoxyReturn}
+\index{times\+\_\+.\+h@{times\+\_\+.\+h}!My\+\_\+time@{My\+\_\+time}}
+\index{My\+\_\+time@{My\+\_\+time}!times\+\_\+.\+h@{times\+\_\+.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+time(time\+\_\+t $\ast$calptr)}{My_time(time_t *calptr)}}]{\setlength{\rightskip}{0pt plus 5cm}time\+\_\+t My\+\_\+time (
+\begin{DoxyParamCaption}
+\item[{time\+\_\+t $\ast$}]{calptr}
+\end{DoxyParamCaption}
+)}\hypertarget{times___8h_ab44dd449158c5c8ad95071232afef304}{}\label{times___8h_ab44dd449158c5c8ad95071232afef304}
+
+
+My\+\_\+time \+: 包装了 time 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em calptr} & \+: 传递给 time 函数的 calptr 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 time 函数的值 
+\end{DoxyReturn}
+\index{times\+\_\+.\+h@{times\+\_\+.\+h}!print\+\_\+time\+\_\+t@{print\+\_\+time\+\_\+t}}
+\index{print\+\_\+time\+\_\+t@{print\+\_\+time\+\_\+t}!times\+\_\+.\+h@{times\+\_\+.\+h}}
+\subsubsection[{\texorpdfstring{print\+\_\+time\+\_\+t(const time\+\_\+t tm\+\_\+t)}{print_time_t(const time_t tm_t)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+time\+\_\+t (
+\begin{DoxyParamCaption}
+\item[{const time\+\_\+t}]{tm\+\_\+t}
+\end{DoxyParamCaption}
+)}\hypertarget{times___8h_a202b6172179aa85754e31b610b573f74}{}\label{times___8h_a202b6172179aa85754e31b610b573f74}
+
+
+print\+\_\+time\+\_\+t ： 打印 time\+\_\+t 时间 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tmt} & \+: time\+\_\+t 时间 \\
+\hline
+\end{DoxyParams}
+\index{times\+\_\+.\+h@{times\+\_\+.\+h}!print\+\_\+timespec@{print\+\_\+timespec}}
+\index{print\+\_\+timespec@{print\+\_\+timespec}!times\+\_\+.\+h@{times\+\_\+.\+h}}
+\subsubsection[{\texorpdfstring{print\+\_\+timespec(const struct timespec $\ast$tm\+\_\+tsp)}{print_timespec(const struct timespec *tm_tsp)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+timespec (
+\begin{DoxyParamCaption}
+\item[{const struct timespec $\ast$}]{tm\+\_\+tsp}
+\end{DoxyParamCaption}
+)}\hypertarget{times___8h_add22ed2e53c98b1816dab6ee868e0abf}{}\label{times___8h_add22ed2e53c98b1816dab6ee868e0abf}
+
+
+print\+\_\+timespec ： 打印 timespec 时间 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tm\+\_\+tsp} & \+: struct timespec 时间 \\
+\hline
+\end{DoxyParams}
+\index{times\+\_\+.\+h@{times\+\_\+.\+h}!print\+\_\+timeval@{print\+\_\+timeval}}
+\index{print\+\_\+timeval@{print\+\_\+timeval}!times\+\_\+.\+h@{times\+\_\+.\+h}}
+\subsubsection[{\texorpdfstring{print\+\_\+timeval(const struct timeval $\ast$tm\+\_\+val)}{print_timeval(const struct timeval *tm_val)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+timeval (
+\begin{DoxyParamCaption}
+\item[{const struct timeval $\ast$}]{tm\+\_\+val}
+\end{DoxyParamCaption}
+)}\hypertarget{times___8h_ac2d69525f5d0cdb71e80ff534fb2ee9e}{}\label{times___8h_ac2d69525f5d0cdb71e80ff534fb2ee9e}
+
+
+print\+\_\+timeval ： 打印 timeval 时间 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tm\+\_\+val} & struct timeval 时间 \\
+\hline
+\end{DoxyParams}
+\index{times\+\_\+.\+h@{times\+\_\+.\+h}!print\+\_\+tm@{print\+\_\+tm}}
+\index{print\+\_\+tm@{print\+\_\+tm}!times\+\_\+.\+h@{times\+\_\+.\+h}}
+\subsubsection[{\texorpdfstring{print\+\_\+tm(const struct tm $\ast$tm\+\_\+tm)}{print_tm(const struct tm *tm_tm)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+tm (
+\begin{DoxyParamCaption}
+\item[{const struct tm $\ast$}]{tm\+\_\+tm}
+\end{DoxyParamCaption}
+)}\hypertarget{times___8h_a0cec1bfa5ee2b67ab24f5a2f65a831af}{}\label{times___8h_a0cec1bfa5ee2b67ab24f5a2f65a831af}
+
+
+print\+\_\+tm ： 打印 tm 时间 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tm\+\_\+tm} & \+: struct tm 时间 \\
+\hline
+\end{DoxyParams}
+\index{times\+\_\+.\+h@{times\+\_\+.\+h}!test\+\_\+times@{test\+\_\+times}}
+\index{test\+\_\+times@{test\+\_\+times}!times\+\_\+.\+h@{times\+\_\+.\+h}}
+\subsubsection[{\texorpdfstring{test\+\_\+times()}{test_times()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+times (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{times___8h_ae1df7723c29096d860f40da4a3ca50ce}{}\label{times___8h_ae1df7723c29096d860f40da4a3ca50ce}
+
+
+test\+\_\+times \+: 测试时间相关的函数 
+

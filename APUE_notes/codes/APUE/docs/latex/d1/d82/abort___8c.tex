@@ -1,0 +1,111 @@
+\hypertarget{abort___8c}{}\section{src/10\+\_\+\+Signal/abort\+\_\+.c File Reference}
+\label{abort___8c}\index{src/10\+\_\+\+Signal/abort\+\_\+.\+c@{src/10\+\_\+\+Signal/abort\+\_\+.\+c}}
+{\ttfamily \#include \char`\"{}abort\+\_\+.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../header.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$signal.\+h$>$}\\*
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef void \hyperlink{abort___8c_a41f7fa3cd174bb624d8b38ed224ab7d6}{Hanlder\+\_\+\+Func}(int signo, siginfo\+\_\+t $\ast$info, void $\ast$context)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{abort___8c_af363bcba14e0b539c6882eee591d0580}{print\+\_\+progress\+\_\+mask\+\_\+sigset} ()
+\item 
+int \hyperlink{abort___8c_a15c6978fdb8c7356c74158803246e84a}{My\+\_\+sigemptyset} (sigset\+\_\+t $\ast$set)
+\item 
+int \hyperlink{abort___8c_a236d1137ecfd9206b408e63ee25c8de5}{My\+\_\+sigaddset} (sigset\+\_\+t $\ast$set, int signo)
+\item 
+int \hyperlink{abort___8c_abbd7c12036b2d7d08b321fb204923eea}{My\+\_\+sigprocmask} (int how, const sigset\+\_\+t $\ast$set, sigset\+\_\+t $\ast$oset)
+\item 
+void \hyperlink{abort___8c_aec229dbc1924b697e5e6b55d598399ed}{add\+\_\+sigaction} (int signo, sigset\+\_\+t $\ast$set, int no\+\_\+deffer, int restart, \hyperlink{sleep__nanosleep_8c_a41f7fa3cd174bb624d8b38ed224ab7d6}{Hanlder\+\_\+\+Func} handler)
+\item 
+static void \hyperlink{abort___8c_aab33dde15dc4bfdfa3410f3dd9af4a57}{sig\+\_\+print} (int signo, siginfo\+\_\+t $\ast$info, void $\ast$context)
+\begin{DoxyCompactList}\small\item\em sig\+\_\+print \+: 信号处理函数 \end{DoxyCompactList}\item 
+void \hyperlink{abort___8c_aabc985f146ac7c85df3df3fd771147d5}{test\+\_\+abort} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+abort \+:测试 abort 函数的用法 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\index{abort\+\_\+.\+c@{abort\+\_\+.\+c}!Hanlder\+\_\+\+Func@{Hanlder\+\_\+\+Func}}
+\index{Hanlder\+\_\+\+Func@{Hanlder\+\_\+\+Func}!abort\+\_\+.\+c@{abort\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{Hanlder\+\_\+\+Func}{Hanlder_Func}}]{\setlength{\rightskip}{0pt plus 5cm}typedef void Hanlder\+\_\+\+Func(int signo, siginfo\+\_\+t $\ast$info, void $\ast$context)}\hypertarget{abort___8c_a41f7fa3cd174bb624d8b38ed224ab7d6}{}\label{abort___8c_a41f7fa3cd174bb624d8b38ed224ab7d6}
+
+
+\subsection{Function Documentation}
+\index{abort\+\_\+.\+c@{abort\+\_\+.\+c}!add\+\_\+sigaction@{add\+\_\+sigaction}}
+\index{add\+\_\+sigaction@{add\+\_\+sigaction}!abort\+\_\+.\+c@{abort\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{add\+\_\+sigaction(int signo, sigset\+\_\+t $\ast$set, int no\+\_\+deffer, int restart, Hanlder\+\_\+\+Func handler)}{add_sigaction(int signo, sigset_t *set, int no_deffer, int restart, Hanlder_Func handler)}}]{\setlength{\rightskip}{0pt plus 5cm}void add\+\_\+sigaction (
+\begin{DoxyParamCaption}
+\item[{int}]{signo, }
+\item[{sigset\+\_\+t $\ast$}]{set, }
+\item[{int}]{no\+\_\+deffer, }
+\item[{int}]{restart, }
+\item[{{\bf Hanlder\+\_\+\+Func}}]{handler}
+\end{DoxyParamCaption}
+)}\hypertarget{abort___8c_aec229dbc1924b697e5e6b55d598399ed}{}\label{abort___8c_aec229dbc1924b697e5e6b55d598399ed}
+\index{abort\+\_\+.\+c@{abort\+\_\+.\+c}!My\+\_\+sigaddset@{My\+\_\+sigaddset}}
+\index{My\+\_\+sigaddset@{My\+\_\+sigaddset}!abort\+\_\+.\+c@{abort\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+sigaddset(sigset\+\_\+t $\ast$set, int signo)}{My_sigaddset(sigset_t *set, int signo)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+sigaddset (
+\begin{DoxyParamCaption}
+\item[{sigset\+\_\+t $\ast$}]{set, }
+\item[{int}]{signo}
+\end{DoxyParamCaption}
+)}\hypertarget{abort___8c_a236d1137ecfd9206b408e63ee25c8de5}{}\label{abort___8c_a236d1137ecfd9206b408e63ee25c8de5}
+\index{abort\+\_\+.\+c@{abort\+\_\+.\+c}!My\+\_\+sigemptyset@{My\+\_\+sigemptyset}}
+\index{My\+\_\+sigemptyset@{My\+\_\+sigemptyset}!abort\+\_\+.\+c@{abort\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+sigemptyset(sigset\+\_\+t $\ast$set)}{My_sigemptyset(sigset_t *set)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+sigemptyset (
+\begin{DoxyParamCaption}
+\item[{sigset\+\_\+t $\ast$}]{set}
+\end{DoxyParamCaption}
+)}\hypertarget{abort___8c_a15c6978fdb8c7356c74158803246e84a}{}\label{abort___8c_a15c6978fdb8c7356c74158803246e84a}
+\index{abort\+\_\+.\+c@{abort\+\_\+.\+c}!My\+\_\+sigprocmask@{My\+\_\+sigprocmask}}
+\index{My\+\_\+sigprocmask@{My\+\_\+sigprocmask}!abort\+\_\+.\+c@{abort\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+sigprocmask(int how, const sigset\+\_\+t $\ast$set, sigset\+\_\+t $\ast$oset)}{My_sigprocmask(int how, const sigset_t *set, sigset_t *oset)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+sigprocmask (
+\begin{DoxyParamCaption}
+\item[{int}]{how, }
+\item[{const sigset\+\_\+t $\ast$}]{set, }
+\item[{sigset\+\_\+t $\ast$}]{oset}
+\end{DoxyParamCaption}
+)}\hypertarget{abort___8c_abbd7c12036b2d7d08b321fb204923eea}{}\label{abort___8c_abbd7c12036b2d7d08b321fb204923eea}
+\index{abort\+\_\+.\+c@{abort\+\_\+.\+c}!print\+\_\+progress\+\_\+mask\+\_\+sigset@{print\+\_\+progress\+\_\+mask\+\_\+sigset}}
+\index{print\+\_\+progress\+\_\+mask\+\_\+sigset@{print\+\_\+progress\+\_\+mask\+\_\+sigset}!abort\+\_\+.\+c@{abort\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+progress\+\_\+mask\+\_\+sigset()}{print_progress_mask_sigset()}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+progress\+\_\+mask\+\_\+sigset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{abort___8c_af363bcba14e0b539c6882eee591d0580}{}\label{abort___8c_af363bcba14e0b539c6882eee591d0580}
+\index{abort\+\_\+.\+c@{abort\+\_\+.\+c}!sig\+\_\+print@{sig\+\_\+print}}
+\index{sig\+\_\+print@{sig\+\_\+print}!abort\+\_\+.\+c@{abort\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{sig\+\_\+print(int signo, siginfo\+\_\+t $\ast$info, void $\ast$context)}{sig_print(int signo, siginfo_t *info, void *context)}}]{\setlength{\rightskip}{0pt plus 5cm}static void sig\+\_\+print (
+\begin{DoxyParamCaption}
+\item[{int}]{signo, }
+\item[{siginfo\+\_\+t $\ast$}]{info, }
+\item[{void $\ast$}]{context}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{abort___8c_aab33dde15dc4bfdfa3410f3dd9af4a57}{}\label{abort___8c_aab33dde15dc4bfdfa3410f3dd9af4a57}
+
+
+sig\+\_\+print \+: 信号处理函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em signo} & \+: 信号值 \\
+\hline
+{\em info} & \+: 指向 siginfo\+\_\+t 的指针 \\
+\hline
+{\em context} & \+: 指向 ucontext\+\_\+t $\ast$ 的指针 \\
+\hline
+\end{DoxyParams}
+\index{abort\+\_\+.\+c@{abort\+\_\+.\+c}!test\+\_\+abort@{test\+\_\+abort}}
+\index{test\+\_\+abort@{test\+\_\+abort}!abort\+\_\+.\+c@{abort\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{test\+\_\+abort()}{test_abort()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+abort (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{abort___8c_aabc985f146ac7c85df3df3fd771147d5}{}\label{abort___8c_aabc985f146ac7c85df3df3fd771147d5}
+
+
+test\+\_\+abort \+:测试 abort 函数的用法 
+

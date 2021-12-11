@@ -1,0 +1,161 @@
+\hypertarget{progress__times___8c}{}\section{src/8\+\_\+\+Progress\+\_\+\+Control/progress\+\_\+times\+\_\+.c File Reference}
+\label{progress__times___8c}\index{src/8\+\_\+\+Progress\+\_\+\+Control/progress\+\_\+times\+\_\+.\+c@{src/8\+\_\+\+Progress\+\_\+\+Control/progress\+\_\+times\+\_\+.\+c}}
+{\ttfamily \#include \char`\"{}progress\+\_\+times\+\_\+.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../header.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{progress__times___8c_a0bd76e6d502075e830f62080f42f1a76}{print\+\_\+pid} ()
+\begin{DoxyCompactList}\small\item\em print\+\_\+pid \+: 打印进程 id \end{DoxyCompactList}\item 
+void \hyperlink{progress__times___8c_a2781199e9afe7ddf4d7a8bf1034b17af}{print\+\_\+parent\+\_\+pid} ()
+\begin{DoxyCompactList}\small\item\em print\+\_\+parent\+\_\+pid \+: 打印进程的父进程 id \end{DoxyCompactList}\item 
+void \hyperlink{progress__times___8c_a05c3b92d18cad5803dbe4e586f77c444}{check\+\_\+waitpid} ()
+\item 
+clock\+\_\+t \hyperlink{progress__times___8c_a8f23a46ddb2e49268d07baa781e414c7}{My\+\_\+times} (struct tms $\ast$\hyperlink{setjmp__longjmp_8c_a02df3e2f0291bf06f3a685829975efec}{buf})
+\begin{DoxyCompactList}\small\item\em My\+\_\+times \+: 包装了 times 函数 \end{DoxyCompactList}\item 
+long \hyperlink{progress__times___8c_a63071159f3fc2f9e7768f02acc347f31}{clock\+\_\+2\+\_\+second} (clock\+\_\+t clk)
+\begin{DoxyCompactList}\small\item\em clock\+\_\+2\+\_\+second \+: 将 clock\+\_\+t 转换成秒 \end{DoxyCompactList}\item 
+void \hyperlink{progress__times___8c_a53da4b9334f765ddbc27a5caa42fba25}{print\+\_\+struct\+\_\+tms} (const struct tms $\ast$tm)
+\begin{DoxyCompactList}\small\item\em print\+\_\+tms ： 打印 struct tms 结构 \end{DoxyCompactList}\item 
+static void \hyperlink{progress__times___8c_a37f6837ecade7ff311d7e6c5a5a4cfd5}{busy\+\_\+work} (long iterate\+\_\+num)
+\begin{DoxyCompactList}\small\item\em busy\+\_\+work \+: 用 for 循环模拟 C\+PU 繁忙的计算任务 \end{DoxyCompactList}\item 
+static pid\+\_\+t \hyperlink{progress__times___8c_a525db8f16bbf2ebbbb97b633871b0ae0}{create\+\_\+child} (int fd, long iterate\+\_\+num)
+\begin{DoxyCompactList}\small\item\em create\+\_\+child \+: 创建子进程 \end{DoxyCompactList}\item 
+void \hyperlink{progress__times___8c_ac3e6327f3edce1f477c85f80aa0be6e5}{test\+\_\+progress\+\_\+times} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+times \+: 测试 times 函数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{progress\+\_\+times\+\_\+.\+c@{progress\+\_\+times\+\_\+.\+c}!busy\+\_\+work@{busy\+\_\+work}}
+\index{busy\+\_\+work@{busy\+\_\+work}!progress\+\_\+times\+\_\+.\+c@{progress\+\_\+times\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{busy\+\_\+work(long iterate\+\_\+num)}{busy_work(long iterate_num)}}]{\setlength{\rightskip}{0pt plus 5cm}static void busy\+\_\+work (
+\begin{DoxyParamCaption}
+\item[{long}]{iterate\+\_\+num}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{progress__times___8c_a37f6837ecade7ff311d7e6c5a5a4cfd5}{}\label{progress__times___8c_a37f6837ecade7ff311d7e6c5a5a4cfd5}
+
+
+busy\+\_\+work \+: 用 for 循环模拟 C\+PU 繁忙的计算任务 
+
+
+\begin{DoxyParams}{Parameters}
+{\em iterate\+\_\+num} & \+: for 循环的次数 \\
+\hline
+\end{DoxyParams}
+\index{progress\+\_\+times\+\_\+.\+c@{progress\+\_\+times\+\_\+.\+c}!check\+\_\+waitpid@{check\+\_\+waitpid}}
+\index{check\+\_\+waitpid@{check\+\_\+waitpid}!progress\+\_\+times\+\_\+.\+c@{progress\+\_\+times\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{check\+\_\+waitpid()}{check_waitpid()}}]{\setlength{\rightskip}{0pt plus 5cm}void check\+\_\+waitpid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{progress__times___8c_a05c3b92d18cad5803dbe4e586f77c444}{}\label{progress__times___8c_a05c3b92d18cad5803dbe4e586f77c444}
+\index{progress\+\_\+times\+\_\+.\+c@{progress\+\_\+times\+\_\+.\+c}!clock\+\_\+2\+\_\+second@{clock\+\_\+2\+\_\+second}}
+\index{clock\+\_\+2\+\_\+second@{clock\+\_\+2\+\_\+second}!progress\+\_\+times\+\_\+.\+c@{progress\+\_\+times\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{clock\+\_\+2\+\_\+second(clock\+\_\+t clk)}{clock_2_second(clock_t clk)}}]{\setlength{\rightskip}{0pt plus 5cm}long clock\+\_\+2\+\_\+second (
+\begin{DoxyParamCaption}
+\item[{clock\+\_\+t}]{clk}
+\end{DoxyParamCaption}
+)}\hypertarget{progress__times___8c_a63071159f3fc2f9e7768f02acc347f31}{}\label{progress__times___8c_a63071159f3fc2f9e7768f02acc347f31}
+
+
+clock\+\_\+2\+\_\+second \+: 将 clock\+\_\+t 转换成秒 
+
+
+\begin{DoxyParams}{Parameters}
+{\em clk} & \+: clock\+\_\+t 数量 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+： 对应的秒数 
+\end{DoxyReturn}
+\index{progress\+\_\+times\+\_\+.\+c@{progress\+\_\+times\+\_\+.\+c}!create\+\_\+child@{create\+\_\+child}}
+\index{create\+\_\+child@{create\+\_\+child}!progress\+\_\+times\+\_\+.\+c@{progress\+\_\+times\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{create\+\_\+child(int fd, long iterate\+\_\+num)}{create_child(int fd, long iterate_num)}}]{\setlength{\rightskip}{0pt plus 5cm}static pid\+\_\+t create\+\_\+child (
+\begin{DoxyParamCaption}
+\item[{int}]{fd, }
+\item[{long}]{iterate\+\_\+num}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{progress__times___8c_a525db8f16bbf2ebbbb97b633871b0ae0}{}\label{progress__times___8c_a525db8f16bbf2ebbbb97b633871b0ae0}
+
+
+create\+\_\+child \+: 创建子进程 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fd} & \+: 用于记录锁的文件描述符 \\
+\hline
+{\em iterate\+\_\+num} & \+: for 迭代数量 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: fork 的返回值 
+\end{DoxyReturn}
+\index{progress\+\_\+times\+\_\+.\+c@{progress\+\_\+times\+\_\+.\+c}!My\+\_\+times@{My\+\_\+times}}
+\index{My\+\_\+times@{My\+\_\+times}!progress\+\_\+times\+\_\+.\+c@{progress\+\_\+times\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+times(struct tms $\ast$buf)}{My_times(struct tms *buf)}}]{\setlength{\rightskip}{0pt plus 5cm}clock\+\_\+t My\+\_\+times (
+\begin{DoxyParamCaption}
+\item[{struct tms $\ast$}]{buf}
+\end{DoxyParamCaption}
+)}\hypertarget{progress__times___8c_a8f23a46ddb2e49268d07baa781e414c7}{}\label{progress__times___8c_a8f23a46ddb2e49268d07baa781e414c7}
+
+
+My\+\_\+times \+: 包装了 times 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buf} & \+: 传递给 times 函数的参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 times 函数的值 
+\end{DoxyReturn}
+\index{progress\+\_\+times\+\_\+.\+c@{progress\+\_\+times\+\_\+.\+c}!print\+\_\+parent\+\_\+pid@{print\+\_\+parent\+\_\+pid}}
+\index{print\+\_\+parent\+\_\+pid@{print\+\_\+parent\+\_\+pid}!progress\+\_\+times\+\_\+.\+c@{progress\+\_\+times\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+parent\+\_\+pid()}{print_parent_pid()}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+parent\+\_\+pid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{progress__times___8c_a2781199e9afe7ddf4d7a8bf1034b17af}{}\label{progress__times___8c_a2781199e9afe7ddf4d7a8bf1034b17af}
+
+
+print\+\_\+parent\+\_\+pid \+: 打印进程的父进程 id 
+
+\index{progress\+\_\+times\+\_\+.\+c@{progress\+\_\+times\+\_\+.\+c}!print\+\_\+pid@{print\+\_\+pid}}
+\index{print\+\_\+pid@{print\+\_\+pid}!progress\+\_\+times\+\_\+.\+c@{progress\+\_\+times\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+pid()}{print_pid()}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+pid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{progress__times___8c_a0bd76e6d502075e830f62080f42f1a76}{}\label{progress__times___8c_a0bd76e6d502075e830f62080f42f1a76}
+
+
+print\+\_\+pid \+: 打印进程 id 
+
+\index{progress\+\_\+times\+\_\+.\+c@{progress\+\_\+times\+\_\+.\+c}!print\+\_\+struct\+\_\+tms@{print\+\_\+struct\+\_\+tms}}
+\index{print\+\_\+struct\+\_\+tms@{print\+\_\+struct\+\_\+tms}!progress\+\_\+times\+\_\+.\+c@{progress\+\_\+times\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+struct\+\_\+tms(const struct tms $\ast$tm)}{print_struct_tms(const struct tms *tm)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+struct\+\_\+tms (
+\begin{DoxyParamCaption}
+\item[{const struct tms $\ast$}]{tm}
+\end{DoxyParamCaption}
+)}\hypertarget{progress__times___8c_a53da4b9334f765ddbc27a5caa42fba25}{}\label{progress__times___8c_a53da4b9334f765ddbc27a5caa42fba25}
+
+
+print\+\_\+tms ： 打印 struct tms 结构 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tm} & \+: struct ms 的指针 \\
+\hline
+\end{DoxyParams}
+\index{progress\+\_\+times\+\_\+.\+c@{progress\+\_\+times\+\_\+.\+c}!test\+\_\+progress\+\_\+times@{test\+\_\+progress\+\_\+times}}
+\index{test\+\_\+progress\+\_\+times@{test\+\_\+progress\+\_\+times}!progress\+\_\+times\+\_\+.\+c@{progress\+\_\+times\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{test\+\_\+progress\+\_\+times()}{test_progress_times()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+progress\+\_\+times (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{progress__times___8c_ac3e6327f3edce1f477c85f80aa0be6e5}{}\label{progress__times___8c_ac3e6327f3edce1f477c85f80aa0be6e5}
+
+
+test\+\_\+times \+: 测试 times 函数 
+

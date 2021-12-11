@@ -1,0 +1,112 @@
+\hypertarget{symlink__readlink_8c}{}\section{src/4\+\_\+\+File\+\_\+\+Dir/symlink\+\_\+readlink.c File Reference}
+\label{symlink__readlink_8c}\index{src/4\+\_\+\+File\+\_\+\+Dir/symlink\+\_\+readlink.\+c@{src/4\+\_\+\+File\+\_\+\+Dir/symlink\+\_\+readlink.\+c}}
+{\ttfamily \#include \char`\"{}symlink\+\_\+readlink.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../header.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include $<$fcntl.\+h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{symlink__readlink_8c_aa988cd26ce91a3bd80013539d5360772}{print\+\_\+file\+\_\+type} (const char $\ast$pathname)
+\begin{DoxyCompactList}\small\item\em print\+\_\+file\+\_\+type \+: 打印文件类型 \end{DoxyCompactList}\item 
+int \hyperlink{symlink__readlink_8c_ac9e93541a8a297edb367c752972e04ec}{My\+\_\+symlink} (const char $\ast$actualpath, const char $\ast$sympath)
+\begin{DoxyCompactList}\small\item\em My\+\_\+symlink \+: 包装了 symlink 函数 \end{DoxyCompactList}\item 
+ssize\+\_\+t \hyperlink{symlink__readlink_8c_af2397a26afcc1bff6cf1006b10930041}{My\+\_\+readlink} (const char $\ast$pathname, char $\ast$\hyperlink{setjmp__longjmp_8c_a02df3e2f0291bf06f3a685829975efec}{buf}, size\+\_\+t bufsize)
+\begin{DoxyCompactList}\small\item\em My\+\_\+readlink \+: 包装了 readlink 函数 \end{DoxyCompactList}\item 
+void \hyperlink{symlink__readlink_8c_a4c21f3e6e0af3ae21a5e7b09f7cd1b13}{print\+\_\+link\+\_\+file} (const char $\ast$pathname)
+\begin{DoxyCompactList}\small\item\em print\+\_\+link\+\_\+file \+: 打印链接文件的内容 \end{DoxyCompactList}\item 
+void \hyperlink{symlink__readlink_8c_ad6d2c25be5e3954d897f22bacd20b0ce}{test\+\_\+symlink\+\_\+readlink} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+symlink\+\_\+readlink \+: 测试 symlink 函数、 readlink 函数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{symlink\+\_\+readlink.\+c@{symlink\+\_\+readlink.\+c}!My\+\_\+readlink@{My\+\_\+readlink}}
+\index{My\+\_\+readlink@{My\+\_\+readlink}!symlink\+\_\+readlink.\+c@{symlink\+\_\+readlink.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+readlink(const char $\ast$pathname, char $\ast$buf, size\+\_\+t bufsize)}{My_readlink(const char *pathname, char *buf, size_t bufsize)}}]{\setlength{\rightskip}{0pt plus 5cm}ssize\+\_\+t My\+\_\+readlink (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{pathname, }
+\item[{char $\ast$}]{buf, }
+\item[{size\+\_\+t}]{bufsize}
+\end{DoxyParamCaption}
+)}\hypertarget{symlink__readlink_8c_af2397a26afcc1bff6cf1006b10930041}{}\label{symlink__readlink_8c_af2397a26afcc1bff6cf1006b10930041}
+
+
+My\+\_\+readlink \+: 包装了 readlink 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pathname} & \+: 传递给 readlink 函数的 pathname 参数 \\
+\hline
+{\em buf} & \+: 传递给 readlink 函数的 buf 参数 \\
+\hline
+{\em bufsize} & \+: 传递给 readlink 函数的 bufsize 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 readlink 函数的值 
+\end{DoxyReturn}
+\index{symlink\+\_\+readlink.\+c@{symlink\+\_\+readlink.\+c}!My\+\_\+symlink@{My\+\_\+symlink}}
+\index{My\+\_\+symlink@{My\+\_\+symlink}!symlink\+\_\+readlink.\+c@{symlink\+\_\+readlink.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+symlink(const char $\ast$actualpath, const char $\ast$sympath)}{My_symlink(const char *actualpath, const char *sympath)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+symlink (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{actualpath, }
+\item[{const char $\ast$}]{sympath}
+\end{DoxyParamCaption}
+)}\hypertarget{symlink__readlink_8c_ac9e93541a8a297edb367c752972e04ec}{}\label{symlink__readlink_8c_ac9e93541a8a297edb367c752972e04ec}
+
+
+My\+\_\+symlink \+: 包装了 symlink 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em actualpath} & \+: 传递给 symlink 函数的 actualpath 参数 \\
+\hline
+{\em sympath} & \+: 传递给 symlink 函数的 sympath 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 symlink 函数的值 
+\end{DoxyReturn}
+\index{symlink\+\_\+readlink.\+c@{symlink\+\_\+readlink.\+c}!print\+\_\+file\+\_\+type@{print\+\_\+file\+\_\+type}}
+\index{print\+\_\+file\+\_\+type@{print\+\_\+file\+\_\+type}!symlink\+\_\+readlink.\+c@{symlink\+\_\+readlink.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+file\+\_\+type(const char $\ast$pathname)}{print_file_type(const char *pathname)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+file\+\_\+type (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{pathname}
+\end{DoxyParamCaption}
+)}\hypertarget{symlink__readlink_8c_aa988cd26ce91a3bd80013539d5360772}{}\label{symlink__readlink_8c_aa988cd26ce91a3bd80013539d5360772}
+
+
+print\+\_\+file\+\_\+type \+: 打印文件类型 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pathname} & \+: 文件名 \\
+\hline
+\end{DoxyParams}
+\index{symlink\+\_\+readlink.\+c@{symlink\+\_\+readlink.\+c}!print\+\_\+link\+\_\+file@{print\+\_\+link\+\_\+file}}
+\index{print\+\_\+link\+\_\+file@{print\+\_\+link\+\_\+file}!symlink\+\_\+readlink.\+c@{symlink\+\_\+readlink.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+link\+\_\+file(const char $\ast$pathname)}{print_link_file(const char *pathname)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+link\+\_\+file (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{pathname}
+\end{DoxyParamCaption}
+)}\hypertarget{symlink__readlink_8c_a4c21f3e6e0af3ae21a5e7b09f7cd1b13}{}\label{symlink__readlink_8c_a4c21f3e6e0af3ae21a5e7b09f7cd1b13}
+
+
+print\+\_\+link\+\_\+file \+: 打印链接文件的内容 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pathname} & \+: 链接文件名 \\
+\hline
+\end{DoxyParams}
+\index{symlink\+\_\+readlink.\+c@{symlink\+\_\+readlink.\+c}!test\+\_\+symlink\+\_\+readlink@{test\+\_\+symlink\+\_\+readlink}}
+\index{test\+\_\+symlink\+\_\+readlink@{test\+\_\+symlink\+\_\+readlink}!symlink\+\_\+readlink.\+c@{symlink\+\_\+readlink.\+c}}
+\subsubsection[{\texorpdfstring{test\+\_\+symlink\+\_\+readlink()}{test_symlink_readlink()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+symlink\+\_\+readlink (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{symlink__readlink_8c_ad6d2c25be5e3954d897f22bacd20b0ce}{}\label{symlink__readlink_8c_ad6d2c25be5e3954d897f22bacd20b0ce}
+
+
+test\+\_\+symlink\+\_\+readlink \+: 测试 symlink 函数、 readlink 函数 
+

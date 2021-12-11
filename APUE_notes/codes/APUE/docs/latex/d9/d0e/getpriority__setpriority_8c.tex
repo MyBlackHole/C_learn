@@ -1,0 +1,139 @@
+\hypertarget{getpriority__setpriority_8c}{}\section{src/8\+\_\+\+Progress\+\_\+\+Control/getpriority\+\_\+setpriority.c File Reference}
+\label{getpriority__setpriority_8c}\index{src/8\+\_\+\+Progress\+\_\+\+Control/getpriority\+\_\+setpriority.\+c@{src/8\+\_\+\+Progress\+\_\+\+Control/getpriority\+\_\+setpriority.\+c}}
+{\ttfamily \#include \char`\"{}getpriority\+\_\+setpriority.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../header.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{getpriority__setpriority_8c_a0bd76e6d502075e830f62080f42f1a76}{print\+\_\+pid} ()
+\item 
+void \hyperlink{getpriority__setpriority_8c_a2781199e9afe7ddf4d7a8bf1034b17af}{print\+\_\+parent\+\_\+pid} ()
+\item 
+void \hyperlink{getpriority__setpriority_8c_a05c3b92d18cad5803dbe4e586f77c444}{check\+\_\+waitpid} ()
+\item 
+int \hyperlink{getpriority__setpriority_8c_a2b504163a783f9589e25bb4559b4e3da}{My\+\_\+nice} (int incr)
+\begin{DoxyCompactList}\small\item\em My\+\_\+nice \+: 包装了 nice 函数 \end{DoxyCompactList}\item 
+int \hyperlink{getpriority__setpriority_8c_a45ab8541f9f497493722c29a10f5d612}{My\+\_\+getpriority} (int which, id\+\_\+t who)
+\begin{DoxyCompactList}\small\item\em My\+\_\+getpriority \+: 包装了 getpriority 函数 \end{DoxyCompactList}\item 
+int \hyperlink{getpriority__setpriority_8c_a987dfbc85eff8ed081ee1995708d5f87}{My\+\_\+setpriority} (int which, id\+\_\+t who, int value)
+\begin{DoxyCompactList}\small\item\em My\+\_\+setpriority \+: 包装了 setpriority 函数 \end{DoxyCompactList}\item 
+static pid\+\_\+t \hyperlink{getpriority__setpriority_8c_a91d22fdab508ae9804eb76d15237da6b}{create\+\_\+child} ()
+\begin{DoxyCompactList}\small\item\em create\+\_\+child \+: 创建子进程 \end{DoxyCompactList}\item 
+void \hyperlink{getpriority__setpriority_8c_a4b7176d606f5b11ba42520126ac5bba8}{test\+\_\+getpriority\+\_\+setpriority} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+getpriority\+\_\+setpriority\+:测试 nice 函数、 getpriority 函数、 setpriority 函数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{getpriority\+\_\+setpriority.\+c@{getpriority\+\_\+setpriority.\+c}!check\+\_\+waitpid@{check\+\_\+waitpid}}
+\index{check\+\_\+waitpid@{check\+\_\+waitpid}!getpriority\+\_\+setpriority.\+c@{getpriority\+\_\+setpriority.\+c}}
+\subsubsection[{\texorpdfstring{check\+\_\+waitpid()}{check_waitpid()}}]{\setlength{\rightskip}{0pt plus 5cm}void check\+\_\+waitpid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{getpriority__setpriority_8c_a05c3b92d18cad5803dbe4e586f77c444}{}\label{getpriority__setpriority_8c_a05c3b92d18cad5803dbe4e586f77c444}
+\index{getpriority\+\_\+setpriority.\+c@{getpriority\+\_\+setpriority.\+c}!create\+\_\+child@{create\+\_\+child}}
+\index{create\+\_\+child@{create\+\_\+child}!getpriority\+\_\+setpriority.\+c@{getpriority\+\_\+setpriority.\+c}}
+\subsubsection[{\texorpdfstring{create\+\_\+child()}{create_child()}}]{\setlength{\rightskip}{0pt plus 5cm}static pid\+\_\+t create\+\_\+child (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{getpriority__setpriority_8c_a91d22fdab508ae9804eb76d15237da6b}{}\label{getpriority__setpriority_8c_a91d22fdab508ae9804eb76d15237da6b}
+
+
+create\+\_\+child \+: 创建子进程 
+
+\begin{DoxyReturn}{Returns}
+\+: fork 的返回值 
+\end{DoxyReturn}
+\index{getpriority\+\_\+setpriority.\+c@{getpriority\+\_\+setpriority.\+c}!My\+\_\+getpriority@{My\+\_\+getpriority}}
+\index{My\+\_\+getpriority@{My\+\_\+getpriority}!getpriority\+\_\+setpriority.\+c@{getpriority\+\_\+setpriority.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+getpriority(int which, id\+\_\+t who)}{My_getpriority(int which, id_t who)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+getpriority (
+\begin{DoxyParamCaption}
+\item[{int}]{which, }
+\item[{id\+\_\+t}]{who}
+\end{DoxyParamCaption}
+)}\hypertarget{getpriority__setpriority_8c_a45ab8541f9f497493722c29a10f5d612}{}\label{getpriority__setpriority_8c_a45ab8541f9f497493722c29a10f5d612}
+
+
+My\+\_\+getpriority \+: 包装了 getpriority 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em which} & \+: 传递给 getpriority 函数的 which 参数 \\
+\hline
+{\em who} & \+: 传递给 getpriority 函数的 who 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 getpriority 函数的值 
+\end{DoxyReturn}
+\index{getpriority\+\_\+setpriority.\+c@{getpriority\+\_\+setpriority.\+c}!My\+\_\+nice@{My\+\_\+nice}}
+\index{My\+\_\+nice@{My\+\_\+nice}!getpriority\+\_\+setpriority.\+c@{getpriority\+\_\+setpriority.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+nice(int incr)}{My_nice(int incr)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+nice (
+\begin{DoxyParamCaption}
+\item[{int}]{incr}
+\end{DoxyParamCaption}
+)}\hypertarget{getpriority__setpriority_8c_a2b504163a783f9589e25bb4559b4e3da}{}\label{getpriority__setpriority_8c_a2b504163a783f9589e25bb4559b4e3da}
+
+
+My\+\_\+nice \+: 包装了 nice 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em incr} & \+: 传递给 nice 函数的 incr 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 nice 函数的值 
+\end{DoxyReturn}
+\index{getpriority\+\_\+setpriority.\+c@{getpriority\+\_\+setpriority.\+c}!My\+\_\+setpriority@{My\+\_\+setpriority}}
+\index{My\+\_\+setpriority@{My\+\_\+setpriority}!getpriority\+\_\+setpriority.\+c@{getpriority\+\_\+setpriority.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+setpriority(int which, id\+\_\+t who, int value)}{My_setpriority(int which, id_t who, int value)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+setpriority (
+\begin{DoxyParamCaption}
+\item[{int}]{which, }
+\item[{id\+\_\+t}]{who, }
+\item[{int}]{value}
+\end{DoxyParamCaption}
+)}\hypertarget{getpriority__setpriority_8c_a987dfbc85eff8ed081ee1995708d5f87}{}\label{getpriority__setpriority_8c_a987dfbc85eff8ed081ee1995708d5f87}
+
+
+My\+\_\+setpriority \+: 包装了 setpriority 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em which} & \+: 传递给 setpriority 函数的 which 参数 \\
+\hline
+{\em who} & \+: 传递给 setpriority 函数的 who 参数 \\
+\hline
+{\em value} & \+: 传递给 setpriority 函数的 value 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 setpriority 函数的值 
+\end{DoxyReturn}
+\index{getpriority\+\_\+setpriority.\+c@{getpriority\+\_\+setpriority.\+c}!print\+\_\+parent\+\_\+pid@{print\+\_\+parent\+\_\+pid}}
+\index{print\+\_\+parent\+\_\+pid@{print\+\_\+parent\+\_\+pid}!getpriority\+\_\+setpriority.\+c@{getpriority\+\_\+setpriority.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+parent\+\_\+pid()}{print_parent_pid()}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+parent\+\_\+pid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{getpriority__setpriority_8c_a2781199e9afe7ddf4d7a8bf1034b17af}{}\label{getpriority__setpriority_8c_a2781199e9afe7ddf4d7a8bf1034b17af}
+\index{getpriority\+\_\+setpriority.\+c@{getpriority\+\_\+setpriority.\+c}!print\+\_\+pid@{print\+\_\+pid}}
+\index{print\+\_\+pid@{print\+\_\+pid}!getpriority\+\_\+setpriority.\+c@{getpriority\+\_\+setpriority.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+pid()}{print_pid()}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+pid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{getpriority__setpriority_8c_a0bd76e6d502075e830f62080f42f1a76}{}\label{getpriority__setpriority_8c_a0bd76e6d502075e830f62080f42f1a76}
+\index{getpriority\+\_\+setpriority.\+c@{getpriority\+\_\+setpriority.\+c}!test\+\_\+getpriority\+\_\+setpriority@{test\+\_\+getpriority\+\_\+setpriority}}
+\index{test\+\_\+getpriority\+\_\+setpriority@{test\+\_\+getpriority\+\_\+setpriority}!getpriority\+\_\+setpriority.\+c@{getpriority\+\_\+setpriority.\+c}}
+\subsubsection[{\texorpdfstring{test\+\_\+getpriority\+\_\+setpriority()}{test_getpriority_setpriority()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+getpriority\+\_\+setpriority (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{getpriority__setpriority_8c_a4b7176d606f5b11ba42520126ac5bba8}{}\label{getpriority__setpriority_8c_a4b7176d606f5b11ba42520126ac5bba8}
+
+
+test\+\_\+getpriority\+\_\+setpriority\+:测试 nice 函数、 getpriority 函数、 setpriority 函数 
+

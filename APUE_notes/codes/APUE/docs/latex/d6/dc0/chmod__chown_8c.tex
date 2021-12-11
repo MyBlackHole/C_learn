@@ -1,0 +1,95 @@
+\hypertarget{chmod__chown_8c}{}\section{src/4\+\_\+\+File\+\_\+\+Dir/chmod\+\_\+chown.c File Reference}
+\label{chmod__chown_8c}\index{src/4\+\_\+\+File\+\_\+\+Dir/chmod\+\_\+chown.\+c@{src/4\+\_\+\+File\+\_\+\+Dir/chmod\+\_\+chown.\+c}}
+{\ttfamily \#include \char`\"{}chmod\+\_\+chown.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../header.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include $<$errno.\+h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{chmod__chown_8c_a12de5518f0a21dbee83be262c020bdfc}{print\+\_\+file\+\_\+perm} (const char $\ast$pathname)
+\item 
+void \hyperlink{chmod__chown_8c_a4df57b7a04542ed92d3c0bed08eebe4d}{print\+\_\+file\+\_\+owner} (const char $\ast$pathname)
+\item 
+int \hyperlink{chmod__chown_8c_a35cd7f180afeb0243d9b553b7c6959c2}{My\+\_\+chmod} (const char $\ast$pathname, mode\+\_\+t mode)
+\begin{DoxyCompactList}\small\item\em My\+\_\+chmod \+: 包装了 chmod 函数 \end{DoxyCompactList}\item 
+int \hyperlink{chmod__chown_8c_a3189d019f087e99312c13f113dacaa62}{My\+\_\+chown} (const char $\ast$pathname, uid\+\_\+t owner, gid\+\_\+t group)
+\begin{DoxyCompactList}\small\item\em My\+\_\+chown \+: 包装了 chown 函数 \end{DoxyCompactList}\item 
+void \hyperlink{chmod__chown_8c_ab6c2a5a0d5a28c33410191b28223c857}{test\+\_\+chmod\+\_\+chown} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+chmod\+\_\+chown \+: 测试 chmod 函数和 chown 函数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{chmod\+\_\+chown.\+c@{chmod\+\_\+chown.\+c}!My\+\_\+chmod@{My\+\_\+chmod}}
+\index{My\+\_\+chmod@{My\+\_\+chmod}!chmod\+\_\+chown.\+c@{chmod\+\_\+chown.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+chmod(const char $\ast$pathname, mode\+\_\+t mode)}{My_chmod(const char *pathname, mode_t mode)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+chmod (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{pathname, }
+\item[{mode\+\_\+t}]{mode}
+\end{DoxyParamCaption}
+)}\hypertarget{chmod__chown_8c_a35cd7f180afeb0243d9b553b7c6959c2}{}\label{chmod__chown_8c_a35cd7f180afeb0243d9b553b7c6959c2}
+
+
+My\+\_\+chmod \+: 包装了 chmod 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pathname} & \+: 传递给 chmod 函数的 pathname 参数 \\
+\hline
+{\em mode} & \+: 传递给 chmod 函数的 pathname 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 chmod 函数的值 
+\end{DoxyReturn}
+\index{chmod\+\_\+chown.\+c@{chmod\+\_\+chown.\+c}!My\+\_\+chown@{My\+\_\+chown}}
+\index{My\+\_\+chown@{My\+\_\+chown}!chmod\+\_\+chown.\+c@{chmod\+\_\+chown.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+chown(const char $\ast$pathname, uid\+\_\+t owner, gid\+\_\+t group)}{My_chown(const char *pathname, uid_t owner, gid_t group)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+chown (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{pathname, }
+\item[{uid\+\_\+t}]{owner, }
+\item[{gid\+\_\+t}]{group}
+\end{DoxyParamCaption}
+)}\hypertarget{chmod__chown_8c_a3189d019f087e99312c13f113dacaa62}{}\label{chmod__chown_8c_a3189d019f087e99312c13f113dacaa62}
+
+
+My\+\_\+chown \+: 包装了 chown 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pathname} & \+: 传递给 chown 函数的 pathname 参数 \\
+\hline
+{\em owner} & \+: 传递给 chown 函数的 owner 参数 \\
+\hline
+{\em group} & \+: 传递给 chown 函数的 group 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 chown 函数的值 
+\end{DoxyReturn}
+\index{chmod\+\_\+chown.\+c@{chmod\+\_\+chown.\+c}!print\+\_\+file\+\_\+owner@{print\+\_\+file\+\_\+owner}}
+\index{print\+\_\+file\+\_\+owner@{print\+\_\+file\+\_\+owner}!chmod\+\_\+chown.\+c@{chmod\+\_\+chown.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+file\+\_\+owner(const char $\ast$pathname)}{print_file_owner(const char *pathname)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+file\+\_\+owner (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{pathname}
+\end{DoxyParamCaption}
+)}\hypertarget{chmod__chown_8c_a4df57b7a04542ed92d3c0bed08eebe4d}{}\label{chmod__chown_8c_a4df57b7a04542ed92d3c0bed08eebe4d}
+\index{chmod\+\_\+chown.\+c@{chmod\+\_\+chown.\+c}!print\+\_\+file\+\_\+perm@{print\+\_\+file\+\_\+perm}}
+\index{print\+\_\+file\+\_\+perm@{print\+\_\+file\+\_\+perm}!chmod\+\_\+chown.\+c@{chmod\+\_\+chown.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+file\+\_\+perm(const char $\ast$pathname)}{print_file_perm(const char *pathname)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+file\+\_\+perm (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{pathname}
+\end{DoxyParamCaption}
+)}\hypertarget{chmod__chown_8c_a12de5518f0a21dbee83be262c020bdfc}{}\label{chmod__chown_8c_a12de5518f0a21dbee83be262c020bdfc}
+\index{chmod\+\_\+chown.\+c@{chmod\+\_\+chown.\+c}!test\+\_\+chmod\+\_\+chown@{test\+\_\+chmod\+\_\+chown}}
+\index{test\+\_\+chmod\+\_\+chown@{test\+\_\+chmod\+\_\+chown}!chmod\+\_\+chown.\+c@{chmod\+\_\+chown.\+c}}
+\subsubsection[{\texorpdfstring{test\+\_\+chmod\+\_\+chown()}{test_chmod_chown()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+chmod\+\_\+chown (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{chmod__chown_8c_ab6c2a5a0d5a28c33410191b28223c857}{}\label{chmod__chown_8c_ab6c2a5a0d5a28c33410191b28223c857}
+
+
+test\+\_\+chmod\+\_\+chown \+: 测试 chmod 函数和 chown 函数 
+

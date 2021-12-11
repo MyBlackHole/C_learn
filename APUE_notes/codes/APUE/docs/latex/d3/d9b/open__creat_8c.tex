@@ -1,0 +1,100 @@
+\hypertarget{open__creat_8c}{}\section{src/3\+\_\+\+File\+\_\+\+I\+O/open\+\_\+creat.c File Reference}
+\label{open__creat_8c}\index{src/3\+\_\+\+File\+\_\+\+I\+O/open\+\_\+creat.\+c@{src/3\+\_\+\+File\+\_\+\+I\+O/open\+\_\+creat.\+c}}
+{\ttfamily \#include \char`\"{}open\+\_\+creat.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdarg.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}../header.\+h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{open__creat_8c_a109174695052377dc9f748ea2fb4a999}{My\+\_\+open} (const char $\ast$path, int oflag)
+\begin{DoxyCompactList}\small\item\em My\+\_\+open \+: 包装了 open 函数（不带 mode参数） \end{DoxyCompactList}\item 
+int \hyperlink{open__creat_8c_a4a3788cf299ade8247adc944f7a95182}{My\+\_\+open\+\_\+with\+\_\+mode} (const char $\ast$path, int oflag, mode\+\_\+t mode)
+\begin{DoxyCompactList}\small\item\em My\+\_\+open\+\_\+with\+\_\+mode \+: 包装了 open 函数（带 mode参数） \end{DoxyCompactList}\item 
+int \hyperlink{open__creat_8c_a240bed83134dd125f41f0fce3d64e8ee}{My\+\_\+creat} (const char $\ast$path, mode\+\_\+t mode)
+\begin{DoxyCompactList}\small\item\em My\+\_\+creat \+: 包装了 creat 函数 \end{DoxyCompactList}\item 
+void \hyperlink{open__creat_8c_a13a830c8bfd4e3098dc4cf0df4ef2757}{test\+\_\+open\+\_\+creat} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+open\+\_\+creat\+: 执行 open 的测试 和 creat 的测试 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{open\+\_\+creat.\+c@{open\+\_\+creat.\+c}!My\+\_\+creat@{My\+\_\+creat}}
+\index{My\+\_\+creat@{My\+\_\+creat}!open\+\_\+creat.\+c@{open\+\_\+creat.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+creat(const char $\ast$path, mode\+\_\+t mode)}{My_creat(const char *path, mode_t mode)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+creat (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{path, }
+\item[{mode\+\_\+t}]{mode}
+\end{DoxyParamCaption}
+)}\hypertarget{open__creat_8c_a240bed83134dd125f41f0fce3d64e8ee}{}\label{open__creat_8c_a240bed83134dd125f41f0fce3d64e8ee}
+
+
+My\+\_\+creat \+: 包装了 creat 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & \+: 传递给 creat 函数的 path 参数 \\
+\hline
+{\em mode} & \+: 传递给 creat 函数的 mode 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 creat 函数的值 
+\end{DoxyReturn}
+\index{open\+\_\+creat.\+c@{open\+\_\+creat.\+c}!My\+\_\+open@{My\+\_\+open}}
+\index{My\+\_\+open@{My\+\_\+open}!open\+\_\+creat.\+c@{open\+\_\+creat.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+open(const char $\ast$path, int oflag)}{My_open(const char *path, int oflag)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+open (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{path, }
+\item[{int}]{oflag}
+\end{DoxyParamCaption}
+)}\hypertarget{open__creat_8c_a109174695052377dc9f748ea2fb4a999}{}\label{open__creat_8c_a109174695052377dc9f748ea2fb4a999}
+
+
+My\+\_\+open \+: 包装了 open 函数（不带 mode参数） 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & \+: 传递给 open 函数的 path 参数 \\
+\hline
+{\em oflag} & \+: 传递给 open 函数的 oflag 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 open 函数的值 
+\end{DoxyReturn}
+\index{open\+\_\+creat.\+c@{open\+\_\+creat.\+c}!My\+\_\+open\+\_\+with\+\_\+mode@{My\+\_\+open\+\_\+with\+\_\+mode}}
+\index{My\+\_\+open\+\_\+with\+\_\+mode@{My\+\_\+open\+\_\+with\+\_\+mode}!open\+\_\+creat.\+c@{open\+\_\+creat.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+open\+\_\+with\+\_\+mode(const char $\ast$path, int oflag, mode\+\_\+t mode)}{My_open_with_mode(const char *path, int oflag, mode_t mode)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+open\+\_\+with\+\_\+mode (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{path, }
+\item[{int}]{oflag, }
+\item[{mode\+\_\+t}]{mode}
+\end{DoxyParamCaption}
+)}\hypertarget{open__creat_8c_a4a3788cf299ade8247adc944f7a95182}{}\label{open__creat_8c_a4a3788cf299ade8247adc944f7a95182}
+
+
+My\+\_\+open\+\_\+with\+\_\+mode \+: 包装了 open 函数（带 mode参数） 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & \+: 传递给 open 函数的 path 参数 \\
+\hline
+{\em oflag} & \+: 传递给 open 函数的 oflag 参数 \\
+\hline
+{\em mode} & \+: 传递给 open 函数的 mode 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 open 函数的值 
+\end{DoxyReturn}
+\index{open\+\_\+creat.\+c@{open\+\_\+creat.\+c}!test\+\_\+open\+\_\+creat@{test\+\_\+open\+\_\+creat}}
+\index{test\+\_\+open\+\_\+creat@{test\+\_\+open\+\_\+creat}!open\+\_\+creat.\+c@{open\+\_\+creat.\+c}}
+\subsubsection[{\texorpdfstring{test\+\_\+open\+\_\+creat()}{test_open_creat()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+open\+\_\+creat (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{open__creat_8c_a13a830c8bfd4e3098dc4cf0df4ef2757}{}\label{open__creat_8c_a13a830c8bfd4e3098dc4cf0df4ef2757}
+
+
+test\+\_\+open\+\_\+creat\+: 执行 open 的测试 和 creat 的测试 
+

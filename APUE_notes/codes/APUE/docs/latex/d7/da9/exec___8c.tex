@@ -1,0 +1,132 @@
+\hypertarget{exec___8c}{}\section{src/8\+\_\+\+Progress\+\_\+\+Control/exec\+\_\+.c File Reference}
+\label{exec___8c}\index{src/8\+\_\+\+Progress\+\_\+\+Control/exec\+\_\+.\+c@{src/8\+\_\+\+Progress\+\_\+\+Control/exec\+\_\+.\+c}}
+{\ttfamily \#include \char`\"{}exec\+\_\+.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../header.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{exec___8c_aacec51bf0eda190fefaed78968901ccd}{\+\_\+test\+\_\+execl} (const char $\ast$pathname)
+\begin{DoxyCompactList}\small\item\em \+\_\+test\+\_\+execl ：测试 execl 函数的用法 \end{DoxyCompactList}\item 
+void \hyperlink{exec___8c_aed7ab9f5f9f96988f48b6dc456dea656}{\+\_\+test\+\_\+execv} (const char $\ast$pathname)
+\begin{DoxyCompactList}\small\item\em \+\_\+test\+\_\+execv ：测试 execv 函数的用法 \end{DoxyCompactList}\item 
+void \hyperlink{exec___8c_acbbd25a9bf4c0886b7e8072aa61027d3}{\+\_\+test\+\_\+execle} (const char $\ast$pathname)
+\begin{DoxyCompactList}\small\item\em \+\_\+test\+\_\+execle ：测试 execle 函数的用法 \end{DoxyCompactList}\item 
+void \hyperlink{exec___8c_a05a2c2853405c7cf1318948d1bc9ea92}{\+\_\+test\+\_\+execve} (const char $\ast$pathname)
+\begin{DoxyCompactList}\small\item\em \+\_\+test\+\_\+execve ：测试 execve 函数的用法 \end{DoxyCompactList}\item 
+void \hyperlink{exec___8c_a5060a286c9520bd2c1c44e37ec5fce8e}{\+\_\+test\+\_\+execlp} (const char $\ast$filename)
+\begin{DoxyCompactList}\small\item\em \+\_\+test\+\_\+execlp ：测试 execlp 函数的用法 \end{DoxyCompactList}\item 
+void \hyperlink{exec___8c_aeff506b849cf8592f43aef0741442a54}{\+\_\+test\+\_\+execvp} (const char $\ast$filename)
+\begin{DoxyCompactList}\small\item\em \+\_\+test\+\_\+execvp ：测试 execvp 函数的用法 \end{DoxyCompactList}\item 
+void \hyperlink{exec___8c_aa2464a48a1b7636984b37e564b2cd70a}{test\+\_\+exec} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+exec \+:测试 exec 函数族的用法 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{exec\+\_\+.\+c@{exec\+\_\+.\+c}!\+\_\+test\+\_\+execl@{\+\_\+test\+\_\+execl}}
+\index{\+\_\+test\+\_\+execl@{\+\_\+test\+\_\+execl}!exec\+\_\+.\+c@{exec\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+test\+\_\+execl(const char $\ast$pathname)}{_test_execl(const char *pathname)}}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+test\+\_\+execl (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{pathname}
+\end{DoxyParamCaption}
+)}\hypertarget{exec___8c_aacec51bf0eda190fefaed78968901ccd}{}\label{exec___8c_aacec51bf0eda190fefaed78968901ccd}
+
+
+\+\_\+test\+\_\+execl ：测试 execl 函数的用法 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pathname} & \+: 可执行文件的路径名 \\
+\hline
+\end{DoxyParams}
+\index{exec\+\_\+.\+c@{exec\+\_\+.\+c}!\+\_\+test\+\_\+execle@{\+\_\+test\+\_\+execle}}
+\index{\+\_\+test\+\_\+execle@{\+\_\+test\+\_\+execle}!exec\+\_\+.\+c@{exec\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+test\+\_\+execle(const char $\ast$pathname)}{_test_execle(const char *pathname)}}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+test\+\_\+execle (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{pathname}
+\end{DoxyParamCaption}
+)}\hypertarget{exec___8c_acbbd25a9bf4c0886b7e8072aa61027d3}{}\label{exec___8c_acbbd25a9bf4c0886b7e8072aa61027d3}
+
+
+\+\_\+test\+\_\+execle ：测试 execle 函数的用法 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pathname} & \+: 可执行文件的路径名 \\
+\hline
+\end{DoxyParams}
+\index{exec\+\_\+.\+c@{exec\+\_\+.\+c}!\+\_\+test\+\_\+execlp@{\+\_\+test\+\_\+execlp}}
+\index{\+\_\+test\+\_\+execlp@{\+\_\+test\+\_\+execlp}!exec\+\_\+.\+c@{exec\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+test\+\_\+execlp(const char $\ast$filename)}{_test_execlp(const char *filename)}}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+test\+\_\+execlp (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{filename}
+\end{DoxyParamCaption}
+)}\hypertarget{exec___8c_a5060a286c9520bd2c1c44e37ec5fce8e}{}\label{exec___8c_a5060a286c9520bd2c1c44e37ec5fce8e}
+
+
+\+\_\+test\+\_\+execlp ：测试 execlp 函数的用法 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pathname} & \+: 可执行文件的文件名 \\
+\hline
+\end{DoxyParams}
+\index{exec\+\_\+.\+c@{exec\+\_\+.\+c}!\+\_\+test\+\_\+execv@{\+\_\+test\+\_\+execv}}
+\index{\+\_\+test\+\_\+execv@{\+\_\+test\+\_\+execv}!exec\+\_\+.\+c@{exec\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+test\+\_\+execv(const char $\ast$pathname)}{_test_execv(const char *pathname)}}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+test\+\_\+execv (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{pathname}
+\end{DoxyParamCaption}
+)}\hypertarget{exec___8c_aed7ab9f5f9f96988f48b6dc456dea656}{}\label{exec___8c_aed7ab9f5f9f96988f48b6dc456dea656}
+
+
+\+\_\+test\+\_\+execv ：测试 execv 函数的用法 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pathname} & \+: 可执行文件的路径名 \\
+\hline
+\end{DoxyParams}
+\index{exec\+\_\+.\+c@{exec\+\_\+.\+c}!\+\_\+test\+\_\+execve@{\+\_\+test\+\_\+execve}}
+\index{\+\_\+test\+\_\+execve@{\+\_\+test\+\_\+execve}!exec\+\_\+.\+c@{exec\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+test\+\_\+execve(const char $\ast$pathname)}{_test_execve(const char *pathname)}}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+test\+\_\+execve (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{pathname}
+\end{DoxyParamCaption}
+)}\hypertarget{exec___8c_a05a2c2853405c7cf1318948d1bc9ea92}{}\label{exec___8c_a05a2c2853405c7cf1318948d1bc9ea92}
+
+
+\+\_\+test\+\_\+execve ：测试 execve 函数的用法 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pathname} & \+: 可执行文件的路径名 \\
+\hline
+\end{DoxyParams}
+\index{exec\+\_\+.\+c@{exec\+\_\+.\+c}!\+\_\+test\+\_\+execvp@{\+\_\+test\+\_\+execvp}}
+\index{\+\_\+test\+\_\+execvp@{\+\_\+test\+\_\+execvp}!exec\+\_\+.\+c@{exec\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+test\+\_\+execvp(const char $\ast$filename)}{_test_execvp(const char *filename)}}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+test\+\_\+execvp (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{filename}
+\end{DoxyParamCaption}
+)}\hypertarget{exec___8c_aeff506b849cf8592f43aef0741442a54}{}\label{exec___8c_aeff506b849cf8592f43aef0741442a54}
+
+
+\+\_\+test\+\_\+execvp ：测试 execvp 函数的用法 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pathname} & \+: 可执行文件的文件名 \\
+\hline
+\end{DoxyParams}
+\index{exec\+\_\+.\+c@{exec\+\_\+.\+c}!test\+\_\+exec@{test\+\_\+exec}}
+\index{test\+\_\+exec@{test\+\_\+exec}!exec\+\_\+.\+c@{exec\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{test\+\_\+exec()}{test_exec()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+exec (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{exec___8c_aa2464a48a1b7636984b37e564b2cd70a}{}\label{exec___8c_aa2464a48a1b7636984b37e564b2cd70a}
+
+
+test\+\_\+exec \+:测试 exec 函数族的用法 
+

@@ -1,0 +1,106 @@
+\hypertarget{pread__pwrite_8h}{}\section{src/3\+\_\+\+File\+\_\+\+I\+O/pread\+\_\+pwrite.h File Reference}
+\label{pread__pwrite_8h}\index{src/3\+\_\+\+File\+\_\+\+I\+O/pread\+\_\+pwrite.\+h@{src/3\+\_\+\+File\+\_\+\+I\+O/pread\+\_\+pwrite.\+h}}
+{\ttfamily \#include \char`\"{}../header.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+ssize\+\_\+t \hyperlink{pread__pwrite_8h_a065e53204a5a0907c06fa7f634419300}{My\+\_\+pread} (int fd, void $\ast$\hyperlink{setjmp__longjmp_8c_a02df3e2f0291bf06f3a685829975efec}{buf}, size\+\_\+t nbytes, off\+\_\+t offset)
+\begin{DoxyCompactList}\small\item\em My\+\_\+pread \+: pread 函数的包装函数 \end{DoxyCompactList}\item 
+ssize\+\_\+t \hyperlink{pread__pwrite_8h_ae6031b657a43e9bb8d07c5d9360947f4}{My\+\_\+pwrite} (int fd, const void $\ast$\hyperlink{setjmp__longjmp_8c_a02df3e2f0291bf06f3a685829975efec}{buf}, size\+\_\+t nbytes, off\+\_\+t offset)
+\begin{DoxyCompactList}\small\item\em My\+\_\+pwrite \+: pwrite 函数的包装函数 \end{DoxyCompactList}\item 
+void \hyperlink{pread__pwrite_8h_a3cb8ab9b69ee7edcb5b1fc37884c6b01}{print\+\_\+current\+\_\+offset} (int fd)
+\begin{DoxyCompactList}\small\item\em print\+\_\+current\+\_\+offset \+: 打印文件的当前偏移量 \end{DoxyCompactList}\item 
+void \hyperlink{pread__pwrite_8h_a49fd19314280d1c6a2f15ed74305a495}{test\+\_\+pread\+\_\+pwrite} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+pread\+\_\+pwrite \+: 测试 pread、pwrite 函数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{pread\+\_\+pwrite.\+h@{pread\+\_\+pwrite.\+h}!My\+\_\+pread@{My\+\_\+pread}}
+\index{My\+\_\+pread@{My\+\_\+pread}!pread\+\_\+pwrite.\+h@{pread\+\_\+pwrite.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+pread(int fd, void $\ast$buf, size\+\_\+t nbytes, off\+\_\+t offset)}{My_pread(int fd, void *buf, size_t nbytes, off_t offset)}}]{\setlength{\rightskip}{0pt plus 5cm}ssize\+\_\+t My\+\_\+pread (
+\begin{DoxyParamCaption}
+\item[{int}]{fd, }
+\item[{void $\ast$}]{buf, }
+\item[{size\+\_\+t}]{nbytes, }
+\item[{off\+\_\+t}]{offset}
+\end{DoxyParamCaption}
+)}\hypertarget{pread__pwrite_8h_a065e53204a5a0907c06fa7f634419300}{}\label{pread__pwrite_8h_a065e53204a5a0907c06fa7f634419300}
+
+
+My\+\_\+pread \+: pread 函数的包装函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fd} & \+: 传递给 pread 函数的 fd 参数 \\
+\hline
+{\em buf} & \+: 传递给 pread 函数的 buf 参数 \\
+\hline
+{\em nbytes} & \+: 传递给 pread 函数的 nbytes 参数 \\
+\hline
+{\em offset} & \+: 传递给 pread 函数的 offset 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 pread 函数的值 
+\end{DoxyReturn}
+\index{pread\+\_\+pwrite.\+h@{pread\+\_\+pwrite.\+h}!My\+\_\+pwrite@{My\+\_\+pwrite}}
+\index{My\+\_\+pwrite@{My\+\_\+pwrite}!pread\+\_\+pwrite.\+h@{pread\+\_\+pwrite.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+pwrite(int fd, const void $\ast$buf, size\+\_\+t nbytes, off\+\_\+t offset)}{My_pwrite(int fd, const void *buf, size_t nbytes, off_t offset)}}]{\setlength{\rightskip}{0pt plus 5cm}ssize\+\_\+t My\+\_\+pwrite (
+\begin{DoxyParamCaption}
+\item[{int}]{fd, }
+\item[{const void $\ast$}]{buf, }
+\item[{size\+\_\+t}]{nbytes, }
+\item[{off\+\_\+t}]{offset}
+\end{DoxyParamCaption}
+)}\hypertarget{pread__pwrite_8h_ae6031b657a43e9bb8d07c5d9360947f4}{}\label{pread__pwrite_8h_ae6031b657a43e9bb8d07c5d9360947f4}
+
+
+My\+\_\+pwrite \+: pwrite 函数的包装函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fd} & \+: 传递给 pwrite 函数的 fd 参数 \\
+\hline
+{\em buf} & \+: 传递给 pwrite 函数的 buf 参数 \\
+\hline
+{\em nbytes} & \+: 传递给 pwrite 函数的 nbytes 参数 \\
+\hline
+{\em offset} & \+: 传递给 pwrite 函数的 offset 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 pwrite 函数的值 
+\end{DoxyReturn}
+\index{pread\+\_\+pwrite.\+h@{pread\+\_\+pwrite.\+h}!print\+\_\+current\+\_\+offset@{print\+\_\+current\+\_\+offset}}
+\index{print\+\_\+current\+\_\+offset@{print\+\_\+current\+\_\+offset}!pread\+\_\+pwrite.\+h@{pread\+\_\+pwrite.\+h}}
+\subsubsection[{\texorpdfstring{print\+\_\+current\+\_\+offset(int fd)}{print_current_offset(int fd)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+current\+\_\+offset (
+\begin{DoxyParamCaption}
+\item[{int}]{fd}
+\end{DoxyParamCaption}
+)}\hypertarget{pread__pwrite_8h_a3cb8ab9b69ee7edcb5b1fc37884c6b01}{}\label{pread__pwrite_8h_a3cb8ab9b69ee7edcb5b1fc37884c6b01}
+
+
+print\+\_\+current\+\_\+offset \+: 打印文件的当前偏移量 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fd} & \+: 传递给 lseek 函数的 fd 参数 \\
+\hline
+\end{DoxyParams}
+\index{pread\+\_\+pwrite.\+h@{pread\+\_\+pwrite.\+h}!test\+\_\+pread\+\_\+pwrite@{test\+\_\+pread\+\_\+pwrite}}
+\index{test\+\_\+pread\+\_\+pwrite@{test\+\_\+pread\+\_\+pwrite}!pread\+\_\+pwrite.\+h@{pread\+\_\+pwrite.\+h}}
+\subsubsection[{\texorpdfstring{test\+\_\+pread\+\_\+pwrite()}{test_pread_pwrite()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+pread\+\_\+pwrite (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{pread__pwrite_8h_a49fd19314280d1c6a2f15ed74305a495}{}\label{pread__pwrite_8h_a49fd19314280d1c6a2f15ed74305a495}
+
+
+test\+\_\+pread\+\_\+pwrite \+: 测试 pread、pwrite 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fd} & \+: 打开的文件描述符 \\
+\hline
+\end{DoxyParams}

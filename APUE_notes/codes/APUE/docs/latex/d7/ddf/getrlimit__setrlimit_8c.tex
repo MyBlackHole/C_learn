@@ -1,0 +1,89 @@
+\hypertarget{getrlimit__setrlimit_8c}{}\section{src/7\+\_\+\+Progress\+\_\+\+Env/getrlimit\+\_\+setrlimit.c File Reference}
+\label{getrlimit__setrlimit_8c}\index{src/7\+\_\+\+Progress\+\_\+\+Env/getrlimit\+\_\+setrlimit.\+c@{src/7\+\_\+\+Progress\+\_\+\+Env/getrlimit\+\_\+setrlimit.\+c}}
+{\ttfamily \#include \char`\"{}getrlimit\+\_\+setrlimit.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../header.\+h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{getrlimit__setrlimit_8c_a849bac2dd70e394a2adb770182742cbf}{print\+\_\+rlimit} (const struct rlimit $\ast$rlptr)
+\begin{DoxyCompactList}\small\item\em print\+\_\+rlimit \+: 打印资源限制 \end{DoxyCompactList}\item 
+int \hyperlink{getrlimit__setrlimit_8c_adc9895bdeef25313364f9f3a048f8f8f}{My\+\_\+getrlimit} (int resource, struct rlimit $\ast$rlptr)
+\begin{DoxyCompactList}\small\item\em My\+\_\+getrlimit \+: 包装了 getrlimit 函数 \end{DoxyCompactList}\item 
+int \hyperlink{getrlimit__setrlimit_8c_a2bb55a59e099fe2c5c59f79e59c91ccd}{My\+\_\+setrlimit} (int resource, struct rlimit $\ast$rlptr)
+\begin{DoxyCompactList}\small\item\em My\+\_\+setrlimit \+: 包装了 setrlimit 函数 \end{DoxyCompactList}\item 
+void \hyperlink{getrlimit__setrlimit_8c_af974e7f0f0bbb0d439b675a1a69373b0}{test\+\_\+getrlimit\+\_\+setrlimit} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+getrlimit\+\_\+setrlimit \+: 测试 getrlimit 函数、 setrlimit 函数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{getrlimit\+\_\+setrlimit.\+c@{getrlimit\+\_\+setrlimit.\+c}!My\+\_\+getrlimit@{My\+\_\+getrlimit}}
+\index{My\+\_\+getrlimit@{My\+\_\+getrlimit}!getrlimit\+\_\+setrlimit.\+c@{getrlimit\+\_\+setrlimit.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+getrlimit(int resource, struct rlimit $\ast$rlptr)}{My_getrlimit(int resource, struct rlimit *rlptr)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+getrlimit (
+\begin{DoxyParamCaption}
+\item[{int}]{resource, }
+\item[{struct rlimit $\ast$}]{rlptr}
+\end{DoxyParamCaption}
+)}\hypertarget{getrlimit__setrlimit_8c_adc9895bdeef25313364f9f3a048f8f8f}{}\label{getrlimit__setrlimit_8c_adc9895bdeef25313364f9f3a048f8f8f}
+
+
+My\+\_\+getrlimit \+: 包装了 getrlimit 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em resource} & \+: 传递给 getrlimit 函数的 rlptr 参数 \\
+\hline
+{\em rlptr} & \+: 传递给 getrlimit 函数的 rlptr 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 getrlimit 函数的值 
+\end{DoxyReturn}
+\index{getrlimit\+\_\+setrlimit.\+c@{getrlimit\+\_\+setrlimit.\+c}!My\+\_\+setrlimit@{My\+\_\+setrlimit}}
+\index{My\+\_\+setrlimit@{My\+\_\+setrlimit}!getrlimit\+\_\+setrlimit.\+c@{getrlimit\+\_\+setrlimit.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+setrlimit(int resource, struct rlimit $\ast$rlptr)}{My_setrlimit(int resource, struct rlimit *rlptr)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+setrlimit (
+\begin{DoxyParamCaption}
+\item[{int}]{resource, }
+\item[{struct rlimit $\ast$}]{rlptr}
+\end{DoxyParamCaption}
+)}\hypertarget{getrlimit__setrlimit_8c_a2bb55a59e099fe2c5c59f79e59c91ccd}{}\label{getrlimit__setrlimit_8c_a2bb55a59e099fe2c5c59f79e59c91ccd}
+
+
+My\+\_\+setrlimit \+: 包装了 setrlimit 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em resource} & \+: 传递给 setrlimit 函数的 resource 参数 \\
+\hline
+{\em rlptr} & \+: 传递给 setrlimit 函数的 rlptr 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 setrlimit 函数的值 
+\end{DoxyReturn}
+\index{getrlimit\+\_\+setrlimit.\+c@{getrlimit\+\_\+setrlimit.\+c}!print\+\_\+rlimit@{print\+\_\+rlimit}}
+\index{print\+\_\+rlimit@{print\+\_\+rlimit}!getrlimit\+\_\+setrlimit.\+c@{getrlimit\+\_\+setrlimit.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+rlimit(const struct rlimit $\ast$rlptr)}{print_rlimit(const struct rlimit *rlptr)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+rlimit (
+\begin{DoxyParamCaption}
+\item[{const struct rlimit $\ast$}]{rlptr}
+\end{DoxyParamCaption}
+)}\hypertarget{getrlimit__setrlimit_8c_a849bac2dd70e394a2adb770182742cbf}{}\label{getrlimit__setrlimit_8c_a849bac2dd70e394a2adb770182742cbf}
+
+
+print\+\_\+rlimit \+: 打印资源限制 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rlptr} & \+: 指向 struct rlimit 的指针 \\
+\hline
+\end{DoxyParams}
+\index{getrlimit\+\_\+setrlimit.\+c@{getrlimit\+\_\+setrlimit.\+c}!test\+\_\+getrlimit\+\_\+setrlimit@{test\+\_\+getrlimit\+\_\+setrlimit}}
+\index{test\+\_\+getrlimit\+\_\+setrlimit@{test\+\_\+getrlimit\+\_\+setrlimit}!getrlimit\+\_\+setrlimit.\+c@{getrlimit\+\_\+setrlimit.\+c}}
+\subsubsection[{\texorpdfstring{test\+\_\+getrlimit\+\_\+setrlimit()}{test_getrlimit_setrlimit()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+getrlimit\+\_\+setrlimit (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{getrlimit__setrlimit_8c_af974e7f0f0bbb0d439b675a1a69373b0}{}\label{getrlimit__setrlimit_8c_af974e7f0f0bbb0d439b675a1a69373b0}
+
+
+test\+\_\+getrlimit\+\_\+setrlimit \+: 测试 getrlimit 函数、 setrlimit 函数 
+

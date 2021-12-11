@@ -1,0 +1,137 @@
+\hypertarget{tools_8h}{}\section{src/tools.h File Reference}
+\label{tools_8h}\index{src/tools.\+h@{src/tools.\+h}}
+{\ttfamily \#include $<$sys/types.\+h$>$}\\*
+{\ttfamily \#include $<$time.\+h$>$}\\*
+{\ttfamily \#include $<$fcntl.\+h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{tools_8h_af066487f5b841fdb501f3ed10e134752}{prepare\+\_\+file} (const char $\ast$pathname, const void $\ast$buffer, int len, mode\+\_\+t mode)
+\begin{DoxyCompactList}\small\item\em prepare\+\_\+file \+: 为测试准备条件：新建一个文件（若存在则先删除之），然后向文件中写入指定内容 \end{DoxyCompactList}\item 
+void \hyperlink{tools_8h_ae654bbbe7c64a4221ba56998fcf4b3c6}{un\+\_\+prepare\+\_\+file} (const char $\ast$pathname)
+\begin{DoxyCompactList}\small\item\em un\+\_\+prepare\+\_\+file \+: 清理测试准备条件：删除新建的文件 \end{DoxyCompactList}\item 
+void \hyperlink{tools_8h_ac8e2805fd04bbdbdaf72ac95a658b120}{print\+\_\+char\+\_\+buffer} (const char $\ast$\hyperlink{setjmp__longjmp_8c_a02df3e2f0291bf06f3a685829975efec}{buf}, int n)
+\begin{DoxyCompactList}\small\item\em print\+\_\+char\+\_\+buffer \+: 打印字符数组的内容 \end{DoxyCompactList}\item 
+void \hyperlink{tools_8h_a5613d6a543a0ff8350d6f70a8e8b7718}{fcntl\+\_\+lock} (int fd)
+\begin{DoxyCompactList}\small\item\em fcntl\+\_\+lock \+: 使用 fcntl 记录锁加锁 \end{DoxyCompactList}\item 
+void \hyperlink{tools_8h_a0f5b123c592c8722b36e07e6bce487a4}{fcntl\+\_\+unlock} (int fd)
+\begin{DoxyCompactList}\small\item\em fcntl\+\_\+unlock \+: 解锁 fcntl 记录锁 \end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{tools_8h_a1835ca16977578afbd3d1b453216f443}{abs\+\_\+path} (const char $\ast$dir\+\_\+name, const char $\ast$file\+\_\+name)
+\begin{DoxyCompactList}\small\item\em cur\+\_\+abs\+\_\+path \+: 根据目录和相对目录的文件名拼接绝对路径名 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{tools.\+h@{tools.\+h}!abs\+\_\+path@{abs\+\_\+path}}
+\index{abs\+\_\+path@{abs\+\_\+path}!tools.\+h@{tools.\+h}}
+\subsubsection[{\texorpdfstring{abs\+\_\+path(const char $\ast$dir\+\_\+name, const char $\ast$file\+\_\+name)}{abs_path(const char *dir_name, const char *file_name)}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ abs\+\_\+path (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{dir\+\_\+name, }
+\item[{const char $\ast$}]{file\+\_\+name}
+\end{DoxyParamCaption}
+)}\hypertarget{tools_8h_a1835ca16977578afbd3d1b453216f443}{}\label{tools_8h_a1835ca16977578afbd3d1b453216f443}
+
+
+cur\+\_\+abs\+\_\+path \+: 根据目录和相对目录的文件名拼接绝对路径名 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dir\+\_\+name} & \+: 目录的绝对路径名 \\
+\hline
+{\em file\+\_\+name} & \+: 文件名 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 该文件名的绝对路径名字符串的地址（静态数组存放） 
+\end{DoxyReturn}
+\index{tools.\+h@{tools.\+h}!fcntl\+\_\+lock@{fcntl\+\_\+lock}}
+\index{fcntl\+\_\+lock@{fcntl\+\_\+lock}!tools.\+h@{tools.\+h}}
+\subsubsection[{\texorpdfstring{fcntl\+\_\+lock(int fd)}{fcntl_lock(int fd)}}]{\setlength{\rightskip}{0pt plus 5cm}void fcntl\+\_\+lock (
+\begin{DoxyParamCaption}
+\item[{int}]{fd}
+\end{DoxyParamCaption}
+)}\hypertarget{tools_8h_a5613d6a543a0ff8350d6f70a8e8b7718}{}\label{tools_8h_a5613d6a543a0ff8350d6f70a8e8b7718}
+
+
+fcntl\+\_\+lock \+: 使用 fcntl 记录锁加锁 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fd} & \+: 加锁的文件的文件描述符 \\
+\hline
+\end{DoxyParams}
+\index{tools.\+h@{tools.\+h}!fcntl\+\_\+unlock@{fcntl\+\_\+unlock}}
+\index{fcntl\+\_\+unlock@{fcntl\+\_\+unlock}!tools.\+h@{tools.\+h}}
+\subsubsection[{\texorpdfstring{fcntl\+\_\+unlock(int fd)}{fcntl_unlock(int fd)}}]{\setlength{\rightskip}{0pt plus 5cm}void fcntl\+\_\+unlock (
+\begin{DoxyParamCaption}
+\item[{int}]{fd}
+\end{DoxyParamCaption}
+)}\hypertarget{tools_8h_a0f5b123c592c8722b36e07e6bce487a4}{}\label{tools_8h_a0f5b123c592c8722b36e07e6bce487a4}
+
+
+fcntl\+\_\+unlock \+: 解锁 fcntl 记录锁 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fd} & \+: 解锁的文件的文件描述符 \\
+\hline
+\end{DoxyParams}
+\index{tools.\+h@{tools.\+h}!prepare\+\_\+file@{prepare\+\_\+file}}
+\index{prepare\+\_\+file@{prepare\+\_\+file}!tools.\+h@{tools.\+h}}
+\subsubsection[{\texorpdfstring{prepare\+\_\+file(const char $\ast$pathname, const void $\ast$buffer, int len, mode\+\_\+t mode)}{prepare_file(const char *pathname, const void *buffer, int len, mode_t mode)}}]{\setlength{\rightskip}{0pt plus 5cm}int prepare\+\_\+file (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{pathname, }
+\item[{const void $\ast$}]{buffer, }
+\item[{int}]{len, }
+\item[{mode\+\_\+t}]{mode}
+\end{DoxyParamCaption}
+)}\hypertarget{tools_8h_af066487f5b841fdb501f3ed10e134752}{}\label{tools_8h_af066487f5b841fdb501f3ed10e134752}
+
+
+prepare\+\_\+file \+: 为测试准备条件：新建一个文件（若存在则先删除之），然后向文件中写入指定内容 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pathname} & \+: 新建的文件的路径名（若存在则先删除之） \\
+\hline
+{\em buffer} & \+: 待写入文件的内容缓冲区 \\
+\hline
+{\em len} & \+: 待写入文件的内容的长度 \\
+\hline
+{\em mode} & ： 新建文件的权限 \\
+\hline
+\end{DoxyParams}
+\index{tools.\+h@{tools.\+h}!print\+\_\+char\+\_\+buffer@{print\+\_\+char\+\_\+buffer}}
+\index{print\+\_\+char\+\_\+buffer@{print\+\_\+char\+\_\+buffer}!tools.\+h@{tools.\+h}}
+\subsubsection[{\texorpdfstring{print\+\_\+char\+\_\+buffer(const char $\ast$buf, int n)}{print_char_buffer(const char *buf, int n)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+char\+\_\+buffer (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{buf, }
+\item[{int}]{n}
+\end{DoxyParamCaption}
+)}\hypertarget{tools_8h_ac8e2805fd04bbdbdaf72ac95a658b120}{}\label{tools_8h_ac8e2805fd04bbdbdaf72ac95a658b120}
+
+
+print\+\_\+char\+\_\+buffer \+: 打印字符数组的内容 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buf} & \+: 数组地址 \\
+\hline
+{\em n} & \+: 数组长度 \\
+\hline
+\end{DoxyParams}
+\index{tools.\+h@{tools.\+h}!un\+\_\+prepare\+\_\+file@{un\+\_\+prepare\+\_\+file}}
+\index{un\+\_\+prepare\+\_\+file@{un\+\_\+prepare\+\_\+file}!tools.\+h@{tools.\+h}}
+\subsubsection[{\texorpdfstring{un\+\_\+prepare\+\_\+file(const char $\ast$pathname)}{un_prepare_file(const char *pathname)}}]{\setlength{\rightskip}{0pt plus 5cm}void un\+\_\+prepare\+\_\+file (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{pathname}
+\end{DoxyParamCaption}
+)}\hypertarget{tools_8h_ae654bbbe7c64a4221ba56998fcf4b3c6}{}\label{tools_8h_ae654bbbe7c64a4221ba56998fcf4b3c6}
+
+
+un\+\_\+prepare\+\_\+file \+: 清理测试准备条件：删除新建的文件 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pathname} & \+: 新建的文件的路径名 \\
+\hline
+\end{DoxyParams}

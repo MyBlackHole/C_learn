@@ -1,0 +1,84 @@
+\hypertarget{thread__create_8h}{}\section{src/11\+\_\+\+Thread/thread\+\_\+create.h File Reference}
+\label{thread__create_8h}\index{src/11\+\_\+\+Thread/thread\+\_\+create.\+h@{src/11\+\_\+\+Thread/thread\+\_\+create.\+h}}
+{\ttfamily \#include $<$pthread.\+h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{thread__create_8h_ad82c2337fd9f01a075f17bbff5568a64}{My\+\_\+pthread\+\_\+create} (pthread\+\_\+t $\ast$tidp, const pthread\+\_\+attr\+\_\+t $\ast$attr, void $\ast$($\ast$start\+\_\+rtn)(void $\ast$), void $\ast$arg)
+\begin{DoxyCompactList}\small\item\em My\+\_\+pthread\+\_\+create \+: 包装了 pthread\+\_\+create 函数 \end{DoxyCompactList}\item 
+void \hyperlink{thread__create_8h_a7b5462843fa9a124a6c9f9b5154d56ff}{print\+\_\+thread\+\_\+id} ()
+\begin{DoxyCompactList}\small\item\em print\+\_\+threadid \+: 打印当前线程的 ID \end{DoxyCompactList}\item 
+void \hyperlink{thread__create_8h_a8a7d00c14fd678fd27174f4059038a9f}{thread\+\_\+join\+\_\+int} (pthread\+\_\+t tid, int $\ast$rval\+\_\+pptr)
+\begin{DoxyCompactList}\small\item\em thread\+\_\+join\+\_\+int ： 包装了 pthread\+\_\+join 函数，但是子返回值为 int \end{DoxyCompactList}\item 
+void \hyperlink{thread__create_8h_ab9b52cb9bb7c83d532070b684e858676}{test\+\_\+thread\+\_\+create} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+thread\+\_\+create \+: 测试 pthread\+\_\+equal 函数、pthread\+\_\+self 函数、 pthread\+\_\+create 函数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{thread\+\_\+create.\+h@{thread\+\_\+create.\+h}!My\+\_\+pthread\+\_\+create@{My\+\_\+pthread\+\_\+create}}
+\index{My\+\_\+pthread\+\_\+create@{My\+\_\+pthread\+\_\+create}!thread\+\_\+create.\+h@{thread\+\_\+create.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+pthread\+\_\+create(pthread\+\_\+t $\ast$tidp, const pthread\+\_\+attr\+\_\+t $\ast$attr, void $\ast$($\ast$start\+\_\+rtn)(void $\ast$), void $\ast$arg)}{My_pthread_create(pthread_t *tidp, const pthread_attr_t *attr, void *(*start_rtn)(void *), void *arg)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+pthread\+\_\+create (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+t $\ast$}]{tidp, }
+\item[{const pthread\+\_\+attr\+\_\+t $\ast$}]{attr, }
+\item[{void $\ast$($\ast$)(void $\ast$)}]{start\+\_\+rtn, }
+\item[{void $\ast$}]{arg}
+\end{DoxyParamCaption}
+)}\hypertarget{thread__create_8h_ad82c2337fd9f01a075f17bbff5568a64}{}\label{thread__create_8h_ad82c2337fd9f01a075f17bbff5568a64}
+
+
+My\+\_\+pthread\+\_\+create \+: 包装了 pthread\+\_\+create 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tidp} & \+: 传递给 pthread\+\_\+create 函数的 tidp 参数 \\
+\hline
+{\em attr} & \+: 传递给 pthread\+\_\+create 函数的 attr 参数 \\
+\hline
+{\em arg} & \+: 传递给 pthread\+\_\+create 函数的 arg 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+： 返回 pthread\+\_\+create 函数的值 
+\end{DoxyReturn}
+\index{thread\+\_\+create.\+h@{thread\+\_\+create.\+h}!print\+\_\+thread\+\_\+id@{print\+\_\+thread\+\_\+id}}
+\index{print\+\_\+thread\+\_\+id@{print\+\_\+thread\+\_\+id}!thread\+\_\+create.\+h@{thread\+\_\+create.\+h}}
+\subsubsection[{\texorpdfstring{print\+\_\+thread\+\_\+id()}{print_thread_id()}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+thread\+\_\+id (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{thread__create_8h_a7b5462843fa9a124a6c9f9b5154d56ff}{}\label{thread__create_8h_a7b5462843fa9a124a6c9f9b5154d56ff}
+
+
+print\+\_\+threadid \+: 打印当前线程的 ID 
+
+\index{thread\+\_\+create.\+h@{thread\+\_\+create.\+h}!test\+\_\+thread\+\_\+create@{test\+\_\+thread\+\_\+create}}
+\index{test\+\_\+thread\+\_\+create@{test\+\_\+thread\+\_\+create}!thread\+\_\+create.\+h@{thread\+\_\+create.\+h}}
+\subsubsection[{\texorpdfstring{test\+\_\+thread\+\_\+create()}{test_thread_create()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+thread\+\_\+create (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{thread__create_8h_ab9b52cb9bb7c83d532070b684e858676}{}\label{thread__create_8h_ab9b52cb9bb7c83d532070b684e858676}
+
+
+test\+\_\+thread\+\_\+create \+: 测试 pthread\+\_\+equal 函数、pthread\+\_\+self 函数、 pthread\+\_\+create 函数 
+
+\index{thread\+\_\+create.\+h@{thread\+\_\+create.\+h}!thread\+\_\+join\+\_\+int@{thread\+\_\+join\+\_\+int}}
+\index{thread\+\_\+join\+\_\+int@{thread\+\_\+join\+\_\+int}!thread\+\_\+create.\+h@{thread\+\_\+create.\+h}}
+\subsubsection[{\texorpdfstring{thread\+\_\+join\+\_\+int(pthread\+\_\+t tid, int $\ast$rval\+\_\+pptr)}{thread_join_int(pthread_t tid, int *rval_pptr)}}]{\setlength{\rightskip}{0pt plus 5cm}void thread\+\_\+join\+\_\+int (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+t}]{tid, }
+\item[{int $\ast$}]{rval\+\_\+pptr}
+\end{DoxyParamCaption}
+)}\hypertarget{thread__create_8h_a8a7d00c14fd678fd27174f4059038a9f}{}\label{thread__create_8h_a8a7d00c14fd678fd27174f4059038a9f}
+
+
+thread\+\_\+join\+\_\+int ： 包装了 pthread\+\_\+join 函数，但是子返回值为 int 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tid} & \+: 线程 ID \\
+\hline
+{\em rval\+\_\+pptr} & \+:存放子线程返回值 \\
+\hline
+\end{DoxyParams}

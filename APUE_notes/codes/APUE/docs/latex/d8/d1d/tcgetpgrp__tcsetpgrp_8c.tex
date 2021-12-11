@@ -1,0 +1,182 @@
+\hypertarget{tcgetpgrp__tcsetpgrp_8c}{}\section{src/9\+\_\+\+Progress\+\_\+\+Relation/tcgetpgrp\+\_\+tcsetpgrp.c File Reference}
+\label{tcgetpgrp__tcsetpgrp_8c}\index{src/9\+\_\+\+Progress\+\_\+\+Relation/tcgetpgrp\+\_\+tcsetpgrp.\+c@{src/9\+\_\+\+Progress\+\_\+\+Relation/tcgetpgrp\+\_\+tcsetpgrp.\+c}}
+{\ttfamily \#include \char`\"{}tcgetpgrp\+\_\+tcsetpgrp.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../header.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$termios.\+h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{tcgetpgrp__tcsetpgrp_8c_a0bd76e6d502075e830f62080f42f1a76}{print\+\_\+pid} ()
+\begin{DoxyCompactList}\small\item\em print\+\_\+pid \+: 打印进程 id \end{DoxyCompactList}\item 
+void \hyperlink{tcgetpgrp__tcsetpgrp_8c_a2781199e9afe7ddf4d7a8bf1034b17af}{print\+\_\+parent\+\_\+pid} ()
+\begin{DoxyCompactList}\small\item\em print\+\_\+parent\+\_\+pid \+: 打印进程的父进程 id \end{DoxyCompactList}\item 
+void \hyperlink{tcgetpgrp__tcsetpgrp_8c_a05c3b92d18cad5803dbe4e586f77c444}{check\+\_\+waitpid} ()
+\begin{DoxyCompactList}\small\item\em check\+\_\+waitpid \+: 使用 waitpid 等待所有子进程 \end{DoxyCompactList}\item 
+pid\+\_\+t \hyperlink{tcgetpgrp__tcsetpgrp_8c_aac21d3a60e7c97ea50d94b8cf424428d}{My\+\_\+getpgrp} ()
+\begin{DoxyCompactList}\small\item\em My\+\_\+getpgrp \+: 包装了 getpgrp 函数 \end{DoxyCompactList}\item 
+pid\+\_\+t \hyperlink{tcgetpgrp__tcsetpgrp_8c_a45346a7cf6f23d6f4c2393da361660ff}{My\+\_\+getsid} (pid\+\_\+t pid)
+\begin{DoxyCompactList}\small\item\em My\+\_\+getsid \+: 包装了 getsid 函数的值 \end{DoxyCompactList}\item 
+pid\+\_\+t \hyperlink{tcgetpgrp__tcsetpgrp_8c_a8a323b4afdc1ca11348510adb0abb812}{My\+\_\+tcgetpgrp} (int fd)
+\begin{DoxyCompactList}\small\item\em My\+\_\+tcgetpgrp \+: 包装了 tcgetpgrp 函数 \end{DoxyCompactList}\item 
+int \hyperlink{tcgetpgrp__tcsetpgrp_8c_a50aa1351c805854b96cbd7d87e818585}{My\+\_\+tcsetpgrp} (int fd, pid\+\_\+t pgrpid)
+\begin{DoxyCompactList}\small\item\em My\+\_\+tcsetpgrp \+: 包装了 tcsetpgrp 函数 \end{DoxyCompactList}\item 
+pid\+\_\+t \hyperlink{tcgetpgrp__tcsetpgrp_8c_ac6df6d1c3496c4d7c88e6bef25743aa7}{My\+\_\+tcgetsid} (int fd)
+\begin{DoxyCompactList}\small\item\em My\+\_\+tcgetsid \+: 包装了 tcgetsid 函数 \end{DoxyCompactList}\item 
+static pid\+\_\+t \hyperlink{tcgetpgrp__tcsetpgrp_8c_a91d22fdab508ae9804eb76d15237da6b}{create\+\_\+child} ()
+\begin{DoxyCompactList}\small\item\em create\+\_\+child \+: 创建子进程 \end{DoxyCompactList}\item 
+void \hyperlink{tcgetpgrp__tcsetpgrp_8c_a2ac804f3c628ddc10c52952eea53331c}{test\+\_\+tcgetpgrp\+\_\+tcsetpgrp} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+tcgetpgrp\+\_\+tcsetpgrp \+:测试 tcgetpgrp 函数、tcsetpgrp 函数、tcgetsid 函数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{tcgetpgrp\+\_\+tcsetpgrp.\+c@{tcgetpgrp\+\_\+tcsetpgrp.\+c}!check\+\_\+waitpid@{check\+\_\+waitpid}}
+\index{check\+\_\+waitpid@{check\+\_\+waitpid}!tcgetpgrp\+\_\+tcsetpgrp.\+c@{tcgetpgrp\+\_\+tcsetpgrp.\+c}}
+\subsubsection[{\texorpdfstring{check\+\_\+waitpid()}{check_waitpid()}}]{\setlength{\rightskip}{0pt plus 5cm}void check\+\_\+waitpid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{tcgetpgrp__tcsetpgrp_8c_a05c3b92d18cad5803dbe4e586f77c444}{}\label{tcgetpgrp__tcsetpgrp_8c_a05c3b92d18cad5803dbe4e586f77c444}
+
+
+check\+\_\+waitpid \+: 使用 waitpid 等待所有子进程 
+
+\index{tcgetpgrp\+\_\+tcsetpgrp.\+c@{tcgetpgrp\+\_\+tcsetpgrp.\+c}!create\+\_\+child@{create\+\_\+child}}
+\index{create\+\_\+child@{create\+\_\+child}!tcgetpgrp\+\_\+tcsetpgrp.\+c@{tcgetpgrp\+\_\+tcsetpgrp.\+c}}
+\subsubsection[{\texorpdfstring{create\+\_\+child()}{create_child()}}]{\setlength{\rightskip}{0pt plus 5cm}static pid\+\_\+t create\+\_\+child (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{tcgetpgrp__tcsetpgrp_8c_a91d22fdab508ae9804eb76d15237da6b}{}\label{tcgetpgrp__tcsetpgrp_8c_a91d22fdab508ae9804eb76d15237da6b}
+
+
+create\+\_\+child \+: 创建子进程 
+
+\begin{DoxyReturn}{Returns}
+\+: fork 的返回值 
+\end{DoxyReturn}
+\index{tcgetpgrp\+\_\+tcsetpgrp.\+c@{tcgetpgrp\+\_\+tcsetpgrp.\+c}!My\+\_\+getpgrp@{My\+\_\+getpgrp}}
+\index{My\+\_\+getpgrp@{My\+\_\+getpgrp}!tcgetpgrp\+\_\+tcsetpgrp.\+c@{tcgetpgrp\+\_\+tcsetpgrp.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+getpgrp()}{My_getpgrp()}}]{\setlength{\rightskip}{0pt plus 5cm}pid\+\_\+t My\+\_\+getpgrp (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{tcgetpgrp__tcsetpgrp_8c_aac21d3a60e7c97ea50d94b8cf424428d}{}\label{tcgetpgrp__tcsetpgrp_8c_aac21d3a60e7c97ea50d94b8cf424428d}
+
+
+My\+\_\+getpgrp \+: 包装了 getpgrp 函数 
+
+\begin{DoxyReturn}{Returns}
+\+: 返回 getpgrp 函数的值 
+\end{DoxyReturn}
+\index{tcgetpgrp\+\_\+tcsetpgrp.\+c@{tcgetpgrp\+\_\+tcsetpgrp.\+c}!My\+\_\+getsid@{My\+\_\+getsid}}
+\index{My\+\_\+getsid@{My\+\_\+getsid}!tcgetpgrp\+\_\+tcsetpgrp.\+c@{tcgetpgrp\+\_\+tcsetpgrp.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+getsid(pid\+\_\+t pid)}{My_getsid(pid_t pid)}}]{\setlength{\rightskip}{0pt plus 5cm}pid\+\_\+t My\+\_\+getsid (
+\begin{DoxyParamCaption}
+\item[{pid\+\_\+t}]{pid}
+\end{DoxyParamCaption}
+)}\hypertarget{tcgetpgrp__tcsetpgrp_8c_a45346a7cf6f23d6f4c2393da361660ff}{}\label{tcgetpgrp__tcsetpgrp_8c_a45346a7cf6f23d6f4c2393da361660ff}
+
+
+My\+\_\+getsid \+: 包装了 getsid 函数的值 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pid} & \+: 传递给 getsid 函数的 pid 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 getsid 函数的值 
+\end{DoxyReturn}
+\index{tcgetpgrp\+\_\+tcsetpgrp.\+c@{tcgetpgrp\+\_\+tcsetpgrp.\+c}!My\+\_\+tcgetpgrp@{My\+\_\+tcgetpgrp}}
+\index{My\+\_\+tcgetpgrp@{My\+\_\+tcgetpgrp}!tcgetpgrp\+\_\+tcsetpgrp.\+c@{tcgetpgrp\+\_\+tcsetpgrp.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+tcgetpgrp(int fd)}{My_tcgetpgrp(int fd)}}]{\setlength{\rightskip}{0pt plus 5cm}pid\+\_\+t My\+\_\+tcgetpgrp (
+\begin{DoxyParamCaption}
+\item[{int}]{fd}
+\end{DoxyParamCaption}
+)}\hypertarget{tcgetpgrp__tcsetpgrp_8c_a8a323b4afdc1ca11348510adb0abb812}{}\label{tcgetpgrp__tcsetpgrp_8c_a8a323b4afdc1ca11348510adb0abb812}
+
+
+My\+\_\+tcgetpgrp \+: 包装了 tcgetpgrp 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fd} & \+: 传递了 tcgetpgrp 函数的 fd 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回了 tcgetpgrp 函数的值 
+\end{DoxyReturn}
+\index{tcgetpgrp\+\_\+tcsetpgrp.\+c@{tcgetpgrp\+\_\+tcsetpgrp.\+c}!My\+\_\+tcgetsid@{My\+\_\+tcgetsid}}
+\index{My\+\_\+tcgetsid@{My\+\_\+tcgetsid}!tcgetpgrp\+\_\+tcsetpgrp.\+c@{tcgetpgrp\+\_\+tcsetpgrp.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+tcgetsid(int fd)}{My_tcgetsid(int fd)}}]{\setlength{\rightskip}{0pt plus 5cm}pid\+\_\+t My\+\_\+tcgetsid (
+\begin{DoxyParamCaption}
+\item[{int}]{fd}
+\end{DoxyParamCaption}
+)}\hypertarget{tcgetpgrp__tcsetpgrp_8c_ac6df6d1c3496c4d7c88e6bef25743aa7}{}\label{tcgetpgrp__tcsetpgrp_8c_ac6df6d1c3496c4d7c88e6bef25743aa7}
+
+
+My\+\_\+tcgetsid \+: 包装了 tcgetsid 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fd} & \+: 传递了 tcgetsid 函数的 fd 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回了 tcgetsid 函数的值 
+\end{DoxyReturn}
+\index{tcgetpgrp\+\_\+tcsetpgrp.\+c@{tcgetpgrp\+\_\+tcsetpgrp.\+c}!My\+\_\+tcsetpgrp@{My\+\_\+tcsetpgrp}}
+\index{My\+\_\+tcsetpgrp@{My\+\_\+tcsetpgrp}!tcgetpgrp\+\_\+tcsetpgrp.\+c@{tcgetpgrp\+\_\+tcsetpgrp.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+tcsetpgrp(int fd, pid\+\_\+t pgrpid)}{My_tcsetpgrp(int fd, pid_t pgrpid)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+tcsetpgrp (
+\begin{DoxyParamCaption}
+\item[{int}]{fd, }
+\item[{pid\+\_\+t}]{pgrpid}
+\end{DoxyParamCaption}
+)}\hypertarget{tcgetpgrp__tcsetpgrp_8c_a50aa1351c805854b96cbd7d87e818585}{}\label{tcgetpgrp__tcsetpgrp_8c_a50aa1351c805854b96cbd7d87e818585}
+
+
+My\+\_\+tcsetpgrp \+: 包装了 tcsetpgrp 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fd} & \+: 传递了 tcsetpgrp 函数的 fd 参数 \\
+\hline
+{\em pgrpid} & \+: 传递了 tcsetpgrp 函数的pgrpid 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回了 tcsetpgrp 函数的值 
+\end{DoxyReturn}
+\index{tcgetpgrp\+\_\+tcsetpgrp.\+c@{tcgetpgrp\+\_\+tcsetpgrp.\+c}!print\+\_\+parent\+\_\+pid@{print\+\_\+parent\+\_\+pid}}
+\index{print\+\_\+parent\+\_\+pid@{print\+\_\+parent\+\_\+pid}!tcgetpgrp\+\_\+tcsetpgrp.\+c@{tcgetpgrp\+\_\+tcsetpgrp.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+parent\+\_\+pid()}{print_parent_pid()}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+parent\+\_\+pid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{tcgetpgrp__tcsetpgrp_8c_a2781199e9afe7ddf4d7a8bf1034b17af}{}\label{tcgetpgrp__tcsetpgrp_8c_a2781199e9afe7ddf4d7a8bf1034b17af}
+
+
+print\+\_\+parent\+\_\+pid \+: 打印进程的父进程 id 
+
+\index{tcgetpgrp\+\_\+tcsetpgrp.\+c@{tcgetpgrp\+\_\+tcsetpgrp.\+c}!print\+\_\+pid@{print\+\_\+pid}}
+\index{print\+\_\+pid@{print\+\_\+pid}!tcgetpgrp\+\_\+tcsetpgrp.\+c@{tcgetpgrp\+\_\+tcsetpgrp.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+pid()}{print_pid()}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+pid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{tcgetpgrp__tcsetpgrp_8c_a0bd76e6d502075e830f62080f42f1a76}{}\label{tcgetpgrp__tcsetpgrp_8c_a0bd76e6d502075e830f62080f42f1a76}
+
+
+print\+\_\+pid \+: 打印进程 id 
+
+\index{tcgetpgrp\+\_\+tcsetpgrp.\+c@{tcgetpgrp\+\_\+tcsetpgrp.\+c}!test\+\_\+tcgetpgrp\+\_\+tcsetpgrp@{test\+\_\+tcgetpgrp\+\_\+tcsetpgrp}}
+\index{test\+\_\+tcgetpgrp\+\_\+tcsetpgrp@{test\+\_\+tcgetpgrp\+\_\+tcsetpgrp}!tcgetpgrp\+\_\+tcsetpgrp.\+c@{tcgetpgrp\+\_\+tcsetpgrp.\+c}}
+\subsubsection[{\texorpdfstring{test\+\_\+tcgetpgrp\+\_\+tcsetpgrp()}{test_tcgetpgrp_tcsetpgrp()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+tcgetpgrp\+\_\+tcsetpgrp (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{tcgetpgrp__tcsetpgrp_8c_a2ac804f3c628ddc10c52952eea53331c}{}\label{tcgetpgrp__tcsetpgrp_8c_a2ac804f3c628ddc10c52952eea53331c}
+
+
+test\+\_\+tcgetpgrp\+\_\+tcsetpgrp \+:测试 tcgetpgrp 函数、tcsetpgrp 函数、tcgetsid 函数 
+

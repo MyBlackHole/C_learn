@@ -1,0 +1,127 @@
+\hypertarget{sigaction___8h}{}\section{src/10\+\_\+\+Signal/sigaction\+\_\+.h File Reference}
+\label{sigaction___8h}\index{src/10\+\_\+\+Signal/sigaction\+\_\+.\+h@{src/10\+\_\+\+Signal/sigaction\+\_\+.\+h}}
+{\ttfamily \#include \char`\"{}../header.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$signal.\+h$>$}\\*
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef void \hyperlink{sigaction___8h_a41f7fa3cd174bb624d8b38ed224ab7d6}{Hanlder\+\_\+\+Func}(int signo, siginfo\+\_\+t $\ast$info, void $\ast$context)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{sigaction___8h_acda5ced44614a8c497a18e6bd4db78b4}{My\+\_\+sigaction} (int signo, const struct sigaction $\ast$act, struct sigaction $\ast$oact)
+\begin{DoxyCompactList}\small\item\em My\+\_\+sigaction \+: 包装了 sigaction 函数 \end{DoxyCompactList}\item 
+void \hyperlink{sigaction___8h_a5b242bb88c09caf8f8c17c5082f55408}{print\+\_\+context\+\_\+t} (const ucontext\+\_\+t $\ast$t)
+\begin{DoxyCompactList}\small\item\em print\+\_\+context\+\_\+t \+: 打印 ucontext\+\_\+t 内容 \end{DoxyCompactList}\item 
+void \hyperlink{sigaction___8h_a73c904e5f5911b11acf3354414edacf4}{print\+\_\+siginfo\+\_\+t} (const siginfo\+\_\+t $\ast$info)
+\begin{DoxyCompactList}\small\item\em print\+\_\+siginfo\+\_\+t \+: 打印 siginfo\+\_\+t 内容 \end{DoxyCompactList}\item 
+void \hyperlink{sigaction___8h_aec229dbc1924b697e5e6b55d598399ed}{add\+\_\+sigaction} (int signo, sigset\+\_\+t $\ast$set, int no\+\_\+deffer, int restart, \hyperlink{sleep__nanosleep_8c_a41f7fa3cd174bb624d8b38ed224ab7d6}{Hanlder\+\_\+\+Func} handler)
+\begin{DoxyCompactList}\small\item\em add\+\_\+sigaction \+: 添加信号处理函数 \end{DoxyCompactList}\item 
+void \hyperlink{sigaction___8h_afddc7fe63b23601cb6d3a5886d8977ba}{test\+\_\+sigaction} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+sigaction \+:测试 sigaction 函数的用法 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\index{sigaction\+\_\+.\+h@{sigaction\+\_\+.\+h}!Hanlder\+\_\+\+Func@{Hanlder\+\_\+\+Func}}
+\index{Hanlder\+\_\+\+Func@{Hanlder\+\_\+\+Func}!sigaction\+\_\+.\+h@{sigaction\+\_\+.\+h}}
+\subsubsection[{\texorpdfstring{Hanlder\+\_\+\+Func}{Hanlder_Func}}]{\setlength{\rightskip}{0pt plus 5cm}typedef void Hanlder\+\_\+\+Func(int signo, siginfo\+\_\+t $\ast$info, void $\ast$context)}\hypertarget{sigaction___8h_a41f7fa3cd174bb624d8b38ed224ab7d6}{}\label{sigaction___8h_a41f7fa3cd174bb624d8b38ed224ab7d6}
+
+
+\subsection{Function Documentation}
+\index{sigaction\+\_\+.\+h@{sigaction\+\_\+.\+h}!add\+\_\+sigaction@{add\+\_\+sigaction}}
+\index{add\+\_\+sigaction@{add\+\_\+sigaction}!sigaction\+\_\+.\+h@{sigaction\+\_\+.\+h}}
+\subsubsection[{\texorpdfstring{add\+\_\+sigaction(int signo, sigset\+\_\+t $\ast$set, int no\+\_\+deffer, int restart, Hanlder\+\_\+\+Func handler)}{add_sigaction(int signo, sigset_t *set, int no_deffer, int restart, Hanlder_Func handler)}}]{\setlength{\rightskip}{0pt plus 5cm}void add\+\_\+sigaction (
+\begin{DoxyParamCaption}
+\item[{int}]{signo, }
+\item[{sigset\+\_\+t $\ast$}]{set, }
+\item[{int}]{no\+\_\+deffer, }
+\item[{int}]{restart, }
+\item[{{\bf Hanlder\+\_\+\+Func}}]{handler}
+\end{DoxyParamCaption}
+)}\hypertarget{sigaction___8h_aec229dbc1924b697e5e6b55d598399ed}{}\label{sigaction___8h_aec229dbc1924b697e5e6b55d598399ed}
+
+
+add\+\_\+sigaction \+: 添加信号处理函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em signo} & \+: 信号值 \\
+\hline
+{\em set} & \+: 指向 sigset\+\_\+t 的指针 \\
+\hline
+{\em no\+\_\+deffer} & \+: 非 0 则表示在执行其信号处理函数时，系统并不自动阻塞此信号 \\
+\hline
+{\em restart} & \+: 为 0 表示不自动重启中断的系统调用；非0表示自动重启被中断的系统 \\
+\hline
+{\em handler} & \+: 信号处理函数 \\
+\hline
+\end{DoxyParams}
+\index{sigaction\+\_\+.\+h@{sigaction\+\_\+.\+h}!My\+\_\+sigaction@{My\+\_\+sigaction}}
+\index{My\+\_\+sigaction@{My\+\_\+sigaction}!sigaction\+\_\+.\+h@{sigaction\+\_\+.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+sigaction(int signo, const struct sigaction $\ast$act, struct sigaction $\ast$oact)}{My_sigaction(int signo, const struct sigaction *act, struct sigaction *oact)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+sigaction (
+\begin{DoxyParamCaption}
+\item[{int}]{signo, }
+\item[{const struct sigaction $\ast$}]{act, }
+\item[{struct sigaction $\ast$}]{oact}
+\end{DoxyParamCaption}
+)}\hypertarget{sigaction___8h_acda5ced44614a8c497a18e6bd4db78b4}{}\label{sigaction___8h_acda5ced44614a8c497a18e6bd4db78b4}
+
+
+My\+\_\+sigaction \+: 包装了 sigaction 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em signo} & \+: 传递了 sigaction 函数的 signo 参数 \\
+\hline
+{\em act} & \+: 传递了 sigaction 函数的 act 参数 \\
+\hline
+{\em oact} & \+: 传递了 sigaction 函数的 oact 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 sigaction 函数的值 
+\end{DoxyReturn}
+\index{sigaction\+\_\+.\+h@{sigaction\+\_\+.\+h}!print\+\_\+context\+\_\+t@{print\+\_\+context\+\_\+t}}
+\index{print\+\_\+context\+\_\+t@{print\+\_\+context\+\_\+t}!sigaction\+\_\+.\+h@{sigaction\+\_\+.\+h}}
+\subsubsection[{\texorpdfstring{print\+\_\+context\+\_\+t(const ucontext\+\_\+t $\ast$t)}{print_context_t(const ucontext_t *t)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+context\+\_\+t (
+\begin{DoxyParamCaption}
+\item[{const ucontext\+\_\+t $\ast$}]{t}
+\end{DoxyParamCaption}
+)}\hypertarget{sigaction___8h_a5b242bb88c09caf8f8c17c5082f55408}{}\label{sigaction___8h_a5b242bb88c09caf8f8c17c5082f55408}
+
+
+print\+\_\+context\+\_\+t \+: 打印 ucontext\+\_\+t 内容 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & \+: 指向 ucontext\+\_\+t 的指针 \\
+\hline
+\end{DoxyParams}
+\index{sigaction\+\_\+.\+h@{sigaction\+\_\+.\+h}!print\+\_\+siginfo\+\_\+t@{print\+\_\+siginfo\+\_\+t}}
+\index{print\+\_\+siginfo\+\_\+t@{print\+\_\+siginfo\+\_\+t}!sigaction\+\_\+.\+h@{sigaction\+\_\+.\+h}}
+\subsubsection[{\texorpdfstring{print\+\_\+siginfo\+\_\+t(const siginfo\+\_\+t $\ast$info)}{print_siginfo_t(const siginfo_t *info)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+siginfo\+\_\+t (
+\begin{DoxyParamCaption}
+\item[{const siginfo\+\_\+t $\ast$}]{info}
+\end{DoxyParamCaption}
+)}\hypertarget{sigaction___8h_a73c904e5f5911b11acf3354414edacf4}{}\label{sigaction___8h_a73c904e5f5911b11acf3354414edacf4}
+
+
+print\+\_\+siginfo\+\_\+t \+: 打印 siginfo\+\_\+t 内容 
+
+
+\begin{DoxyParams}{Parameters}
+{\em info} & \+: 指向 siginfo\+\_\+t 的指针 \\
+\hline
+\end{DoxyParams}
+\index{sigaction\+\_\+.\+h@{sigaction\+\_\+.\+h}!test\+\_\+sigaction@{test\+\_\+sigaction}}
+\index{test\+\_\+sigaction@{test\+\_\+sigaction}!sigaction\+\_\+.\+h@{sigaction\+\_\+.\+h}}
+\subsubsection[{\texorpdfstring{test\+\_\+sigaction()}{test_sigaction()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+sigaction (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{sigaction___8h_afddc7fe63b23601cb6d3a5886d8977ba}{}\label{sigaction___8h_afddc7fe63b23601cb6d3a5886d8977ba}
+
+
+test\+\_\+sigaction \+:测试 sigaction 函数的用法 
+

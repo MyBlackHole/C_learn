@@ -1,0 +1,207 @@
+\hypertarget{dir__operations_8h}{}\section{src/4\+\_\+\+File\+\_\+\+Dir/dir\+\_\+operations.h File Reference}
+\label{dir__operations_8h}\index{src/4\+\_\+\+File\+\_\+\+Dir/dir\+\_\+operations.\+h@{src/4\+\_\+\+File\+\_\+\+Dir/dir\+\_\+operations.\+h}}
+{\ttfamily \#include $<$sys/stat.\+h$>$}\\*
+{\ttfamily \#include $<$dirent.\+h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{dir__operations_8h_a0283d12467c65fe438baf3f47f13fbd8}{My\+\_\+mkdir} (const char $\ast$pathname, mode\+\_\+t mode)
+\begin{DoxyCompactList}\small\item\em My\+\_\+mkdir ：包装了 mkdir 函数 \end{DoxyCompactList}\item 
+int \hyperlink{dir__operations_8h_a39f2ff2695a197ed7a9052a930aee7a2}{My\+\_\+rmdir} (const char $\ast$pathname)
+\begin{DoxyCompactList}\small\item\em My\+\_\+rmdir ：包装了 rmdir 函数 \end{DoxyCompactList}\item 
+D\+IR $\ast$ \hyperlink{dir__operations_8h_a5d5962e5a045aad4dcfa7363f91de162}{My\+\_\+opendir} (const char $\ast$pathname)
+\begin{DoxyCompactList}\small\item\em My\+\_\+opendir ：包装了 opendir 函数 \end{DoxyCompactList}\item 
+struct dirent $\ast$ \hyperlink{dir__operations_8h_a73484f866d760ea27aad66deca2ecbf3}{My\+\_\+readdir} (D\+IR $\ast$dp)
+\begin{DoxyCompactList}\small\item\em My\+\_\+readdir ：包装了 readdir 函数 \end{DoxyCompactList}\item 
+long \hyperlink{dir__operations_8h_a5ffe0613604c7fc9a6132d2d02641381}{My\+\_\+telldir} (D\+IR $\ast$dp)
+\begin{DoxyCompactList}\small\item\em My\+\_\+telldir ：包装了 telldir 函数 \end{DoxyCompactList}\item 
+int \hyperlink{dir__operations_8h_a4cffff70a602f257f5475e143a51040c}{My\+\_\+chdir} (const char $\ast$pathname)
+\begin{DoxyCompactList}\small\item\em chdir ：包装了 chdir 函数 \end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{dir__operations_8h_a14b34902043f6bbcf9722ec79999e1a9}{My\+\_\+getcwd} (char $\ast$\hyperlink{setjmp__longjmp_8c_a02df3e2f0291bf06f3a685829975efec}{buf}, size\+\_\+t size)
+\begin{DoxyCompactList}\small\item\em getcwd ：包装了 getcwd 函数 \end{DoxyCompactList}\item 
+void \hyperlink{dir__operations_8h_a4bdb3dbf5fcf43b2ac2a0d576566a5a1}{print\+\_\+dir} (const char $\ast$pathname)
+\begin{DoxyCompactList}\small\item\em print\+\_\+dir \+: 打印目录内容（递归性的） \end{DoxyCompactList}\item 
+void \hyperlink{dir__operations_8h_ab6fb5f95e7109670b29d8eade398a2b1}{print\+\_\+cwd} ()
+\begin{DoxyCompactList}\small\item\em print\+\_\+cwd \+: 打印当前工作目录 \end{DoxyCompactList}\item 
+void \hyperlink{dir__operations_8h_ae65d564a0ca83193a3a5d790eaf36c3a}{test\+\_\+dir\+\_\+operations} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+dir\+\_\+operations \+: 测试目录函数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{dir\+\_\+operations.\+h@{dir\+\_\+operations.\+h}!My\+\_\+chdir@{My\+\_\+chdir}}
+\index{My\+\_\+chdir@{My\+\_\+chdir}!dir\+\_\+operations.\+h@{dir\+\_\+operations.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+chdir(const char $\ast$pathname)}{My_chdir(const char *pathname)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+chdir (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{pathname}
+\end{DoxyParamCaption}
+)}\hypertarget{dir__operations_8h_a4cffff70a602f257f5475e143a51040c}{}\label{dir__operations_8h_a4cffff70a602f257f5475e143a51040c}
+
+
+chdir ：包装了 chdir 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pathname} & \+: 传递给 chdir 函数的 pathname 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 chdir 的返回值 
+\end{DoxyReturn}
+\index{dir\+\_\+operations.\+h@{dir\+\_\+operations.\+h}!My\+\_\+getcwd@{My\+\_\+getcwd}}
+\index{My\+\_\+getcwd@{My\+\_\+getcwd}!dir\+\_\+operations.\+h@{dir\+\_\+operations.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+getcwd(char $\ast$buf, size\+\_\+t size)}{My_getcwd(char *buf, size_t size)}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ My\+\_\+getcwd (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{buf, }
+\item[{size\+\_\+t}]{size}
+\end{DoxyParamCaption}
+)}\hypertarget{dir__operations_8h_a14b34902043f6bbcf9722ec79999e1a9}{}\label{dir__operations_8h_a14b34902043f6bbcf9722ec79999e1a9}
+
+
+getcwd ：包装了 getcwd 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buf} & \+: 传递给 getcwd 函数的 buf 参数 \\
+\hline
+{\em size} & \+: 传递给 getcwd 函数的 size 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 getcwd 的返回值 
+\end{DoxyReturn}
+\index{dir\+\_\+operations.\+h@{dir\+\_\+operations.\+h}!My\+\_\+mkdir@{My\+\_\+mkdir}}
+\index{My\+\_\+mkdir@{My\+\_\+mkdir}!dir\+\_\+operations.\+h@{dir\+\_\+operations.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+mkdir(const char $\ast$pathname, mode\+\_\+t mode)}{My_mkdir(const char *pathname, mode_t mode)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+mkdir (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{pathname, }
+\item[{mode\+\_\+t}]{mode}
+\end{DoxyParamCaption}
+)}\hypertarget{dir__operations_8h_a0283d12467c65fe438baf3f47f13fbd8}{}\label{dir__operations_8h_a0283d12467c65fe438baf3f47f13fbd8}
+
+
+My\+\_\+mkdir ：包装了 mkdir 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pathname} & \+: 传递给 mkdir 函数的 pathname 参数 \\
+\hline
+{\em mode} & \+: 传递给 mkdir 函数的 mode 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 mkdir 的返回值 
+\end{DoxyReturn}
+\index{dir\+\_\+operations.\+h@{dir\+\_\+operations.\+h}!My\+\_\+opendir@{My\+\_\+opendir}}
+\index{My\+\_\+opendir@{My\+\_\+opendir}!dir\+\_\+operations.\+h@{dir\+\_\+operations.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+opendir(const char $\ast$pathname)}{My_opendir(const char *pathname)}}]{\setlength{\rightskip}{0pt plus 5cm}D\+IR$\ast$ My\+\_\+opendir (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{pathname}
+\end{DoxyParamCaption}
+)}\hypertarget{dir__operations_8h_a5d5962e5a045aad4dcfa7363f91de162}{}\label{dir__operations_8h_a5d5962e5a045aad4dcfa7363f91de162}
+
+
+My\+\_\+opendir ：包装了 opendir 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pathname} & \+: 传递给 opendir 函数的 pathname 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 opendir 的返回值 
+\end{DoxyReturn}
+\index{dir\+\_\+operations.\+h@{dir\+\_\+operations.\+h}!My\+\_\+readdir@{My\+\_\+readdir}}
+\index{My\+\_\+readdir@{My\+\_\+readdir}!dir\+\_\+operations.\+h@{dir\+\_\+operations.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+readdir(\+D\+I\+R $\ast$dp)}{My_readdir(DIR *dp)}}]{\setlength{\rightskip}{0pt plus 5cm}struct dirent$\ast$ My\+\_\+readdir (
+\begin{DoxyParamCaption}
+\item[{D\+IR $\ast$}]{dp}
+\end{DoxyParamCaption}
+)}\hypertarget{dir__operations_8h_a73484f866d760ea27aad66deca2ecbf3}{}\label{dir__operations_8h_a73484f866d760ea27aad66deca2ecbf3}
+
+
+My\+\_\+readdir ：包装了 readdir 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dp} & \+: 传递给 readdir 函数的 dp 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 readdir 的返回值 
+\end{DoxyReturn}
+\index{dir\+\_\+operations.\+h@{dir\+\_\+operations.\+h}!My\+\_\+rmdir@{My\+\_\+rmdir}}
+\index{My\+\_\+rmdir@{My\+\_\+rmdir}!dir\+\_\+operations.\+h@{dir\+\_\+operations.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+rmdir(const char $\ast$pathname)}{My_rmdir(const char *pathname)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+rmdir (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{pathname}
+\end{DoxyParamCaption}
+)}\hypertarget{dir__operations_8h_a39f2ff2695a197ed7a9052a930aee7a2}{}\label{dir__operations_8h_a39f2ff2695a197ed7a9052a930aee7a2}
+
+
+My\+\_\+rmdir ：包装了 rmdir 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pathname} & \+: 传递给 rmdir 函数的 pathname 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 rmdir 的返回值 
+\end{DoxyReturn}
+\index{dir\+\_\+operations.\+h@{dir\+\_\+operations.\+h}!My\+\_\+telldir@{My\+\_\+telldir}}
+\index{My\+\_\+telldir@{My\+\_\+telldir}!dir\+\_\+operations.\+h@{dir\+\_\+operations.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+telldir(\+D\+I\+R $\ast$dp)}{My_telldir(DIR *dp)}}]{\setlength{\rightskip}{0pt plus 5cm}long My\+\_\+telldir (
+\begin{DoxyParamCaption}
+\item[{D\+IR $\ast$}]{dp}
+\end{DoxyParamCaption}
+)}\hypertarget{dir__operations_8h_a5ffe0613604c7fc9a6132d2d02641381}{}\label{dir__operations_8h_a5ffe0613604c7fc9a6132d2d02641381}
+
+
+My\+\_\+telldir ：包装了 telldir 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dp} & \+: 传递给 telldir 函数的 dp 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 telldir 的返回值 
+\end{DoxyReturn}
+\index{dir\+\_\+operations.\+h@{dir\+\_\+operations.\+h}!print\+\_\+cwd@{print\+\_\+cwd}}
+\index{print\+\_\+cwd@{print\+\_\+cwd}!dir\+\_\+operations.\+h@{dir\+\_\+operations.\+h}}
+\subsubsection[{\texorpdfstring{print\+\_\+cwd()}{print_cwd()}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+cwd (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{dir__operations_8h_ab6fb5f95e7109670b29d8eade398a2b1}{}\label{dir__operations_8h_ab6fb5f95e7109670b29d8eade398a2b1}
+
+
+print\+\_\+cwd \+: 打印当前工作目录 
+
+\index{dir\+\_\+operations.\+h@{dir\+\_\+operations.\+h}!print\+\_\+dir@{print\+\_\+dir}}
+\index{print\+\_\+dir@{print\+\_\+dir}!dir\+\_\+operations.\+h@{dir\+\_\+operations.\+h}}
+\subsubsection[{\texorpdfstring{print\+\_\+dir(const char $\ast$pathname)}{print_dir(const char *pathname)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+dir (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{pathname}
+\end{DoxyParamCaption}
+)}\hypertarget{dir__operations_8h_a4bdb3dbf5fcf43b2ac2a0d576566a5a1}{}\label{dir__operations_8h_a4bdb3dbf5fcf43b2ac2a0d576566a5a1}
+
+
+print\+\_\+dir \+: 打印目录内容（递归性的） 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pathname} & \+: 目录名 \\
+\hline
+\end{DoxyParams}
+\index{dir\+\_\+operations.\+h@{dir\+\_\+operations.\+h}!test\+\_\+dir\+\_\+operations@{test\+\_\+dir\+\_\+operations}}
+\index{test\+\_\+dir\+\_\+operations@{test\+\_\+dir\+\_\+operations}!dir\+\_\+operations.\+h@{dir\+\_\+operations.\+h}}
+\subsubsection[{\texorpdfstring{test\+\_\+dir\+\_\+operations()}{test_dir_operations()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+dir\+\_\+operations (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{dir__operations_8h_ae65d564a0ca83193a3a5d790eaf36c3a}{}\label{dir__operations_8h_ae65d564a0ca83193a3a5d790eaf36c3a}
+
+
+test\+\_\+dir\+\_\+operations \+: 测试目录函数 
+

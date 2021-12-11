@@ -1,0 +1,147 @@
+\hypertarget{thread__quit_8c}{}\section{src/11\+\_\+\+Thread/thread\+\_\+quit.c File Reference}
+\label{thread__quit_8c}\index{src/11\+\_\+\+Thread/thread\+\_\+quit.\+c@{src/11\+\_\+\+Thread/thread\+\_\+quit.\+c}}
+{\ttfamily \#include \char`\"{}thread\+\_\+quit.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../header.\+h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{thread__quit_8c_a8a7d00c14fd678fd27174f4059038a9f}{thread\+\_\+join\+\_\+int} (pthread\+\_\+t tid, int $\ast$rval\+\_\+pptr)
+\begin{DoxyCompactList}\small\item\em thread\+\_\+join\+\_\+int ： 包装了 pthread\+\_\+join 函数，但是子返回值为 int \end{DoxyCompactList}\item 
+int \hyperlink{thread__quit_8c_ad82c2337fd9f01a075f17bbff5568a64}{My\+\_\+pthread\+\_\+create} (pthread\+\_\+t $\ast$tidp, const pthread\+\_\+attr\+\_\+t $\ast$attr, void $\ast$($\ast$start\+\_\+rtn)(void $\ast$), void $\ast$arg)
+\begin{DoxyCompactList}\small\item\em My\+\_\+pthread\+\_\+create \+: 包装了 pthread\+\_\+create 函数 \end{DoxyCompactList}\item 
+int \hyperlink{thread__quit_8c_a50cbe76741f660824a54198f330b88b4}{My\+\_\+pthread\+\_\+cancel} (pthread\+\_\+t tid)
+\begin{DoxyCompactList}\small\item\em My\+\_\+pthread\+\_\+cancel \+: 包装了 pthread\+\_\+cancel 函数 \end{DoxyCompactList}\item 
+static void $\ast$ \hyperlink{thread__quit_8c_a5e56e27613ac216b1bf34922b0a09898}{thread\+\_\+func\+\_\+return} (void $\ast$arg)
+\begin{DoxyCompactList}\small\item\em thread\+\_\+func\+\_\+return \+: 线程的工作例程，该线程通过 return 返回 \end{DoxyCompactList}\item 
+static void $\ast$ \hyperlink{thread__quit_8c_a8030b060e120788ef66bccf07a9c6489}{thread\+\_\+func\+\_\+exit} (void $\ast$arg)
+\begin{DoxyCompactList}\small\item\em thread\+\_\+func\+\_\+exit \+: 线程的工作例程，该线程通过 pthread\+\_\+exit 返回 \end{DoxyCompactList}\item 
+void \hyperlink{thread__quit_8c_a4087b3f0ad6e56e8dc6ed52d35e85da4}{test\+\_\+thread\+\_\+quit} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+thread\+\_\+quit ：测试 pthread\+\_\+join 函数、pthread\+\_\+exit 函数、 pthread\+\_\+cancel 函数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static pthread\+\_\+mutex\+\_\+t \hyperlink{thread__quit_8c_a4acff8232e4aec9cd5c6dc200ac55ef3}{mutex} =P\+T\+H\+R\+E\+A\+D\+\_\+\+M\+U\+T\+E\+X\+\_\+\+I\+N\+I\+T\+I\+A\+L\+I\+Z\+ER
+\begin{DoxyCompactList}\small\item\em mutex \+: 互斥量，每个线程用它来完成串行工作 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{thread\+\_\+quit.\+c@{thread\+\_\+quit.\+c}!My\+\_\+pthread\+\_\+cancel@{My\+\_\+pthread\+\_\+cancel}}
+\index{My\+\_\+pthread\+\_\+cancel@{My\+\_\+pthread\+\_\+cancel}!thread\+\_\+quit.\+c@{thread\+\_\+quit.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+pthread\+\_\+cancel(pthread\+\_\+t tid)}{My_pthread_cancel(pthread_t tid)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+pthread\+\_\+cancel (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+t}]{tid}
+\end{DoxyParamCaption}
+)}\hypertarget{thread__quit_8c_a50cbe76741f660824a54198f330b88b4}{}\label{thread__quit_8c_a50cbe76741f660824a54198f330b88b4}
+
+
+My\+\_\+pthread\+\_\+cancel \+: 包装了 pthread\+\_\+cancel 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tid} & \+: 传递给 pthread\+\_\+cancel 函数的 tid 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 pthread\+\_\+cancel 函数的值 
+\end{DoxyReturn}
+\index{thread\+\_\+quit.\+c@{thread\+\_\+quit.\+c}!My\+\_\+pthread\+\_\+create@{My\+\_\+pthread\+\_\+create}}
+\index{My\+\_\+pthread\+\_\+create@{My\+\_\+pthread\+\_\+create}!thread\+\_\+quit.\+c@{thread\+\_\+quit.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+pthread\+\_\+create(pthread\+\_\+t $\ast$tidp, const pthread\+\_\+attr\+\_\+t $\ast$attr, void $\ast$($\ast$start\+\_\+rtn)(void $\ast$), void $\ast$arg)}{My_pthread_create(pthread_t *tidp, const pthread_attr_t *attr, void *(*start_rtn)(void *), void *arg)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+pthread\+\_\+create (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+t $\ast$}]{tidp, }
+\item[{const pthread\+\_\+attr\+\_\+t $\ast$}]{attr, }
+\item[{void $\ast$($\ast$)(void $\ast$)}]{start\+\_\+rtn, }
+\item[{void $\ast$}]{arg}
+\end{DoxyParamCaption}
+)}\hypertarget{thread__quit_8c_ad82c2337fd9f01a075f17bbff5568a64}{}\label{thread__quit_8c_ad82c2337fd9f01a075f17bbff5568a64}
+
+
+My\+\_\+pthread\+\_\+create \+: 包装了 pthread\+\_\+create 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tidp} & \+: 传递给 pthread\+\_\+create 函数的 tidp 参数 \\
+\hline
+{\em attr} & \+: 传递给 pthread\+\_\+create 函数的 attr 参数 \\
+\hline
+{\em arg} & \+: 传递给 pthread\+\_\+create 函数的 arg 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+： 返回 pthread\+\_\+create 函数的值 
+\end{DoxyReturn}
+\index{thread\+\_\+quit.\+c@{thread\+\_\+quit.\+c}!test\+\_\+thread\+\_\+quit@{test\+\_\+thread\+\_\+quit}}
+\index{test\+\_\+thread\+\_\+quit@{test\+\_\+thread\+\_\+quit}!thread\+\_\+quit.\+c@{thread\+\_\+quit.\+c}}
+\subsubsection[{\texorpdfstring{test\+\_\+thread\+\_\+quit()}{test_thread_quit()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+thread\+\_\+quit (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{thread__quit_8c_a4087b3f0ad6e56e8dc6ed52d35e85da4}{}\label{thread__quit_8c_a4087b3f0ad6e56e8dc6ed52d35e85da4}
+
+
+test\+\_\+thread\+\_\+quit ：测试 pthread\+\_\+join 函数、pthread\+\_\+exit 函数、 pthread\+\_\+cancel 函数 
+
+\index{thread\+\_\+quit.\+c@{thread\+\_\+quit.\+c}!thread\+\_\+func\+\_\+exit@{thread\+\_\+func\+\_\+exit}}
+\index{thread\+\_\+func\+\_\+exit@{thread\+\_\+func\+\_\+exit}!thread\+\_\+quit.\+c@{thread\+\_\+quit.\+c}}
+\subsubsection[{\texorpdfstring{thread\+\_\+func\+\_\+exit(void $\ast$arg)}{thread_func_exit(void *arg)}}]{\setlength{\rightskip}{0pt plus 5cm}static void$\ast$ thread\+\_\+func\+\_\+exit (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{arg}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{thread__quit_8c_a8030b060e120788ef66bccf07a9c6489}{}\label{thread__quit_8c_a8030b060e120788ef66bccf07a9c6489}
+
+
+thread\+\_\+func\+\_\+exit \+: 线程的工作例程，该线程通过 pthread\+\_\+exit 返回 
+
+
+\begin{DoxyParams}{Parameters}
+{\em arg} & \+: 参数，这里是个整数 \\
+\hline
+\end{DoxyParams}
+\index{thread\+\_\+quit.\+c@{thread\+\_\+quit.\+c}!thread\+\_\+func\+\_\+return@{thread\+\_\+func\+\_\+return}}
+\index{thread\+\_\+func\+\_\+return@{thread\+\_\+func\+\_\+return}!thread\+\_\+quit.\+c@{thread\+\_\+quit.\+c}}
+\subsubsection[{\texorpdfstring{thread\+\_\+func\+\_\+return(void $\ast$arg)}{thread_func_return(void *arg)}}]{\setlength{\rightskip}{0pt plus 5cm}static void$\ast$ thread\+\_\+func\+\_\+return (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{arg}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{thread__quit_8c_a5e56e27613ac216b1bf34922b0a09898}{}\label{thread__quit_8c_a5e56e27613ac216b1bf34922b0a09898}
+
+
+thread\+\_\+func\+\_\+return \+: 线程的工作例程，该线程通过 return 返回 
+
+
+\begin{DoxyParams}{Parameters}
+{\em arg} & \+: 参数，这里是个整数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+:直接返回参数 
+\end{DoxyReturn}
+\index{thread\+\_\+quit.\+c@{thread\+\_\+quit.\+c}!thread\+\_\+join\+\_\+int@{thread\+\_\+join\+\_\+int}}
+\index{thread\+\_\+join\+\_\+int@{thread\+\_\+join\+\_\+int}!thread\+\_\+quit.\+c@{thread\+\_\+quit.\+c}}
+\subsubsection[{\texorpdfstring{thread\+\_\+join\+\_\+int(pthread\+\_\+t tid, int $\ast$rval\+\_\+pptr)}{thread_join_int(pthread_t tid, int *rval_pptr)}}]{\setlength{\rightskip}{0pt plus 5cm}void thread\+\_\+join\+\_\+int (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+t}]{tid, }
+\item[{int $\ast$}]{rval\+\_\+pptr}
+\end{DoxyParamCaption}
+)}\hypertarget{thread__quit_8c_a8a7d00c14fd678fd27174f4059038a9f}{}\label{thread__quit_8c_a8a7d00c14fd678fd27174f4059038a9f}
+
+
+thread\+\_\+join\+\_\+int ： 包装了 pthread\+\_\+join 函数，但是子返回值为 int 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tid} & \+: 线程 ID \\
+\hline
+{\em rval\+\_\+pptr} & \+:存放子线程返回值 \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Variable Documentation}
+\index{thread\+\_\+quit.\+c@{thread\+\_\+quit.\+c}!mutex@{mutex}}
+\index{mutex@{mutex}!thread\+\_\+quit.\+c@{thread\+\_\+quit.\+c}}
+\subsubsection[{\texorpdfstring{mutex}{mutex}}]{\setlength{\rightskip}{0pt plus 5cm}pthread\+\_\+mutex\+\_\+t mutex =P\+T\+H\+R\+E\+A\+D\+\_\+\+M\+U\+T\+E\+X\+\_\+\+I\+N\+I\+T\+I\+A\+L\+I\+Z\+ER\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{thread__quit_8c_a4acff8232e4aec9cd5c6dc200ac55ef3}{}\label{thread__quit_8c_a4acff8232e4aec9cd5c6dc200ac55ef3}
+
+
+mutex \+: 互斥量，每个线程用它来完成串行工作 
+

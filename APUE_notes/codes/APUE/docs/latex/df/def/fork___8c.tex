@@ -1,0 +1,88 @@
+\hypertarget{fork___8c}{}\section{src/8\+\_\+\+Progress\+\_\+\+Control/fork\+\_\+.c File Reference}
+\label{fork___8c}\index{src/8\+\_\+\+Progress\+\_\+\+Control/fork\+\_\+.\+c@{src/8\+\_\+\+Progress\+\_\+\+Control/fork\+\_\+.\+c}}
+{\ttfamily \#include \char`\"{}fork\+\_\+.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../header.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include $<$fcntl.\+h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{fork___8c_a109174695052377dc9f748ea2fb4a999}{My\+\_\+open} (const char $\ast$path, int oflag)
+\begin{DoxyCompactList}\small\item\em My\+\_\+open \+: 包装了 open 函数（不带 mode参数） \end{DoxyCompactList}\item 
+void \hyperlink{fork___8c_a0bd76e6d502075e830f62080f42f1a76}{print\+\_\+pid} ()
+\item 
+void \hyperlink{fork___8c_a2781199e9afe7ddf4d7a8bf1034b17af}{print\+\_\+parent\+\_\+pid} ()
+\item 
+static void \hyperlink{fork___8c_ab6ca4dbe2aeb24807b32561ab63b84c3}{prgress\+\_\+func} (int fd, const char $\ast$append\+\_\+str)
+\begin{DoxyCompactList}\small\item\em prgress\+\_\+func \+: 完成每个进程中的主要工作 \end{DoxyCompactList}\item 
+void \hyperlink{fork___8c_adafe2419ba28f1d21a7f8d4bbf06b401}{test\+\_\+fork} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+fork \+:测试 fork 函数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{fork\+\_\+.\+c@{fork\+\_\+.\+c}!My\+\_\+open@{My\+\_\+open}}
+\index{My\+\_\+open@{My\+\_\+open}!fork\+\_\+.\+c@{fork\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+open(const char $\ast$path, int oflag)}{My_open(const char *path, int oflag)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+open (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{path, }
+\item[{int}]{oflag}
+\end{DoxyParamCaption}
+)}\hypertarget{fork___8c_a109174695052377dc9f748ea2fb4a999}{}\label{fork___8c_a109174695052377dc9f748ea2fb4a999}
+
+
+My\+\_\+open \+: 包装了 open 函数（不带 mode参数） 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & \+: 传递给 open 函数的 path 参数 \\
+\hline
+{\em oflag} & \+: 传递给 open 函数的 oflag 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 open 函数的值 
+\end{DoxyReturn}
+\index{fork\+\_\+.\+c@{fork\+\_\+.\+c}!prgress\+\_\+func@{prgress\+\_\+func}}
+\index{prgress\+\_\+func@{prgress\+\_\+func}!fork\+\_\+.\+c@{fork\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{prgress\+\_\+func(int fd, const char $\ast$append\+\_\+str)}{prgress_func(int fd, const char *append_str)}}]{\setlength{\rightskip}{0pt plus 5cm}static void prgress\+\_\+func (
+\begin{DoxyParamCaption}
+\item[{int}]{fd, }
+\item[{const char $\ast$}]{append\+\_\+str}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{fork___8c_ab6ca4dbe2aeb24807b32561ab63b84c3}{}\label{fork___8c_ab6ca4dbe2aeb24807b32561ab63b84c3}
+
+
+prgress\+\_\+func \+: 完成每个进程中的主要工作 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fd} & \+: 打开的文件描述符，用于记录锁 \\
+\hline
+{\em append\+\_\+str} & \+: 说明每个进程的字符串 \\
+\hline
+\end{DoxyParams}
+\index{fork\+\_\+.\+c@{fork\+\_\+.\+c}!print\+\_\+parent\+\_\+pid@{print\+\_\+parent\+\_\+pid}}
+\index{print\+\_\+parent\+\_\+pid@{print\+\_\+parent\+\_\+pid}!fork\+\_\+.\+c@{fork\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+parent\+\_\+pid()}{print_parent_pid()}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+parent\+\_\+pid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{fork___8c_a2781199e9afe7ddf4d7a8bf1034b17af}{}\label{fork___8c_a2781199e9afe7ddf4d7a8bf1034b17af}
+\index{fork\+\_\+.\+c@{fork\+\_\+.\+c}!print\+\_\+pid@{print\+\_\+pid}}
+\index{print\+\_\+pid@{print\+\_\+pid}!fork\+\_\+.\+c@{fork\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+pid()}{print_pid()}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+pid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{fork___8c_a0bd76e6d502075e830f62080f42f1a76}{}\label{fork___8c_a0bd76e6d502075e830f62080f42f1a76}
+\index{fork\+\_\+.\+c@{fork\+\_\+.\+c}!test\+\_\+fork@{test\+\_\+fork}}
+\index{test\+\_\+fork@{test\+\_\+fork}!fork\+\_\+.\+c@{fork\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{test\+\_\+fork()}{test_fork()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+fork (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{fork___8c_adafe2419ba28f1d21a7f8d4bbf06b401}{}\label{fork___8c_adafe2419ba28f1d21a7f8d4bbf06b401}
+
+
+test\+\_\+fork \+:测试 fork 函数 
+

@@ -1,0 +1,243 @@
+\hypertarget{mutex___8c}{}\section{src/11\+\_\+\+Thread/mutex\+\_\+.c File Reference}
+\label{mutex___8c}\index{src/11\+\_\+\+Thread/mutex\+\_\+.\+c@{src/11\+\_\+\+Thread/mutex\+\_\+.\+c}}
+{\ttfamily \#include \char`\"{}mutex\+\_\+.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../header.\+h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{mutex___8c_ae3ee1564a2e2a8d0e9ae0b071e9dcdf4}{My\+\_\+pthread\+\_\+mutex\+\_\+init} (pthread\+\_\+mutex\+\_\+t $\ast$\hyperlink{thread__quit_8c_a4acff8232e4aec9cd5c6dc200ac55ef3}{mutex}, const pthread\+\_\+mutexattr\+\_\+t $\ast$attr)
+\begin{DoxyCompactList}\small\item\em My\+\_\+pthread\+\_\+mutex\+\_\+init \+: 包装了 pthread\+\_\+mutex\+\_\+init 函数 \end{DoxyCompactList}\item 
+int \hyperlink{mutex___8c_a184097308162e6ebe818c0cec37af32d}{My\+\_\+pthread\+\_\+mutex\+\_\+destroy} (pthread\+\_\+mutex\+\_\+t $\ast$\hyperlink{thread__quit_8c_a4acff8232e4aec9cd5c6dc200ac55ef3}{mutex})
+\begin{DoxyCompactList}\small\item\em My\+\_\+pthread\+\_\+mutex\+\_\+destroy \+: 包装了 pthread\+\_\+mutex\+\_\+destroy 函数 \end{DoxyCompactList}\item 
+int \hyperlink{mutex___8c_a84d8e07865bdc9033c1147f2ad2efaf9}{My\+\_\+pthread\+\_\+mutex\+\_\+lock} (pthread\+\_\+mutex\+\_\+t $\ast$\hyperlink{thread__quit_8c_a4acff8232e4aec9cd5c6dc200ac55ef3}{mutex})
+\begin{DoxyCompactList}\small\item\em My\+\_\+pthread\+\_\+mutex\+\_\+lock \+: 包装了 thread\+\_\+mutex\+\_\+lock 函数 \end{DoxyCompactList}\item 
+int \hyperlink{mutex___8c_a6706bb5ea228327e4dff055250d837f7}{My\+\_\+pthread\+\_\+mutex\+\_\+trylock} (pthread\+\_\+mutex\+\_\+t $\ast$\hyperlink{thread__quit_8c_a4acff8232e4aec9cd5c6dc200ac55ef3}{mutex})
+\begin{DoxyCompactList}\small\item\em My\+\_\+pthread\+\_\+mutex\+\_\+trylock \+: 包装了 pthread\+\_\+mutex\+\_\+trylock 函数 \end{DoxyCompactList}\item 
+int \hyperlink{mutex___8c_afb12fe732c6216d0da0963391f5ee170}{My\+\_\+pthread\+\_\+mutex\+\_\+unlock} (pthread\+\_\+mutex\+\_\+t $\ast$\hyperlink{thread__quit_8c_a4acff8232e4aec9cd5c6dc200ac55ef3}{mutex})
+\begin{DoxyCompactList}\small\item\em My\+\_\+pthread\+\_\+mutex\+\_\+unlock \+: 包装了 pthread\+\_\+mutex\+\_\+unlock 函数 \end{DoxyCompactList}\item 
+int \hyperlink{mutex___8c_a1bcd9a74fdda43a1e138ee5eca110da0}{My\+\_\+pthread\+\_\+mutex\+\_\+timedlock} (pthread\+\_\+mutex\+\_\+t $\ast$\hyperlink{thread__quit_8c_a4acff8232e4aec9cd5c6dc200ac55ef3}{mutex}, const struct timespec $\ast$tsptr)
+\begin{DoxyCompactList}\small\item\em My\+\_\+pthread\+\_\+mutex\+\_\+timedlock \+: 包装了 pthread\+\_\+mutex\+\_\+timedlock 函数 \end{DoxyCompactList}\item 
+struct timespec $\ast$ \hyperlink{mutex___8c_a1704f470e48f1c4c5e87d5e192a163ad}{rel\+\_\+to\+\_\+abs\+\_\+time} (int seconds)
+\begin{DoxyCompactList}\small\item\em rel\+\_\+to\+\_\+abs\+\_\+time \+: 相对时间转换为绝对时间 \end{DoxyCompactList}\item 
+void \hyperlink{mutex___8c_a8a7d00c14fd678fd27174f4059038a9f}{thread\+\_\+join\+\_\+int} (pthread\+\_\+t tid, int $\ast$rval\+\_\+pptr)
+\item 
+int \hyperlink{mutex___8c_ad82c2337fd9f01a075f17bbff5568a64}{My\+\_\+pthread\+\_\+create} (pthread\+\_\+t $\ast$tidp, const pthread\+\_\+attr\+\_\+t $\ast$attr, void $\ast$($\ast$start\+\_\+rtn)(void $\ast$), void $\ast$arg)
+\item 
+static void $\ast$ \hyperlink{mutex___8c_af7d7e0f438cee37253e8678d442e0c35}{thread\+\_\+func} (void $\ast$arg)
+\begin{DoxyCompactList}\small\item\em thread\+\_\+func \+: 线程的工作例程 \end{DoxyCompactList}\item 
+void \hyperlink{mutex___8c_adc715d67ff6d06176633b55a0a9b78b6}{test\+\_\+mutex} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+mutex \+: 测试 pthread\+\_\+mutex\+\_\+t 相关函数的用法 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static pthread\+\_\+mutex\+\_\+t \hyperlink{mutex___8c_a4acff8232e4aec9cd5c6dc200ac55ef3}{mutex}
+\begin{DoxyCompactList}\small\item\em mutex \+: 互斥量 \end{DoxyCompactList}\item 
+static int \hyperlink{mutex___8c_a350c92ecddc755fdf9a124eb9915e3ff}{shared\+\_\+int}
+\begin{DoxyCompactList}\small\item\em shared\+\_\+int \+: 全局共享数据 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{mutex\+\_\+.\+c@{mutex\+\_\+.\+c}!My\+\_\+pthread\+\_\+create@{My\+\_\+pthread\+\_\+create}}
+\index{My\+\_\+pthread\+\_\+create@{My\+\_\+pthread\+\_\+create}!mutex\+\_\+.\+c@{mutex\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+pthread\+\_\+create(pthread\+\_\+t $\ast$tidp, const pthread\+\_\+attr\+\_\+t $\ast$attr, void $\ast$($\ast$start\+\_\+rtn)(void $\ast$), void $\ast$arg)}{My_pthread_create(pthread_t *tidp, const pthread_attr_t *attr, void *(*start_rtn)(void *), void *arg)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+pthread\+\_\+create (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+t $\ast$}]{tidp, }
+\item[{const pthread\+\_\+attr\+\_\+t $\ast$}]{attr, }
+\item[{void $\ast$($\ast$)(void $\ast$)}]{start\+\_\+rtn, }
+\item[{void $\ast$}]{arg}
+\end{DoxyParamCaption}
+)}\hypertarget{mutex___8c_ad82c2337fd9f01a075f17bbff5568a64}{}\label{mutex___8c_ad82c2337fd9f01a075f17bbff5568a64}
+\index{mutex\+\_\+.\+c@{mutex\+\_\+.\+c}!My\+\_\+pthread\+\_\+mutex\+\_\+destroy@{My\+\_\+pthread\+\_\+mutex\+\_\+destroy}}
+\index{My\+\_\+pthread\+\_\+mutex\+\_\+destroy@{My\+\_\+pthread\+\_\+mutex\+\_\+destroy}!mutex\+\_\+.\+c@{mutex\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+pthread\+\_\+mutex\+\_\+destroy(pthread\+\_\+mutex\+\_\+t $\ast$mutex)}{My_pthread_mutex_destroy(pthread_mutex_t *mutex)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+pthread\+\_\+mutex\+\_\+destroy (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+mutex\+\_\+t $\ast$}]{mutex}
+\end{DoxyParamCaption}
+)}\hypertarget{mutex___8c_a184097308162e6ebe818c0cec37af32d}{}\label{mutex___8c_a184097308162e6ebe818c0cec37af32d}
+
+
+My\+\_\+pthread\+\_\+mutex\+\_\+destroy \+: 包装了 pthread\+\_\+mutex\+\_\+destroy 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mutex} & \+: 传递给 pthread\+\_\+mutex\+\_\+destroy 函数的 mutex 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 pthread\+\_\+mutex\+\_\+destroy 函数的值 
+\end{DoxyReturn}
+\index{mutex\+\_\+.\+c@{mutex\+\_\+.\+c}!My\+\_\+pthread\+\_\+mutex\+\_\+init@{My\+\_\+pthread\+\_\+mutex\+\_\+init}}
+\index{My\+\_\+pthread\+\_\+mutex\+\_\+init@{My\+\_\+pthread\+\_\+mutex\+\_\+init}!mutex\+\_\+.\+c@{mutex\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+pthread\+\_\+mutex\+\_\+init(pthread\+\_\+mutex\+\_\+t $\ast$mutex, const pthread\+\_\+mutexattr\+\_\+t $\ast$attr)}{My_pthread_mutex_init(pthread_mutex_t *mutex, const pthread_mutexattr_t *attr)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+pthread\+\_\+mutex\+\_\+init (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+mutex\+\_\+t $\ast$}]{mutex, }
+\item[{const pthread\+\_\+mutexattr\+\_\+t $\ast$}]{attr}
+\end{DoxyParamCaption}
+)}\hypertarget{mutex___8c_ae3ee1564a2e2a8d0e9ae0b071e9dcdf4}{}\label{mutex___8c_ae3ee1564a2e2a8d0e9ae0b071e9dcdf4}
+
+
+My\+\_\+pthread\+\_\+mutex\+\_\+init \+: 包装了 pthread\+\_\+mutex\+\_\+init 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mutex} & \+: 传递给 pthread\+\_\+mutex\+\_\+init 函数的 mutex 参数 \\
+\hline
+{\em attr} & \+: 传递给 pthread\+\_\+mutex\+\_\+init 函数的 attr 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 pthread\+\_\+mutex\+\_\+init 函数的值 
+\end{DoxyReturn}
+\index{mutex\+\_\+.\+c@{mutex\+\_\+.\+c}!My\+\_\+pthread\+\_\+mutex\+\_\+lock@{My\+\_\+pthread\+\_\+mutex\+\_\+lock}}
+\index{My\+\_\+pthread\+\_\+mutex\+\_\+lock@{My\+\_\+pthread\+\_\+mutex\+\_\+lock}!mutex\+\_\+.\+c@{mutex\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+pthread\+\_\+mutex\+\_\+lock(pthread\+\_\+mutex\+\_\+t $\ast$mutex)}{My_pthread_mutex_lock(pthread_mutex_t *mutex)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+pthread\+\_\+mutex\+\_\+lock (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+mutex\+\_\+t $\ast$}]{mutex}
+\end{DoxyParamCaption}
+)}\hypertarget{mutex___8c_a84d8e07865bdc9033c1147f2ad2efaf9}{}\label{mutex___8c_a84d8e07865bdc9033c1147f2ad2efaf9}
+
+
+My\+\_\+pthread\+\_\+mutex\+\_\+lock \+: 包装了 thread\+\_\+mutex\+\_\+lock 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mutex} & \+: 传递给 thread\+\_\+mutex\+\_\+lock 函数的 mutex 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 thread\+\_\+mutex\+\_\+lock 函数的值 
+\end{DoxyReturn}
+\index{mutex\+\_\+.\+c@{mutex\+\_\+.\+c}!My\+\_\+pthread\+\_\+mutex\+\_\+timedlock@{My\+\_\+pthread\+\_\+mutex\+\_\+timedlock}}
+\index{My\+\_\+pthread\+\_\+mutex\+\_\+timedlock@{My\+\_\+pthread\+\_\+mutex\+\_\+timedlock}!mutex\+\_\+.\+c@{mutex\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+pthread\+\_\+mutex\+\_\+timedlock(pthread\+\_\+mutex\+\_\+t $\ast$mutex, const struct timespec $\ast$tsptr)}{My_pthread_mutex_timedlock(pthread_mutex_t *mutex, const struct timespec *tsptr)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+pthread\+\_\+mutex\+\_\+timedlock (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+mutex\+\_\+t $\ast$}]{mutex, }
+\item[{const struct timespec $\ast$}]{tsptr}
+\end{DoxyParamCaption}
+)}\hypertarget{mutex___8c_a1bcd9a74fdda43a1e138ee5eca110da0}{}\label{mutex___8c_a1bcd9a74fdda43a1e138ee5eca110da0}
+
+
+My\+\_\+pthread\+\_\+mutex\+\_\+timedlock \+: 包装了 pthread\+\_\+mutex\+\_\+timedlock 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mutex} & \+: 传递给 pthread\+\_\+mutex\+\_\+timedlock 函数的 mutex 参数 \\
+\hline
+{\em tsptr} & \+: 传递给 pthread\+\_\+mutex\+\_\+timedlock 函数的 tsptr 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 pthread\+\_\+mutex\+\_\+timedlock 函数的值 
+\end{DoxyReturn}
+\index{mutex\+\_\+.\+c@{mutex\+\_\+.\+c}!My\+\_\+pthread\+\_\+mutex\+\_\+trylock@{My\+\_\+pthread\+\_\+mutex\+\_\+trylock}}
+\index{My\+\_\+pthread\+\_\+mutex\+\_\+trylock@{My\+\_\+pthread\+\_\+mutex\+\_\+trylock}!mutex\+\_\+.\+c@{mutex\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+pthread\+\_\+mutex\+\_\+trylock(pthread\+\_\+mutex\+\_\+t $\ast$mutex)}{My_pthread_mutex_trylock(pthread_mutex_t *mutex)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+pthread\+\_\+mutex\+\_\+trylock (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+mutex\+\_\+t $\ast$}]{mutex}
+\end{DoxyParamCaption}
+)}\hypertarget{mutex___8c_a6706bb5ea228327e4dff055250d837f7}{}\label{mutex___8c_a6706bb5ea228327e4dff055250d837f7}
+
+
+My\+\_\+pthread\+\_\+mutex\+\_\+trylock \+: 包装了 pthread\+\_\+mutex\+\_\+trylock 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mutex} & \+: 传递给 pthread\+\_\+mutex\+\_\+trylock 函数的 mutex 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 pthread\+\_\+mutex\+\_\+trylock 函数的值 
+\end{DoxyReturn}
+\index{mutex\+\_\+.\+c@{mutex\+\_\+.\+c}!My\+\_\+pthread\+\_\+mutex\+\_\+unlock@{My\+\_\+pthread\+\_\+mutex\+\_\+unlock}}
+\index{My\+\_\+pthread\+\_\+mutex\+\_\+unlock@{My\+\_\+pthread\+\_\+mutex\+\_\+unlock}!mutex\+\_\+.\+c@{mutex\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+pthread\+\_\+mutex\+\_\+unlock(pthread\+\_\+mutex\+\_\+t $\ast$mutex)}{My_pthread_mutex_unlock(pthread_mutex_t *mutex)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+pthread\+\_\+mutex\+\_\+unlock (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+mutex\+\_\+t $\ast$}]{mutex}
+\end{DoxyParamCaption}
+)}\hypertarget{mutex___8c_afb12fe732c6216d0da0963391f5ee170}{}\label{mutex___8c_afb12fe732c6216d0da0963391f5ee170}
+
+
+My\+\_\+pthread\+\_\+mutex\+\_\+unlock \+: 包装了 pthread\+\_\+mutex\+\_\+unlock 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mutex} & \+: 传递给 pthread\+\_\+mutex\+\_\+unlock 函数的 mutex 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 pthread\+\_\+mutex\+\_\+unlock 函数的值 
+\end{DoxyReturn}
+\index{mutex\+\_\+.\+c@{mutex\+\_\+.\+c}!rel\+\_\+to\+\_\+abs\+\_\+time@{rel\+\_\+to\+\_\+abs\+\_\+time}}
+\index{rel\+\_\+to\+\_\+abs\+\_\+time@{rel\+\_\+to\+\_\+abs\+\_\+time}!mutex\+\_\+.\+c@{mutex\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{rel\+\_\+to\+\_\+abs\+\_\+time(int seconds)}{rel_to_abs_time(int seconds)}}]{\setlength{\rightskip}{0pt plus 5cm}struct timespec$\ast$ rel\+\_\+to\+\_\+abs\+\_\+time (
+\begin{DoxyParamCaption}
+\item[{int}]{seconds}
+\end{DoxyParamCaption}
+)}\hypertarget{mutex___8c_a1704f470e48f1c4c5e87d5e192a163ad}{}\label{mutex___8c_a1704f470e48f1c4c5e87d5e192a163ad}
+
+
+rel\+\_\+to\+\_\+abs\+\_\+time \+: 相对时间转换为绝对时间 
+
+
+\begin{DoxyParams}{Parameters}
+{\em seconds} & ：相对于当前时间的秒数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+：存放绝对时间的 timespec 结构的指针；如果失败则返回 N\+U\+LL 
+\end{DoxyReturn}
+\index{mutex\+\_\+.\+c@{mutex\+\_\+.\+c}!test\+\_\+mutex@{test\+\_\+mutex}}
+\index{test\+\_\+mutex@{test\+\_\+mutex}!mutex\+\_\+.\+c@{mutex\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{test\+\_\+mutex()}{test_mutex()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+mutex (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{mutex___8c_adc715d67ff6d06176633b55a0a9b78b6}{}\label{mutex___8c_adc715d67ff6d06176633b55a0a9b78b6}
+
+
+test\+\_\+mutex \+: 测试 pthread\+\_\+mutex\+\_\+t 相关函数的用法 
+
+\index{mutex\+\_\+.\+c@{mutex\+\_\+.\+c}!thread\+\_\+func@{thread\+\_\+func}}
+\index{thread\+\_\+func@{thread\+\_\+func}!mutex\+\_\+.\+c@{mutex\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{thread\+\_\+func(void $\ast$arg)}{thread_func(void *arg)}}]{\setlength{\rightskip}{0pt plus 5cm}static void$\ast$ thread\+\_\+func (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{arg}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{mutex___8c_af7d7e0f438cee37253e8678d442e0c35}{}\label{mutex___8c_af7d7e0f438cee37253e8678d442e0c35}
+
+
+thread\+\_\+func \+: 线程的工作例程 
+
+
+\begin{DoxyParams}{Parameters}
+{\em arg} & \+: 参数，这里是个整数，如果 arg=0 则不加锁；如果 arg=1 则加锁；如果arg=2 则使用 try\+\_\+lock，如果 arg=3, 则使用 timedlock \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+:返回读到的 shared\+\_\+int 值（如果加锁失败则返回 -\/1） 
+\end{DoxyReturn}
+\index{mutex\+\_\+.\+c@{mutex\+\_\+.\+c}!thread\+\_\+join\+\_\+int@{thread\+\_\+join\+\_\+int}}
+\index{thread\+\_\+join\+\_\+int@{thread\+\_\+join\+\_\+int}!mutex\+\_\+.\+c@{mutex\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{thread\+\_\+join\+\_\+int(pthread\+\_\+t tid, int $\ast$rval\+\_\+pptr)}{thread_join_int(pthread_t tid, int *rval_pptr)}}]{\setlength{\rightskip}{0pt plus 5cm}void thread\+\_\+join\+\_\+int (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+t}]{tid, }
+\item[{int $\ast$}]{rval\+\_\+pptr}
+\end{DoxyParamCaption}
+)}\hypertarget{mutex___8c_a8a7d00c14fd678fd27174f4059038a9f}{}\label{mutex___8c_a8a7d00c14fd678fd27174f4059038a9f}
+
+
+\subsection{Variable Documentation}
+\index{mutex\+\_\+.\+c@{mutex\+\_\+.\+c}!mutex@{mutex}}
+\index{mutex@{mutex}!mutex\+\_\+.\+c@{mutex\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{mutex}{mutex}}]{\setlength{\rightskip}{0pt plus 5cm}pthread\+\_\+mutex\+\_\+t mutex\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{mutex___8c_a4acff8232e4aec9cd5c6dc200ac55ef3}{}\label{mutex___8c_a4acff8232e4aec9cd5c6dc200ac55ef3}
+
+
+mutex \+: 互斥量 
+
+\index{mutex\+\_\+.\+c@{mutex\+\_\+.\+c}!shared\+\_\+int@{shared\+\_\+int}}
+\index{shared\+\_\+int@{shared\+\_\+int}!mutex\+\_\+.\+c@{mutex\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{shared\+\_\+int}{shared_int}}]{\setlength{\rightskip}{0pt plus 5cm}int shared\+\_\+int\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{mutex___8c_a350c92ecddc755fdf9a124eb9915e3ff}{}\label{mutex___8c_a350c92ecddc755fdf9a124eb9915e3ff}
+
+
+shared\+\_\+int \+: 全局共享数据 
+

@@ -1,0 +1,43 @@
+\hypertarget{thread__quit_8h}{}\section{src/11\+\_\+\+Thread/thread\+\_\+quit.h File Reference}
+\label{thread__quit_8h}\index{src/11\+\_\+\+Thread/thread\+\_\+quit.\+h@{src/11\+\_\+\+Thread/thread\+\_\+quit.\+h}}
+{\ttfamily \#include $<$pthread.\+h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{thread__quit_8h_a50cbe76741f660824a54198f330b88b4}{My\+\_\+pthread\+\_\+cancel} (pthread\+\_\+t tid)
+\begin{DoxyCompactList}\small\item\em My\+\_\+pthread\+\_\+cancel \+: 包装了 pthread\+\_\+cancel 函数 \end{DoxyCompactList}\item 
+void \hyperlink{thread__quit_8h_a4087b3f0ad6e56e8dc6ed52d35e85da4}{test\+\_\+thread\+\_\+quit} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+thread\+\_\+quit ：测试 pthread\+\_\+join 函数、pthread\+\_\+exit 函数、 pthread\+\_\+cancel 函数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{thread\+\_\+quit.\+h@{thread\+\_\+quit.\+h}!My\+\_\+pthread\+\_\+cancel@{My\+\_\+pthread\+\_\+cancel}}
+\index{My\+\_\+pthread\+\_\+cancel@{My\+\_\+pthread\+\_\+cancel}!thread\+\_\+quit.\+h@{thread\+\_\+quit.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+pthread\+\_\+cancel(pthread\+\_\+t tid)}{My_pthread_cancel(pthread_t tid)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+pthread\+\_\+cancel (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+t}]{tid}
+\end{DoxyParamCaption}
+)}\hypertarget{thread__quit_8h_a50cbe76741f660824a54198f330b88b4}{}\label{thread__quit_8h_a50cbe76741f660824a54198f330b88b4}
+
+
+My\+\_\+pthread\+\_\+cancel \+: 包装了 pthread\+\_\+cancel 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tid} & \+: 传递给 pthread\+\_\+cancel 函数的 tid 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 pthread\+\_\+cancel 函数的值 
+\end{DoxyReturn}
+\index{thread\+\_\+quit.\+h@{thread\+\_\+quit.\+h}!test\+\_\+thread\+\_\+quit@{test\+\_\+thread\+\_\+quit}}
+\index{test\+\_\+thread\+\_\+quit@{test\+\_\+thread\+\_\+quit}!thread\+\_\+quit.\+h@{thread\+\_\+quit.\+h}}
+\subsubsection[{\texorpdfstring{test\+\_\+thread\+\_\+quit()}{test_thread_quit()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+thread\+\_\+quit (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{thread__quit_8h_a4087b3f0ad6e56e8dc6ed52d35e85da4}{}\label{thread__quit_8h_a4087b3f0ad6e56e8dc6ed52d35e85da4}
+
+
+test\+\_\+thread\+\_\+quit ：测试 pthread\+\_\+join 函数、pthread\+\_\+exit 函数、 pthread\+\_\+cancel 函数 
+

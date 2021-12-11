@@ -1,0 +1,171 @@
+\hypertarget{sigpending___8c}{}\section{src/10\+\_\+\+Signal/sigpending\+\_\+.c File Reference}
+\label{sigpending___8c}\index{src/10\+\_\+\+Signal/sigpending\+\_\+.\+c@{src/10\+\_\+\+Signal/sigpending\+\_\+.\+c}}
+{\ttfamily \#include \char`\"{}sigpending\+\_\+.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../header.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$signal.\+h$>$}\\*
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef void \hyperlink{sigpending___8c_a41f7fa3cd174bb624d8b38ed224ab7d6}{Hanlder\+\_\+\+Func}(int signo, siginfo\+\_\+t $\ast$info, void $\ast$context)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{sigpending___8c_aec229dbc1924b697e5e6b55d598399ed}{add\+\_\+sigaction} (int signo, sigset\+\_\+t $\ast$set, int no\+\_\+deffer, int restart, \hyperlink{sleep__nanosleep_8c_a41f7fa3cd174bb624d8b38ed224ab7d6}{Hanlder\+\_\+\+Func} handler)
+\begin{DoxyCompactList}\small\item\em add\+\_\+sigaction \+: 添加信号处理函数 \end{DoxyCompactList}\item 
+static void \hyperlink{sigpending___8c_aab33dde15dc4bfdfa3410f3dd9af4a57}{sig\+\_\+print} (int signo, siginfo\+\_\+t $\ast$info, void $\ast$context)
+\begin{DoxyCompactList}\small\item\em sig\+\_\+print \+: 信号处理函数 \end{DoxyCompactList}\item 
+void \hyperlink{sigpending___8c_a53c4049569cf12a33509c187d489d21f}{print\+\_\+sigset} (sigset\+\_\+t $\ast$set)
+\item 
+void \hyperlink{sigpending___8c_af363bcba14e0b539c6882eee591d0580}{print\+\_\+progress\+\_\+mask\+\_\+sigset} ()
+\item 
+int \hyperlink{sigpending___8c_a15c6978fdb8c7356c74158803246e84a}{My\+\_\+sigemptyset} (sigset\+\_\+t $\ast$set)
+\item 
+int \hyperlink{sigpending___8c_a236d1137ecfd9206b408e63ee25c8de5}{My\+\_\+sigaddset} (sigset\+\_\+t $\ast$set, int signo)
+\item 
+int \hyperlink{sigpending___8c_abbd7c12036b2d7d08b321fb204923eea}{My\+\_\+sigprocmask} (int how, const sigset\+\_\+t $\ast$set, sigset\+\_\+t $\ast$oset)
+\item 
+int \hyperlink{sigpending___8c_aad6cc67298077c81cb8d2fed7207355a}{My\+\_\+sigpending} (sigset\+\_\+t $\ast$set)
+\begin{DoxyCompactList}\small\item\em My\+\_\+sigpending \+: 包装了 sigpending 函数 \end{DoxyCompactList}\item 
+void \hyperlink{sigpending___8c_a37c389f4a689b58ea68d4913fb5ce162}{print\+\_\+progress\+\_\+pending\+\_\+sigset} ()
+\begin{DoxyCompactList}\small\item\em print\+\_\+progress\+\_\+pending\+\_\+sigset \+: 打印进程当前的未决的信号集 \end{DoxyCompactList}\item 
+void \hyperlink{sigpending___8c_ab23f788efa367ee2ac6d5ef9c78e7276}{test\+\_\+sigpending} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+sigpending \+:测试 sigpending 函数的用法 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\index{sigpending\+\_\+.\+c@{sigpending\+\_\+.\+c}!Hanlder\+\_\+\+Func@{Hanlder\+\_\+\+Func}}
+\index{Hanlder\+\_\+\+Func@{Hanlder\+\_\+\+Func}!sigpending\+\_\+.\+c@{sigpending\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{Hanlder\+\_\+\+Func}{Hanlder_Func}}]{\setlength{\rightskip}{0pt plus 5cm}typedef void Hanlder\+\_\+\+Func(int signo, siginfo\+\_\+t $\ast$info, void $\ast$context)}\hypertarget{sigpending___8c_a41f7fa3cd174bb624d8b38ed224ab7d6}{}\label{sigpending___8c_a41f7fa3cd174bb624d8b38ed224ab7d6}
+
+
+\subsection{Function Documentation}
+\index{sigpending\+\_\+.\+c@{sigpending\+\_\+.\+c}!add\+\_\+sigaction@{add\+\_\+sigaction}}
+\index{add\+\_\+sigaction@{add\+\_\+sigaction}!sigpending\+\_\+.\+c@{sigpending\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{add\+\_\+sigaction(int signo, sigset\+\_\+t $\ast$set, int no\+\_\+deffer, int restart, Hanlder\+\_\+\+Func handler)}{add_sigaction(int signo, sigset_t *set, int no_deffer, int restart, Hanlder_Func handler)}}]{\setlength{\rightskip}{0pt plus 5cm}void add\+\_\+sigaction (
+\begin{DoxyParamCaption}
+\item[{int}]{signo, }
+\item[{sigset\+\_\+t $\ast$}]{set, }
+\item[{int}]{no\+\_\+deffer, }
+\item[{int}]{restart, }
+\item[{{\bf Hanlder\+\_\+\+Func}}]{handler}
+\end{DoxyParamCaption}
+)}\hypertarget{sigpending___8c_aec229dbc1924b697e5e6b55d598399ed}{}\label{sigpending___8c_aec229dbc1924b697e5e6b55d598399ed}
+
+
+add\+\_\+sigaction \+: 添加信号处理函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em signo} & \+: 信号值 \\
+\hline
+{\em set} & \+: 指向 sigset\+\_\+t 的指针 \\
+\hline
+{\em no\+\_\+deffer} & \+: 非 0 则表示在执行其信号处理函数时，系统并不自动阻塞此信号 \\
+\hline
+{\em restart} & \+: 为 0 表示不自动重启中断的系统调用；非0表示自动重启被中断的系统 \\
+\hline
+{\em handler} & \+: 信号处理函数 \\
+\hline
+\end{DoxyParams}
+\index{sigpending\+\_\+.\+c@{sigpending\+\_\+.\+c}!My\+\_\+sigaddset@{My\+\_\+sigaddset}}
+\index{My\+\_\+sigaddset@{My\+\_\+sigaddset}!sigpending\+\_\+.\+c@{sigpending\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+sigaddset(sigset\+\_\+t $\ast$set, int signo)}{My_sigaddset(sigset_t *set, int signo)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+sigaddset (
+\begin{DoxyParamCaption}
+\item[{sigset\+\_\+t $\ast$}]{set, }
+\item[{int}]{signo}
+\end{DoxyParamCaption}
+)}\hypertarget{sigpending___8c_a236d1137ecfd9206b408e63ee25c8de5}{}\label{sigpending___8c_a236d1137ecfd9206b408e63ee25c8de5}
+\index{sigpending\+\_\+.\+c@{sigpending\+\_\+.\+c}!My\+\_\+sigemptyset@{My\+\_\+sigemptyset}}
+\index{My\+\_\+sigemptyset@{My\+\_\+sigemptyset}!sigpending\+\_\+.\+c@{sigpending\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+sigemptyset(sigset\+\_\+t $\ast$set)}{My_sigemptyset(sigset_t *set)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+sigemptyset (
+\begin{DoxyParamCaption}
+\item[{sigset\+\_\+t $\ast$}]{set}
+\end{DoxyParamCaption}
+)}\hypertarget{sigpending___8c_a15c6978fdb8c7356c74158803246e84a}{}\label{sigpending___8c_a15c6978fdb8c7356c74158803246e84a}
+\index{sigpending\+\_\+.\+c@{sigpending\+\_\+.\+c}!My\+\_\+sigpending@{My\+\_\+sigpending}}
+\index{My\+\_\+sigpending@{My\+\_\+sigpending}!sigpending\+\_\+.\+c@{sigpending\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+sigpending(sigset\+\_\+t $\ast$set)}{My_sigpending(sigset_t *set)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+sigpending (
+\begin{DoxyParamCaption}
+\item[{sigset\+\_\+t $\ast$}]{set}
+\end{DoxyParamCaption}
+)}\hypertarget{sigpending___8c_aad6cc67298077c81cb8d2fed7207355a}{}\label{sigpending___8c_aad6cc67298077c81cb8d2fed7207355a}
+
+
+My\+\_\+sigpending \+: 包装了 sigpending 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em set} & \+: 传递给 sigpending 函数的 set 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 sigpending 函数的值 
+\end{DoxyReturn}
+\index{sigpending\+\_\+.\+c@{sigpending\+\_\+.\+c}!My\+\_\+sigprocmask@{My\+\_\+sigprocmask}}
+\index{My\+\_\+sigprocmask@{My\+\_\+sigprocmask}!sigpending\+\_\+.\+c@{sigpending\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+sigprocmask(int how, const sigset\+\_\+t $\ast$set, sigset\+\_\+t $\ast$oset)}{My_sigprocmask(int how, const sigset_t *set, sigset_t *oset)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+sigprocmask (
+\begin{DoxyParamCaption}
+\item[{int}]{how, }
+\item[{const sigset\+\_\+t $\ast$}]{set, }
+\item[{sigset\+\_\+t $\ast$}]{oset}
+\end{DoxyParamCaption}
+)}\hypertarget{sigpending___8c_abbd7c12036b2d7d08b321fb204923eea}{}\label{sigpending___8c_abbd7c12036b2d7d08b321fb204923eea}
+\index{sigpending\+\_\+.\+c@{sigpending\+\_\+.\+c}!print\+\_\+progress\+\_\+mask\+\_\+sigset@{print\+\_\+progress\+\_\+mask\+\_\+sigset}}
+\index{print\+\_\+progress\+\_\+mask\+\_\+sigset@{print\+\_\+progress\+\_\+mask\+\_\+sigset}!sigpending\+\_\+.\+c@{sigpending\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+progress\+\_\+mask\+\_\+sigset()}{print_progress_mask_sigset()}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+progress\+\_\+mask\+\_\+sigset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{sigpending___8c_af363bcba14e0b539c6882eee591d0580}{}\label{sigpending___8c_af363bcba14e0b539c6882eee591d0580}
+\index{sigpending\+\_\+.\+c@{sigpending\+\_\+.\+c}!print\+\_\+progress\+\_\+pending\+\_\+sigset@{print\+\_\+progress\+\_\+pending\+\_\+sigset}}
+\index{print\+\_\+progress\+\_\+pending\+\_\+sigset@{print\+\_\+progress\+\_\+pending\+\_\+sigset}!sigpending\+\_\+.\+c@{sigpending\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+progress\+\_\+pending\+\_\+sigset()}{print_progress_pending_sigset()}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+progress\+\_\+pending\+\_\+sigset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{sigpending___8c_a37c389f4a689b58ea68d4913fb5ce162}{}\label{sigpending___8c_a37c389f4a689b58ea68d4913fb5ce162}
+
+
+print\+\_\+progress\+\_\+pending\+\_\+sigset \+: 打印进程当前的未决的信号集 
+
+\index{sigpending\+\_\+.\+c@{sigpending\+\_\+.\+c}!print\+\_\+sigset@{print\+\_\+sigset}}
+\index{print\+\_\+sigset@{print\+\_\+sigset}!sigpending\+\_\+.\+c@{sigpending\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+sigset(sigset\+\_\+t $\ast$set)}{print_sigset(sigset_t *set)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+sigset (
+\begin{DoxyParamCaption}
+\item[{sigset\+\_\+t $\ast$}]{set}
+\end{DoxyParamCaption}
+)}\hypertarget{sigpending___8c_a53c4049569cf12a33509c187d489d21f}{}\label{sigpending___8c_a53c4049569cf12a33509c187d489d21f}
+\index{sigpending\+\_\+.\+c@{sigpending\+\_\+.\+c}!sig\+\_\+print@{sig\+\_\+print}}
+\index{sig\+\_\+print@{sig\+\_\+print}!sigpending\+\_\+.\+c@{sigpending\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{sig\+\_\+print(int signo, siginfo\+\_\+t $\ast$info, void $\ast$context)}{sig_print(int signo, siginfo_t *info, void *context)}}]{\setlength{\rightskip}{0pt plus 5cm}static void sig\+\_\+print (
+\begin{DoxyParamCaption}
+\item[{int}]{signo, }
+\item[{siginfo\+\_\+t $\ast$}]{info, }
+\item[{void $\ast$}]{context}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{sigpending___8c_aab33dde15dc4bfdfa3410f3dd9af4a57}{}\label{sigpending___8c_aab33dde15dc4bfdfa3410f3dd9af4a57}
+
+
+sig\+\_\+print \+: 信号处理函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em signo} & \+: 信号值 \\
+\hline
+{\em info} & \+: 指向 siginfo\+\_\+t 的指针 \\
+\hline
+{\em context} & \+: 指向 ucontext\+\_\+t $\ast$ 的指针 \\
+\hline
+\end{DoxyParams}
+\index{sigpending\+\_\+.\+c@{sigpending\+\_\+.\+c}!test\+\_\+sigpending@{test\+\_\+sigpending}}
+\index{test\+\_\+sigpending@{test\+\_\+sigpending}!sigpending\+\_\+.\+c@{sigpending\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{test\+\_\+sigpending()}{test_sigpending()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+sigpending (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{sigpending___8c_ab23f788efa367ee2ac6d5ef9c78e7276}{}\label{sigpending___8c_ab23f788efa367ee2ac6d5ef9c78e7276}
+
+
+test\+\_\+sigpending \+:测试 sigpending 函数的用法 
+

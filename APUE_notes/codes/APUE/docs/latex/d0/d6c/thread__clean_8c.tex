@@ -1,0 +1,85 @@
+\hypertarget{thread__clean_8c}{}\section{src/11\+\_\+\+Thread/thread\+\_\+clean.c File Reference}
+\label{thread__clean_8c}\index{src/11\+\_\+\+Thread/thread\+\_\+clean.\+c@{src/11\+\_\+\+Thread/thread\+\_\+clean.\+c}}
+{\ttfamily \#include \char`\"{}thread\+\_\+clean.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../header.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$pthread.\+h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{thread__clean_8c_a8a7d00c14fd678fd27174f4059038a9f}{thread\+\_\+join\+\_\+int} (pthread\+\_\+t tid, int $\ast$rval\+\_\+pptr)
+\item 
+int \hyperlink{thread__clean_8c_ad82c2337fd9f01a075f17bbff5568a64}{My\+\_\+pthread\+\_\+create} (pthread\+\_\+t $\ast$tidp, const pthread\+\_\+attr\+\_\+t $\ast$attr, void $\ast$($\ast$start\+\_\+rtn)(void $\ast$), void $\ast$arg)
+\item 
+static void \hyperlink{thread__clean_8c_adc8d5d7381d5e871ed037a0ebd5def77}{clean\+\_\+func} (void $\ast$arg)
+\begin{DoxyCompactList}\small\item\em clean\+\_\+func \+: 线程清理函数 \end{DoxyCompactList}\item 
+static void $\ast$ \hyperlink{thread__clean_8c_af7d7e0f438cee37253e8678d442e0c35}{thread\+\_\+func} (void $\ast$arg)
+\begin{DoxyCompactList}\small\item\em thread\+\_\+func \+: 线程的工作例程 \end{DoxyCompactList}\item 
+void \hyperlink{thread__clean_8c_a962d04be2b653bc92f43c7a009a20a31}{test\+\_\+thread\+\_\+clean} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+thread\+\_\+clean \+:测试 pthread\+\_\+cleanup\+\_\+push 函数、pthread\+\_\+cleanup\+\_\+pop 函数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{thread\+\_\+clean.\+c@{thread\+\_\+clean.\+c}!clean\+\_\+func@{clean\+\_\+func}}
+\index{clean\+\_\+func@{clean\+\_\+func}!thread\+\_\+clean.\+c@{thread\+\_\+clean.\+c}}
+\subsubsection[{\texorpdfstring{clean\+\_\+func(void $\ast$arg)}{clean_func(void *arg)}}]{\setlength{\rightskip}{0pt plus 5cm}static void clean\+\_\+func (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{arg}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{thread__clean_8c_adc8d5d7381d5e871ed037a0ebd5def77}{}\label{thread__clean_8c_adc8d5d7381d5e871ed037a0ebd5def77}
+
+
+clean\+\_\+func \+: 线程清理函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em arg} & \+: 线程清理函数的参数 \\
+\hline
+\end{DoxyParams}
+\index{thread\+\_\+clean.\+c@{thread\+\_\+clean.\+c}!My\+\_\+pthread\+\_\+create@{My\+\_\+pthread\+\_\+create}}
+\index{My\+\_\+pthread\+\_\+create@{My\+\_\+pthread\+\_\+create}!thread\+\_\+clean.\+c@{thread\+\_\+clean.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+pthread\+\_\+create(pthread\+\_\+t $\ast$tidp, const pthread\+\_\+attr\+\_\+t $\ast$attr, void $\ast$($\ast$start\+\_\+rtn)(void $\ast$), void $\ast$arg)}{My_pthread_create(pthread_t *tidp, const pthread_attr_t *attr, void *(*start_rtn)(void *), void *arg)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+pthread\+\_\+create (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+t $\ast$}]{tidp, }
+\item[{const pthread\+\_\+attr\+\_\+t $\ast$}]{attr, }
+\item[{void $\ast$($\ast$)(void $\ast$)}]{start\+\_\+rtn, }
+\item[{void $\ast$}]{arg}
+\end{DoxyParamCaption}
+)}\hypertarget{thread__clean_8c_ad82c2337fd9f01a075f17bbff5568a64}{}\label{thread__clean_8c_ad82c2337fd9f01a075f17bbff5568a64}
+\index{thread\+\_\+clean.\+c@{thread\+\_\+clean.\+c}!test\+\_\+thread\+\_\+clean@{test\+\_\+thread\+\_\+clean}}
+\index{test\+\_\+thread\+\_\+clean@{test\+\_\+thread\+\_\+clean}!thread\+\_\+clean.\+c@{thread\+\_\+clean.\+c}}
+\subsubsection[{\texorpdfstring{test\+\_\+thread\+\_\+clean()}{test_thread_clean()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+thread\+\_\+clean (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{thread__clean_8c_a962d04be2b653bc92f43c7a009a20a31}{}\label{thread__clean_8c_a962d04be2b653bc92f43c7a009a20a31}
+
+
+test\+\_\+thread\+\_\+clean \+:测试 pthread\+\_\+cleanup\+\_\+push 函数、pthread\+\_\+cleanup\+\_\+pop 函数 
+
+\index{thread\+\_\+clean.\+c@{thread\+\_\+clean.\+c}!thread\+\_\+func@{thread\+\_\+func}}
+\index{thread\+\_\+func@{thread\+\_\+func}!thread\+\_\+clean.\+c@{thread\+\_\+clean.\+c}}
+\subsubsection[{\texorpdfstring{thread\+\_\+func(void $\ast$arg)}{thread_func(void *arg)}}]{\setlength{\rightskip}{0pt plus 5cm}static void$\ast$ thread\+\_\+func (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{arg}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{thread__clean_8c_af7d7e0f438cee37253e8678d442e0c35}{}\label{thread__clean_8c_af7d7e0f438cee37253e8678d442e0c35}
+
+
+thread\+\_\+func \+: 线程的工作例程 
+
+
+\begin{DoxyParams}{Parameters}
+{\em arg} & \+: 参数，这里是个整数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+:直接返回参数 
+\end{DoxyReturn}
+\index{thread\+\_\+clean.\+c@{thread\+\_\+clean.\+c}!thread\+\_\+join\+\_\+int@{thread\+\_\+join\+\_\+int}}
+\index{thread\+\_\+join\+\_\+int@{thread\+\_\+join\+\_\+int}!thread\+\_\+clean.\+c@{thread\+\_\+clean.\+c}}
+\subsubsection[{\texorpdfstring{thread\+\_\+join\+\_\+int(pthread\+\_\+t tid, int $\ast$rval\+\_\+pptr)}{thread_join_int(pthread_t tid, int *rval_pptr)}}]{\setlength{\rightskip}{0pt plus 5cm}void thread\+\_\+join\+\_\+int (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+t}]{tid, }
+\item[{int $\ast$}]{rval\+\_\+pptr}
+\end{DoxyParamCaption}
+)}\hypertarget{thread__clean_8c_a8a7d00c14fd678fd27174f4059038a9f}{}\label{thread__clean_8c_a8a7d00c14fd678fd27174f4059038a9f}

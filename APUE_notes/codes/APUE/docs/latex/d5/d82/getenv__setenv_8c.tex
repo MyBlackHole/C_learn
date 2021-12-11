@@ -1,0 +1,138 @@
+\hypertarget{getenv__setenv_8c}{}\section{src/7\+\_\+\+Progress\+\_\+\+Env/getenv\+\_\+setenv.c File Reference}
+\label{getenv__setenv_8c}\index{src/7\+\_\+\+Progress\+\_\+\+Env/getenv\+\_\+setenv.\+c@{src/7\+\_\+\+Progress\+\_\+\+Env/getenv\+\_\+setenv.\+c}}
+{\ttfamily \#include \char`\"{}getenv\+\_\+setenv.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../header.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \hyperlink{getenv__setenv_8c_a9bff6638456ce986e516f3d78fb8f0b0}{My\+\_\+getenv} (const char $\ast$name)
+\begin{DoxyCompactList}\small\item\em My\+\_\+getenv \+: 包装了 getenv 函数 \end{DoxyCompactList}\item 
+int \hyperlink{getenv__setenv_8c_a1b27d40c25628c87fa85266495ad6836}{My\+\_\+putenv} (char $\ast$str)
+\begin{DoxyCompactList}\small\item\em My\+\_\+putenv \+: 包装了 putenv 函数 \end{DoxyCompactList}\item 
+int \hyperlink{getenv__setenv_8c_a4bf7784952d953832d605b7712249b2f}{My\+\_\+setenv} (const char $\ast$name, const char $\ast$value, int rewrite)
+\begin{DoxyCompactList}\small\item\em My\+\_\+setenv \+: 包装了 setenv 函数 \end{DoxyCompactList}\item 
+int \hyperlink{getenv__setenv_8c_a57250a29556965ad81730238b4e5a962}{My\+\_\+unsetenv} (const char $\ast$name)
+\begin{DoxyCompactList}\small\item\em My\+\_\+unsetenv \+: 包装了 unsetenv 函数 \end{DoxyCompactList}\item 
+void \hyperlink{getenv__setenv_8c_a50afad197eb4c6dde2bd293a28247851}{print\+\_\+environ} ()
+\begin{DoxyCompactList}\small\item\em print\+\_\+environ ： 打印全局的 envirion 变量 \end{DoxyCompactList}\item 
+void \hyperlink{getenv__setenv_8c_a8aca6bc720fb27b1652ec0c9734fd85e}{test\+\_\+getenv\+\_\+setenv} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+getenv\+\_\+setenv \+: 测试环境变量相关的函数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$$\ast$ \hyperlink{getenv__setenv_8c_aa006daaf11f1e2e45a6ababaf463212b}{environ}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{getenv\+\_\+setenv.\+c@{getenv\+\_\+setenv.\+c}!My\+\_\+getenv@{My\+\_\+getenv}}
+\index{My\+\_\+getenv@{My\+\_\+getenv}!getenv\+\_\+setenv.\+c@{getenv\+\_\+setenv.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+getenv(const char $\ast$name)}{My_getenv(const char *name)}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ My\+\_\+getenv (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{name}
+\end{DoxyParamCaption}
+)}\hypertarget{getenv__setenv_8c_a9bff6638456ce986e516f3d78fb8f0b0}{}\label{getenv__setenv_8c_a9bff6638456ce986e516f3d78fb8f0b0}
+
+
+My\+\_\+getenv \+: 包装了 getenv 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \+: 传递给 getenv 函数的 name 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回了 getenv 函数的值 
+\end{DoxyReturn}
+\index{getenv\+\_\+setenv.\+c@{getenv\+\_\+setenv.\+c}!My\+\_\+putenv@{My\+\_\+putenv}}
+\index{My\+\_\+putenv@{My\+\_\+putenv}!getenv\+\_\+setenv.\+c@{getenv\+\_\+setenv.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+putenv(char $\ast$str)}{My_putenv(char *str)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+putenv (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{str}
+\end{DoxyParamCaption}
+)}\hypertarget{getenv__setenv_8c_a1b27d40c25628c87fa85266495ad6836}{}\label{getenv__setenv_8c_a1b27d40c25628c87fa85266495ad6836}
+
+
+My\+\_\+putenv \+: 包装了 putenv 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & \+: 传递给 putenv 函数的 str 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回了 putenv 函数的值 
+\end{DoxyReturn}
+\index{getenv\+\_\+setenv.\+c@{getenv\+\_\+setenv.\+c}!My\+\_\+setenv@{My\+\_\+setenv}}
+\index{My\+\_\+setenv@{My\+\_\+setenv}!getenv\+\_\+setenv.\+c@{getenv\+\_\+setenv.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+setenv(const char $\ast$name, const char $\ast$value, int rewrite)}{My_setenv(const char *name, const char *value, int rewrite)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+setenv (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{name, }
+\item[{const char $\ast$}]{value, }
+\item[{int}]{rewrite}
+\end{DoxyParamCaption}
+)}\hypertarget{getenv__setenv_8c_a4bf7784952d953832d605b7712249b2f}{}\label{getenv__setenv_8c_a4bf7784952d953832d605b7712249b2f}
+
+
+My\+\_\+setenv \+: 包装了 setenv 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \+: 传递给 setenv 函数的 name 参数 \\
+\hline
+{\em value} & \+: 传递给 setenv 函数的 value 参数 \\
+\hline
+{\em rewrite} & \+: 传递给 setenv 函数的 rewrite 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回了 setenv 函数的值 
+\end{DoxyReturn}
+\index{getenv\+\_\+setenv.\+c@{getenv\+\_\+setenv.\+c}!My\+\_\+unsetenv@{My\+\_\+unsetenv}}
+\index{My\+\_\+unsetenv@{My\+\_\+unsetenv}!getenv\+\_\+setenv.\+c@{getenv\+\_\+setenv.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+unsetenv(const char $\ast$name)}{My_unsetenv(const char *name)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+unsetenv (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{name}
+\end{DoxyParamCaption}
+)}\hypertarget{getenv__setenv_8c_a57250a29556965ad81730238b4e5a962}{}\label{getenv__setenv_8c_a57250a29556965ad81730238b4e5a962}
+
+
+My\+\_\+unsetenv \+: 包装了 unsetenv 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \+: 传递给 unsetenv 函数的 name 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回了 unsetenv 函数的值 
+\end{DoxyReturn}
+\index{getenv\+\_\+setenv.\+c@{getenv\+\_\+setenv.\+c}!print\+\_\+environ@{print\+\_\+environ}}
+\index{print\+\_\+environ@{print\+\_\+environ}!getenv\+\_\+setenv.\+c@{getenv\+\_\+setenv.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+environ()}{print_environ()}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+environ (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{getenv__setenv_8c_a50afad197eb4c6dde2bd293a28247851}{}\label{getenv__setenv_8c_a50afad197eb4c6dde2bd293a28247851}
+
+
+print\+\_\+environ ： 打印全局的 envirion 变量 
+
+\index{getenv\+\_\+setenv.\+c@{getenv\+\_\+setenv.\+c}!test\+\_\+getenv\+\_\+setenv@{test\+\_\+getenv\+\_\+setenv}}
+\index{test\+\_\+getenv\+\_\+setenv@{test\+\_\+getenv\+\_\+setenv}!getenv\+\_\+setenv.\+c@{getenv\+\_\+setenv.\+c}}
+\subsubsection[{\texorpdfstring{test\+\_\+getenv\+\_\+setenv()}{test_getenv_setenv()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+getenv\+\_\+setenv (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{getenv__setenv_8c_a8aca6bc720fb27b1652ec0c9734fd85e}{}\label{getenv__setenv_8c_a8aca6bc720fb27b1652ec0c9734fd85e}
+
+
+test\+\_\+getenv\+\_\+setenv \+: 测试环境变量相关的函数 
+
+
+
+\subsection{Variable Documentation}
+\index{getenv\+\_\+setenv.\+c@{getenv\+\_\+setenv.\+c}!environ@{environ}}
+\index{environ@{environ}!getenv\+\_\+setenv.\+c@{getenv\+\_\+setenv.\+c}}
+\subsubsection[{\texorpdfstring{environ}{environ}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$$\ast$ environ}\hypertarget{getenv__setenv_8c_aa006daaf11f1e2e45a6ababaf463212b}{}\label{getenv__setenv_8c_aa006daaf11f1e2e45a6ababaf463212b}

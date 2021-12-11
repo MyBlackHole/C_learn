@@ -1,0 +1,134 @@
+\hypertarget{condition___8h}{}\section{src/11\+\_\+\+Thread/condition\+\_\+.h File Reference}
+\label{condition___8h}\index{src/11\+\_\+\+Thread/condition\+\_\+.\+h@{src/11\+\_\+\+Thread/condition\+\_\+.\+h}}
+{\ttfamily \#include $<$pthread.\+h$>$}\\*
+{\ttfamily \#include $<$time.\+h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{condition___8h_a09d9217221f79996ec094727b86403d1}{My\+\_\+pthread\+\_\+cond\+\_\+init} (pthread\+\_\+cond\+\_\+t $\ast$\hyperlink{condition___8c_a0a1433271fddfed84bc959ae6c202e5a}{cond}, const pthread\+\_\+condattr\+\_\+t $\ast$attr)
+\begin{DoxyCompactList}\small\item\em My\+\_\+pthread\+\_\+cond\+\_\+init \+: 包装了 pthread\+\_\+cond\+\_\+init 函数 \end{DoxyCompactList}\item 
+int \hyperlink{condition___8h_abb4558562206af1dc4047258d5c0fd4c}{My\+\_\+pthread\+\_\+cond\+\_\+destroy} (pthread\+\_\+cond\+\_\+t $\ast$\hyperlink{condition___8c_a0a1433271fddfed84bc959ae6c202e5a}{cond})
+\begin{DoxyCompactList}\small\item\em My\+\_\+pthread\+\_\+cond\+\_\+destroy \+: 包装了 pthread\+\_\+cond\+\_\+destroy 函数 \end{DoxyCompactList}\item 
+int \hyperlink{condition___8h_a31b348108b73a7b0335edb54bba2ab18}{My\+\_\+pthread\+\_\+cond\+\_\+wait} (pthread\+\_\+cond\+\_\+t $\ast$\hyperlink{condition___8c_a0a1433271fddfed84bc959ae6c202e5a}{cond}, pthread\+\_\+mutex\+\_\+t $\ast$\hyperlink{thread__quit_8c_a4acff8232e4aec9cd5c6dc200ac55ef3}{mutex})
+\begin{DoxyCompactList}\small\item\em My\+\_\+pthread\+\_\+cond\+\_\+wait \+: 包装了 pthread\+\_\+cond\+\_\+wait 函数 \end{DoxyCompactList}\item 
+int \hyperlink{condition___8h_a516ea1bcf4e59fb54fe02f7aacd67d6a}{My\+\_\+pthread\+\_\+cond\+\_\+signal} (pthread\+\_\+cond\+\_\+t $\ast$\hyperlink{condition___8c_a0a1433271fddfed84bc959ae6c202e5a}{cond})
+\begin{DoxyCompactList}\small\item\em My\+\_\+pthread\+\_\+cond\+\_\+signal \+: 包装了 pthread\+\_\+cond\+\_\+signal 函数 \end{DoxyCompactList}\item 
+int \hyperlink{condition___8h_adf6397b1ac3b93adedccfd6d94df6332}{My\+\_\+pthread\+\_\+cond\+\_\+broadcast} (pthread\+\_\+cond\+\_\+t $\ast$\hyperlink{condition___8c_a0a1433271fddfed84bc959ae6c202e5a}{cond})
+\begin{DoxyCompactList}\small\item\em My\+\_\+pthread\+\_\+cond\+\_\+broadcast \+: 包装了 pthread\+\_\+cond\+\_\+broadcast 函数 \end{DoxyCompactList}\item 
+void \hyperlink{condition___8h_a26a69fcef9f394f79161199e7531a920}{test\+\_\+condition} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+condition \+:测试 pthread\+\_\+cond\+\_\+t 相关函数的用法 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{condition\+\_\+.\+h@{condition\+\_\+.\+h}!My\+\_\+pthread\+\_\+cond\+\_\+broadcast@{My\+\_\+pthread\+\_\+cond\+\_\+broadcast}}
+\index{My\+\_\+pthread\+\_\+cond\+\_\+broadcast@{My\+\_\+pthread\+\_\+cond\+\_\+broadcast}!condition\+\_\+.\+h@{condition\+\_\+.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+pthread\+\_\+cond\+\_\+broadcast(pthread\+\_\+cond\+\_\+t $\ast$cond)}{My_pthread_cond_broadcast(pthread_cond_t *cond)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+pthread\+\_\+cond\+\_\+broadcast (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+cond\+\_\+t $\ast$}]{cond}
+\end{DoxyParamCaption}
+)}\hypertarget{condition___8h_adf6397b1ac3b93adedccfd6d94df6332}{}\label{condition___8h_adf6397b1ac3b93adedccfd6d94df6332}
+
+
+My\+\_\+pthread\+\_\+cond\+\_\+broadcast \+: 包装了 pthread\+\_\+cond\+\_\+broadcast 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cond} & \+: 传递给 pthread\+\_\+cond\+\_\+broadcast 函数的 cond 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 pthread\+\_\+cond\+\_\+broadcast 函数的值 
+\end{DoxyReturn}
+\index{condition\+\_\+.\+h@{condition\+\_\+.\+h}!My\+\_\+pthread\+\_\+cond\+\_\+destroy@{My\+\_\+pthread\+\_\+cond\+\_\+destroy}}
+\index{My\+\_\+pthread\+\_\+cond\+\_\+destroy@{My\+\_\+pthread\+\_\+cond\+\_\+destroy}!condition\+\_\+.\+h@{condition\+\_\+.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+pthread\+\_\+cond\+\_\+destroy(pthread\+\_\+cond\+\_\+t $\ast$cond)}{My_pthread_cond_destroy(pthread_cond_t *cond)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+pthread\+\_\+cond\+\_\+destroy (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+cond\+\_\+t $\ast$}]{cond}
+\end{DoxyParamCaption}
+)}\hypertarget{condition___8h_abb4558562206af1dc4047258d5c0fd4c}{}\label{condition___8h_abb4558562206af1dc4047258d5c0fd4c}
+
+
+My\+\_\+pthread\+\_\+cond\+\_\+destroy \+: 包装了 pthread\+\_\+cond\+\_\+destroy 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cond} & \+: 传递给 pthread\+\_\+cond\+\_\+destroy 函数的 cond 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 pthread\+\_\+cond\+\_\+destroy 函数的值 
+\end{DoxyReturn}
+\index{condition\+\_\+.\+h@{condition\+\_\+.\+h}!My\+\_\+pthread\+\_\+cond\+\_\+init@{My\+\_\+pthread\+\_\+cond\+\_\+init}}
+\index{My\+\_\+pthread\+\_\+cond\+\_\+init@{My\+\_\+pthread\+\_\+cond\+\_\+init}!condition\+\_\+.\+h@{condition\+\_\+.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+pthread\+\_\+cond\+\_\+init(pthread\+\_\+cond\+\_\+t $\ast$cond, const pthread\+\_\+condattr\+\_\+t $\ast$attr)}{My_pthread_cond_init(pthread_cond_t *cond, const pthread_condattr_t *attr)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+pthread\+\_\+cond\+\_\+init (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+cond\+\_\+t $\ast$}]{cond, }
+\item[{const pthread\+\_\+condattr\+\_\+t $\ast$}]{attr}
+\end{DoxyParamCaption}
+)}\hypertarget{condition___8h_a09d9217221f79996ec094727b86403d1}{}\label{condition___8h_a09d9217221f79996ec094727b86403d1}
+
+
+My\+\_\+pthread\+\_\+cond\+\_\+init \+: 包装了 pthread\+\_\+cond\+\_\+init 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cond} & \+: 传递给 pthread\+\_\+cond\+\_\+init 函数的 cond 参数 \\
+\hline
+{\em attr} & \+: 传递给 pthread\+\_\+cond\+\_\+init 函数的 attr 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 pthread\+\_\+cond\+\_\+init 函数的值 
+\end{DoxyReturn}
+\index{condition\+\_\+.\+h@{condition\+\_\+.\+h}!My\+\_\+pthread\+\_\+cond\+\_\+signal@{My\+\_\+pthread\+\_\+cond\+\_\+signal}}
+\index{My\+\_\+pthread\+\_\+cond\+\_\+signal@{My\+\_\+pthread\+\_\+cond\+\_\+signal}!condition\+\_\+.\+h@{condition\+\_\+.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+pthread\+\_\+cond\+\_\+signal(pthread\+\_\+cond\+\_\+t $\ast$cond)}{My_pthread_cond_signal(pthread_cond_t *cond)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+pthread\+\_\+cond\+\_\+signal (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+cond\+\_\+t $\ast$}]{cond}
+\end{DoxyParamCaption}
+)}\hypertarget{condition___8h_a516ea1bcf4e59fb54fe02f7aacd67d6a}{}\label{condition___8h_a516ea1bcf4e59fb54fe02f7aacd67d6a}
+
+
+My\+\_\+pthread\+\_\+cond\+\_\+signal \+: 包装了 pthread\+\_\+cond\+\_\+signal 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cond} & \+: 传递给 pthread\+\_\+cond\+\_\+signal 函数的 cond 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 pthread\+\_\+cond\+\_\+signal 函数的值 
+\end{DoxyReturn}
+\index{condition\+\_\+.\+h@{condition\+\_\+.\+h}!My\+\_\+pthread\+\_\+cond\+\_\+wait@{My\+\_\+pthread\+\_\+cond\+\_\+wait}}
+\index{My\+\_\+pthread\+\_\+cond\+\_\+wait@{My\+\_\+pthread\+\_\+cond\+\_\+wait}!condition\+\_\+.\+h@{condition\+\_\+.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+pthread\+\_\+cond\+\_\+wait(pthread\+\_\+cond\+\_\+t $\ast$cond, pthread\+\_\+mutex\+\_\+t $\ast$mutex)}{My_pthread_cond_wait(pthread_cond_t *cond, pthread_mutex_t *mutex)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+pthread\+\_\+cond\+\_\+wait (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+cond\+\_\+t $\ast$}]{cond, }
+\item[{pthread\+\_\+mutex\+\_\+t $\ast$}]{mutex}
+\end{DoxyParamCaption}
+)}\hypertarget{condition___8h_a31b348108b73a7b0335edb54bba2ab18}{}\label{condition___8h_a31b348108b73a7b0335edb54bba2ab18}
+
+
+My\+\_\+pthread\+\_\+cond\+\_\+wait \+: 包装了 pthread\+\_\+cond\+\_\+wait 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cond} & \+: 传递给 pthread\+\_\+cond\+\_\+wait 函数的 cond 参数 \\
+\hline
+{\em mutex} & \+: 传递给 pthread\+\_\+cond\+\_\+wait 函数的 mutex 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 pthread\+\_\+cond\+\_\+wait 函数的值 
+\end{DoxyReturn}
+\index{condition\+\_\+.\+h@{condition\+\_\+.\+h}!test\+\_\+condition@{test\+\_\+condition}}
+\index{test\+\_\+condition@{test\+\_\+condition}!condition\+\_\+.\+h@{condition\+\_\+.\+h}}
+\subsubsection[{\texorpdfstring{test\+\_\+condition()}{test_condition()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+condition (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{condition___8h_a26a69fcef9f394f79161199e7531a920}{}\label{condition___8h_a26a69fcef9f394f79161199e7531a920}
+
+
+test\+\_\+condition \+:测试 pthread\+\_\+cond\+\_\+t 相关函数的用法 
+

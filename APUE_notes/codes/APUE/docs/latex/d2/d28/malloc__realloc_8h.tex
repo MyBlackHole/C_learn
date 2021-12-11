@@ -1,0 +1,87 @@
+\hypertarget{malloc__realloc_8h}{}\section{src/7\+\_\+\+Progress\+\_\+\+Env/malloc\+\_\+realloc.h File Reference}
+\label{malloc__realloc_8h}\index{src/7\+\_\+\+Progress\+\_\+\+Env/malloc\+\_\+realloc.\+h@{src/7\+\_\+\+Progress\+\_\+\+Env/malloc\+\_\+realloc.\+h}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void $\ast$ \hyperlink{malloc__realloc_8h_a41330159f0cae796cda122eed961fb4b}{My\+\_\+malloc} (size\+\_\+t size)
+\begin{DoxyCompactList}\small\item\em My\+\_\+malloc \+: 包装了 malloc 函数 \end{DoxyCompactList}\item 
+void $\ast$ \hyperlink{malloc__realloc_8h_a46e1a531226f63ab5f7d18d7945cbd5e}{My\+\_\+calloc} (size\+\_\+t nobj, size\+\_\+t size)
+\begin{DoxyCompactList}\small\item\em My\+\_\+calloc \+: 包装了 calloc 函数 \end{DoxyCompactList}\item 
+void $\ast$ \hyperlink{malloc__realloc_8h_aaad39048dded0b24771e4683d73cbb24}{My\+\_\+realloc} (void $\ast$ptr, size\+\_\+t newsize)
+\begin{DoxyCompactList}\small\item\em My\+\_\+realloc \+: 包装了 realloc 函数 \end{DoxyCompactList}\item 
+void \hyperlink{malloc__realloc_8h_a38767c591318e7cae89405ce63193c24}{test\+\_\+malloc\+\_\+realloc} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{malloc\+\_\+realloc.\+h@{malloc\+\_\+realloc.\+h}!My\+\_\+calloc@{My\+\_\+calloc}}
+\index{My\+\_\+calloc@{My\+\_\+calloc}!malloc\+\_\+realloc.\+h@{malloc\+\_\+realloc.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+calloc(size\+\_\+t nobj, size\+\_\+t size)}{My_calloc(size_t nobj, size_t size)}}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ My\+\_\+calloc (
+\begin{DoxyParamCaption}
+\item[{size\+\_\+t}]{nobj, }
+\item[{size\+\_\+t}]{size}
+\end{DoxyParamCaption}
+)}\hypertarget{malloc__realloc_8h_a46e1a531226f63ab5f7d18d7945cbd5e}{}\label{malloc__realloc_8h_a46e1a531226f63ab5f7d18d7945cbd5e}
+
+
+My\+\_\+calloc \+: 包装了 calloc 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nobj} & \+: 传递给 calloc 函数的 nobj 参数 \\
+\hline
+{\em size} & \+: 传递给 calloc 函数的 size 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 calloc 函数的值 
+\end{DoxyReturn}
+\index{malloc\+\_\+realloc.\+h@{malloc\+\_\+realloc.\+h}!My\+\_\+malloc@{My\+\_\+malloc}}
+\index{My\+\_\+malloc@{My\+\_\+malloc}!malloc\+\_\+realloc.\+h@{malloc\+\_\+realloc.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+malloc(size\+\_\+t size)}{My_malloc(size_t size)}}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ My\+\_\+malloc (
+\begin{DoxyParamCaption}
+\item[{size\+\_\+t}]{size}
+\end{DoxyParamCaption}
+)}\hypertarget{malloc__realloc_8h_a41330159f0cae796cda122eed961fb4b}{}\label{malloc__realloc_8h_a41330159f0cae796cda122eed961fb4b}
+
+
+My\+\_\+malloc \+: 包装了 malloc 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & \+: 传递给 malloc 函数的 size 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 malloc 函数的值 
+\end{DoxyReturn}
+\index{malloc\+\_\+realloc.\+h@{malloc\+\_\+realloc.\+h}!My\+\_\+realloc@{My\+\_\+realloc}}
+\index{My\+\_\+realloc@{My\+\_\+realloc}!malloc\+\_\+realloc.\+h@{malloc\+\_\+realloc.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+realloc(void $\ast$ptr, size\+\_\+t newsize)}{My_realloc(void *ptr, size_t newsize)}}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ My\+\_\+realloc (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{ptr, }
+\item[{size\+\_\+t}]{newsize}
+\end{DoxyParamCaption}
+)}\hypertarget{malloc__realloc_8h_aaad39048dded0b24771e4683d73cbb24}{}\label{malloc__realloc_8h_aaad39048dded0b24771e4683d73cbb24}
+
+
+My\+\_\+realloc \+: 包装了 realloc 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ptr} & \+: 传递给 realloc 函数的 ptr 参数 \\
+\hline
+{\em newsize} & \+: 传递给 realloc 函数的 newsize 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 realloc 函数的值 
+\end{DoxyReturn}
+\index{malloc\+\_\+realloc.\+h@{malloc\+\_\+realloc.\+h}!test\+\_\+malloc\+\_\+realloc@{test\+\_\+malloc\+\_\+realloc}}
+\index{test\+\_\+malloc\+\_\+realloc@{test\+\_\+malloc\+\_\+realloc}!malloc\+\_\+realloc.\+h@{malloc\+\_\+realloc.\+h}}
+\subsubsection[{\texorpdfstring{test\+\_\+malloc\+\_\+realloc()}{test_malloc_realloc()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+malloc\+\_\+realloc (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{malloc__realloc_8h_a38767c591318e7cae89405ce63193c24}{}\label{malloc__realloc_8h_a38767c591318e7cae89405ce63193c24}

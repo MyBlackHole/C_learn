@@ -1,0 +1,46 @@
+\hypertarget{utimes___8h}{}\section{src/4\+\_\+\+File\+\_\+\+Dir/utimes\+\_\+.h File Reference}
+\label{utimes___8h}\index{src/4\+\_\+\+File\+\_\+\+Dir/utimes\+\_\+.\+h@{src/4\+\_\+\+File\+\_\+\+Dir/utimes\+\_\+.\+h}}
+{\ttfamily \#include $<$sys/time.\+h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{utimes___8h_a486d7b736882b3f6ba56a4ac868cd7e1}{My\+\_\+utimes} (const char $\ast$pathname, const struct timeval times\mbox{[}2\mbox{]})
+\begin{DoxyCompactList}\small\item\em My\+\_\+utimes \+: 包装了 utimes 函数 \end{DoxyCompactList}\item 
+void \hyperlink{utimes___8h_a76257252a6f8e31c88fa97831ee9b3d5}{test\+\_\+utimes} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+utimes \+: 测试 utimes 函数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{utimes\+\_\+.\+h@{utimes\+\_\+.\+h}!My\+\_\+utimes@{My\+\_\+utimes}}
+\index{My\+\_\+utimes@{My\+\_\+utimes}!utimes\+\_\+.\+h@{utimes\+\_\+.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+utimes(const char $\ast$pathname, const struct timeval times[2])}{My_utimes(const char *pathname, const struct timeval times[2])}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+utimes (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{pathname, }
+\item[{const struct timeval}]{times\mbox{[}2\mbox{]}}
+\end{DoxyParamCaption}
+)}\hypertarget{utimes___8h_a486d7b736882b3f6ba56a4ac868cd7e1}{}\label{utimes___8h_a486d7b736882b3f6ba56a4ac868cd7e1}
+
+
+My\+\_\+utimes \+: 包装了 utimes 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pathname} & \+: 传递给 utimes 函数的 pathname 参数 \\
+\hline
+{\em times} & \+: 传递给 utimes 函数的 times 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 utimes 函数的值 
+\end{DoxyReturn}
+\index{utimes\+\_\+.\+h@{utimes\+\_\+.\+h}!test\+\_\+utimes@{test\+\_\+utimes}}
+\index{test\+\_\+utimes@{test\+\_\+utimes}!utimes\+\_\+.\+h@{utimes\+\_\+.\+h}}
+\subsubsection[{\texorpdfstring{test\+\_\+utimes()}{test_utimes()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+utimes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{utimes___8h_a76257252a6f8e31c88fa97831ee9b3d5}{}\label{utimes___8h_a76257252a6f8e31c88fa97831ee9b3d5}
+
+
+test\+\_\+utimes \+: 测试 utimes 函数 
+

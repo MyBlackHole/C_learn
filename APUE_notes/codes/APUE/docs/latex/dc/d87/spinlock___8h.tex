@@ -1,0 +1,130 @@
+\hypertarget{spinlock___8h}{}\section{src/11\+\_\+\+Thread/spinlock\+\_\+.h File Reference}
+\label{spinlock___8h}\index{src/11\+\_\+\+Thread/spinlock\+\_\+.\+h@{src/11\+\_\+\+Thread/spinlock\+\_\+.\+h}}
+{\ttfamily \#include $<$pthread.\+h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{spinlock___8h_a9ae77db140954fb5207715d1eb4adde9}{My\+\_\+pthread\+\_\+spin\+\_\+init} (pthread\+\_\+spinlock\+\_\+t $\ast$lock, int pshared)
+\begin{DoxyCompactList}\small\item\em My\+\_\+pthread\+\_\+spin\+\_\+init \+: 包装了 pthread\+\_\+spin\+\_\+init 函数 \end{DoxyCompactList}\item 
+int \hyperlink{spinlock___8h_ad5f55e3c33aae1f57e397ae4d020e2e0}{My\+\_\+pthread\+\_\+spin\+\_\+destroy} (pthread\+\_\+spinlock\+\_\+t $\ast$lock)
+\begin{DoxyCompactList}\small\item\em My\+\_\+pthread\+\_\+spin\+\_\+destroy \+: 包装了 pthread\+\_\+spin\+\_\+destroy 函数 \end{DoxyCompactList}\item 
+int \hyperlink{spinlock___8h_af2d041323ca90631883180b964253a73}{My\+\_\+pthread\+\_\+spin\+\_\+lock} (pthread\+\_\+spinlock\+\_\+t $\ast$lock)
+\begin{DoxyCompactList}\small\item\em My\+\_\+pthread\+\_\+spin\+\_\+lock \+: 包装了 pthread\+\_\+spin\+\_\+lock 函数 \end{DoxyCompactList}\item 
+int \hyperlink{spinlock___8h_a1a5e68b7e7f7c417429240deb94e94a4}{My\+\_\+pthread\+\_\+spin\+\_\+trylock} (pthread\+\_\+spinlock\+\_\+t $\ast$lock)
+\begin{DoxyCompactList}\small\item\em My\+\_\+pthread\+\_\+spin\+\_\+trylock \+: 包装了 pthread\+\_\+spin\+\_\+trylock 函数 \end{DoxyCompactList}\item 
+int \hyperlink{spinlock___8h_a6828b56029549f1ae35a955a4417195c}{My\+\_\+pthread\+\_\+spin\+\_\+unlock} (pthread\+\_\+spinlock\+\_\+t $\ast$lock)
+\begin{DoxyCompactList}\small\item\em My\+\_\+pthread\+\_\+spin\+\_\+unlock \+: 包装了 pthread\+\_\+spin\+\_\+unlock 函数 \end{DoxyCompactList}\item 
+void \hyperlink{spinlock___8h_ae8a95f05fd7b967fbfaba7ac1c6bf7b2}{test\+\_\+spinlock} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+spinlock \+: 测试 pthread\+\_\+spinlock\+\_\+t 相关函数的用法 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{spinlock\+\_\+.\+h@{spinlock\+\_\+.\+h}!My\+\_\+pthread\+\_\+spin\+\_\+destroy@{My\+\_\+pthread\+\_\+spin\+\_\+destroy}}
+\index{My\+\_\+pthread\+\_\+spin\+\_\+destroy@{My\+\_\+pthread\+\_\+spin\+\_\+destroy}!spinlock\+\_\+.\+h@{spinlock\+\_\+.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+pthread\+\_\+spin\+\_\+destroy(pthread\+\_\+spinlock\+\_\+t $\ast$lock)}{My_pthread_spin_destroy(pthread_spinlock_t *lock)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+pthread\+\_\+spin\+\_\+destroy (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+spinlock\+\_\+t $\ast$}]{lock}
+\end{DoxyParamCaption}
+)}\hypertarget{spinlock___8h_ad5f55e3c33aae1f57e397ae4d020e2e0}{}\label{spinlock___8h_ad5f55e3c33aae1f57e397ae4d020e2e0}
+
+
+My\+\_\+pthread\+\_\+spin\+\_\+destroy \+: 包装了 pthread\+\_\+spin\+\_\+destroy 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lock} & \+: 传递给 pthread\+\_\+spin\+\_\+destroy 函数的 lock 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 pthread\+\_\+spin\+\_\+destroy 函数的值 
+\end{DoxyReturn}
+\index{spinlock\+\_\+.\+h@{spinlock\+\_\+.\+h}!My\+\_\+pthread\+\_\+spin\+\_\+init@{My\+\_\+pthread\+\_\+spin\+\_\+init}}
+\index{My\+\_\+pthread\+\_\+spin\+\_\+init@{My\+\_\+pthread\+\_\+spin\+\_\+init}!spinlock\+\_\+.\+h@{spinlock\+\_\+.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+pthread\+\_\+spin\+\_\+init(pthread\+\_\+spinlock\+\_\+t $\ast$lock, int pshared)}{My_pthread_spin_init(pthread_spinlock_t *lock, int pshared)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+pthread\+\_\+spin\+\_\+init (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+spinlock\+\_\+t $\ast$}]{lock, }
+\item[{int}]{pshared}
+\end{DoxyParamCaption}
+)}\hypertarget{spinlock___8h_a9ae77db140954fb5207715d1eb4adde9}{}\label{spinlock___8h_a9ae77db140954fb5207715d1eb4adde9}
+
+
+My\+\_\+pthread\+\_\+spin\+\_\+init \+: 包装了 pthread\+\_\+spin\+\_\+init 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lock} & \+: 传递给 pthread\+\_\+spin\+\_\+init 函数的 lock 参数 \\
+\hline
+{\em pshared} & \+: 传递给 pthread\+\_\+spin\+\_\+init 函数的 pshared 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 pthread\+\_\+spin\+\_\+init 函数的值 
+\end{DoxyReturn}
+\index{spinlock\+\_\+.\+h@{spinlock\+\_\+.\+h}!My\+\_\+pthread\+\_\+spin\+\_\+lock@{My\+\_\+pthread\+\_\+spin\+\_\+lock}}
+\index{My\+\_\+pthread\+\_\+spin\+\_\+lock@{My\+\_\+pthread\+\_\+spin\+\_\+lock}!spinlock\+\_\+.\+h@{spinlock\+\_\+.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+pthread\+\_\+spin\+\_\+lock(pthread\+\_\+spinlock\+\_\+t $\ast$lock)}{My_pthread_spin_lock(pthread_spinlock_t *lock)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+pthread\+\_\+spin\+\_\+lock (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+spinlock\+\_\+t $\ast$}]{lock}
+\end{DoxyParamCaption}
+)}\hypertarget{spinlock___8h_af2d041323ca90631883180b964253a73}{}\label{spinlock___8h_af2d041323ca90631883180b964253a73}
+
+
+My\+\_\+pthread\+\_\+spin\+\_\+lock \+: 包装了 pthread\+\_\+spin\+\_\+lock 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lock} & \+: 传递给 pthread\+\_\+spin\+\_\+lock 函数的 lock 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 pthread\+\_\+spin\+\_\+lock 函数的值 
+\end{DoxyReturn}
+\index{spinlock\+\_\+.\+h@{spinlock\+\_\+.\+h}!My\+\_\+pthread\+\_\+spin\+\_\+trylock@{My\+\_\+pthread\+\_\+spin\+\_\+trylock}}
+\index{My\+\_\+pthread\+\_\+spin\+\_\+trylock@{My\+\_\+pthread\+\_\+spin\+\_\+trylock}!spinlock\+\_\+.\+h@{spinlock\+\_\+.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+pthread\+\_\+spin\+\_\+trylock(pthread\+\_\+spinlock\+\_\+t $\ast$lock)}{My_pthread_spin_trylock(pthread_spinlock_t *lock)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+pthread\+\_\+spin\+\_\+trylock (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+spinlock\+\_\+t $\ast$}]{lock}
+\end{DoxyParamCaption}
+)}\hypertarget{spinlock___8h_a1a5e68b7e7f7c417429240deb94e94a4}{}\label{spinlock___8h_a1a5e68b7e7f7c417429240deb94e94a4}
+
+
+My\+\_\+pthread\+\_\+spin\+\_\+trylock \+: 包装了 pthread\+\_\+spin\+\_\+trylock 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lock} & \+: 传递给 pthread\+\_\+spin\+\_\+trylock 函数的 lock 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 pthread\+\_\+spin\+\_\+trylock 函数的值 
+\end{DoxyReturn}
+\index{spinlock\+\_\+.\+h@{spinlock\+\_\+.\+h}!My\+\_\+pthread\+\_\+spin\+\_\+unlock@{My\+\_\+pthread\+\_\+spin\+\_\+unlock}}
+\index{My\+\_\+pthread\+\_\+spin\+\_\+unlock@{My\+\_\+pthread\+\_\+spin\+\_\+unlock}!spinlock\+\_\+.\+h@{spinlock\+\_\+.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+pthread\+\_\+spin\+\_\+unlock(pthread\+\_\+spinlock\+\_\+t $\ast$lock)}{My_pthread_spin_unlock(pthread_spinlock_t *lock)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+pthread\+\_\+spin\+\_\+unlock (
+\begin{DoxyParamCaption}
+\item[{pthread\+\_\+spinlock\+\_\+t $\ast$}]{lock}
+\end{DoxyParamCaption}
+)}\hypertarget{spinlock___8h_a6828b56029549f1ae35a955a4417195c}{}\label{spinlock___8h_a6828b56029549f1ae35a955a4417195c}
+
+
+My\+\_\+pthread\+\_\+spin\+\_\+unlock \+: 包装了 pthread\+\_\+spin\+\_\+unlock 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lock} & \+: 传递给 pthread\+\_\+spin\+\_\+unlock 函数的 lock 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 pthread\+\_\+spin\+\_\+unlock 函数的值 
+\end{DoxyReturn}
+\index{spinlock\+\_\+.\+h@{spinlock\+\_\+.\+h}!test\+\_\+spinlock@{test\+\_\+spinlock}}
+\index{test\+\_\+spinlock@{test\+\_\+spinlock}!spinlock\+\_\+.\+h@{spinlock\+\_\+.\+h}}
+\subsubsection[{\texorpdfstring{test\+\_\+spinlock()}{test_spinlock()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+spinlock (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{spinlock___8h_ae8a95f05fd7b967fbfaba7ac1c6bf7b2}{}\label{spinlock___8h_ae8a95f05fd7b967fbfaba7ac1c6bf7b2}
+
+
+test\+\_\+spinlock \+: 测试 pthread\+\_\+spinlock\+\_\+t 相关函数的用法 
+

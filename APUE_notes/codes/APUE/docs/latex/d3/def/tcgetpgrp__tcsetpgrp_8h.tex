@@ -1,0 +1,88 @@
+\hypertarget{tcgetpgrp__tcsetpgrp_8h}{}\section{src/9\+\_\+\+Progress\+\_\+\+Relation/tcgetpgrp\+\_\+tcsetpgrp.h File Reference}
+\label{tcgetpgrp__tcsetpgrp_8h}\index{src/9\+\_\+\+Progress\+\_\+\+Relation/tcgetpgrp\+\_\+tcsetpgrp.\+h@{src/9\+\_\+\+Progress\+\_\+\+Relation/tcgetpgrp\+\_\+tcsetpgrp.\+h}}
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+pid\+\_\+t \hyperlink{tcgetpgrp__tcsetpgrp_8h_a8a323b4afdc1ca11348510adb0abb812}{My\+\_\+tcgetpgrp} (int fd)
+\begin{DoxyCompactList}\small\item\em My\+\_\+tcgetpgrp \+: 包装了 tcgetpgrp 函数 \end{DoxyCompactList}\item 
+int \hyperlink{tcgetpgrp__tcsetpgrp_8h_a50aa1351c805854b96cbd7d87e818585}{My\+\_\+tcsetpgrp} (int fd, pid\+\_\+t pgrpid)
+\begin{DoxyCompactList}\small\item\em My\+\_\+tcsetpgrp \+: 包装了 tcsetpgrp 函数 \end{DoxyCompactList}\item 
+pid\+\_\+t \hyperlink{tcgetpgrp__tcsetpgrp_8h_ac6df6d1c3496c4d7c88e6bef25743aa7}{My\+\_\+tcgetsid} (int fd)
+\begin{DoxyCompactList}\small\item\em My\+\_\+tcgetsid \+: 包装了 tcgetsid 函数 \end{DoxyCompactList}\item 
+void \hyperlink{tcgetpgrp__tcsetpgrp_8h_a2ac804f3c628ddc10c52952eea53331c}{test\+\_\+tcgetpgrp\+\_\+tcsetpgrp} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+tcgetpgrp\+\_\+tcsetpgrp \+:测试 tcgetpgrp 函数、tcsetpgrp 函数、tcgetsid 函数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{tcgetpgrp\+\_\+tcsetpgrp.\+h@{tcgetpgrp\+\_\+tcsetpgrp.\+h}!My\+\_\+tcgetpgrp@{My\+\_\+tcgetpgrp}}
+\index{My\+\_\+tcgetpgrp@{My\+\_\+tcgetpgrp}!tcgetpgrp\+\_\+tcsetpgrp.\+h@{tcgetpgrp\+\_\+tcsetpgrp.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+tcgetpgrp(int fd)}{My_tcgetpgrp(int fd)}}]{\setlength{\rightskip}{0pt plus 5cm}pid\+\_\+t My\+\_\+tcgetpgrp (
+\begin{DoxyParamCaption}
+\item[{int}]{fd}
+\end{DoxyParamCaption}
+)}\hypertarget{tcgetpgrp__tcsetpgrp_8h_a8a323b4afdc1ca11348510adb0abb812}{}\label{tcgetpgrp__tcsetpgrp_8h_a8a323b4afdc1ca11348510adb0abb812}
+
+
+My\+\_\+tcgetpgrp \+: 包装了 tcgetpgrp 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fd} & \+: 传递了 tcgetpgrp 函数的 fd 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回了 tcgetpgrp 函数的值 
+\end{DoxyReturn}
+\index{tcgetpgrp\+\_\+tcsetpgrp.\+h@{tcgetpgrp\+\_\+tcsetpgrp.\+h}!My\+\_\+tcgetsid@{My\+\_\+tcgetsid}}
+\index{My\+\_\+tcgetsid@{My\+\_\+tcgetsid}!tcgetpgrp\+\_\+tcsetpgrp.\+h@{tcgetpgrp\+\_\+tcsetpgrp.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+tcgetsid(int fd)}{My_tcgetsid(int fd)}}]{\setlength{\rightskip}{0pt plus 5cm}pid\+\_\+t My\+\_\+tcgetsid (
+\begin{DoxyParamCaption}
+\item[{int}]{fd}
+\end{DoxyParamCaption}
+)}\hypertarget{tcgetpgrp__tcsetpgrp_8h_ac6df6d1c3496c4d7c88e6bef25743aa7}{}\label{tcgetpgrp__tcsetpgrp_8h_ac6df6d1c3496c4d7c88e6bef25743aa7}
+
+
+My\+\_\+tcgetsid \+: 包装了 tcgetsid 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fd} & \+: 传递了 tcgetsid 函数的 fd 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回了 tcgetsid 函数的值 
+\end{DoxyReturn}
+\index{tcgetpgrp\+\_\+tcsetpgrp.\+h@{tcgetpgrp\+\_\+tcsetpgrp.\+h}!My\+\_\+tcsetpgrp@{My\+\_\+tcsetpgrp}}
+\index{My\+\_\+tcsetpgrp@{My\+\_\+tcsetpgrp}!tcgetpgrp\+\_\+tcsetpgrp.\+h@{tcgetpgrp\+\_\+tcsetpgrp.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+tcsetpgrp(int fd, pid\+\_\+t pgrpid)}{My_tcsetpgrp(int fd, pid_t pgrpid)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+tcsetpgrp (
+\begin{DoxyParamCaption}
+\item[{int}]{fd, }
+\item[{pid\+\_\+t}]{pgrpid}
+\end{DoxyParamCaption}
+)}\hypertarget{tcgetpgrp__tcsetpgrp_8h_a50aa1351c805854b96cbd7d87e818585}{}\label{tcgetpgrp__tcsetpgrp_8h_a50aa1351c805854b96cbd7d87e818585}
+
+
+My\+\_\+tcsetpgrp \+: 包装了 tcsetpgrp 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fd} & \+: 传递了 tcsetpgrp 函数的 fd 参数 \\
+\hline
+{\em pgrpid} & \+: 传递了 tcsetpgrp 函数的pgrpid 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回了 tcsetpgrp 函数的值 
+\end{DoxyReturn}
+\index{tcgetpgrp\+\_\+tcsetpgrp.\+h@{tcgetpgrp\+\_\+tcsetpgrp.\+h}!test\+\_\+tcgetpgrp\+\_\+tcsetpgrp@{test\+\_\+tcgetpgrp\+\_\+tcsetpgrp}}
+\index{test\+\_\+tcgetpgrp\+\_\+tcsetpgrp@{test\+\_\+tcgetpgrp\+\_\+tcsetpgrp}!tcgetpgrp\+\_\+tcsetpgrp.\+h@{tcgetpgrp\+\_\+tcsetpgrp.\+h}}
+\subsubsection[{\texorpdfstring{test\+\_\+tcgetpgrp\+\_\+tcsetpgrp()}{test_tcgetpgrp_tcsetpgrp()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+tcgetpgrp\+\_\+tcsetpgrp (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{tcgetpgrp__tcsetpgrp_8h_a2ac804f3c628ddc10c52952eea53331c}{}\label{tcgetpgrp__tcsetpgrp_8h_a2ac804f3c628ddc10c52952eea53331c}
+
+
+test\+\_\+tcgetpgrp\+\_\+tcsetpgrp \+:测试 tcgetpgrp 函数、tcsetpgrp 函数、tcgetsid 函数 
+

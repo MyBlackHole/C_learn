@@ -1,0 +1,208 @@
+\hypertarget{sleep__nanosleep_8c}{}\section{src/10\+\_\+\+Signal/sleep\+\_\+nanosleep.c File Reference}
+\label{sleep__nanosleep_8c}\index{src/10\+\_\+\+Signal/sleep\+\_\+nanosleep.\+c@{src/10\+\_\+\+Signal/sleep\+\_\+nanosleep.\+c}}
+{\ttfamily \#include \char`\"{}sleep\+\_\+nanosleep.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../header.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include $<$signal.\+h$>$}\\*
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef void \hyperlink{sleep__nanosleep_8c_a41f7fa3cd174bb624d8b38ed224ab7d6}{Hanlder\+\_\+\+Func}(int signo, siginfo\+\_\+t $\ast$info, void $\ast$context)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{sleep__nanosleep_8c_aec229dbc1924b697e5e6b55d598399ed}{add\+\_\+sigaction} (int signo, sigset\+\_\+t $\ast$set, int no\+\_\+deffer, int restart, \hyperlink{sleep__nanosleep_8c_a41f7fa3cd174bb624d8b38ed224ab7d6}{Hanlder\+\_\+\+Func} handler)
+\begin{DoxyCompactList}\small\item\em add\+\_\+sigaction \+: 添加信号处理函数 \end{DoxyCompactList}\item 
+void \hyperlink{sleep__nanosleep_8c_a0bd76e6d502075e830f62080f42f1a76}{print\+\_\+pid} ()
+\item 
+void \hyperlink{sleep__nanosleep_8c_a2781199e9afe7ddf4d7a8bf1034b17af}{print\+\_\+parent\+\_\+pid} ()
+\item 
+void \hyperlink{sleep__nanosleep_8c_aa863bed5e7fc54e1518675efcf72f855}{check\+\_\+waitpid\+\_\+signal} ()
+\item 
+unsigned int \hyperlink{sleep__nanosleep_8c_a175f397986474ef88e25d3c41d27f73a}{My\+\_\+sleep} (unsigned int seconds)
+\begin{DoxyCompactList}\small\item\em My\+\_\+sleep \+: 包装了 sleep 函数 \end{DoxyCompactList}\item 
+int \hyperlink{sleep__nanosleep_8c_a4c6c6391eef76bbe6c5deec5feaefde2}{My\+\_\+nanosleep} (const struct timespec $\ast$reqtp, struct timespec $\ast$remtp)
+\begin{DoxyCompactList}\small\item\em My\+\_\+nanosleep \+: 包装了 nanosleep 函数 \end{DoxyCompactList}\item 
+int \hyperlink{sleep__nanosleep_8c_ae5487253a04ff7383a133d6111ef949b}{My\+\_\+clock\+\_\+nanosleep} (clockid\+\_\+t clock\+\_\+id, int flags, const struct timespec $\ast$reqtp, struct timespec $\ast$remtp)
+\begin{DoxyCompactList}\small\item\em My\+\_\+clock\+\_\+nanosleep \+: 包装了 clock\+\_\+nanosleep 函数 \end{DoxyCompactList}\item 
+static void \hyperlink{sleep__nanosleep_8c_aab33dde15dc4bfdfa3410f3dd9af4a57}{sig\+\_\+print} (int signo, siginfo\+\_\+t $\ast$info, void $\ast$context)
+\begin{DoxyCompactList}\small\item\em sig\+\_\+print \+: 信号处理函数 \end{DoxyCompactList}\item 
+static pid\+\_\+t \hyperlink{sleep__nanosleep_8c_a91d22fdab508ae9804eb76d15237da6b}{create\+\_\+child} ()
+\begin{DoxyCompactList}\small\item\em create\+\_\+child \+: 创建子进程 \end{DoxyCompactList}\item 
+void \hyperlink{sleep__nanosleep_8c_a3a839b24ee2019f262349bd6b8074e07}{test\+\_\+sleep\+\_\+nanosleep} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+sleep\+\_\+nanosleep \+:测试 sleep 函数、 nano\+\_\+sleep 函数、 clock\+\_\+nanosleep 函数的用法 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\index{sleep\+\_\+nanosleep.\+c@{sleep\+\_\+nanosleep.\+c}!Hanlder\+\_\+\+Func@{Hanlder\+\_\+\+Func}}
+\index{Hanlder\+\_\+\+Func@{Hanlder\+\_\+\+Func}!sleep\+\_\+nanosleep.\+c@{sleep\+\_\+nanosleep.\+c}}
+\subsubsection[{\texorpdfstring{Hanlder\+\_\+\+Func}{Hanlder_Func}}]{\setlength{\rightskip}{0pt plus 5cm}typedef void Hanlder\+\_\+\+Func(int signo, siginfo\+\_\+t $\ast$info, void $\ast$context)}\hypertarget{sleep__nanosleep_8c_a41f7fa3cd174bb624d8b38ed224ab7d6}{}\label{sleep__nanosleep_8c_a41f7fa3cd174bb624d8b38ed224ab7d6}
+
+
+\subsection{Function Documentation}
+\index{sleep\+\_\+nanosleep.\+c@{sleep\+\_\+nanosleep.\+c}!add\+\_\+sigaction@{add\+\_\+sigaction}}
+\index{add\+\_\+sigaction@{add\+\_\+sigaction}!sleep\+\_\+nanosleep.\+c@{sleep\+\_\+nanosleep.\+c}}
+\subsubsection[{\texorpdfstring{add\+\_\+sigaction(int signo, sigset\+\_\+t $\ast$set, int no\+\_\+deffer, int restart, Hanlder\+\_\+\+Func handler)}{add_sigaction(int signo, sigset_t *set, int no_deffer, int restart, Hanlder_Func handler)}}]{\setlength{\rightskip}{0pt plus 5cm}void add\+\_\+sigaction (
+\begin{DoxyParamCaption}
+\item[{int}]{signo, }
+\item[{sigset\+\_\+t $\ast$}]{set, }
+\item[{int}]{no\+\_\+deffer, }
+\item[{int}]{restart, }
+\item[{{\bf Hanlder\+\_\+\+Func}}]{handler}
+\end{DoxyParamCaption}
+)}\hypertarget{sleep__nanosleep_8c_aec229dbc1924b697e5e6b55d598399ed}{}\label{sleep__nanosleep_8c_aec229dbc1924b697e5e6b55d598399ed}
+
+
+add\+\_\+sigaction \+: 添加信号处理函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em signo} & \+: 信号值 \\
+\hline
+{\em set} & \+: 指向 sigset\+\_\+t 的指针 \\
+\hline
+{\em no\+\_\+deffer} & \+: 非 0 则表示在执行其信号处理函数时，系统并不自动阻塞此信号 \\
+\hline
+{\em restart} & \+: 为 0 表示不自动重启中断的系统调用；非0表示自动重启被中断的系统 \\
+\hline
+{\em handler} & \+: 信号处理函数 \\
+\hline
+\end{DoxyParams}
+\index{sleep\+\_\+nanosleep.\+c@{sleep\+\_\+nanosleep.\+c}!check\+\_\+waitpid\+\_\+signal@{check\+\_\+waitpid\+\_\+signal}}
+\index{check\+\_\+waitpid\+\_\+signal@{check\+\_\+waitpid\+\_\+signal}!sleep\+\_\+nanosleep.\+c@{sleep\+\_\+nanosleep.\+c}}
+\subsubsection[{\texorpdfstring{check\+\_\+waitpid\+\_\+signal()}{check_waitpid_signal()}}]{\setlength{\rightskip}{0pt plus 5cm}void check\+\_\+waitpid\+\_\+signal (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{sleep__nanosleep_8c_aa863bed5e7fc54e1518675efcf72f855}{}\label{sleep__nanosleep_8c_aa863bed5e7fc54e1518675efcf72f855}
+\index{sleep\+\_\+nanosleep.\+c@{sleep\+\_\+nanosleep.\+c}!create\+\_\+child@{create\+\_\+child}}
+\index{create\+\_\+child@{create\+\_\+child}!sleep\+\_\+nanosleep.\+c@{sleep\+\_\+nanosleep.\+c}}
+\subsubsection[{\texorpdfstring{create\+\_\+child()}{create_child()}}]{\setlength{\rightskip}{0pt plus 5cm}static pid\+\_\+t create\+\_\+child (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{sleep__nanosleep_8c_a91d22fdab508ae9804eb76d15237da6b}{}\label{sleep__nanosleep_8c_a91d22fdab508ae9804eb76d15237da6b}
+
+
+create\+\_\+child \+: 创建子进程 
+
+\begin{DoxyReturn}{Returns}
+\+: fork 的返回值 
+\end{DoxyReturn}
+\index{sleep\+\_\+nanosleep.\+c@{sleep\+\_\+nanosleep.\+c}!My\+\_\+clock\+\_\+nanosleep@{My\+\_\+clock\+\_\+nanosleep}}
+\index{My\+\_\+clock\+\_\+nanosleep@{My\+\_\+clock\+\_\+nanosleep}!sleep\+\_\+nanosleep.\+c@{sleep\+\_\+nanosleep.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+clock\+\_\+nanosleep(clockid\+\_\+t clock\+\_\+id, int flags, const struct timespec $\ast$reqtp, struct timespec $\ast$remtp)}{My_clock_nanosleep(clockid_t clock_id, int flags, const struct timespec *reqtp, struct timespec *remtp)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+clock\+\_\+nanosleep (
+\begin{DoxyParamCaption}
+\item[{clockid\+\_\+t}]{clock\+\_\+id, }
+\item[{int}]{flags, }
+\item[{const struct timespec $\ast$}]{reqtp, }
+\item[{struct timespec $\ast$}]{remtp}
+\end{DoxyParamCaption}
+)}\hypertarget{sleep__nanosleep_8c_ae5487253a04ff7383a133d6111ef949b}{}\label{sleep__nanosleep_8c_ae5487253a04ff7383a133d6111ef949b}
+
+
+My\+\_\+clock\+\_\+nanosleep \+: 包装了 clock\+\_\+nanosleep 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em clock\+\_\+id} & \+: 传递给 clock\+\_\+nanosleep 函数的 clock\+\_\+id 参数 \\
+\hline
+{\em flags} & \+: 传递给 clock\+\_\+nanosleep 函数的 flags 参数 \\
+\hline
+{\em reqtp} & \+: 传递给 clock\+\_\+nanosleep 函数的 reqtp 参数 \\
+\hline
+{\em remtp} & \+: 传递给 clock\+\_\+nanosleep 函数的 remtp 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 clock\+\_\+nanosleep 函数的值 
+\end{DoxyReturn}
+\index{sleep\+\_\+nanosleep.\+c@{sleep\+\_\+nanosleep.\+c}!My\+\_\+nanosleep@{My\+\_\+nanosleep}}
+\index{My\+\_\+nanosleep@{My\+\_\+nanosleep}!sleep\+\_\+nanosleep.\+c@{sleep\+\_\+nanosleep.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+nanosleep(const struct timespec $\ast$reqtp, struct timespec $\ast$remtp)}{My_nanosleep(const struct timespec *reqtp, struct timespec *remtp)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+nanosleep (
+\begin{DoxyParamCaption}
+\item[{const struct timespec $\ast$}]{reqtp, }
+\item[{struct timespec $\ast$}]{remtp}
+\end{DoxyParamCaption}
+)}\hypertarget{sleep__nanosleep_8c_a4c6c6391eef76bbe6c5deec5feaefde2}{}\label{sleep__nanosleep_8c_a4c6c6391eef76bbe6c5deec5feaefde2}
+
+
+My\+\_\+nanosleep \+: 包装了 nanosleep 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reqtp} & \+: 传递给 nanosleep 函数的 reqtp 参数 \\
+\hline
+{\em remtp} & \+: 传递给 nanosleep 函数的 remtp 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 nanosleep 函数的值 
+\end{DoxyReturn}
+\index{sleep\+\_\+nanosleep.\+c@{sleep\+\_\+nanosleep.\+c}!My\+\_\+sleep@{My\+\_\+sleep}}
+\index{My\+\_\+sleep@{My\+\_\+sleep}!sleep\+\_\+nanosleep.\+c@{sleep\+\_\+nanosleep.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+sleep(unsigned int seconds)}{My_sleep(unsigned int seconds)}}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int My\+\_\+sleep (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{seconds}
+\end{DoxyParamCaption}
+)}\hypertarget{sleep__nanosleep_8c_a175f397986474ef88e25d3c41d27f73a}{}\label{sleep__nanosleep_8c_a175f397986474ef88e25d3c41d27f73a}
+
+
+My\+\_\+sleep \+: 包装了 sleep 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em seconds} & \+: 传递给 sleep 函数的 seconds 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 sleep 函数的值 
+\end{DoxyReturn}
+\index{sleep\+\_\+nanosleep.\+c@{sleep\+\_\+nanosleep.\+c}!print\+\_\+parent\+\_\+pid@{print\+\_\+parent\+\_\+pid}}
+\index{print\+\_\+parent\+\_\+pid@{print\+\_\+parent\+\_\+pid}!sleep\+\_\+nanosleep.\+c@{sleep\+\_\+nanosleep.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+parent\+\_\+pid()}{print_parent_pid()}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+parent\+\_\+pid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{sleep__nanosleep_8c_a2781199e9afe7ddf4d7a8bf1034b17af}{}\label{sleep__nanosleep_8c_a2781199e9afe7ddf4d7a8bf1034b17af}
+\index{sleep\+\_\+nanosleep.\+c@{sleep\+\_\+nanosleep.\+c}!print\+\_\+pid@{print\+\_\+pid}}
+\index{print\+\_\+pid@{print\+\_\+pid}!sleep\+\_\+nanosleep.\+c@{sleep\+\_\+nanosleep.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+pid()}{print_pid()}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+pid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{sleep__nanosleep_8c_a0bd76e6d502075e830f62080f42f1a76}{}\label{sleep__nanosleep_8c_a0bd76e6d502075e830f62080f42f1a76}
+\index{sleep\+\_\+nanosleep.\+c@{sleep\+\_\+nanosleep.\+c}!sig\+\_\+print@{sig\+\_\+print}}
+\index{sig\+\_\+print@{sig\+\_\+print}!sleep\+\_\+nanosleep.\+c@{sleep\+\_\+nanosleep.\+c}}
+\subsubsection[{\texorpdfstring{sig\+\_\+print(int signo, siginfo\+\_\+t $\ast$info, void $\ast$context)}{sig_print(int signo, siginfo_t *info, void *context)}}]{\setlength{\rightskip}{0pt plus 5cm}static void sig\+\_\+print (
+\begin{DoxyParamCaption}
+\item[{int}]{signo, }
+\item[{siginfo\+\_\+t $\ast$}]{info, }
+\item[{void $\ast$}]{context}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{sleep__nanosleep_8c_aab33dde15dc4bfdfa3410f3dd9af4a57}{}\label{sleep__nanosleep_8c_aab33dde15dc4bfdfa3410f3dd9af4a57}
+
+
+sig\+\_\+print \+: 信号处理函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em signo} & \+: 信号值 \\
+\hline
+{\em info} & \+: 指向 siginfo\+\_\+t 的指针 \\
+\hline
+{\em context} & \+: 指向 ucontext\+\_\+t $\ast$ 的指针 \\
+\hline
+\end{DoxyParams}
+\index{sleep\+\_\+nanosleep.\+c@{sleep\+\_\+nanosleep.\+c}!test\+\_\+sleep\+\_\+nanosleep@{test\+\_\+sleep\+\_\+nanosleep}}
+\index{test\+\_\+sleep\+\_\+nanosleep@{test\+\_\+sleep\+\_\+nanosleep}!sleep\+\_\+nanosleep.\+c@{sleep\+\_\+nanosleep.\+c}}
+\subsubsection[{\texorpdfstring{test\+\_\+sleep\+\_\+nanosleep()}{test_sleep_nanosleep()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+sleep\+\_\+nanosleep (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{sleep__nanosleep_8c_a3a839b24ee2019f262349bd6b8074e07}{}\label{sleep__nanosleep_8c_a3a839b24ee2019f262349bd6b8074e07}
+
+
+test\+\_\+sleep\+\_\+nanosleep \+:测试 sleep 函数、 nano\+\_\+sleep 函数、 clock\+\_\+nanosleep 函数的用法 
+

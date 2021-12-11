@@ -1,0 +1,82 @@
+\hypertarget{progress__times___8h}{}\section{src/8\+\_\+\+Progress\+\_\+\+Control/progress\+\_\+times\+\_\+.h File Reference}
+\label{progress__times___8h}\index{src/8\+\_\+\+Progress\+\_\+\+Control/progress\+\_\+times\+\_\+.\+h@{src/8\+\_\+\+Progress\+\_\+\+Control/progress\+\_\+times\+\_\+.\+h}}
+{\ttfamily \#include $<$sys/times.\+h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+clock\+\_\+t \hyperlink{progress__times___8h_a8f23a46ddb2e49268d07baa781e414c7}{My\+\_\+times} (struct tms $\ast$\hyperlink{setjmp__longjmp_8c_a02df3e2f0291bf06f3a685829975efec}{buf})
+\begin{DoxyCompactList}\small\item\em My\+\_\+times \+: 包装了 times 函数 \end{DoxyCompactList}\item 
+long \hyperlink{progress__times___8h_a63071159f3fc2f9e7768f02acc347f31}{clock\+\_\+2\+\_\+second} (clock\+\_\+t clk)
+\begin{DoxyCompactList}\small\item\em clock\+\_\+2\+\_\+second \+: 将 clock\+\_\+t 转换成秒 \end{DoxyCompactList}\item 
+void \hyperlink{progress__times___8h_a53da4b9334f765ddbc27a5caa42fba25}{print\+\_\+struct\+\_\+tms} (const struct tms $\ast$tm)
+\begin{DoxyCompactList}\small\item\em print\+\_\+tms ： 打印 struct tms 结构 \end{DoxyCompactList}\item 
+void \hyperlink{progress__times___8h_ac3e6327f3edce1f477c85f80aa0be6e5}{test\+\_\+progress\+\_\+times} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+times \+: 测试 times 函数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{progress\+\_\+times\+\_\+.\+h@{progress\+\_\+times\+\_\+.\+h}!clock\+\_\+2\+\_\+second@{clock\+\_\+2\+\_\+second}}
+\index{clock\+\_\+2\+\_\+second@{clock\+\_\+2\+\_\+second}!progress\+\_\+times\+\_\+.\+h@{progress\+\_\+times\+\_\+.\+h}}
+\subsubsection[{\texorpdfstring{clock\+\_\+2\+\_\+second(clock\+\_\+t clk)}{clock_2_second(clock_t clk)}}]{\setlength{\rightskip}{0pt plus 5cm}long clock\+\_\+2\+\_\+second (
+\begin{DoxyParamCaption}
+\item[{clock\+\_\+t}]{clk}
+\end{DoxyParamCaption}
+)}\hypertarget{progress__times___8h_a63071159f3fc2f9e7768f02acc347f31}{}\label{progress__times___8h_a63071159f3fc2f9e7768f02acc347f31}
+
+
+clock\+\_\+2\+\_\+second \+: 将 clock\+\_\+t 转换成秒 
+
+
+\begin{DoxyParams}{Parameters}
+{\em clk} & \+: clock\+\_\+t 数量 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+： 对应的秒数 
+\end{DoxyReturn}
+\index{progress\+\_\+times\+\_\+.\+h@{progress\+\_\+times\+\_\+.\+h}!My\+\_\+times@{My\+\_\+times}}
+\index{My\+\_\+times@{My\+\_\+times}!progress\+\_\+times\+\_\+.\+h@{progress\+\_\+times\+\_\+.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+times(struct tms $\ast$buf)}{My_times(struct tms *buf)}}]{\setlength{\rightskip}{0pt plus 5cm}clock\+\_\+t My\+\_\+times (
+\begin{DoxyParamCaption}
+\item[{struct tms $\ast$}]{buf}
+\end{DoxyParamCaption}
+)}\hypertarget{progress__times___8h_a8f23a46ddb2e49268d07baa781e414c7}{}\label{progress__times___8h_a8f23a46ddb2e49268d07baa781e414c7}
+
+
+My\+\_\+times \+: 包装了 times 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buf} & \+: 传递给 times 函数的参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 times 函数的值 
+\end{DoxyReturn}
+\index{progress\+\_\+times\+\_\+.\+h@{progress\+\_\+times\+\_\+.\+h}!print\+\_\+struct\+\_\+tms@{print\+\_\+struct\+\_\+tms}}
+\index{print\+\_\+struct\+\_\+tms@{print\+\_\+struct\+\_\+tms}!progress\+\_\+times\+\_\+.\+h@{progress\+\_\+times\+\_\+.\+h}}
+\subsubsection[{\texorpdfstring{print\+\_\+struct\+\_\+tms(const struct tms $\ast$tm)}{print_struct_tms(const struct tms *tm)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+struct\+\_\+tms (
+\begin{DoxyParamCaption}
+\item[{const struct tms $\ast$}]{tm}
+\end{DoxyParamCaption}
+)}\hypertarget{progress__times___8h_a53da4b9334f765ddbc27a5caa42fba25}{}\label{progress__times___8h_a53da4b9334f765ddbc27a5caa42fba25}
+
+
+print\+\_\+tms ： 打印 struct tms 结构 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tm} & \+: struct ms 的指针 \\
+\hline
+\end{DoxyParams}
+\index{progress\+\_\+times\+\_\+.\+h@{progress\+\_\+times\+\_\+.\+h}!test\+\_\+progress\+\_\+times@{test\+\_\+progress\+\_\+times}}
+\index{test\+\_\+progress\+\_\+times@{test\+\_\+progress\+\_\+times}!progress\+\_\+times\+\_\+.\+h@{progress\+\_\+times\+\_\+.\+h}}
+\subsubsection[{\texorpdfstring{test\+\_\+progress\+\_\+times()}{test_progress_times()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+progress\+\_\+times (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{progress__times___8h_ac3e6327f3edce1f477c85f80aa0be6e5}{}\label{progress__times___8h_ac3e6327f3edce1f477c85f80aa0be6e5}
+
+
+test\+\_\+times \+: 测试 times 函数 
+

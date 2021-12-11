@@ -1,7 +1,7 @@
 group("default"){
   deps = [
-    "//net_learn/chap-5:tcp_server",
-    "//net_learn/chap-5:tcpclient",
+    # "//net_learn/chap-5:tcp_server",
+    # "//net_learn/chap-5:tcpclient",
 
     "//ucontext_learn:main_test",
 
@@ -77,6 +77,8 @@ group("default"){
     "//string_learn:memset_test",
     "//string_learn:memmove_test",
 
+    "//strings_learn:strcasecmp_test",
+
     "//stdlib_learn:getenv_test",
     "//stdlib_learn:mkstemp_test",
     "//stdlib_learn:atexit_test",
@@ -89,6 +91,8 @@ group("default"){
     "//stdlib_learn:malloc_test",
     "//stdlib_learn:realloc_test",
 
+
+    "//unistd_learn:fork5_test",
     "//unistd_learn:sleep_test1",
     "//unistd_learn:sleep_test",
     "//unistd_learn:getpid_test",
@@ -117,6 +121,8 @@ group("default"){
     "//stdio_learn:tmpfile_test",
     "//stdio_learn:fopen1_test",
 
+    "//signal_learn:sigemptyset_test",
+    "//signal_learn:signal4_test",
     "//signal_learn:signal_test",
     "//signal_learn:signal1_test",
     "//signal_learn:sigaction_test",

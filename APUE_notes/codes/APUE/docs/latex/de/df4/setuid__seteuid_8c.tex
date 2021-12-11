@@ -1,0 +1,197 @@
+\hypertarget{setuid__seteuid_8c}{}\section{src/8\+\_\+\+Progress\+\_\+\+Control/setuid\+\_\+seteuid.c File Reference}
+\label{setuid__seteuid_8c}\index{src/8\+\_\+\+Progress\+\_\+\+Control/setuid\+\_\+seteuid.\+c@{src/8\+\_\+\+Progress\+\_\+\+Control/setuid\+\_\+seteuid.\+c}}
+{\ttfamily \#include \char`\"{}../header.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}./setuid\+\_\+seteuid.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$pwd.\+h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{setuid__seteuid_8c_aabd6345d192abbb95693c0563d3f84db}{print\+\_\+uid} ()
+\begin{DoxyCompactList}\small\item\em print\+\_\+uid \+: 打印进程的用户 id \end{DoxyCompactList}\item 
+void \hyperlink{setuid__seteuid_8c_a9cfa6332c24190e5de869f98b4d541ee}{print\+\_\+gid} ()
+\begin{DoxyCompactList}\small\item\em print\+\_\+gid \+: 打印进程的组 id \end{DoxyCompactList}\item 
+void \hyperlink{setuid__seteuid_8c_a409626e3f05ca9e6c3f714510643ce8c}{print\+\_\+euid} ()
+\begin{DoxyCompactList}\small\item\em print\+\_\+euid \+: 打印进程的有效用户 id \end{DoxyCompactList}\item 
+void \hyperlink{setuid__seteuid_8c_ae4ca0c892235488e04815e288d515035}{print\+\_\+egid} ()
+\begin{DoxyCompactList}\small\item\em print\+\_\+egid \+: 打印进程的有效组 id \end{DoxyCompactList}\item 
+struct passwd $\ast$ \hyperlink{setuid__seteuid_8c_a012ab94dd14d92e15769149395934df3}{My\+\_\+getpwnam} (const char $\ast$name)
+\begin{DoxyCompactList}\small\item\em My\+\_\+getpwnam ： 包装了 getpwnam 函数 \end{DoxyCompactList}\item 
+int \hyperlink{setuid__seteuid_8c_abd5da21cb451b41e2bfb531f14e225af}{My\+\_\+setuid} (uid\+\_\+t uid)
+\begin{DoxyCompactList}\small\item\em My\+\_\+setuid \+: 包装了 etuid 函数 \end{DoxyCompactList}\item 
+int \hyperlink{setuid__seteuid_8c_aba517625baa2b2fdddc45edfaaa854e8}{My\+\_\+seteuid} (uid\+\_\+t uid)
+\begin{DoxyCompactList}\small\item\em My\+\_\+seteuid \+: 包装了 seteuid 函数 \end{DoxyCompactList}\item 
+int \hyperlink{setuid__seteuid_8c_afece0438678297982919f46aaa7ffd5e}{My\+\_\+setgid} (gid\+\_\+t gid)
+\begin{DoxyCompactList}\small\item\em My\+\_\+setgid \+: 包装了 setgid 函数 \end{DoxyCompactList}\item 
+int \hyperlink{setuid__seteuid_8c_ad48de61abb5863bdab4970ab54a17715}{My\+\_\+setegid} (gid\+\_\+t gid)
+\begin{DoxyCompactList}\small\item\em My\+\_\+setegid \+: 包装了 setegid 函数 \end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{setuid__seteuid_8c_a4b0fbc5cd8f76c4ac86937e4e69759f5}{My\+\_\+getlogin} ()
+\begin{DoxyCompactList}\small\item\em My\+\_\+getlogin \+: 包装了 getlogin 函数 \end{DoxyCompactList}\item 
+void \hyperlink{setuid__seteuid_8c_adc75d8ea1b34cf0af7b83e7914fb0ed6}{test\+\_\+setuid\+\_\+seteuid} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+setuid\+\_\+seteuid \+: 测试 setuid/seteuid/setgid/setegid/getlogin 等函数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{setuid\+\_\+seteuid.\+c@{setuid\+\_\+seteuid.\+c}!My\+\_\+getlogin@{My\+\_\+getlogin}}
+\index{My\+\_\+getlogin@{My\+\_\+getlogin}!setuid\+\_\+seteuid.\+c@{setuid\+\_\+seteuid.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+getlogin()}{My_getlogin()}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ My\+\_\+getlogin (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{setuid__seteuid_8c_a4b0fbc5cd8f76c4ac86937e4e69759f5}{}\label{setuid__seteuid_8c_a4b0fbc5cd8f76c4ac86937e4e69759f5}
+
+
+My\+\_\+getlogin \+: 包装了 getlogin 函数 
+
+\begin{DoxyReturn}{Returns}
+\+: 返回 getlogin 函数的值 
+\end{DoxyReturn}
+\index{setuid\+\_\+seteuid.\+c@{setuid\+\_\+seteuid.\+c}!My\+\_\+getpwnam@{My\+\_\+getpwnam}}
+\index{My\+\_\+getpwnam@{My\+\_\+getpwnam}!setuid\+\_\+seteuid.\+c@{setuid\+\_\+seteuid.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+getpwnam(const char $\ast$name)}{My_getpwnam(const char *name)}}]{\setlength{\rightskip}{0pt plus 5cm}struct passwd$\ast$ My\+\_\+getpwnam (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{name}
+\end{DoxyParamCaption}
+)}\hypertarget{setuid__seteuid_8c_a012ab94dd14d92e15769149395934df3}{}\label{setuid__seteuid_8c_a012ab94dd14d92e15769149395934df3}
+
+
+My\+\_\+getpwnam ： 包装了 getpwnam 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \+: 传递给 getpwnam 函数的 name 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 getpwnam 函数的值 
+\end{DoxyReturn}
+\index{setuid\+\_\+seteuid.\+c@{setuid\+\_\+seteuid.\+c}!My\+\_\+setegid@{My\+\_\+setegid}}
+\index{My\+\_\+setegid@{My\+\_\+setegid}!setuid\+\_\+seteuid.\+c@{setuid\+\_\+seteuid.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+setegid(gid\+\_\+t gid)}{My_setegid(gid_t gid)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+setegid (
+\begin{DoxyParamCaption}
+\item[{gid\+\_\+t}]{gid}
+\end{DoxyParamCaption}
+)}\hypertarget{setuid__seteuid_8c_ad48de61abb5863bdab4970ab54a17715}{}\label{setuid__seteuid_8c_ad48de61abb5863bdab4970ab54a17715}
+
+
+My\+\_\+setegid \+: 包装了 setegid 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em gid} & \+: 传递给 setegid 函数的 gid 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 setegid 函数的值 
+\end{DoxyReturn}
+\index{setuid\+\_\+seteuid.\+c@{setuid\+\_\+seteuid.\+c}!My\+\_\+seteuid@{My\+\_\+seteuid}}
+\index{My\+\_\+seteuid@{My\+\_\+seteuid}!setuid\+\_\+seteuid.\+c@{setuid\+\_\+seteuid.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+seteuid(uid\+\_\+t uid)}{My_seteuid(uid_t uid)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+seteuid (
+\begin{DoxyParamCaption}
+\item[{uid\+\_\+t}]{uid}
+\end{DoxyParamCaption}
+)}\hypertarget{setuid__seteuid_8c_aba517625baa2b2fdddc45edfaaa854e8}{}\label{setuid__seteuid_8c_aba517625baa2b2fdddc45edfaaa854e8}
+
+
+My\+\_\+seteuid \+: 包装了 seteuid 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em uid} & \+: 传递给 seteuid 函数的 uid 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 seteuid 函数的值 
+\end{DoxyReturn}
+\index{setuid\+\_\+seteuid.\+c@{setuid\+\_\+seteuid.\+c}!My\+\_\+setgid@{My\+\_\+setgid}}
+\index{My\+\_\+setgid@{My\+\_\+setgid}!setuid\+\_\+seteuid.\+c@{setuid\+\_\+seteuid.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+setgid(gid\+\_\+t gid)}{My_setgid(gid_t gid)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+setgid (
+\begin{DoxyParamCaption}
+\item[{gid\+\_\+t}]{gid}
+\end{DoxyParamCaption}
+)}\hypertarget{setuid__seteuid_8c_afece0438678297982919f46aaa7ffd5e}{}\label{setuid__seteuid_8c_afece0438678297982919f46aaa7ffd5e}
+
+
+My\+\_\+setgid \+: 包装了 setgid 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em gid} & \+: 传递给 setgid 函数的 gid 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 setgid 函数的值 
+\end{DoxyReturn}
+\index{setuid\+\_\+seteuid.\+c@{setuid\+\_\+seteuid.\+c}!My\+\_\+setuid@{My\+\_\+setuid}}
+\index{My\+\_\+setuid@{My\+\_\+setuid}!setuid\+\_\+seteuid.\+c@{setuid\+\_\+seteuid.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+setuid(uid\+\_\+t uid)}{My_setuid(uid_t uid)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+setuid (
+\begin{DoxyParamCaption}
+\item[{uid\+\_\+t}]{uid}
+\end{DoxyParamCaption}
+)}\hypertarget{setuid__seteuid_8c_abd5da21cb451b41e2bfb531f14e225af}{}\label{setuid__seteuid_8c_abd5da21cb451b41e2bfb531f14e225af}
+
+
+My\+\_\+setuid \+: 包装了 etuid 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em uid} & \+: 传递给 etuid 函数的 uid 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 etuid 函数的值 
+\end{DoxyReturn}
+\index{setuid\+\_\+seteuid.\+c@{setuid\+\_\+seteuid.\+c}!print\+\_\+egid@{print\+\_\+egid}}
+\index{print\+\_\+egid@{print\+\_\+egid}!setuid\+\_\+seteuid.\+c@{setuid\+\_\+seteuid.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+egid()}{print_egid()}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+egid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{setuid__seteuid_8c_ae4ca0c892235488e04815e288d515035}{}\label{setuid__seteuid_8c_ae4ca0c892235488e04815e288d515035}
+
+
+print\+\_\+egid \+: 打印进程的有效组 id 
+
+\index{setuid\+\_\+seteuid.\+c@{setuid\+\_\+seteuid.\+c}!print\+\_\+euid@{print\+\_\+euid}}
+\index{print\+\_\+euid@{print\+\_\+euid}!setuid\+\_\+seteuid.\+c@{setuid\+\_\+seteuid.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+euid()}{print_euid()}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+euid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{setuid__seteuid_8c_a409626e3f05ca9e6c3f714510643ce8c}{}\label{setuid__seteuid_8c_a409626e3f05ca9e6c3f714510643ce8c}
+
+
+print\+\_\+euid \+: 打印进程的有效用户 id 
+
+\index{setuid\+\_\+seteuid.\+c@{setuid\+\_\+seteuid.\+c}!print\+\_\+gid@{print\+\_\+gid}}
+\index{print\+\_\+gid@{print\+\_\+gid}!setuid\+\_\+seteuid.\+c@{setuid\+\_\+seteuid.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+gid()}{print_gid()}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+gid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{setuid__seteuid_8c_a9cfa6332c24190e5de869f98b4d541ee}{}\label{setuid__seteuid_8c_a9cfa6332c24190e5de869f98b4d541ee}
+
+
+print\+\_\+gid \+: 打印进程的组 id 
+
+\index{setuid\+\_\+seteuid.\+c@{setuid\+\_\+seteuid.\+c}!print\+\_\+uid@{print\+\_\+uid}}
+\index{print\+\_\+uid@{print\+\_\+uid}!setuid\+\_\+seteuid.\+c@{setuid\+\_\+seteuid.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+uid()}{print_uid()}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+uid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{setuid__seteuid_8c_aabd6345d192abbb95693c0563d3f84db}{}\label{setuid__seteuid_8c_aabd6345d192abbb95693c0563d3f84db}
+
+
+print\+\_\+uid \+: 打印进程的用户 id 
+
+\index{setuid\+\_\+seteuid.\+c@{setuid\+\_\+seteuid.\+c}!test\+\_\+setuid\+\_\+seteuid@{test\+\_\+setuid\+\_\+seteuid}}
+\index{test\+\_\+setuid\+\_\+seteuid@{test\+\_\+setuid\+\_\+seteuid}!setuid\+\_\+seteuid.\+c@{setuid\+\_\+seteuid.\+c}}
+\subsubsection[{\texorpdfstring{test\+\_\+setuid\+\_\+seteuid()}{test_setuid_seteuid()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+setuid\+\_\+seteuid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{setuid__seteuid_8c_adc75d8ea1b34cf0af7b83e7914fb0ed6}{}\label{setuid__seteuid_8c_adc75d8ea1b34cf0af7b83e7914fb0ed6}
+
+
+test\+\_\+setuid\+\_\+seteuid \+: 测试 setuid/seteuid/setgid/setegid/getlogin 等函数 
+

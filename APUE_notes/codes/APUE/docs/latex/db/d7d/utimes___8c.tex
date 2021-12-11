@@ -1,0 +1,101 @@
+\hypertarget{utimes___8c}{}\section{src/4\+\_\+\+File\+\_\+\+Dir/utimes\+\_\+.c File Reference}
+\label{utimes___8c}\index{src/4\+\_\+\+File\+\_\+\+Dir/utimes\+\_\+.\+c@{src/4\+\_\+\+File\+\_\+\+Dir/utimes\+\_\+.\+c}}
+{\ttfamily \#include \char`\"{}utimes\+\_\+.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../header.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include $<$fcntl.\+h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{utimes___8c_a25271e615cce6c8f31d32093e7fdda1d}{print\+\_\+file\+\_\+time} (const char $\ast$pathname)
+\begin{DoxyCompactList}\small\item\em print\+\_\+file\+\_\+time \+: 打印文件的最后访问时间、最后修改时间、 i 节点状态的最后修改时间 \end{DoxyCompactList}\item 
+int \hyperlink{utimes___8c_ad159808503f54fc2c469e828887812ae}{My\+\_\+access} (const char $\ast$pathname, int mode)
+\begin{DoxyCompactList}\small\item\em My\+\_\+access \+: 包装了 access 函数 \end{DoxyCompactList}\item 
+int \hyperlink{utimes___8c_a35cd7f180afeb0243d9b553b7c6959c2}{My\+\_\+chmod} (const char $\ast$pathname, mode\+\_\+t mode)
+\begin{DoxyCompactList}\small\item\em My\+\_\+chmod \+: 包装了 chmod 函数 \end{DoxyCompactList}\item 
+int \hyperlink{utimes___8c_a408e2da7ed1a51e5ec90e3ee9e4a6cda}{My\+\_\+utimes} (const char $\ast$pathname, const struct timeval times\mbox{[}$\,$\mbox{]})
+\item 
+void \hyperlink{utimes___8c_a76257252a6f8e31c88fa97831ee9b3d5}{test\+\_\+utimes} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+utimes \+: 测试 utimes 函数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{utimes\+\_\+.\+c@{utimes\+\_\+.\+c}!My\+\_\+access@{My\+\_\+access}}
+\index{My\+\_\+access@{My\+\_\+access}!utimes\+\_\+.\+c@{utimes\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+access(const char $\ast$pathname, int mode)}{My_access(const char *pathname, int mode)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+access (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{pathname, }
+\item[{int}]{mode}
+\end{DoxyParamCaption}
+)}\hypertarget{utimes___8c_ad159808503f54fc2c469e828887812ae}{}\label{utimes___8c_ad159808503f54fc2c469e828887812ae}
+
+
+My\+\_\+access \+: 包装了 access 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pathname} & \+: 传递给 access 函数的 pathname 参数 \\
+\hline
+{\em mode} & \+: 传递给 access 函数的 mode 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 access 函数的值 
+\end{DoxyReturn}
+\index{utimes\+\_\+.\+c@{utimes\+\_\+.\+c}!My\+\_\+chmod@{My\+\_\+chmod}}
+\index{My\+\_\+chmod@{My\+\_\+chmod}!utimes\+\_\+.\+c@{utimes\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+chmod(const char $\ast$pathname, mode\+\_\+t mode)}{My_chmod(const char *pathname, mode_t mode)}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+chmod (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{pathname, }
+\item[{mode\+\_\+t}]{mode}
+\end{DoxyParamCaption}
+)}\hypertarget{utimes___8c_a35cd7f180afeb0243d9b553b7c6959c2}{}\label{utimes___8c_a35cd7f180afeb0243d9b553b7c6959c2}
+
+
+My\+\_\+chmod \+: 包装了 chmod 函数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pathname} & \+: 传递给 chmod 函数的 pathname 参数 \\
+\hline
+{\em mode} & \+: 传递给 chmod 函数的 pathname 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 chmod 函数的值 
+\end{DoxyReturn}
+\index{utimes\+\_\+.\+c@{utimes\+\_\+.\+c}!My\+\_\+utimes@{My\+\_\+utimes}}
+\index{My\+\_\+utimes@{My\+\_\+utimes}!utimes\+\_\+.\+c@{utimes\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{My\+\_\+utimes(const char $\ast$pathname, const struct timeval times[])}{My_utimes(const char *pathname, const struct timeval times[])}}]{\setlength{\rightskip}{0pt plus 5cm}int My\+\_\+utimes (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{pathname, }
+\item[{const struct timeval}]{times\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}\hypertarget{utimes___8c_a408e2da7ed1a51e5ec90e3ee9e4a6cda}{}\label{utimes___8c_a408e2da7ed1a51e5ec90e3ee9e4a6cda}
+\index{utimes\+\_\+.\+c@{utimes\+\_\+.\+c}!print\+\_\+file\+\_\+time@{print\+\_\+file\+\_\+time}}
+\index{print\+\_\+file\+\_\+time@{print\+\_\+file\+\_\+time}!utimes\+\_\+.\+c@{utimes\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+file\+\_\+time(const char $\ast$pathname)}{print_file_time(const char *pathname)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+file\+\_\+time (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{pathname}
+\end{DoxyParamCaption}
+)}\hypertarget{utimes___8c_a25271e615cce6c8f31d32093e7fdda1d}{}\label{utimes___8c_a25271e615cce6c8f31d32093e7fdda1d}
+
+
+print\+\_\+file\+\_\+time \+: 打印文件的最后访问时间、最后修改时间、 i 节点状态的最后修改时间 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pathname} & \+: 文件名 \\
+\hline
+\end{DoxyParams}
+\index{utimes\+\_\+.\+c@{utimes\+\_\+.\+c}!test\+\_\+utimes@{test\+\_\+utimes}}
+\index{test\+\_\+utimes@{test\+\_\+utimes}!utimes\+\_\+.\+c@{utimes\+\_\+.\+c}}
+\subsubsection[{\texorpdfstring{test\+\_\+utimes()}{test_utimes()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+utimes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{utimes___8c_a76257252a6f8e31c88fa97831ee9b3d5}{}\label{utimes___8c_a76257252a6f8e31c88fa97831ee9b3d5}
+
+
+test\+\_\+utimes \+: 测试 utimes 函数 
+

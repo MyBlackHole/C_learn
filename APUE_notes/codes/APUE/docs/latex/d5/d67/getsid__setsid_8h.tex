@@ -1,0 +1,59 @@
+\hypertarget{getsid__setsid_8h}{}\section{src/9\+\_\+\+Progress\+\_\+\+Relation/getsid\+\_\+setsid.h File Reference}
+\label{getsid__setsid_8h}\index{src/9\+\_\+\+Progress\+\_\+\+Relation/getsid\+\_\+setsid.\+h@{src/9\+\_\+\+Progress\+\_\+\+Relation/getsid\+\_\+setsid.\+h}}
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+pid\+\_\+t \hyperlink{getsid__setsid_8h_a395adc61be0db22c776507b81f8c6a77}{My\+\_\+setsid} (void)
+\begin{DoxyCompactList}\small\item\em My\+\_\+setsid \+: 包装了 setsid 函数的值 \end{DoxyCompactList}\item 
+pid\+\_\+t \hyperlink{getsid__setsid_8h_a45346a7cf6f23d6f4c2393da361660ff}{My\+\_\+getsid} (pid\+\_\+t pid)
+\begin{DoxyCompactList}\small\item\em My\+\_\+getsid \+: 包装了 getsid 函数的值 \end{DoxyCompactList}\item 
+void \hyperlink{getsid__setsid_8h_a654ff8b5dbce877e9f808f386c135385}{test\+\_\+getsid\+\_\+setsid} ()
+\begin{DoxyCompactList}\small\item\em test\+\_\+getsid\+\_\+setsid \+:测试 getsid 函数、setsid 函数的用法 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{getsid\+\_\+setsid.\+h@{getsid\+\_\+setsid.\+h}!My\+\_\+getsid@{My\+\_\+getsid}}
+\index{My\+\_\+getsid@{My\+\_\+getsid}!getsid\+\_\+setsid.\+h@{getsid\+\_\+setsid.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+getsid(pid\+\_\+t pid)}{My_getsid(pid_t pid)}}]{\setlength{\rightskip}{0pt plus 5cm}pid\+\_\+t My\+\_\+getsid (
+\begin{DoxyParamCaption}
+\item[{pid\+\_\+t}]{pid}
+\end{DoxyParamCaption}
+)}\hypertarget{getsid__setsid_8h_a45346a7cf6f23d6f4c2393da361660ff}{}\label{getsid__setsid_8h_a45346a7cf6f23d6f4c2393da361660ff}
+
+
+My\+\_\+getsid \+: 包装了 getsid 函数的值 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pid} & \+: 传递给 getsid 函数的 pid 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: 返回 getsid 函数的值 
+\end{DoxyReturn}
+\index{getsid\+\_\+setsid.\+h@{getsid\+\_\+setsid.\+h}!My\+\_\+setsid@{My\+\_\+setsid}}
+\index{My\+\_\+setsid@{My\+\_\+setsid}!getsid\+\_\+setsid.\+h@{getsid\+\_\+setsid.\+h}}
+\subsubsection[{\texorpdfstring{My\+\_\+setsid(void)}{My_setsid(void)}}]{\setlength{\rightskip}{0pt plus 5cm}pid\+\_\+t My\+\_\+setsid (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{getsid__setsid_8h_a395adc61be0db22c776507b81f8c6a77}{}\label{getsid__setsid_8h_a395adc61be0db22c776507b81f8c6a77}
+
+
+My\+\_\+setsid \+: 包装了 setsid 函数的值 
+
+\begin{DoxyReturn}{Returns}
+\+: 返回 setsid 函数的值 
+\end{DoxyReturn}
+\index{getsid\+\_\+setsid.\+h@{getsid\+\_\+setsid.\+h}!test\+\_\+getsid\+\_\+setsid@{test\+\_\+getsid\+\_\+setsid}}
+\index{test\+\_\+getsid\+\_\+setsid@{test\+\_\+getsid\+\_\+setsid}!getsid\+\_\+setsid.\+h@{getsid\+\_\+setsid.\+h}}
+\subsubsection[{\texorpdfstring{test\+\_\+getsid\+\_\+setsid()}{test_getsid_setsid()}}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+getsid\+\_\+setsid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{getsid__setsid_8h_a654ff8b5dbce877e9f808f386c135385}{}\label{getsid__setsid_8h_a654ff8b5dbce877e9f808f386c135385}
+
+
+test\+\_\+getsid\+\_\+setsid \+:测试 getsid 函数、setsid 函数的用法 
+

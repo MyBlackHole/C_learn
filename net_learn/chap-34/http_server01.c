@@ -1,7 +1,7 @@
-#include <lib/acceptor.h>
-#include <lib/http_server.h>
-#include "lib/common.h"
-#include "lib/event_loop.h"
+#include "acceptor.h"
+#include "http_server.h"
+#include "common.h"
+#include "event_loop.h"
 
 //数据读到buffer之后的callback
 int onRequest(struct http_request *httpRequest, struct http_response *httpResponse) {
