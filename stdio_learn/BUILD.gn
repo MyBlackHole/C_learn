@@ -1,3 +1,15 @@
+executable("fread_test") {
+  sources = [
+    "fread_test.c",
+  ]
+}
+
+executable("fgetc_test") {
+  sources = [
+    "fgetc_test.c",
+  ]
+}
+
 executable("fopen_test") {
   sources = [
     "fopen_test.c",

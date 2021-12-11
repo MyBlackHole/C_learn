@@ -7,6 +7,7 @@ int main(int argc, char *argv[]) {
 
   FILE *fps = NULL, *fpd = NULL;
   char buf[BUFSIZE];
+  int n = 0;
 
   if (argc < 3) {
     fprintf(stderr, "Usage: %s <src_file> <dest_file>\n", argv[0]);
@@ -26,8 +27,8 @@ int main(int argc, char *argv[]) {
     exit(1);
   }
 
-  while (fgets(buf, BUFSIZE, fps) != NULL) {
-    fputs(buf, fpd);
+  while ((n = fread(buf, 1, BUFSIZE, fps)) > 0) {
+    fwrite(buf, 1, n, fpd);
   }
 
   fclose(fpd);

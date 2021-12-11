@@ -120,6 +120,8 @@ group("default"){
     "//stdio_learn:fopen_test",
     "//stdio_learn:tmpfile_test",
     "//stdio_learn:fopen1_test",
+    "//stdio_learn:fgetc_test",
+    "//stdio_learn:fread_test",
 
     "//signal_learn:sigemptyset_test",
     "//signal_learn:signal4_test",
