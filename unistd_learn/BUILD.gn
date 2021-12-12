@@ -1,3 +1,15 @@
+executable("dup2_test") {
+  sources = [
+    "dup2_test.c",
+  ]
+}
+
+executable("dup_test") {
+  sources = [
+    "dup_test.c",
+  ]
+}
+
 executable("fork5_test") {
   sources = [
     "fork5_test.c",

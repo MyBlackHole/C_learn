@@ -1,3 +1,0 @@
-/home/black/Documents/Code/C_CJJ/unix_learn/CMakeFiles/rebuild_cache.dir
-/home/black/Documents/Code/C_CJJ/unix_learn/CMakeFiles/edit_cache.dir
-/home/black/Documents/Code/C_CJJ/unix_learn/CMakeFiles/10.p6.dir

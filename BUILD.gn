@@ -1,5 +1,8 @@
 group("default"){
   deps = [
+
+    "//sys_stat_learn:stat_test",
+
     # "//net_learn/chap-5:tcp_server",
     # "//net_learn/chap-5:tcpclient",
 
@@ -41,8 +44,6 @@ group("default"){
 
     "//ev_learn:ev1_test",
     "//ev_learn:ev_signal_test",
-
-    "//redis-3.0-annotated:redis",
 
     "//pthread_learn:pthread_self_test",
     "//pthread_learn:pthread_mutex_lock_test",
@@ -92,7 +93,8 @@ group("default"){
     "//stdlib_learn:malloc_test",
     "//stdlib_learn:realloc_test",
 
-
+    "//unistd_learn:dup2_test",
+    "//unistd_learn:dup_test",
     "//unistd_learn:fork5_test",
     "//unistd_learn:sleep_test1",
     "//unistd_learn:sleep_test",

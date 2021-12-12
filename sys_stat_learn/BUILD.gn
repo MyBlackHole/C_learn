@@ -1,0 +1,3 @@
+executable("stat_test") {
+  sources = [ "stat_test.c" ]
+}
