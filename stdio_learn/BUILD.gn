@@ -1,3 +1,9 @@
+executable("getline_test") {
+  sources = [
+    "getline_test.c",
+  ]
+}
+
 executable("fflush_test") {
   sources = [
     "fflush_test.c",

@@ -115,6 +115,7 @@ group("default"){
     "//unistd_learn:fork4_test",
     "//unistd_learn:setsid_test",
 
+    "//stdio_learn:getline_test",
     "//stdio_learn:fflush_test",
     "//stdio_learn:fseek_test",
     "//stdio_learn:sprintf_test",
@@ -143,6 +144,7 @@ group("default"){
     "//stat_learn:futimens_test",
     "//stat_learn:umask_test",
 
+    "//fcntl_learn:open_test",
     "//fcntl_learn:creat_test",
     "//fcntl_learn:fcntl_test",
 
