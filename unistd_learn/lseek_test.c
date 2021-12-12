@@ -1,17 +1,21 @@
-#include "apue.h"
 #include <fcntl.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 
-int main(void) {
-  // 控制该文件的读写位置
-  //
-  // SEEK_SET 参数offset 即为新的读写位置.
-  // SEEK_CUR 以目前的读写位置往后增加offset 个位移量.
-  // SEEK_END 将读写位置指向文件尾后再增加offset 个位移量. 当whence 值为SEEK_CUR
-  // 或 SEEK_END 时, 参数offet 允许负值的出现.
+int main(int argc, char *argv[]) {
+  int fd = 0;
+  if (argc < 2) {
+    fprintf(stderr, "<path>\n");
+    exit(1);
+  }
 
-  if (lseek(STDIN_FILENO, 0, SEEK_CUR) == -1)
-    printf("cannot seek\n");
-  else
-    printf("seek ok\n");
+  fd = open(argv[1], O_WRONLY | O_CREAT | O_TRUNC, 0600);
+  lseek(fd, 5LL * 1024LL * 1024LL * 1024LL - 1LL, SEEK_SET);
+
+  write(fd, "", 1);
+
+  close(fd);
+
   exit(0);
 }
