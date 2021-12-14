@@ -1,0 +1,4 @@
+executable("glob_test") {
+  sources = ["glob_test.c"]
+}
+

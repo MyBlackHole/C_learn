@@ -1,3 +1,65 @@
+executable("stat1_test") {
+  sources = [ "stat1_test.c" ]
+}
+
 executable("stat_test") {
   sources = [ "stat_test.c" ]
+}
+
+executable("umask_test") {
+  sources = [
+    "umask_test.c",
+  ]
+
+  include_dirs = ["//include"]
+
+  deps = [
+    "//lib:libc",
+  ]
+}
+
+executable("futimens_test") {
+  sources = [
+    "futimens_test.c",
+  ]
+
+  include_dirs = ["//include"]
+
+  deps = [
+    "//lib:libc",
+  ]
+}
+
+executable("stat2_test") {
+  sources = [
+    "stat2_test.c",
+  ]
+
+  include_dirs = ["//include"]
+  deps = [
+    "//lib:libc",
+  ]
+}
+
+executable("stat3_test") {
+  sources = [
+    "stat3_test.c",
+  ]
+
+  include_dirs = ["//include"]
+  deps = [
+    "//lib:libc",
+  ]
+}
+
+executable("chmod_test") {
+  sources = [
+    "chmod_test.c",
+  ]
+
+  include_dirs = ["//include"]
+
+  deps = [
+    "//lib:libc",
+  ]
 }

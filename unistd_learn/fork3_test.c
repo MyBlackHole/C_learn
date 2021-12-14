@@ -6,6 +6,7 @@
  */
 
 #include "apue.h"
+
 int main(void) {
   pid_t pid;
   if (pid = fork() < 0) {
@@ -40,4 +41,3 @@ int main(void) {
   kill(getpid(), SIGKILL);
   exit(6);
 }
-

@@ -1,7 +1,14 @@
 group("default"){
   deps = [
+    "//glob_learn:glob_test",
 
+    "//sys_stat_learn:stat3_test",
+    "//sys_stat_learn:stat2_test",
+    "//sys_stat_learn:chmod_test",
+    "//sys_stat_learn:futimens_test",
+    "//sys_stat_learn:umask_test",
     "//sys_stat_learn:stat_test",
+    "//sys_stat_learn:stat1_test",
 
     # "//net_learn/chap-5:tcp_server",
     # "//net_learn/chap-5:tcpclient",
@@ -139,12 +146,6 @@ group("default"){
     "//signal_learn:signal3_test",
     "//signal_learn:SIG_IGN_test",
     "//signal_learn:SIGFPE_test",
-
-    "//stat_learn:stat_test",
-    "//stat_learn:stat1_test",
-    "//stat_learn:chmod_test",
-    "//stat_learn:futimens_test",
-    "//stat_learn:umask_test",
 
     "//fcntl_learn:open_test",
     "//fcntl_learn:creat_test",

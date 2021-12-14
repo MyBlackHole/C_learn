@@ -11,6 +11,4 @@ build/
 *.build
 .ccls-cache
 out
-
-
 tags
