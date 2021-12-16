@@ -1,3 +1,11 @@
+executable("crypt_test") {
+  sources = [
+    "crypt_test.c",
+  ]
+
+  ldflags = ["-lcrypt"]
+}
+
 executable("getspnam_test") {
   sources = [
     "getspnam_test.c",
