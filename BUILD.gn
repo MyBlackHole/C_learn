@@ -49,8 +49,8 @@ group("default"){
 
     "//sys_signalfd_learn:signalfd_test",
 
-    "//ev_learn:ev1_test",
-    "//ev_learn:ev_signal_test",
+    # "//ev_learn:ev1_test",
+    # "//ev_learn:ev_signal_test",
 
     "//pthread_learn:pthread_self_test",
     "//pthread_learn:pthread_mutex_lock_test",
@@ -100,6 +100,9 @@ group("default"){
     "//stdlib_learn:malloc_test",
     "//stdlib_learn:realloc_test",
 
+    "//unistd_learn:getspnam_test",
+    "//unistd_learn:getpass_test",
+    "//unistd_learn:write_test",
     "//unistd_learn:dup2_test",
     "//unistd_learn:dup_test",
     "//unistd_learn:fork5_test",

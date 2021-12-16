@@ -1,3 +1,23 @@
+executable("getspnam_test") {
+  sources = [
+    "getspnam_test.c",
+  ]
+
+  ldflags = ["-lcrypt"]
+}
+
+executable("getpass_test") {
+  sources = [
+    "getpass_test.c",
+  ]
+}
+
+executable("write_test") {
+  sources = [
+    "write_test.c",
+  ]
+}
+
 executable("dup2_test") {
   sources = [
     "dup2_test.c",
