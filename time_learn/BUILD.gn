@@ -1,3 +1,9 @@
+executable("localtime1_test") {
+  sources = [
+    "localtime1_test.c",
+  ]
+}
+
 executable("time_test") {
   sources = [
     "time_test.c",

@@ -1,3 +1,11 @@
+executable("strerror_test") {
+  cflags = ["-g"]
+
+  sources = [
+    "strerror_test.c",
+  ]
+}
+
 executable("memmove_test") {
   cflags = ["-g"]
 

@@ -73,6 +73,7 @@ group("default"){
 
     "//utsname_learn:uname_test",
 
+    "//time_learn:localtime1_test",
     "//time_learn:localtime_test",
     "//time_learn:gettimeofday_test",
     "//time_learn:clock_gettime_test",
@@ -82,6 +83,7 @@ group("default"){
 
     "//shadow_learn:getspnam_test",
 
+    "//string_learn:strerror_test",
     "//string_learn:memset_test",
     "//string_learn:memmove_test",
 
