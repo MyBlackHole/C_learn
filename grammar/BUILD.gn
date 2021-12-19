@@ -1,3 +1,9 @@
+executable("argv_test") {
+  sources = [
+    "argv_test.c",
+  ]
+}
+
 executable("struct_test") {
   sources = [
     "struct_test.c",

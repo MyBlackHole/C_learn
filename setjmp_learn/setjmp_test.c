@@ -1,7 +1,9 @@
-#include "apue.h"
-#define TOK_ADD 5
 #include <setjmp.h>
+#include <stdio.h>
+#include <stdlib.h>
 
+#define TOK_ADD 5
+#define MAXLINE 4096 /* max line length */
 
 void do_line(char *);
 void cmd_add(void);
@@ -10,12 +12,14 @@ jmp_buf jmpbuffer;
 
 int main(void) {
   char line[MAXLINE];
-  if (setjmp(jmpbuffer) != 0)
-    printf("error");
+  if (setjmp(jmpbuffer) != 0) {
+    printf("退出");
+  } else {
+    printf("ok\n");
+    while (fgets(line, MAXLINE, stdin) != NULL)
+      do_line(line);
+  }
 
-  printf("ok\n");
-  while (fgets(line, MAXLINE, stdin) != NULL)
-    do_line(line);
   exit(0);
 }
 
@@ -34,13 +38,10 @@ void do_line(char *ptr) {
 
 void cmd_add(void) {
   int token;
-  token = get_token();
-  if (token < 0)
-    longjmp(jmpbuffer, 1);
+  longjmp(jmpbuffer, 1);
   // reset the processing for this command
 }
 int get_token(void) {
   // fetch next token from line pointed to by tok_ptr
   return 5;
 }
-

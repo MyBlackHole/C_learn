@@ -122,6 +122,11 @@ void func12() {
   printf("%d", 1 + --i), printf("ok");
 }
 
+void func13() {
+  int i = -1;
+  printf("%d\n", i & 256);
+}
+
 /* # define EV_A */
 /* void func13() { */
 /*   if (!EV_A) { */
@@ -131,6 +136,6 @@ void func12() {
 /* } */
 
 int main() {
-  func12();
+  func13();
   exit(0);
 }

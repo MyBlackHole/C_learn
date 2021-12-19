@@ -1,5 +1,7 @@
 group("default"){
   deps = [
+    "//sys_resource:getrlimit",
+
     "//glob_learn:glob_test",
 
     "//sys_stat_learn:stat3_test",
@@ -42,6 +44,7 @@ group("default"){
     "//aio_learn:aio_suspend_test",
     "//aio_learn:lio_listio_test",
 
+    "//grammar:argv_test",
     "//grammar/macro:define_test",
     "//grammar:long_int_test",
     "//grammar:1",
@@ -73,6 +76,7 @@ group("default"){
 
     "//utsname_learn:uname_test",
 
+    "//time_learn:localtime2_test",
     "//time_learn:localtime1_test",
     "//time_learn:localtime_test",
     "//time_learn:gettimeofday_test",
@@ -102,6 +106,7 @@ group("default"){
     "//stdlib_learn:malloc_test",
     "//stdlib_learn:realloc_test",
 
+    "//unistd_learn:getppid_test",
     "//unistd_learn:crypt_test",
     "//unistd_learn:getspnam_test",
     "//unistd_learn:getpass_test",
@@ -153,6 +158,7 @@ group("default"){
     "//signal_learn:SIG_IGN_test",
     "//signal_learn:SIGFPE_test",
 
+    "//fcntl_learn:file_flags",
     "//fcntl_learn:open_test",
     "//fcntl_learn:creat_test",
     "//fcntl_learn:fcntl_test",

@@ -1,3 +1,11 @@
+executable("file_flags") {
+  cflags = ["-g"]
+
+  sources = [
+    "file_flags.c",
+  ]
+}
+
 executable("open_test") {
   cflags = ["-g"]
 

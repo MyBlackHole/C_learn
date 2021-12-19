@@ -1,11 +1,16 @@
 // To solve the race condition 解决竞争关系和轮询的情况
 //在unix中有专门的IPC通信或者管道符操作。
-#include "apue.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+
 static void charactatime(char *);
 int main(void) {
   pid_t pid;
+
+  fflush(NULL);
   if ((pid = fork()) < 0)
-    err_sys("fork error");
+    perror("fork error");
   else if (pid == 0)
     charactatime("output from child\n");
   else
@@ -21,4 +26,3 @@ static void charactatime(char *str) {
     putc(c, stdout);
 }
 //竞争策略对于完善的linux系统来说已经完善的很好了，对于一些宏，或者函数也不再需要
-
