@@ -1,8 +1,6 @@
 executable("longjmp_test") {
   cflags = ["-g"]
 
-  include_dirs = ["//include"]
-
   sources = [
     "longjmp_test.c",
   ]
@@ -10,8 +8,6 @@ executable("longjmp_test") {
 
 executable("setjmp_test") {
   cflags = ["-g"]
-
-  include_dirs = ["//include"]
 
   sources = [
     "setjmp_test.c",

@@ -23,8 +23,8 @@ group("default"){
     "//DesignPattern/Abstract_Factory_Pattern:AbstractFactoryPatternDemo",
     "//DesignPattern/Singleton_Pattern:SingletonPatternDemo",
 
-    "//leetcode/001_two_sum:two_sum",
-    "//leetcode/037_sudoku_solver:sudoku_solver",
+    "//leetcode_learn/001_two_sum:two_sum",
+    "//leetcode_learn/037_sudoku_solver:sudoku_solver",
 
     "//sys_epoll_learn:test",
 
@@ -44,11 +44,15 @@ group("default"){
     "//aio_learn:aio_suspend_test",
     "//aio_learn:lio_listio_test",
 
-    "//grammar:argv_test",
-    "//grammar/macro:define_test",
-    "//grammar:long_int_test",
-    "//grammar:1",
-    "//grammar:struct_test",
+    "//grammar_learn:2",
+    "//grammar_learn:union_test",
+    "//grammar_learn:continue_test",
+    "//grammar_learn:do_while_test",
+    "//grammar_learn:argv_test",
+    "//grammar_learn/macro:define_test",
+    "//grammar_learn:long_int_test",
+    "//grammar_learn:1",
+    "//grammar_learn:struct_test",
 
     "//sys_signalfd_learn:signalfd_test",
 
@@ -62,12 +66,6 @@ group("default"){
     "//locale_learn:setlocale_test",
 
     "//sys_wait_learn:waitpid_test",
-
-    "//hello_word:hello_word",
-    "//hello_word:helloworld_test",
-    "//hello_word:helloworld1_test",
-    "//hello_word:helloworld2_test",
-    "//hello_word:env_test",
 
     "//setjmp_learn:setjmp_test",
     "//setjmp_learn:longjmp_test",
@@ -98,8 +96,6 @@ group("default"){
     "//stdlib_learn:mkstemp_test",
     "//stdlib_learn:atexit_test",
     "//stdlib_learn:system_test",
-    "//stdlib_learn:system1_test",
-    "//stdlib_learn:system2_test",
     "//stdlib_learn:system3_test",
     "//stdlib_learn:srand_test",
     "//stdlib_learn:calloc_test",
@@ -120,17 +116,12 @@ group("default"){
     "//unistd_learn:read_test",
     "//unistd_learn:getuid_test",
     "//unistd_learn:lseek_test",
-    "//unistd_learn:lseek1_test",
     "//unistd_learn:access_test",
     "//unistd_learn:chdir_test",
-    "//unistd_learn:sysconf_test",
     "//unistd_learn:unlink_test",
-    "//unistd_learn:fork_test",
     "//unistd_learn:fork1_test",
-    "//unistd_learn:fork2_test",
     "//unistd_learn:execlp_test",
     "//unistd_learn:execl_test",
-    "//unistd_learn:fork3_test",
     # "//unistd_learn:getcwd_test",
     "//unistd_learn:fork4_test",
     "//unistd_learn:setsid_test",
@@ -169,11 +160,6 @@ group("default"){
     "//dirent_learn:readdir_test",
 
     "//errno_learn:errno_learn",
-
-    "//grammar:2",
-    "//grammar:union_test",
-    "//grammar:continue_test",
-    "//grammar:do_while_test",
 
     "//sys_time_learn:gettimeofday_test"
   ]

@@ -6,11 +6,15 @@
 int main(int argc, char *argv[]) {
   int val;
 
-  if (argc != 2)
+  if (argc != 2) {
     perror("usage: <descriptor#>");
+    exit(1);
+  }
 
-  if ((val = fcntl(atoi(argv[1]), F_GETFL, 0)) < 0)
+  if ((val = fcntl(atoi(argv[1]), F_GETFL, 0)) < 0) {
     fprintf(stderr, "fcntl error for fd %d", atoi(argv[1]));
+    exit(1);
+  }
 
   switch (val & O_ACCMODE) {
   case O_RDONLY:

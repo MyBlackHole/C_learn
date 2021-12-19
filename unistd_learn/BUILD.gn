@@ -75,27 +75,9 @@ executable("fork4_test") {
 
 }
 
-executable("fork3_test") {
-  sources = [
-    "fork3_test.c",
-  ]
-
-  include_dirs = ["//include"]
-
-  deps = [
-    "//lib:libc",
-  ]
-}
-
 executable("execl_test") {
   sources = [
     "execl_test.c",
-  ]
-
-  include_dirs = ["//include"]
-
-  deps = [
-    "//lib:libc",
   ]
 }
 
@@ -103,47 +85,11 @@ executable("execlp_test") {
   sources = [
     "execlp_test.c",
   ]
-
-  include_dirs = ["//include"]
-
-  deps = [
-    "//lib:libc",
-  ]
-}
-
-executable("fork2_test") {
-  sources = [
-    "fork2_test.c",
-  ]
-
-  include_dirs = ["//include"]
-
-  deps = [
-    "//lib:libc",
-  ]
 }
 
 executable("fork1_test") {
   sources = [
     "fork1_test.c",
-  ]
-
-  include_dirs = ["//include"]
-
-  deps = [
-    "//lib:libc",
-  ]
-}
-
-executable("fork_test") {
-  sources = [
-    "fork_test.c",
-  ]
-
-  include_dirs = ["//include"]
-
-  deps = [
-    "//lib:libc",
   ]
 }
 
@@ -151,35 +97,11 @@ executable("unlink_test") {
   sources = [
     "unlink_test.c",
   ]
-
-  include_dirs = ["//include"]
-
-  deps = [
-    "//lib:libc",
-  ]
 }
 
 executable("getcwd_test") {
   sources = [
     "getcwd_test.c",
-  ]
-
-  include_dirs = ["//include"]
-
-  deps = [
-    "//lib:libc",
-  ]
-}
-
-executable("sysconf_test") {
-  sources = [
-    "sysconf_test.c",
-  ]
-
-  include_dirs = ["//include"]
-
-  deps = [
-    "//lib:libc",
   ]
 }
 
@@ -187,23 +109,11 @@ executable("chdir_test") {
   sources = [
     "chdir_test.c",
   ]
-
-  include_dirs = ["//include"]
-
-  deps = [
-    "//lib:libc",
-  ]
 }
 
 executable("access_test") {
   sources = [
     "access_test.c",
-  ]
-
-  include_dirs = ["//include"]
-
-  deps = [
-    "//lib:libc",
   ]
 }
 
@@ -211,22 +121,11 @@ executable("getpid_test") {
   sources = [
     "getpid_test.c",
   ]
-
-  include_dirs = ["//include"]
-  deps = [
-    "//lib:libc",
-  ]
 }
 
 executable("read_test") {
   sources = [
     "read_test.c",
-  ]
-
-  include_dirs = ["//include"]
-
-  deps = [
-    "//lib:libc",
   ]
 }
 
@@ -234,32 +133,10 @@ executable("getuid_test") {
   sources = [
     "getuid_test.c",
   ]
-
-  deps = [
-    "//lib:libc",
-  ]
 }
 
 executable("lseek_test") {
   sources = [
     "lseek_test.c",
-  ]
-
-  include_dirs = ["//include"]
-
-  deps = [
-    "//lib:libc",
-  ]
-}
-
-executable("lseek1_test") {
-  sources = [
-    "lseek1_test.c",
-  ]
-
-  include_dirs = ["//include"]
-
-  deps = [
-    "//lib:libc",
   ]
 }

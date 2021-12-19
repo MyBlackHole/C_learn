@@ -16,4 +16,3 @@
  */
 void test_vfork();
 #endif // VFORK_
-

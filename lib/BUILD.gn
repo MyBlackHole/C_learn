@@ -1,9 +1,0 @@
-static_library("libc") {
-  sources = [
-    "prexit.c",
-    "error.c",
-  ]
-  include_dirs = [
-    "//include",
-  ]
-}

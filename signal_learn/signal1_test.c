@@ -1,6 +1,8 @@
-#include "apue.h"
 #include <errno.h>
-
+#include <signal.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 static void sig_ids(int signo) {
   printf("SIGHUP received,pid=%ld\n", (long)getpid());
@@ -16,9 +18,10 @@ int main(void) {
   char c;
   pid_t pid;
   pr_ids("parent");
-  if ((pid = fork()) < 0)
-    err_sys("fork error");
-  else if (pid > 0) {
+  if ((pid = fork()) < 0) {
+    perror("fork error");
+    exit(1);
+  } else if (pid > 0) {
     sleep(5);
   } else {
     pr_ids("child");

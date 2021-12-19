@@ -4,6 +4,4 @@ executable("select_test") {
   sources = [
     "select_test.c",
   ]
-
-  include_dirs = ["//include"]
 }

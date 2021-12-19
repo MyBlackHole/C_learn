@@ -1,5 +1,6 @@
-#include "apue.h"
 #include <setjmp.h>
+#include <stdio.h>
+#include <stdlib.h>
 static void f1(int, int, int, int);
 static void f2(void);
 
@@ -35,4 +36,3 @@ static void f1(int i, int j, int k, int l) {
   f2();
 }
 static void f2() { longjmp(jmpbuffer, 1); }
-

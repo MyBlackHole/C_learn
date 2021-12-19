@@ -1,11 +1,5 @@
 executable("readdir_test") {
   sources = [
-    "./readdir_test.c",
-  ]
-
-  include_dirs = ["//include"]
-
-  deps = [
-    "//lib:libc",
+    "readdir_test.c",
   ]
 }

@@ -1,4 +1,3 @@
-#include "apue.h"
 #include <errno.h>
 #include <signal.h>
 #include <stdio.h>
@@ -6,7 +5,6 @@
 #include <string.h>
 #include <sys/types.h>
 #include <unistd.h>
-
 
 #define ERR_EXIT(m)                                                            \
   do {                                                                         \
@@ -52,7 +50,8 @@ int main(void) {
   sigaddset(&bset, SIGRTMIN);
   sigprocmask(SIG_BLOCK, &bset, NULL);
   if ((pid = fork()) < 0) {
-    err_sys("fork error");
+    perror("fork error");
+    exit(1);
   } else if (pid == 0) {
     int ret = 0;
     int i = 0;

@@ -1,6 +1,8 @@
-#include "apue.h"
 #include <errno.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <sys/time.h>
+#include <unistd.h>
 
 //对于linux下的适配，取消了对于macos 和 solaris
 unsigned long long count;
@@ -34,24 +36,27 @@ int main(int argc, char **argv) {
   gettimeofday(&end, NULL); //提供更精准的时间获取，虽然在susv系统内被舍弃
   end.tv_sec += 10;
 
-  if ((pid = fork()) < 0)
-    err_sys("fork error");
-  else if (pid == 0) {
+  if ((pid = fork()) < 0) {
+    perror("fork error");
+    exit(1);
+  } else if (pid == 0) {
     s = "child";
     printf("current nice value in child is %d ,adjusting by %d \n",
            nice(0) + nzero, adj);
     errno = 0;
-    if ((ret = nice(adj)) == -1 & errno != 0)
-      err_sys("child set scheduling priority");
+    if ((ret = nice(adj)) == -1 & errno != 0) {
+      perror("child set scheduling priority");
+      exit(1);
+    }
     printf("now child nice valude is %d \n", ret + nzero);
   } else {
     s = "parent";
     printf("current nice value in parent is %d\n", nice(0) + nzero);
   }
   for (;;) {
-    if (++count == 0)
-      err_quit("%s counter wrap", s);
+    if (++count == 0) {
+      printf("%s counter wrap", s);
+    }
     checktime(s);
   }
 }
-

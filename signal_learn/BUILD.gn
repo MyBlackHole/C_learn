@@ -4,10 +4,6 @@ executable("sigemptyset_test") {
 
 executable("signal4_test") {
   sources = ["signal4_test.c"]
-  include_dirs = ["//include"]
-  deps = [
-    "//lib:libc",
-  ]
 }
 
 executable("SIGFPE_test") {
@@ -21,64 +17,39 @@ executable("SIG_IGN_test") {
 executable("signal3_test") {
   cflags = ["-g"]
 
-  include_dirs = ["//include"]
-
   sources = [
     "signal3_test.c",
-  ]
-  deps = [
-    "//lib:libc",
   ]
 }
 
 executable("signal2_test") {
   cflags = ["-g"]
 
-  include_dirs = ["//include"]
-
   sources = [
     "signal2_test.c",
-  ]
-  deps = [
-    "//lib:libc",
   ]
 }
 
 executable("sigaction_test") {
   cflags = ["-g"]
 
-  include_dirs = ["//include"]
-
   sources = [
     "sigaction_test.c",
-  ]
-  deps = [
-    "//lib:libc",
   ]
 }
 
 executable("signal1_test") {
   cflags = ["-g"]
 
-  include_dirs = ["//include"]
-
   sources = [
     "signal1_test.c",
-  ]
-  deps = [
-    "//lib:libc",
   ]
 }
 
 executable("signal_test") {
   cflags = ["-g"]
 
-  include_dirs = ["//include"]
-
   sources = [
     "signal_test.c",
-  ]
-  deps = [
-    "//lib:libc",
   ]
 }

@@ -44,32 +44,17 @@ executable("fopen1_test") {
   sources = [
     "fopen1_test.c",
   ]
-  
-  include_dirs = ["//include"]
-  deps = [
-    "//lib:libc",
-  ]
 }
 
 executable("tmpfile_test") {
   sources = [
     "tmpfile_test.c",
   ]
-  
-  include_dirs = ["//include"]
-  deps = [
-    "//lib:libc",
-  ]
 }
 
 executable("fgets_test") {
   sources = [
     "fgets_test.c",
-  ]
-  
-  include_dirs = ["//include"]
-  deps = [
-    "//lib:libc",
   ]
 }
 
@@ -78,18 +63,10 @@ executable("getc_test") {
     "getc_test.c",
   ]
   
-  include_dirs = ["//include"]
-
-  deps = [
-    "//lib:libc",
-  ]
 }
 
 executable("write_test") {
   sources = [
     "write_test.c",
-  ]
-  deps = [
-    "//lib:libc",
   ]
 }

@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-
-/* C 库函数 void *malloc(size_t size) 分配所需的内存空间，并返回一个指向它的指针。 */
+/* C 库函数 void *malloc(size_t size) 分配所需的
+ * 存空间，并返回一个指向它的指针。 */
 /* void *malloc(size_t size) */
 /* size -- 内存块的大小，以字节为单位。 */
 

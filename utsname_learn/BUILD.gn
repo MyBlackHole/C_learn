@@ -2,10 +2,5 @@ executable("uname_test") {
   sources = [
     "uname_test.c",
   ]
-
-  include_dirs = ["//include"]
-  deps = [
-    "//lib:libc",
-  ]
 }
 

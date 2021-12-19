@@ -1,9 +1,10 @@
-#include "apue.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/stat.h>
 #ifdef SOLARIS
 #include <sys/mkdev.h>
 #endif
 #include <sys/sysmacros.h>
-
 
 int main(int argc, char **argv) {
   int i;
@@ -11,7 +12,8 @@ int main(int argc, char **argv) {
   for (i = 1; i < argc; i++) {
     printf("%s:\n", argv[i]);
     if (stat(argv[i], &buf) < 0) {
-      err_ret("stat error");
+      perror("stat error");
+
       continue;
     }
 

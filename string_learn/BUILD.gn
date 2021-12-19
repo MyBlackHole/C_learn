@@ -21,9 +21,4 @@ executable("memset_test") {
     "memset_test.c",
   ]
   
-  include_dirs = ["//include"]
-
-  deps = [
-    "//lib:libc",
-  ]
 }

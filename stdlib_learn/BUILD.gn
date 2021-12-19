@@ -28,11 +28,6 @@ executable("srand_test") {
   sources = [
     "srand_test.c",
   ]
-  
-  include_dirs = ["//include"]
-  deps = [
-    "//lib:libc",
-  ]
 }
 
 executable("system3_test") {
@@ -40,11 +35,6 @@ executable("system3_test") {
 
   sources = [
     "system3_test.c",
-  ]
-  
-  include_dirs = ["//include"]
-  deps = [
-    "//lib:libc",
   ]
 }
 
@@ -54,24 +44,6 @@ executable("system2_test") {
   sources = [
     "system2_test.c",
   ]
-  
-  include_dirs = ["//include"]
-  deps = [
-    "//lib:libc",
-  ]
-}
-
-executable("system1_test") {
-  cflags = ["-g"]
-
-  sources = [
-    "system1_test.c",
-  ]
-  
-  include_dirs = ["//include"]
-  deps = [
-    "//lib:libc",
-  ]
 }
 
 executable("system_test") {
@@ -79,11 +51,6 @@ executable("system_test") {
 
   sources = [
     "system_test.c",
-  ]
-  
-  include_dirs = ["//include"]
-  deps = [
-    "//lib:libc",
   ]
 }
 
@@ -93,11 +60,6 @@ executable("atexit_test") {
   sources = [
     "atexit_test.c",
   ]
-  
-  include_dirs = ["//include"]
-  deps = [
-    "//lib:libc",
-  ]
 }
 
 executable("mkstemp_test") {
@@ -106,12 +68,6 @@ executable("mkstemp_test") {
   sources = [
     "mkstemp_test.c",
   ]
-  
-  include_dirs = ["//include"]
-
-  deps = [
-    "//lib:libc",
-  ]
 }
 
 executable("getenv_test") {
@@ -119,8 +75,5 @@ executable("getenv_test") {
 
   sources = [
     "getenv_test.c",
-  ]
-  deps = [
-    "//lib:libc",
   ]
 }
