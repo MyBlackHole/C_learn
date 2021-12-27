@@ -1,3 +1,9 @@
+executable("lockf_test") {
+  sources = [
+    "lockf_test.c",
+  ]
+}
+
 executable("getopt_test") {
   sources = [
     "getopt_test.c",
