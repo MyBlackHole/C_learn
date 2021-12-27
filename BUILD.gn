@@ -105,6 +105,7 @@ group("default"){
     "//stdlib_learn:malloc_test",
     "//stdlib_learn:realloc_test",
 
+    "//unistd_learn:lockf_test",
     "//unistd_learn:getopt_test",
     "//unistd_learn:getppid_test",
     "//unistd_learn:crypt_test",
@@ -143,6 +144,7 @@ group("default"){
     "//stdio_learn:fgetc_test",
     "//stdio_learn:fread_test",
 
+    "//signal_learn:kill_test",
     "//signal_learn:sigemptyset_test",
     "//signal_learn:signal4_test",
     "//signal_learn:signal_test",

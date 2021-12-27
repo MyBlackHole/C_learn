@@ -1,3 +1,7 @@
+executable("kill_test") {
+  sources = ["kill_test.c"]
+}
+
 executable("sigemptyset_test") {
   sources = ["sigemptyset_test.c"]
 }
