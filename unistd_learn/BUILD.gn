@@ -1,3 +1,9 @@
+executable("getopt_test") {
+  sources = [
+    "getopt_test.c",
+  ]
+}
+
 executable("getppid_test") {
   sources = [
     "getppid_test.c",

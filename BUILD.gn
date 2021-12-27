@@ -105,6 +105,7 @@ group("default"){
     "//stdlib_learn:malloc_test",
     "//stdlib_learn:realloc_test",
 
+    "//unistd_learn:getopt_test",
     "//unistd_learn:getppid_test",
     "//unistd_learn:crypt_test",
     "//unistd_learn:getspnam_test",
