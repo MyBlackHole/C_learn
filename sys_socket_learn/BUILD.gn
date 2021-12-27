@@ -1,0 +1,8 @@
+executable("sendmsg_test") {
+  sources = [ "sendmsg_test.c" ]
+}
+
+executable("socketpair_test") {
+  sources = [ "socketpair_test.c" ]
+}
+
