@@ -6,7 +6,6 @@ a.out
 *.obj
 cmake-build-debug/
 .idea/
-build/
 .cache/
 *.build
 .ccls-cache
