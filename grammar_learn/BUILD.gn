@@ -1,3 +1,9 @@
+executable("bool_test") {
+  sources = [
+    "bool_test.c",
+  ]
+}
+
 executable("argv_test") {
   sources = [
     "argv_test.c",

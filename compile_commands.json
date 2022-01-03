@@ -1,84 +1,6 @@
 [
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/DesignPattern/Abstract_Factory_Pattern/src/libAbstractFactoryPattern.Red.o.d  -I../DesignPattern/Abstract_Factory_Pattern/include   -c ../DesignPattern/Abstract_Factory_Pattern/src/Red.c -o obj/DesignPattern/Abstract_Factory_Pattern/src/libAbstractFactoryPattern.Red.o",
-    "file": "../DesignPattern/Abstract_Factory_Pattern/src/Red.c",
-    "output": "obj/DesignPattern/Abstract_Factory_Pattern/src/libAbstractFactoryPattern.Red.o"
-  },
-  {
-    "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/DesignPattern/Abstract_Factory_Pattern/src/libAbstractFactoryPattern.Blue.o.d  -I../DesignPattern/Abstract_Factory_Pattern/include   -c ../DesignPattern/Abstract_Factory_Pattern/src/Blue.c -o obj/DesignPattern/Abstract_Factory_Pattern/src/libAbstractFactoryPattern.Blue.o",
-    "file": "../DesignPattern/Abstract_Factory_Pattern/src/Blue.c",
-    "output": "obj/DesignPattern/Abstract_Factory_Pattern/src/libAbstractFactoryPattern.Blue.o"
-  },
-  {
-    "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/DesignPattern/Abstract_Factory_Pattern/src/libAbstractFactoryPattern.Color.o.d  -I../DesignPattern/Abstract_Factory_Pattern/include   -c ../DesignPattern/Abstract_Factory_Pattern/src/Color.c -o obj/DesignPattern/Abstract_Factory_Pattern/src/libAbstractFactoryPattern.Color.o",
-    "file": "../DesignPattern/Abstract_Factory_Pattern/src/Color.c",
-    "output": "obj/DesignPattern/Abstract_Factory_Pattern/src/libAbstractFactoryPattern.Color.o"
-  },
-  {
-    "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/DesignPattern/Abstract_Factory_Pattern/src/libAbstractFactoryPattern.Green.o.d  -I../DesignPattern/Abstract_Factory_Pattern/include   -c ../DesignPattern/Abstract_Factory_Pattern/src/Green.c -o obj/DesignPattern/Abstract_Factory_Pattern/src/libAbstractFactoryPattern.Green.o",
-    "file": "../DesignPattern/Abstract_Factory_Pattern/src/Green.c",
-    "output": "obj/DesignPattern/Abstract_Factory_Pattern/src/libAbstractFactoryPattern.Green.o"
-  },
-  {
-    "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/DesignPattern/Abstract_Factory_Pattern/src/libAbstractFactoryPattern.Shape.o.d  -I../DesignPattern/Abstract_Factory_Pattern/include   -c ../DesignPattern/Abstract_Factory_Pattern/src/Shape.c -o obj/DesignPattern/Abstract_Factory_Pattern/src/libAbstractFactoryPattern.Shape.o",
-    "file": "../DesignPattern/Abstract_Factory_Pattern/src/Shape.c",
-    "output": "obj/DesignPattern/Abstract_Factory_Pattern/src/libAbstractFactoryPattern.Shape.o"
-  },
-  {
-    "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/DesignPattern/Abstract_Factory_Pattern/src/libAbstractFactoryPattern.Circle.o.d  -I../DesignPattern/Abstract_Factory_Pattern/include   -c ../DesignPattern/Abstract_Factory_Pattern/src/Circle.c -o obj/DesignPattern/Abstract_Factory_Pattern/src/libAbstractFactoryPattern.Circle.o",
-    "file": "../DesignPattern/Abstract_Factory_Pattern/src/Circle.c",
-    "output": "obj/DesignPattern/Abstract_Factory_Pattern/src/libAbstractFactoryPattern.Circle.o"
-  },
-  {
-    "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/DesignPattern/Abstract_Factory_Pattern/src/libAbstractFactoryPattern.Square.o.d  -I../DesignPattern/Abstract_Factory_Pattern/include   -c ../DesignPattern/Abstract_Factory_Pattern/src/Square.c -o obj/DesignPattern/Abstract_Factory_Pattern/src/libAbstractFactoryPattern.Square.o",
-    "file": "../DesignPattern/Abstract_Factory_Pattern/src/Square.c",
-    "output": "obj/DesignPattern/Abstract_Factory_Pattern/src/libAbstractFactoryPattern.Square.o"
-  },
-  {
-    "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/DesignPattern/Abstract_Factory_Pattern/src/libAbstractFactoryPattern.Factory.o.d  -I../DesignPattern/Abstract_Factory_Pattern/include   -c ../DesignPattern/Abstract_Factory_Pattern/src/Factory.c -o obj/DesignPattern/Abstract_Factory_Pattern/src/libAbstractFactoryPattern.Factory.o",
-    "file": "../DesignPattern/Abstract_Factory_Pattern/src/Factory.c",
-    "output": "obj/DesignPattern/Abstract_Factory_Pattern/src/libAbstractFactoryPattern.Factory.o"
-  },
-  {
-    "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/DesignPattern/Abstract_Factory_Pattern/src/libAbstractFactoryPattern.Rectangle.o.d  -I../DesignPattern/Abstract_Factory_Pattern/include   -c ../DesignPattern/Abstract_Factory_Pattern/src/Rectangle.c -o obj/DesignPattern/Abstract_Factory_Pattern/src/libAbstractFactoryPattern.Rectangle.o",
-    "file": "../DesignPattern/Abstract_Factory_Pattern/src/Rectangle.c",
-    "output": "obj/DesignPattern/Abstract_Factory_Pattern/src/libAbstractFactoryPattern.Rectangle.o"
-  },
-  {
-    "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/DesignPattern/Abstract_Factory_Pattern/src/libAbstractFactoryPattern.ColorFactory.o.d  -I../DesignPattern/Abstract_Factory_Pattern/include   -c ../DesignPattern/Abstract_Factory_Pattern/src/ColorFactory.c -o obj/DesignPattern/Abstract_Factory_Pattern/src/libAbstractFactoryPattern.ColorFactory.o",
-    "file": "../DesignPattern/Abstract_Factory_Pattern/src/ColorFactory.c",
-    "output": "obj/DesignPattern/Abstract_Factory_Pattern/src/libAbstractFactoryPattern.ColorFactory.o"
-  },
-  {
-    "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/DesignPattern/Abstract_Factory_Pattern/src/libAbstractFactoryPattern.ShapeFactory.o.d  -I../DesignPattern/Abstract_Factory_Pattern/include   -c ../DesignPattern/Abstract_Factory_Pattern/src/ShapeFactory.c -o obj/DesignPattern/Abstract_Factory_Pattern/src/libAbstractFactoryPattern.ShapeFactory.o",
-    "file": "../DesignPattern/Abstract_Factory_Pattern/src/ShapeFactory.c",
-    "output": "obj/DesignPattern/Abstract_Factory_Pattern/src/libAbstractFactoryPattern.ShapeFactory.o"
-  },
-  {
-    "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/DesignPattern/Abstract_Factory_Pattern/src/libAbstractFactoryPattern.FactoryProducer.o.d  -I../DesignPattern/Abstract_Factory_Pattern/include   -c ../DesignPattern/Abstract_Factory_Pattern/src/FactoryProducer.c -o obj/DesignPattern/Abstract_Factory_Pattern/src/libAbstractFactoryPattern.FactoryProducer.o",
-    "file": "../DesignPattern/Abstract_Factory_Pattern/src/FactoryProducer.c",
-    "output": "obj/DesignPattern/Abstract_Factory_Pattern/src/libAbstractFactoryPattern.FactoryProducer.o"
-  },
-  {
-    "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/DesignPattern/Abstract_Factory_Pattern/test/AbstractFactoryPatternDemo.AbstractFactoryPatternDemo.o.d  -I../DesignPattern/Abstract_Factory_Pattern/include   -c ../DesignPattern/Abstract_Factory_Pattern/test/AbstractFactoryPatternDemo.c -o obj/DesignPattern/Abstract_Factory_Pattern/test/AbstractFactoryPatternDemo.AbstractFactoryPatternDemo.o",
-    "file": "../DesignPattern/Abstract_Factory_Pattern/test/AbstractFactoryPatternDemo.c",
-    "output": "obj/DesignPattern/Abstract_Factory_Pattern/test/AbstractFactoryPatternDemo.AbstractFactoryPatternDemo.o"
-  },
-  {
-    "directory": "/home/black/Documents/Code/C/C_learn/out",
     "command": "gcc -MMD -MF obj/DesignPattern/Factory_Pattern/test/FactoryPatternDemo.FactoryPatternDemo.o.d  -I../DesignPattern/Factory_Pattern/include   -c ../DesignPattern/Factory_Pattern/test/FactoryPatternDemo.c -o obj/DesignPattern/Factory_Pattern/test/FactoryPatternDemo.FactoryPatternDemo.o",
     "file": "../DesignPattern/Factory_Pattern/test/FactoryPatternDemo.c",
     "output": "obj/DesignPattern/Factory_Pattern/test/FactoryPatternDemo.FactoryPatternDemo.o"
@@ -199,7 +121,7 @@
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/dirent_learn/readdir_test.readdir_test.o.d  -I../include   -c ../dirent_learn/readdir_test.c -o obj/dirent_learn/readdir_test.readdir_test.o",
+    "command": "gcc -MMD -MF obj/dirent_learn/readdir_test.readdir_test.o.d     -c ../dirent_learn/readdir_test.c -o obj/dirent_learn/readdir_test.readdir_test.o",
     "file": "../dirent_learn/readdir_test.c",
     "output": "obj/dirent_learn/readdir_test.readdir_test.o"
   },
@@ -217,27 +139,21 @@
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/ev_learn/ev1_test.ev1_test.o.d     -c ../ev_learn/ev1_test.c -o obj/ev_learn/ev1_test.ev1_test.o",
-    "file": "../ev_learn/ev1_test.c",
-    "output": "obj/ev_learn/ev1_test.ev1_test.o"
-  },
-  {
-    "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/ev_learn/ev_signal_test.ev_signal_test.o.d     -c ../ev_learn/ev_signal_test.c -o obj/ev_learn/ev_signal_test.ev_signal_test.o",
-    "file": "../ev_learn/ev_signal_test.c",
-    "output": "obj/ev_learn/ev_signal_test.ev_signal_test.o"
-  },
-  {
-    "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/fcntl_learn/creat_test.creat_test.o.d  -I../include -g  -c ../fcntl_learn/creat_test.c -o obj/fcntl_learn/creat_test.creat_test.o",
+    "command": "gcc -MMD -MF obj/fcntl_learn/creat_test.creat_test.o.d   -g  -c ../fcntl_learn/creat_test.c -o obj/fcntl_learn/creat_test.creat_test.o",
     "file": "../fcntl_learn/creat_test.c",
     "output": "obj/fcntl_learn/creat_test.creat_test.o"
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/fcntl_learn/fcntl_test.fcntl_test.o.d  -I../include -g  -c ../fcntl_learn/fcntl_test.c -o obj/fcntl_learn/fcntl_test.fcntl_test.o",
+    "command": "gcc -MMD -MF obj/fcntl_learn/fcntl_test.fcntl_test.o.d   -g  -c ../fcntl_learn/fcntl_test.c -o obj/fcntl_learn/fcntl_test.fcntl_test.o",
     "file": "../fcntl_learn/fcntl_test.c",
     "output": "obj/fcntl_learn/fcntl_test.fcntl_test.o"
+  },
+  {
+    "directory": "/home/black/Documents/Code/C/C_learn/out",
+    "command": "gcc -MMD -MF obj/fcntl_learn/file_flags.file_flags.o.d   -g  -c ../fcntl_learn/file_flags.c -o obj/fcntl_learn/file_flags.file_flags.o",
+    "file": "../fcntl_learn/file_flags.c",
+    "output": "obj/fcntl_learn/file_flags.file_flags.o"
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
@@ -253,105 +169,81 @@
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/grammar/1.1.o.d     -c ../grammar/1.c -o obj/grammar/1.1.o",
-    "file": "../grammar/1.c",
-    "output": "obj/grammar/1.1.o"
+    "command": "gcc -MMD -MF obj/glob_learn/glob_test.glob_test.o.d     -c ../glob_learn/glob_test.c -o obj/glob_learn/glob_test.glob_test.o",
+    "file": "../glob_learn/glob_test.c",
+    "output": "obj/glob_learn/glob_test.glob_test.o"
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/grammar/2.2.o.d     -c ../grammar/2.c -o obj/grammar/2.2.o",
-    "file": "../grammar/2.c",
-    "output": "obj/grammar/2.2.o"
+    "command": "gcc -MMD -MF obj/grammar_learn/1.1.o.d     -c ../grammar_learn/1.c -o obj/grammar_learn/1.1.o",
+    "file": "../grammar_learn/1.c",
+    "output": "obj/grammar_learn/1.1.o"
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/grammar/continue_test.continue_test.o.d     -c ../grammar/continue_test.c -o obj/grammar/continue_test.continue_test.o",
-    "file": "../grammar/continue_test.c",
-    "output": "obj/grammar/continue_test.continue_test.o"
+    "command": "gcc -MMD -MF obj/grammar_learn/2.2.o.d     -c ../grammar_learn/2.c -o obj/grammar_learn/2.2.o",
+    "file": "../grammar_learn/2.c",
+    "output": "obj/grammar_learn/2.2.o"
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/grammar/do_while_test.do_while_test.o.d     -c ../grammar/do_while_test.c -o obj/grammar/do_while_test.do_while_test.o",
-    "file": "../grammar/do_while_test.c",
-    "output": "obj/grammar/do_while_test.do_while_test.o"
+    "command": "gcc -MMD -MF obj/grammar_learn/argv_test.argv_test.o.d     -c ../grammar_learn/argv_test.c -o obj/grammar_learn/argv_test.argv_test.o",
+    "file": "../grammar_learn/argv_test.c",
+    "output": "obj/grammar_learn/argv_test.argv_test.o"
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/grammar/long_int_test.long_int_test.o.d     -c ../grammar/long_int_test.c -o obj/grammar/long_int_test.long_int_test.o",
-    "file": "../grammar/long_int_test.c",
-    "output": "obj/grammar/long_int_test.long_int_test.o"
+    "command": "gcc -MMD -MF obj/grammar_learn/bool_test.bool_test.o.d     -c ../grammar_learn/bool_test.c -o obj/grammar_learn/bool_test.bool_test.o",
+    "file": "../grammar_learn/bool_test.c",
+    "output": "obj/grammar_learn/bool_test.bool_test.o"
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/grammar/struct_test.struct_test.o.d     -c ../grammar/struct_test.c -o obj/grammar/struct_test.struct_test.o",
-    "file": "../grammar/struct_test.c",
-    "output": "obj/grammar/struct_test.struct_test.o"
+    "command": "gcc -MMD -MF obj/grammar_learn/continue_test.continue_test.o.d     -c ../grammar_learn/continue_test.c -o obj/grammar_learn/continue_test.continue_test.o",
+    "file": "../grammar_learn/continue_test.c",
+    "output": "obj/grammar_learn/continue_test.continue_test.o"
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/grammar/union_test.union_test.o.d     -c ../grammar/union_test.c -o obj/grammar/union_test.union_test.o",
-    "file": "../grammar/union_test.c",
-    "output": "obj/grammar/union_test.union_test.o"
+    "command": "gcc -MMD -MF obj/grammar_learn/do_while_test.do_while_test.o.d     -c ../grammar_learn/do_while_test.c -o obj/grammar_learn/do_while_test.do_while_test.o",
+    "file": "../grammar_learn/do_while_test.c",
+    "output": "obj/grammar_learn/do_while_test.do_while_test.o"
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/grammar/macro/define_test.define_test.o.d     -c ../grammar/macro/define_test.c -o obj/grammar/macro/define_test.define_test.o",
-    "file": "../grammar/macro/define_test.c",
-    "output": "obj/grammar/macro/define_test.define_test.o"
+    "command": "gcc -MMD -MF obj/grammar_learn/long_int_test.long_int_test.o.d     -c ../grammar_learn/long_int_test.c -o obj/grammar_learn/long_int_test.long_int_test.o",
+    "file": "../grammar_learn/long_int_test.c",
+    "output": "obj/grammar_learn/long_int_test.long_int_test.o"
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/hello_word/env_test.env_test.o.d  -I../include   -c ../hello_word/env_test.c -o obj/hello_word/env_test.env_test.o",
-    "file": "../hello_word/env_test.c",
-    "output": "obj/hello_word/env_test.env_test.o"
+    "command": "gcc -MMD -MF obj/grammar_learn/struct_test.struct_test.o.d     -c ../grammar_learn/struct_test.c -o obj/grammar_learn/struct_test.struct_test.o",
+    "file": "../grammar_learn/struct_test.c",
+    "output": "obj/grammar_learn/struct_test.struct_test.o"
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/hello_word/hello_word.hello.o.d     -c ../hello_word/hello.c -o obj/hello_word/hello_word.hello.o",
-    "file": "../hello_word/hello.c",
-    "output": "obj/hello_word/hello_word.hello.o"
+    "command": "gcc -MMD -MF obj/grammar_learn/union_test.union_test.o.d     -c ../grammar_learn/union_test.c -o obj/grammar_learn/union_test.union_test.o",
+    "file": "../grammar_learn/union_test.c",
+    "output": "obj/grammar_learn/union_test.union_test.o"
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/hello_word/helloworld1_test.helloworld1_test.o.d  -I../include   -c ../hello_word/helloworld1_test.c -o obj/hello_word/helloworld1_test.helloworld1_test.o",
-    "file": "../hello_word/helloworld1_test.c",
-    "output": "obj/hello_word/helloworld1_test.helloworld1_test.o"
+    "command": "gcc -MMD -MF obj/grammar_learn/macro/define_test.define_test.o.d     -c ../grammar_learn/macro/define_test.c -o obj/grammar_learn/macro/define_test.define_test.o",
+    "file": "../grammar_learn/macro/define_test.c",
+    "output": "obj/grammar_learn/macro/define_test.define_test.o"
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/hello_word/helloworld2_test.helloworld2_test.o.d  -I../include   -c ../hello_word/helloworld2_test.c -o obj/hello_word/helloworld2_test.helloworld2_test.o",
-    "file": "../hello_word/helloworld2_test.c",
-    "output": "obj/hello_word/helloworld2_test.helloworld2_test.o"
+    "command": "gcc -MMD -MF obj/leetcode_learn/001_two_sum/two_sum.two_sum.o.d     -c ../leetcode_learn/001_two_sum/two_sum.c -o obj/leetcode_learn/001_two_sum/two_sum.two_sum.o",
+    "file": "../leetcode_learn/001_two_sum/two_sum.c",
+    "output": "obj/leetcode_learn/001_two_sum/two_sum.two_sum.o"
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/hello_word/helloworld_test.helloworld_test.o.d     -c ../hello_word/helloworld_test.c -o obj/hello_word/helloworld_test.helloworld_test.o",
-    "file": "../hello_word/helloworld_test.c",
-    "output": "obj/hello_word/helloworld_test.helloworld_test.o"
-  },
-  {
-    "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/leetcode/001_two_sum/two_sum.two_sum.o.d     -c ../leetcode/001_two_sum/two_sum.c -o obj/leetcode/001_two_sum/two_sum.two_sum.o",
-    "file": "../leetcode/001_two_sum/two_sum.c",
-    "output": "obj/leetcode/001_two_sum/two_sum.two_sum.o"
-  },
-  {
-    "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/leetcode/037_sudoku_solver/sudoku_solver.sudoku_solver.o.d     -c ../leetcode/037_sudoku_solver/sudoku_solver.c -o obj/leetcode/037_sudoku_solver/sudoku_solver.sudoku_solver.o",
-    "file": "../leetcode/037_sudoku_solver/sudoku_solver.c",
-    "output": "obj/leetcode/037_sudoku_solver/sudoku_solver.sudoku_solver.o"
-  },
-  {
-    "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/lib/libc.prexit.o.d  -I../include   -c ../lib/prexit.c -o obj/lib/libc.prexit.o",
-    "file": "../lib/prexit.c",
-    "output": "obj/lib/libc.prexit.o"
-  },
-  {
-    "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/lib/libc.error.o.d  -I../include   -c ../lib/error.c -o obj/lib/libc.error.o",
-    "file": "../lib/error.c",
-    "output": "obj/lib/libc.error.o"
+    "command": "gcc -MMD -MF obj/leetcode_learn/037_sudoku_solver/sudoku_solver.sudoku_solver.o.d     -c ../leetcode_learn/037_sudoku_solver/sudoku_solver.c -o obj/leetcode_learn/037_sudoku_solver/sudoku_solver.sudoku_solver.o",
+    "file": "../leetcode_learn/037_sudoku_solver/sudoku_solver.c",
+    "output": "obj/leetcode_learn/037_sudoku_solver/sudoku_solver.sudoku_solver.o"
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
@@ -397,19 +289,19 @@
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/setjmp_learn/longjmp_test.longjmp_test.o.d  -I../include -g  -c ../setjmp_learn/longjmp_test.c -o obj/setjmp_learn/longjmp_test.longjmp_test.o",
+    "command": "gcc -MMD -MF obj/setjmp_learn/longjmp_test.longjmp_test.o.d   -g  -c ../setjmp_learn/longjmp_test.c -o obj/setjmp_learn/longjmp_test.longjmp_test.o",
     "file": "../setjmp_learn/longjmp_test.c",
     "output": "obj/setjmp_learn/longjmp_test.longjmp_test.o"
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/setjmp_learn/setjmp_test.setjmp_test.o.d  -I../include -g  -c ../setjmp_learn/setjmp_test.c -o obj/setjmp_learn/setjmp_test.setjmp_test.o",
+    "command": "gcc -MMD -MF obj/setjmp_learn/setjmp_test.setjmp_test.o.d   -g  -c ../setjmp_learn/setjmp_test.c -o obj/setjmp_learn/setjmp_test.setjmp_test.o",
     "file": "../setjmp_learn/setjmp_test.c",
     "output": "obj/setjmp_learn/setjmp_test.setjmp_test.o"
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/shadow_learn/getspnam_test.getspnam_test.o.d  -I../include -g  -c ../shadow_learn/getspnam_test.c -o obj/shadow_learn/getspnam_test.getspnam_test.o",
+    "command": "gcc -MMD -MF obj/shadow_learn/getspnam_test.getspnam_test.o.d   -g  -c ../shadow_learn/getspnam_test.c -o obj/shadow_learn/getspnam_test.getspnam_test.o",
     "file": "../shadow_learn/getspnam_test.c",
     "output": "obj/shadow_learn/getspnam_test.getspnam_test.o"
   },
@@ -427,7 +319,13 @@
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/signal_learn/sigaction_test.sigaction_test.o.d  -I../include -g  -c ../signal_learn/sigaction_test.c -o obj/signal_learn/sigaction_test.sigaction_test.o",
+    "command": "gcc -MMD -MF obj/signal_learn/kill_test.kill_test.o.d     -c ../signal_learn/kill_test.c -o obj/signal_learn/kill_test.kill_test.o",
+    "file": "../signal_learn/kill_test.c",
+    "output": "obj/signal_learn/kill_test.kill_test.o"
+  },
+  {
+    "directory": "/home/black/Documents/Code/C/C_learn/out",
+    "command": "gcc -MMD -MF obj/signal_learn/sigaction_test.sigaction_test.o.d   -g  -c ../signal_learn/sigaction_test.c -o obj/signal_learn/sigaction_test.sigaction_test.o",
     "file": "../signal_learn/sigaction_test.c",
     "output": "obj/signal_learn/sigaction_test.sigaction_test.o"
   },
@@ -439,31 +337,31 @@
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/signal_learn/signal1_test.signal1_test.o.d  -I../include -g  -c ../signal_learn/signal1_test.c -o obj/signal_learn/signal1_test.signal1_test.o",
+    "command": "gcc -MMD -MF obj/signal_learn/signal1_test.signal1_test.o.d   -g  -c ../signal_learn/signal1_test.c -o obj/signal_learn/signal1_test.signal1_test.o",
     "file": "../signal_learn/signal1_test.c",
     "output": "obj/signal_learn/signal1_test.signal1_test.o"
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/signal_learn/signal2_test.signal2_test.o.d  -I../include -g  -c ../signal_learn/signal2_test.c -o obj/signal_learn/signal2_test.signal2_test.o",
+    "command": "gcc -MMD -MF obj/signal_learn/signal2_test.signal2_test.o.d   -g  -c ../signal_learn/signal2_test.c -o obj/signal_learn/signal2_test.signal2_test.o",
     "file": "../signal_learn/signal2_test.c",
     "output": "obj/signal_learn/signal2_test.signal2_test.o"
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/signal_learn/signal3_test.signal3_test.o.d  -I../include -g  -c ../signal_learn/signal3_test.c -o obj/signal_learn/signal3_test.signal3_test.o",
+    "command": "gcc -MMD -MF obj/signal_learn/signal3_test.signal3_test.o.d   -g  -c ../signal_learn/signal3_test.c -o obj/signal_learn/signal3_test.signal3_test.o",
     "file": "../signal_learn/signal3_test.c",
     "output": "obj/signal_learn/signal3_test.signal3_test.o"
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/signal_learn/signal4_test.signal4_test.o.d  -I../include   -c ../signal_learn/signal4_test.c -o obj/signal_learn/signal4_test.signal4_test.o",
+    "command": "gcc -MMD -MF obj/signal_learn/signal4_test.signal4_test.o.d     -c ../signal_learn/signal4_test.c -o obj/signal_learn/signal4_test.signal4_test.o",
     "file": "../signal_learn/signal4_test.c",
     "output": "obj/signal_learn/signal4_test.signal4_test.o"
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/signal_learn/signal_test.signal_test.o.d  -I../include -g  -c ../signal_learn/signal_test.c -o obj/signal_learn/signal_test.signal_test.o",
+    "command": "gcc -MMD -MF obj/signal_learn/signal_test.signal_test.o.d   -g  -c ../signal_learn/signal_test.c -o obj/signal_learn/signal_test.signal_test.o",
     "file": "../signal_learn/signal_test.c",
     "output": "obj/signal_learn/signal_test.signal_test.o"
   },
@@ -481,13 +379,13 @@
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/stdio_learn/fgets_test.fgets_test.o.d  -I../include   -c ../stdio_learn/fgets_test.c -o obj/stdio_learn/fgets_test.fgets_test.o",
+    "command": "gcc -MMD -MF obj/stdio_learn/fgets_test.fgets_test.o.d     -c ../stdio_learn/fgets_test.c -o obj/stdio_learn/fgets_test.fgets_test.o",
     "file": "../stdio_learn/fgets_test.c",
     "output": "obj/stdio_learn/fgets_test.fgets_test.o"
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/stdio_learn/fopen1_test.fopen1_test.o.d  -I../include   -c ../stdio_learn/fopen1_test.c -o obj/stdio_learn/fopen1_test.fopen1_test.o",
+    "command": "gcc -MMD -MF obj/stdio_learn/fopen1_test.fopen1_test.o.d     -c ../stdio_learn/fopen1_test.c -o obj/stdio_learn/fopen1_test.fopen1_test.o",
     "file": "../stdio_learn/fopen1_test.c",
     "output": "obj/stdio_learn/fopen1_test.fopen1_test.o"
   },
@@ -511,7 +409,7 @@
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/stdio_learn/getc_test.getc_test.o.d  -I../include   -c ../stdio_learn/getc_test.c -o obj/stdio_learn/getc_test.getc_test.o",
+    "command": "gcc -MMD -MF obj/stdio_learn/getc_test.getc_test.o.d     -c ../stdio_learn/getc_test.c -o obj/stdio_learn/getc_test.getc_test.o",
     "file": "../stdio_learn/getc_test.c",
     "output": "obj/stdio_learn/getc_test.getc_test.o"
   },
@@ -529,7 +427,7 @@
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/stdio_learn/tmpfile_test.tmpfile_test.o.d  -I../include   -c ../stdio_learn/tmpfile_test.c -o obj/stdio_learn/tmpfile_test.tmpfile_test.o",
+    "command": "gcc -MMD -MF obj/stdio_learn/tmpfile_test.tmpfile_test.o.d     -c ../stdio_learn/tmpfile_test.c -o obj/stdio_learn/tmpfile_test.tmpfile_test.o",
     "file": "../stdio_learn/tmpfile_test.c",
     "output": "obj/stdio_learn/tmpfile_test.tmpfile_test.o"
   },
@@ -541,7 +439,7 @@
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/stdlib_learn/atexit_test.atexit_test.o.d  -I../include -g  -c ../stdlib_learn/atexit_test.c -o obj/stdlib_learn/atexit_test.atexit_test.o",
+    "command": "gcc -MMD -MF obj/stdlib_learn/atexit_test.atexit_test.o.d   -g  -c ../stdlib_learn/atexit_test.c -o obj/stdlib_learn/atexit_test.atexit_test.o",
     "file": "../stdlib_learn/atexit_test.c",
     "output": "obj/stdlib_learn/atexit_test.atexit_test.o"
   },
@@ -571,7 +469,7 @@
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/stdlib_learn/mkstemp_test.mkstemp_test.o.d  -I../include -g  -c ../stdlib_learn/mkstemp_test.c -o obj/stdlib_learn/mkstemp_test.mkstemp_test.o",
+    "command": "gcc -MMD -MF obj/stdlib_learn/mkstemp_test.mkstemp_test.o.d   -g  -c ../stdlib_learn/mkstemp_test.c -o obj/stdlib_learn/mkstemp_test.mkstemp_test.o",
     "file": "../stdlib_learn/mkstemp_test.c",
     "output": "obj/stdlib_learn/mkstemp_test.mkstemp_test.o"
   },
@@ -583,31 +481,25 @@
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/stdlib_learn/srand_test.srand_test.o.d  -I../include -g  -c ../stdlib_learn/srand_test.c -o obj/stdlib_learn/srand_test.srand_test.o",
+    "command": "gcc -MMD -MF obj/stdlib_learn/srand_test.srand_test.o.d   -g  -c ../stdlib_learn/srand_test.c -o obj/stdlib_learn/srand_test.srand_test.o",
     "file": "../stdlib_learn/srand_test.c",
     "output": "obj/stdlib_learn/srand_test.srand_test.o"
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/stdlib_learn/system1_test.system1_test.o.d  -I../include -g  -c ../stdlib_learn/system1_test.c -o obj/stdlib_learn/system1_test.system1_test.o",
-    "file": "../stdlib_learn/system1_test.c",
-    "output": "obj/stdlib_learn/system1_test.system1_test.o"
-  },
-  {
-    "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/stdlib_learn/system2_test.system2_test.o.d  -I../include -g  -c ../stdlib_learn/system2_test.c -o obj/stdlib_learn/system2_test.system2_test.o",
+    "command": "gcc -MMD -MF obj/stdlib_learn/system2_test.system2_test.o.d   -g  -c ../stdlib_learn/system2_test.c -o obj/stdlib_learn/system2_test.system2_test.o",
     "file": "../stdlib_learn/system2_test.c",
     "output": "obj/stdlib_learn/system2_test.system2_test.o"
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/stdlib_learn/system3_test.system3_test.o.d  -I../include -g  -c ../stdlib_learn/system3_test.c -o obj/stdlib_learn/system3_test.system3_test.o",
+    "command": "gcc -MMD -MF obj/stdlib_learn/system3_test.system3_test.o.d   -g  -c ../stdlib_learn/system3_test.c -o obj/stdlib_learn/system3_test.system3_test.o",
     "file": "../stdlib_learn/system3_test.c",
     "output": "obj/stdlib_learn/system3_test.system3_test.o"
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/stdlib_learn/system_test.system_test.o.d  -I../include -g  -c ../stdlib_learn/system_test.c -o obj/stdlib_learn/system_test.system_test.o",
+    "command": "gcc -MMD -MF obj/stdlib_learn/system_test.system_test.o.d   -g  -c ../stdlib_learn/system_test.c -o obj/stdlib_learn/system_test.system_test.o",
     "file": "../stdlib_learn/system_test.c",
     "output": "obj/stdlib_learn/system_test.system_test.o"
   },
@@ -619,9 +511,15 @@
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/string_learn/memset_test.memset_test.o.d  -I../include -g  -c ../string_learn/memset_test.c -o obj/string_learn/memset_test.memset_test.o",
+    "command": "gcc -MMD -MF obj/string_learn/memset_test.memset_test.o.d   -g  -c ../string_learn/memset_test.c -o obj/string_learn/memset_test.memset_test.o",
     "file": "../string_learn/memset_test.c",
     "output": "obj/string_learn/memset_test.memset_test.o"
+  },
+  {
+    "directory": "/home/black/Documents/Code/C/C_learn/out",
+    "command": "gcc -MMD -MF obj/string_learn/strerror_test.strerror_test.o.d   -g  -c ../string_learn/strerror_test.c -o obj/string_learn/strerror_test.strerror_test.o",
+    "file": "../string_learn/strerror_test.c",
+    "output": "obj/string_learn/strerror_test.strerror_test.o"
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
@@ -637,7 +535,13 @@
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/sys_select_learn/select_test.select_test.o.d  -I../include -g  -c ../sys_select_learn/select_test.c -o obj/sys_select_learn/select_test.select_test.o",
+    "command": "gcc -MMD -MF obj/sys_resource_learn/getrlimit.getrlimit.o.d   -g  -c ../sys_resource_learn/getrlimit.c -o obj/sys_resource_learn/getrlimit.getrlimit.o",
+    "file": "../sys_resource_learn/getrlimit.c",
+    "output": "obj/sys_resource_learn/getrlimit.getrlimit.o"
+  },
+  {
+    "directory": "/home/black/Documents/Code/C/C_learn/out",
+    "command": "gcc -MMD -MF obj/sys_select_learn/select_test.select_test.o.d   -g  -c ../sys_select_learn/select_test.c -o obj/sys_select_learn/select_test.select_test.o",
     "file": "../sys_select_learn/select_test.c",
     "output": "obj/sys_select_learn/select_test.select_test.o"
   },
@@ -649,13 +553,25 @@
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/sys_stat_learn/chmod_test.chmod_test.o.d  -I../include   -c ../sys_stat_learn/chmod_test.c -o obj/sys_stat_learn/chmod_test.chmod_test.o",
+    "command": "gcc -MMD -MF obj/sys_socket_learn/sendmsg_test.sendmsg_test.o.d     -c ../sys_socket_learn/sendmsg_test.c -o obj/sys_socket_learn/sendmsg_test.sendmsg_test.o",
+    "file": "../sys_socket_learn/sendmsg_test.c",
+    "output": "obj/sys_socket_learn/sendmsg_test.sendmsg_test.o"
+  },
+  {
+    "directory": "/home/black/Documents/Code/C/C_learn/out",
+    "command": "gcc -MMD -MF obj/sys_socket_learn/socketpair_test.socketpair_test.o.d     -c ../sys_socket_learn/socketpair_test.c -o obj/sys_socket_learn/socketpair_test.socketpair_test.o",
+    "file": "../sys_socket_learn/socketpair_test.c",
+    "output": "obj/sys_socket_learn/socketpair_test.socketpair_test.o"
+  },
+  {
+    "directory": "/home/black/Documents/Code/C/C_learn/out",
+    "command": "gcc -MMD -MF obj/sys_stat_learn/chmod_test.chmod_test.o.d     -c ../sys_stat_learn/chmod_test.c -o obj/sys_stat_learn/chmod_test.chmod_test.o",
     "file": "../sys_stat_learn/chmod_test.c",
     "output": "obj/sys_stat_learn/chmod_test.chmod_test.o"
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/sys_stat_learn/futimens_test.futimens_test.o.d  -I../include   -c ../sys_stat_learn/futimens_test.c -o obj/sys_stat_learn/futimens_test.futimens_test.o",
+    "command": "gcc -MMD -MF obj/sys_stat_learn/futimens_test.futimens_test.o.d     -c ../sys_stat_learn/futimens_test.c -o obj/sys_stat_learn/futimens_test.futimens_test.o",
     "file": "../sys_stat_learn/futimens_test.c",
     "output": "obj/sys_stat_learn/futimens_test.futimens_test.o"
   },
@@ -667,13 +583,13 @@
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/sys_stat_learn/stat2_test.stat2_test.o.d  -I../include   -c ../sys_stat_learn/stat2_test.c -o obj/sys_stat_learn/stat2_test.stat2_test.o",
+    "command": "gcc -MMD -MF obj/sys_stat_learn/stat2_test.stat2_test.o.d     -c ../sys_stat_learn/stat2_test.c -o obj/sys_stat_learn/stat2_test.stat2_test.o",
     "file": "../sys_stat_learn/stat2_test.c",
     "output": "obj/sys_stat_learn/stat2_test.stat2_test.o"
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/sys_stat_learn/stat3_test.stat3_test.o.d  -I../include   -c ../sys_stat_learn/stat3_test.c -o obj/sys_stat_learn/stat3_test.stat3_test.o",
+    "command": "gcc -MMD -MF obj/sys_stat_learn/stat3_test.stat3_test.o.d     -c ../sys_stat_learn/stat3_test.c -o obj/sys_stat_learn/stat3_test.stat3_test.o",
     "file": "../sys_stat_learn/stat3_test.c",
     "output": "obj/sys_stat_learn/stat3_test.stat3_test.o"
   },
@@ -685,7 +601,7 @@
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/sys_stat_learn/umask_test.umask_test.o.d  -I../include   -c ../sys_stat_learn/umask_test.c -o obj/sys_stat_learn/umask_test.umask_test.o",
+    "command": "gcc -MMD -MF obj/sys_stat_learn/umask_test.umask_test.o.d     -c ../sys_stat_learn/umask_test.c -o obj/sys_stat_learn/umask_test.umask_test.o",
     "file": "../sys_stat_learn/umask_test.c",
     "output": "obj/sys_stat_learn/umask_test.umask_test.o"
   },
@@ -697,7 +613,7 @@
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/sys_wait_learn/waitpid_test.waitpid_test.o.d  -I../include   -c ../sys_wait_learn/waitpid_test.c -o obj/sys_wait_learn/waitpid_test.waitpid_test.o",
+    "command": "gcc -MMD -MF obj/sys_wait_learn/waitpid_test.waitpid_test.o.d     -c ../sys_wait_learn/waitpid_test.c -o obj/sys_wait_learn/waitpid_test.waitpid_test.o",
     "file": "../sys_wait_learn/waitpid_test.c",
     "output": "obj/sys_wait_learn/waitpid_test.waitpid_test.o"
   },
@@ -709,13 +625,25 @@
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/time_learn/gettimeofday_test.gettimeofday_test.o.d  -I../include   -c ../time_learn/gettimeofday_test.c -o obj/time_learn/gettimeofday_test.gettimeofday_test.o",
+    "command": "gcc -MMD -MF obj/time_learn/gettimeofday_test.gettimeofday_test.o.d     -c ../time_learn/gettimeofday_test.c -o obj/time_learn/gettimeofday_test.gettimeofday_test.o",
     "file": "../time_learn/gettimeofday_test.c",
     "output": "obj/time_learn/gettimeofday_test.gettimeofday_test.o"
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/time_learn/localtime_test.localtime_test.o.d  -I../include   -c ../time_learn/localtime_test.c -o obj/time_learn/localtime_test.localtime_test.o",
+    "command": "gcc -MMD -MF obj/time_learn/localtime1_test.localtime1_test.o.d     -c ../time_learn/localtime1_test.c -o obj/time_learn/localtime1_test.localtime1_test.o",
+    "file": "../time_learn/localtime1_test.c",
+    "output": "obj/time_learn/localtime1_test.localtime1_test.o"
+  },
+  {
+    "directory": "/home/black/Documents/Code/C/C_learn/out",
+    "command": "gcc -MMD -MF obj/time_learn/localtime2_test.localtime2_test.o.d     -c ../time_learn/localtime2_test.c -o obj/time_learn/localtime2_test.localtime2_test.o",
+    "file": "../time_learn/localtime2_test.c",
+    "output": "obj/time_learn/localtime2_test.localtime2_test.o"
+  },
+  {
+    "directory": "/home/black/Documents/Code/C/C_learn/out",
+    "command": "gcc -MMD -MF obj/time_learn/localtime_test.localtime_test.o.d     -c ../time_learn/localtime_test.c -o obj/time_learn/localtime_test.localtime_test.o",
     "file": "../time_learn/localtime_test.c",
     "output": "obj/time_learn/localtime_test.localtime_test.o"
   },
@@ -733,15 +661,21 @@
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/unistd_learn/access_test.access_test.o.d  -I../include   -c ../unistd_learn/access_test.c -o obj/unistd_learn/access_test.access_test.o",
+    "command": "gcc -MMD -MF obj/unistd_learn/access_test.access_test.o.d     -c ../unistd_learn/access_test.c -o obj/unistd_learn/access_test.access_test.o",
     "file": "../unistd_learn/access_test.c",
     "output": "obj/unistd_learn/access_test.access_test.o"
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/unistd_learn/chdir_test.chdir_test.o.d  -I../include   -c ../unistd_learn/chdir_test.c -o obj/unistd_learn/chdir_test.chdir_test.o",
+    "command": "gcc -MMD -MF obj/unistd_learn/chdir_test.chdir_test.o.d     -c ../unistd_learn/chdir_test.c -o obj/unistd_learn/chdir_test.chdir_test.o",
     "file": "../unistd_learn/chdir_test.c",
     "output": "obj/unistd_learn/chdir_test.chdir_test.o"
+  },
+  {
+    "directory": "/home/black/Documents/Code/C/C_learn/out",
+    "command": "gcc -MMD -MF obj/unistd_learn/crypt_test.crypt_test.o.d     -c ../unistd_learn/crypt_test.c -o obj/unistd_learn/crypt_test.crypt_test.o",
+    "file": "../unistd_learn/crypt_test.c",
+    "output": "obj/unistd_learn/crypt_test.crypt_test.o"
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
@@ -757,33 +691,21 @@
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/unistd_learn/execl_test.execl_test.o.d  -I../include   -c ../unistd_learn/execl_test.c -o obj/unistd_learn/execl_test.execl_test.o",
+    "command": "gcc -MMD -MF obj/unistd_learn/execl_test.execl_test.o.d     -c ../unistd_learn/execl_test.c -o obj/unistd_learn/execl_test.execl_test.o",
     "file": "../unistd_learn/execl_test.c",
     "output": "obj/unistd_learn/execl_test.execl_test.o"
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/unistd_learn/execlp_test.execlp_test.o.d  -I../include   -c ../unistd_learn/execlp_test.c -o obj/unistd_learn/execlp_test.execlp_test.o",
+    "command": "gcc -MMD -MF obj/unistd_learn/execlp_test.execlp_test.o.d     -c ../unistd_learn/execlp_test.c -o obj/unistd_learn/execlp_test.execlp_test.o",
     "file": "../unistd_learn/execlp_test.c",
     "output": "obj/unistd_learn/execlp_test.execlp_test.o"
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/unistd_learn/fork1_test.fork1_test.o.d  -I../include   -c ../unistd_learn/fork1_test.c -o obj/unistd_learn/fork1_test.fork1_test.o",
+    "command": "gcc -MMD -MF obj/unistd_learn/fork1_test.fork1_test.o.d     -c ../unistd_learn/fork1_test.c -o obj/unistd_learn/fork1_test.fork1_test.o",
     "file": "../unistd_learn/fork1_test.c",
     "output": "obj/unistd_learn/fork1_test.fork1_test.o"
-  },
-  {
-    "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/unistd_learn/fork2_test.fork2_test.o.d  -I../include   -c ../unistd_learn/fork2_test.c -o obj/unistd_learn/fork2_test.fork2_test.o",
-    "file": "../unistd_learn/fork2_test.c",
-    "output": "obj/unistd_learn/fork2_test.fork2_test.o"
-  },
-  {
-    "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/unistd_learn/fork3_test.fork3_test.o.d  -I../include   -c ../unistd_learn/fork3_test.c -o obj/unistd_learn/fork3_test.fork3_test.o",
-    "file": "../unistd_learn/fork3_test.c",
-    "output": "obj/unistd_learn/fork3_test.fork3_test.o"
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
@@ -799,21 +721,39 @@
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/unistd_learn/fork_test.fork_test.o.d  -I../include   -c ../unistd_learn/fork_test.c -o obj/unistd_learn/fork_test.fork_test.o",
-    "file": "../unistd_learn/fork_test.c",
-    "output": "obj/unistd_learn/fork_test.fork_test.o"
-  },
-  {
-    "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/unistd_learn/getcwd_test.getcwd_test.o.d  -I../include   -c ../unistd_learn/getcwd_test.c -o obj/unistd_learn/getcwd_test.getcwd_test.o",
+    "command": "gcc -MMD -MF obj/unistd_learn/getcwd_test.getcwd_test.o.d     -c ../unistd_learn/getcwd_test.c -o obj/unistd_learn/getcwd_test.getcwd_test.o",
     "file": "../unistd_learn/getcwd_test.c",
     "output": "obj/unistd_learn/getcwd_test.getcwd_test.o"
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/unistd_learn/getpid_test.getpid_test.o.d  -I../include   -c ../unistd_learn/getpid_test.c -o obj/unistd_learn/getpid_test.getpid_test.o",
+    "command": "gcc -MMD -MF obj/unistd_learn/getopt_test.getopt_test.o.d     -c ../unistd_learn/getopt_test.c -o obj/unistd_learn/getopt_test.getopt_test.o",
+    "file": "../unistd_learn/getopt_test.c",
+    "output": "obj/unistd_learn/getopt_test.getopt_test.o"
+  },
+  {
+    "directory": "/home/black/Documents/Code/C/C_learn/out",
+    "command": "gcc -MMD -MF obj/unistd_learn/getpass_test.getpass_test.o.d     -c ../unistd_learn/getpass_test.c -o obj/unistd_learn/getpass_test.getpass_test.o",
+    "file": "../unistd_learn/getpass_test.c",
+    "output": "obj/unistd_learn/getpass_test.getpass_test.o"
+  },
+  {
+    "directory": "/home/black/Documents/Code/C/C_learn/out",
+    "command": "gcc -MMD -MF obj/unistd_learn/getpid_test.getpid_test.o.d     -c ../unistd_learn/getpid_test.c -o obj/unistd_learn/getpid_test.getpid_test.o",
     "file": "../unistd_learn/getpid_test.c",
     "output": "obj/unistd_learn/getpid_test.getpid_test.o"
+  },
+  {
+    "directory": "/home/black/Documents/Code/C/C_learn/out",
+    "command": "gcc -MMD -MF obj/unistd_learn/getppid_test.getppid_test.o.d     -c ../unistd_learn/getppid_test.c -o obj/unistd_learn/getppid_test.getppid_test.o",
+    "file": "../unistd_learn/getppid_test.c",
+    "output": "obj/unistd_learn/getppid_test.getppid_test.o"
+  },
+  {
+    "directory": "/home/black/Documents/Code/C/C_learn/out",
+    "command": "gcc -MMD -MF obj/unistd_learn/getspnam_test.getspnam_test.o.d     -c ../unistd_learn/getspnam_test.c -o obj/unistd_learn/getspnam_test.getspnam_test.o",
+    "file": "../unistd_learn/getspnam_test.c",
+    "output": "obj/unistd_learn/getspnam_test.getspnam_test.o"
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
@@ -823,19 +763,19 @@
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/unistd_learn/lseek1_test.lseek1_test.o.d  -I../include   -c ../unistd_learn/lseek1_test.c -o obj/unistd_learn/lseek1_test.lseek1_test.o",
-    "file": "../unistd_learn/lseek1_test.c",
-    "output": "obj/unistd_learn/lseek1_test.lseek1_test.o"
+    "command": "gcc -MMD -MF obj/unistd_learn/lockf_test.lockf_test.o.d     -c ../unistd_learn/lockf_test.c -o obj/unistd_learn/lockf_test.lockf_test.o",
+    "file": "../unistd_learn/lockf_test.c",
+    "output": "obj/unistd_learn/lockf_test.lockf_test.o"
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/unistd_learn/lseek_test.lseek_test.o.d  -I../include   -c ../unistd_learn/lseek_test.c -o obj/unistd_learn/lseek_test.lseek_test.o",
+    "command": "gcc -MMD -MF obj/unistd_learn/lseek_test.lseek_test.o.d     -c ../unistd_learn/lseek_test.c -o obj/unistd_learn/lseek_test.lseek_test.o",
     "file": "../unistd_learn/lseek_test.c",
     "output": "obj/unistd_learn/lseek_test.lseek_test.o"
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/unistd_learn/read_test.read_test.o.d  -I../include   -c ../unistd_learn/read_test.c -o obj/unistd_learn/read_test.read_test.o",
+    "command": "gcc -MMD -MF obj/unistd_learn/read_test.read_test.o.d     -c ../unistd_learn/read_test.c -o obj/unistd_learn/read_test.read_test.o",
     "file": "../unistd_learn/read_test.c",
     "output": "obj/unistd_learn/read_test.read_test.o"
   },
@@ -859,19 +799,19 @@
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/unistd_learn/sysconf_test.sysconf_test.o.d  -I../include   -c ../unistd_learn/sysconf_test.c -o obj/unistd_learn/sysconf_test.sysconf_test.o",
-    "file": "../unistd_learn/sysconf_test.c",
-    "output": "obj/unistd_learn/sysconf_test.sysconf_test.o"
-  },
-  {
-    "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/unistd_learn/unlink_test.unlink_test.o.d  -I../include   -c ../unistd_learn/unlink_test.c -o obj/unistd_learn/unlink_test.unlink_test.o",
+    "command": "gcc -MMD -MF obj/unistd_learn/unlink_test.unlink_test.o.d     -c ../unistd_learn/unlink_test.c -o obj/unistd_learn/unlink_test.unlink_test.o",
     "file": "../unistd_learn/unlink_test.c",
     "output": "obj/unistd_learn/unlink_test.unlink_test.o"
   },
   {
     "directory": "/home/black/Documents/Code/C/C_learn/out",
-    "command": "gcc -MMD -MF obj/utsname_learn/uname_test.uname_test.o.d  -I../include   -c ../utsname_learn/uname_test.c -o obj/utsname_learn/uname_test.uname_test.o",
+    "command": "gcc -MMD -MF obj/unistd_learn/write_test.write_test.o.d     -c ../unistd_learn/write_test.c -o obj/unistd_learn/write_test.write_test.o",
+    "file": "../unistd_learn/write_test.c",
+    "output": "obj/unistd_learn/write_test.write_test.o"
+  },
+  {
+    "directory": "/home/black/Documents/Code/C/C_learn/out",
+    "command": "gcc -MMD -MF obj/utsname_learn/uname_test.uname_test.o.d     -c ../utsname_learn/uname_test.c -o obj/utsname_learn/uname_test.uname_test.o",
     "file": "../utsname_learn/uname_test.c",
     "output": "obj/utsname_learn/uname_test.uname_test.o"
   }

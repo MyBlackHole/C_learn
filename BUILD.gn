@@ -23,7 +23,6 @@ group("default"){
     "//coroutine_learn:main",
 
     "//DesignPattern/Factory_Pattern:FactoryPatternDemo",
-    "//DesignPattern/Abstract_Factory_Pattern:AbstractFactoryPatternDemo",
     "//DesignPattern/Singleton_Pattern:SingletonPatternDemo",
 
     "//leetcode_learn/001_two_sum:two_sum",
@@ -47,6 +46,7 @@ group("default"){
     "//aio_learn:aio_suspend_test",
     "//aio_learn:lio_listio_test",
 
+    "//grammar_learn:bool_test",
     "//grammar_learn:2",
     "//grammar_learn:union_test",
     "//grammar_learn:continue_test",
