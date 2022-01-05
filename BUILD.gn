@@ -2,6 +2,9 @@ group("default"){
   deps = [
     "//sys_resource_learn:getrlimit",
 
+    "//stdarg_learn:va_start_test",
+    "//stdarg_learn:va_end_test",
+
     "//glob_learn:glob_test",
 
     "//sys_socket_learn:sendmsg_test",

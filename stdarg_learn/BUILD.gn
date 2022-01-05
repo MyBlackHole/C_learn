@@ -1,0 +1,12 @@
+executable("va_end_test") {
+  sources = [
+    "va_end_test.c",
+  ]
+}
+
+executable("va_start_test") {
+  sources = [
+    "va_start_test.c",
+  ]
+}
+
