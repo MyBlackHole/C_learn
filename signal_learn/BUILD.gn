@@ -1,3 +1,7 @@
+executable("sigprocmask_test") {
+  sources = ["sigprocmask_test.c"]
+}
+
 executable("kill_test") {
   sources = ["kill_test.c"]
 }
