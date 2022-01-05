@@ -1,0 +1,19 @@
+executable("AdapterPatternDemo") {
+  sources = [ "test/AdapterPatternDemo.c" ]
+  deps = [":AdapterPattern"]
+  include_dirs = ["include"]
+}
+
+static_library("AdapterPattern") {
+  include_dirs = ["include"]
+
+  sources = [
+    "src/Mp4Player.c",
+    "src/VlcPlayer.c",
+    "src/AudioPlayer.c",
+    "src/MediaPlayer.c",
+    "src/MediaAdapter.c",
+    "src/MediaPlayerStruct.h",
+    "src/AdvancedMediaPlayerStruct.h",
+  ]
+}

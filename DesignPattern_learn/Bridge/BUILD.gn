@@ -1,0 +1,19 @@
+executable("BridgePatternDemo") {
+  sources = [ "test/BridgePatternDemo.c" ]
+  deps = [":BridgePattern"]
+  include_dirs = ["include"]
+}
+
+static_library("BridgePattern") {
+  include_dirs = ["include"]
+
+  sources = [
+    "src/Shape.c",
+    "src/Circle.c",
+    "src/DrawAPI.c",
+    "src/RedCircle.c",
+    "src/GreenCircle.c",
+    "src/ShapeStruct.h",
+    "src/DrawAPIStruct.h",
+  ]
+}

@@ -1,0 +1,29 @@
+executable("BuilderPatternDemo") {
+  sources = [ "test/BuilderPatternDemo.c" ]
+  deps = [":BuilderPattern"]
+  include_dirs = ["include"]
+}
+
+static_library("BuilderPattern") {
+  include_dirs = ["include"]
+
+  sources = [
+    "src/Coke.c",
+    "src/Item.c",
+    "src/Item.h",
+    "src/Meal.c",
+    "src/Pepsi.c",
+    "src/Bottle.c",
+    "src/Burger.c",
+    "src/Packing.c",
+    "src/Packing.h",
+    "src/ColdDrink.c",
+    "src/VegBurger.c",
+    "src/ItemStruct.h",
+    "src/MealBuilder.c",
+    "src/BurgerStruct.h",
+    "src/Wrapper.c",
+    "src/MealInternal.h",
+    "src/ChickenBurger.c",
+  ]
+}
