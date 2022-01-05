@@ -1,3 +1,9 @@
+executable("free_test") {
+  sources = [
+    "free_test.c",
+  ]
+}
+
 executable("atoi_test") {
   sources = [
     "atoi_test.c",
