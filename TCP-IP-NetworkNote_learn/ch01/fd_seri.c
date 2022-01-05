@@ -29,6 +29,8 @@ int main(int argc, char *argv[]) {
   printf("file descriptor 2: %d\n", fd2);
   printf("file descriptor 3: %d\n", fd3);
 
+  free(name);
+
   close(fd1);
   close(fd2);
   close(fd3);
