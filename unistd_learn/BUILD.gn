@@ -1,3 +1,9 @@
+executable("pipe_test") {
+  sources = [
+    "pipe_test.c",
+  ]
+}
+
 executable("lockf_test") {
   sources = [
     "lockf_test.c",

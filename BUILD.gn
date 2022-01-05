@@ -25,8 +25,8 @@ group("default"){
 
     "//coroutine_learn:main",
 
-    "//DesignPattern/Factory_Pattern:FactoryPatternDemo",
-    "//DesignPattern/Singleton_Pattern:SingletonPatternDemo",
+    "//DesignPattern_learn/Factory_Pattern:FactoryPatternDemo",
+    "//DesignPattern_learn/Singleton_Pattern:SingletonPatternDemo",
 
     "//leetcode_learn/001_two_sum:two_sum",
     "//leetcode_learn/037_sudoku_solver:sudoku_solver",
@@ -76,8 +76,6 @@ group("default"){
     "//setjmp_learn:setjmp_test",
     "//setjmp_learn:longjmp_test",
 
-    "//pipe_learn:pipe1",
-
     "//utsname_learn:uname_test",
 
     "//time_learn:localtime2_test",
@@ -109,6 +107,7 @@ group("default"){
     "//stdlib_learn:malloc_test",
     "//stdlib_learn:realloc_test",
 
+    "//unistd_learn:pipe_test",
     "//unistd_learn:lockf_test",
     "//unistd_learn:getopt_test",
     "//unistd_learn:getppid_test",

@@ -1,7 +1,0 @@
-executable("pipe1") {
-  cflags = ["-g"]
-
-  sources = [
-    "main.c",
-  ]
-}
