@@ -1,3 +1,11 @@
+executable("strcat_test") {
+  cflags = ["-g"]
+
+  sources = [
+    "strcat_test.c",
+  ]
+}
+
 executable("strerror_test") {
   cflags = ["-g"]
 

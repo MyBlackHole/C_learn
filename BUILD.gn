@@ -1,5 +1,7 @@
 group("default"){
   deps = [
+    "//TCP-IP-NetworkNote_learn/ch01:fd_seri",
+
     "//sys_resource_learn:getrlimit",
 
     "//stdarg_learn:va_start_test",
@@ -89,6 +91,7 @@ group("default"){
 
     "//shadow_learn:getspnam_test",
 
+    "//string_learn:strcat_test",
     "//string_learn:strerror_test",
     "//string_learn:memset_test",
     "//string_learn:memmove_test",
@@ -107,6 +110,7 @@ group("default"){
     "//stdlib_learn:malloc_test",
     "//stdlib_learn:realloc_test",
 
+    "//unistd_learn:getcwd_test",
     "//unistd_learn:pipe_test",
     "//unistd_learn:lockf_test",
     "//unistd_learn:getopt_test",

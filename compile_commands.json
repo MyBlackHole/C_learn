@@ -55,6 +55,12 @@
   },
   {
     "directory": "/home/black/Documents/Code/My/c/C_learn/out",
+    "command": "gcc -MMD -MF obj/TCP-IP-NetworkNote_learn/ch01/fd_seri.fd_seri.o.d     -c ../TCP-IP-NetworkNote_learn/ch01/fd_seri.c -o obj/TCP-IP-NetworkNote_learn/ch01/fd_seri.fd_seri.o",
+    "file": "../TCP-IP-NetworkNote_learn/ch01/fd_seri.c",
+    "output": "obj/TCP-IP-NetworkNote_learn/ch01/fd_seri.fd_seri.o"
+  },
+  {
+    "directory": "/home/black/Documents/Code/My/c/C_learn/out",
     "command": "gcc -MMD -MF obj/aio_learn/aio_read_test.aio_read_test.o.d     -c ../aio_learn/aio_read_test.c -o obj/aio_learn/aio_read_test.aio_read_test.o",
     "file": "../aio_learn/aio_read_test.c",
     "output": "obj/aio_learn/aio_read_test.aio_read_test.o"
