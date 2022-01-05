@@ -1,0 +1,6 @@
+executable("fd_seri") {
+  sources = [
+    "fd_seri.c",
+  ]
+}
+
