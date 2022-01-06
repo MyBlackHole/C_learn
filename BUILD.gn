@@ -1,6 +1,8 @@
 group("default"){
   deps = [
     "//TCP-IP-NetworkNote_learn/ch01:fd_seri",
+    "//TCP-IP-NetworkNote_learn/ch01:low_read",
+    "//TCP-IP-NetworkNote_learn/ch01:low_open",
 
     "//sys_resource_learn:getrlimit",
 
