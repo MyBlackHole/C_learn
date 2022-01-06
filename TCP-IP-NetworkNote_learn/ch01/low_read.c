@@ -11,6 +11,10 @@ int main(int argc, char *argv[]) {
   char *path = dirname(argv[0]);
   char *filename = "data.txt";
   char *name = malloc(strlen(path) + strlen(filename));
+
+  strcpy(name, path);
+  strcat(name, filename);
+
   int fd;
   char buf[BUF_SIZE];
 
