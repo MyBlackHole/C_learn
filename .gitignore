@@ -11,3 +11,4 @@ cmake-build-debug/
 .ccls-cache
 out
 tags
+compile_commands.json
