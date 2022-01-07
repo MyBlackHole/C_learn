@@ -37,7 +37,7 @@ int main(int argc, char *argv[]) {
   if (bind(serv_sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) == -1)
     error_handling("bind() error");
 
-  printf("42");
+  printf("42\n");
   //调用 listen 函数将套接字转为可接受连接状态
   if (listen(serv_sock, 5) == -1)
     error_handling("listen() error");
@@ -45,7 +45,7 @@ int main(int argc, char *argv[]) {
   clnt_addr_size = sizeof(clnt_addr);
 
   while (1) {
-    printf("48");
+    printf("48\n");
     //调用 accept 函数受
     //连接请求。如果在没有连接请求的情况下调用该函数，则不会返回，直到有连接请求为止
     clnt_sock =
