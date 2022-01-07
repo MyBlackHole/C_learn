@@ -1,5 +1,10 @@
 group("default"){
   deps = [
+    "//TCP-IP-NetworkNote_learn/ch03:endian_conv",
+    "//TCP-IP-NetworkNote_learn/ch03:inet_addr",
+    "//TCP-IP-NetworkNote_learn/ch03:inet_ntoa",
+    "//TCP-IP-NetworkNote_learn/ch03:inet_aton",
+
     "//TCP-IP-NetworkNote_learn/ch02:tcp_NONBLACK_server",
     "//TCP-IP-NetworkNote_learn/ch02:tcp_server",
     "//TCP-IP-NetworkNote_learn/ch02:tcp_client",
