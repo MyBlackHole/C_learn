@@ -4,6 +4,7 @@
 #include <string.h>
 #include <sys/socket.h>
 #include <unistd.h>
+
 void error_handling(char *message);
 
 int main(int argc, char *argv[]) {

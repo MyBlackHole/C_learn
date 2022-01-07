@@ -1,8 +1,14 @@
 group("default"){
   deps = [
+    "//TCP-IP-NetworkNote_learn/ch02:tcp_NONBLACK_server",
+    "//TCP-IP-NetworkNote_learn/ch02:tcp_server",
+    "//TCP-IP-NetworkNote_learn/ch02:tcp_client",
+
     "//TCP-IP-NetworkNote_learn/ch01:fd_seri",
     "//TCP-IP-NetworkNote_learn/ch01:low_read",
     "//TCP-IP-NetworkNote_learn/ch01:low_open",
+    "//TCP-IP-NetworkNote_learn/ch01:hello_server",
+    "//TCP-IP-NetworkNote_learn/ch01:hello_client",
 
     "//sys_resource_learn:getrlimit",
 

@@ -1,0 +1,18 @@
+executable("tcp_NONBLACK_server") {
+  sources = [
+    "tcp_NONBLACK_server.c",
+  ]
+}
+
+executable("tcp_server") {
+  sources = [
+    "tcp_server.c",
+  ]
+}
+
+executable("tcp_client") {
+  sources = [
+    "tcp_client.c",
+  ]
+}
+

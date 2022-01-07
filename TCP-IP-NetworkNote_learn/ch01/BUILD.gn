@@ -1,3 +1,15 @@
+executable("hello_server") {
+  sources = [
+    "hello_server.c",
+  ]
+}
+
+executable("hello_client") {
+  sources = [
+    "hello_client.c",
+  ]
+}
+
 executable("low_read") {
   sources = [
     "low_read.c",
