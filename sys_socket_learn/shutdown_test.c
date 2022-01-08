@@ -5,6 +5,11 @@
 #include <sys/socket.h>
 #include <unistd.h>
 
+// shutdown() 立即关闭socket;
+//  并可以用来唤醒等待线程;
+// close() 不一定立即关闭socket(如果有人引用, 要等到引用解除);
+// 不会唤醒等待线程
+
 #define BUF_SIZE 30
 void error_handling(char *message);
 void read_routine(int sock, char *buf);
