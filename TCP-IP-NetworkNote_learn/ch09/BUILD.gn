@@ -1,0 +1,18 @@
+executable("set_buf") {
+  sources = [
+    "set_buf.c",
+  ]
+}
+
+executable("sock_type") {
+  sources = [
+    "sock_type.c",
+  ]
+}
+
+executable("get_buf") {
+  sources = [
+    "get_buf.c",
+  ]
+}
+

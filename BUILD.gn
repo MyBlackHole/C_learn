@@ -1,5 +1,9 @@
 group("default"){
   deps = [
+    "//TCP-IP-NetworkNote_learn/ch09:get_buf",
+    "//TCP-IP-NetworkNote_learn/ch09:set_buf",
+    "//TCP-IP-NetworkNote_learn/ch09:sock_type",
+
     "//TCP-IP-NetworkNote_learn/ch07:file_client",
     "//TCP-IP-NetworkNote_learn/ch07:file_server",
 
@@ -33,6 +37,7 @@ group("default"){
 
     "//glob_learn:glob_test",
 
+    "//sys_socket_learn:getsockopt_test",
     "//sys_socket_learn:sendmsg_test",
     "//sys_socket_learn:socketpair_test",
 
