@@ -1,3 +1,15 @@
+executable("fdopen_test") {
+  sources = [
+    "fdopen_test.c",
+  ]
+}
+
+executable("fileno_test") {
+  sources = [
+    "fileno_test.c",
+  ]
+}
+
 executable("getline_test") {
   sources = [
     "getline_test.c",
