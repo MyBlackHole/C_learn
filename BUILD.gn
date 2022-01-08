@@ -1,5 +1,10 @@
 group("default"){
   deps = [
+    "//TCP-IP-NetworkNote_learn/ch04:hello_client",
+    "//TCP-IP-NetworkNote_learn/ch04:hello_server",
+    "//TCP-IP-NetworkNote_learn/ch04:echo_client",
+    "//TCP-IP-NetworkNote_learn/ch04:echo_server",
+
     "//TCP-IP-NetworkNote_learn/ch03:endian_conv",
     "//TCP-IP-NetworkNote_learn/ch03:inet_addr",
     "//TCP-IP-NetworkNote_learn/ch03:inet_ntoa",
@@ -104,6 +109,7 @@ group("default"){
 
     "//shadow_learn:getspnam_test",
 
+    "//string_learn:strcmp_test",
     "//string_learn:strcat_test",
     "//string_learn:strerror_test",
     "//string_learn:memset_test",
