@@ -1,0 +1,12 @@
+executable("uecho_client") {
+  sources = [
+    "uecho_client.c",
+  ]
+}
+
+executable("uecho_server") {
+  sources = [
+    "uecho_server.c",
+  ]
+}
+

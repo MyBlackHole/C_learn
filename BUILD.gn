@@ -1,5 +1,11 @@
 group("default"){
   deps = [
+    "//TCP-IP-NetworkNote_learn/ch07:file_client",
+    "//TCP-IP-NetworkNote_learn/ch07:file_server",
+
+    "//TCP-IP-NetworkNote_learn/ch06:uecho_client",
+    "//TCP-IP-NetworkNote_learn/ch06:uecho_server",
+
     "//TCP-IP-NetworkNote_learn/ch04:hello_client",
     "//TCP-IP-NetworkNote_learn/ch04:hello_server",
     "//TCP-IP-NetworkNote_learn/ch04:echo_client",
@@ -157,6 +163,8 @@ group("default"){
     "//unistd_learn:fork4_test",
     "//unistd_learn:setsid_test",
 
+    "//stdio_learn:fdopen_test",
+    "//stdio_learn:fileno_test",
     "//stdio_learn:getline_test",
     "//stdio_learn:fflush_test",
     "//stdio_learn:fseek_test",

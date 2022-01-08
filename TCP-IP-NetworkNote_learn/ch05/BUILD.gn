@@ -1,0 +1,6 @@
+executable("op_client") {
+  sources = [
+    "op_client.c",
+  ]
+}
+
