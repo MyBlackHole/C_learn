@@ -59,6 +59,8 @@ group("default"){
 
     "//sys_epoll_learn:test",
 
+    "//netdb_learn:gethostbyaddr_test",
+    "//netdb_learn:gethostbyname_test",
     "//netdb_learn:getaddrinfo_test",
 
     "//assert_learn:assert_test",
