@@ -1,3 +1,21 @@
+executable("WIFSIGNALED_test") {
+  sources = [
+    "WIFSIGNALED_test.c",
+  ]
+}
+
+executable("WEXITSTATUS_test") {
+  sources = [
+    "WEXITSTATUS_test.c",
+  ]
+}
+
+executable("WIFEXITED_test") {
+  sources = [
+    "WIFEXITED_test.c",
+  ]
+}
+
 executable("free_test") {
   sources = [
     "free_test.c",
