@@ -1,3 +1,7 @@
+executable("getsockopt_test") {
+  sources = [ "getsockopt_test.c" ]
+}
+
 executable("sendmsg_test") {
   sources = [ "sendmsg_test.c" ]
 }

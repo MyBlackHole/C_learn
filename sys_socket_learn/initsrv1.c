@@ -1,6 +1,6 @@
-#include "apue.h"
 #include <errno.h>
 #include <sys/socket.h>
+#include <unistd.h>
 
 int initserver(int type, const struct sockaddr *addr, socklen_t alen,
                int qlen) {

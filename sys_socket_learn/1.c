@@ -2,6 +2,7 @@
 #include <assert.h>
 #include <errno.h>
 #include <fcntl.h>
+#include <libgen.h>
 #include <netinet/in.h>
 #include <stdio.h>
 #include <stdlib.h>
