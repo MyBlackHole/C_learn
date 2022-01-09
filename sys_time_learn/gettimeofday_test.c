@@ -4,7 +4,6 @@
 /* 把目前的时间有tv 所指的结构返回，当地时区的信息则放到tz 所指的结构中 */
 /* gettimeofday (struct timeval * tv, struct timezone * tz) */
 
-
 /* timeval 结构定义为： */
 /* struct timeval{ */
 /*     long tv_sec;  //秒 */
@@ -19,14 +18,14 @@
 /* }; */
 
 int main() {
-    struct timezone tz;
-    struct timeval tv;
+  struct timezone tz;
+  struct timeval tv;
 
-    gettimeofday(&tv, &tz);
-    printf("tv_sec:%ld\n", tv.tv_sec);
-    printf("tv_usec:%ld\n", tv.tv_usec);
-    printf("tz_minuteswest:%d\n", tz.tz_minuteswest);
-    printf("tz_dsttime:%d\n", tz.tz_dsttime);
+  gettimeofday(&tv, &tz);
+  printf("tv_sec:%ld\n", tv.tv_sec);
+  printf("tv_usec:%ld\n", tv.tv_usec);
+  printf("tz_minuteswest:%d\n", tz.tz_minuteswest);
+  printf("tz_dsttime:%d\n", tz.tz_dsttime);
 
-    return 0;
+  return 0;
 }

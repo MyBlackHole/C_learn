@@ -1,0 +1,14 @@
+executable("oob_send") {
+  cflags = ["-g"]
+  sources = [
+    "oob_send.c",
+  ]
+}
+
+executable("oob_recv") {
+  cflags = ["-g"]
+  sources = [
+    "oob_recv.c",
+  ]
+}
+

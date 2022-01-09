@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// 根据文件描述词来操作文件的特性
 int main(int argc, char **argv) {
   int val;
   if (argc != 2) {

@@ -1,5 +1,8 @@
 group("default"){
   deps = [
+    "//TCP-IP-NetworkNote_learn/ch13:oob_send",
+    "//TCP-IP-NetworkNote_learn/ch13:oob_recv",
+
     "//TCP-IP-NetworkNote_learn/ch10:echo_mpclient",
     "//TCP-IP-NetworkNote_learn/ch10:echo_mpserv",
 
@@ -219,7 +222,10 @@ group("default"){
     "//sys_time_learn:clock_gettime_test",
     "//sys_time_learn:gettimeofday2_test",
     "//sys_time_learn:gettimeofday1_test",
-    "//sys_time_learn:gettimeofday_test"
+    "//sys_time_learn:gettimeofday_test",
+
+    "//sys_uio_learn:writev_test",
+    "//sys_uio_learn:readv_test",
   ]
 }
 
