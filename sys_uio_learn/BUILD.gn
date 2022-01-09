@@ -1,0 +1,14 @@
+executable("readv_test") {
+  cflags = ["-g"]
+  sources = [
+    "readv_test.c",
+  ]
+}
+
+executable("writev_test") {
+  cflags = ["-g"]
+  sources = [
+    "writev_test.c",
+  ]
+}
+
