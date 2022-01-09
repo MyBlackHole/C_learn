@@ -1,3 +1,9 @@
+executable("fwrite_test") {
+  sources = [
+    "fwrite_test.c",
+  ]
+}
+
 executable("fdopen_test") {
   sources = [
     "fdopen_test.c",

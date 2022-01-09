@@ -5,3 +5,10 @@ executable("select_test") {
     "select_test.c",
   ]
 }
+
+executable("select1_test") {
+  sources = [
+    "select1_test.c",
+  ]
+}
+

@@ -114,12 +114,6 @@ group("default"){
 
     "//utsname_learn:uname_test",
 
-    "//time_learn:localtime2_test",
-    "//time_learn:localtime1_test",
-    "//time_learn:localtime_test",
-    "//time_learn:gettimeofday_test",
-    "//time_learn:clock_gettime_test",
-    "//time_learn:time_test",
 
     "//pwd_learn:getpwent_test",
 
@@ -176,6 +170,7 @@ group("default"){
     "//unistd_learn:fork4_test",
     "//unistd_learn:setsid_test",
 
+    "//stdio_learn:fwrite_test",
     "//stdio_learn:fdopen_test",
     "//stdio_learn:fileno_test",
     "//stdio_learn:getline_test",
@@ -209,12 +204,21 @@ group("default"){
     "//fcntl_learn:fcntl_test",
 
     "//env_learn:env_test",
+
+    "//sys_select_learn:select1_test",
     "//sys_select_learn:select_test",
 
     "//dirent_learn:readdir_test",
 
     "//errno_learn:errno_learn",
 
+    "//sys_time_learn:localtime2_test",
+    "//sys_time_learn:localtime1_test",
+    "//sys_time_learn:localtime_test",
+    "//sys_time_learn:time_test",
+    "//sys_time_learn:clock_gettime_test",
+    "//sys_time_learn:gettimeofday2_test",
+    "//sys_time_learn:gettimeofday1_test",
     "//sys_time_learn:gettimeofday_test"
   ]
 }
