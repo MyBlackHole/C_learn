@@ -112,7 +112,7 @@ int main() {
 
       int __result;
       // 判断epoll是否发生错误
-      if (events & EPOLLERR || events & EPOLLHUP || (!events & EPOLLIN)) {
+      if (events & EPOLLERR || events & EPOLLHUP || ((!events) & EPOLLIN)) {
         printf("Epoll has error\n");
         close(event[i].data.fd);
         continue;

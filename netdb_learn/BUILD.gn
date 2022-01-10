@@ -1,3 +1,7 @@
+executable("getnameinfo_test") {
+  sources = ["getnameinfo_test.c"]
+}
+
 executable("gethostbyaddr_test") {
   sources = ["gethostbyaddr_test.c"]
 }
