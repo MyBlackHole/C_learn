@@ -1,0 +1,14 @@
+executable("echo_EPETserv") {
+  cflags = ["-g"]
+  sources = [
+    "echo_EPETserv.c",
+  ]
+}
+
+executable("echo_EDGEserv") {
+  cflags = ["-g"]
+  sources = [
+    "echo_EDGEserv.c",
+  ]
+}
+
