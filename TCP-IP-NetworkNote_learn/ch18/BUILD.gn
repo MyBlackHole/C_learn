@@ -1,0 +1,14 @@
+executable("chat_server") {
+  cflags = ["-g"]
+  sources = [
+    "chat_server.c",
+  ]
+}
+
+executable("chat_clnt") {
+  cflags = ["-g"]
+  sources = [
+    "chat_clnt.c",
+  ]
+}
+

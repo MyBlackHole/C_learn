@@ -1,5 +1,8 @@
 group("default"){
   deps = [
+    "//TCP-IP-NetworkNote_learn/ch18:chat_clnt",
+    "//TCP-IP-NetworkNote_learn/ch18:chat_server",
+
     "//TCP-IP-NetworkNote_learn/ch17:echo_EPETserv",
 
     "//TCP-IP-NetworkNote_learn/ch15:echo_client",
