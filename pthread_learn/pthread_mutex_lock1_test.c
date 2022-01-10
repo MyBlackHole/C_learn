@@ -32,6 +32,7 @@ void *task(void *p)
  
     //4.使用互斥量进行解锁
     pthread_mutex_unlock(&mutex);
+    return NULL;
 }
  
 int main(void)
