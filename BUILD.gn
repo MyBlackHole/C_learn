@@ -130,6 +130,7 @@ group("default"){
 
     "//shadow_learn:getspnam_test",
 
+    "//string_learn:strtok_test",
     "//string_learn:strcmp_test",
     "//string_learn:strcat_test",
     "//string_learn:strerror_test",
