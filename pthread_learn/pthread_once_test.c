@@ -1,10 +1,10 @@
-#include <stdio.h>
 #include <pthread.h>
+#include <stdio.h>
 #include <unistd.h>
 
 pthread_once_t once = PTHREAD_ONCE_INIT;
 
-void once_run(void) { 
+void once_run(void) {
   unsigned int tid = pthread_self();
   printf("once_run in thread %u\n", tid);
   return;

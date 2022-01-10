@@ -231,6 +231,8 @@ group("default"){
 
     "//sys_uio_learn:writev_test",
     "//sys_uio_learn:readv_test",
+
+    "//semaphore_learn:sem_destroy_test",
   ]
 }
 

@@ -1,0 +1,7 @@
+executable("sem_destroy_test") {
+  cflags = ["-g"]
+  sources = [
+    "sem_destroy_test.c",
+  ]
+}
+
