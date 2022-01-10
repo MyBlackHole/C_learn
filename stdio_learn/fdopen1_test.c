@@ -19,6 +19,7 @@ int main(int argc, char *argv[]) {
   }
   fp = fdopen(fd, "w"); //返回 写 模式的 FILE 指针
   fputs("NetWork C programming \n", fp);
+  free(file_path);
   fclose(fp);
   return 0;
 }

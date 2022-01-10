@@ -1,5 +1,8 @@
 group("default"){
   deps = [
+    "//TCP-IP-NetworkNote_learn/ch15:echo_client",
+    "//TCP-IP-NetworkNote_learn/ch15:echo_stdserv",
+
     "//TCP-IP-NetworkNote_learn/ch13:oob_send",
     "//TCP-IP-NetworkNote_learn/ch13:oob_recv",
 

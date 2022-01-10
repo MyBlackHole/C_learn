@@ -1,0 +1,14 @@
+executable("echo_client") {
+  cflags = ["-g"]
+  sources = [
+    "echo_client.c",
+  ]
+}
+
+executable("echo_stdserv") {
+  cflags = ["-g"]
+  sources = [
+    "echo_stdserv.c",
+  ]
+}
+
