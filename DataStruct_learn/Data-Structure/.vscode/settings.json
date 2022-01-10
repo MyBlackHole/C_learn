@@ -1,7 +1,0 @@
-{
-	"files.associations": {
-		"Color.h": "c",
-		"union.h": "c",
-		"sqlist.h": "c"
-	}
-}

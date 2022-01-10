@@ -13,7 +13,7 @@ struct schedule;
 typedef void (*coroutine_func)(struct schedule *, void *ud);
 
 // 开启一个协程调度器
-struct schedule * coroutine_open(void);
+struct schedule *coroutine_open(void);
 
 // 关闭一个协程调度器
 void coroutine_close(struct schedule *);
