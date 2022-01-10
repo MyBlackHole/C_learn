@@ -1,8 +1,0 @@
-{
-	"files.associations": {
-		"unistd.h": "c",
-		"apue.h": "c",
-		"wait.h": "c",
-		"open.h": "c"
-	}
-}
