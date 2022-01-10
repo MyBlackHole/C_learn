@@ -3,13 +3,12 @@
 
 typedef int Node;
 
-typedef struct MinHeap
-{
-	/* data */
-	Node *array;
-	int len;
-	int MaxSize;
-}MinHeap;
+typedef struct MinHeap {
+  /* data */
+  Node *array;
+  int len;
+  int MaxSize;
+} MinHeap;
 
 /* 初始化堆 */
 MinHeap *InitMinHeap(MinHeap *heap, int size);
@@ -31,7 +30,6 @@ Node DeleteHeap(MinHeap *heap);
 
 // /* 查询节点 */
 // int SelectHeap(MinHeap *heap, Node node);
-
 
 /* 清空堆 */
 int ClearHeap(MinHeap *heap);

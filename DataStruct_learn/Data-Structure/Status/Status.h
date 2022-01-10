@@ -12,19 +12,19 @@
 #include <stdio.h>
 
 /* 状态码 */
-#define TRUE        1   // 真/是
-#define FALSE       0   // 假/否
-#define OK          1   // 通过/成功
-#define ERROR       0   // 错误/失败
+#define TRUE 1  // 真/是
+#define FALSE 0 // 假/否
+#define OK 1    // 通过/成功
+#define ERROR 0 // 错误/失败
 
 //系统中已有此状态码定义，要防止冲突
 #ifndef OVERFLOW
-#define OVERFLOW    -2  //堆栈上溢
+#define OVERFLOW -2 //堆栈上溢
 #endif
 
 //系统中已有此状态码定义，要防止冲突
 #ifndef NULL
-#define NULL ((void*)0)
+#define NULL ((void *)0)
 #endif
 
 /* 状态码类型 */
@@ -33,10 +33,8 @@ typedef int Status;
 /* 布尔类型 */
 typedef int Boolean;
 
-
 /* 全局变量*/
-extern Boolean debug;   // 是否使用debug模式
-
+extern Boolean debug; // 是否使用debug模式
 
 /*
  * 从文件中读取预设的英文符号
@@ -48,7 +46,7 @@ extern Boolean debug;   // 是否使用debug模式
  * 1. 这里约定所有格式串为简单形式，如：%d%c%s等，而不是%2d%5s等
  * 2. 读取字符串时，遇到空格或非打印字符会停止读取
  */
-int ReadData(FILE* fp, char* format, ...);
+int ReadData(FILE *fp, char *format, ...);
 
 /*
  * 摁下回车键以继续运行。
@@ -72,7 +70,7 @@ void Wait(long time);
  * 此方法常用在读取字符的语句之前，这会跳过遇到目标字符之前的空白符号，
  * 比如跳过'\r'、'\n'、'\r\n'、' '、'\t'、'\f'。
  */
-void skipBlank(FILE* fp);
+void skipBlank(FILE *fp);
 
 void strlwr(char *str);
 

@@ -1,3 +1,9 @@
+executable("pthread_getpecific_test") {
+  sources = [
+    "pthread_getpecific_test.c",
+  ]
+}
+
 executable("pthread_self_test") {
   sources = [
     "pthread_self_test.c",

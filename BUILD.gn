@@ -112,6 +112,7 @@ group("default"){
     # "//ev_learn:ev1_test",
     # "//ev_learn:ev_signal_test",
 
+    "//pthread_learn:pthread_getpecific_test",
     "//pthread_learn:pthread_self_test",
     "//pthread_learn:pthread_mutex_lock_test",
     "//pthread_learn:pthread_once_test",
