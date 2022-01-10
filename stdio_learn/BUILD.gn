@@ -1,3 +1,15 @@
+executable("getchar_test") {
+  sources = [
+    "getchar_test.c",
+  ]
+}
+
+executable("putchar_test") {
+  sources = [
+    "putchar_test.c",
+  ]
+}
+
 executable("fwrite_test") {
   sources = [
     "fwrite_test.c",

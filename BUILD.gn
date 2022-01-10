@@ -182,6 +182,8 @@ group("default"){
     "//unistd_learn:fork4_test",
     "//unistd_learn:setsid_test",
 
+    "//stdio_learn:getchar_test",
+    "//stdio_learn:putchar_test",
     "//stdio_learn:fwrite_test",
     "//stdio_learn:fdopen_test",
     "//stdio_learn:fileno_test",
@@ -237,6 +239,9 @@ group("default"){
     "//sys_uio_learn:readv_test",
 
     "//semaphore_learn:sem_destroy_test",
+
+    "//ctype_learn:tolower_test",
+    "//ctype_learn:isspace_test",
   ]
 }
 

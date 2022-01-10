@@ -1,0 +1,15 @@
+executable("isspace_test") {
+  cflags = ["-g"]
+
+  sources = [
+    "isspace_test.c",
+  ]
+}
+
+executable("tolower_test") {
+  cflags = ["-g"]
+
+  sources = [
+    "tolower_test.c",
+  ]
+}
