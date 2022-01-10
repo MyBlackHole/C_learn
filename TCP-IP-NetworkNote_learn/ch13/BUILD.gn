@@ -12,3 +12,17 @@ executable("oob_recv") {
   ]
 }
 
+executable("peek_recv") {
+  cflags = ["-g"]
+  sources = [
+    "peek_recv.c",
+  ]
+}
+
+executable("peek_send") {
+  cflags = ["-g"]
+  sources = [
+    "peek_send.c",
+  ]
+}
+
