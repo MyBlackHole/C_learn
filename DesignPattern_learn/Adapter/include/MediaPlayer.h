@@ -18,11 +18,12 @@ extern "C" {
 
 typedef struct MediaPlayer MediaPlayer;
 
-MediaPlayer* audio_player_create(void);
-void media_player_destory(MediaPlayer** media_player);
-void media_player_play(MediaPlayer* media_player, const char* audio_type, const char* file_name);
+MediaPlayer *audio_player_create(void);
+void media_player_destory(MediaPlayer **media_player);
+void media_player_play(MediaPlayer *media_player, const char *audio_type,
+                       const char *file_name);
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // MEDIA_PLAYER_H_
+#endif // MEDIA_PLAYER_H_

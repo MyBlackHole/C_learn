@@ -14,12 +14,13 @@
 #include "DrawAPIStruct.h"
 #include "mem.h"
 
-void draw_api_destroy(DrawAPI** draw_api) {
-    if (NULL == draw_api || NULL == *draw_api) return;
+void draw_api_destroy(DrawAPI **draw_api) {
+  if (NULL == draw_api || NULL == *draw_api)
+    return;
 
-    if (NULL != (*draw_api)->destroy) {
-        (*draw_api)->destroy(*draw_api);
-    }
-    free(*draw_api);
-    *draw_api = NULL;
+  if (NULL != (*draw_api)->destroy) {
+    (*draw_api)->destroy(*draw_api);
+  }
+  free(*draw_api);
+  *draw_api = NULL;
 }

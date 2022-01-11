@@ -70,6 +70,7 @@ group("default"){
 
     "//coroutine_learn:main",
 
+    "//DesignPattern_learn/Bridge:BridgePatternDemo",
     "//DesignPattern_learn/Adapter:AdapterPatternDemo",
     "//DesignPattern_learn/Abstract_Factory:AbstractFactoryPatternDemo",
     "//DesignPattern_learn/Factory_Pattern:FactoryPatternDemo",

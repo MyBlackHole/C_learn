@@ -19,11 +19,11 @@ extern "C" {
 
 typedef struct Shape Shape;
 
-Shape* circle_create(int radius, int x, int y, struct DrawAPI* draw_api);
-void shape_destory(Shape** shape);
-void shape_draw(Shape* shape);
+Shape *circle_create(int radius, int x, int y, struct DrawAPI *draw_api);
+void shape_destory(Shape **shape);
+void shape_draw(Shape *shape);
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // SHAPE_H_
+#endif // SHAPE_H_

@@ -5,7 +5,7 @@ executable("BridgePatternDemo") {
 }
 
 static_library("BridgePattern") {
-  include_dirs = ["include"]
+  include_dirs = ["include", "//DesignPattern_learn/libctools/include"]
 
   sources = [
     "src/Shape.c",

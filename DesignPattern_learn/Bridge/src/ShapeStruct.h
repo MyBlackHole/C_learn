@@ -18,13 +18,13 @@ extern "C" {
 #include "DrawAPIStruct.h"
 
 struct Shape {
-    void* priv;
+  void *priv;
 
-    void (*draw)(struct Shape* shape);
-    void (*destroy)(struct Shape* shape);
+  void (*draw)(struct Shape *shape);
+  void (*destroy)(struct Shape *shape);
 };
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // SHAPE_STRUCT_H_
+#endif // SHAPE_STRUCT_H_
