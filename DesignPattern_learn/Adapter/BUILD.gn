@@ -5,8 +5,7 @@ executable("AdapterPatternDemo") {
 }
 
 static_library("AdapterPattern") {
-  public_deps = ["../libctools:libctools"]
-  include_dirs = ["include"]
+  include_dirs = ["include", "//DesignPattern_learn/libctools/include"]
 
   sources = [
     "src/Mp4Player.c",
