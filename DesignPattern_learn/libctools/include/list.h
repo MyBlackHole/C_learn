@@ -26,17 +26,17 @@ extern "C" {
 typedef enum { LIST_HEAD, LIST_TAIL } ListDirection;
 
 typedef struct ListNode {
-    struct ListNode *prev;
-    struct ListNode *next;
-    int64_t val;
+  struct ListNode *prev;
+  struct ListNode *next;
+  int64_t val;
 } ListNode;
 
 typedef struct {
-    ListNode *head;
-    ListNode *tail;
-    unsigned int len;
-    void (*free_func)(int64_t val);
-    bool (*match_func)(int64_t a, int64_t b);
+  ListNode *head;
+  ListNode *tail;
+  unsigned int len;
+  void (*free_func)(int64_t val);
+  bool (*match_func)(int64_t a, int64_t b);
 } List;
 
 /**
@@ -44,8 +44,8 @@ typedef struct {
  *
  */
 typedef struct {
-    ListNode *next;
-    ListDirection direction;
+  ListNode *next;
+  ListDirection direction;
 } ListIterator;
 
 /**
@@ -157,7 +157,8 @@ void list_remove(List *self, ListNode *node, bool free_node);
  */
 
 /**
- * @brief 分配一个新的ListIterator。失败时为空。接受一个方向，可以是LIST_HEAD或LIST_TAIL。
+ * @brief
+ * 分配一个新的ListIterator。失败时为空。接受一个方向，可以是LIST_HEAD或LIST_TAIL。
  *
  * @param list
  * @param direction
@@ -172,7 +173,8 @@ ListIterator *list_iterator_new(List *list, ListDirection direction);
  * @param direction
  * @return ListIterator*
  */
-ListIterator *list_iterator_new_from_node(ListNode *node, ListDirection direction);
+ListIterator *list_iterator_new_from_node(ListNode *node,
+                                          ListDirection direction);
 
 /**
  * @brief 返回下一个ListNode或当列表中不再有节点时返回 NULL。
@@ -192,4 +194,4 @@ void list_iterator_destroy(ListIterator *self);
 #ifdef __cplusplus
 }
 #endif
-#endif  // LIST_H_
+#endif // LIST_H_

@@ -70,8 +70,12 @@ group("default"){
 
     "//coroutine_learn:main",
 
+    "//DesignPattern_learn/Adapter:AdapterPatternDemo",
+    "//DesignPattern_learn/Abstract_Factory:AbstractFactoryPatternDemo",
     "//DesignPattern_learn/Factory_Pattern:FactoryPatternDemo",
     "//DesignPattern_learn/Singleton_Pattern:SingletonPatternDemo",
+    "//DesignPattern_learn/libctools:test_memory_leak",
+    "//DesignPattern_learn/libctools:test_list",
 
     "//leetcode_learn/001_two_sum:two_sum",
     "//leetcode_learn/037_sudoku_solver:sudoku_solver",

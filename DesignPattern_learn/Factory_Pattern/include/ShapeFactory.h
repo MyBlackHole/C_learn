@@ -18,9 +18,9 @@ extern "C" {
 
 #include "Shape.h"
 
-Shape* shape_factory_get_shape(const char* shape_type);
+Shape *shape_factory_get_shape(const char *shape_type);
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // SHAPE_FACTORY_H_
+#endif // SHAPE_FACTORY_H_

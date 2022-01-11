@@ -16,19 +16,21 @@
 
 #include "ShapeStruct.h"
 
-void shape_draw(Shape* shape) {
-    assert(NULL != shape);
-    if (NULL != shape->draw) shape->draw(shape);
+void shape_draw(Shape *shape) {
+  assert(NULL != shape);
+  if (NULL != shape->draw)
+    shape->draw(shape);
 }
 
-void shape_destory(Shape** shape) {
-    if (NULL == shape || NULL == *shape) return;
+void shape_destory(Shape **shape) {
+  if (NULL == shape || NULL == *shape)
+    return;
 
-    Shape* self = *shape;
-    if (NULL != self->destroy) {
-        self->destroy(self);
-    }
+  Shape *self = *shape;
+  if (NULL != self->destroy) {
+    self->destroy(self);
+  }
 
-    free(*shape);
-    *shape = NULL;
+  free(*shape);
+  *shape = NULL;
 }

@@ -5,6 +5,7 @@ executable("AdapterPatternDemo") {
 }
 
 static_library("AdapterPattern") {
+  public_deps = ["../libctools:libctools"]
   include_dirs = ["include"]
 
   sources = [

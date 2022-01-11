@@ -27,21 +27,25 @@ extern "C" {
 #define getthreadid() syscall(__NR_gettid)
 #else
 inline static pid_t getthreadid() {
-    uint64_t owner = 0;
-    pthread_threadid_np(NULL, &owner);
-    return (pid_t)owner;
+  uint64_t owner = 0;
+  pthread_threadid_np(NULL, &owner);
+  return (pid_t)owner;
 }
 #endif
 
 #define THREAD_FILE_NAME_LENGTH 32
-typedef enum { THREAD_PRIORITY_LOW, THREAD_PRIORITY_NORMAL, THREAD_PRIORITY_HIGH } ThreadPriority;
+typedef enum {
+  THREAD_PRIORITY_LOW,
+  THREAD_PRIORITY_NORMAL,
+  THREAD_PRIORITY_HIGH
+} ThreadPriority;
 
 typedef struct Thread {
-    pthread_t id;
-    int (*func)(void *);
-    void *data;
-    char name[THREAD_FILE_NAME_LENGTH];
-    int retval;
+  pthread_t id;
+  int (*func)(void *);
+  void *data;
+  char name[THREAD_FILE_NAME_LENGTH];
+  int retval;
 } Thread;
 
 /**
@@ -53,7 +57,8 @@ typedef struct Thread {
  * @param name 线程名
  * @return Thread* 线程
  */
-Thread *thread_create(Thread *thread, int (*fn)(void *), void *data, const char *name);
+Thread *thread_create(Thread *thread, int (*fn)(void *), void *data,
+                      const char *name);
 
 /**
  * @brief 设置线程级别
@@ -89,4 +94,4 @@ void thread_detach(Thread *thread);
 #ifdef __cplusplus
 }
 #endif
-#endif  // THREAD_H_
+#endif // THREAD_H_

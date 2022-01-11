@@ -16,13 +16,13 @@ extern "C" {
 #endif
 
 struct Color {
-    void* priv;
+  void *priv;
 
-    void (*fill)(struct Color* color);
-    void (*destroy)(struct Color* color);
+  void (*fill)(struct Color *color);
+  void (*destroy)(struct Color *color);
 };
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // COLOR_STRUCT_H_
+#endif // COLOR_STRUCT_H_

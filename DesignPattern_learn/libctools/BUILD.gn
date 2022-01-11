@@ -1,0 +1,25 @@
+executable("test_memory_leak") {
+  sources = [ "tests/test_memory_leak.cpp" ]
+  deps = [":libctools"]
+  include_dirs = ["include"]
+}
+
+executable("test_list") {
+  sources = [ "tests/test_list.cpp" ]
+  deps = [":libctools"]
+  include_dirs = ["include"]
+}
+
+static_library("libctools") {
+  include_dirs = ["include"]
+
+  sources = [
+    "src/log.c",
+    "src/mem.c",
+    "src/list.c",
+    "src/cmap.cpp",
+    "src/thread.c",
+    "src/cstring.c",
+    "src/mem_leak_detection.c",
+  ]
+}

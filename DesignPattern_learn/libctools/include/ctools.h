@@ -21,4 +21,4 @@
 #include "log.h"
 #include "mem.h"
 
-#endif  // CTOOLS_H_
+#endif // CTOOLS_H_

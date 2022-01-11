@@ -80,7 +80,8 @@ void *mem_zalloc(size_t size, mem_destroy_h *dh);
 void *mem_ref(void *data);
 
 /**
- * @brief 取消引用已计数的引用内存对象。当引用计数为零时，将调用析构函数（如果存在），并释放内存
+ * @brief
+ * 取消引用已计数的引用内存对象。当引用计数为零时，将调用析构函数（如果存在），并释放内存
  *
  * @param data 内存对象
  */
@@ -100,18 +101,24 @@ uint32_t mem_nrefs(const void *data);
 // 重新实现mallocz
 #define mallocz(size) mem_leak_detection_mallocz(size, __FILE__, __LINE__)
 // 重新实现calloc
-#define calloc(elements, size) mem_leak_detection_calloc(elements, size, __FILE__, __LINE__)
+#define calloc(elements, size)                                                 \
+  mem_leak_detection_calloc(elements, size, __FILE__, __LINE__)
 // 重新实现relloc
-#define realloc(ptr, size) mem_leak_detection_realloc(ptr, size, __FILE__, __LINE__)
+#define realloc(ptr, size)                                                     \
+  mem_leak_detection_realloc(ptr, size, __FILE__, __LINE__)
 // 重新实现free
 #define free(ptr) mem_leak_detection_free(ptr, __FILE__, __LINE__)
 // 重新实现freep
 #define freep(ptr) mem_leak_detection_freep(ptr, __FILE__, __LINE__)
 
-void *mem_leak_detection_malloc(size_t size, const char *file, unsigned int line);
-void *mem_leak_detection_mallocz(size_t size, const char *file, unsigned int line);
-void *mem_leak_detection_calloc(size_t count, size_t size, const char *file, unsigned int line);
-void *mem_leak_detection_realloc(void *ptr, size_t size, const char *file, unsigned int line);
+void *mem_leak_detection_malloc(size_t size, const char *file,
+                                unsigned int line);
+void *mem_leak_detection_mallocz(size_t size, const char *file,
+                                 unsigned int line);
+void *mem_leak_detection_calloc(size_t count, size_t size, const char *file,
+                                unsigned int line);
+void *mem_leak_detection_realloc(void *ptr, size_t size, const char *file,
+                                 unsigned int line);
 void mem_leak_detection_free(void *ptr, const char *file, unsigned int line);
 void mem_leak_detection_freep(void **ptr, const char *file, unsigned int line);
 void mem_leak_detection_report();
@@ -121,4 +128,4 @@ void mem_leak_detection_report();
 #ifdef __cplusplus
 }
 #endif
-#endif  // MEM_H_
+#endif // MEM_H_

@@ -92,4 +92,4 @@ char *cstrndup(const char *s, size_t len);
 #ifdef __cplusplus
 }
 #endif
-#endif  // STRING_HELPER_H_
+#endif // STRING_HELPER_H_
