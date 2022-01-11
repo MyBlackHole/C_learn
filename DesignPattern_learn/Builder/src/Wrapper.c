@@ -14,12 +14,13 @@
 #include "PackingStruct.h"
 #include "mem.h"
 
-static const char* pack(struct Packing* packing) { return "Wrapper"; }
+static const char *pack(struct Packing *packing) { return "Wrapper"; }
 
-struct Packing* wrapper_create(void) {
-    struct Packing* packing = (struct Packing*)calloc(1, sizeof(struct Packing));
-    if (NULL == packing) return NULL;
+struct Packing *wrapper_create(void) {
+  struct Packing *packing = (struct Packing *)calloc(1, sizeof(struct Packing));
+  if (NULL == packing)
+    return NULL;
 
-    packing->pack = pack;
-    return packing;
+  packing->pack = pack;
+  return packing;
 }

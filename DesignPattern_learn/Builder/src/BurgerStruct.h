@@ -19,16 +19,16 @@ extern "C" {
 #include "ItemStruct.h"
 
 struct Burger {
-    struct Item item;
-    void* parent;
-    void* priv;
+  struct Item item;
+  void *parent;
+  void *priv;
 
-    void (*destroy)(struct Burger*);
+  void (*destroy)(struct Burger *);
 };
 
-struct Packing* burger_packing_default(struct Item*);
+struct Packing *burger_packing_default(struct Item *);
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // BURGER_STRUCT_H_
+#endif // BURGER_STRUCT_H_

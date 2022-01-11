@@ -19,10 +19,10 @@ extern "C" {
 #include "Item.h"
 #include "Meal.h"
 
-Meal* meal_create(void);
-void meal_add_items(Meal* meal, Item* item);
+Meal *meal_create(void);
+void meal_add_items(Meal *meal, Item *item);
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // MEAL_INTERNAL_H_
+#endif // MEAL_INTERNAL_H_

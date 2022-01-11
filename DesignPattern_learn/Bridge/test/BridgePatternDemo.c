@@ -1,6 +1,6 @@
 /**
  * @file BridgePatternDemo.c
- * @author {Layne} ({shu_huanglei@163.com})
+ * @doc 桥接模式
  * @brief
  * @version 0.1
  * @date 2020-07-25

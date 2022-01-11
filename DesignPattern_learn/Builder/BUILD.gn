@@ -5,7 +5,8 @@ executable("BuilderPatternDemo") {
 }
 
 static_library("BuilderPattern") {
-  include_dirs = ["include"]
+  include_dirs = ["include", "//DesignPattern_learn/libctools/include"]
+  deps = ["//DesignPattern_learn/libctools:libctools"]
 
   sources = [
     "src/Coke.c",
