@@ -109,4 +109,5 @@ int ClearHeap(MinHeap *heap) {
     heap->len = 0;
     heap->MaxSize = 0;
   }
+  return 0;
 }

@@ -1,5 +1,6 @@
 group("default"){
   deps = [
+    "//DataStruct_learn/Heap/small_Heap:main",
     "//TCP-IP-NetworkNote_learn/ch18:chat_clnt",
     "//TCP-IP-NetworkNote_learn/ch18:chat_server",
 

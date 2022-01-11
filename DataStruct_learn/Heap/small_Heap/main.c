@@ -10,7 +10,7 @@
 #include "xdd.h"
 #include <stdio.h>
 
-void main() {
+int main(int argc, char *argv[]) {
   int i, x;
   int a[8] = {23, 56, 40, 62, 38, 55, 10, 16};
   MinHeap mh;
@@ -19,8 +19,8 @@ void main() {
     InsertHeap(&mh, a[i]);
     printf("%d\n", mh.array[i]);
   }
-  while (!EmptyHeap(&mh)) //依次删除堆顶元素并显示出来，直到堆空为止
-  {
+  //依次删除堆顶元素并显示出来，直到堆空为止
+  while (!EmptyHeap(&mh)) {
     x = DeleteHeap(&mh);
     printf("%d", x);
     if (!EmptyHeap(&mh))
@@ -28,5 +28,5 @@ void main() {
   }
   printf("\n");
   ClearHeap(&mh);
-  return;
+  return 0;
 }

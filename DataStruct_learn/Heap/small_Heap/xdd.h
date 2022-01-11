@@ -1,6 +1,3 @@
-#ifndef __XDD_H
-#define __XDD_H
-
 typedef int Node;
 
 typedef struct MinHeap {
@@ -33,5 +30,3 @@ Node DeleteHeap(MinHeap *heap);
 
 /* 清空堆 */
 int ClearHeap(MinHeap *heap);
-
-#endif __XDD_H
