@@ -7,9 +7,9 @@
 #ifndef UNION_H
 #define UNION_H
 
+#include "SqList.h" //**▲02 线性表**//
+#include "Status.h" //**▲01 绪论**//
 #include <stdio.h>
-#include "Status.h"     //**▲01 绪论**//
-#include "SqList.h"   //**▲02 线性表**//
 
 /*
  * ████████ 算法2.1 ████████
@@ -19,7 +19,7 @@
  * 计算La与Lb的并集并返回。
  * 由于生成的并集会拼接在La上，所以La的入参为指针类型。
  */
-void Union(SqList* La, SqList Lb);
+void Union(SqList *La, SqList Lb);
 
 /*
  * 判等

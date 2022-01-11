@@ -5,8 +5,8 @@
 #include <string.h>
 
 /* 全局变量*/
-Boolean debug =
-    FALSE; // 是否使用debug模式。测试时可设置为TRUE，发布时可设置为FALSE(修改debug值后，一般需要重新生成静态库)。
+// 是否使用debug模式。测试时可设置为TRUE，发布时可设置为FALSE(修改debug值后，一般需要重新生成静态库)。
+Boolean debug = FALSE;
 
 /*
  * 从文件中读取预设的英文符号

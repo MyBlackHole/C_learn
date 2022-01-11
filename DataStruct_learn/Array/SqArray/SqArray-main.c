@@ -1,4 +1,4 @@
-#include "SqList.h" //**02 线性表**//
+#include "SqArray.h" //**02 线性表**//
 #include <stdio.h>
 
 // 判断data>e是否成立

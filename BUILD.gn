@@ -1,6 +1,7 @@
 group("default"){
   deps = [
-    "//DataStruct_learn/List/SqList:main",
+    "//DataStruct_learn/Array/Union:Union-main",
+    "//DataStruct_learn/Array/SqArray:SqArray-main",
     "//DataStruct_learn/Heap/small_Heap:main",
 
     "//TCP-IP-NetworkNote_learn/ch18:chat_clnt",

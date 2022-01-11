@@ -4,7 +4,7 @@
  * 包含算法: 2.3、2.4、2.5、2.6
  =============================*/
 
-#include "SqList.h"
+#include "SqArray.h"
 
 /*
  * ████████ 算法2.3 ████████
@@ -206,7 +206,7 @@ Status NextElem(SqList L, ElemType cur_e, ElemType *next_e) {
     ++i;
   }
 
-  // 如果cur_e是最后1个元素(没有前驱)，或者没找到元素cur_e，返回ERROR
+  // 如果cur_e是最后1个元素(没有后继)，或者没找到元素cur_e，返回ERROR
   if (i >= L.length - 1) {
     return ERROR;
   }
