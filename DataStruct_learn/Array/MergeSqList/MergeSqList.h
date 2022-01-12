@@ -7,9 +7,9 @@
 #ifndef MERGESQLIST_H
 #define MERGESQLIST_H
 
+#include "SqList.h" //**▲ 02 线性表**//
 #include <stdio.h>
 #include <stdlib.h>
-#include "SqList.h"        //**▲02 线性表**//
 
 /*
  * ████████ 算法2.2 ████████
@@ -19,7 +19,7 @@
  * 归并顺序表La和Lb，生成新的顺序表Lc。
  * 其中，La、Lb、Lc均为非递减序列。
  */
-void MergeSqList_1(SqList La, SqList Lb, SqList* Lc);
+void MergeSqList_1(SqList La, SqList Lb, SqList *Lc);
 
 /*
  * ████████ 算法2.7 ████████
@@ -29,6 +29,6 @@ void MergeSqList_1(SqList La, SqList Lb, SqList* Lc);
  * 归并顺序表La和Lb，生成新的顺序表Lc。
  * 其中，La、Lb、Lc均为非递减序列。
  */
-void MergeSqList_2(SqList La, SqList Lb, SqList* Lc);
+void MergeSqList_2(SqList La, SqList Lb, SqList *Lc);
 
 #endif

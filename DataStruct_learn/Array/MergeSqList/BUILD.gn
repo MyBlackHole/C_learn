@@ -1,0 +1,20 @@
+executable("MergeSqList-main") {
+  include_dirs = ["//DataStruct_learn/Status"]
+  deps = [":MergeSqList"]
+  sources = [
+    "MergeSqList-main.c",
+  ]
+}
+
+static_library("MergeSqList") {
+  deps = ["//DataStruct_learn/Status:Status"]
+  include_dirs = ["//DataStruct_learn/Status"]
+  sources = [
+    "SqList.h",
+    "SqList.c",
+    "MergeSqList-main.c",
+    "MergeSqList.c",
+    "MergeSqList.h",
+  ]
+}
+
