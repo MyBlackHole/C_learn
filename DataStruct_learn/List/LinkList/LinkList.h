@@ -7,10 +7,10 @@
 #ifndef LINKLIST_H
 #define LINKLIST_H
 
+#include "Status.h" //**▲ 01 绪论**//
 #include <stdio.h>
-#include <stdlib.h>     // 提供 malloc、realloc、free、exit 原型
-#include <string.h>     // 提供 strstr 原型
-#include "Status.h"     //**▲01 绪论**//
+#include <stdlib.h> // 提供 malloc、realloc、free、exit 原型
+#include <string.h> // 提供 strstr 原型
 
 /* 单链表元素类型定义 */
 typedef int ElemType;
@@ -21,27 +21,26 @@ typedef int ElemType;
  * 注：这里的单链表存在头结点
  */
 typedef struct LNode {
-    ElemType data;      // 数据结点
-    struct LNode* next; // 指向下一个结点的指针
+  ElemType data;      // 数据结点
+  struct LNode *next; // 指向下一个结点的指针
 } LNode;
 
 // 指向单链表结点的指针
-typedef LNode* LinkList;
-
+typedef LNode *LinkList;
 
 /*
  * 初始化
  *
  * 初始化成功则返回OK，否则返回ERROR。
  */
-Status InitList(LinkList* L);
+Status InitList(LinkList *L);
 
 /*
  * 销毁(结构)
  *
  * 释放链表所占内存。
  */
-Status DestroyList(LinkList* L);
+Status DestroyList(LinkList *L);
 
 /*
  * 置空(内容)
@@ -80,7 +79,7 @@ int ListLength(LinkList L);
  * 教材中i的含义是元素位置，从1开始计数，但这不符合编码的通用约定。
  * 通常，i的含义应该指索引，即从0开始计数。
  */
-Status GetElem(LinkList L, int i, ElemType* e);
+Status GetElem(LinkList L, int i, ElemType *e);
 
 /*
  * 查找
@@ -100,7 +99,7 @@ int LocateElem(LinkList L, ElemType e, Status(Compare)(ElemType, ElemType));
  * 如果存在，将其存储到pre_e中，返回OK，
  * 如果不存在，则返回ERROR。
  */
-Status PriorElem(LinkList L, ElemType cur_e, ElemType* pre_e);
+Status PriorElem(LinkList L, ElemType cur_e, ElemType *pre_e);
 
 /*
  * 后继
@@ -109,7 +108,7 @@ Status PriorElem(LinkList L, ElemType cur_e, ElemType* pre_e);
  * 如果存在，将其存储到next_e中，返回OK，
  * 如果不存在，则返回ERROR。
  */
-Status NextElem(LinkList L, ElemType cur_e, ElemType* next_e);
+Status NextElem(LinkList L, ElemType cur_e, ElemType *next_e);
 
 /*
  * ████████ 算法2.9 ████████
@@ -134,7 +133,7 @@ Status ListInsert(LinkList L, int i, ElemType e);
  *【备注】
  * 教材中i的含义是元素位置，从1开始计数
  */
-Status ListDelete(LinkList L, int i, ElemType* e);
+Status ListDelete(LinkList L, int i, ElemType *e);
 
 /*
  * 遍历
@@ -158,7 +157,7 @@ void ListTraverse(LinkList L, void(Visit)(ElemType));
  * 如果需要从控制台读取数据，则path为NULL或者为空串，
  * 如果需要从文件中读取数据，则需要在path中填写文件名信息。
  */
-Status CreateList_Head(LinkList* L, int n, char* path);
+Status CreateList_Head(LinkList *L, int n, char *path);
 
 /*
  * 尾插法创建链表
@@ -173,6 +172,6 @@ Status CreateList_Head(LinkList* L, int n, char* path);
  * 如果需要从控制台读取数据，则path为NULL或者为空串，
  * 如果需要从文件中读取数据，则需要在path中填写文件名信息。
  */
-Status CreateList_Tail(LinkList* L, int n, char* path);
+Status CreateList_Tail(LinkList *L, int n, char *path);
 
 #endif

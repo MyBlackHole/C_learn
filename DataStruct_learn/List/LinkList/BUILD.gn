@@ -1,0 +1,18 @@
+executable("LinkList-main") {
+  include_dirs = ["//DataStruct_learn/Status"]
+  deps = [":LinkList"]
+  sources = [
+    "LinkList-main.c",
+  ]
+}
+
+static_library("LinkList") {
+  deps = ["//DataStruct_learn/Status:Status"]
+  include_dirs = ["//DataStruct_learn/Status"]
+  sources = [
+    "LinkList.c",
+    "LinkList-main.c",
+    "LinkList.h",
+  ]
+}
+
