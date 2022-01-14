@@ -7,12 +7,12 @@
 #ifndef SLINKLIST_H
 #define SLINKLIST_H
 
+#include "Status.h" //**▲01 绪论**//
 #include <stdio.h>
-#include <stdlib.h>     //提供malloc、realloc、free、exit原型
-#include "Status.h"     //**▲01 绪论**//
+#include <stdlib.h> //提供malloc、realloc、free、exit原型
 
 /* 宏定义 */
-#define MAXSIZE 1000            // 备用空间最大容量，近似于静态链表的最大长度
+#define MAXSIZE 1000 // 备用空间最大容量，近似于静态链表的最大长度
 
 /* 静态链表元素类型定义 */
 typedef int ElemType;
@@ -23,10 +23,9 @@ typedef int ElemType;
  * 注：静态链表依托于一个数组，该数组包含了已占用空间和空闲空间
  */
 typedef struct SLinkLNode {
-    ElemType data;
-    int cur;            // cur是游标，做指针用，用来链接下一个结点（区别于数组下标）
-} SLinkList[MAXSIZE];   // 链表空间类型
-
+  ElemType data;
+  int cur; // cur是游标，做指针用，用来链接下一个结点（区别于数组下标）
+} SLinkList[MAXSIZE]; // 链表空间类型
 
 /*
  * ████ 提示 ████
@@ -35,7 +34,6 @@ typedef struct SLinkLNode {
  * space：指示备用空间
  * S    ：指示静态链表头结点索引
  */
-
 
 /*━━━━━━━━━━━━━━━━━━━━━━ 备用空间操作 ━━━━━━━━━━━━━━━━━━━━━━*/
 
@@ -70,7 +68,6 @@ int Malloc(SLinkList space);
  */
 void Free(SLinkList space, int k);
 
-
 /*━━━━━━━━━━━━━━━━━━━━━━ 静态链表操作 ━━━━━━━━━━━━━━━━━━━━━━*/
 
 /*
@@ -79,7 +76,6 @@ void Free(SLinkList space, int k);
  * 用visit函数访问静态链表S
  */
 void ListTraverse(SLinkList space, int S, void(Visit)(ElemType));
-
 
 /*━━━━━━━━━━━━━━━━━━━━━━ 图形化输出 ━━━━━━━━━━━━━━━━━━━━━━*/
 
