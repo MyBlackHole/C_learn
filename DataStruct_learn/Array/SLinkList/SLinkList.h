@@ -7,12 +7,12 @@
 #ifndef SLINKLIST_H
 #define SLINKLIST_H
 
+#include "Status.h" //**▲ 01 绪论**//
 #include <stdio.h>
-#include <stdlib.h>     //提供malloc、realloc、free、exit原型
-#include "Status.h"     //**▲01 绪论**//
+#include <stdlib.h> //提供malloc、realloc、free、exit原型
 
 /* 宏定义 */
-#define MAXSIZE 1000            // 备用空间最大容量，近似于静态链表的最大长度
+#define MAXSIZE 1000 // 备用空间最大容量，近似于静态链表的最大长度
 
 /* 静态链表元素类型定义 */
 typedef int ElemType;
@@ -23,10 +23,9 @@ typedef int ElemType;
  * 注：静态链表依托于一个数组，该数组包含了已占用空间和空闲空间
  */
 typedef struct SLinkNode {
-    ElemType data;
-    int cur;            // cur是游标，做指针用，用来链接下一个结点（区别于数组下标）
-} SLinkList[MAXSIZE];   // 链表空间类型
-
+  ElemType data;
+  int cur; // cur是游标，做指针用，用来链接下一个结点（区别于数组下标）
+} SLinkList[MAXSIZE]; // 链表空间类型
 
 /*
  * ████ 提示 ████
@@ -49,7 +48,6 @@ typedef struct SLinkNode {
  * 这里实现的代码中，以算法2.14~2.17处预设的数据结构为准，
  * 所以，对于算法2.13，其实现会有教材有所不同。
  */
-
 
 /*━━━━━━━━━━━━━━━━━━━━━━ 备用空间操作 ━━━━━━━━━━━━━━━━━━━━━━*/
 
@@ -84,7 +82,6 @@ int Malloc(SLinkList space);
  */
 void Free(SLinkList space, int k);
 
-
 /*━━━━━━━━━━━━━━━━━━━━━━ 静态链表操作 ━━━━━━━━━━━━━━━━━━━━━━*/
 
 /*
@@ -93,14 +90,14 @@ void Free(SLinkList space, int k);
  * 先初始化备用空间，而后从备用空间中申请头结点的空间，进而完成静态链表的初始化。
  * 初始化成功则使用S存储头结点索引，且返回OK，否则返回ERROR。
  */
-Status InitList(SLinkList space, int* S);
+Status InitList(SLinkList space, int *S);
 
 /*
  * 销毁(结构)
  *
  * 释放静态链表所占内存，即将静态链表所有结点空间移入备用空间列表中。
  */
-Status DestroyList(SLinkList space, int* S);
+Status DestroyList(SLinkList space, int *S);
 
 /*
  * 置空(内容)
@@ -137,7 +134,7 @@ int ListLength(SLinkList space, int S);
  * 教材中i的含义是元素位置，从1开始计数，但这不符合编码的通用约定。
  * 通常，i的含义应该指索引，即从0开始计数。
  */
-Status GetElem(SLinkList space, int S, int i, ElemType* e);
+Status GetElem(SLinkList space, int S, int i, ElemType *e);
 
 /*
  * ████████ 算法2.13 ████████
@@ -151,7 +148,8 @@ Status GetElem(SLinkList space, int S, int i, ElemType* e);
  * 1.元素e是Compare函数第二个形参
  * 2.这里的实现与教材上的算法2.13不相同，原因参见顶部的“注意”信息
  */
-int LocateElem(SLinkList space, int S, ElemType e, Status(Compare)(ElemType, ElemType));
+int LocateElem(SLinkList space, int S, ElemType e,
+               Status(Compare)(ElemType, ElemType));
 
 /*
  * 前驱
@@ -160,7 +158,7 @@ int LocateElem(SLinkList space, int S, ElemType e, Status(Compare)(ElemType, Ele
  * 如果存在，将其存储到pre_e中，返回OK，
  * 如果不存在，则返回ERROR。
  */
-Status PriorElem(SLinkList space, int S, ElemType cur_e, ElemType* pre_e);
+Status PriorElem(SLinkList space, int S, ElemType cur_e, ElemType *pre_e);
 
 /*
  * 后继
@@ -169,7 +167,7 @@ Status PriorElem(SLinkList space, int S, ElemType cur_e, ElemType* pre_e);
  * 如果存在，将其存储到next_e中，返回OK，
  * 如果不存在，则返回ERROR。
  */
-Status NextElem(SLinkList space, int S, ElemType cur_e, ElemType* next_e);
+Status NextElem(SLinkList space, int S, ElemType cur_e, ElemType *next_e);
 
 /*
  * 插入
@@ -190,7 +188,7 @@ Status ListInsert(SLinkList space, int S, int i, ElemType e);
  *【备注】
  * 教材中i的含义是元素位置，从1开始计数
  */
-Status ListDelete(SLinkList space, int S, int i, ElemType* e);
+Status ListDelete(SLinkList space, int S, int i, ElemType *e);
 
 /*
  * 遍历
@@ -198,7 +196,6 @@ Status ListDelete(SLinkList space, int S, int i, ElemType* e);
  * 用visit函数访问静态链表S
  */
 void ListTraverse(SLinkList space, int S, void(Visit)(ElemType));
-
 
 /*━━━━━━━━━━━━━━━━━━━━━━ 图形化输出 ━━━━━━━━━━━━━━━━━━━━━━*/
 
