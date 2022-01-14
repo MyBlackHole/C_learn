@@ -12,7 +12,6 @@ static_library("MergeSqList") {
   sources = [
     "SqList.h",
     "SqList.c",
-    "MergeSqList-main.c",
     "MergeSqList.c",
     "MergeSqList.h",
   ]

@@ -7,9 +7,9 @@
 #ifndef DULINKLIST_H
 #define DULINKLIST_H
 
+#include "Status.h" //**▲ 01 绪论**//
 #include <stdio.h>
-#include <stdlib.h>     //提供malloc、realloc、free、exit原型
-#include "Status.h"     //**▲01 绪论**//
+#include <stdlib.h> //提供malloc、realloc、free、exit原型
 
 /* 双向循环链表元素类型定义 */
 typedef int ElemType;
@@ -20,28 +20,27 @@ typedef int ElemType;
  * 注：这里的双向循环链表存在头结点
  */
 typedef struct DuLNode {
-    ElemType data;
-    struct DuLNode* prior;  // 前驱
-    struct DuLNode* next;   // 后继
+  ElemType data;
+  struct DuLNode *prior; // 前驱
+  struct DuLNode *next;  // 后继
 } DuLNode;
 
 // 指向双向循环链表结点的指针
-typedef DuLNode* DuLinkList;
-
+typedef DuLNode *DuLinkList;
 
 /*
  * 初始化
  *
  * 初始化成功则返回OK，否则返回ERROR。
  */
-Status InitList(DuLinkList* L);
+Status InitList(DuLinkList *L);
 
 /*
  * 销毁(结构)
  *
  * 释放双向循环链表所占内存。
  */
-Status DestroyList(DuLinkList* L);
+Status DestroyList(DuLinkList *L);
 
 /*
  * 置空(内容)
@@ -78,7 +77,7 @@ int ListLength(DuLinkList L);
  * 教材中i的含义是元素位置，从1开始计数，但这不符合编码的通用约定。
  * 通常，i的含义应该指索引，即从0开始计数。
  */
-Status GetElem(DuLinkList L, int i, ElemType* e);
+Status GetElem(DuLinkList L, int i, ElemType *e);
 
 /*
  * 查找
@@ -98,7 +97,7 @@ int LocateElem(DuLinkList L, ElemType e, Status(Compare)(ElemType, ElemType));
  * 如果存在，将其存储到pre_e中，返回OK，
  * 如果不存在，则返回ERROR。
  */
-Status PriorElem(DuLinkList L, ElemType cur_e, ElemType* pre_e);
+Status PriorElem(DuLinkList L, ElemType cur_e, ElemType *pre_e);
 
 /*
  * 后继
@@ -107,7 +106,7 @@ Status PriorElem(DuLinkList L, ElemType cur_e, ElemType* pre_e);
  * 如果存在，将其存储到next_e中，返回OK，
  * 如果不存在，则返回ERROR。
  */
-Status NextElem(DuLinkList L, ElemType cur_e, ElemType* next_e);
+Status NextElem(DuLinkList L, ElemType cur_e, ElemType *next_e);
 
 /*
  * ████████ 算法2.18 ████████
@@ -132,7 +131,7 @@ Status ListInsert(DuLinkList L, int i, ElemType e);
  *【备注】
  * 教材中i的含义是元素位置，从1开始计数
  */
-Status ListDelete(DuLinkList L, int i, ElemType* e);
+Status ListDelete(DuLinkList L, int i, ElemType *e);
 
 /*
  * 遍历

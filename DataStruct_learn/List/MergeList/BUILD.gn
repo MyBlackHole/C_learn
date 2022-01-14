@@ -14,7 +14,6 @@ static_library("MergeList") {
     "MergeList.c",
     "MergeList.h",
     "LinkList.c",
-    "MergeList-main.c",
   ]
 }
 

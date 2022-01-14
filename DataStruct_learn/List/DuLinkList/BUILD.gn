@@ -1,17 +1,17 @@
-executable("SLinkList-main") {
+executable("DuLinkList-main") {
   include_dirs = ["//DataStruct_learn/Status"]
-  deps = [":SLinkList"]
+  deps = [":DuLinkList"]
   sources = [
-    "SLinkList-main.c",
+    "DuLinkList-main.c",
   ]
 }
 
-static_library("SLinkList") {
+static_library("DuLinkList") {
   deps = ["//DataStruct_learn/Status:Status"]
   include_dirs = ["//DataStruct_learn/Status"]
   sources = [
-    "SLinkList.c",
-    "SLinkList.h",
+    "DuLinkList.c",
+    "DuLinkList.h",
   ]
 }
 
