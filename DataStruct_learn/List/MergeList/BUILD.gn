@@ -1,0 +1,20 @@
+executable("MergeList-main") {
+  include_dirs = ["//DataStruct_learn/Status"]
+  deps = [":MergeList"]
+  sources = [
+    "MergeList-main.c",
+  ]
+}
+
+static_library("MergeList") {
+  deps = ["//DataStruct_learn/Status:Status"]
+  include_dirs = ["//DataStruct_learn/Status"]
+  sources = [
+    "LinkList.h",
+    "MergeList.c",
+    "MergeList.h",
+    "LinkList.c",
+    "MergeList-main.c",
+  ]
+}
+

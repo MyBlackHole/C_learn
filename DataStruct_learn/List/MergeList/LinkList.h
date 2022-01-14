@@ -7,10 +7,10 @@
 #ifndef LINKLIST_H
 #define LINKLIST_H
 
+#include "Status.h" //**▲ 01 绪论**//
 #include <stdio.h>
-#include <stdlib.h>     // 提供malloc、realloc、free、exit原型
-#include <string.h>     // 提供 strstr 原型
-#include "Status.h"     //**▲01 绪论**//
+#include <stdlib.h> // 提供malloc、realloc、free、exit原型
+#include <string.h> // 提供 strstr 原型
 
 /* 单链表元素类型定义 */
 typedef int ElemType;
@@ -21,13 +21,12 @@ typedef int ElemType;
  * 注：这里的单链表存在头结点
  */
 typedef struct LNode {
-    ElemType data;      // 数据结点
-    struct LNode* next; // 指向下一个结点的指针
+  ElemType data;      // 数据结点
+  struct LNode *next; // 指向下一个结点的指针
 } LNode;
 
 // 指向单链表结点的指针
-typedef LNode* LinkList;
-
+typedef LNode *LinkList;
 
 /*
  * 遍历
@@ -51,7 +50,7 @@ void ListTraverse(LinkList L, void(Visit)(ElemType));
  * 如果需要从控制台读取数据，则path为NULL或者为空串，
  * 如果需要从文件中读取数据，则需要在path中填写文件名信息。
  */
-Status CreateList_Head(LinkList* L, int n, char* path);
+Status CreateList_Head(LinkList *L, int n, char *path);
 
 /*
  * 尾插法创建链表
@@ -66,6 +65,6 @@ Status CreateList_Head(LinkList* L, int n, char* path);
  * 如果需要从控制台读取数据，则path为NULL或者为空串，
  * 如果需要从文件中读取数据，则需要在path中填写文件名信息。
  */
-Status CreateList_Tail(LinkList* L, int n, char* path);
+Status CreateList_Tail(LinkList *L, int n, char *path);
 
 #endif
