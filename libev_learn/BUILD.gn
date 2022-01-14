@@ -1,0 +1,14 @@
+static_library("libev") {
+  include_dirs = ["include"]
+  sources = [
+    "src/ev.c",
+    "src/event.c",
+    "src/ev_epoll.c",
+    "src/ev_kqueue.c",
+    "src/ev_poll.c",
+    "src/ev_port.c",
+    "src/ev_select.c",
+    "src/ev_win32.c",
+  ]
+}
+
