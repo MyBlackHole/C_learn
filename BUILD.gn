@@ -122,8 +122,8 @@ group("default"){
 
     "//sys_signalfd_learn:signalfd_test",
 
-    # "//ev_learn:ev1_test",
-    # "//ev_learn:ev_signal_test",
+    # "//libev_learn/case:ev1_test",
+    # "//libev_learn/case:ev_signal_test",
 
     "//pthread_learn:pthread_getpecific_test",
     "//pthread_learn:pthread_self_test",
