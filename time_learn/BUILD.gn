@@ -1,0 +1,12 @@
+executable("time_test") {
+  sources = [
+    "time_test.c",
+  ]
+}
+
+executable("clock_gettime_test") {
+  sources = [
+    "clock_gettime_test.c",
+  ]
+}
+

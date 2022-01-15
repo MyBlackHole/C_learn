@@ -1,5 +1,8 @@
 group("default"){
   deps = [
+    "//time_learn:time_test",
+    "//time_learn:clock_gettime_test",
+
     "//dome/asyn_network:main",
 
     "//DataStruct_learn/List/DuLinkList:DuLinkList-main",
