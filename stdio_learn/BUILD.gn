@@ -1,3 +1,9 @@
+executable("snprintf_test") {
+  sources = [
+    "snprintf_test.c",
+  ]
+}
+
 executable("getchar_test") {
   sources = [
     "getchar_test.c",
