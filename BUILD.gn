@@ -204,6 +204,7 @@ group("default"){
     "//unistd_learn:fork4_test",
     "//unistd_learn:setsid_test",
 
+    "//stdio_learn:snprintf_test",
     "//stdio_learn:getchar_test",
     "//stdio_learn:putchar_test",
     "//stdio_learn:fwrite_test",
