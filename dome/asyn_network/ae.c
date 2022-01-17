@@ -170,8 +170,8 @@ int aeCreateFileEvent(aeEventLoop *eventLoop, int fd,
     return AE_ERR;
   }
 
-  if (fd >= eventLoop->setsize)
-    return AE_ERR;
+  // if (fd >= eventLoop->setsize)
+  //   return AE_ERR;
 
   // 取出文件事件结构
   aeFileEvent *fe = &eventLoop->events[fd];

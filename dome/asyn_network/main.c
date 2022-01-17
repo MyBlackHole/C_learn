@@ -17,7 +17,7 @@
 #include "ae.h"
 #include "anet.h"
 
-#define REDIS_SERVERPORT 6379 /* TCP port */
+#define REDIS_SERVERPORT 16379 /* TCP port */
 #define REDIS_MAX_QUERYBUF_LEN 10240
 #define REDIS_TCP_BACKLOG 511 /* TCP listen backlog */
 #define REDIS_IP_STR_LEN INET6_ADDRSTRLEN
@@ -74,8 +74,8 @@ void MainReadFromClient(aeEventLoop *el, int fd, void *privdata, int mask) {
     printf("recv from client %s:%d, data:%s\r\n", client_ip, client_port,
            buffer);
     nwrite = write(fd, buffer, REDIS_MAX_QUERYBUF_LEN);
-    if (nwrite ==
-        -1) //写异常了，可能是客户端关闭了链接，也可能是客户端进程挂了等
+    //写异常了，可能是客户端关闭了链接，也可能是客户端进程挂了等
+    if (nwrite == -1)
       MainCloseFd(el, fd);
   }
 }
@@ -131,7 +131,7 @@ int main() {
 
   //设置socket bind对应的fd为非阻塞
   anetNonBlock(NULL, sd);
-  //某些情况下，服务端进程退出后，会有监听端口timwait状态的连接，这时候如果重启进程，会提示error:98，Address
+  //某些情况下，服务端进程退出后，会有监听端口timewait状态的连接，这时候如果重启进程，会提示error:98，Address
   // already in use，就可以用该设置来解决该问题。
   anetSetReuseAddr(NULL, sd);
   if (aeCreateFileEvent(g_epoll_loop, sd, AE_READABLE, MainAcceptTcpHandler,

@@ -102,6 +102,7 @@ group("default"){
     "//netdb_learn:gethostbyaddr_test",
     "//netdb_learn:gethostbyname_test",
     "//netdb_learn:getaddrinfo_test",
+    "//netdb_learn:getaddrinfo1_test",
 
     "//assert_learn:assert_test",
 
