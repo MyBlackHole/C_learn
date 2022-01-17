@@ -13,3 +13,7 @@ executable("gethostbyname_test") {
 executable("getaddrinfo_test") {
   sources = ["getaddrinfo_test.c"]
 }
+
+executable("getaddrinfo1_test") {
+  sources = ["getaddrinfo1_test.c"]
+}
