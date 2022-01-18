@@ -1,0 +1,17 @@
+executable("ELinkList-main") {
+  include_dirs = ["//DataStruct_learn/Status"]
+  deps = [":ELinkList"]
+  sources = [
+    "ELinkList-main.c",
+  ]
+}
+
+static_library("ELinkList") {
+  deps = ["//DataStruct_learn/Status:Status"]
+  include_dirs = ["//DataStruct_learn/Status"]
+  sources = [
+    "ELinkList.c",
+    "ELinkList.h",
+  ]
+}
+

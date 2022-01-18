@@ -7,10 +7,10 @@
 #ifndef ELINKLIST_H
 #define ELINKLIST_H
 
+#include "Status.h" //**▲ 01 绪论**//
+#include <limits.h> // 提供一些极限常量
 #include <stdio.h>
-#include <stdlib.h>     // 提供malloc、realloc、free、exit原型
-#include <limits.h>     // 提供一些极限常量
-#include "Status.h"     //**▲01 绪论**//
+#include <stdlib.h> // 提供malloc、realloc、free、exit原型
 
 /*
  * ████ 注意 ████
@@ -29,16 +29,15 @@ typedef int ElemType;
  * 注：这里的线性链表存在头结点
  */
 typedef struct LNode {
-    ElemType data;
-    struct LNode* next;
-} LNode, * Link, * Position;
+  ElemType data;
+  struct LNode *next;
+} LNode, *Link, *Position;
 
 /* 维护线性链表头尾指针及长度信息 */
 typedef struct {
-    Link head, tail;    // 分别指向线性链表中的头结点和尾结点
-    int len;            // 指示线性链表中数据元素的个数
+  Link head, tail; // 分别指向线性链表中的头结点和尾结点
+  int len;         // 指示线性链表中数据元素的个数
 } ELinkList;
-
 
 /*━━━━━━━━━━━━━━━━━━━━━━ 内存操作 ━━━━━━━━━━━━━━━━━━━━━━*/
 
@@ -50,7 +49,7 @@ typedef struct {
  *【备注】
  * static修饰的含义是该函数仅限当前文件内使用
  */
-Status MakeNode(Link* p, ElemType e);
+Status MakeNode(Link *p, ElemType e);
 
 /*
  * 内存回收
@@ -60,8 +59,7 @@ Status MakeNode(Link* p, ElemType e);
  *【备注】
  * static修饰的含义是该函数仅限当前文件内使用
  */
-void FreeNode(Link* p);
-
+void FreeNode(Link *p);
 
 /*━━━━━━━━━━━━━━━━━━━━━━ 链表常规操作 ━━━━━━━━━━━━━━━━━━━━━━*/
 
@@ -70,21 +68,21 @@ void FreeNode(Link* p);
  *
  * 初始化成功则返回OK，否则返回ERROR。
  */
-Status InitList(ELinkList* L);
+Status InitList(ELinkList *L);
 
 /*
  * 销毁(结构)
  *
  * 释放链表所占内存。
  */
-Status DestroyList(ELinkList* L);
+Status DestroyList(ELinkList *L);
 
 /*
  * 置空(内容)
  *
  * 这里需要释放链表中非头结点处的空间。
  */
-Status ClearList(ELinkList* L);
+Status ClearList(ELinkList *L);
 
 /*
  * 判空
@@ -114,7 +112,8 @@ int ListLength(ELinkList L);
  * 1.元素e是Compare函数第二个形参
  * 2.这里的返回值是目标元素的引用，而不是其位序
  */
-Position LocateElem(ELinkList L, ElemType e, Status(Compare)(ElemType, ElemType));
+Position LocateElem(ELinkList L, ElemType e,
+                    Status(Compare)(ElemType, ElemType));
 
 /*
  * ████████ 算法2.20 ████████
@@ -127,7 +126,7 @@ Position LocateElem(ELinkList L, ElemType e, Status(Compare)(ElemType, ElemType)
  * 教材中i的含义是元素位置，从1开始计数
  * 可以看做是算法2.9的改写
  */
-Status ListInsert(ELinkList* L, int i, ElemType e);
+Status ListInsert(ELinkList *L, int i, ElemType e);
 
 /*
  * 删除
@@ -139,7 +138,7 @@ Status ListInsert(ELinkList* L, int i, ElemType e);
  * 教材中i的含义是元素位置，从1开始计数
  * 可以看做是算法2.10的改写
  */
-Status ListDelete(ELinkList* L, int i, ElemType* e);
+Status ListDelete(ELinkList *L, int i, ElemType *e);
 
 /*
  * 遍历
@@ -147,7 +146,6 @@ Status ListDelete(ELinkList* L, int i, ElemType* e);
  * 用visit函数访问链表L
  */
 void ListTraverse(ELinkList L, void(Visit)(ElemType));
-
 
 /*━━━━━━━━━━━━━━━━━━━━━━ 链表扩展操作 ━━━━━━━━━━━━━━━━━━━━━━*/
 
@@ -200,7 +198,7 @@ Position NextPos(ELinkList L, Link p);
  * 如果i值不合规，则返回ERROR
  * 特别注意，当i为0时，p存储的是头结点的引用
  */
-Status LocatePos(ELinkList L, int i, Link* p);
+Status LocatePos(ELinkList L, int i, Link *p);
 
 /*
  * 插入
@@ -210,7 +208,7 @@ Status LocatePos(ELinkList L, int i, Link* p);
  *【备注】
  * 教材中对于该方法的描述有些问题，这里是修正过的版本
  */
-Status InsFirst(ELinkList* L, Link h, Link s);
+Status InsFirst(ELinkList *L, Link h, Link s);
 
 /*
  * 删除
@@ -220,34 +218,34 @@ Status InsFirst(ELinkList* L, Link h, Link s);
  *【备注】
  * 教材中对于该方法的定义略显粗糙，这里是修正过的版本
  */
-Status DelFirst(ELinkList* L, Link h, Link* q);
+Status DelFirst(ELinkList *L, Link h, Link *q);
 
 /*
  * 前向插入
  *
  * 将s结点插入到p结点之前，并将p指向新结点
  */
-Status InsBefore(ELinkList* L, Link* p, Link s);
+Status InsBefore(ELinkList *L, Link *p, Link s);
 
 /*
  * 后向插入
  *
  * 将s结点插入到p结点之前，并将p指向新结点
  */
-Status InsAfter(ELinkList* L, Link* p, Link s);
+Status InsAfter(ELinkList *L, Link *p, Link s);
 
 /*
  * 向尾部添加
  *
  * 将s所指的一串结点链接在链表L后面
  */
-Status Append(ELinkList* L, Link s);
+Status Append(ELinkList *L, Link s);
 
 /*
  * 从尾部移除
  *
  * 将链表的尾结点移除，并将被移除的结点引用存储在q中
  */
-Status Remove(ELinkList* L, Link* q);
+Status Remove(ELinkList *L, Link *q);
 
 #endif

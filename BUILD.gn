@@ -5,6 +5,7 @@ group("default"){
 
     "//dome/asyn_network:main",
 
+    "//DataStruct_learn/List/ELinkList:ELinkList-main",
     "//DataStruct_learn/List/DuLinkList:DuLinkList-main",
     "//DataStruct_learn/Array/SLinkList:SLinkList-main",
     "//DataStruct_learn/List/MergeList:MergeList-main",
