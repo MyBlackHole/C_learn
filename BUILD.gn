@@ -179,6 +179,7 @@ group("default"){
     "//stdlib_learn:malloc_test",
     "//stdlib_learn:realloc_test",
 
+    "//unistd_learn:pathconf_test",
     "//unistd_learn:getcwd_test",
     "//unistd_learn:pipe_test",
     "//unistd_learn:lockf_test",

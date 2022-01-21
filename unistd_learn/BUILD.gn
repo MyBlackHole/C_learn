@@ -1,3 +1,9 @@
+executable("pathconf_test") {
+  sources = [
+    "pathconf_test.c",
+  ]
+}
+
 executable("pipe_test") {
   sources = [
     "pipe_test.c",

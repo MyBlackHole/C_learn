@@ -13,6 +13,7 @@
 #include "tools.h"
 #include <errno.h>
 #include <fcntl.h>
+#include <stdio.h>
 #include <string.h>
 #include <sys/fcntl.h>
 #include <unistd.h>
@@ -23,18 +24,20 @@ extern int My_open_with_mode(const char *path, int oflag, mode_t mode);
 extern ssize_t My_write(int fd, const void *buf, size_t nbytes);
 int prepare_file(const char *pathname, const void *buffer, int len,
                  mode_t mode) {
-  if (-1 == unlink(pathname)) // 如果删除失败，且原因不是 ENOENT ，则返回 false
+  // 如果删除失败，且原因不是 ENOENT ，则返回 false
+  if (-1 == unlink(pathname))
     if (errno != ENOENT)
       return -1;
-  int fd = open(pathname, O_CREAT | O_RDWR, mode); // 打开失败
+  // 打开失败
+  int fd = open(pathname, O_CREAT | O_RDWR, mode);
   if (-1 == fd) {
     printf("prepare file \"%s\" failed,because %s\n", pathname,
            strerror(errno));
     return -1;
   }
   if (len > 0 && buffer != NULL) {
-    if (-1 == write(fd, buffer, len)) // 写文件失败
-    {
+    // 写文件失败
+    if (-1 == write(fd, buffer, len)) {
       printf("prepare file \"%s\" failed,because %s\n", pathname,
              strerror(errno));
       close(fd);
@@ -42,7 +45,8 @@ int prepare_file(const char *pathname, const void *buffer, int len,
     }
   }
   close(fd);
-  return 0; // 创建成功
+  // 创建成功
+  return 0;
 }
 
 void un_prepare_file(const char *pathname) { unlink(pathname); }
@@ -51,7 +55,8 @@ void print_char_buffer(const char *buf, int n) {
   printf("char buffer is:");
   for (int i = 0; i < n; i++) {
     if (0 == buf[i])
-      break; // 终止符
+      // 终止符
+      break;
     printf("%c", buf[i]);
   }
   printf("\n");
@@ -62,8 +67,10 @@ void fcntl_lock(int fd) {
   data.l_type = F_WRLCK;
   data.l_whence = SEEK_SET;
   data.l_start = 0;
-  data.l_len = 0;                          // 整个文件
-  int result = fcntl(fd, F_SETLKW, &data); // F_SETLKW 为阻塞版本
+  // 整个文件
+  data.l_len = 0;
+  // F_SETLKW 为阻塞版本
+  int result = fcntl(fd, F_SETLKW, &data);
   if (-1 == result) {
     printf("fcntl_lock failed,because %s\n", strerror(errno));
   }

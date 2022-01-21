@@ -24,4 +24,3 @@ unsigned int My_alarm(unsigned int seconds);
  */
 void test_alarm();
 #endif // ALARM_
-

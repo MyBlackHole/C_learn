@@ -11,16 +11,15 @@
  */
 #ifndef HEADER
 #define HEADER
-#include<string.h>
-#include<errno.h>
-#include<assert.h>
-#include"tools.h"
+#include "tools.h"
+#include <assert.h>
+#include <errno.h>
+#include <string.h>
 
 #ifdef DBG
-#define M_TRACE   printf
+#define M_TRACE printf
 #else
-#define M_TRACE   (void)
+#define M_TRACE (void)
 #endif
 
 #endif // HEADER
-
