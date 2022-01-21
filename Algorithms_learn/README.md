@@ -1,14 +1,7 @@
-
-
->算法虐我千百遍，我待算法如初恋
-
-这里的内容是我学习算法过程的一些记录，希望能一直坚持下去。
-
 ## 学习方法
  
 * 把所有经典算法写一遍  
 * 看算法有关源码   
-* 加入算法学习社区，相互鼓励学习(加我vx:tiger-ran, 备注入群理由, 拉你入群)   
 * 看经典书籍  
 * 刷题   
 
@@ -203,47 +196,17 @@
 * 《The science of programming》 证明代码段的正确性   800块一本   
 
 
-## 参考链接和学习网站
-
-### [July 博客](http://blog.csdn.net/v_july_v) 
-
-* 《数学建模十大经典算法》    
-* 《数据挖掘领域十大经典算法》    
-* 《十道海量数据处理面试题》      
-* 《数字图像处理领域的二十四个经典算法》    
-* 《精选微软等公司经典的算法面试100题》 
 * [The-Art-Of-Programming-By-July](https://github.com/julycoding/The-Art-Of-Programming-By-July)
-* [微软面试100题](http://blog.csdn.net/column/details/ms100.html)    
 * [程序员编程艺术](http://blog.csdn.net/v_JULY_v/article/details/6460494)   
 
 
 ### 基本算法演示 
 
-http://sjjg.js.zwu.edu.cn/SFXX/sf1/sfys.html  
 http://www.cs.usfca.edu/~galles/visualization/Algorithms.html  
   
    
 ### 编程网站
-
 * [leetcode](http://leetcode.com/)    
-* [openjudge](http://openjudge.cn/)  开放在线程序评测平台，可以创建自己的OJ小组   
-* [九度OJ](http://ac.jobdu.com/index.php)     
-* 这有个[ACM训练方案](http://www.java3z.com/cwbwebhome/article/article19/res041.html)   
 
 ### 其它
-
-[高级数据结构和算法](https://www.coursera.org/learn/gaoji-shuju-jiegou/)  北大教授张铭老师在coursera上的课程。完成这门课之时，你将掌握多维数组、广义表、Trie树、AVL树、伸展树等高级数据结构，并结合内排序、外排序、检索、索引有关的算法，高效地解决现实生活中一些比较复杂的应用问题。当然coursera上也还有很多其它算法方面的视频课程。
-
-
-[算法设计与分析 Design and Analysis of Algorithms](https://class.coursera.org/algorithms-001/lecture) 由北大教授Wanling Qu在coursera讲授的一门算法课程。首先介绍一些与算法有关的基础知识，然后阐述经典的算法设计思想和分析技术，主要涉及的算法设计技术是：分治策略、动态规划、贪心法、回溯与分支限界等。每个视频都配有相应的讲义（pdf文件）以便阅读和复习。
-
 [OI Wiki](https://github.com/24OI/OI-wiki/) 主要内容是 OI / ACM-ICPC 相关的知识整理。
-
-
-
-## 联系
-
-[@移动开发小冉](http://weibo.com/ranwj)
-
-
-
