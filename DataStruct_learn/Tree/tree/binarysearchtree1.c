@@ -1,5 +1,6 @@
 //
 // Created by BlackHole on 2020/8/9.
+// 二叉搜索树实现
 //
 
 #include <stdio.h>
@@ -177,7 +178,7 @@ void ClearBTree(struct BTreeNode **BT) //清除二叉树，使之变为一棵空
 }
 
 //主函数
-void main() //其中用到二叉树操作的函数都基本没变，只是元素类型换为int
+int main() //其中用到二叉树操作的函数都基本没变，只是元素类型换为int
 {
   int x, *px;
   ElemType a[10] = {30, 50, 20, 40, 25, 70, 54, 23, 80, 92};
@@ -193,7 +194,7 @@ void main() //其中用到二叉树操作的函数都基本没变，只是元素
 
   printf("输入待查找元素值：");
   scanf(" %d", &x); //格式串中的空格可以跳过任何空白符
-  if (px = Find(bst, x))
+  if ((px = (int *)Find(bst, x)) != NULL)
     printf("查找成功！得到的x为：%d\n", *px);
   else
     printf("查找失败！\n");
@@ -230,4 +231,5 @@ void main() //其中用到二叉树操作的函数都基本没变，只是元素
   printf("\n");
 
   ClearBTree(&bst);
+  exit(0);
 }

@@ -135,7 +135,15 @@ void func13() {
 /*   printf("退出了"); */
 /* } */
 
+void func14() {
+  char c;
+  char *str = "abcd";
+  c = *str++;
+  printf("%c\n", c);
+  printf("%c\n", *str);
+}
+
 int main() {
-  func13();
+  func14();
   exit(0);
 }
