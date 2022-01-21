@@ -1,0 +1,15 @@
+executable("array") {
+  include_dirs = ["//DataStruct_learn/Status"]
+  deps = [":Array_gp"]
+  sources = [
+    "array.c",
+  ]
+}
+
+static_library("Array_gp") {
+  sources = [
+    "Array_gp.c",
+    "Array_gp.h",
+  ]
+}
+
