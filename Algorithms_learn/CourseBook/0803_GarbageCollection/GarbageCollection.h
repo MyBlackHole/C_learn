@@ -7,9 +7,9 @@
 #ifndef GARBAGECOLLECTION_H
 #define GARBAGECOLLECTION_H
 
+#include "GList-HT.h" //**▲ 05 数组和广义表**//
+#include "Status.h"   //**▲ 01 绪论**//
 #include <stdio.h>
-#include "Status.h"   //**▲01 绪论**//
-#include "GList-HT.h" //**▲05 数组和广义表**//
 
 /*
  * ████████ 算法8.3 ████████

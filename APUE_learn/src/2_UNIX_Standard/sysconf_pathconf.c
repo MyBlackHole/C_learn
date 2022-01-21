@@ -21,7 +21,7 @@ long My_pathconf(const char *pathname, int name, const char *name_str) {
     printf("'pathconf(\"%s\",%s)' failed,because %s\n", pathname, name_str,
            strerror(errno));
   } else
-    printf("sysconf(%s) is %d\n", name_str, result);
+    printf("sysconf(%s) is %dl\n", name_str, result);
   return result;
 }
 long My_sysconf(int name, const char *name_str) {

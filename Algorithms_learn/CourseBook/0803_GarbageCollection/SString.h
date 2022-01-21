@@ -7,13 +7,13 @@
 #ifndef SSTRING_H
 #define SSTRING_H
 
+#include "Status.h" //**▲ 01 绪论**//
+#include <ctype.h>  // 提供 isprint 原型
 #include <stdio.h>
-#include <string.h>     // 提供 strlen 原型
-#include <ctype.h>      // 提供 isprint 原型
-#include "Status.h"     //**▲01 绪论**//
+#include <string.h> // 提供 strlen 原型
 
 /* 宏定义 */
-#define MAXSTRLEN 255       // 顺序串的最大串长
+#define MAXSTRLEN 255 // 顺序串的最大串长
 
 /*
  * 串的顺序存储类型定义
@@ -21,15 +21,13 @@
  * 注：有效元素从SString的1号单元开始存储
  *     SString的0号单元用来存储其长度
  */
-typedef unsigned char SString[MAXSTRLEN + 1];       // 0号单元存放串的长度
-
+typedef unsigned char SString[MAXSTRLEN + 1]; // 0号单元存放串的长度
 
 /*
  * ████ 提示 ████
  *
  * 遵循教材的书写习惯，pos指示字符的位序(不是索引)，从1开始计数
  */
-
 
 /*
  * 初始化
@@ -39,7 +37,7 @@ typedef unsigned char SString[MAXSTRLEN + 1];       // 0号单元存放串的长
  *【注】
  * 该操作属于最小操作子集
  */
-Status StrAssign(SString T, const char* chars);
+Status StrAssign(SString T, const char *chars);
 
 /*
  * 清空
