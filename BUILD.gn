@@ -86,6 +86,7 @@ group("default"){
 
     "//coroutine_learn:main",
 
+    "//DesignPattern_learn/Proxy:ProxyPatternDemo",
     "//DesignPattern_learn/Builder:BuilderPatternDemo",
     "//DesignPattern_learn/Bridge:BridgePatternDemo",
     "//DesignPattern_learn/Adapter:AdapterPatternDemo",

@@ -18,12 +18,12 @@ extern "C" {
 
 typedef struct Image Image;
 
-Image* real_image_create(const char* file_name);
-Image* proxy_image_create(const char* file_name);
-void image_destroy(Image** image);
-void image_display(Image* image);
+Image *real_image_create(const char *file_name);
+Image *proxy_image_create(const char *file_name);
+void image_destroy(Image **image);
+void image_display(Image *image);
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // IMAGE_H_
+#endif // IMAGE_H_

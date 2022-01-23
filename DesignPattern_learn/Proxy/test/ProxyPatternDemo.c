@@ -13,17 +13,17 @@
 
 #include "Image.h"
 
-int main(int argc, char const* argv[]) {
-    Image* image = proxy_image_create("test_10mb.jpg");
+int main(int argc, char const *argv[]) {
+  Image *image = proxy_image_create("test_10mb.jpg");
 
-    // 图像将从磁盘加载
-    image_display(image);
-    printf("\n");
+  // 图像将从磁盘加载
+  image_display(image);
+  printf("\n");
 
-    // 图像不需要从磁盘加载
-    image_display(image);
+  // 图像不需要从磁盘加载
+  image_display(image);
 
-    image_destroy(&image);
+  image_destroy(&image);
 
-    return 0;
+  return 0;
 }
