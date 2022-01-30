@@ -1,0 +1,5 @@
+executable("two_sum") {
+  sources = [
+    "two_sum.c",
+  ]
+}
