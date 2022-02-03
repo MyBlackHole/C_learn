@@ -89,7 +89,10 @@ int main() {
   }
 
   ev.data.fd = listenfd;
-  ev.events = EPOLLIN | EPOLLET /* 边缘触发选项。 */;
+
+  /* 边缘触发选项。 */;
+  ev.events = EPOLLIN | EPOLLET;
+
   // 设置epoll的事件
   result = epoll_ctl(epfd, EPOLL_CTL_ADD, listenfd, &ev);
 
@@ -118,8 +121,8 @@ int main() {
         continue;
       } else if (listenfd == event[i].data.fd) {
         // listen的 file describe 事件触发， accpet事件
-
-        for (;;) { // 由于采用了边缘触发模式，这里需要使用循环
+        // 由于采用了边缘触发模式，这里需要使用循环
+        for (;;) {
           struct sockaddr in_addr = {0};
           socklen_t in_addr_len = sizeof(in_addr);
           int accp_fd = accept(listenfd, &in_addr, &in_addr_len);

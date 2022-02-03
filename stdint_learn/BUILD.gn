@@ -1,0 +1,6 @@
+executable("int32_t_test") {
+  sources = [
+    "int32_t_test.c",
+  ]
+}
+
