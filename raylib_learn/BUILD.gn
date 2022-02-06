@@ -1,0 +1,14 @@
+# git clone https://github.com/raysan5/raylib.git
+# mkdir build && cd build
+# cmake -DSHARED=ON -DSTATIC=ON ..
+# make 
+# make install
+executable("getpwent_test") {
+  cflags = ["-g"]
+
+  include_dirs = ["//include"]
+
+  sources = [
+    "getpwent_test.c",
+  ]
+}
