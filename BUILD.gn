@@ -1,5 +1,7 @@
 group("default"){
   deps = [
+
+    "//sched_learn:CLONE_NEWUSER_test",
     "//sched_learn:CLONE_NEWIPC_test",
     "//sched_learn:clone_test",
 

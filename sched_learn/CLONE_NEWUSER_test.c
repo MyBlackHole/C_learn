@@ -42,6 +42,16 @@ int child_main(void *args) {
   return 1;
 }
 
+// CLONE_NEWUSER
+// 此标志最先在Linux 2.6.23中的clone()中启用，当前的clone()语义已在Linux 3.5中合入，而完整可用的用户空间功能在Linux
+// 3.8中合入。 如果设置了CLONE_NEWUSER ，则会在新的用户命
+// 空间中创建进程。如果没有设置该标志，则新创建的进程与调用进程的用户命名空间相同。
+// 在Linux 3.8之前，使用CLONE_NEWUSER 要求具有3个capability：CAP_SYS_ADMIN, CAP_SETUID 和CAP_SETGID。
+// Linux 3.8开始，创建用户命名空间不需要特权。
+// 该标志不能与CLONE_THREAD 或CLONE_PARENT配合使用。出于安全因素，CLONE_NEWUSER
+// 不能与CLONE_FS配合使用(不同的文件具有不同的用户标志，Linux
+//
+
 int main() {
   printf("start parent ...\n");
   int child_pid = clone(child_main, child_stack + STACK_SIZE,

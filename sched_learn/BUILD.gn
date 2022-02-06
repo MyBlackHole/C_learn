@@ -13,3 +13,21 @@ executable("CLONE_NEWIPC_test") {
     "CLONE_NEWIPC_test.c",
   ]
 }
+
+executable("CLONE_NEWPID_test") {
+  cflags = ["-g"]
+
+  sources = [
+    "CLONE_NEWPID_test.c",
+  ]
+}
+
+executable("CLONE_NEWUSER_test") {
+  cflags = ["-g"]
+
+  ldflags = ["-lcap"]
+
+  sources = [
+    "CLONE_NEWUSER_test.c",
+  ]
+}
