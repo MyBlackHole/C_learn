@@ -1,0 +1,9 @@
+executable("SECCOMP_MODE_STRICT_test") {
+  cflags = ["-g"]
+
+  ldflags = ["-lseccomp"]
+
+  sources = [
+    "SECCOMP_MODE_STRICT_test.c",
+  ]
+}

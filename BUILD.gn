@@ -1,5 +1,6 @@
 group("default"){
   deps = [
+    "//seccomp_learn:SECCOMP_MODE_STRICT_test",
 
     "//sched_learn:CLONE_NEWUSER_test",
     "//sched_learn:CLONE_NEWIPC_test",
