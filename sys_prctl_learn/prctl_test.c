@@ -1,0 +1,1 @@
+../seccomp_learn/SECCOMP_MODE_STRICT_test.c
