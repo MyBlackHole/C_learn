@@ -1,5 +1,11 @@
 group("default"){
   deps = [
+
+    "//sodium_learn:sodium_base642bin_test",
+    "//sodium_learn:sodium_bin2base64_test",
+    "//sodium_learn:crypto_aead_xchacha20poly1305_ietf_encrypt_detached_test",
+    "//sodium_learn:crypto_aead_xchacha20poly1305_ietf_decrypt_detached_test",
+
     "//seccomp_learn:SECCOMP_MODE_STRICT_test",
 
     "//sched_learn:CLONE_NEWUSER_test",
