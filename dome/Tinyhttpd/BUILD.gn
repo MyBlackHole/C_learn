@@ -1,0 +1,9 @@
+executable("simpleclient") {
+  sources = ["simpleclient.c"]
+}
+
+executable("httpd") {
+  sources = ["httpd.c"]
+}
+
+

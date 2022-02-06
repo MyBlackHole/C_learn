@@ -1,0 +1,4 @@
+executable("test") {
+  ldflags = ["-lGL", "-lGLU", "-lglut"]
+  sources = ["test.c"]
+}

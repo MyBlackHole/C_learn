@@ -1,6 +1,12 @@
 group("default"){
   deps = [
+    "//sched_learn:CLONE_NEWIPC_test",
+    "//sched_learn:clone_test",
+
+    "//opengl_learn:test",
+
     "//stdint_learn:int32_t_test",
+
     "//time_learn:time_test",
     "//time_learn:clock_gettime_test",
 

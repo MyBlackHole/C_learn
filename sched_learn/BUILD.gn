@@ -1,0 +1,15 @@
+executable("clone_test") {
+  cflags = ["-g"]
+
+  sources = [
+    "clone_test.c",
+  ]
+}
+
+executable("CLONE_NEWIPC_test") {
+  cflags = ["-g"]
+
+  sources = [
+    "CLONE_NEWIPC_test.c",
+  ]
+}
