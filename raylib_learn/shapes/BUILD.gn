@@ -3,12 +3,12 @@
 # cmake -DSHARED=ON -DSTATIC=ON ..
 # make 
 # make install
-executable("getpwent_test") {
+executable("shapes_basic_shapes") {
   cflags = ["-g"]
 
-  include_dirs = ["//include"]
+  ldflags = ["-lraylib"]
 
   sources = [
-    "getpwent_test.c",
+    "shapes_basic_shapes.c",
   ]
 }
