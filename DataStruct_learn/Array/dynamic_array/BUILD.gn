@@ -1,0 +1,14 @@
+executable("test") {
+  deps = [":dict"]
+  sources = [
+    "test.c",
+  ]
+}
+
+static_library("dict") {
+  sources = [
+    "dict.c",
+    "dict.h",
+  ]
+}
+
