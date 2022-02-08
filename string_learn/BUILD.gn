@@ -46,3 +46,11 @@ executable("memset_test") {
   ]
   
 }
+
+executable("memcpy_test") {
+  cflags = ["-g"]
+
+  sources = [
+    "memcpy_test.c",
+  ]
+}
