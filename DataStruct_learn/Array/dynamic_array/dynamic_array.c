@@ -27,7 +27,7 @@ void *add(dynamic_array_t *da, const void *value) {
       return NULL;
     }
 
-    free(da->items);
+    // free(da->items);
     da->items = newItems;
   }
 
@@ -68,6 +68,7 @@ void delete (dynamic_array_t *da, const unsigned index) {
   free(da->items[da->size]);
 }
 
+// 合法性查询
 unsigned contains(const unsigned size, const unsigned index) {
   if (size >= 0 && index < size)
     return 1;

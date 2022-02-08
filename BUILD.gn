@@ -1,5 +1,6 @@
 group("default"){
   deps = [
+    "//raylib_learn/shapes:shapes_basic_shapes",
 
     "//sodium_learn:sodium_base642bin_test",
     "//sodium_learn:sodium_bin2base64_test",
@@ -21,6 +22,7 @@ group("default"){
 
     "//dome/asyn_network:main",
 
+    "//DataStruct_learn/Array/dynamic_array:test",
     "//DataStruct_learn/Dict:test",
     "//DataStruct_learn/Array/array:array",
     "//DataStruct_learn/List/ELinkList:ELinkList-main",
@@ -179,6 +181,7 @@ group("default"){
     "//string_learn:strerror_test",
     "//string_learn:memset_test",
     "//string_learn:memmove_test",
+    "//string_learn:memcpy_test",
 
     "//strings_learn:strcasecmp_test",
 
