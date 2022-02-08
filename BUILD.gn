@@ -22,6 +22,7 @@ group("default"){
 
     "//dome/asyn_network:main",
 
+    "//DataStruct_learn/Tree/binarytree/avl_tree:test",
     "//DataStruct_learn/Array/dynamic_array:test",
     "//DataStruct_learn/Dict:test",
     "//DataStruct_learn/Array/array:array",
