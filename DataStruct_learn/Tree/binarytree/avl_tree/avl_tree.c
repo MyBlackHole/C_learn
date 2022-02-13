@@ -111,9 +111,11 @@ avlNode *insert(avlNode *node, int key) {
   /*Binary Search Tree insertion*/
 
   if (key < node->key)
-    node->left = insert(node->left, key); /*Recursive insertion in L subtree*/
+    /*Recursive insertion in L subtree*/
+    node->left = insert(node->left, key);
   else if (key > node->key)
-    node->right = insert(node->right, key); /*Recursive insertion in R subtree*/
+    /*Recursive insertion in R subtree*/
+    node->right = insert(node->right, key);
 
   /* Node  Height as per the AVL formula*/
   node->height = (max(nodeHeight(node->left), nodeHeight(node->right)) + 1);
@@ -147,11 +149,11 @@ avlNode *delete (avlNode *node, int queryNum) {
     return node;
 
   if (queryNum < node->key)
-    node->left =
-        delete (node->left, queryNum); /*Recursive deletion in L subtree*/
+    /*Recursive deletion in L subtree*/
+    node->left = delete (node->left, queryNum);
   else if (queryNum > node->key)
-    node->right =
-        delete (node->right, queryNum); /*Recursive deletion in R subtree*/
+    /*Recursive deletion in R subtree*/
+    node->right = delete (node->right, queryNum);
   else {
     /*Single or No Child*/
     if ((node->left == NULL) || (node->right == NULL)) {
@@ -161,8 +163,10 @@ avlNode *delete (avlNode *node, int queryNum) {
       if (temp == NULL) {
         temp = node;
         node = NULL;
-      } else /*Single Child : copy data to the parent*/
+      } else {
+        /*Single Child : copy data to the parent*/
         *node = *temp;
+      }
 
       free(temp);
     } else {
@@ -170,9 +174,10 @@ avlNode *delete (avlNode *node, int queryNum) {
 
       /*Get the smallest key in the R subtree*/
       avlNode *temp = minNode(node->right);
-      node->key = temp->key; /*Copy that to the root*/
-      node->right = delete (
-          node->right, temp->key); /*Delete the smallest in the R subtree.*/
+      /*Copy that to the root*/
+      node->key = temp->key;
+      /*Delete the smallest in the R subtree.*/
+      node->right = delete (node->right, temp->key);
     }
   }
 
