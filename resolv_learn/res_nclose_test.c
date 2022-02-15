@@ -1,0 +1,1 @@
+res_ninit_test.c

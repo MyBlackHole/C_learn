@@ -1,0 +1,7 @@
+executable("res_ninit_test") {
+  cflags = ["-g"]
+
+  sources = [
+    "res_ninit_test.c",
+  ]
+}
