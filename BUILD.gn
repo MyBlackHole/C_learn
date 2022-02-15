@@ -1,5 +1,6 @@
 group("default"){
   deps = [
+    "//resolv_learn:res_ninit_test",
     "//raylib_learn/shapes:shapes_basic_shapes",
 
     "//sodium_learn:sodium_base642bin_test",
@@ -141,6 +142,7 @@ group("default"){
     "//aio_learn:aio_suspend_test",
     "//aio_learn:lio_listio_test",
 
+    "//grammar_learn:pointer_test",
     "//grammar_learn:bool_test",
     "//grammar_learn:2",
     "//grammar_learn:union_test",
