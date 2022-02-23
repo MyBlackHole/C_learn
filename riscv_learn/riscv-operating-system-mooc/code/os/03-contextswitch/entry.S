@@ -83,19 +83,24 @@
 
 .text
 
+# 数据结构是任务连表方式
 # void switch_to(struct context *next);
 # a0: pointer to the context of the next task
 .globl switch_to
 .align 4
 switch_to:
+  # t6 保存的是下一个任务的上下文地址
 	csrrw	t6, mscratch, t6	# swap t6 and mscratch
+  # t6 等于零跳转到 1f
 	beqz	t6, 1f			# Notice: previous task may be NULL
+  # 保存当前运行的任务状态到t6寄存器地址
 	reg_save t6			# save context of prev task
 
 	# Save the actual t6 register, which we swapped into
 	# mscratch
 	mv	t5, t6		# t5 points to the context of current task
 	csrr	t6, mscratch	# read t6 back from mscratch
+  # 保存新任务的上下文地址到原任务的上下文中t6寄存器内
 	sw	t6, 120(t5)	# save t6 with t5 as base
 
 1:
