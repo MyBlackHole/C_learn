@@ -1,0 +1,16 @@
+executable("test") {
+  cflags = ["-g"]
+  deps = [":array_queue"]
+  sources = [
+    "test.c",
+  ]
+}
+
+static_library("array_queue") {
+  cflags = ["-g"]
+  sources = [
+    "array_queue.c",
+    "array_queue.h",
+  ]
+}
+

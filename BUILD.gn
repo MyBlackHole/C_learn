@@ -1,6 +1,12 @@
 group("default"){
   deps = [
+    "//mcheck_learn:mtrace_test",
+
+    "//mqueue_learn:mq_unlink_test",
+    "//mqueue_learn:mq_open_test",
+
     "//resolv_learn:res_ninit_test",
+
     "//raylib_learn/shapes:shapes_basic_shapes",
 
     "//sodium_learn:sodium_base642bin_test",
@@ -23,6 +29,8 @@ group("default"){
 
     "//dome/asyn_network:main",
 
+    "//DataStruct_learn/Queue/queue/array_queue:test",
+    "//DataStruct_learn/Queue/queue:ring_queue",
     "//DataStruct_learn/Tree/binarytree/avl_tree:test",
     "//DataStruct_learn/Array/dynamic_array:test",
     "//DataStruct_learn/Dict:test",
@@ -188,6 +196,7 @@ group("default"){
 
     "//strings_learn:strcasecmp_test",
 
+    "//stdlib_learn:setenv_test",
     "//stdlib_learn:WIFSIGNALED_test",
     "//stdlib_learn:WEXITSTATUS_test",
     "//stdlib_learn:WIFEXITED_test",
