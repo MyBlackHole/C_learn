@@ -1,46 +1,61 @@
+executable("setenv_test") {
+  cflags = ["-g"]
+  sources = [
+    "setenv_test.c",
+  ]
+}
+
 executable("WIFSIGNALED_test") {
+  cflags = ["-g"]
   sources = [
     "WIFSIGNALED_test.c",
   ]
 }
 
 executable("WEXITSTATUS_test") {
+  cflags = ["-g"]
   sources = [
     "WEXITSTATUS_test.c",
   ]
 }
 
 executable("WIFEXITED_test") {
+  cflags = ["-g"]
   sources = [
     "WIFEXITED_test.c",
   ]
 }
 
 executable("free_test") {
+  cflags = ["-g"]
   sources = [
     "free_test.c",
   ]
 }
 
 executable("atoi_test") {
+  cflags = ["-g"]
   sources = [
     "atoi_test.c",
   ]
 }
 
 executable("realloc_test") {
+  cflags = ["-g"]
   sources = [
     "realloc_test.c",
   ]
 }
 
 executable("malloc_test") {
+  cflags = ["-g"]
   sources = [
     "malloc_test.c",
   ]
 }
 
 executable("calloc_test") {
+  cflags = ["-g"]
   sources = [
     "calloc_test.c",
   ]
