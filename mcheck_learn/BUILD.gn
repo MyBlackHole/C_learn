@@ -1,0 +1,7 @@
+executable("mtrace_test") {
+  cflags = ["-g"]
+  sources = [
+    "mtrace_test.c",
+  ]
+}
+
