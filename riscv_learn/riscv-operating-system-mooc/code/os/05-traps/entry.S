@@ -89,31 +89,42 @@
 .align 4
 trap_vector:
 	# save context(registers).
+  # t6 是 下一个task上下文指针
+  # 读到 t6 把 t6 写入
 	csrrw	t6, mscratch, t6	# swap t6 and mscratch
+  # 保存当前task上下文
 	reg_save t6
 
 	# Save the actual t6 register, which we swapped into
 	# mscratch
+  # 把当前任务上下文地址赋值给 t6 的 t6寄存器
 	mv	t5, t6		# t5 points to the context of current task
 	csrr	t6, mscratch	# read t6 back from mscratch
 	sw	t6, 120(t5)	# save t6 with t5 as base
 
 	# Restore the context pointer into mscratch
+  # 恢复到上一个任务 ????
 	csrw	mscratch, t5
 
 	# call the C trap handler in trap.c
+  # 读取发生异常的指令地址
 	csrr	a0, mepc
+  # 读取异常种类
 	csrr	a1, mcause
 	call	trap_handler
 
 	# trap_handler will return the return address via a0.
+  # 读取返回值到存储发生异常指令地址的寄存器
 	csrw	mepc, a0
 
 	# restore context(registers).
+  # 读取当前task上下文指针
 	csrr	t6, mscratch
+  # 恢复现场
 	reg_restore t6
 
 	# return to whatever we were doing before trap.
+  # 返回mepc寄存器指向地址
 	mret
 
 # void switch_to(struct context *next);

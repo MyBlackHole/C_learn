@@ -11,22 +11,21 @@ extern void schedule(void);
 extern void os_main(void);
 extern void trap_init(void);
 
-void start_kernel(void)
-{
-	uart_init();
-	uart_puts("Hello, RVOS!\n");
+void start_kernel(void) {
+  uart_init();
+  uart_puts("Hello, RVOS!\n");
 
-	page_init();
+  page_init();
 
-	trap_init();
+  trap_init();
 
-	sched_init();
+  sched_init();
 
-	os_main();
+  os_main();
 
-	schedule();
+  schedule();
 
-	uart_puts("Would not go here!\n");
-	while (1) {}; // stop here!
+  uart_puts("Would not go here!\n");
+  while (1) {
+  }; // stop here!
 }
-
