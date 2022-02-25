@@ -1,0 +1,7 @@
+executable("ring_queue") {
+  cflags = ["-g"]
+
+  sources = [
+    "ring_queue.c",
+  ]
+}
