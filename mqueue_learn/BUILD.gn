@@ -1,0 +1,17 @@
+executable("mq_open_test") {
+  cflags = ["-g"]
+
+  # ldflags = ["-lrt"]
+
+  sources = [
+    "mq_open_test.c",
+  ]
+}
+
+executable("mq_unlink_test") {
+  cflags = ["-g"]
+
+  sources = [
+    "mq_unlink_test.c",
+  ]
+}
