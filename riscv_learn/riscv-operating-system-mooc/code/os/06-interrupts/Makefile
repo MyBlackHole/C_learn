@@ -45,6 +45,15 @@ debug: all
 	@${QEMU} ${QFLAGS} -kernel os.elf -s -S &
 	@${GDB} os.elf -q -x ../gdbinit
 
+.PHONY: gdb
+gdb: drun
+	@${GDB} os.elf -q -x ../gdbinit
+
+.PHONY : drun
+drun: all
+	@echo "-------------------------------------------------------"
+	@${QEMU} ${QFLAGS} -kernel os.elf -s -S
+
 .PHONY : code
 code: all
 	@${OBJDUMP} -S os.elf | less
