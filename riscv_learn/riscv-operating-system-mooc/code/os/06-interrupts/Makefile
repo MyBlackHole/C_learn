@@ -46,12 +46,13 @@ debug: all
 	@${GDB} os.elf -q -x ../gdbinit
 
 .PHONY: gdb
-gdb: drun
+gdb: all
+	@echo "-----------------------gdb: all------------------------"
 	@${GDB} os.elf -q -x ../gdbinit
 
 .PHONY : drun
 drun: all
-	@echo "-------------------------------------------------------"
+	@echo "----------------------drun: all------------------------"
 	@${QEMU} ${QFLAGS} -kernel os.elf -s -S
 
 .PHONY : code
