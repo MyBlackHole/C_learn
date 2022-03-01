@@ -1,3 +1,10 @@
+executable("srandom_test") {
+  cflags = ["-g"]
+  sources = [
+    "srandom_test.c",
+  ]
+}
+
 executable("setenv_test") {
   cflags = ["-g"]
   sources = [
