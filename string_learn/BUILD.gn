@@ -1,3 +1,11 @@
+executable("strstr_test") {
+  cflags = ["-g"]
+
+  sources = [
+    "strstr_test.c",
+  ]
+}
+
 executable("strtok_test") {
   cflags = ["-g"]
 
