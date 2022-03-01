@@ -1,0 +1,16 @@
+executable("test") {
+  cflags = ["-g"]
+  deps = [":listhash"]
+  sources = [
+    "test.c",
+  ]
+}
+
+static_library("listhash") {
+  cflags = ["-g"]
+  sources = [
+    "listhash.c",
+    "listhash.h",
+  ]
+}
+
