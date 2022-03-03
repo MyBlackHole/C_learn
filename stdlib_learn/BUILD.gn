@@ -1,3 +1,10 @@
+executable("qsort_test") {
+  cflags = ["-g"]
+  sources = [
+    "qsort_test.c",
+  ]
+}
+
 executable("srandom_test") {
   cflags = ["-g"]
   sources = [
