@@ -55,3 +55,12 @@ code: all
 clean:
 	rm -rf *.o *.bin *.elf
 
+.PHONY: gdb
+gdb: all
+	@${GDB} os.elf -q -x ../gdbinit
+
+.PHONY : drun
+drun: all
+	@echo "-------------------------------------------------------"
+	@${QEMU} ${QFLAGS} -kernel os.elf -s -S
+

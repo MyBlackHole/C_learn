@@ -140,5 +140,18 @@ switch_to:
 	# Notice this will enable global interrupt
 	mret
 
-.end
+.globl amoswap_w_aq
+.align 4
+amoswap_w_aq:
+  li t0, 1
+again:
+  amoswap.w.aq t0, t0, 0(a0)
+  bnez t0, again
+  ret
 
+.globl amoswap_w_rl
+.align 4
+amoswap_w_rl:
+  amoswap.w.rl	x0, x0, 0(a0)
+  ret
+.end
