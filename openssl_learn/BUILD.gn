@@ -12,3 +12,8 @@ executable("RSA_new_test") {
   ldflags = ["-lcrypto"]
   sources = ["RSA_new_test.c"]
 }
+
+executable("AES_cbc_encrypt_test") {
+  ldflags = ["-lcrypto"]
+  sources = ["AES_cbc_encrypt_test.c"]
+}
