@@ -22,6 +22,8 @@ static_library("ae") {
 static_library("ae_epoll") {
   sources = [
     "ae_epoll.c",
+    "ae.h",
+    "zmalloc.c",
   ]
 }
 
@@ -52,13 +54,14 @@ static_library("anet") {
 }
 
 static_library("aof") {
+  include_dirs = ["../deps/lua/src/"]
   sources = [
     "aof.c",
     "redis.h",
     "fmacros.h",
     "config.h",
-    "../deps/lua/src/lua.h",
-    "../deps/lua/src/luaconf.h",
+    # "../deps/lua/src/lua.h",
+    # "../deps/lua/src/luaconf.h",
     "ae.h",
     "sds.h",
     "dict.h",
@@ -76,13 +79,14 @@ static_library("aof") {
 }
 
 static_library("bio") {
+  include_dirs = ["../deps/lua/src/"]
   sources = [
     "bio.c",
     "redis.h",
     "fmacros.h",
     "config.h",
-    "../deps/lua/src/lua.h",
-    "../deps/lua/src/luaconf.h",
+    # "../deps/lua/src/lua.h",
+    # "../deps/lua/src/luaconf.h",
     "ae.h",
     "sds.h",
     "dict.h",
@@ -100,13 +104,14 @@ static_library("bio") {
 }
 
 static_library("bitops") {
+  include_dirs = ["../deps/lua/src/"]
   sources = [
     "bitops.c",
     "redis.h",
     "fmacros.h",
     "config.h",
-    "../deps/lua/src/lua.h",
-    "../deps/lua/src/luaconf.h",
+    # "../deps/lua/src/lua.h",
+    # "../deps/lua/src/luaconf.h",
     "ae.h",
     "sds.h",
     "dict.h",
@@ -124,13 +129,14 @@ static_library("bitops") {
 }
 
 static_library("blocked") {
+  include_dirs = ["../deps/lua/src/"]
   sources = [
     "blocked.c",
     "redis.h",
     "fmacros.h",
     "config.h",
-    "../deps/lua/src/lua.h",
-    "../deps/lua/src/luaconf.h",
+    # "../deps/lua/src/lua.h",
+    # "../deps/lua/src/luaconf.h",
     "ae.h",
     "sds.h",
     "dict.h",
@@ -148,13 +154,14 @@ static_library("blocked") {
 }
 
 static_library("cluster") {
+  include_dirs = ["../deps/lua/src/"]
   sources = [
     "cluster.c",
     "redis.h",
     "fmacros.h",
     "config.h",
-    "../deps/lua/src/lua.h",
-    "../deps/lua/src/luaconf.h",
+    # "../deps/lua/src/lua.h",
+    # "../deps/lua/src/luaconf.h",
     "ae.h",
     "sds.h",
     "dict.h",
@@ -173,13 +180,14 @@ static_library("cluster") {
 }
 
 static_library("config") {
+  include_dirs = ["../deps/lua/src/"]
   sources = [
     "config.c",
     "redis.h",
     "fmacros.h",
     "config.h",
-    "../deps/lua/src/lua.h",
-    "../deps/lua/src/luaconf.h",
+    # "../deps/lua/src/lua.h",
+    # "../deps/lua/src/luaconf.h",
     "ae.h",
     "sds.h",
     "dict.h",
@@ -197,13 +205,14 @@ static_library("config") {
 }
 
 static_library("crc16") {
+  include_dirs = ["../deps/lua/src/"]
   sources = [
     "crc16.c",
     "redis.h",
     "fmacros.h",
     "config.h",
-    "../deps/lua/src/lua.h",
-    "../deps/lua/src/luaconf.h",
+    # "../deps/lua/src/lua.h",
+    # "../deps/lua/src/luaconf.h",
     "ae.h",
     "sds.h",
     "dict.h",
@@ -220,13 +229,14 @@ static_library("crc16") {
 }
 
 static_library("db") {
+  include_dirs = ["../deps/lua/src/"]
   sources = [
     "db.c",
     "redis.h",
     "fmacros.h",
     "config.h",
-    "../deps/lua/src/lua.h",
-    "../deps/lua/src/luaconf.h",
+    # "../deps/lua/src/lua.h",
+    # "../deps/lua/src/luaconf.h",
     "ae.h",
     "sds.h",
     "dict.h",
@@ -256,13 +266,14 @@ static_library("endianconv") {
 }
 
 static_library("debug") {
+  include_dirs = ["../deps/lua/src/"]
   sources = [
     "debug.c",
     "redis.h",
     "fmacros.h",
     "config.h",
-    "../deps/lua/src/lua.h",
-    "../deps/lua/src/luaconf.h",
+    # "../deps/lua/src/lua.h",
+    # "../deps/lua/src/luaconf.h",
     "ae.h",
     "sds.h",
     "dict.h",
@@ -323,13 +334,14 @@ static_library("intset") {
 }
 
 static_library("hyperloglog") {
+  include_dirs = ["../deps/lua/src/"]
   sources = [
     "hyperloglog.c",
     "redis.h",
     "fmacros.h",
     "config.h",
-    "../deps/lua/src/lua.h",
-    "../deps/lua/src/luaconf.h",
+    # "../deps/lua/src/lua.h",
+    # "../deps/lua/src/luaconf.h",
     "ae.h",
     "sds.h",
     "dict.h",
@@ -346,13 +358,14 @@ static_library("hyperloglog") {
 }
 
 static_library("multi") {
+  include_dirs = ["../deps/lua/src/"]
   sources = [
     "multi.c",
     "redis.h",
     "fmacros.h",
     "config.h",
-    "../deps/lua/src/lua.h",
-    "../deps/lua/src/luaconf.h",
+    # "../deps/lua/src/lua.h",
+    # "../deps/lua/src/luaconf.h",
     "ae.h",
     "sds.h",
     "dict.h",
@@ -369,13 +382,14 @@ static_library("multi") {
 }
 
 static_library("networking") {
+  include_dirs = ["../deps/lua/src/"]
   sources = [
     "networking.c",
     "redis.h",
     "fmacros.h",
     "config.h",
-    "../deps/lua/src/lua.h",
-    "../deps/lua/src/luaconf.h",
+    # "../deps/lua/src/lua.h",
+    # "../deps/lua/src/luaconf.h",
     "ae.h",
     "sds.h",
     "dict.h",
@@ -392,13 +406,14 @@ static_library("networking") {
 }
 
 static_library("notify") {
+  include_dirs = ["../deps/lua/src/"]
   sources = [
     "notify.c",
     "redis.h",
     "fmacros.h",
     "config.h",
-    "../deps/lua/src/lua.h",
-    "../deps/lua/src/luaconf.h",
+    # "../deps/lua/src/lua.h",
+    # "../deps/lua/src/luaconf.h",
     "ae.h",
     "sds.h",
     "dict.h",
@@ -415,13 +430,14 @@ static_library("notify") {
 }
 
 static_library("object") {
+  include_dirs = ["../deps/lua/src/"]
   sources = [
     "object.c",
     "redis.h",
     "fmacros.h",
     "config.h",
-    "../deps/lua/src/lua.h",
-    "../deps/lua/src/luaconf.h",
+    # "../deps/lua/src/lua.h",
+    # "../deps/lua/src/luaconf.h",
     "ae.h",
     "sds.h",
     "dict.h",
@@ -438,13 +454,14 @@ static_library("object") {
 }
 
 static_library("pubsub") {
+  include_dirs = ["../deps/lua/src/"]
   sources = [
     "pubsub.c",
     "redis.h",
     "fmacros.h",
     "config.h",
-    "../deps/lua/src/lua.h",
-    "../deps/lua/src/luaconf.h",
+    # "../deps/lua/src/lua.h",
+    # "../deps/lua/src/luaconf.h",
     "ae.h",
     "sds.h",
     "dict.h",
@@ -503,23 +520,6 @@ static_library("redis-check-dump") {
   ]
 }
 
-static_library("zipmap") {
-  sources = [
-    "zipmap.c",
-    "zmalloc.h",
-    "endianconv.h",
-    "config.h",
-  ]
-}
-
-static_library("zmalloc") {
-  sources = [
-    "zmalloc.c",
-    "zmalloc.h",
-    "config.h",
-  ]
-}
-
 static_library("sds") {
   sources = [
     "sds.c",
@@ -546,13 +546,16 @@ static_library("redis-check-aof") {
 }
 
 static_library("scripting") {
+  include_dirs = ["../deps/lua/src/"]
   sources = [
     "scripting.c",
     "redis.h",
     "fmacros.h",
     "config.h",
-    "../deps/lua/src/lua.h",
-    "../deps/lua/src/luaconf.h",
+    # "../deps/lua/src/lua.h",
+    # "../deps/lua/src/luaconf.h",
+    # "../deps/lua/src/lauxlib.h",
+    # "../deps/lua/src/lualib.h",
     "ae.h",
     "sds.h",
     "dict.h",
@@ -567,19 +570,18 @@ static_library("scripting") {
     "rio.h",
     "sha1.h",
     "rand.h",
-    "../deps/lua/src/lauxlib.h",
-    "../deps/lua/src/lualib.h",
   ]
 }
 
 static_library("sentinel") {
+  include_dirs = ["../deps/lua/src/", "../deps/hiredis/"]
   sources = [
     "sentinel.c",
     "redis.h",
     "fmacros.h",
     "config.h",
-    "../deps/lua/src/lua.h",
-    "../deps/lua/src/luaconf.h",
+    # "../deps/lua/src/lua.h",
+    # "../deps/lua/src/luaconf.h",
     "ae.h",
     "sds.h",
     "dict.h",
@@ -592,19 +594,20 @@ static_library("sentinel") {
     "util.h",
     "rdb.h",
     "rio.h",
-    "../deps/hiredis/async.h",
-    "../deps/hiredis/hiredis.h",
+    # "../deps/hiredis/async.h",
+    # "../deps/hiredis/hiredis.h",
   ]
 }
 
 static_library("slowlog") {
+  include_dirs = ["../deps/lua/src/"]
   sources = [
     "slowlog.c",
     "redis.h",
     "fmacros.h",
     "config.h",
-    "../deps/lua/src/lua.h",
-    "../deps/lua/src/luaconf.h",
+    # "../deps/lua/src/lua.h",
+    # "../deps/lua/src/luaconf.h",
     "ae.h",
     "sds.h",
     "dict.h",
@@ -622,13 +625,14 @@ static_library("slowlog") {
 }
 
 static_library("sort") {
+  include_dirs = ["../deps/lua/src/"]
   sources = [
     "sort.c",
     "redis.h",
     "fmacros.h",
     "config.h",
-    "../deps/lua/src/lua.h",
-    "../deps/lua/src/luaconf.h",
+    # "../deps/lua/src/lua.h",
+    # "../deps/lua/src/luaconf.h",
     "ae.h",
     "sds.h",
     "dict.h",
@@ -646,13 +650,14 @@ static_library("sort") {
 }
 
 static_library("syncio") {
+  include_dirs = ["../deps/lua/src/"]
   sources = [
     "syncio.c",
     "redis.h",
     "fmacros.h",
     "config.h",
-    "../deps/lua/src/lua.h",
-    "../deps/lua/src/luaconf.h",
+    # "../deps/lua/src/lua.h",
+    # "../deps/lua/src/luaconf.h",
     "ae.h",
     "sds.h",
     "dict.h",
@@ -669,13 +674,14 @@ static_library("syncio") {
 }
 
 static_library("t_hash") {
+  include_dirs = ["../deps/lua/src/"]
   sources = [
     "t_hash.c",
     "redis.h",
     "fmacros.h",
     "config.h",
-    "../deps/lua/src/lua.h",
-    "../deps/lua/src/luaconf.h",
+    # "../deps/lua/src/lua.h",
+    # "../deps/lua/src/luaconf.h",
     "ae.h",
     "sds.h",
     "dict.h",
@@ -692,13 +698,15 @@ static_library("t_hash") {
 }
 
 static_library("t_list") {
+  include_dirs = ["../deps/lua/src/"]
+
   sources = [
     "t_list.c",
     "redis.h",
     "fmacros.h",
     "config.h",
-    "../deps/lua/src/lua.h",
-    "../deps/lua/src/luaconf.h",
+    # "../deps/lua/src/lua.h",
+    # "../deps/lua/src/luaconf.h",
     "ae.h",
     "sds.h",
     "dict.h",
@@ -715,13 +723,14 @@ static_library("t_list") {
 }
 
 static_library("t_set") {
+  include_dirs = ["../deps/lua/src/"]
   sources = [
     "t_set.c",
     "redis.h",
     "fmacros.h",
     "config.h",
-    "../deps/lua/src/lua.h",
-    "../deps/lua/src/luaconf.h",
+    # "../deps/lua/src/lua.h",
+    # "../deps/lua/src/luaconf.h",
     "ae.h",
     "sds.h",
     "dict.h",
@@ -738,13 +747,14 @@ static_library("t_set") {
 }
 
 static_library("t_string") {
+  include_dirs = ["../deps/lua/src/"]
   sources = [
     "t_string.c",
     "redis.h",
     "fmacros.h",
     "config.h",
-    "../deps/lua/src/lua.h",
-    "../deps/lua/src/luaconf.h",
+    # "../deps/lua/src/lua.h",
+    # "../deps/lua/src/luaconf.h",
     "ae.h",
     "sds.h",
     "dict.h",
@@ -761,13 +771,14 @@ static_library("t_string") {
 }
 
 static_library("t_zset") {
+  include_dirs = ["../deps/lua/src/"]
   sources = [
     "t_zset.c",
     "redis.h",
     "fmacros.h",
     "config.h",
-    "../deps/lua/src/lua.h",
-    "../deps/lua/src/luaconf.h",
+    # "../deps/lua/src/lua.h",
+    # "../deps/lua/src/luaconf.h",
     "ae.h",
     "sds.h",
     "dict.h",
@@ -784,13 +795,14 @@ static_library("t_zset") {
 }
 
 static_library("rdb") {
+  include_dirs = ["../deps/lua/src/"]
   sources = [
     "rdb.c",
     "redis.h",
     "fmacros.h",
     "config.h",
-    "../deps/lua/src/lua.h",
-    "../deps/lua/src/luaconf.h",
+    # "../deps/lua/src/lua.h",
+    # "../deps/lua/src/luaconf.h",
     "ae.h",
     "sds.h",
     "dict.h",
@@ -810,14 +822,15 @@ static_library("rdb") {
 }
 
 static_library("redis-cli") {
+  include_dirs = ["../deps/linenoise/", "../deps/hiredis/"]
   sources = [
+    # "../deps/hiredis/hiredis.h",
+    # "../deps/linenoise/linenoise.h",
     "redis-cli.c",
     "fmacros.h",
     "version.h",
-    "../deps/hiredis/hiredis.h",
     "sds.h",
     "zmalloc.h",
-    "../deps/linenoise/linenoise.h",
     "help.h",
     "anet.h",
     "ae.h",
@@ -825,13 +838,14 @@ static_library("redis-cli") {
 }
 
 static_library("redis") {
+  include_dirs = ["../deps/lua/src/"]
   sources = [
     "redis.c",
     "redis.h",
     "fmacros.h",
     "config.h",
-    "../deps/lua/src/lua.h",
-    "../deps/lua/src/luaconf.h",
+    # "../deps/lua/src/lua.h",
+    # "../deps/lua/src/luaconf.h",
     "ae.h",
     "sds.h",
     "dict.h",
@@ -852,14 +866,15 @@ static_library("redis") {
 }
 
 static_library("replication") {
+  include_dirs = ["../deps/lua/src/"]
   sources = [
     "replication.c",
     "replication.h",
     "redis.h",
     "fmacros.h",
     "config.h",
-    "../deps/lua/src/lua.h",
-    "../deps/lua/src/luaconf.h",
+    # "../deps/lua/src/lua.h",
+    # "../deps/lua/src/luaconf.h",
     "ae.h",
     "sds.h",
     "dict.h",
@@ -876,6 +891,7 @@ static_library("replication") {
 }
 
 static_library("redis-benchmark") {
+  include_dirs = ["../deps/lua/src/"]
   sources = [
     "rio.c",
     "fmacros.h",
@@ -885,8 +901,8 @@ static_library("redis-benchmark") {
     "crc64.h",
     "config.h",
     "redis.h",
-    "../deps/lua/src/lua.h",
-    "../deps/lua/src/luaconf.h",
+    # "../deps/lua/src/lua.h",
+    # "../deps/lua/src/luaconf.h",
     "ae.h",
     "dict.h",
     "adlist.h",
@@ -909,5 +925,22 @@ static_library("ziplist") {
     "endianconv.h",
     "config.h",
     "redisassert.h",
+  ]
+}
+
+static_library("zipmap") {
+  sources = [
+    "zipmap.c",
+    "zmalloc.h",
+    "endianconv.h",
+    "config.h",
+  ]
+}
+
+static_library("zmalloc") {
+  sources = [
+    "zmalloc.c",
+    "zmalloc.h",
+    "config.h",
   ]
 }

@@ -1,5 +1,13 @@
 group("default"){
   deps = [
+    "//redis_learn/redis-3.0-annotated:redis",
+
+    "//openssl_learn:AES_cbc_encrypt_test",
+    "//openssl_learn:RSA_new_test",
+    "//openssl_learn:SHA_Init_test",
+    "//openssl_learn:MD5_Init_test",
+    "//curl_learn:test",
+
     "//mcheck_learn:mtrace_test",
 
     "//mqueue_learn:mq_unlink_test",
@@ -29,6 +37,8 @@ group("default"){
 
     "//dome/asyn_network:main",
 
+    "//DataStruct_learn/Heap/hashtable/listhash:test",
+    "//DataStruct_learn/Queue/queue/list_queue:test",
     "//DataStruct_learn/Queue/queue/array_queue:test",
     "//DataStruct_learn/Queue/queue:ring_queue",
     "//DataStruct_learn/Tree/binarytree/avl_tree:test",
@@ -150,6 +160,7 @@ group("default"){
     "//aio_learn:aio_suspend_test",
     "//aio_learn:lio_listio_test",
 
+    "//grammar_learn:static_test",
     "//grammar_learn:pointer_test",
     "//grammar_learn:bool_test",
     "//grammar_learn:2",
@@ -186,6 +197,7 @@ group("default"){
 
     "//shadow_learn:getspnam_test",
 
+    "//string_learn:strstr_test",
     "//string_learn:strtok_test",
     "//string_learn:strcmp_test",
     "//string_learn:strcat_test",
@@ -196,6 +208,8 @@ group("default"){
 
     "//strings_learn:strcasecmp_test",
 
+    "//stdlib_learn:qsort_test",
+    "//stdlib_learn:srandom_test",
     "//stdlib_learn:setenv_test",
     "//stdlib_learn:WIFSIGNALED_test",
     "//stdlib_learn:WEXITSTATUS_test",
