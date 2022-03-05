@@ -1,0 +1,9 @@
+executable("test") {
+  cflags = ["-g"]
+
+  ldflags = ["-lcurl"]
+
+  sources = [
+    "test.c",
+  ]
+}
