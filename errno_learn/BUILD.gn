@@ -1,4 +1,5 @@
 executable("errno_learn") {
+  cflags = ["-g"]
   sources = [
     "errno_learn.c",
   ]

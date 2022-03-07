@@ -8,6 +8,7 @@ int main(void) {
   /* ignoring the signal */
   signal(SIGTERM, SIG_IGN);
   raise(SIGTERM);
+
   signal(SIGPIPE, sig_handler);
   raise(SIGPIPE);
   printf("Exit main()\n");

@@ -4,6 +4,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <sys/time.h>
+#include <unistd.h>
 
 /*
  * 1
@@ -143,7 +145,13 @@ void func14() {
   printf("%c\n", *str);
 }
 
+void func15() {
+  struct timeval tv;
+  gettimeofday(&tv, NULL);
+  printf("%ld\n", tv.tv_sec ^ tv.tv_usec ^ getpid());
+}
+
 int main() {
-  func14();
+  func15();
   exit(0);
 }

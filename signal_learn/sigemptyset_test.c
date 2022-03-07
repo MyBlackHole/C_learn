@@ -5,8 +5,8 @@
 
 int main(int argc, char *argv[]) {
   sigset_t set;
-  // 获取当前信号保存
+  // 清除SET中的所有信号
   sigemptyset(&set);
-  printf("set: %lu", set.__val[0]);
+  printf("set: %lu\n", set.__val[0]);
   return 0;
 }
