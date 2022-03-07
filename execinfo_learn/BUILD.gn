@@ -1,0 +1,6 @@
+executable("backtrace_test") {
+  cflags = ["-g"]
+  sources = [
+    "backtrace_test.c",
+  ]
+}
