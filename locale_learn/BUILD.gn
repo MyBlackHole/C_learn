@@ -5,3 +5,10 @@ executable("setlocale_test") {
   ]
 }
 
+executable("LC_COLLATE_test") {
+  cflags = ["-g"]
+  sources = [
+    "LC_COLLATE_test.c",
+  ]
+}
+
