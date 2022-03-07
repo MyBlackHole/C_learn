@@ -1,24 +1,35 @@
+executable("raise_test") {
+  cflags = ["-g"]
+  sources = ["raise_test.c"]
+}
+
 executable("sigprocmask_test") {
+  cflags = ["-g"]
   sources = ["sigprocmask_test.c"]
 }
 
 executable("kill_test") {
+  cflags = ["-g"]
   sources = ["kill_test.c"]
 }
 
 executable("sigemptyset_test") {
+  cflags = ["-g"]
   sources = ["sigemptyset_test.c"]
 }
 
 executable("signal4_test") {
+  cflags = ["-g"]
   sources = ["signal4_test.c"]
 }
 
 executable("SIGFPE_test") {
+  cflags = ["-g"]
   sources = ["SIGFPE_test.c"]
 }
 
 executable("SIG_IGN_test") {
+  cflags = ["-g"]
   sources = ["SIG_IGN_test.c"]
 }
 
