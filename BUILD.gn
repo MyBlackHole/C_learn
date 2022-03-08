@@ -1,6 +1,8 @@
 group("default"){
   deps = [
-    "//redis_learn/redis-3.0-annotated:redis",
+
+    "//execinfo_learn:backtrace_test",
+    "//redis_learn:redis",
 
     "//openssl_learn:AES_cbc_encrypt_test",
     "//openssl_learn:RSA_new_test",
@@ -162,6 +164,7 @@ group("default"){
 
     "//grammar_learn:static_test",
     "//grammar_learn:pointer_test",
+    "//grammar_learn:pointer1_test",
     "//grammar_learn:bool_test",
     "//grammar_learn:2",
     "//grammar_learn:union_test",
@@ -183,6 +186,7 @@ group("default"){
     "//pthread_learn:pthread_mutex_lock_test",
     "//pthread_learn:pthread_once_test",
 
+    "//locale_learn:LC_COLLATE_test",
     "//locale_learn:setlocale_test",
 
     "//sys_wait_learn:waitpid_test",
@@ -197,6 +201,7 @@ group("default"){
 
     "//shadow_learn:getspnam_test",
 
+    "//string_learn:strcoll_test",
     "//string_learn:strstr_test",
     "//string_learn:strtok_test",
     "//string_learn:strcmp_test",
@@ -274,6 +279,7 @@ group("default"){
     "//stdio_learn:fgetc_test",
     "//stdio_learn:fread_test",
 
+    "//signal_learn:raise_test",
     "//signal_learn:sigprocmask_test",
     "//signal_learn:kill_test",
     "//signal_learn:sigemptyset_test",
