@@ -161,8 +161,9 @@
 #define ACTIVE_EXPIRE_CYCLE_FAST 1
 
 /* Protocol and I/O related defines */
-#define REDIS_MAX_QUERYBUF_LEN (1024 * 1024 * 1024) /* 1GB max query buffer.   \
-                                                     */
+#define REDIS_MAX_QUERYBUF_LEN                                                 \
+  (1024 * 1024 * 1024)                      /* 1GB max query buffer.           \
+                                             */
 #define REDIS_IOBUF_LEN (1024 * 16)         /* Generic I/O buffer size */
 #define REDIS_REPLY_CHUNK_BYTES (16 * 1024) /* 16k output buffer */
 #define REDIS_INLINE_MAX_SIZE (1024 * 64)   /* Max size of inline reads */
@@ -251,16 +252,18 @@
 #define REDIS_AOF_WAIT_REWRITE 2 /* AOF waits rewrite to start appending */
 
 /* Client flags */
-#define REDIS_SLAVE (1 << 0)   /* This client is a slave server */
-#define REDIS_MASTER (1 << 1)  /* This client is a master server */
-#define REDIS_MONITOR (1 << 2) /* This client is a slave monitor, see MONITOR  \
-                                */
-#define REDIS_MULTI (1 << 3)   /* This client is in a MULTI context */
+#define REDIS_SLAVE (1 << 0)  /* This client is a slave server */
+#define REDIS_MASTER (1 << 1) /* This client is a master server */
+#define REDIS_MONITOR                                                          \
+  (1 << 2)                   /* This client is a slave monitor, see MONITOR    \
+                              */
+#define REDIS_MULTI (1 << 3) /* This client is in a MULTI context */
 #define REDIS_BLOCKED                                                          \
   (1 << 4) /* The client is waiting in a blocking operation */
 #define REDIS_DIRTY_CAS (1 << 5) /* Watched keys modified. EXEC will fail. */
-#define REDIS_CLOSE_AFTER_REPLY (1 << 6) /* Close after writing entire reply.  \
-                                          */
+#define REDIS_CLOSE_AFTER_REPLY                                                \
+  (1 << 6) /* Close after writing entire reply.                                \
+            */
 #define REDIS_UNBLOCKED                                                        \
   (1 << 7) /* This client was unblocked and is stored in                       \
               server.unblocked_clients */
@@ -272,8 +275,9 @@
   (1 << 11) /* Client connected via Unix domain socket */
 #define REDIS_DIRTY_EXEC                                                       \
   (1 << 12) /* EXEC will fail for errors while queueing */
-#define REDIS_MASTER_FORCE_REPLY (1 << 13) /* Queue replies even if is master  \
-                                            */
+#define REDIS_MASTER_FORCE_REPLY                                               \
+  (1 << 13)                        /* Queue replies even if is master          \
+                                    */
 #define REDIS_FORCE_AOF (1 << 14)  /* Force AOF propagation of current cmd. */
 #define REDIS_FORCE_REPL (1 << 15) /* Force replication of current cmd. */
 #define REDIS_PRE_PSYNC (1 << 16)  /* Instance don't understand PSYNC. */
@@ -308,12 +312,14 @@
  * In SEND_BULK and ONLINE state the slave receives new updates
  * in its output queue. In the WAIT_BGSAVE state instead the server is waiting
  * to start the next background saving in order to send updates to it. */
-#define REDIS_REPL_WAIT_BGSAVE_START 6 /* We need to produce a new RDB file.   \
-                                        */
-#define REDIS_REPL_WAIT_BGSAVE_END 7   /* Waiting RDB file creation to finish. \
-                                        */
-#define REDIS_REPL_SEND_BULK 8         /* Sending RDB file to slave. */
-#define REDIS_REPL_ONLINE 9 /* RDB file transmitted, sending just updates. */
+#define REDIS_REPL_WAIT_BGSAVE_START                                           \
+  6 /* We need to produce a new RDB file.                                      \
+     */
+#define REDIS_REPL_WAIT_BGSAVE_END                                             \
+  7                            /* Waiting RDB file creation to finish.         \
+                                */
+#define REDIS_REPL_SEND_BULK 8 /* Sending RDB file to slave. */
+#define REDIS_REPL_ONLINE 9    /* RDB file transmitted, sending just updates. */
 
 /* Synchronous read timeout - slave side */
 #define REDIS_REPL_SYNCIO_TIMEOUT 5

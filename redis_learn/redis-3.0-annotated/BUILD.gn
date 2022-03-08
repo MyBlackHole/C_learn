@@ -51,12 +51,13 @@ group("redis"){
     "src:rdb",
     "src:redis",
     "src:ziplist",
-
-    # "src:replication",
-    # "src:ae_epoll",
-    # "src:ae",
+    "src:ae_epoll",
+    "src:ae",
+    "src:replication",
     # "src:ae_select",
+    ## evport是Solaris 10当中提供的io多路复用机制
     # "src:ae_evport",
+    ## kqueue是FreeBSD当中提供的io多路复用机制
     # "src:ae_kqueue",
   ]
 }

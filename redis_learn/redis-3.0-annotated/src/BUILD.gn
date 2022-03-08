@@ -12,10 +12,10 @@ static_library("ae") {
     "ae.h",
     "zmalloc.h",
     "config.h",
-    "ae_kqueue.c",
-    "ae_epoll.c",
-    "ae_select.c",
-    "ae_evport.c",
+    # "ae_kqueue.c",
+    # "ae_epoll.c",
+    # "ae_select.c",
+    # "ae_evport.c",
   ]
 }
 
@@ -23,7 +23,7 @@ static_library("ae_epoll") {
   sources = [
     "ae_epoll.c",
     "ae.h",
-    "zmalloc.c",
+    "zmalloc.h",
   ]
 }
 

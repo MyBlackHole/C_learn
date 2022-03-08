@@ -31,6 +31,7 @@
 #include "ae.h"
 #include "zmalloc.h"
 #include <sys/epoll.h>
+#include <unistd.h>
 
 /*
  * 事件状态
