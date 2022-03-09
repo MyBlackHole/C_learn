@@ -1,34 +1,40 @@
 executable("pathconf_test") {
+  cflags = ["-g"]
   sources = [
     "pathconf_test.c",
   ]
 }
 
 executable("pipe_test") {
+  cflags = ["-g"]
   sources = [
     "pipe_test.c",
   ]
 }
 
 executable("lockf_test") {
+  cflags = ["-g"]
   sources = [
     "lockf_test.c",
   ]
 }
 
 executable("getopt_test") {
+  cflags = ["-g"]
   sources = [
     "getopt_test.c",
   ]
 }
 
 executable("getppid_test") {
+  cflags = ["-g"]
   sources = [
     "getppid_test.c",
   ]
 }
 
 executable("crypt_test") {
+  cflags = ["-g"]
   sources = [
     "crypt_test.c",
   ]
@@ -37,6 +43,7 @@ executable("crypt_test") {
 }
 
 executable("getspnam_test") {
+  cflags = ["-g"]
   sources = [
     "getspnam_test.c",
   ]
@@ -45,54 +52,63 @@ executable("getspnam_test") {
 }
 
 executable("getpass_test") {
+  cflags = ["-g"]
   sources = [
     "getpass_test.c",
   ]
 }
 
 executable("write_test") {
+  cflags = ["-g"]
   sources = [
     "write_test.c",
   ]
 }
 
 executable("dup2_test") {
+  cflags = ["-g"]
   sources = [
     "dup2_test.c",
   ]
 }
 
 executable("dup_test") {
+  cflags = ["-g"]
   sources = [
     "dup_test.c",
   ]
 }
 
 executable("fork5_test") {
+  cflags = ["-g"]
   sources = [
     "fork5_test.c",
   ]
 }
 
 executable("sleep_test1") {
+  cflags = ["-g"]
   sources = [
     "sleep_test1.c",
   ]
 }
 
 executable("sleep_test") {
+  cflags = ["-g"]
   sources = [
     "sleep_test.c",
   ]
 }
 
 executable("setsid_test") {
+  cflags = ["-g"]
   sources = [
     "setsid_test.c",
   ]
 }
 
 executable("fork4_test") {
+  cflags = ["-g"]
   sources = [
     "fork4_test.c",
   ]
@@ -100,67 +116,85 @@ executable("fork4_test") {
 }
 
 executable("execl_test") {
+  cflags = ["-g"]
   sources = [
     "execl_test.c",
   ]
 }
 
 executable("execlp_test") {
+  cflags = ["-g"]
   sources = [
     "execlp_test.c",
   ]
 }
 
 executable("fork1_test") {
+  cflags = ["-g"]
   sources = [
     "fork1_test.c",
   ]
 }
 
 executable("unlink_test") {
+  cflags = ["-g"]
   sources = [
     "unlink_test.c",
   ]
 }
 
 executable("getcwd_test") {
+  cflags = ["-g"]
   sources = [
     "getcwd_test.c",
   ]
 }
 
 executable("chdir_test") {
+  cflags = ["-g"]
   sources = [
     "chdir_test.c",
   ]
 }
 
 executable("access_test") {
+  cflags = ["-g"]
   sources = [
     "access_test.c",
   ]
 }
 
 executable("getpid_test") {
+  cflags = ["-g"]
   sources = [
     "getpid_test.c",
   ]
 }
 
 executable("read_test") {
+  cflags = ["-g"]
   sources = [
     "read_test.c",
   ]
 }
 
 executable("getuid_test") {
+  cflags = ["-g"]
   sources = [
     "getuid_test.c",
   ]
 }
 
 executable("lseek_test") {
+  cflags = ["-g"]
   sources = [
     "lseek_test.c",
+  ]
+}
+
+executable("lseek1_test") {
+  cflags = ["-g"]
+  sources = [
+    "lseek1_test.c",
   ]
 }
