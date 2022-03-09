@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
     exit(1);
   }
 
-  fd = open(argv[1], O_RDONLY, 0600);
+  fd = open(argv[1], O_RDONLY);
   lseek(fd, 1, SEEK_SET);
 
   // write(fd, "ok", 3);

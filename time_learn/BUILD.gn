@@ -1,10 +1,12 @@
 executable("time_test") {
+  cflags = ["-g"]
   sources = [
     "time_test.c",
   ]
 }
 
 executable("clock_gettime_test") {
+  cflags = ["-g"]
   sources = [
     "clock_gettime_test.c",
   ]

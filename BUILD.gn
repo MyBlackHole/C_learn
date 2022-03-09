@@ -250,6 +250,7 @@ group("default"){
     "//unistd_learn:read_test",
     "//unistd_learn:getuid_test",
     "//unistd_learn:lseek_test",
+    "//unistd_learn:lseek1_test",
     "//unistd_learn:access_test",
     "//unistd_learn:chdir_test",
     "//unistd_learn:unlink_test",
@@ -292,6 +293,8 @@ group("default"){
     "//signal_learn:SIG_IGN_test",
     "//signal_learn:SIGFPE_test",
 
+    "//fcntl_learn:splice1_test",
+    "//fcntl_learn:splice_test",
     "//fcntl_learn:file_flags",
     "//fcntl_learn:open_test",
     "//fcntl_learn:creat_test",
