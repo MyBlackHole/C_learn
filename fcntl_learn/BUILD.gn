@@ -1,3 +1,19 @@
+executable("splice1_test") {
+  cflags = ["-g"]
+
+  sources = [
+    "splice1_test.c",
+  ]
+}
+
+executable("splice_test") {
+  cflags = ["-g"]
+
+  sources = [
+    "splice_test.c",
+  ]
+}
+
 executable("file_flags") {
   cflags = ["-g"]
 

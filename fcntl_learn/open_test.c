@@ -8,6 +8,8 @@
 // open
 // read
 // write
+// 文件权限由open的mode参数和当前进程的umask掩码共同决定。
+// 第三个参数是在第二个参数中有O_CREAT时才作用，如果没有，则第三个参数可以忽略
 int main(int argc, char *argv[]) {
 
   int sfd = 0, dfd = 0;
@@ -35,19 +37,19 @@ int main(int argc, char *argv[]) {
 
   while (1) {
     len = read(sfd, buf, BUFSIZE);
-    if(len < 0) {
+    if (len < 0) {
       perror("read()");
       exit(1);
     }
-    if(len == 0) {
+    if (len == 0) {
       break;
     }
     pos = 0;
-    
+
     // 需要循环,确保写入 len 字节
-    while(len > 0) {
+    while (len > 0) {
       ret = write(dfd, buf + pos, len);
-      if(ret < 0) {
+      if (ret < 0) {
         perror("write()");
         exit(1);
       }
