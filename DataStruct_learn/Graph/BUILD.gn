@@ -1,0 +1,13 @@
+executable("bellman_ford") {
+  sources = [
+    "bellman_ford.c",
+  ]
+}
+
+static_library("queue") {
+  sources = [
+    "queue.c",
+    "queue.h",
+  ]
+}
+
