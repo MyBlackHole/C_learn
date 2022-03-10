@@ -1,4 +1,5 @@
 executable("assert_test") {
+  cflags = ["-g"]
   sources = [
     "assert_test.c",
   ]
