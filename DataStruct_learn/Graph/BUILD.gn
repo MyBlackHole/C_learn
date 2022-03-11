@@ -1,3 +1,11 @@
+executable("bfs_queue") {
+  cflags = ["-g"]
+  deps = [":graph", ":queue"]
+  sources = [
+    "bfs_queue.c",
+  ]
+}
+
 executable("bfs") {
   cflags = ["-g"]
   sources = [
@@ -16,6 +24,13 @@ static_library("queue") {
   sources = [
     "queue.c",
     "queue.h",
+  ]
+}
+
+static_library("graph") {
+  sources = [
+    "graph.c",
+    "graph.h",
   ]
 }
 
