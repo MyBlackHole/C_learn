@@ -1,4 +1,12 @@
+executable("bfs") {
+  cflags = ["-g"]
+  sources = [
+    "bfs.c",
+  ]
+}
+
 executable("bellman_ford") {
+  cflags = ["-g"]
   sources = [
     "bellman_ford.c",
   ]

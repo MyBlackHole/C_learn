@@ -40,6 +40,8 @@ group("default"){
 
     "//dome/asyn_network:main",
 
+    "//DataStruct_learn/Graph:bfs",
+    "//DataStruct_learn/Graph:bellman_ford",
     "//DataStruct_learn/Heap/hashtable/listhash:test",
     "//DataStruct_learn/Queue/queue/list_queue:test",
     "//DataStruct_learn/Queue/queue/array_queue:test",
