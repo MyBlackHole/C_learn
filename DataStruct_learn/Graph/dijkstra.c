@@ -10,9 +10,11 @@ struct Graph {
 };
 
 // Constructs a graph with V vertices and E edges
+// 初始化图
 void createGraph(struct Graph *G, int V) {
   G->vertexNum = V;
   G->edges = (int **)malloc(V * sizeof(int *));
+  // 初始化 V x V 矩阵
   for (int i = 0; i < V; i++) {
     G->edges[i] = (int *)malloc(V * sizeof(int));
     for (int j = 0; j < V; j++)
@@ -22,6 +24,7 @@ void createGraph(struct Graph *G, int V) {
 }
 
 // Adds the given edge to the graph
+// 添加有向边
 void addEdge(struct Graph *G, int src, int dst, int weight) {
   G->edges[src][dst] = weight;
 }
@@ -29,8 +32,8 @@ void addEdge(struct Graph *G, int src, int dst, int weight) {
 // Utility function to find minimum distance vertex in mdist
 int minDistance(int mdist[], int vset[], int V) {
   int minVal = INT_MAX;
-  static int minInd =
-      -1; // remembers the previous value if not modified in the loop
+  // remembers the previous value if not modified in the loop
+  static int minInd = -1;
   for (int i = 0; i < V; i++)
     if (vset[i] == 0 && mdist[i] < minVal) {
       minVal = mdist[i];
@@ -56,11 +59,14 @@ void print(int dist[], int V) {
 // weights
 void Dijkstra(struct Graph *graph, int src) {
   int V = graph->vertexNum;
+  // 到节点最短距离
   int mdist[V]; // Stores updated distances to vertex
-  int vset[V];  // vset[i] is true if the vertex i included
-                // in the shortest path tree
+  // 访问状态
+  int vset[V]; // vset[i] is true if the vertex i included
+               // in the shortest path tree
 
   // Initialise mdist and vset. Set distance of source as zero
+  // 访问初始化
   for (int i = 0; i < V; i++)
     mdist[i] = INT_MAX, vset[i] = 0;
 
@@ -68,12 +74,14 @@ void Dijkstra(struct Graph *graph, int src) {
 
   // iterate to find shortest path
   for (int count = 0; count < V - 1; count++) {
+    // 获取mdist未访问最小节点
     int u = minDistance(mdist, vset, V);
     vset[u] = 1;
 
     for (int v = 0; v < V; v++) {
       if (!vset[v] && graph->edges[u][v] != INT_MAX &&
           mdist[u] + graph->edges[u][v] < mdist[v])
+        // 更新 mdist [v] 节点距离
         mdist[v] = mdist[u] + graph->edges[u][v];
     }
   }
