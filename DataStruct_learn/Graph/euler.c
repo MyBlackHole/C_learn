@@ -4,6 +4,7 @@
 
 // Return the number of vertices that v is
 // connected to
+// 获取节点 v 的度数量
 int degree(Graph g, int nV, Vertex v) {
   int deg = 0;
   Vertex w;
@@ -17,12 +18,14 @@ int degree(Graph g, int nV, Vertex v) {
 // graph has euler path
 bool hasEulerPath(Graph g, int nV, Vertex v, Vertex w) {
   if (v != w) {
+    // 判断节点 v 与节点 w 度数量是否是 2 的倍数
     if (degree(g, nV, v) % 2 == 0 || degree(g, nV, w) % 2 == 0)
       return false;
   } else if (degree(g, nV, v) % 2 != 0) {
     return false;
   }
   Vertex x;
+  // 其他所有节点都应该是 2 的倍数
   for (x = 0; x < nV; x++)
     if (x != v && x != w && degree(g, nV, x) % 2 != 0)
       return false;

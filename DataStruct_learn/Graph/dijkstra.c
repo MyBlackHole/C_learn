@@ -70,6 +70,7 @@ void Dijkstra(struct Graph *graph, int src) {
   for (int i = 0; i < V; i++)
     mdist[i] = INT_MAX, vset[i] = 0;
 
+  // 设置起点
   mdist[src] = 0;
 
   // iterate to find shortest path

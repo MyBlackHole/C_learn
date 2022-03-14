@@ -10,9 +10,12 @@ struct Graph {
 };
 
 // Constructs a graph with V vertices and E edges
+// 创建图
 void createGraph(struct Graph *G, int V) {
   G->vertexNum = V;
   G->edges = (int **)malloc(V * sizeof(int *));
+
+  // 初始化图
   for (int i = 0; i < V; i++) {
     G->edges[i] = (int *)malloc(V * sizeof(int));
     for (int j = 0; j < V; j++)
@@ -22,6 +25,7 @@ void createGraph(struct Graph *G, int V) {
 }
 
 // Adds the given edge to the graph
+// 添加边
 void addEdge(struct Graph *G, int src, int dst, int weight) {
   G->edges[src][dst] = weight;
 }
@@ -47,17 +51,22 @@ void FloydWarshall(struct Graph *graph) {
   int dist[V][V];
 
   // Initialise distance array
+  // 复制一份
   for (int i = 0; i < V; i++)
     for (int j = 0; j < V; j++)
       dist[i][j] = graph->edges[i][j];
 
   // Calculate distances
+  // 需要求经过节点最小距离的循环
   for (int k = 0; k < V; k++)
     // Choose an intermediate vertex
 
+    // 起始节点循环
+    // 结果是 i 到 j 的最短距离二维数组
     for (int i = 0; i < V; i++)
       // Choose a source vertex for given intermediate
 
+      // 末节点循环
       for (int j = 0; j < V; j++)
         // Choose a destination vertex for above source vertex
 
@@ -68,6 +77,7 @@ void FloydWarshall(struct Graph *graph) {
           dist[i][j] = dist[i][k] + dist[k][j];
 
   // Convert 2d array to 1d array for print
+  // 降维
   int dist1d[V * V];
   for (int i = 0; i < V; i++)
     for (int j = 0; j < V; j++)
@@ -77,6 +87,7 @@ void FloydWarshall(struct Graph *graph) {
 }
 
 // Driver Function
+// 佛洛依德算法
 int main() {
   int V, E;
   int src, dst, weight;
