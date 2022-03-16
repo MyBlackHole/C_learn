@@ -1,3 +1,21 @@
+executable("pthread_cond_broadcast_test") {
+  sources = [
+    "pthread_cond_broadcast_test.c",
+  ]
+}
+
+executable("pthread_attr_init_test") {
+  sources = [
+    "pthread_attr_init_test.c",
+  ]
+}
+
+executable("pthread_cond_init_test") {
+  sources = [
+    "pthread_cond_init_test.c",
+  ]
+}
+
 executable("pthread_getpecific_test") {
   sources = [
     "pthread_getpecific_test.c",
