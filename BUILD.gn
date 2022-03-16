@@ -38,6 +38,8 @@ group("default"){
 
     "//dome/asyn_network:main",
 
+    "//DataStruct_learn/Tree/lsm-trie:generator_test",
+    "//DataStruct_learn/Tree/lsm-trie:rwlock_test",
     "//DataStruct_learn/Tree/btree:test",
     "//DataStruct_learn/Graph:bfs_queue",
     "//DataStruct_learn/Graph:bfs",
@@ -185,6 +187,9 @@ group("default"){
     # "//libev_learn/case:ev1_test",
     # "//libev_learn/case:ev_signal_test",
 
+    "//pthread_learn:pthread_cond_broadcast_test",
+    "//pthread_learn:pthread_attr_init_test",
+    "//pthread_learn:pthread_cond_init_test",
     "//pthread_learn:pthread_getpecific_test",
     "//pthread_learn:pthread_self_test",
     "//pthread_learn:pthread_mutex_lock_test",

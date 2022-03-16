@@ -1,0 +1,40 @@
+executable("generator_test") {
+  cflags = ["-g"]
+  deps = [":generator", ":debug"]
+  sources = [
+    "generator_test.c",
+  ]
+}
+
+static_library("generator") {
+  cflags = ["-g"]
+  sources = [
+    "generator.c",
+    "generator.h",
+  ]
+}
+
+static_library("debug") {
+  cflags = ["-g"]
+  sources = [
+    "debug.c",
+    "debug.h",
+  ]
+}
+
+executable("rwlock_test") {
+  cflags = ["-g"]
+  deps = [":rwlock"]
+  sources = [
+    "rwlock_test.c",
+  ]
+}
+
+static_library("rwlock") {
+  cflags = ["-g"]
+  sources = [
+    "rwlock.c",
+    "rwlock.h",
+  ]
+}
+
