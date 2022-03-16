@@ -1,7 +1,5 @@
 group("default"){
   deps = [
-    "//CVE/test:write_test",
-
     "//execinfo_learn:backtrace_test",
     "//redis_learn:redis",
 
@@ -40,6 +38,7 @@ group("default"){
 
     "//dome/asyn_network:main",
 
+    "//DataStruct_learn/Tree/btree:test",
     "//DataStruct_learn/Graph:bfs_queue",
     "//DataStruct_learn/Graph:bfs",
     "//DataStruct_learn/Graph:bellman_ford",
@@ -166,6 +165,7 @@ group("default"){
     "//aio_learn:aio_suspend_test",
     "//aio_learn:lio_listio_test",
 
+    "//grammar_learn:pointer2_test",
     "//grammar_learn:static_test",
     "//grammar_learn:pointer_test",
     "//grammar_learn:pointer1_test",

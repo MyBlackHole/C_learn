@@ -6,6 +6,14 @@ executable("static_test") {
   ]
 }
 
+executable("pointer2_test") {
+  cflags = ["-g"]
+
+  sources = [
+    "pointer2_test.c",
+  ]
+}
+
 executable("pointer1_test") {
   cflags = ["-g"]
 
