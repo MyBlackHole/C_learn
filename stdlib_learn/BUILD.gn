@@ -1,3 +1,10 @@
+executable("aligned_alloc_test") {
+  cflags = ["-g"]
+  sources = [
+    "aligned_alloc_test.c",
+  ]
+}
+
 executable("qsort_test") {
   cflags = ["-g"]
   sources = [

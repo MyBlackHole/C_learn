@@ -1,5 +1,6 @@
 group("default"){
   deps = [
+    "//ioctl_learn:ioctl_test",
     "//execinfo_learn:backtrace_test",
     "//redis_learn:redis",
 
@@ -38,6 +39,7 @@ group("default"){
 
     "//dome/asyn_network:main",
 
+    "//DataStruct_learn/Tree/lsm-trie:io_util",
     "//DataStruct_learn/Tree/lsm-trie:debug_test",
     "//DataStruct_learn/Tree/lsm-trie:generator_test",
     "//DataStruct_learn/Tree/lsm-trie:rwlock_test",
@@ -223,6 +225,7 @@ group("default"){
 
     "//strings_learn:strcasecmp_test",
 
+    "//stdlib_learn:aligned_alloc_test",
     "//stdlib_learn:qsort_test",
     "//stdlib_learn:srandom_test",
     "//stdlib_learn:setenv_test",
