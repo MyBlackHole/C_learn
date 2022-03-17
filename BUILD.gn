@@ -39,6 +39,7 @@ group("default"){
 
     "//dome/asyn_network:main",
 
+    "//DataStruct_learn/Tree/lsm-trie:mempool_test",
     "//DataStruct_learn/Tree/lsm-trie:io_util",
     "//DataStruct_learn/Tree/lsm-trie:debug_test",
     "//DataStruct_learn/Tree/lsm-trie:generator_test",
@@ -193,7 +194,7 @@ group("default"){
     "//pthread_learn:pthread_cond_broadcast_test",
     "//pthread_learn:pthread_attr_init_test",
     "//pthread_learn:pthread_cond_init_test",
-    "//pthread_learn:pthread_getpecific_test",
+    "//pthread_learn:pthread_getspecific_test",
     "//pthread_learn:pthread_self_test",
     "//pthread_learn:pthread_mutex_lock_test",
     "//pthread_learn:pthread_once_test",

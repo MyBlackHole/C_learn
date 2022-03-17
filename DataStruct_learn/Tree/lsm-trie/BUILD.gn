@@ -1,3 +1,19 @@
+executable("mempool_test") {
+  cflags = ["-g"]
+  deps = [":mempool"]
+  sources = [
+    "mempool_test.c",
+  ]
+}
+
+static_library("mempool") {
+  cflags = ["-g"]
+  sources = [
+    "mempool.c",
+    "mempool.h",
+  ]
+}
+
 executable("io_util") {
   cflags = ["-g"]
   deps = [":generator", ":stat", ":debug"]
