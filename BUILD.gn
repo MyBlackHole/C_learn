@@ -38,6 +38,7 @@ group("default"){
 
     "//dome/asyn_network:main",
 
+    "//DataStruct_learn/Tree/lsm-trie:debug_test",
     "//DataStruct_learn/Tree/lsm-trie:generator_test",
     "//DataStruct_learn/Tree/lsm-trie:rwlock_test",
     "//DataStruct_learn/Tree/btree:test",

@@ -14,6 +14,14 @@ static_library("generator") {
   ]
 }
 
+executable("debug_test") {
+  cflags = ["-g"]
+  deps = [":debug"]
+  sources = [
+    "debug_test.c",
+  ]
+}
+
 static_library("debug") {
   cflags = ["-g"]
   sources = [
