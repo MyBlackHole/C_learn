@@ -1,3 +1,19 @@
+executable("io_util") {
+  cflags = ["-g"]
+  deps = [":generator", ":stat", ":debug"]
+  sources = [
+    "io_util.c",
+  ]
+}
+
+static_library("stat") {
+  cflags = ["-g"]
+  sources = [
+    "stat.c",
+    "stat.h",
+  ]
+}
+
 executable("generator_test") {
   cflags = ["-g"]
   deps = [":generator", ":debug"]
