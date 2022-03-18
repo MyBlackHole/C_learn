@@ -4,7 +4,6 @@
 #include <unistd.h>
 
 #define BUFSIZE 1024
-
 // open
 // read
 // write

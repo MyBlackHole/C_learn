@@ -16,9 +16,9 @@ executable("pthread_cond_init_test") {
   ]
 }
 
-executable("pthread_getpecific_test") {
+executable("pthread_getspecific_test") {
   sources = [
-    "pthread_getpecific_test.c",
+    "pthread_getspecific_test.c",
   ]
 }
 
