@@ -43,6 +43,7 @@ group("default"){
 
     "//dome/asyn_network:main",
 
+    "//DataStruct_learn/Tree/lsm-trie:bloom_test",
     "//DataStruct_learn/Tree/lsm-trie:mempool_test",
     "//DataStruct_learn/Tree/lsm-trie:io_util",
     "//DataStruct_learn/Tree/lsm-trie:debug_test",
