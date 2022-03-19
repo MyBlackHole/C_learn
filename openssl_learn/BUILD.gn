@@ -1,11 +1,18 @@
+executable("SHA1_test") {
+  ldflags = ["-lcrypto"]
+  sources = [
+    "SHA1_test.c"
+  ]
+}
+
 executable("MD5_Init_test") {
   ldflags = ["-lcrypto"]
   sources = ["MD5_Init_test.c"]
 }
 
-executable("SHA_Init_test") {
+executable("SHA1_Init_test") {
   ldflags = ["-lcrypto"]
-  sources = ["SHA_Init_test.c"]
+  sources = ["SHA1_Init_test.c"]
 }
 
 executable("RSA_new_test") {
