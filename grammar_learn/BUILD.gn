@@ -1,3 +1,11 @@
+executable("sizeof_test") {
+  cflags = ["-g"]
+
+  sources = [
+    "sizeof_test.c",
+  ]
+}
+
 executable("static_test") {
   cflags = ["-g"]
 
