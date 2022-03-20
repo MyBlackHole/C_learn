@@ -20,8 +20,10 @@ uint8_t *encode_uint64(uint8_t *const dst, const uint64_t v) {
   uint8_t *ptr = dst;
   uint64_t t = v;
   while (t >= B) {
+    // 赋值单位
     *ptr = (uint8_t)((t & M) | B);
     ++ptr;
+    // 循环单位
     t >>= 7;
   }
   *ptr = (uint8_t)t;

@@ -8,9 +8,10 @@ group("default"){
 
     "//redis_learn:redis",
 
+    "//openssl_learn:SHA1_test",
     "//openssl_learn:AES_cbc_encrypt_test",
     "//openssl_learn:RSA_new_test",
-    "//openssl_learn:SHA_Init_test",
+    "//openssl_learn:SHA1_Init_test",
     "//openssl_learn:MD5_Init_test",
     "//curl_learn:test",
 
@@ -176,6 +177,7 @@ group("default"){
     "//aio_learn:aio_suspend_test",
     "//aio_learn:lio_listio_test",
 
+    "//grammar_learn:sizeof_test",
     "//grammar_learn:pointer2_test",
     "//grammar_learn:static_test",
     "//grammar_learn:pointer_test",
