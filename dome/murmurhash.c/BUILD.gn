@@ -1,0 +1,24 @@
+executable("test1") {
+  cflags = ["-g"]
+  deps = [":murmurhash"]
+  sources = [
+    "test1.c",
+  ]
+}
+
+executable("test") {
+  cflags = ["-g"]
+  deps = [":murmurhash"]
+  sources = [
+    "test.c",
+  ]
+}
+
+static_library("murmurhash") {
+  cflags = ["-g"]
+  sources = [
+    "murmurhash.c",
+    "murmurhash.h",
+  ]
+}
+
