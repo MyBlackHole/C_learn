@@ -1,0 +1,6 @@
+executable("ini_parse_test") {
+  cflags = ["-g"]
+  ldflags = ["-linih"]
+  sources = ["ini_parse_test.c"]
+}
+
