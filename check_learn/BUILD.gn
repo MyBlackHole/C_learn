@@ -1,0 +1,6 @@
+executable("ck_assert_test") {
+  ldflags = ["-lcheck"]
+  sources = [
+    "ck_assert_test.c"
+  ]
+}
