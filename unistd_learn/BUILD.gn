@@ -1,3 +1,10 @@
+executable("ftruncate_test") {
+  cflags = ["-g"]
+  sources = [
+    "ftruncate_test.c",
+  ]
+}
+
 executable("pathconf_test") {
   cflags = ["-g"]
   sources = [
