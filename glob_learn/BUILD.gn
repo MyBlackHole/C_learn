@@ -1,4 +1,5 @@
 executable("glob_test") {
+  cflags = ["-g"]
   sources = ["glob_test.c"]
 }
 

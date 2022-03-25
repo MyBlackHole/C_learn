@@ -1,5 +1,15 @@
 group("default"){
   deps = [
+
+    "//dome/murmurhash.c:test",
+    "//dome/murmurhash.c:test1",
+
+    "//dome/bloomd:runner",
+
+    "//inih_learn:ini_parse_test",
+
+    "//check_learn:ck_assert_test",
+
     "//sys_mman_learn:mmap_test",
 
     "//ioctl_learn:ioctl_test",
@@ -44,6 +54,8 @@ group("default"){
 
     "//dome/asyn_network:main",
 
+    "//DataStruct_learn/Tree/lsm-trie:table_test",
+    "//DataStruct_learn/Tree/lsm-trie:coding_test",
     "//DataStruct_learn/Tree/lsm-trie:bloom_test",
     "//DataStruct_learn/Tree/lsm-trie:mempool_test",
     "//DataStruct_learn/Tree/lsm-trie:io_util",
@@ -252,6 +264,7 @@ group("default"){
     "//stdlib_learn:malloc_test",
     "//stdlib_learn:realloc_test",
 
+    "//unistd_learn:ftruncate_test",
     "//unistd_learn:pathconf_test",
     "//unistd_learn:getcwd_test",
     "//unistd_learn:pipe_test",
