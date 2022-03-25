@@ -14,6 +14,7 @@
 
 #include "coding.h"
 
+// 对 uint64_t 每8位进行与 0x80 或 0x7f
 uint8_t *encode_uint64(uint8_t *const dst, const uint64_t v) {
   static const uint64_t B = 0x80;
   static const uint64_t M = 0x7f;
@@ -28,9 +29,11 @@ uint8_t *encode_uint64(uint8_t *const dst, const uint64_t v) {
   }
   *ptr = (uint8_t)t;
   ++ptr;
+  // 返回是 v 的 8 整数倍位后的下一个8位首地址
   return ptr;
 }
 
+// encode_uint64 逆过程
 const uint8_t *decode_uint64(const uint8_t *const src, uint64_t *const value) {
   uint64_t result = 0;
   static const uint64_t B = 0x80;

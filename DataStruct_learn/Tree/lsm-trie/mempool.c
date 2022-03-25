@@ -24,9 +24,12 @@
 #define MEMPOOL_UNIT (1024 * 1024 * 2)
 
 struct Mempool {
+  // 是否是 mmap 分配
   bool using_mmap;
+  // 使用了的内存大小
   uint64_t pos;
   uint64_t max;
+  // 内存分配返回的起始地址
   uint8_t *space;
 };
 
@@ -121,6 +124,7 @@ uint8_t *mempool_alloc(struct Mempool *const p, const size_t cap) {
     return NULL;
   }
   uint8_t *const r = p->space + pos;
+  // 返回分配内存的起始地址
   return r;
 }
 
