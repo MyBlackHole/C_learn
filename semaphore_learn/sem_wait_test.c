@@ -1,1 +1,1 @@
-sem_destroy_test.c
+sem_post1_test.c

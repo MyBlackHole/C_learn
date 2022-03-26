@@ -1,1 +1,1 @@
-sem_destroy_test.c
+sem_wait1_test.c
