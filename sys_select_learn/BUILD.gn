@@ -7,6 +7,7 @@ executable("select_test") {
 }
 
 executable("select1_test") {
+  cflags = ["-g"]
   sources = [
     "select1_test.c",
   ]

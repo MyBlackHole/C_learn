@@ -54,6 +54,7 @@ group("default"){
 
     "//dome/asyn_network:main",
 
+    "//DataStruct_learn/Tree/lsm-trie:cm_util",
     "//DataStruct_learn/Tree/lsm-trie:cmap_test",
     "//DataStruct_learn/Tree/lsm-trie:table_test",
     "//DataStruct_learn/Tree/lsm-trie:coding_test",

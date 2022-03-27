@@ -29,7 +29,7 @@ int main(void) {
         exit(-1);
     }
 #endif
-  // 获取设备块数量
+  // 获取设备块大小 bytes
   if ((r = ioctl(fd, BLKGETSIZE64, &size)) < 0) {
     printf("ioctl error %d\n", errno);
     exit(-1);

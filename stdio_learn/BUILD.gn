@@ -1,3 +1,15 @@
+executable("strtoul_test") {
+  sources = [
+    "strtoul_test.c",
+  ]
+}
+
+executable("strtol_test") {
+  sources = [
+    "strtol_test.c",
+  ]
+}
+
 executable("snprintf_test") {
   sources = [
     "snprintf_test.c",
