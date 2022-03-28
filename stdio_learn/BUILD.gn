@@ -1,3 +1,9 @@
+executable("fgets1_test") {
+  sources = [
+    "fgets1_test.c",
+  ]
+}
+
 executable("strtoul_test") {
   sources = [
     "strtoul_test.c",
