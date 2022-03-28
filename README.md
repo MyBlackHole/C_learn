@@ -1,5 +1,6 @@
 # C_learn
 # 构建
+gn gen out
 ninja -C out
 
 # 索引
