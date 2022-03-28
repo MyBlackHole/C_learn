@@ -554,11 +554,13 @@ static bool table_initial(struct Table *const table, const uint64_t capacity) {
   }
 
   for (uint64_t i = 0; i < TABLE_ILOCKS_NR; i++) {
+    // 互斥量初始化
     pthread_mutex_init(&(table->ilocks[i]), NULL);
   }
   return true;
 }
 
+// 表初始化
 struct Table *table_alloc_new(const double cap_percent,
                               const double mempool_factor) {
   // 分配内存
@@ -578,6 +580,7 @@ struct Table *table_alloc_new(const double cap_percent,
   return table;
 }
 
+// 默认表初始化方式
 struct Table *table_alloc_default(const double mempool_factor) {
   return table_alloc_new(TABLE_VOLUME_PERCENT, mempool_factor);
 }
@@ -595,6 +598,7 @@ void table_free(struct Table *const table) {
 
 // 是否大于表设置的阈值
 bool table_full(const struct Table *const table) {
+  // 大于返回 true
   return (table->volume >= table->capacity) ? true : false;
 }
 
@@ -868,6 +872,7 @@ static void retaining_build_metaindex(struct Table *const table) {
   table->mis = mis;
 }
 
+// 均衡数据，创建元索引
 bool table_retain(struct Table *const table) {
   uint64_t count = 0;
   while (true) {
@@ -1027,6 +1032,7 @@ void table_analysis_verbose(struct Table *const table, FILE *const out) {
           count_items, avg_read);
 }
 
+// 分析数据
 void table_analysis_short(struct Table *const table, char *const buffer) {
   if (table->nr_mi) {
     assert(table->mis);

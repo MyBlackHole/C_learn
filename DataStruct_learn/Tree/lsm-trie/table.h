@@ -73,6 +73,7 @@ struct MetaTable {
   int raw_fd;
   uint64_t mtid;
   struct MetaIndex *mis;
+  // 布隆过滤器表
   struct BloomTable *bt;
   struct Stat *stat;
 };

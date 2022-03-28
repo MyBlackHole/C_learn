@@ -323,5 +323,6 @@ void containermap_destroy(struct ContainerMap *const cm) {
 
 // 未使用的
 uint64_t containermap_unused(const struct ContainerMap *const cm) {
+  // 总的减去使用的
   return (cm->nr_units - cm->nr_used);
 }
