@@ -1,6 +1,24 @@
+executable("mixed_test") {
+  cflags = ["-g"]
+  ldflags = ["-lcrypto"]
+  deps = [":conc", ":db", ":generator", ":debug", ":bloom", ":cmap", ":rwlock"]
+  sources = [
+    "mixed_test.c",
+  ]
+}
+
+static_library("db") {
+  cflags = ["-g"]
+  sources = [
+    "db.c",
+    "db.h",
+  ]
+}
+
+
 executable("cm_util") {
   cflags = ["-g"]
-  deps = [":cmap"]
+  deps = [":cmap", ":generator"]
   sources = [
     "cm_util.c",
   ]
@@ -8,7 +26,7 @@ executable("cm_util") {
 
 executable("cmap_test") {
   cflags = ["-g"]
-  deps = [":cmap"]
+  deps =  [":coding", ":table", ":cmap", ":generator"]
   sources = [
     "cmap_test.c",
   ]
@@ -16,7 +34,6 @@ executable("cmap_test") {
 
 static_library("cmap") {
   cflags = ["-g"]
-  deps =  [":coding", ":generator", ":table"]
   sources = [
     "cmap.c",
     "cmap.h",

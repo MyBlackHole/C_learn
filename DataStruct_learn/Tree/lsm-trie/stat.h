@@ -9,14 +9,18 @@
 #include <stdio.h>
 
 struct Stat {
+  // 查询次数
   uint64_t nr_get;
   uint64_t nr_get_miss;
   uint64_t nr_get_at_hit[2];
+  // 查询到 key 的次数
   uint64_t nr_get_vc_hit[64];
 
   uint64_t nr_fetch_barrel;
+  // 布隆过滤器查询次数
   uint64_t nr_fetch_bc;
 
+  // 不存在次数
   uint64_t nr_true_negative;
   uint64_t nr_false_positive;
   uint64_t nr_true_positive;

@@ -433,6 +433,7 @@ struct BloomContainer *bloomcontainer_update(struct BloomContainer *const bc,
   return bc_new;
 }
 
+// 读取一页到 buf
 bool bloomcontainer_fetch_raw(struct BloomContainer *const bc,
                               const uint64_t barrel_id, uint8_t *const buf) {
   for (uint64_t i = 0; i < bc->nr_index; i++) {
@@ -492,6 +493,7 @@ struct BloomContainer *bloomcontainer_load_meta(FILE *const fi,
   return bc;
 }
 
+// 匹配位图
 static uint64_t bloomcontainer_match_nr(struct BloomContainer *const bc,
                                         const uint8_t *const pbox,
                                         const uint64_t hv) {
@@ -514,9 +516,11 @@ static uint64_t bloomcontainer_match_nr(struct BloomContainer *const bc,
 }
 
 // return bitmap. 0: no match
+// 查询匹配位图
 uint64_t bloomcontainer_match(struct BloomContainer *const bc,
                               const uint32_t index, const uint64_t hv) {
   uint8_t boxpage[BARREL_ALIGN] __attribute__((aligned(4096)));
+  // 查询读取一页到 boxpage 中
   const bool rf = bloomcontainer_fetch_raw(bc, (uint64_t)index, boxpage);
   assert(rf);
   uint8_t *ptr = boxpage;

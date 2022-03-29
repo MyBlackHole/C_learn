@@ -673,6 +673,7 @@ bool table_build_bloomtable(struct Table *const table) {
   return true;
 }
 
+// 对表查询键 pk
 struct KeyValue *table_lookup(struct Table *const table, const uint16_t klen,
                               const uint8_t *const pk,
                               const uint8_t *const hash) {
@@ -1194,8 +1195,11 @@ static struct KeyValue *metatable_recursive_lookup(
 struct KeyValue *metatable_lookup(struct MetaTable *const mt,
                                   const uint16_t klen, const uint8_t *const key,
                                   const uint8_t *const hash) {
+  // 桶 id
   const uint16_t bid = table_select_barrel(hash);
   if (mt->bt) {
+    // 布隆表存在
+
     const uint64_t hv = __hash_bf(hash);
     const bool exist = bloomtable_match(mt->bt, bid, hv);
     if (exist == false) {

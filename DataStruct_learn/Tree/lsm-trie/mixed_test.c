@@ -38,6 +38,7 @@ struct DBParams {
   char *meta_dir;
   char *cm_conf_fn;
   uint64_t nr_threads;
+  // 写入个数
   uint64_t p_writer;
   char *generator;
   uint64_t range;
@@ -59,9 +60,11 @@ struct TestState {
   uint64_t nr_100;
   uint64_t usec_last;
   uint64_t usec_start;
+  // 运行状态
   bool test_running;
   pthread_mutex_t test_lock;
   struct GenInfo *gi;
+  // db 实例指针
   struct DB *db;
   uint32_t *latency;
   uint8_t buf[BARREL_ALIGN];
@@ -100,6 +103,7 @@ static void mixed_worker(const struct DBParams *const ps) {
   uint64_t keys[100];
   assert(ps->p_writer <= 100u);
 
+  // 初始化 100 个 kv
   struct KeyValue kvs[100] __attribute__((aligned(8)));
   for (uint64_t i = 0; i < 100u; i++) {
     kvs[i].klen = sizeof(keys[i]);
@@ -117,6 +121,7 @@ static void mixed_worker(const struct DBParams *const ps) {
   // loop
   while (__ts.test_running) {
     // random keys
+    // 随机 key 生成 100 个
     for (uint64_t i = 0; i < 100u; i++) {
       const uint64_t rkey = __ts.gi->next(__ts.gi);
       keys[i] = rkey;
@@ -124,6 +129,7 @@ static void mixed_worker(const struct DBParams *const ps) {
 
     // write items
     if (ps->p_writer > 0) {
+      // 写入 100 kv 个
       const bool r = db_multi_insert(__ts.db, ps->p_writer, kvs);
       assert(r);
     }
@@ -253,12 +259,16 @@ static void mixed_test(const struct DBParams *const p) {
 
   const uint64_t nth = p->nr_threads;
   pthread_t pth[nth];
+
+  // 设置线程允许 join 堵塞等待线程退出
   pthread_attr_t attr;
   pthread_attr_init(&attr);
   pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_JOINABLE);
+
   for (uint64_t i = 0; i < nth; i++) {
     const int rc = pthread_create(&(pth[i]), &attr, mixed_thread, (void *)p);
     assert(rc == 0);
+    // 设置线程名
     pthread_setname_np(pth[i], "Worker");
   }
 

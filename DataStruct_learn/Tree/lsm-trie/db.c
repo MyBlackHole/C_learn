@@ -38,7 +38,9 @@
 // db 容器数量
 #define DB_CONTAINER_NR ((20))
 struct Container { // a container of tables
+  // 已使用数量
   uint64_t count;
+  // 布隆过滤器
   struct BloomContainer *bc;
   struct MetaTable *metatables[DB_CONTAINER_NR]; // count
 };
@@ -90,6 +92,7 @@ struct DB {
   struct ContainerMap *cm_bc;
   // ContainerMap 数组
   struct ContainerMap *cms_dump[6];
+  // 虚拟容器
   struct VirtualContainer *vcroot;
 
   // locks
@@ -1111,6 +1114,9 @@ static struct KeyValue *recursive_lookup(struct Stat *const stat,
   // test if using bloomcontainer
   uint64_t bitmap = UINT64_MAX;
   if (vc->cc.bc) {
+    // 查布隆过滤器
+
+    // 获取桶 index
     const uint64_t index = table_select_barrel(hash);
     assert(index < UINT64_C(0x100000000));
     const uint64_t *phv = ((const uint64_t *)(&(hash[12])));
@@ -1119,7 +1125,9 @@ static struct KeyValue *recursive_lookup(struct Stat *const stat,
     stat_inc(&(stat->nr_fetch_bc));
   }
   for (int64_t j = vc->cc.count - 1; j >= 0; j--) {
+    // 获取元表
     struct MetaTable *const mt = vc->cc.metatables[j];
+
     if (mt == NULL)
       continue;
 
@@ -1144,21 +1152,28 @@ static struct KeyValue *recursive_lookup(struct Stat *const stat,
 
 struct KeyValue *db_lookup(struct DB *const db, const uint16_t klen,
                            const uint8_t *const key) {
+  // hash 获取
   uint8_t hash[HASHBYTES] __attribute__((aligned(8)));
   SHA1(key, klen, hash);
 
+  // 查询次数加一
   stat_inc(&(db->stat.nr_get));
+  // 获取读锁
   const uint64_t ticket = rwlock_reader_lock(&(db->rwlock));
   // 1st lookup at active table[0]
   // 2nd lookup at active table[1]
+  // 查询表一与表二
   for (uint64_t i = 0; i < 2; i++) {
     struct Table *t = db->active_table[i];
     if (t == NULL)
       continue;
     // immutable item
+    // 对表查询 key
     struct KeyValue *const kv = table_lookup(t, klen, key, hash);
     if (kv) {
+      // 解读锁
       rwlock_reader_unlock(&(db->rwlock), ticket);
+      // 查询到 key 加一
       stat_inc(&(db->stat.nr_get_at_hit[i]));
       return kv;
     }
@@ -1216,9 +1231,11 @@ bool db_multi_insert(struct DB *const db, const uint64_t nr_items,
 
     if (i < nr_items) {
       db_wait_active_table(db);
+      // 加一
       stat_inc(&(db->stat.nr_set_retry));
     }
   }
+  // 加 nr_items
   stat_inc_n(&(db->stat.nr_set), nr_items);
   return true;
 }

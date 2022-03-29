@@ -42,8 +42,10 @@ struct BloomContainer {
   uint64_t off_raw;       // === off_main in MetaFileHeader
   uint32_t nr_barrels;    // === nr_main
   uint32_t nr_bf_per_box; // 1 -- 8
+  // 桶个数
   uint32_t nr_index;
   uint64_t mtid;
+  // 每个桶 id
   uint16_t index_last[]; // the LAST barrel_id in each box
 };
 
