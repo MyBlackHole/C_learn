@@ -1,0 +1,7 @@
+executable("io_uring_test") {
+  cflags = ["-g"]
+  ldflags = ["-luring"]
+  sources = [
+    "io_uring_test.c",
+  ]
+}
