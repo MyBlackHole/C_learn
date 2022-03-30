@@ -9,6 +9,7 @@ int main(int argc, char **argv) {
     exit(1);
   }
   if (access(argv[1], R_OK) < 0) {
+    // 小于 0 代表不存在
     fprintf(stderr, "\taccess error for %s", argv[1]);
     exit(1);
   } else

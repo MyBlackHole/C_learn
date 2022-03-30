@@ -1,3 +1,11 @@
+executable("strlen_test") {
+  cflags = ["-g"]
+
+  sources = [
+    "strlen_test.c",
+  ]
+}
+
 executable("strcoll_test") {
   cflags = ["-g"]
 
