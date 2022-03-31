@@ -2,6 +2,14 @@ group("default"){
   deps = [
     "//liburing_learn:io_uring_test",
 
+    # "//dome/remixdb:xdbdemo",
+    # "//dome/remixdb:xdb",
+    # "//dome/remixdb:wh",
+    # "//dome/remixdb:sst",
+    # "//dome/remixdb:lib",
+    # "//dome/remixdb:kv",
+    # "//dome/remixdb:blkio",
+
     "//dome/murmurhash.c:test",
     "//dome/murmurhash.c:test1",
 
@@ -55,6 +63,8 @@ group("default"){
 
     "//dome/asyn_network:main",
 
+    "//DataStruct_learn/List/skiplist:skiplist_test",
+    "//DataStruct_learn/Tree/trie:test",
     "//DataStruct_learn/Tree/lsm-trie:mixed_test",
     "//DataStruct_learn/Tree/lsm-trie:cm_util",
     "//DataStruct_learn/Tree/lsm-trie:cmap_test",
@@ -237,6 +247,7 @@ group("default"){
 
     "//shadow_learn:getspnam_test",
 
+    "//string_learn:strlen_test",
     "//string_learn:strcoll_test",
     "//string_learn:strstr_test",
     "//string_learn:strtok_test",

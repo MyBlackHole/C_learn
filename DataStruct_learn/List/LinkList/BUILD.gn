@@ -1,4 +1,5 @@
 executable("LinkList-main") {
+  cflags = ["-g"]
   include_dirs = ["//DataStruct_learn/Status"]
   deps = [":LinkList"]
   sources = [
@@ -7,6 +8,7 @@ executable("LinkList-main") {
 }
 
 static_library("LinkList") {
+  cflags = ["-g"]
   deps = ["//DataStruct_learn/Status:Status"]
   include_dirs = ["//DataStruct_learn/Status"]
   sources = [

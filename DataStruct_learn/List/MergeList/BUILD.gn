@@ -1,4 +1,5 @@
 executable("MergeList-main") {
+  cflags = ["-g"]
   include_dirs = ["//DataStruct_learn/Status"]
   deps = [":MergeList"]
   sources = [
@@ -7,6 +8,7 @@ executable("MergeList-main") {
 }
 
 static_library("MergeList") {
+  cflags = ["-g"]
   deps = ["//DataStruct_learn/Status:Status"]
   include_dirs = ["//DataStruct_learn/Status"]
   sources = [
