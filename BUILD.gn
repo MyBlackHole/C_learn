@@ -54,7 +54,7 @@ group("default"){
     "//sched_learn:CLONE_NEWIPC_test",
     "//sched_learn:clone_test",
 
-    "//opengl_learn:test",
+    # "//opengl_learn:test",
 
     "//stdint_learn:int32_t_test",
 
@@ -224,6 +224,7 @@ group("default"){
     # "//libev_learn/case:ev1_test",
     # "//libev_learn/case:ev_signal_test",
 
+    "//pthread_learn:pthread_create3_test",
     "//pthread_learn:pthread_cond_broadcast_test",
     "//pthread_learn:pthread_attr_init_test",
     "//pthread_learn:pthread_cond_init_test",

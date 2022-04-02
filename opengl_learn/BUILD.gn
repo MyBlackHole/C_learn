@@ -1,4 +1,5 @@
 executable("test") {
+  cflags = ["-g"]
   ldflags = ["-lGL", "-lGLU", "-lglut"]
   sources = ["test.c"]
 }
