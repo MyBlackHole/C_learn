@@ -38,61 +38,64 @@ executable("pointer_test") {
   ]
 }
 
-executable("define_test") {
-  sources = [
-    "define_test.c",
-  ]
-}
-
 executable("bool_test") {
+  cflags = ["-g"]
   sources = [
     "bool_test.c",
   ]
 }
 
 executable("argv_test") {
+  cflags = ["-g"]
   sources = [
     "argv_test.c",
   ]
 }
 
 executable("struct_test") {
+  cflags = ["-g"]
   sources = [
     "struct_test.c",
   ]
 }
 
 executable("1") {
+  cflags = ["-g"]
   sources = [
     "1.c",
   ]
 }
 
 executable("long_int_test") {
+  cflags = ["-g"]
   sources = [
     "long_int_test.c",
   ]
 }
 
 executable("do_while_test") {
+  cflags = ["-g"]
   sources = [
     "do_while_test.c",
   ]
 }
 
 executable("continue_test") {
+  cflags = ["-g"]
   sources = [
     "continue_test.c",
   ]
 }
 
 executable("union_test") {
+  cflags = ["-g"]
   sources = [
     "union_test.c",
   ]
 }
 
 executable("2") {
+  cflags = ["-g"]
   sources = [
     "2.c",
   ]
