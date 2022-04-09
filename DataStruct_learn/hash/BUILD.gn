@@ -1,0 +1,16 @@
+executable("test") {
+  cflags = ["-g"]
+  deps = [":hash_set"]
+  sources = [
+    "test.c",
+  ]
+}
+
+static_library("hash_set") {
+  cflags = ["-g"]
+  sources = [
+    "hash_set.c",
+    "hash_set.h",
+  ]
+}
+
