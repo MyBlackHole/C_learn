@@ -63,6 +63,7 @@ group("default"){
 
     "//dome/asyn_network:main",
 
+    "//DataStruct_learn/List/Dlisthash:test",
     "//DataStruct_learn/hash:test",
     "//DataStruct_learn/List/skiplist:skiplist_test",
     "//DataStruct_learn/Tree/trie:test",
