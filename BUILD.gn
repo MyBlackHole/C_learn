@@ -10,6 +10,13 @@ group("default"){
     # "//dome/remixdb:kv",
     # "//dome/remixdb:blkio",
 
+    "//dome/config_parse:main",
+
+    "//dome/thread_pool:threadPoll_Main",
+
+    "//dome/bplustree:bplustree_coverage",
+    "//dome/bplustree:bplustree_demo",
+
     "//dome/murmurhash.c:test",
     "//dome/murmurhash.c:test1",
 
