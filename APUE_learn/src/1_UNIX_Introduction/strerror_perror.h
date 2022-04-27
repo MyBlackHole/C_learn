@@ -23,11 +23,10 @@ void test_strerror(int errnum);
  * \param new_errno : 用它给全局的 errno 赋值
  * \param msg : 传递给 perror 函数的 msg 参数
  */
-void test_perror(int new_errno,const char*msg);
+void test_perror(int new_errno, const char *msg);
 
 /*!
  * \brief test_strerror_perror : 执行 strerror 的测试 和 perror 的测试
  */
 void test_strerror_perror();
 #endif // STRERROR_PERROR
-

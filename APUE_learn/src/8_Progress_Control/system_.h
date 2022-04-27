@@ -23,4 +23,3 @@ int My_system(const char *cmdstring);
  */
 void test_system();
 #endif // SYSTEM_
-

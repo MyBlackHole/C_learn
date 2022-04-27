@@ -69,13 +69,13 @@ static pthread_barrier_t barrier;
  */
 static void *thread_func(void *arg) {
   pthread_t id = pthread_self();
-  printf("\n****** Begin Thread:thread id=0x%x ******\n", id);
-  printf("\n In thread(0x%x),pre barrier:step 1\n", id);
-  printf("\n In thread(0x%x),pre barrier:step 2\n", id);
+  printf("\n****** Begin Thread:thread id=0x%lx ******\n", id);
+  printf("\n In thread(0x%lx),pre barrier:step 1\n", id);
+  printf("\n In thread(0x%lx),pre barrier:step 2\n", id);
   My_pthread_barrier_wait(&barrier);
-  printf("\n In thread(0x%x),post barrier:step 1\n", id);
-  printf("\n In thread(0x%x),post barrier:step 2\n", id);
-  printf("****** End Thread:thread id=0x%x ******\n\n", id);
+  printf("\n In thread(0x%lx),post barrier:step 1\n", id);
+  printf("\n In thread(0x%lx),post barrier:step 2\n", id);
+  printf("****** End Thread:thread id=0x%lx ******\n\n", id);
   return 0;
 }
 

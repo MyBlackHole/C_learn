@@ -17,4 +17,3 @@
  */
 void test_thread_join();
 #endif // THREAD_JOIN
-

@@ -13,8 +13,8 @@
 #define THREAD_CLEAN
 
 /*!
- * \brief test_thread_clean :测试 pthread_cleanup_push 函数、pthread_cleanup_pop 函数
+ * \brief test_thread_clean :测试 pthread_cleanup_push 函数、pthread_cleanup_pop
+ * 函数
  */
 void test_thread_clean();
 #endif // THREAD_CLEAN
-

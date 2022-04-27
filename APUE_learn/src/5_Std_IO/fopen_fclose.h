@@ -12,7 +12,7 @@
  */
 #ifndef FOPEN_FCLOSE
 #define FOPEN_FCLOSE
-#include<stdio.h>
+#include <stdio.h>
 
 /*!
  * \brief My_fwide : 包装了 fwide 函数
@@ -20,7 +20,7 @@
  * \param mode : 传递给 fwide 函数的 mode 参数
  * \return : 返回 fwide 函数的值
  */
-int My_fwide(FILE *fp,int mode);
+int My_fwide(FILE *fp, int mode);
 
 /*!
  * \brief My_setvbuf : 包装了 setvbuf 函数
@@ -30,7 +30,7 @@ int My_fwide(FILE *fp,int mode);
  * \param size : 传递给 setvbuf 函数的 size 参数
  * \return : 返回 setvbuf 函数的值
  */
-int My_setvbuf(FILE * fp,char*  buf,int mode,size_t size);
+int My_setvbuf(FILE *fp, char *buf, int mode, size_t size);
 /*!
  * \brief My_fflush : 包装了 fflush 函数
  * \param fp : 传递给 fflush 函数的 fp 参数
@@ -43,7 +43,7 @@ int My_fflush(FILE *fp);
  * \param type : 传递给 fopen 函数的 type 参数
  * \return  : 返回 fopen 函数的值
  */
-FILE * My_fopen(const char* pathname,const char* type);
+FILE *My_fopen(const char *pathname, const char *type);
 
 /*!
  * \brief set_no_buf : 设置不带缓冲
@@ -66,8 +66,8 @@ void set_full_buf(FILE *fp);
  */
 void print_FILE(const FILE *fp);
 /*!
- * \brief test_fopen_fwide_setvbuf : 测试 fopen函数、 fwide 函数、setvbuf函数、 fflush函数的用法
+ * \brief test_fopen_fwide_setvbuf : 测试 fopen函数、 fwide 函数、setvbuf函数、
+ * fflush函数的用法
  */
 void test_fopen_fwide_setvbuf();
 #endif // FOPEN_FCLOSE
-

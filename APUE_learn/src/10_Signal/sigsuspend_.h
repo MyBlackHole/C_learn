@@ -12,7 +12,7 @@
 #ifndef SIGSUSPEND_
 #define SIGSUSPEND_
 
-#include<signal.h>
+#include <signal.h>
 /*!
  * \brief My_sigsuspend ：包装了 sigsuspend 函数
  * \param sigmask : 传递给 sigsuspend  函数的 sigmask 参数
@@ -23,4 +23,3 @@ int My_sigsuspend(const sigset_t *sigmask);
 void test_sigsuspend();
 
 #endif // SIGSUSPEND_
-

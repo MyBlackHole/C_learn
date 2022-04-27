@@ -11,7 +11,7 @@
  */
 #ifndef WAIT_WAITPID
 #define WAIT_WAITPID
-#include<unistd.h>
+#include <unistd.h>
 
 /*!
  * \brief My_wait : 包装了 wait 函数
@@ -26,7 +26,7 @@ pid_t My_wait(int *staloc);
  * \param options : 传递给 waitpid 函数的 options 参数
  * \return : 返回 waitpid 函数的值
  */
-pid_t My_waitpid(pid_t pid,int *staloc,int options);
+pid_t My_waitpid(pid_t pid, int *staloc, int options);
 /*!
  * \brief print_return_status : 打印进程终止状态码
  * \param staloc : 进程终止状态码
@@ -44,7 +44,8 @@ void check_waitpid();
 /*!
  * \brief check_waitpid_signal : 用于信号中断的 check_waitpid 函数
  *
- * 主要是进程在执行 `waitpid`调用而阻塞期间捕捉到一个信号，则该系统调用就会被中断而不再继续执行。
+ * 主要是进程在执行
+ * `waitpid`调用而阻塞期间捕捉到一个信号，则该系统调用就会被中断而不再继续执行。
  * 此时`waitpid`返回出错，其`errno`设置为`EINTR`
  */
 void check_waitpid_signal();
@@ -55,7 +56,7 @@ void check_waitpid_signal();
  * \param exit_code : 子进程调用 _exit  的参数
  * \return : fork 的返回值
  */
-pid_t child_exit(int fd,int exit_code);
+pid_t child_exit(int fd, int exit_code);
 /*!
  * \brief child_abort : 创建一个子进程，其退出方式是 abort
  * \param fd : 用于记录锁的文件描述符
@@ -74,4 +75,3 @@ pid_t child_signal(int fd);
  */
 void test_wait_waitpid();
 #endif // WAIT_WAITPID
-

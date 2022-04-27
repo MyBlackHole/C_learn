@@ -12,7 +12,6 @@
 #ifndef PAUSE_
 #define PAUSE_
 
-
 /*!
  * \brief My_pause : 包装了 pause 函数
  * \return : 返回 pause 函数的值
@@ -23,4 +22,3 @@ int My_pause(void);
  */
 void test_pause();
 #endif // PAUSE_
-

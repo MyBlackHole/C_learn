@@ -11,25 +11,25 @@
  */
 #ifndef SYSTEM_FILE
 #define SYSTEM_FILE
-#include<pwd.h>
-#include<shadow.h>
-#include<grp.h>
-#include<unistd.h>
-#include<sys/utsname.h>
-#include<netdb.h>
+#include <grp.h>
+#include <netdb.h>
+#include <pwd.h>
+#include <shadow.h>
+#include <sys/utsname.h>
+#include <unistd.h>
 
 /*!
  * \brief My_getpwuid ： 包装了 getpwuid  函数
  * \param uid : 传递给  getpwuid 函数的  uid 参数
  * \return : 返回 getpwuid 函数的值
  */
-struct passwd* My_getpwuid(uid_t uid);
+struct passwd *My_getpwuid(uid_t uid);
 /*!
  * \brief My_getpwnam ： 包装了 getpwnam 函数
  * \param name : 传递给 getpwnam 函数的  name 参数
  * \return : 返回 getpwnam 函数的值
  */
-struct passwd* My_getpwnam(const char*name);
+struct passwd *My_getpwnam(const char *name);
 /*!
  * \brief My_getpwent ： 包装了 getpwent 函数
  * \return : 返回 getpwent 函数的值
@@ -41,7 +41,7 @@ struct passwd *My_getpwent(void);
  * \param name : 传递给 getspnam 函数的 name 参数
  * \return : 返回  getspnam 函数的值
  */
-struct spwd *My_getspnam(const char*name);
+struct spwd *My_getspnam(const char *name);
 /*!
  * \brief My_getspent ： 包装了 getspent 函数
  * \return : 返回 getspent 函数的值
@@ -53,13 +53,13 @@ struct spwd *My_getspent(void);
  * \param gid : 传递给 getgrgid 函数的 gid 参数
  * \return : 返回 getgrgid 函数的值
  */
-struct group* My_getgrgid(gid_t gid);
+struct group *My_getgrgid(gid_t gid);
 /*!
  * \brief My_getgrnam ： 包装了 getgrnam 函数
  * \param name : 传递给 getgrnam 函数的 name 参数
  * \return : 返回 getgrnam 函数的值
  */
-struct group* My_getgrnam(const char* name);
+struct group *My_getgrnam(const char *name);
 /*!
  * \brief My_getgrent ： 包装了 getgrent 函数
  * \return : 返回 getgrent 函数的值
@@ -72,14 +72,14 @@ struct group *My_getgrent(void);
  * \param grouplist : 传递给 getgroups 函数的 grouplist 参数
  * \return : 返回 getgroups 函数的值
  */
-int My_getgroups(int gidsetsize,gid_t grouplist[]);
+int My_getgroups(int gidsetsize, gid_t grouplist[]);
 /*!
  * \brief My_setgroups ： 包装了 setgroups 函数
  * \param ngroups : 传递给 setgroups 函数的 ngroups 参数
  * \param grouplist : 传递给 setgroups 函数的 grouplist 参数
  * \return : 返回 setgroups 函数的值
  */
-int My_setgroups(int ngroups,const gid_t grouplist[]);
+int My_setgroups(int ngroups, const gid_t grouplist[]);
 /*!
  * \brief My_initgroups ： 包装了 initgroups 函数
  * \param username : 传递给 initgroups 函数的 username 参数
@@ -92,7 +92,7 @@ int My_initgroups(const char *username, gid_t basegid);
  * \brief My_gethostent ： 包装了 gethostent 函数
  * \return : 返回 gethostent 函数的值
  */
-struct hostent * My_gethostent(void);
+struct hostent *My_gethostent(void);
 
 /*!
  * \brief My_uname ： 包装了 uname 函数
@@ -106,33 +106,33 @@ int My_uname(struct utsname *name);
  * \param namelen : 传递给 gethostname 函数的 namelen 参数
  * \return : 返回 gethostname 函数的值
  */
-int My_gethostname(char *name,int namelen);
+int My_gethostname(char *name, int namelen);
 
 /*!
  * \brief print_passwd : 打印 passwd 结构
  * \param data : 指向 passwd 结构的指针
  */
-void print_passwd(const struct passwd* data);
+void print_passwd(const struct passwd *data);
 /*!
  * \brief print_spwd : 打印 spwd 结构
  * \param data : 指向 spwd 结构的指针
  */
-void print_spwd(const struct spwd* data);
+void print_spwd(const struct spwd *data);
 /*!
  * \brief print_group : 打印 group 结构
  * \param data : 指向 group 结构的指针
  */
-void print_group(const struct group* data);
+void print_group(const struct group *data);
 /*!
  * \brief print_utsname : 打印 utsname 结构
  * \param data : 指向 utsname 结构的指针
  */
-void print_utsname(const struct utsname* data);
+void print_utsname(const struct utsname *data);
 /*!
  * \brief print_hostent : 打印 hostent 结构
  * \param data : 指向 hostent 结构的指针
  */
-void print_hostent(const struct hostent* data);
+void print_hostent(const struct hostent *data);
 
 /*!
  * \brief _test_passwd : 测试 struct passwd 相关的函数
@@ -161,4 +161,3 @@ void _test_host();
 void test_system_file();
 
 #endif // SYSTEM_FILE
-

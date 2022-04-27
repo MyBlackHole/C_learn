@@ -24,11 +24,10 @@ int My_dup(int fd);
  * \param fd2 : 传递给 dup2 函数的 fd2 参数
  * \return : 返回 dup2 函数值
  */
-int My_dup2(int fd,int fd2);
+int My_dup2(int fd, int fd2);
 /*!
  * \brief test_dup_dup2 : 测试 dup、dup2 函数
  */
 void test_dup_dup2();
 
 #endif // DUP_DUP2
-

@@ -37,8 +37,8 @@ void print_gid();
  */
 void print_egid();
 /*!
- * \brief test_progress_id : 测试 getpid 函数、 getppid 函数... 等进程 ID 相关函数
+ * \brief test_progress_id : 测试 getpid 函数、 getppid 函数... 等进程 ID
+ * 相关函数
  */
 void test_progress_id();
 #endif // PROGRESS_ID
-

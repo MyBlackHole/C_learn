@@ -14,8 +14,8 @@
  */
 #ifndef TMPNAM_MKDTEMP
 #define TMPNAM_MKDTEMP
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 /*!
  * \brief My_tmpnam : 包装了 tmpnam  函数
@@ -45,4 +45,3 @@ void _test_tmpnam();
  */
 void _test_mkdtemp();
 #endif // TMPNAM_MKDTEMP
-

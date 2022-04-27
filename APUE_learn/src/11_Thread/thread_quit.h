@@ -11,7 +11,7 @@
  */
 #ifndef THREAD_QUIT
 #define THREAD_QUIT
-#include<pthread.h>
+#include <pthread.h>
 
 /*!
  * \brief My_pthread_cancel : 包装了 pthread_cancel 函数
@@ -21,8 +21,8 @@
 int My_pthread_cancel(pthread_t tid);
 
 /*!
- * \brief test_thread_quit ：测试 pthread_join 函数、pthread_exit 函数、 pthread_cancel 函数
+ * \brief test_thread_quit ：测试 pthread_join 函数、pthread_exit 函数、
+ * pthread_cancel 函数
  */
 void test_thread_quit();
 #endif // THREAD_QUIT
-

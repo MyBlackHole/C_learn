@@ -1,0 +1,9 @@
+executable("main") {
+  cflags = ["-g"]
+
+  sources = [ 
+    "main.c"
+  ]
+}
+
+

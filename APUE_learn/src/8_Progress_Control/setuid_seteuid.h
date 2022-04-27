@@ -6,12 +6,13 @@
 /*
  *   第八章：进程环境
  *
- * 测试 setuid 函数、 seteuid 函数、 setgid 函数、setegid 函数 、getlogin 函数的用法
+ * 测试 setuid 函数、 seteuid 函数、 setgid 函数、setegid 函数 、getlogin
+ * 函数的用法
  *
  */
 #ifndef SETUID_SETEUID
 #define SETUID_SETEUID
-#include<unistd.h>
+#include <unistd.h>
 
 /*!
  * \brief My_setuid : 包装了 etuid 函数
@@ -41,11 +42,11 @@ int My_setegid(gid_t gid);
  * \brief My_getlogin : 包装了 getlogin 函数
  * \return : 返回 getlogin 函数的值
  */
-char* My_getlogin(void);
+char *My_getlogin(void);
 
 /*!
- * \brief test_setuid_seteuid : 测试 setuid/seteuid/setgid/setegid/getlogin 等函数
+ * \brief test_setuid_seteuid : 测试 setuid/seteuid/setgid/setegid/getlogin
+ * 等函数
  */
 void test_setuid_seteuid();
 #endif // SETUID_SETEUID
-

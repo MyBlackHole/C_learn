@@ -16,4 +16,3 @@
  */
 void test_abort();
 #endif // ABORT_
-

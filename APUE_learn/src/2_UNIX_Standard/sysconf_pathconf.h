@@ -18,7 +18,7 @@
  * \param name_str: name 参数对应的字符串，方便人员理解
  * \return : 返回 sysconf 函数的值
  */
-long My_sysconf(int name,const char *name_str);
+long My_sysconf(int name, const char *name_str);
 
 /*!
  * \brief My_pathconf : pathconf 函数的包装函数
@@ -27,7 +27,7 @@ long My_sysconf(int name,const char *name_str);
  * \param name_str: name 参数对应的字符串，方便人员理解
  * \return : 返回 pathconf 函数的值
  */
-long My_pathconf(const char*pathname,int name,const char *name_str);
+long My_pathconf(const char *pathname, int name, const char *name_str);
 
 /*!
  * \brief test_sycconf_pathconf : 执行 sysconf 的测试 和 pathconf 的测试

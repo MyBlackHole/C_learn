@@ -11,6 +11,7 @@
  */
 #include "sleep_nanosleep.h"
 #include "../header.h"
+#include "kill_raise.h"
 #include <signal.h>
 #include <stdio.h>
 #include <unistd.h>
@@ -39,17 +40,20 @@ int My_nanosleep(const struct timespec *reqtp, struct timespec *remtp) {
     printf("nanosleep(%p,%p) failed,because %s\n", reqtp, remtp,
            strerror(errno));
     if (NULL != reqtp)
-      printf("request time  is:(%d s, %d ns). ", reqtp->tv_sec, reqtp->tv_nsec);
+      printf("request time  is:(%ld s, %ld ns). ", reqtp->tv_sec,
+             reqtp->tv_nsec);
     else
       printf("request time is NULL. ");
     if (NULL != remtp)
-      printf("remain time  is:(%d s, %d ns)\n", remtp->tv_sec, remtp->tv_nsec);
+      printf("remain time  is:(%ld s, %ld ns)\n", remtp->tv_sec,
+             remtp->tv_nsec);
     else
       printf("remain time is NULL\n");
   } else {
     printf("nanosleep(%p,%p) is finished, request time is:", reqtp, remtp);
     if (NULL != reqtp)
-      printf("request time  is:(%d s, %d ns). ", reqtp->tv_sec, reqtp->tv_nsec);
+      printf("request time  is:(%ld s, %ld ns). ", reqtp->tv_sec,
+             reqtp->tv_nsec);
     else
       printf("request time is NULL. ");
   }
@@ -62,11 +66,13 @@ int My_clock_nanosleep(clockid_t clock_id, int flags,
     printf("clock_nanosleep(%d,%d,%p,%p) failed,because %s\n", clock_id, flags,
            reqtp, remtp, strerror(errno));
     if (NULL != reqtp)
-      printf("request time  is:(%d s, %d ns). ", reqtp->tv_sec, reqtp->tv_nsec);
+      printf("request time  is:(%ld s, %ld ns). ", reqtp->tv_sec,
+             reqtp->tv_nsec);
     else
       printf("request time is NULL. ");
     if (NULL != remtp)
-      printf("remain time  is:(%d s, %d ns)\n", remtp->tv_sec, remtp->tv_nsec);
+      printf("remain time  is:(%ld s, %ld ns)\n", remtp->tv_sec,
+             remtp->tv_nsec);
     else
       printf("remain time is NULL\n");
   } else {
@@ -74,7 +80,8 @@ int My_clock_nanosleep(clockid_t clock_id, int flags,
            clock_id, flags, reqtp, remtp);
     printf("nanosleep(%p,%p) is finished, request time is:", reqtp, remtp);
     if (NULL != reqtp)
-      printf("request time  is:(%d s, %d ns). ", reqtp->tv_sec, reqtp->tv_nsec);
+      printf("request time  is:(%ld s, %ld ns). ", reqtp->tv_sec,
+             reqtp->tv_nsec);
     else
       printf("request time is NULL. ");
   }

@@ -11,7 +11,7 @@
  */
 #ifndef ACCESS_UMASK
 #define ACCESS_UMASK
-#include<sys/stat.h>
+#include <sys/stat.h>
 
 /*!
  * \brief My_access : 包装了 access 函数
@@ -19,7 +19,7 @@
  * \param mode : 传递给 access 函数的 mode  参数
  * \return : 返回 access 函数的值
  */
-int My_access(const char *pathname,int mode);
+int My_access(const char *pathname, int mode);
 /*!
  * \brief My_umask : 包装了 umask 函数
  * \param cmask : 传递给 umask 函数的 cmask  参数
@@ -32,4 +32,3 @@ mode_t My_umask(mode_t cmask);
 void test_access_umask();
 
 #endif // ACCESS_UMASK
-

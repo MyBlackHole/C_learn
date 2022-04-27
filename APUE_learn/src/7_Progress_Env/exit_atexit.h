@@ -21,4 +21,3 @@ void add_atexit();
  */
 void test_exit_atexit();
 #endif // EXIT_ATEXIT
-

@@ -16,6 +16,4 @@
  */
 void test_fork();
 
-
 #endif // FORK_
-

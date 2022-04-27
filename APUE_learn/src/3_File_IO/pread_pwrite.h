@@ -11,8 +11,8 @@
  */
 #ifndef PREAD_PWRITE
 #define PREAD_PWRITE
-#include"../header.h"
-#include<unistd.h>
+#include "../header.h"
+#include <unistd.h>
 /*!
  * \brief My_pread :  pread 函数的包装函数
  * \param fd : 传递给 pread 函数的 fd 参数
@@ -21,7 +21,7 @@
  * \param offset : 传递给 pread 函数的 offset 参数
  * \return : 返回 pread 函数的值
  */
-ssize_t My_pread(int fd,void*buf,size_t nbytes,off_t offset);
+ssize_t My_pread(int fd, void *buf, size_t nbytes, off_t offset);
 /*!
  * \brief My_pwrite :  pwrite 函数的包装函数
  * \param fd : 传递给 pwrite 函数的 fd 参数
@@ -30,7 +30,7 @@ ssize_t My_pread(int fd,void*buf,size_t nbytes,off_t offset);
  * \param offset  : 传递给 pwrite 函数的 offset 参数
  * \return : 返回 pwrite 函数的值
  */
-ssize_t My_pwrite(int fd,const void*buf,size_t nbytes,off_t offset);
+ssize_t My_pwrite(int fd, const void *buf, size_t nbytes, off_t offset);
 
 /*!
  * \brief print_current_offset : 打印文件的当前偏移量
@@ -44,4 +44,3 @@ void print_current_offset(int fd);
  */
 void test_pread_pwrite();
 #endif // PREAD_PWRITE
-

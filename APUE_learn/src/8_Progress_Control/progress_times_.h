@@ -11,7 +11,7 @@
  */
 #ifndef PROGRESS_TIMES_
 #define PROGRESS_TIMES_
-#include<sys/times.h>
+#include <sys/times.h>
 
 /*!
  * \brief My_times : 包装了 times 函数
@@ -30,11 +30,10 @@ long clock_2_second(clock_t clk);
  * \brief print_tms ： 打印 struct tms 结构
  * \param tm : struct ms 的指针
  */
-void print_struct_tms(const struct tms*tm);
+void print_struct_tms(const struct tms *tm);
 
 /*!
  * \brief test_times : 测试 times 函数
  */
 void test_progress_times();
 #endif // PROGRESS_TIMES_
-

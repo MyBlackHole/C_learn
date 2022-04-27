@@ -11,7 +11,7 @@
  */
 #ifndef KILL_RAISE
 #define KILL_RAISE
-#include<signal.h>
+#include <signal.h>
 
 /*!
  * \brief My_kill : 包装了 kill 函数
@@ -19,7 +19,7 @@
  * \param signo : 传递给 kill 函数的 signo 参数
  * \return : 返回 kill 函数的值
  */
-int My_kill(pid_t pid,int signo);
+int My_kill(pid_t pid, int signo);
 /*!
  * \brief My_raise : 包装了 raise 函数
  * \param signo : 传递给 raise 函数的 signo 参数
@@ -32,4 +32,3 @@ int My_raise(int signo);
  */
 void test_kill_raise();
 #endif // KILL_RAISE
-

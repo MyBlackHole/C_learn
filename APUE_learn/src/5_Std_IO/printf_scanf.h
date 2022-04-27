@@ -16,7 +16,6 @@
 #ifndef PRINTF_SCANF
 #define PRINTF_SCANF
 
-
 /*!
  * \brief _test_printf : 测试 printf 函数
  */
@@ -39,4 +38,3 @@ void _test_sscanf();
 void test_printf_scanf();
 
 #endif // PRINTF_SCANF
-

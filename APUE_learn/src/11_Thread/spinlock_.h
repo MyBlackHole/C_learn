@@ -11,7 +11,7 @@
  */
 #ifndef SPINLOCK_
 #define SPINLOCK_
-#include<pthread.h>
+#include <pthread.h>
 
 /*!
  * \brief My_pthread_spin_init : 包装了 pthread_spin_init 函数
@@ -19,7 +19,7 @@
  * \param pshared : 传递给 pthread_spin_init 函数的 pshared 参数
  * \return : 返回 pthread_spin_init 函数的值
  */
-int My_pthread_spin_init(pthread_spinlock_t *lock,int pshared);
+int My_pthread_spin_init(pthread_spinlock_t *lock, int pshared);
 /*!
  * \brief My_pthread_spin_destroy : 包装了 pthread_spin_destroy 函数
  * \param lock : 传递给 pthread_spin_destroy 函数的 lock 参数
@@ -50,4 +50,3 @@ int My_pthread_spin_unlock(pthread_spinlock_t *lock);
  */
 void test_spinlock();
 #endif // SPINLOCK_
-
