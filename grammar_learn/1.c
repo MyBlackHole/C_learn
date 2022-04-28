@@ -151,7 +151,29 @@ void func15() {
   printf("%ld\n", tv.tv_sec ^ tv.tv_usec ^ getpid());
 }
 
+void func16() { printf("%ld\n", sizeof(double)); }
+
+void func17() {
+  int a;
+  double x = 1.1, y = 3.2;
+  a = x + y;
+  printf("%d\n", a);
+}
+
+void func18() {
+  int x = 1, z = 1;
+  printf("%d\n", (++x + z++));
+}
+
+void func19() {
+  char *s = "abckd";
+  printf("%s\n", (s + 3));
+}
+
 int main() {
-  func15();
+  func17();
+  // const int a = 0;
+  // char c = 'A';
+  // printf("111%d\n", a++);
   exit(0);
 }
