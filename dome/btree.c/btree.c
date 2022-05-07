@@ -35,6 +35,7 @@ struct node {
   char unused[sizeof(void *) - 3]; // explicit padding
   // 指向 node * 与 用户数据内存的指针
   char *items;
+  // 子结点数组
   struct node *children[];
 };
 
@@ -106,7 +107,9 @@ struct btree {
   char unused[sizeof(void *) - 1]; // explicit padding
   // 树高度
   size_t height;
+  // 最大节点数
   size_t max_items;
+  // 最小节点数
   size_t min_items;
   // 用户数据大小
   size_t elsize;
@@ -115,6 +118,7 @@ struct btree {
   struct node *lnode; // last load node
 };
 
+// 比对
 static int btcompare(struct btree *btree, const void *a, const void *b) {
   return btree->_compare(a, b, btree->udata);
 }
@@ -259,7 +263,7 @@ static void node_join(size_t elsize, struct node *left, struct node *right) {
   left->num_items += right->num_items;
 }
 
-// 节点右移
+// 节点与用户数据右移
 static void node_shift_right(size_t elsize, struct node *node, size_t index) {
   memmove(node->items + elsize * (index + 1), node->items + elsize * index,
           ((size_t)node->num_items - index) * elsize);
@@ -270,7 +274,7 @@ static void node_shift_right(size_t elsize, struct node *node, size_t index) {
   node->num_items++;
 }
 
-// 节点左移
+// 节点与用户数据左移
 static void node_shift_left(size_t elsize, struct node *node, size_t index,
                             bool for_merge) {
   memmove(node->items + elsize * index, node->items + elsize * (index + 1),
@@ -389,11 +393,14 @@ static void reset_load_fields(struct btree *btree) {
 }
 
 // btree_height returns the height of the btree.
+// 获取 B 树的树高
 size_t btree_height(struct btree *btree) { return btree->height; }
 
 // btree_count returns the number of items in the btree.
+// 获取 B 树的节点数量
 size_t btree_count(struct btree *btree) { return btree->count; }
 
+// 节点分裂
 static void node_split(struct btree *btree, struct node *node,
                        struct node **right, void **median, bool lean_left) {
   int mid;
@@ -424,6 +431,8 @@ static void node_split(struct btree *btree, struct node *node,
   node->num_items = (short)mid;
 }
 
+// 查找 node 的 子节点, 返回下标
+// found: 是否找到节点
 static int node_find(struct btree *btree, struct node *node, void *key,
                      bool *found, uint64_t *hint, int depth) {
   int low = 0;
@@ -438,6 +447,7 @@ static int node_find(struct btree *btree, struct node *node, void *key,
       int cmp = btcompare(btree, key, item);
       if (cmp == 0) {
         *found = true;
+        // 找到了
         return index;
       }
       if (cmp > 0) {
@@ -472,28 +482,40 @@ done:
   return index;
 }
 
+// 设置节点
 static bool node_set(struct btree *btree, struct node *node, void *item,
                      bool lean_left, uint64_t *hint, int depth) {
+  // 查找状态
   bool found = false;
   int i = node_find(btree, node, item, &found, hint, depth);
   if (found) {
+    // 已存在
     swap_item_at(btree->elsize, node, (size_t)i, item, btree->spares[0]);
     return true;
   }
+
   if (node->leaf) {
+    // 是叶子节点直接赋值
     node_shift_right(btree->elsize, node, (size_t)i);
     set_item_at(btree->elsize, node, (size_t)i, item);
     return false;
   }
+
+  // 递归往下找
   if (node_set(btree, node->children[i], item, lean_left, hint, depth + 1)) {
     return true;
   }
+
   if ((size_t)node->children[i]->num_items == (btree->max_items - 1)) {
     void *median = NULL;
     struct node *right = NULL;
     node_split(btree, node->children[i], &right, &median, lean_left);
+
+    // 移动然后赋值
     node_shift_right(btree->elsize, node, (size_t)i);
     set_item_at(btree->elsize, node, (size_t)i, median);
+
+    // 设置指向的子节点
     node->children[i + 1] = right;
   }
   return false;
@@ -526,6 +548,7 @@ static void *btree_set_x(struct btree *btree, void *item, bool lean_left,
     return NULL;
   }
 
+  // 根不为空
   if (node_set(btree, btree->root, item, lean_left, hint, 0)) {
     return btree->spares[0];
   }
