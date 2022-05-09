@@ -5,9 +5,11 @@ int main(int argc, char *argv[]) {
   int cfd1, cfd2;
   char str1[] = "Hi~ \n";
   char str2[] = "It's nice day~ \n";
-
-  cfd1 = dup(1);        //复制文件描述符 1
-  cfd2 = dup2(cfd1, 7); //再次复制文件描述符,定为数值 7
+  //复制文件描述符 1
+  cfd1 = dup(1);
+  // 再次复制文件描述符,定为数值 7
+  // 7 重定向到 cfd1
+  cfd2 = dup2(cfd1, 7);
 
   printf("fd1=%d , fd2=%d \n", cfd1, cfd2);
   write(cfd1, str1, sizeof(str1));

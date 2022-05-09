@@ -1,3 +1,11 @@
+
+executable("gethostname_test") {
+  cflags = ["-g"]
+  sources = [
+    "gethostname_test.c",
+  ]
+}
+
 executable("ftruncate_test") {
   cflags = ["-g"]
   sources = [
