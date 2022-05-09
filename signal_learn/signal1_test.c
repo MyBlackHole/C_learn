@@ -11,7 +11,8 @@ static void pr_ids(char *name) {
   //分别获取进程组id父进程id，进程组id前台进程组id
   printf("%s :pid =%ld,ppid=%ld,pgid=%ld,tpgrp=%ld\n", name, (long)getpid(),
          (long)getppid(), (long)getpgrp(), (long)tcgetpgrp(STDIN_FILENO));
-  fflush(stdout); //刷新缓冲区
+  //刷新缓冲区
+  fflush(stdout);
 }
 
 int main(void) {

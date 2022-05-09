@@ -1,4 +1,5 @@
 executable("readdir_test") {
+  cflags = ["-g"]
   sources = [
     "readdir_test.c",
   ]

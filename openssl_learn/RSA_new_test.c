@@ -49,7 +49,7 @@ void creat_key() {
   **对RSA结构的RSA私钥进行PEM格式的写处理——————私钥
   *****/
   int ret = PEM_write_bio_RSAPrivateKey(out, r, NULL, NULL, 0, NULL, NULL);
-  printf("私钥:%d\n",ret) ;
+  printf("私钥:%d\n", ret);
 
   /***
   **函数原型是一个宏函数
@@ -62,7 +62,7 @@ void creat_key() {
   out = BIO_new_file("./public_key.txt", "wr");
   //写入公钥
   ret = PEM_write_bio_RSAPublicKey(out, r);
-  printf("公钥:%d\n",ret) ;
+  printf("公钥:%d\n", ret);
   BIO_flush(out);
   BIO_free(out);
 
@@ -103,8 +103,9 @@ char *pub_encryption(char *str, char *pubkey_path) {
   memset(en, 0, rsa_len + 1);
 
   // RSA_public_encrypt-->加解密函数
-  // 函数原型：int RSA_public_encrypt(intflen, const unsigned char *from, unsigned 
-  // har *to, RSA *rsa,int padding); 参数1：密钥长度          参数2：        参数3:为加密后内容申请的空间 参数
+  // 函数原型：int RSA_public_encrypt(intflen, const unsigned char *from,
+  // unsigned har *to, RSA *rsa,int padding); 参数1：密钥长度          参数2：
+  // 参数3:为加密后内容申请的空间 参数
   //    参数5:有三种模式
   if (RSA_public_encrypt(rsa_len, (unsigned char *)str, (unsigned char *)en,
                          rsa, RSA_NO_PADDING) < 0) {
