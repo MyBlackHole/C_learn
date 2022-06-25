@@ -6,6 +6,14 @@ executable("splice1_test") {
   ]
 }
 
+executable("fcntl_F_WRLCK_test") {
+  cflags = ["-g"]
+
+  sources = [
+    "fcntl_F_WRLCK_test.c",
+  ]
+}
+
 executable("splice_test") {
   cflags = ["-g"]
 

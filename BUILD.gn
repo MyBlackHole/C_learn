@@ -367,6 +367,7 @@ group("default"){
     "//signal_learn:SIG_IGN_test",
     "//signal_learn:SIGFPE_test",
 
+    "//fcntl_learn:fcntl_F_WRLCK_test",
     "//fcntl_learn:splice1_test",
     "//fcntl_learn:splice_test",
     "//fcntl_learn:file_flags",
