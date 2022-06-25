@@ -1,9 +1,0 @@
-#!/bin/sh
-
-set -e
-
-echo "CuteReport configuring..."
-
-cutereport_cli --init
-
-echo "done."

@@ -1,6 +1,0 @@
-FILE=title.h
-DESTFILE=titlescripting.h
-HEADER=../../_script_template/header_simple.tmpl
-ENUMSECTION=../../_script_template/enumsection.tmpl
-CLASSNAME=Title
-OBJECTNAME=Title

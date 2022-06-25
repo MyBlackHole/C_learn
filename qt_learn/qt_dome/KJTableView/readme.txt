@@ -1,1 +1,0 @@
-Customize QTableView to show control with reuseable widgets

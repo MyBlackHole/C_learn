@@ -1,0 +1,16 @@
+executable("rbtree_test") {
+  cflags = ["-g"]
+  deps = [":rbtree"]
+  sources = [
+    "rbtree_test.c",
+  ]
+}
+
+static_library("rbtree") {
+  cflags = ["-g"]
+  sources = [
+    "rbtree.c",
+    "rbtree.h",
+  ]
+}
+

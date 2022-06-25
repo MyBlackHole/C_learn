@@ -1,6 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file>Resource/3.wav</file>
-        <file>Resource/4.wav</file>
-    </qresource>
-</RCC>

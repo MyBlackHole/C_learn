@@ -1,6 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file>favourite.png</file>
-        <file>no-favourite.png</file>
-    </qresource>
-</RCC>

@@ -1,8 +1,10 @@
 executable("simpleclient") {
+  cflags = ["-g"]
   sources = ["simpleclient.c"]
 }
 
 executable("httpd") {
+  cflags = ["-g"]
   sources = ["httpd.c"]
 }
 

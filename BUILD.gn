@@ -1,5 +1,10 @@
 group("default"){
   deps = [
+    "//APUE_learn/src:tcgetpgrp_tcsetpgrp",
+
+    # "//dome/twemproxy:nc_conf",
+    # "//dome/twemproxy/src/hashkit:nc_hashkit",
+
     "//liburing_learn:io_uring_test",
 
     # "//dome/remixdb:xdbdemo",
@@ -10,6 +15,10 @@ group("default"){
     # "//dome/remixdb:kv",
     # "//dome/remixdb:blkio",
 
+    "//dome/btree.c:test",
+
+    "//dome/rbtree:rbtree_test",
+    "//dome/config_parse:sds_test",
     "//dome/config_parse:main",
 
     "//dome/thread_pool:threadPoll_Main",
@@ -32,7 +41,7 @@ group("default"){
 
     "//execinfo_learn:backtrace_test",
 
-    "//redis_learn:redis",
+    # "//redis_learn:redis",
 
     "//openssl_learn:SHA1_test",
     "//openssl_learn:AES_cbc_encrypt_test",
@@ -70,8 +79,9 @@ group("default"){
 
     "//dome/asyn_network:main",
 
+    "//DataStruct_learn/hash/simhash:test",
+    "//DataStruct_learn/hash/hash_list:test",
     "//DataStruct_learn/List/Dlisthash:test",
-    "//DataStruct_learn/hash:test",
     "//DataStruct_learn/List/skiplist:skiplist_test",
     "//DataStruct_learn/Tree/trie:test",
     "//DataStruct_learn/Tree/lsm-trie:mixed_test",
@@ -158,6 +168,7 @@ group("default"){
 
     "//glob_learn:glob_test",
 
+    "//sys_socket_learn:AF_LOCAL_test",
     "//sys_socket_learn:getsockopt_test",
     "//sys_socket_learn:sendmsg_test",
     "//sys_socket_learn:socketpair_test",
@@ -289,6 +300,7 @@ group("default"){
     "//stdlib_learn:malloc_test",
     "//stdlib_learn:realloc_test",
 
+    "//unistd_learn:gethostname_test",
     "//unistd_learn:ftruncate_test",
     "//unistd_learn:pathconf_test",
     "//unistd_learn:getcwd_test",

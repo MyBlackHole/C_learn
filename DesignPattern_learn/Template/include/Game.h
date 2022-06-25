@@ -18,15 +18,15 @@ extern "C" {
 
 typedef struct Game Game;
 
-Game* game_create_cricket(void);
+Game *game_create_cricket(void);
 
-Game* game_create_football(void);
+Game *game_create_football(void);
 
-void game_destroy(Game** game);
+void game_destroy(Game **game);
 
-void game_play(Game* game);
+void game_play(Game *game);
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // GAME_H_
+#endif // GAME_H_

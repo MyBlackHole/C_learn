@@ -1,1 +1,0 @@
-doxygen QPropertyEditor.dxy

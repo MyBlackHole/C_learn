@@ -1,7 +1,0 @@
-<RCC>
-    <qresource prefix="/icon">
-        <file>texture.png</file>
-        <file>background.png</file>
-        <file>stripe.png</file>
-    </qresource>
-</RCC>

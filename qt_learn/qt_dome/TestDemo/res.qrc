@@ -1,8 +1,0 @@
-<RCC>
-    <qresource prefix="/images">
-        <file>green_keyboard03.png</file>
-        <file>blue_keyboard03.png</file>
-        <file>darkblue_keyboard03.png</file>
-        <file>orange_keyboard03.png</file>
-    </qresource>
-</RCC>

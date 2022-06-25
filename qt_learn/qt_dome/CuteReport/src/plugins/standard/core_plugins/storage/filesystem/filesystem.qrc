@@ -1,5 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file>urlHints.txt</file>
-    </qresource>
-</RCC>

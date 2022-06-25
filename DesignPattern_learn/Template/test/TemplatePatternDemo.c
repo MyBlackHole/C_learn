@@ -13,15 +13,15 @@
 
 #include "Game.h"
 
-int main(int argc, char const* argv[]) {
-    Game* game = game_create_cricket();
-    game_play(game);
-    game_destroy(&game);
-    printf("\n");
+int main(int argc, char const *argv[]) {
+  Game *game = game_create_cricket();
+  game_play(game);
+  game_destroy(&game);
+  printf("\n");
 
-    game = game_create_football();
-    game_play(game);
-    game_destroy(&game);
+  game = game_create_football();
+  game_play(game);
+  game_destroy(&game);
 
-    return 0;
+  return 0;
 }

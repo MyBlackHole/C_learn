@@ -1,11 +1,13 @@
 executable("BusinessDelegatePatternDemo") {
   sources = [ "test/BusinessDelegatePatternDemo.c" ]
+  cflags = ["-g"]
   deps = [":BusinessDelegatePattern"]
   include_dirs = ["include"]
 }
 
 static_library("BusinessDelegatePattern") {
   include_dirs = ["include"]
+  cflags = ["-g"]
 
   sources = [
     "src/BusinessDelegate.c",

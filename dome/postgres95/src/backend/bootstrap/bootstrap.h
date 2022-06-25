@@ -13,28 +13,28 @@
 #ifndef BOOTSTRAP_H
 #define BOOTSTRAP_H
 
-#include <sys/file.h>
+#include <ctype.h>
+#include <signal.h>
 #include <stdio.h>
 #include <string.h>
-#include <signal.h>
-#include <ctype.h>
+#include <sys/file.h>
 
 #include "access/htup.h"
 #include "access/itup.h"
 #include "access/relscan.h"
 #include "access/skey.h"
-#include "utils/tqual.h"
 #include "storage/buf.h"
-#include "storage/bufmgr.h"	/* for BufferManagerFlush */
-#include "utils/portal.h"
+#include "storage/bufmgr.h" /* for BufferManagerFlush */
 #include "utils/elog.h"
+#include "utils/portal.h"
 #include "utils/rel.h"
+#include "utils/tqual.h"
 
-#define	MAXATTR 40		/* max. number of attributes in a relation */
+#define MAXATTR 40 /* max. number of attributes in a relation */
 
 typedef struct hashnode {
-    int		strnum;		/* Index into string table */
-    struct hashnode	*next;
+  int strnum; /* Index into string table */
+  struct hashnode *next;
 } hashnode;
 
 #define EMITPROMPT printf("> ")
@@ -45,14 +45,9 @@ extern int numattr;
 extern int DebugMode;
 
 extern int BootstrapMain(int ac, char *av[]);
-extern void index_register(char *heap,
-			   char *ind,
-			   int natts,
-			   AttrNumber *attnos,
-			   uint16 nparams,
-			   Datum *params,
-			   FuncIndexInfo *finfo,
-			   PredInfo *predInfo);
+extern void index_register(char *heap, char *ind, int natts, AttrNumber *attnos,
+                           uint16 nparams, Datum *params, FuncIndexInfo *finfo,
+                           PredInfo *predInfo);
 
 extern void err(void);
 extern void InsertOneTuple(Oid objectid);
@@ -67,11 +62,11 @@ extern bool BootstrapAlreadySeen(Oid id);
 extern void cleanup(void);
 extern int gettype(char *type);
 extern AttributeTupleForm AllocateAttribute(void);
-extern char* MapArrayTypeName(char *s);
-extern char* CleanUpStr(char *s);
-extern int EnterString (char *str);
-extern int CompHash (char *str, int len);
-extern hashnode *FindStr (char *str, int length, hashnode *mderef);
+extern char *MapArrayTypeName(char *s);
+extern char *CleanUpStr(char *s);
+extern int EnterString(char *str);
+extern int CompHash(char *str, int len);
+extern hashnode *FindStr(char *str, int length, hashnode *mderef);
 extern hashnode *AddStr(char *str, int strlength, int mderef);
 extern void build_indices(void);
 
