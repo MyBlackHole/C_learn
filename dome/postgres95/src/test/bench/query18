@@ -1,4 +1,0 @@
-select two, four, ten, twenty, hundred, string4 into table temp from tenk1;
-drop table temp;
-select two, four, ten, twenty, hundred, string4 into table temp from tenk1;
-drop table temp;
