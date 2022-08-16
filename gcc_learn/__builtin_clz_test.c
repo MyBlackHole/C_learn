@@ -1,6 +1,5 @@
 #include <stdio.h>
 
-
 /* 返回前面引导位0 的个数，如果a=0 的话， 不确定*/
 int clz(unsigned int a) { return __builtin_clz(a); }
 
