@@ -1,28 +1,33 @@
 executable("hello_server") {
+  cflags = ["-g"]
   sources = [
     "hello_server.c",
   ]
 }
 
 executable("hello_client") {
+  cflags = ["-g"]
   sources = [
     "hello_client.c",
   ]
 }
 
 executable("low_read") {
+  cflags = ["-g"]
   sources = [
     "low_read.c",
   ]
 }
 
 executable("low_open") {
+  cflags = ["-g"]
   sources = [
     "low_open.c",
   ]
 }
 
 executable("fd_seri") {
+  cflags = ["-g"]
   sources = [
     "fd_seri.c",
   ]

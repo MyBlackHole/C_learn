@@ -1,5 +1,8 @@
 
 /* Example: parse a simple configuration file */
+/*
+ * git@github.com:benhoyt/inih.git
+ */
 
 #include <ini.h>
 #include <stdio.h>

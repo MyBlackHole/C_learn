@@ -1,4 +1,5 @@
 executable("uname_test") {
+  cflags = ["-g"]
   sources = [
     "uname_test.c",
   ]

@@ -1,4 +1,5 @@
 executable("waitpid_test") {
+  cflags = ["-g"]
   sources = [
     "waitpid_test.c",
   ]

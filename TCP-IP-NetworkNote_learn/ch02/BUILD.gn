@@ -1,16 +1,19 @@
 executable("tcp_NONBLACK_server") {
+  cflags = ["-g"]
   sources = [
     "tcp_NONBLACK_server.c",
   ]
 }
 
 executable("tcp_server") {
+  cflags = ["-g"]
   sources = [
     "tcp_server.c",
   ]
 }
 
 executable("tcp_client") {
+  cflags = ["-g"]
   sources = [
     "tcp_client.c",
   ]
