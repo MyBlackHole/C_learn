@@ -1,5 +1,5 @@
 executable("mixed_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   ldflags = ["-lcrypto"]
   deps = [":conc", ":db", ":generator", ":debug", ":bloom", ":cmap", ":rwlock"]
   sources = [
@@ -8,7 +8,7 @@ executable("mixed_test") {
 }
 
 static_library("db") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "db.c",
     "db.h",
@@ -17,7 +17,7 @@ static_library("db") {
 
 
 executable("cm_util") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   deps = [":cmap", ":generator"]
   sources = [
     "cm_util.c",
@@ -25,7 +25,7 @@ executable("cm_util") {
 }
 
 executable("cmap_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   deps =  [":coding", ":table", ":cmap", ":generator"]
   sources = [
     "cmap_test.c",
@@ -33,7 +33,7 @@ executable("cmap_test") {
 }
 
 static_library("cmap") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "cmap.c",
     "cmap.h",
@@ -41,7 +41,7 @@ static_library("cmap") {
 }
 
 executable("table_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   ldflags = ["-lcrypto"]
   deps = [":table", ":debug", ":generator", ":stat", ":bloom", ":coding", ":mempool"]
   sources = [
@@ -50,7 +50,7 @@ executable("table_test") {
 }
 
 executable("coding_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   deps = [":coding"]
   sources = [
     "coding_test.c",
@@ -58,7 +58,7 @@ executable("coding_test") {
 }
 
 executable("bloom_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   ldflags = ["-lcrypto"]
   deps = [":bloom", ":mempool", ":debug", ":generator"]
   sources = [
@@ -67,7 +67,7 @@ executable("bloom_test") {
 }
 
 static_library("coding") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "coding.c",
     "coding.h",
@@ -76,7 +76,7 @@ static_library("coding") {
 
 
 static_library("bloom") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   deps = [":table", ":mempool", ":stat", ":conc", ":coding"]
   sources = [
     "bloom.c",
@@ -85,7 +85,7 @@ static_library("bloom") {
 }
 
 static_library("conc") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "conc.c",
     "conc.h",
@@ -93,7 +93,7 @@ static_library("conc") {
 }
 
 static_library("table") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "table.c",
     "table.h",
@@ -101,7 +101,7 @@ static_library("table") {
 }
 
 executable("mempool_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   deps = [":mempool"]
   sources = [
     "mempool_test.c",
@@ -109,7 +109,7 @@ executable("mempool_test") {
 }
 
 static_library("mempool") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "mempool.c",
     "mempool.h",
@@ -117,7 +117,7 @@ static_library("mempool") {
 }
 
 executable("io_util") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   deps = [":generator", ":stat", ":debug"]
   sources = [
     "io_util.c",
@@ -125,7 +125,7 @@ executable("io_util") {
 }
 
 static_library("stat") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "stat.c",
     "stat.h",
@@ -133,7 +133,7 @@ static_library("stat") {
 }
 
 executable("generator_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   deps = [":generator", ":debug"]
   sources = [
     "generator_test.c",
@@ -141,7 +141,7 @@ executable("generator_test") {
 }
 
 static_library("generator") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "generator.c",
     "generator.h",
@@ -149,7 +149,7 @@ static_library("generator") {
 }
 
 executable("debug_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   deps = [":debug"]
   sources = [
     "debug_test.c",
@@ -157,7 +157,7 @@ executable("debug_test") {
 }
 
 static_library("debug") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "debug.c",
     "debug.h",
@@ -165,7 +165,7 @@ static_library("debug") {
 }
 
 executable("rwlock_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   deps = [":rwlock"]
   sources = [
     "rwlock_test.c",
@@ -173,7 +173,7 @@ executable("rwlock_test") {
 }
 
 static_library("rwlock") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "rwlock.c",
     "rwlock.h",

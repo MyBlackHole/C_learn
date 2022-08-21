@@ -1,6 +1,6 @@
 executable("test") {
   
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   deps = [":dynamic_array"]
   sources = [
@@ -10,7 +10,7 @@ executable("test") {
 
 static_library("dynamic_array") {
 
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [
     "dynamic_array.c",

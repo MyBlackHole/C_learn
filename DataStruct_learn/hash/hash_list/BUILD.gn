@@ -1,5 +1,5 @@
 executable("test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   deps = [":hash_set"]
   sources = [
     "test.c",
@@ -7,7 +7,7 @@ executable("test") {
 }
 
 static_library("hash_set") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "hash_set.c",
     "hash_set.h",

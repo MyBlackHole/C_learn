@@ -1,5 +1,5 @@
 executable("backtrace_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "backtrace_test.c",
   ]

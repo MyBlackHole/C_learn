@@ -1,5 +1,5 @@
 executable("splice1_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [
     "splice1_test.c",
@@ -7,7 +7,7 @@ executable("splice1_test") {
 }
 
 executable("fcntl_F_WRLCK_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [
     "fcntl_F_WRLCK_test.c",
@@ -15,7 +15,7 @@ executable("fcntl_F_WRLCK_test") {
 }
 
 executable("splice_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [
     "splice_test.c",
@@ -23,7 +23,7 @@ executable("splice_test") {
 }
 
 executable("file_flags") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [
     "file_flags.c",
@@ -31,7 +31,7 @@ executable("file_flags") {
 }
 
 executable("open_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [
     "open_test.c",
@@ -39,7 +39,7 @@ executable("open_test") {
 }
 
 executable("creat_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [
     "creat_test.c",
@@ -47,7 +47,7 @@ executable("creat_test") {
 }
 
 executable("fcntl_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [
     "fcntl_test.c",

@@ -1,40 +1,40 @@
 executable("raise_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = ["raise_test.c"]
 }
 
 executable("sigprocmask_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = ["sigprocmask_test.c"]
 }
 
 executable("kill_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = ["kill_test.c"]
 }
 
 executable("sigemptyset_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = ["sigemptyset_test.c"]
 }
 
 executable("signal4_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = ["signal4_test.c"]
 }
 
 executable("SIGFPE_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = ["SIGFPE_test.c"]
 }
 
 executable("SIG_IGN_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = ["SIG_IGN_test.c"]
 }
 
 executable("signal3_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [
     "signal3_test.c",
@@ -42,7 +42,7 @@ executable("signal3_test") {
 }
 
 executable("signal2_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [
     "signal2_test.c",
@@ -50,7 +50,7 @@ executable("signal2_test") {
 }
 
 executable("sigaction_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [
     "sigaction_test.c",
@@ -58,7 +58,7 @@ executable("sigaction_test") {
 }
 
 executable("signal1_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [
     "signal1_test.c",
@@ -66,7 +66,7 @@ executable("signal1_test") {
 }
 
 executable("signal_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [
     "signal_test.c",

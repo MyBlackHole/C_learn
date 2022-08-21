@@ -1,5 +1,5 @@
 static_library("tools") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "tools.c",
@@ -10,7 +10,7 @@ static_library("tools") {
 
 static_library("abort_") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "10_Signal/abort_.c",
@@ -21,7 +21,7 @@ static_library("abort_") {
 
 static_library("alarm_") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "10_Signal/alarm_.c",
@@ -31,7 +31,7 @@ static_library("alarm_") {
 
 static_library("kill_raise") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "10_Signal/kill_raise.c",
@@ -41,7 +41,7 @@ static_library("kill_raise") {
 
 static_library("pause_") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "10_Signal/pause_.c",
@@ -51,7 +51,7 @@ static_library("pause_") {
 
 static_library("sigaction_") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "10_Signal/sigaction_.c",
@@ -61,7 +61,7 @@ static_library("sigaction_") {
 
 static_library("sigpending_") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "10_Signal/sigpending_.c",
@@ -71,7 +71,7 @@ static_library("sigpending_") {
 
 static_library("sigprocmask_sigset") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "10_Signal/sigprocmask_sigset.c",
@@ -81,7 +81,7 @@ static_library("sigprocmask_sigset") {
 
 static_library("sigsetjmp_siglongjmp") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "10_Signal/sigsetjmp_siglongjmp.c",
@@ -91,7 +91,7 @@ static_library("sigsetjmp_siglongjmp") {
 
 static_library("sigsuspend_") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "10_Signal/sigsuspend_.c",
@@ -101,7 +101,7 @@ static_library("sigsuspend_") {
 
 static_library("sleep_nanosleep") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "10_Signal/sleep_nanosleep.c",
@@ -111,7 +111,7 @@ static_library("sleep_nanosleep") {
 
 static_library("condition_") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "11_Thread/condition_.c",
@@ -121,7 +121,7 @@ static_library("condition_") {
 
 static_library("mutex_") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "11_Thread/mutex_.c",
@@ -131,7 +131,7 @@ static_library("mutex_") {
 
 static_library("rwlock_") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "11_Thread/rwlock_.c",
@@ -141,7 +141,7 @@ static_library("rwlock_") {
 
 static_library("spinlock_") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "11_Thread/spinlock_.c",
@@ -151,7 +151,7 @@ static_library("spinlock_") {
 
 static_library("thread_clean") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "11_Thread/thread_clean.c",
@@ -161,7 +161,7 @@ static_library("thread_clean") {
 
 static_library("thread_create") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "11_Thread/thread_create.c",
@@ -171,7 +171,7 @@ static_library("thread_create") {
 
 static_library("thread_detach") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "11_Thread/thread_detach.c",
@@ -181,7 +181,7 @@ static_library("thread_detach") {
 
 static_library("thread_join") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "11_Thread/thread_join.c",
@@ -191,7 +191,7 @@ static_library("thread_join") {
 
 static_library("thread_quit") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "11_Thread/thread_quit.c",
@@ -201,7 +201,7 @@ static_library("thread_quit") {
 
 static_library("strerror_perror") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "1_UNIX_Introduction/strerror_perror.c",
@@ -211,7 +211,7 @@ static_library("strerror_perror") {
 
 static_library("sysconf_pathconf") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "2_UNIX_Standard/sysconf_pathconf.c",
@@ -221,7 +221,7 @@ static_library("sysconf_pathconf") {
 
 static_library("dup_dup2") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "3_File_IO/dup_dup2.c",
@@ -231,7 +231,7 @@ static_library("dup_dup2") {
 
 static_library("fcntl_") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "3_File_IO/fcntl_.c",
@@ -241,7 +241,7 @@ static_library("fcntl_") {
 
 static_library("lseek_read_write") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "3_File_IO/lseek_read_write.c",
@@ -251,7 +251,7 @@ static_library("lseek_read_write") {
 
 static_library("open_creat") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "3_File_IO/open_creat.c",
@@ -261,7 +261,7 @@ static_library("open_creat") {
 
 static_library("pread_pwrite") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "3_File_IO/pread_pwrite.c",
@@ -271,7 +271,7 @@ static_library("pread_pwrite") {
 
 static_library("access_umask") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "4_File_Dir/access_umask.c",
@@ -281,7 +281,7 @@ static_library("access_umask") {
 
 static_library("chmod_chown") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "4_File_Dir/chmod_chown.c",
@@ -291,7 +291,7 @@ static_library("chmod_chown") {
 
 static_library("dir_operations") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "4_File_Dir/dir_operations.c",
@@ -301,7 +301,7 @@ static_library("dir_operations") {
 
 static_library("link_unlink") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "4_File_Dir/link_unlink.c",
@@ -311,7 +311,7 @@ static_library("link_unlink") {
 
 static_library("stat_lstat") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "4_File_Dir/stat_lstat.c",
@@ -321,7 +321,7 @@ static_library("stat_lstat") {
 
 static_library("symlink_readlink") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "4_File_Dir/symlink_readlink.c",
@@ -331,7 +331,7 @@ static_library("symlink_readlink") {
 
 static_library("truncate_size") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "4_File_Dir/truncate_size.c",
@@ -341,7 +341,7 @@ static_library("truncate_size") {
 
 static_library("utimes_") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "4_File_Dir/utimes_.c",
@@ -351,7 +351,7 @@ static_library("utimes_") {
 
 static_library("fmemopen_") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "5_Std_IO/fmemopen_.c",
@@ -361,7 +361,7 @@ static_library("fmemopen_") {
 
 static_library("fopen_fclose") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "5_Std_IO/fopen_fclose.c",
@@ -371,7 +371,7 @@ static_library("fopen_fclose") {
 
 static_library("get_put_seek") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "5_Std_IO/get_put_seek.c",
@@ -381,7 +381,7 @@ static_library("get_put_seek") {
 
 static_library("printf_scanf") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "5_Std_IO/printf_scanf.c",
@@ -391,7 +391,7 @@ static_library("printf_scanf") {
 
 static_library("tmpnam_mkdtemp") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "5_Std_IO/tmpnam_mkdtemp.c",
@@ -401,7 +401,7 @@ static_library("tmpnam_mkdtemp") {
 
 static_library("system_file") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "6_System_Info/system_file.c",
@@ -411,7 +411,7 @@ static_library("system_file") {
 
 static_library("times_") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "6_System_Info/times_.c",
@@ -421,7 +421,7 @@ static_library("times_") {
 
 static_library("exit_atexit") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "7_Progress_Env/exit_atexit.c",
@@ -431,7 +431,7 @@ static_library("exit_atexit") {
 
 static_library("getenv_setenv") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "7_Progress_Env/getenv_setenv.c",
@@ -441,7 +441,7 @@ static_library("getenv_setenv") {
 
 static_library("getrlimit_setrlimit") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "7_Progress_Env/getrlimit_setrlimit.c",
@@ -451,7 +451,7 @@ static_library("getrlimit_setrlimit") {
 
 static_library("malloc_realloc") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "7_Progress_Env/malloc_realloc.c",
@@ -461,7 +461,7 @@ static_library("malloc_realloc") {
 
 static_library("setjmp_longjmp") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "7_Progress_Env/setjmp_longjmp.c",
@@ -471,7 +471,7 @@ static_library("setjmp_longjmp") {
 
 static_library("exec_") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "8_Progress_Control/exec_.c",
@@ -481,7 +481,7 @@ static_library("exec_") {
 
 static_library("fork_") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "8_Progress_Control/fork_.c",
@@ -491,7 +491,7 @@ static_library("fork_") {
 
 static_library("getpriority_setpriority") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "8_Progress_Control/getpriority_setpriority.c",
@@ -501,7 +501,7 @@ static_library("getpriority_setpriority") {
 
 static_library("progress_id") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "8_Progress_Control/progress_id.c",
@@ -511,7 +511,7 @@ static_library("progress_id") {
 
 static_library("progress_times_") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "8_Progress_Control/progress_times_.c",
@@ -521,7 +521,7 @@ static_library("progress_times_") {
 
 static_library("setuid_seteuid") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "8_Progress_Control/setuid_seteuid.c",
@@ -531,7 +531,7 @@ static_library("setuid_seteuid") {
 
 static_library("system_") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "8_Progress_Control/system_.c",
@@ -541,7 +541,7 @@ static_library("system_") {
 
 static_library("vfork_") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "8_Progress_Control/vfork_.c",
@@ -551,7 +551,7 @@ static_library("vfork_") {
 
 static_library("wait_waitpid") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "8_Progress_Control/wait_waitpid.c",
@@ -561,7 +561,7 @@ static_library("wait_waitpid") {
 
 static_library("getpgrp_getpgid") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "9_Progress_Relation/getpgrp_getpgid.c",
@@ -571,7 +571,7 @@ static_library("getpgrp_getpgid") {
 
 static_library("getsid_setsid") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "9_Progress_Relation/getsid_setsid.c",
@@ -581,7 +581,7 @@ static_library("getsid_setsid") {
 
 static_library("setpgid_") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "9_Progress_Relation/setpgid_.c",
@@ -591,7 +591,7 @@ static_library("setpgid_") {
 
 static_library("tcgetpgrp_tcsetpgrp") {
   deps = [":tools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "9_Progress_Relation/tcgetpgrp_tcsetpgrp.c",

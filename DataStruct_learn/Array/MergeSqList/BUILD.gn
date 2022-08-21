@@ -1,6 +1,6 @@
 executable("MergeSqList-main") {
   include_dirs = ["//DataStruct_learn/Status"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   deps = [":MergeSqList"]
   sources = [
     "MergeSqList-main.c",
@@ -10,7 +10,7 @@ executable("MergeSqList-main") {
 static_library("MergeSqList") {
   deps = ["//DataStruct_learn/Status:Status"]
   include_dirs = ["//DataStruct_learn/Status"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "SqList.h",
     "SqList.c",

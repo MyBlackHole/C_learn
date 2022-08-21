@@ -1,5 +1,5 @@
 executable("strlen_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [
     "strlen_test.c",
@@ -7,7 +7,7 @@ executable("strlen_test") {
 }
 
 executable("strcoll_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [
     "strcoll_test.c",
@@ -15,7 +15,7 @@ executable("strcoll_test") {
 }
 
 executable("strstr_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [
     "strstr_test.c",
@@ -23,7 +23,7 @@ executable("strstr_test") {
 }
 
 executable("strtok_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [
     "strtok_test.c",
@@ -31,7 +31,7 @@ executable("strtok_test") {
 }
 
 executable("strcmp_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [
     "strcmp_test.c",
@@ -39,7 +39,7 @@ executable("strcmp_test") {
 }
 
 executable("strcat_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [
     "strcat_test.c",
@@ -47,7 +47,7 @@ executable("strcat_test") {
 }
 
 executable("strerror_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [
     "strerror_test.c",
@@ -55,7 +55,7 @@ executable("strerror_test") {
 }
 
 executable("memmove_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [
     "memmove_test.c",
@@ -63,7 +63,7 @@ executable("memmove_test") {
 }
 
 executable("memset_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [
     "memset_test.c",
@@ -72,7 +72,7 @@ executable("memset_test") {
 }
 
 executable("memcpy_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [
     "memcpy_test.c",

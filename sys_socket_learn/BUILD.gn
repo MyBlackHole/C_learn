@@ -1,20 +1,20 @@
 executable("getsockopt_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [ "getsockopt_test.c" ]
 }
 
 executable("sendmsg_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [ "sendmsg_test.c" ]
 }
 
 executable("socketpair_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [ "socketpair_test.c" ]
 }
 
 executable("AF_LOCAL_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [ "AF_LOCAL_test.c" ]
 }
 

@@ -1,19 +1,19 @@
 executable("tcp_NONBLACK_server") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "tcp_NONBLACK_server.c",
   ]
 }
 
 executable("tcp_server") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "tcp_server.c",
   ]
 }
 
 executable("tcp_client") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "tcp_client.c",
   ]

@@ -1,5 +1,5 @@
 executable("mtrace_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "mtrace_test.c",
   ]

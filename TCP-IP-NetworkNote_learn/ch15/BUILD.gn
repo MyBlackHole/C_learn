@@ -1,12 +1,12 @@
 executable("echo_client") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "echo_client.c",
   ]
 }
 
 executable("echo_stdserv") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "echo_stdserv.c",
   ]

@@ -1,5 +1,5 @@
 executable("test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   deps = [":btree"]
   sources = [
     "test.c",
@@ -7,7 +7,7 @@ executable("test") {
 }
 
 static_library("btree") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "btree.c",
     "btree.h",

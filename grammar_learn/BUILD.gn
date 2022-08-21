@@ -7,7 +7,7 @@ executable("define_test") {
 }
 
 executable("sizeof_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [
     "sizeof_test.c",
@@ -15,7 +15,7 @@ executable("sizeof_test") {
 }
 
 executable("static_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [
     "static_test.c",
@@ -23,7 +23,7 @@ executable("static_test") {
 }
 
 executable("pointer2_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [
     "pointer2_test.c",
@@ -31,7 +31,7 @@ executable("pointer2_test") {
 }
 
 executable("pointer1_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [
     "pointer1_test.c",
@@ -39,7 +39,7 @@ executable("pointer1_test") {
 }
 
 executable("pointer_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [
     "pointer_test.c",
@@ -47,63 +47,63 @@ executable("pointer_test") {
 }
 
 executable("bool_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "bool_test.c",
   ]
 }
 
 executable("argv_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "argv_test.c",
   ]
 }
 
 executable("struct_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "struct_test.c",
   ]
 }
 
 executable("1") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "1.c",
   ]
 }
 
 executable("long_int_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "long_int_test.c",
   ]
 }
 
 executable("do_while_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "do_while_test.c",
   ]
 }
 
 executable("continue_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "continue_test.c",
   ]
 }
 
 executable("union_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "union_test.c",
   ]
 }
 
 executable("2") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "2.c",
   ]

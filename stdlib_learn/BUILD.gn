@@ -1,89 +1,89 @@
 executable("aligned_alloc_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "aligned_alloc_test.c",
   ]
 }
 
 executable("qsort_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "qsort_test.c",
   ]
 }
 
 executable("srandom_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "srandom_test.c",
   ]
 }
 
 executable("setenv_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "setenv_test.c",
   ]
 }
 
 executable("WIFSIGNALED_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "WIFSIGNALED_test.c",
   ]
 }
 
 executable("WEXITSTATUS_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "WEXITSTATUS_test.c",
   ]
 }
 
 executable("WIFEXITED_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "WIFEXITED_test.c",
   ]
 }
 
 executable("free_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "free_test.c",
   ]
 }
 
 executable("atoi_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "atoi_test.c",
   ]
 }
 
 executable("realloc_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "realloc_test.c",
   ]
 }
 
 executable("malloc_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "malloc_test.c",
   ]
 }
 
 executable("calloc_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "calloc_test.c",
   ]
 }
 
 executable("srand_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [
     "srand_test.c",
@@ -91,7 +91,7 @@ executable("srand_test") {
 }
 
 executable("system3_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [
     "system3_test.c",
@@ -99,7 +99,7 @@ executable("system3_test") {
 }
 
 executable("system2_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [
     "system2_test.c",
@@ -107,7 +107,7 @@ executable("system2_test") {
 }
 
 executable("system_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [
     "system_test.c",
@@ -115,7 +115,7 @@ executable("system_test") {
 }
 
 executable("atexit_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [
     "atexit_test.c",
@@ -123,7 +123,7 @@ executable("atexit_test") {
 }
 
 executable("mkstemp_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [
     "mkstemp_test.c",
@@ -131,7 +131,7 @@ executable("mkstemp_test") {
 }
 
 executable("getenv_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [
     "getenv_test.c",

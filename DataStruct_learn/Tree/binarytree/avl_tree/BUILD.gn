@@ -1,5 +1,5 @@
 executable("test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   deps = [":avl_tree"]
   sources = [
     "test.c",
@@ -7,7 +7,7 @@ executable("test") {
 }
 
 static_library("avl_tree") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "avl_tree.c",
     "avl_tree.h",

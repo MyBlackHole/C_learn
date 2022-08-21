@@ -1,19 +1,19 @@
 executable("inet_ntop_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [ "inet_ntop_test.c" ]
 }
 
 executable("inet_aton_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [ "inet_aton_test.c" ]
 }
 
 executable("inet_addr_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [ "inet_addr_test.c" ]
 }
 
 executable("inet_ntoa_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [ "inet_ntoa_test.c" ]
 }

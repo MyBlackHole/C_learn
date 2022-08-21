@@ -1,5 +1,5 @@
 executable("readdir_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "readdir_test.c",
   ]

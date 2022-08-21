@@ -1,5 +1,5 @@
 executable("SHA1_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   ldflags = ["-lcrypto"]
   sources = [
     "SHA1_test.c"
@@ -7,25 +7,25 @@ executable("SHA1_test") {
 }
 
 executable("MD5_Init_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   ldflags = ["-lcrypto"]
   sources = ["MD5_Init_test.c"]
 }
 
 executable("SHA1_Init_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   ldflags = ["-lcrypto"]
   sources = ["SHA1_Init_test.c"]
 }
 
 executable("RSA_new_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   ldflags = ["-lcrypto"]
   sources = ["RSA_new_test.c"]
 }
 
 executable("AES_cbc_encrypt_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   ldflags = ["-lcrypto"]
   sources = ["AES_cbc_encrypt_test.c"]
 }

@@ -1,5 +1,5 @@
 executable("bfs_queue") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   deps = [":graph", ":queue"]
   sources = [
     "bfs_queue.c",
@@ -7,14 +7,14 @@ executable("bfs_queue") {
 }
 
 executable("bfs") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "bfs.c",
   ]
 }
 
 executable("bellman_ford") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "bellman_ford.c",
   ]

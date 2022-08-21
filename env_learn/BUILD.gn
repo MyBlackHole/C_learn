@@ -1,5 +1,5 @@
 executable("env_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [
     "env_test.c",

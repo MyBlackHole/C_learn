@@ -1,5 +1,5 @@
 executable("test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   deps = [":array_queue"]
   sources = [
     "test.c",
@@ -7,7 +7,7 @@ executable("test") {
 }
 
 static_library("array_queue") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "array_queue.c",
     "array_queue.h",

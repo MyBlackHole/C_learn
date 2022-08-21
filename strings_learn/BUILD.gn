@@ -1,5 +1,5 @@
 executable("strcasecmp_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [
     "strcasecmp_test.c",

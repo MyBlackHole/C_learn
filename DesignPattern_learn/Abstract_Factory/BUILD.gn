@@ -2,12 +2,12 @@ executable("AbstractFactoryPatternDemo") {
   sources = [ "test/AbstractFactoryPatternDemo.c" ]
   deps = [":AbstractFactoryPattern"]
   include_dirs = ["include"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 }
 
 static_library("AbstractFactoryPattern") {
   include_dirs = ["include"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [
     "src/Red.c",

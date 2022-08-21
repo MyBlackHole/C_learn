@@ -1,5 +1,5 @@
 executable("getpwent_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   include_dirs = ["//include"]
 

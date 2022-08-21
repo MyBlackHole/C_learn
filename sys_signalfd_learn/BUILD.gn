@@ -1,4 +1,4 @@
 executable("signalfd_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [ "signalfd_test.c" ]
 }

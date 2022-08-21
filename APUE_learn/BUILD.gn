@@ -1,5 +1,5 @@
 executable("main") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [ 
     "main.c"

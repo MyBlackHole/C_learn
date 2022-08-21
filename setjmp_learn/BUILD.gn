@@ -1,5 +1,5 @@
 executable("longjmp_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [
     "longjmp_test.c",
@@ -7,7 +7,7 @@ executable("longjmp_test") {
 }
 
 executable("setjmp_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [
     "setjmp_test.c",

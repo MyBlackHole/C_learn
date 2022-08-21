@@ -1,55 +1,55 @@
 
 executable("gethostname_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "gethostname_test.c",
   ]
 }
 
 executable("ftruncate_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "ftruncate_test.c",
   ]
 }
 
 executable("pathconf_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "pathconf_test.c",
   ]
 }
 
 executable("pipe_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "pipe_test.c",
   ]
 }
 
 executable("lockf_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "lockf_test.c",
   ]
 }
 
 executable("getopt_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "getopt_test.c",
   ]
 }
 
 executable("getppid_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "getppid_test.c",
   ]
 }
 
 executable("crypt_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "crypt_test.c",
   ]
@@ -58,7 +58,7 @@ executable("crypt_test") {
 }
 
 executable("getspnam_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "getspnam_test.c",
   ]
@@ -67,63 +67,63 @@ executable("getspnam_test") {
 }
 
 executable("getpass_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "getpass_test.c",
   ]
 }
 
 executable("write_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "write_test.c",
   ]
 }
 
 executable("dup2_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "dup2_test.c",
   ]
 }
 
 executable("dup_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "dup_test.c",
   ]
 }
 
 executable("fork5_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "fork5_test.c",
   ]
 }
 
 executable("sleep_test1") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "sleep_test1.c",
   ]
 }
 
 executable("sleep_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "sleep_test.c",
   ]
 }
 
 executable("setsid_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "setsid_test.c",
   ]
 }
 
 executable("fork4_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "fork4_test.c",
   ]
@@ -131,84 +131,84 @@ executable("fork4_test") {
 }
 
 executable("execl_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "execl_test.c",
   ]
 }
 
 executable("execlp_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "execlp_test.c",
   ]
 }
 
 executable("fork1_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "fork1_test.c",
   ]
 }
 
 executable("unlink_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "unlink_test.c",
   ]
 }
 
 executable("getcwd_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "getcwd_test.c",
   ]
 }
 
 executable("chdir_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "chdir_test.c",
   ]
 }
 
 executable("access_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "access_test.c",
   ]
 }
 
 executable("getpid_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "getpid_test.c",
   ]
 }
 
 executable("read_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "read_test.c",
   ]
 }
 
 executable("getuid_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "getuid_test.c",
   ]
 }
 
 executable("lseek_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "lseek_test.c",
   ]
 }
 
 executable("lseek1_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "lseek1_test.c",
   ]

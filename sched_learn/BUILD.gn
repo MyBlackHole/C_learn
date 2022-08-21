@@ -1,5 +1,5 @@
 executable("clone_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [
     "clone_test.c",
@@ -7,7 +7,7 @@ executable("clone_test") {
 }
 
 executable("CLONE_NEWIPC_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [
     "CLONE_NEWIPC_test.c",
@@ -15,7 +15,7 @@ executable("CLONE_NEWIPC_test") {
 }
 
 executable("CLONE_NEWPID_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [
     "CLONE_NEWPID_test.c",
@@ -23,7 +23,7 @@ executable("CLONE_NEWPID_test") {
 }
 
 executable("CLONE_NEWUSER_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   ldflags = ["-lcap"]
 

@@ -1,5 +1,5 @@
 executable("res_ninit_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [
     "res_ninit_test.c",

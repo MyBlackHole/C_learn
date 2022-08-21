@@ -1,5 +1,5 @@
 executable("ring_queue") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [
     "ring_queue.c",

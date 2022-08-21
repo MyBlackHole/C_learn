@@ -1,14 +1,14 @@
 executable("BuilderPatternDemo") {
   sources = [ "test/BuilderPatternDemo.c" ]
   deps = [":BuilderPattern"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   include_dirs = ["include"]
 }
 
 static_library("BuilderPattern") {
   include_dirs = ["include", "//DesignPattern_learn/libctools/include"]
   deps = ["//DesignPattern_learn/libctools:libctools"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [
     "src/Coke.c",

@@ -1,14 +1,14 @@
 executable("AdapterPatternDemo") {
   sources = [ "test/AdapterPatternDemo.c" ]
   deps = [":AdapterPattern"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   include_dirs = ["include"]
 }
 
 static_library("AdapterPattern") {
   include_dirs = ["include", "//DesignPattern_learn/libctools/include"]
 
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "src/Mp4Player.c",
     "src/VlcPlayer.c",

@@ -1,5 +1,5 @@
 executable("ioctl_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "ioctl_test.c",
   ]

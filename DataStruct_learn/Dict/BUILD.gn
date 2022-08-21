@@ -1,5 +1,5 @@
 executable("test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   deps = [":dict"]
   sources = [
     "test.c",
@@ -7,7 +7,7 @@ executable("test") {
 }
 
 static_library("dict") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "dict.c",
     "dict.h",

@@ -1,19 +1,19 @@
 executable("lio_listio_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [ "lio_listio_test.c" ]
 }
 
 executable("aio_suspend_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [ "aio_suspend_test.c" ]
 }
 
 executable("aio_write_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [ "aio_write_test.c" ]
 }
 
 executable("aio_read_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [ "aio_read_test.c" ]
 }

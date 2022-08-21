@@ -1,26 +1,26 @@
 executable("oob_send") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "oob_send.c",
   ]
 }
 
 executable("oob_recv") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "oob_recv.c",
   ]
 }
 
 executable("peek_recv") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "peek_recv.c",
   ]
 }
 
 executable("peek_send") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "peek_send.c",
   ]

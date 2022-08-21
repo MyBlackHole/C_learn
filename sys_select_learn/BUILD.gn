@@ -1,5 +1,5 @@
 executable("select_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [
     "select_test.c",
@@ -7,7 +7,7 @@ executable("select_test") {
 }
 
 executable("select1_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "select1_test.c",
   ]

@@ -1,13 +1,13 @@
 executable("BridgePatternDemo") {
   sources = [ "test/BridgePatternDemo.c" ]
   deps = [":BridgePattern"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   include_dirs = ["include"]
 }
 
 static_library("BridgePattern") {
   include_dirs = ["include", "//DesignPattern_learn/libctools/include"]
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [
     "src/Shape.c",

@@ -1,5 +1,5 @@
 executable("test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   deps = [":simhash"]
   sources = [
     "test.c",
@@ -7,7 +7,7 @@ executable("test") {
 }
 
 static_library("simhash") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "simhash.h",
     "simhash.c",

@@ -1,5 +1,5 @@
 executable("SECCOMP_MODE_STRICT_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   ldflags = ["-lseccomp"]
 

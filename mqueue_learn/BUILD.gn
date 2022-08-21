@@ -1,5 +1,5 @@
 executable("mq_open_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   # ldflags = ["-lrt"]
 
@@ -9,7 +9,7 @@ executable("mq_open_test") {
 }
 
 executable("mq_unlink_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   sources = [
     "mq_unlink_test.c",

@@ -1,12 +1,12 @@
 executable("chat_server") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "chat_server.c",
   ]
 }
 
 executable("chat_clnt") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "chat_clnt.c",
   ]

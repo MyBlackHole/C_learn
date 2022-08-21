@@ -4,7 +4,7 @@
 # make 
 # make install
 executable("shapes_basic_shapes") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
 
   ldflags = ["-lraylib"]
 

@@ -1,5 +1,5 @@
 executable("ELinkList-main") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   include_dirs = ["//DataStruct_learn/Status"]
   deps = [":ELinkList"]
   sources = [
@@ -8,7 +8,7 @@ executable("ELinkList-main") {
 }
 
 static_library("ELinkList") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   deps = ["//DataStruct_learn/Status:Status"]
   include_dirs = ["//DataStruct_learn/Status"]
   sources = [

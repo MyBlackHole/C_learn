@@ -1,5 +1,5 @@
 executable("sem_destroy_test") {
-  cflags = ["-g"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "sem_destroy_test.c",
   ]
