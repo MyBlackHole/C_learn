@@ -8,8 +8,7 @@ int main() {
   do {
     printf("a 的值： %d\n", a);
     a = a + 1;
-  }
-  while (a < 20);
+  } while (a < 20);
 
   return 0;
 }

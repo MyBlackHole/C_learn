@@ -1,6 +1,3 @@
 #include <stdio.h>
 
-
-int main() {
-    printf("%ld\n", sizeof(long int));
-}
+int main() { printf("%ld\n", sizeof(long int)); }

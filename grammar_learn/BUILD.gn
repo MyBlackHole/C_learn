@@ -1,3 +1,11 @@
+executable("define_test") {
+  cflags = ["-g"]
+
+  sources = [
+    "define_test.c",
+  ]
+}
+
 executable("sizeof_test") {
   cflags = ["-g"]
 
