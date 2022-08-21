@@ -5,6 +5,11 @@
 #include <check.h>
 #include <stdio.h>
 
+/*
+ * check 安装
+ * ./vcpkg install check
+ */
+
 int main(void) {
   Suite *s1 = suite_create("Blooming");
   TCase *tc1 = tcase_create("Bitmap");

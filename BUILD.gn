@@ -31,7 +31,7 @@ group("default"){
 
     "//dome/bloomd:runner",
 
-    # "//inih_learn:ini_parse_test",
+    "//inih_learn:ini_parse_test",
 
     "//check_learn:ck_assert_test",
 

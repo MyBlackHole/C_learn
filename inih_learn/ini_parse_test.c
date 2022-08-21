@@ -2,6 +2,8 @@
 /* Example: parse a simple configuration file */
 /*
  * git@github.com:benhoyt/inih.git
+ * inih 安装
+ * ./vcpkg install inih
  */
 
 #include <ini.h>
