@@ -16,6 +16,8 @@ int max(int a, int b) { return a > b ? a : b; }
 int main(int argc, char *argv[]) {
   int i = 5, j = 3;
 
+  int k;
+
   printf("i = %d\tj = %d\n", i, j);
   printf("%d\n", MAX(i++, j++));
   printf("i = %d\tj = %d\n", i, j);
