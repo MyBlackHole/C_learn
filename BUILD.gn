@@ -1,5 +1,9 @@
 group("default"){
   deps = [
+    "//argp_learn:argp_parse_test",
+    "//argp_learn:argp_parse_test_1",
+    "//argp_learn:argp_parse_test_2",
+
     "//APUE_learn/src:tcgetpgrp_tcsetpgrp",
 
     # "//dome/twemproxy:nc_conf",
