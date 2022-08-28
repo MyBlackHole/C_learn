@@ -6,7 +6,6 @@
 int main(int argc, char *argv[]) {
 
   FILE *fp = NULL;
-  int count;
   char *linebuf = NULL;
   size_t linesize = 0;
 

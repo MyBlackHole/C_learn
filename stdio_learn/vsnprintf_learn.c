@@ -11,9 +11,8 @@
 #include <stdarg.h>
 #include <stdio.h>
 
-int my_snprintf(char *s, int size, const char *fmt,
-                ...) //该自定义函数，与系统提供的snprintf()函数相同。
-{
+//该自定义函数，与系统提供的snprintf()函数相同。
+int my_snprintf(char *s, int size, const char *fmt, ...) {
   va_list ap;
   int n = 0;
   va_start(ap, fmt);               //获得可变参数列表

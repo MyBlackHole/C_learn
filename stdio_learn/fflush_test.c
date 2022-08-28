@@ -7,16 +7,14 @@
 // setvbuf
 
 int main(int argc, char *argv[]) {
-  int i;
-
   // // \n触发刷新
   // printf("Before while()\n");
 
-  printf("Before while()");
+  printf("Before while()\n");
   // 没有这句将永远不会输出
   fflush(stdout);
   while (1)
     ;
-  printf("After while()");
+  printf("After while()\n");
   return 0;
 }

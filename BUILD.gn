@@ -227,6 +227,7 @@ group("default"){
     "//aio_learn:aio_suspend_test",
     "//aio_learn:lio_listio_test",
 
+    "//grammar_learn:int_test",
     "//grammar_learn:define_test",
     "//grammar_learn:sizeof_test",
     "//grammar_learn:pointer2_test",
@@ -337,6 +338,7 @@ group("default"){
     "//unistd_learn:fork4_test",
     "//unistd_learn:setsid_test",
 
+    "//stdio_learn:buf_test",
     "//stdio_learn:fgets1_test",
     "//stdio_learn:strtoul_test",
     "//stdio_learn:strtol_test",

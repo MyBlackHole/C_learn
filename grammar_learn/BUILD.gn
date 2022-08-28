@@ -1,3 +1,11 @@
+executable("int_test") {
+  cflags = ["-g", "-Wall"]
+
+  sources = [
+    "int_test.c",
+  ]
+}
+
 executable("define_test") {
   cflags = ["-g", "-Wall"]
 
