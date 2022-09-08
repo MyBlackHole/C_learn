@@ -20,12 +20,12 @@ int main(int argc, char *argv[]) {
 
   printf("path %s\n", name);
 
-  //创建一个文件和两个套接字
+  // 创建一个文件和两个套接字
   fd1 = socket(PF_INET, SOCK_STREAM, 0);
   // fd2 = open(name, O_CREAT | O_WRONLY | O_TRUNC);
   fd2 = open(name, O_CREAT | O_RDWR | O_TRUNC, S_IRUSR | S_IWUSR | S_IXUSR);
   fd3 = socket(PF_INET, SOCK_DGRAM, 0);
-  //输出之前创建的文件描述符的整数值
+  // 输出之前创建的文件描述符的整数值
   printf("file descriptor 1: %d\n", fd1);
   printf("file descriptor 2: %d\n", fd2);
   printf("file descriptor 3: %d\n", fd3);
