@@ -1,0 +1,28 @@
+executable("Difference-main") {
+  include_dirs = ["//DataStruct_learn/Status"]
+  cflags = ["-g", "-Wall"]
+  deps = [":Difference"]
+  sources = [
+    "Difference-main.c",
+  ]
+}
+
+static_library("Difference") {
+  include_dirs = ["//DataStruct_learn/Status"]
+  deps = [":SLinkList", "//DataStruct_learn/Status:Status"]
+  cflags = ["-g", "-Wall"]
+  sources = [
+    "Difference.c",
+    "Difference.h",
+  ]
+}
+
+static_library("SLinkList") {
+  include_dirs = ["//DataStruct_learn/Status"]
+  cflags = ["-g", "-Wall"]
+  sources = [
+    "SLinkList.c",
+    "SLinkList.h",
+  ]
+}
+

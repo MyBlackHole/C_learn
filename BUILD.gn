@@ -109,6 +109,7 @@ group("default"){
     "//DataStruct_learn/Queue/queue:ring_queue",
     "//DataStruct_learn/Tree/binarytree/avl_tree:test",
     "//DataStruct_learn/Array/dynamic_array:test",
+    "//DataStruct_learn/Array/Difference:Difference-main",
     "//DataStruct_learn/Dict:test",
     "//DataStruct_learn/Array/array:array",
     "//DataStruct_learn/List/ELinkList:ELinkList-main",

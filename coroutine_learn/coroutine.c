@@ -119,7 +119,7 @@ int coroutine_new(struct schedule *S, coroutine_func func, void *ud) {
     S->co = realloc(S->co, S->cap * 2 * sizeof(struct coroutine *));
     // 初始化内存
     memset(S->co + S->cap, 0, sizeof(struct coroutine *) * S->cap);
-    //将协程放入调度器
+    // 将协程放入调度器
     S->co[S->cap] = co;
     // 将容量扩大为两倍
     S->cap *= 2;
@@ -182,7 +182,7 @@ void coroutine_resume(struct schedule *S, int id) {
   int status = C->status;
   switch (status) {
   case COROUTINE_READY:
-    //初始化ucontext_t结构体,将当前的上下文放到C->ctx里面
+    // 初始化ucontext_t结构体,将当前的上下文放到C->ctx里面
     getcontext(&C->ctx);
     // 将当前协程的运行时栈的栈顶设置为S->stack
     // 每个协程都这么设置，这就是所谓的共享栈。（注意，这里是栈顶）

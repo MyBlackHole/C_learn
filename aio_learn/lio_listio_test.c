@@ -20,7 +20,7 @@ int main(int argc, char **argv) {
   struct aiocb rd, wr;
   int fd, ret;
 
-  //异步读事件
+  // 异步读事件
   fd = open("test1.txt", O_RDONLY);
   if (fd < 0) {
     perror("test1.txt");
@@ -39,10 +39,10 @@ int main(int argc, char **argv) {
   rd.aio_offset = 0;
   rd.aio_lio_opcode = LIO_READ; /// lio操作类型为异步读
 
-  //将异步读事件添加到list中
+  // 将异步读事件添加到list中
   listio[0] = &rd;
 
-  //异步些事件
+  // 异步些事件
   fd = open("test2.txt", O_WRONLY | O_APPEND);
   if (fd < 0) {
     perror("test2.txt");
@@ -61,13 +61,13 @@ int main(int argc, char **argv) {
 
   wr.aio_lio_opcode = LIO_WRITE; /// lio操作类型为异步写
 
-  //将异步写事件添加到list中
+  // 将异步写事件添加到list中
   listio[1] = &wr;
 
-  //使用lio_listio发起一系列请求
+  // 使用lio_listio发起一系列请求
   ret = lio_listio(LIO_WAIT, listio, MAX_LIST, NULL);
 
-  //当异步读写都完成时获取他们的返回值
+  // 当异步读写都完成时获取他们的返回值
 
   ret = aio_return(&rd);
   printf("\n读返回值:%d", ret);

@@ -5,6 +5,7 @@
  ================*/
 
 #include "Difference.h"
+#include "Status.h"
 
 /*
  * ████████ 算法2.17 ████████

@@ -26,19 +26,19 @@ int main(int argc, char **argv) {
     perror("test.txt");
   }
 
-  //将rd结构体清空
+  // 将rd结构体清空
   /* bzero(&rd, sizeof(rd)); */
   memset(&rd, 0, sizeof(rd));
 
-  //为rd.aio_buf分配空间
+  // 为rd.aio_buf分配空间
   rd.aio_buf = malloc(BUFFER_SIZE + 1);
 
-  //填充rd结构体
+  // 填充rd结构体
   rd.aio_fildes = fd;
   rd.aio_nbytes = BUFFER_SIZE;
   rd.aio_offset = 0;
 
-  //进行异步读操作
+  // 进行异步读操作
   ret = aio_read(&rd);
   if (ret < 0) {
     perror("aio_read");
@@ -51,7 +51,7 @@ int main(int argc, char **argv) {
     printf("第%d次: %s\n", ++couter, (char *)rd.aio_buf);
   }
 
-  //获取异步读返回值
+  // 获取异步读返回值
   ret = aio_return(&rd);
 
   printf("\n\n返回值为:%d", ret);

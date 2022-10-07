@@ -38,7 +38,7 @@ int insert(struct array *array, int elem) {
   return idx;
 }
 
-int delete (struct array *array, int idx) {
+int delete(struct array *array, int idx) {
   if (idx < 0 || idx >= array->used)
     return -1;
 
