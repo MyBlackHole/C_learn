@@ -1,5 +1,8 @@
-#include "apue.h"
+// #include "apue.h"
+#include <stdio.h>
+#include <stdlib.h>
 #include <termios.h>
+#include <unistd.h>
 
 int main(void) {
   char *name;

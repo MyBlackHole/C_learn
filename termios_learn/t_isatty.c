@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 int main(void) {
   printf("fd 0: %s\n", isatty(0) ? "tty" : "not a tty");
