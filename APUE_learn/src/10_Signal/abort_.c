@@ -45,7 +45,7 @@ void test_abort() {
   sigset_t o_set; // 保存旧的进程的信号屏蔽字
   My_sigemptyset(&set);
   My_sigaddset(&set, SIGABRT);
-  My_sigprocmask(SIG_SETMASK, &set, &o_set); //设置进程的信号屏蔽字
+  My_sigprocmask(SIG_SETMASK, &set, &o_set); // 设置进程的信号屏蔽字
   print_progress_mask_sigset();              // 打印进程的信号屏蔽字
 
   //*****  调用 abort() ****//

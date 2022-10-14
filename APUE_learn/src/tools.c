@@ -106,7 +106,7 @@ char *abs_path(const char *dir_name, const char *file_name) {
     return NULL;
   }
   strcpy(buffer, dir_name);  // 拷贝
-  strcat(buffer, "/");       //拼接
-  strcat(buffer, file_name); //拼接
+  strcat(buffer, "/");       // 拼接
+  strcat(buffer, file_name); // 拼接
   return buffer;
 }

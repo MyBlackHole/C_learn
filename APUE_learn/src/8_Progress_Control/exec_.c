@@ -87,8 +87,8 @@ void test_exec() {
   _test_execv(pathname);     // 绝对路径名
   _test_execle(pathname);    // 绝对路径名
   _test_execve(pathname);    // 绝对路 径名
-  _test_execlp("print_arg"); //相对文件名
-  _test_execvp("print_arg"); //相对文件名
+  _test_execlp("print_arg"); // 相对文件名
+  _test_execvp("print_arg"); // 相对文件名
   M_TRACE("---------  End test_exec()  ---------\n\n");
 }
 
@@ -98,29 +98,29 @@ void test_exec() {
 //                                            //
 //********************************************//
 
-//#include <stdio.h>
-//#include<stdlib.h>
-//#include<unistd.h>
-// extern char **environ;
-// void print_environ()
+// #include <stdio.h>
+// #include<stdlib.h>
+// #include<unistd.h>
+//  extern char **environ;
+//  void print_environ()
 //{
-//    printf("\t************Environment***************\n");
-//    char **ptr=environ;
-//    while(*ptr!=NULL)
-//    {
-//        printf("\t'%s'",*ptr);
-//        ptr++;
-//    }
-//    printf("\n");
-//}
-// int main(int argc, char *argv[])
+//     printf("\t************Environment***************\n");
+//     char **ptr=environ;
+//     while(*ptr!=NULL)
+//     {
+//         printf("\t'%s'",*ptr);
+//         ptr++;
+//     }
+//     printf("\n");
+// }
+//  int main(int argc, char *argv[])
 //{
-//    printf("\t************Argument List***************\n");
-//    for(int i=0;i<argc;i++)
-//    {
-//        printf("\t'%s'",argv[i]);
-//    }
-//    printf("\n");
-//    print_environ();
-//    return 0;
-//}
+//     printf("\t************Argument List***************\n");
+//     for(int i=0;i<argc;i++)
+//     {
+//         printf("\t'%s'",argv[i]);
+//     }
+//     printf("\n");
+//     print_environ();
+//     return 0;
+// }

@@ -43,7 +43,7 @@ void test_memstream() {
     fflush(fp);
     print_char_buffer(mem_buffer, 16);
     //**** 读取 ****//
-    My_fseeko(fp, 0, SEEK_SET);         //重定位到文件头
+    My_fseeko(fp, 0, SEEK_SET);         // 重定位到文件头
     My_ftello(fp);                      // 查看当前位置
     My_fgets(read_write_buffer, 8, fp); // 读取 abcdefg
     My_fgets(read_write_buffer, 8, fp); // 读取 \n

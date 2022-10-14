@@ -25,7 +25,7 @@ int main(int argc, char *argv[]) {
   free(thr_ret);
   return 0;
 }
-void *thread_main(void *arg) //传入的参数是 pthread_create 的第四个
+void *thread_main(void *arg) // 传入的参数是 pthread_create 的第四个
 {
   int i;
   int cnt = *((int *)arg);
@@ -35,5 +35,5 @@ void *thread_main(void *arg) //传入的参数是 pthread_create 的第四个
     sleep(1);
     puts("running thread");
   }
-  return (void *)msg; //返回值是 thread_main 函数中内部动态分配的内存空间地址值
+  return (void *)msg; // 返回值是 thread_main 函数中内部动态分配的内存空间地址值
 }

@@ -1,6 +1,6 @@
 executable("test") {
-  cflags = ["-g", "-Wall"]
   deps = [":dict"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "test.c",
   ]
