@@ -63,7 +63,7 @@ struct test {
 };
 
 int func7() {
-  struct test t;
+  struct test t = {0};
   printf("%d\n", t.a);
   return 0;
 }
@@ -161,8 +161,8 @@ void func17() {
 }
 
 void func18() {
-  int x = 1, z = 1;
-  printf("%d\n", (++x + z++));
+  int test = 1, z = 1;
+  printf("%d\n", (++test + z++));
 }
 
 void func19() {

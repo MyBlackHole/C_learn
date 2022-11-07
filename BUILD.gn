@@ -229,6 +229,7 @@ group("default"){
     "//aio_learn:aio_suspend_test",
     "//aio_learn:lio_listio_test",
 
+    "//grammar_learn/H:Hmain",
     "//grammar_learn:int_test",
     "//grammar_learn:define_test",
     "//grammar_learn:sizeof_test",
