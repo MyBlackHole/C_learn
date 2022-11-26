@@ -1,3 +1,11 @@
+executable("scanf_test") {
+  cflags = ["-g", "-Wall"]
+
+  sources = [
+    "scanf_test.c",
+  ]
+}
+
 executable("buf_test") {
   cflags = ["-g", "-Wall"]
 
