@@ -1,3 +1,11 @@
+executable("pointer3_test") {
+  cflags = ["-g", "-Wall"]
+
+  sources = [
+    "pointer3_test.c",
+  ]
+}
+
 executable("int_test") {
   cflags = ["-g", "-Wall"]
 
