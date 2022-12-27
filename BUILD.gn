@@ -1,5 +1,7 @@
 group("default"){
   deps = [
+    "//MQTTClient_learn:main",
+
     "//argp_learn:argp_parse_test",
     "//argp_learn:argp_parse_test_1",
     "//argp_learn:argp_parse_test_2",
