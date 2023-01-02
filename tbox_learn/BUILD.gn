@@ -6,3 +6,11 @@ executable("main") {
   ]
 }
 
+
+executable("list_test") {
+  cflags = ["-g", "-Wall"]
+  ldflags = ["-ltbox"]
+  sources = [
+    "list_test.c",
+  ]
+}
