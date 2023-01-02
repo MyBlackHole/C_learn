@@ -1,5 +1,10 @@
 group("default"){
   deps = [
+    "//tbox_learn:list_test",
+    "//tbox_learn:main",
+
+    "//kcp_learn:test",
+
     "//MQTTClient_learn:main",
 
     "//argp_learn:argp_parse_test",
