@@ -259,6 +259,7 @@ ikcpcb *ikcp_create(IUINT32 conv, void *user) {
   kcp->ts_flush = IKCP_INTERVAL;
   kcp->nodelay = 0;
   kcp->updated = 0;
+  // kcp->logmask = IKCP_LOG_INPUT;
   kcp->logmask = 0;
   kcp->ssthresh = IKCP_THRESH_INIT;
   kcp->fastresend = 0;
@@ -451,6 +452,7 @@ int ikcp_send(ikcpcb *kcp, const char *buffer, int len) {
   // append to previous segment in streaming mode (if possible)
   if (kcp->stream != 0) {
     if (!iqueue_is_empty(&kcp->snd_queue)) {
+      // 发送队列非空, 追加到上一个消息中
       IKCPSEG *old = iqueue_entry(kcp->snd_queue.prev, IKCPSEG, node);
       if (old->len < kcp->mss) {
         int capacity = kcp->mss - old->len;
@@ -461,8 +463,10 @@ int ikcp_send(ikcpcb *kcp, const char *buffer, int len) {
           return -2;
         }
         iqueue_add_tail(&seg->node, &kcp->snd_queue);
+        // 拷贝旧数据到新消息体
         memcpy(seg->data, old->data, old->len);
         if (buffer) {
+          // 拷贝新 buffer 的 extend 数据到新消息体
           memcpy(seg->data + old->len, buffer, extend);
           buffer += extend;
         }
@@ -893,6 +897,7 @@ static int ikcp_wnd_unused(const ikcpcb *kcp) {
 //---------------------------------------------------------------------
 // ikcp_flush
 //---------------------------------------------------------------------
+// 冲洗数据
 void ikcp_flush(ikcpcb *kcp) {
   IUINT32 current = kcp->current;
   char *buffer = kcp->buffer;
@@ -1122,6 +1127,7 @@ void ikcp_update(ikcpcb *kcp, IUINT32 current) {
     slap = 0;
   }
 
+  // 时差大于 0
   if (slap >= 0) {
     kcp->ts_flush += kcp->interval;
     if (_itimediff(kcp->current, kcp->ts_flush) >= 0) {

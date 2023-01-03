@@ -284,6 +284,8 @@ struct IKCPSEG {
 // IKCPCB
 //---------------------------------------------------------------------
 struct IKCPCB {
+  // mss 最大报文长度
+  // mtu 最大传输单元
   IUINT32 conv, mtu, mss, state;
   IUINT32 snd_una, snd_nxt, rcv_nxt;
   IUINT32 ts_recent, ts_lastack, ssthresh;

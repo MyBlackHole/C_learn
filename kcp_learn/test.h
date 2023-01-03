@@ -194,6 +194,7 @@ public:
     IUINT32 delay = rttmin;
     if (rttmax > rttmin)
       delay += rand() % (rttmax - rttmin);
+    // 设置延迟时间
     pkt->setts(current + delay);
     if (peer == 0) {
       p12.push_back(pkt);
@@ -216,6 +217,7 @@ public:
     }
     DelayPacket *pkt = *it;
     current = iclock();
+    // 判断是否大于延迟时间
     if (current < pkt->ts())
       return -2;
     if (maxsize < pkt->size())
