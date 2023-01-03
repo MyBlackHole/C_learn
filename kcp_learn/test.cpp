@@ -18,6 +18,7 @@ LatencySimulator *vnet;
 
 // 模拟网络：模拟发送一个 udp包
 int udp_output(const char *buf, int len, ikcpcb *kcp, void *user) {
+  // 公用体 id 与 ptr 公用 4 个字节
   union {
     int id;
     void *ptr;

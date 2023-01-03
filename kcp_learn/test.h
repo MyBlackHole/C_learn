@@ -142,6 +142,7 @@ protected:
 };
 
 // 网络延迟模拟器
+// p12 p21:包列表
 class LatencySimulator {
 public:
   virtual ~LatencySimulator() { clear(); }
