@@ -1,5 +1,7 @@
 group("default"){
   deps = [
+
+    "//tbox_learn:vector_test",
     "//tbox_learn:list_test",
     "//tbox_learn:main",
 

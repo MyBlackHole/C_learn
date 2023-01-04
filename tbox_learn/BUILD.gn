@@ -14,3 +14,12 @@ executable("list_test") {
     "list_test.c",
   ]
 }
+
+
+executable("vector_test") {
+  cflags = ["-g", "-Wall"]
+  ldflags = ["-ltbox"]
+  sources = [
+    "vector_test.c",
+  ]
+}
