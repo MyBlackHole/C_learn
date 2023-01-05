@@ -1,3 +1,11 @@
+executable("strncmp_test") {
+  cflags = ["-g", "-Wall"]
+
+  sources = [
+    "strncmp_test.c",
+  ]
+}
+
 executable("strlen_test") {
   cflags = ["-g", "-Wall"]
 

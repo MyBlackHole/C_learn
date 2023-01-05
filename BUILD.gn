@@ -1,6 +1,7 @@
 group("default"){
   deps = [
 
+    "//tbox_learn:vector_mem_test",
     "//tbox_learn:vector_test",
     "//tbox_learn:list_test",
     "//tbox_learn:main",
@@ -287,6 +288,7 @@ group("default"){
 
     "//shadow_learn:getspnam_test",
 
+    "//string_learn:strncmp_test",
     "//string_learn:strlen_test",
     "//string_learn:strcoll_test",
     "//string_learn:strstr_test",

@@ -76,9 +76,9 @@ void LinkedHashMap_destory(LinkedHashMap *h) {
 }
 
 int LinkedHashMap_insert(LinkedHashMap *h, void *key, void *data) {
-  int i = 0;
+  // int i = 0;
   int hPos = 0;
-  struct list_head *pos = NULL;
+  // struct list_head *pos = NULL;
   LiskedHashMapNode *cur = NULL;
   LiskedHashMapNode *prev = NULL;
 
@@ -141,7 +141,7 @@ int LinkedHashMap_insert(LinkedHashMap *h, void *key, void *data) {
 // 连表节点删除, 返回找到的节点
 LiskedHashMapNode *LinkedHashMap_delete(LinkedHashMap *h, void *key) {
   int hPos = 0;
-  struct list_head *pos = NULL;
+  // struct list_head *pos = NULL;
   LiskedHashMapNode *cur = NULL;
   LiskedHashMapNode *prev = NULL;
 
@@ -227,4 +227,4 @@ void LinkedHashMap__dump(LinkedHashMap *h) {
   }
 
   printf("\r\n----结束--size[%d],nel[%d]------------", h->size, h->nel);
-}
+}

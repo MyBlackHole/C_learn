@@ -3,6 +3,7 @@
 
 int main() {
   char str[80] = "This is - www.runoob.com - website";
+  // 分割符号
   const char s[2] = "-";
   char *token;
 

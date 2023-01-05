@@ -21,6 +21,7 @@ int main(int argc, char *argv[]) {
   }
 
   while (1) {
+    // 会连同换行一起读入
     if (getline(&linebuf, &linesize, fp) < 0)
       break;
     fprintf(stdout, "%lu\n", strlen(linebuf));

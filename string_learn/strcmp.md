@@ -1,6 +1,6 @@
 ```
 描述
-C 库函数 int strcmp(const char *str1, const char *str2) 把 str1 所指向的字符串和 str2 所指向的字符串进行比较。
+C 库函数 int strcmp(const char *str1, const char *str2) 把 str1 所指向的字符串和 str2 所指向的字符串进行自左向右逐个字符比较。
 
 声明
 下面是 strcmp() 函数的声明。

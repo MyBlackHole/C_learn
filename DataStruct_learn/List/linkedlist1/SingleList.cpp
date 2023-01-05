@@ -126,7 +126,7 @@ protected:
 };
 
 void CreateList(CSingleList &lst) {
-  //循环插入元素到链表尾
+  // 循环插入元素到链表尾
   for (int i = 1; i < 10; i++) {
     int *p = new int();
     *p = i;
@@ -248,19 +248,19 @@ int main() {
     lst.DeleteLastKth(0);
     PrintList(lst);
     CElement *lpCenter = lst.Center();
-    std::cout << "中间节点:" << *((int *) lpCente>GetDataPtr()) << std::endl;
+    std::cout << "中间节点:" << *((int *)lpCente > GetDataPtr()) << std::endl;
 
     std::cout << "删除倒数第1个结点" << std::endl;
     lst.DeleteLastKth(1);
     PrintList(lst);
     lpCenter = lst.Center();
-    std::cout << "中间节点:" << *((int *) lpCente>GetDataPtr()) << std::endl;
+    std::cout << "中间节点:" << *((int *)lpCente > GetDataPtr()) << std::endl;
 
     std::cout << "删除倒数第3个结点" << std::endl;
     lst.DeleteLastKth(3);
     PrintList(lst);
     lpCenter = lst.Center();
-    std::cout << "中间节点:" << *((int *) lpCente>GetDataPtr()) << std::endl;
+    std::cout << "中间节点:" << *((int *)lpCente > GetDataPtr()) << std::endl;
   }
   std::cin.ignore();
 
@@ -316,10 +316,10 @@ CElement *CSingleList::Insert(CElement *lpElement, void *lpData,
 
 void CSingleList::Insert(CElement *lpNewElement, CElement *lpCurElement,
                          bool bBack /*= true*/) {
-  if (bBack) { //插入到指定元素的后面
+  if (bBack) { // 插入到指定元素的后面
     lpNewElement->m_lpNext = lpCurElement->m_lpNext;
     lpCurElement->m_lpNext = lpNewElement;
-  } else { //插入到指定元素的前面
+  } else { // 插入到指定元素的前面
     CElement *lpIter = m_lpSentinel;
     while (NULL != lpIter) {
       if (lpIter->m_lpNext == lpCurElement) {

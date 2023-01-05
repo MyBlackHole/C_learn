@@ -2,6 +2,7 @@
 #include "stdlib.h"
 #include "string.h"
 #include "unistd.h"
+#include <stdio.h>
 
 #define ADDRESS "tcp://42.192.22.176:1883"
 #define USERNAME "Black"
@@ -35,8 +36,14 @@ int on_message(void *context, char *topicName, int topicLen,
 int main(int argc, char *argv[]) {
   int rc;
   MQTTClient client;
+  int status;
 
-  MQTTClient_create(&client, ADDRESS, CLIENTID, 0, NULL);
+  status = MQTTClient_create(&client, ADDRESS, CLIENTID, 0, NULL);
+  if (status != MQTTCLIENT_SUCCESS) {
+    printf("Create Client Error!");
+    return status;
+  }
+
   MQTTClient_connectOptions conn_opts = MQTTClient_connectOptions_initializer;
   conn_opts.username = USERNAME;
   conn_opts.password = PASSWORD;

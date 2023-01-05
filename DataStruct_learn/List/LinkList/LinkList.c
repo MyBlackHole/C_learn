@@ -468,7 +468,7 @@ Status CreateList_Tail(LinkList *L, int n, char *path) {
   int readFromConsole; // 是否从控制台读取数据
 
   // 如果没有文件路径信息，则从控制台读取输入
-  readFromConsole = path == NULL || strcmp(path, "") == 0;
+  readFromConsole = (path == NULL) || (strcmp(path, "") == 0);
 
   if (readFromConsole) {
     // 建立头结点

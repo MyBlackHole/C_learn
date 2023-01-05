@@ -47,7 +47,7 @@ void hashtab_node_free(LiskedHashMapNode *node, int flg) {
 
 int main() {
 
-  int i = 0;
+  // int i = 0;
   int res = 0;
   char *pres = NULL;
   LiskedHashMapNode *node = NULL;
