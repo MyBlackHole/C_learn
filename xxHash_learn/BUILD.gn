@@ -1,0 +1,8 @@
+executable("XXH3_64bits") {
+  cflags = ["-g", "-Wall"]
+  ldflags = ["-lxxhash"]
+  sources = [
+    "main.c",
+  ]
+}
+
