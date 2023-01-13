@@ -1,3 +1,11 @@
+executable("hex_str_To_hex") {
+  cflags = ["-g", "-Wall"]
+
+  sources = [
+    "hex_str_To_hex.c",
+  ]
+}
+
 executable("scanf_test") {
   cflags = ["-g", "-Wall"]
 
