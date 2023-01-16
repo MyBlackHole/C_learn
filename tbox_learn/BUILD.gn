@@ -23,3 +23,11 @@ executable("vector_test") {
     "vector_test.c",
   ]
 }
+
+executable("vector_mem_test") {
+  cflags = ["-g", "-Wall"]
+  ldflags = ["-ltbox"]
+  sources = [
+    "vector_mem_test.c",
+  ]
+}

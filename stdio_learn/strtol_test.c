@@ -21,5 +21,12 @@ int main() {
   printf("[0x6fffff]转换成10进制: %ld\n", li4);
   printf("[pnd]%s\n", pnd);
   printf("[&pnd]%p\n\n", pnd);
+
+  unsigned long int test = strtol("FFFFFFFFFFFFFFFF", NULL, 16);
+
+  printf("test:[%lx]\n", test);
+  printf("test:[%ld]\n", sizeof(long int));
+
   return 0;
 }
+

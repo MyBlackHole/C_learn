@@ -93,7 +93,7 @@ void insert(struct root *root, struct node *new) {
   }
 }
 
-struct node *delete (struct root *root, unsigned long data) {
+struct node *delete(struct root *root, unsigned long data) {
   struct node *n = root->r, **p = &root->r;
   struct node *child;
 
@@ -155,7 +155,7 @@ void insert_test() {
 
 void delete_test() {
   struct root tree;
-  struct node *n;
+  // struct node *n;
 
   tree.r = NULL;
 

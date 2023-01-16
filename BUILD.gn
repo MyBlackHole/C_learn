@@ -1,5 +1,6 @@
 group("default"){
   deps = [
+    "//xxHash_learn:XXH3_64bits",
 
     "//tbox_learn:vector_mem_test",
     "//tbox_learn:vector_test",
@@ -353,6 +354,7 @@ group("default"){
     "//unistd_learn:fork4_test",
     "//unistd_learn:setsid_test",
 
+    "//stdio_learn:hex_str_To_hex",
     "//stdio_learn:scanf_test",
     "//stdio_learn:buf_test",
     "//stdio_learn:buf_test",
