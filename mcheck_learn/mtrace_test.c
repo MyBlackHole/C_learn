@@ -12,13 +12,21 @@ int main() {
   // 通过对内存管理系列函数(malloc，realloc，memalign，free)注册钩子来达到监控内存泄露和其他内存错误操作
   mtrace();
   int i;
+  void *p[10];
+  void *c;
 
   for (i = 0; i < 10; i++) {
-    malloc(sizeof(int) * 10);
+    p[i] = malloc(sizeof(int) * 10);
   }
 
   // 会清零
-  calloc(sizeof(int), sizeof(long int));
+  c = calloc(sizeof(int), sizeof(long int));
+  (void)c;
+
+  for (i = 0; i < 10; i++) {
+    free(p[i]);
+  }
+
   // 解除mtrace注册的钩子
   muntrace();
   exit(EXIT_SUCCESS);
