@@ -1,5 +1,7 @@
 group("default"){
   deps = [
+    "//lz4_learn:main",
+
     "//xxHash_learn:XXH3_64bits",
 
     "//tbox_learn:vector_mem_test",
