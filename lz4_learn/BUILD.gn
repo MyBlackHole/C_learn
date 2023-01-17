@@ -1,0 +1,8 @@
+executable("main") {
+  cflags = ["-g", "-Wall"]
+  ldflags = ["-llz4"]
+  sources = [
+    "main.c",
+  ]
+}
+
