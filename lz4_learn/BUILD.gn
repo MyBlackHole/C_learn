@@ -1,8 +1,15 @@
 executable("main") {
   cflags = ["-g", "-Wall"]
-  ldflags = ["-llz4"]
+  libs = ["lz4"]
   sources = [
     "main.c",
   ]
 }
 
+executable("fileCompress") {
+  cflags = ["-g", "-Wall"]
+  ldflags = ["-l:liblz4.a"]
+  sources = [
+    "fileCompress.c",
+  ]
+}

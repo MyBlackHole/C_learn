@@ -11,7 +11,7 @@
 #include <string.h>
 #include <sys/stat.h>
 
-#include <lz4file.h>
+#include "lz4file.h"
 
 #define CHUNK_SIZE (16 * 1024)
 
