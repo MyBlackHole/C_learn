@@ -1,0 +1,8 @@
+executable("zpipe") {
+  cflags = ["-g", "-Wall"]
+  ldflags = ["-lz"]
+  sources = [
+    "zpipe.c",
+  ]
+}
+

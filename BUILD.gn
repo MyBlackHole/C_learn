@@ -1,6 +1,9 @@
 group("default"){
   deps = [
+    "//zlib_learn:zpipe",
+
     "//lz4_learn:main",
+    "//lz4_learn:fileCompress",
 
     "//xxHash_learn:XXH3_64bits",
 
@@ -356,6 +359,7 @@ group("default"){
     "//unistd_learn:fork4_test",
     "//unistd_learn:setsid_test",
 
+    "//stdio_learn:feof_test",
     "//stdio_learn:hex_str_To_hex",
     "//stdio_learn:scanf_test",
     "//stdio_learn:buf_test",
