@@ -3,13 +3,13 @@
 
 int main() {
   char buffer[50];
-  char *s = "runoobcom";
+  char *s = "runoobcom black hole";
   int i = 1111112;
   int z = 0;
   char port[50];
 
   // 读取字符串并存储在 buffer 中
-  int j = snprintf(buffer, 6, "%s\n", s);
+  int j = snprintf(buffer, 50, "%s\n", s);
 
   // 输出 buffer及字符数
   printf("string:\n%s\ncharacter count = %d\n", buffer, j);

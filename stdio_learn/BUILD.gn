@@ -1,3 +1,11 @@
+executable("feof_test") {
+  cflags = ["-g", "-Wall"]
+
+  sources = [
+    "feof_test.c",
+  ]
+}
+
 executable("hex_str_To_hex") {
   cflags = ["-g", "-Wall"]
 
