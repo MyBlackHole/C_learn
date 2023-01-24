@@ -195,6 +195,7 @@ group("default"){
     "//sys_socket_learn:sendmsg_test",
     "//sys_socket_learn:socketpair_test",
 
+    "//sys_stat_learn:mkdir_test",
     "//sys_stat_learn:stat3_test",
     "//sys_stat_learn:stat2_test",
     "//sys_stat_learn:chmod_test",
