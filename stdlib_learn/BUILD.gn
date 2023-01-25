@@ -1,3 +1,11 @@
+
+executable("abort_test") {
+  cflags = ["-g", "-Wall"]
+  sources = [
+    "abort_test.c",
+  ]
+}
+
 executable("aligned_alloc_test") {
   cflags = ["-g", "-Wall"]
   sources = [
