@@ -1,0 +1,7 @@
+executable("main") {
+  cflags = ["-g", "-Wall"]
+  libs = ["uv"]
+  sources = [
+    "main.c",
+  ]
+}
