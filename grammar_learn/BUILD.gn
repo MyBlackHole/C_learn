@@ -1,3 +1,11 @@
+executable("arr_prt_test") {
+  cflags = ["-g", "-Wall"]
+
+  sources = [
+    "arr_prt_test.c",
+  ]
+}
+
 executable("pointer3_test") {
   cflags = ["-g", "-Wall"]
 

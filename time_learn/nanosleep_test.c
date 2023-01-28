@@ -17,6 +17,7 @@ int main(int argc, char *argv[]) {
 
   for (int i = 0; i < 10; ++i) {
     rv = nanosleep(&request, &remaining);
+    // rv = nanosleep(&request, NULL);
     if (rv != 0) {
       printf("error: sleep: %s", strerror(errno));
     }

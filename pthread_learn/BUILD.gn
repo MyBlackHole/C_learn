@@ -1,3 +1,10 @@
+executable("pthread_barrier_init_test") {
+  cflags = ["-g", "-Wall"]
+  sources = [
+    "pthread_barrier_init_test.c",
+  ]
+}
+
 executable("pthread_create3_test") {
   cflags = ["-g", "-Wall"]
   sources = [

@@ -1,3 +1,10 @@
+executable("timespec_get_test") {
+  cflags = ["-g", "-Wall"]
+  sources = [
+    "timespec_get_test.c",
+  ]
+}
+
 executable("nanosleep_test") {
   cflags = ["-g", "-Wall"]
   sources = [
