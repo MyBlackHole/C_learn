@@ -70,8 +70,8 @@ int main() {
   hints.ai_flags = 0;
 
   uv_getaddrinfo_t resolver;
-  fprintf(stderr, "irc.freenode.net is... ");
-  int r = uv_getaddrinfo(loop, &resolver, on_resolved, "irc.freenode.net",
+  fprintf(stderr, "www.baidu.com is... ");
+  int r = uv_getaddrinfo(loop, &resolver, on_resolved, "www.baidu.com",
                          "6667", &hints);
 
   if (r) {
