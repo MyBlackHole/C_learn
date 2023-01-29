@@ -31,6 +31,7 @@ void invoke_cgi_script(uv_tcp_t *client) {
   options.stdio_count = 3;
   uv_stdio_container_t child_stdio[3];
   child_stdio[0].flags = UV_IGNORE;
+  // 流继承给子进程的输出 stdout
   child_stdio[1].flags = UV_INHERIT_STREAM;
   child_stdio[1].data.stream = (uv_stream_t *)client;
   child_stdio[2].flags = UV_IGNORE;
@@ -62,6 +63,7 @@ void on_new_connection(uv_stream_t *server, int status) {
   }
 }
 
+// nc 127.0.0.1 7000
 int main(int argc, char *argv[]) {
   loop = uv_default_loop();
 
