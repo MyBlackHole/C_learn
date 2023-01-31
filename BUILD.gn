@@ -1,5 +1,23 @@
 group("default"){
   deps = [
+    "//raft_learn:main",
+
+    "//uv_learn/detach:main",
+    "//uv_learn/pipe-echo-server:main",
+    "//uv_learn/multi-echo-server:main",
+    "//uv_learn/dns:main",
+    "//uv_learn/tcp-echo-server:main",
+    "//uv_learn/signal:main",
+    "//uv_learn/queue-cancel:main",
+    "//uv_learn/queue-work:main",
+    "//uv_learn/ref-timer:main",
+    "//uv_learn/uvcat:main",
+    "//uv_learn/idle-compute:main",
+    "//uv_learn/idle-basic:main",
+    "//uv_learn/cgi:main",
+    "//uv_learn/cgi:tick",
+    "//uv_learn:main",
+
     "//zlib_learn:zpipe",
 
     "//lz4_learn:main",
@@ -26,7 +44,7 @@ group("default"){
     # "//dome/twemproxy:nc_conf",
     # "//dome/twemproxy/src/hashkit:nc_hashkit",
 
-    "//liburing_learn:io_uring_test",
+    "//uring_learn:io_uring_test",
 
     # "//dome/remixdb:xdbdemo",
     # "//dome/remixdb:xdb",
@@ -95,6 +113,8 @@ group("default"){
 
     "//stdint_learn:int32_t_test",
 
+    "//time_learn:timespec_get_test",
+    "//time_learn:nanosleep_test",
     "//time_learn:time_test",
     "//time_learn:clock_gettime_test",
 
@@ -241,11 +261,13 @@ group("default"){
 
     "//gcc_learn:__builtin_clz_test",
 
+    "//aio_learn:main",
     "//aio_learn:aio_read_test",
     "//aio_learn:aio_write_test",
     "//aio_learn:aio_suspend_test",
     "//aio_learn:lio_listio_test",
 
+    "//grammar_learn:arr_prt_test",
     "//grammar_learn:pointer3_test",
     "//grammar_learn/H:Hmain",
     "//grammar_learn:int_test",
@@ -271,6 +293,7 @@ group("default"){
     # "//libev_learn/case:ev1_test",
     # "//libev_learn/case:ev_signal_test",
 
+    "//pthread_learn:pthread_barrier_init_test",
     "//pthread_learn:pthread_create3_test",
     "//pthread_learn:pthread_cond_broadcast_test",
     "//pthread_learn:pthread_attr_init_test",
@@ -309,6 +332,7 @@ group("default"){
 
     "//strings_learn:strcasecmp_test",
 
+    "//stdlib_learn:abort_test",
     "//stdlib_learn:aligned_alloc_test",
     "//stdlib_learn:qsort_test",
     "//stdlib_learn:srandom_test",

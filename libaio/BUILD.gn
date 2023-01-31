@@ -1,7 +1,0 @@
-executable("main") {
-  cflags = ["-g", "-Wall"]
-  libs = ["aio"]
-  sources = [
-    "main.c",
-  ]
-}

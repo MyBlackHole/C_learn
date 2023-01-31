@@ -1,6 +1,6 @@
 #include <arpa/inet.h>
-#include <stdio.h>
 #include <netdb.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -9,9 +9,10 @@
 int main(int argc, char *argv[]) {
   struct addrinfo hints;
   struct addrinfo *result, *rp;
-  int sfd, s, j;
-  size_t len;
-  ssize_t nread;
+  int s;
+  // int sfd, j;
+  // size_t len;
+  // ssize_t nread;
   char buf[BUF_SIZE];
   struct sockaddr_in *ipv4;
   struct sockaddr_in6 *ipv6;

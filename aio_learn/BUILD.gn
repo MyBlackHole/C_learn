@@ -17,3 +17,11 @@ executable("aio_read_test") {
   cflags = ["-g", "-Wall"]
   sources = [ "aio_read_test.c" ]
 }
+
+executable("main") {
+  cflags = ["-g", "-Wall"]
+  libs = ["aio"]
+  sources = [
+    "main.c",
+  ]
+}
