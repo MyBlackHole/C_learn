@@ -13,18 +13,21 @@
 #include <sys/time.h>
 #include <time.h>
 
-void setTimer(int seconds, int mseconds) {
-  struct timeval temp;
-  temp.tv_sec = seconds;
-  temp.tv_usec = mseconds * 1000;
-  select(0, NULL, NULL, NULL, &temp);
-  printf("timer\n");
+void setTimer(int seconds, int mseconds)
+{
+    struct timeval temp;
+    temp.tv_sec = seconds;
+    temp.tv_usec = mseconds * 1000;
+    select(0, NULL, NULL, NULL, &temp);
+    printf("timer\n");
 }
 
-int main() {
-  int i;
-  for (i = 0; i < 100; i++) {
-    setTimer(1, 0);
-  }
-  return 0;
+int main()
+{
+    int i;
+    for (i = 0; i < 100; i++)
+    {
+        setTimer(1, 0);
+    }
+    return 0;
 }

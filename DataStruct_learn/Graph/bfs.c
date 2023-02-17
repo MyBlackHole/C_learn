@@ -25,9 +25,9 @@ struct queue *createQueue() {
 // Inserts item at start of queue
 void enqueue(struct queue *q, int value) {
   // 判断是否越界
-  if (q->rear == SIZE - 1)
+  if (q->rear == SIZE - 1) {
     printf("\nQueue is Full!!");
-  else {
+  } else {
     // 首次添加初始化
     if (q->front == -1) {
       q->front = 0;
@@ -41,10 +41,11 @@ void enqueue(struct queue *q, int value) {
 // 这个不是这样的
 int isEmpty(struct queue *q) {
   // 是否为空
-  if (q->rear == -1)
+  if (q->rear == -1) {
     return 1;
-  else
+  } else {
     return 0;
+}
 }
 
 // Returns element at front of queue

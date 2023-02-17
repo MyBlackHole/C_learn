@@ -19,10 +19,10 @@ extern void print_timespec(struct timespec *tm);
 
 int My_stat(const char *pathname, Stat *buf) {
   int result = stat(pathname, buf);
-  if (-1 == result)
+  if (-1 == result) {
     printf("stat(\"%s\",%p) failed,because %s\n", pathname, buf,
            strerror(errno));
-  else {
+  } else {
     printf("stat(\"%s\",%p) ok:\n", pathname, buf);
     print_stat_type(buf, pathname);
     print_mode_perms(buf->st_mode, pathname);
@@ -31,10 +31,10 @@ int My_stat(const char *pathname, Stat *buf) {
 }
 int My_lstat(const char *pathname, Stat *buf) {
   int result = lstat(pathname, buf);
-  if (-1 == result)
+  if (-1 == result) {
     printf("lstat(\"%s\",%p) failed,because %s\n", pathname, buf,
            strerror(errno));
-  else {
+  } else {
     printf("lstat(\"%s\",%p) ok:\n", pathname, buf);
     print_stat_type(buf, pathname);
     print_mode_perms(buf->st_mode, pathname);
@@ -43,68 +43,90 @@ int My_lstat(const char *pathname, Stat *buf) {
 }
 void print_stat_type(const Stat *file_stat, const char *file_name) {
   printf(" \"%s\" type is:", file_name);
-  if (S_ISREG(file_stat->st_mode))
+  if (S_ISREG(file_stat->st_mode)) {
     printf("regular file,\t");
-  if (S_ISDIR(file_stat->st_mode))
+}
+  if (S_ISDIR(file_stat->st_mode)) {
     printf("directory file,\t");
-  if (S_ISCHR(file_stat->st_mode))
+}
+  if (S_ISCHR(file_stat->st_mode)) {
     printf("char file,\t");
-  if (S_ISBLK(file_stat->st_mode))
+}
+  if (S_ISBLK(file_stat->st_mode)) {
     printf(" block file,\t");
-  if (S_ISFIFO(file_stat->st_mode))
+}
+  if (S_ISFIFO(file_stat->st_mode)) {
     printf("fifo  file,\t");
-  if (S_ISLNK(file_stat->st_mode))
+}
+  if (S_ISLNK(file_stat->st_mode)) {
     printf("link file,\t");
-  if (S_ISSOCK(file_stat->st_mode))
+}
+  if (S_ISSOCK(file_stat->st_mode)) {
     printf("socket,\t");
-  if (S_TYPEISMQ(file_stat))
+}
+  if (S_TYPEISMQ(file_stat)) {
     printf("message queue file,\t");
-  if (S_TYPEISSEM(file_stat))
+}
+  if (S_TYPEISSEM(file_stat)) {
     printf("semaphore,\t");
-  if (S_TYPEISSHM(file_stat))
+}
+  if (S_TYPEISSHM(file_stat)) {
     printf("share memory,\t");
+}
   printf("\n");
 }
 
 void print_mode_perms(mode_t mode, const char *file_name) {
   printf("\"%s\" permission is:", file_name);
-  if (S_IRUSR & mode)
+  if (S_IRUSR & mode) {
     printf("user read,\t");
-  if (S_IWUSR & mode)
+}
+  if (S_IWUSR & mode) {
     printf("user write,\t");
-  if (S_IXUSR & mode)
+}
+  if (S_IXUSR & mode) {
     printf("user exec,\t");
-  if (S_IRGRP & mode)
+}
+  if (S_IRGRP & mode) {
     printf("group read,\t");
-  if (S_IWGRP & mode)
+}
+  if (S_IWGRP & mode) {
     printf("group write,\t");
-  if (S_IXGRP & mode)
+}
+  if (S_IXGRP & mode) {
     printf("group exec,\t");
-  if (S_IROTH & mode)
+}
+  if (S_IROTH & mode) {
     printf("other read,\t");
-  if (S_IWOTH & mode)
+}
+  if (S_IWOTH & mode) {
     printf("other write,\t");
-  if (S_IXOTH & mode)
+}
+  if (S_IXOTH & mode) {
     printf("other exec,\t");
+}
   printf("\n");
 }
 void print_stat_owners(const Stat *file_stat, const char *file_name) {
   printf("\"%s\" file ids:", file_name);
   printf("owner id < %d >,\t", file_stat->st_uid);
   printf("group id < %d >,\t", file_stat->st_gid);
-  if (S_ISUID & file_stat->st_mode)
+  if (S_ISUID & file_stat->st_mode) {
     printf("set_user_id,\t");
-  if (S_ISGID & file_stat->st_mode)
+}
+  if (S_ISGID & file_stat->st_mode) {
     printf("set_group_id,\t");
+}
   printf("\n");
 }
 void print_file_type(const char *pathname) {
   Stat buf;
-  if (-1 != stat(pathname, &buf))
+  if (-1 != stat(pathname, &buf)) {
     print_stat_type(&buf, pathname);
-  else
+  } else {
     printf("get type of file \"\%s\" failed,because %s\n", pathname,
            strerror(errno));
+}
 }
 int file_is_dir(const char *pathname) {
   Stat buf;
@@ -118,26 +140,28 @@ int file_is_dir(const char *pathname) {
 
 void print_file_perm(const char *pathname) {
   Stat buf;
-  if (-1 != stat(pathname, &buf))
+  if (-1 != stat(pathname, &buf)) {
     print_mode_perms(buf.st_mode, pathname);
-  else
+  } else {
     printf("get perm of file \"\%s\" failed,because %s\n", pathname,
            strerror(errno));
 }
+}
 void print_file_owner(const char *pathname) {
   Stat buf;
-  if (-1 != stat(pathname, &buf))
+  if (-1 != stat(pathname, &buf)) {
     print_stat_owners(&buf, pathname);
-  else
+  } else {
     printf("get owners of file \"\%s\" failed,because %s\n", pathname,
            strerror(errno));
+}
 }
 void print_file_size(const char *pathname) {
   Stat buf;
   if (-1 != stat(pathname, &buf)) {
-    printf("file \"%s\" size is %d bytes\n", pathname, buf.st_size);
-    printf("file \"%s\" block size is %d bytes\n", pathname, buf.st_blksize);
-    printf("file \"%s\" blocks is %d \n", pathname, buf.st_blocks);
+    printf("file \"%s\" size is %ld bytes\n", pathname, buf.st_size);
+    printf("file \"%s\" block size is %ld bytes\n", pathname, buf.st_blksize);
+    printf("file \"%s\" blocks is %ld \n", pathname, buf.st_blocks);
   } else {
     printf("get size of file  \"%s\" failed,because %s\n", pathname,
            strerror(errno));
@@ -146,7 +170,7 @@ void print_file_size(const char *pathname) {
 void print_file_link_num(const char *pathname) {
   Stat buf;
   if (-1 != stat(pathname, &buf)) {
-    printf("hard link num of file \"%s\" is %d \n", pathname, buf.st_nlink);
+    printf("hard link num of file \"%s\" is %lu \n", pathname, buf.st_nlink);
   } else {
     printf("get hard link num  of file  \"%s\" failed,because %s\n", pathname,
            strerror(errno));

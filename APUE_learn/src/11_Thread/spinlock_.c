@@ -107,13 +107,15 @@ void test_spinlock() {
   pthread_t threads[N];
 
   My_pthread_spin_lock(&spin_lock); // 加锁
-  for (int i = 0; i < N; i++)
+  for (int i = 0; i < N; i++) {
     My_pthread_create(threads + i, NULL, thread_func, 0);
+}
   My_pthread_spin_unlock(&spin_lock); // 解锁
   //******** 等待子线程结束 *********//
   int values[N];
-  for (int i = 0; i < N; i++)
+  for (int i = 0; i < N; i++) {
     thread_join_int(threads[i], values + i);
+}
 
   My_pthread_spin_destroy(&spin_lock);
   M_TRACE("---------  End test_spinlock()  ---------\n\n");

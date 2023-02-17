@@ -34,13 +34,13 @@ void print_struct_tms(const struct tms *tm) {
     printf("NULL\n");
     return;
   }
-  printf("\tuser cpu time:%d clock(=%d s)\n", tm->tms_utime,
+  printf("\tuser cpu time:%ld clock(=%ld s)\n", tm->tms_utime,
          clock_2_second(tm->tms_utime));
-  printf("\tsystem cpu time:%d clock(=%d s)\n", tm->tms_stime,
+  printf("\tsystem cpu time:%ld clock(=%ld s)\n", tm->tms_stime,
          clock_2_second(tm->tms_stime));
-  printf("\tchilds user cpu time:%d clock(=%d s)\n", tm->tms_cutime,
+  printf("\tchilds user cpu time:%ld clock(=%ld s)\n", tm->tms_cutime,
          clock_2_second(tm->tms_cutime));
-  printf("\tchilds system cpu time:%d clock(=%d s)\n", tm->tms_cstime,
+  printf("\tchilds system cpu time:%ld clock(=%ld s)\n", tm->tms_cstime,
          clock_2_second(tm->tms_cstime));
 }
 
@@ -49,9 +49,10 @@ void print_struct_tms(const struct tms *tm) {
  * \param iterate_num : for 循环的次数
  */
 static void busy_work(long iterate_num) {
-  long num;
-  for (int i = 0; i < iterate_num; i++) //累加
+  long num = 0;
+  for (int i = 0; i < iterate_num; i++) { //累加
     num += i % 7;
+}
 }
 /*!
  * \brief create_child : 创建子进程
@@ -72,7 +73,7 @@ static pid_t create_child(int fd, long iterate_num) {
     sleep(2); //睡眠2秒
     busy_work(iterate_num);
     t2 = My_times(&buf);
-    printf("Child elapsed time is %d s\n", clock_2_second(t2 - t1));
+    printf("Child elapsed time is %ld s\n", clock_2_second(t2 - t1));
     printf("************ In Child **********\n");
     fcntl_unlock(fd); // 解锁
     _exit(0);         //_exit 退出
@@ -100,7 +101,7 @@ void test_progress_times() {
   busy_work(1000000000); // 只有父进程能到达这里
   check_waitpid();
   t2 = My_times(&buf);
-  printf("Parent elapsed time is %d s\n", clock_2_second(t2 - t1));
+  printf("Parent elapsed time is %ld s\n", clock_2_second(t2 - t1));
   fcntl_unlock(fd); // 解锁
 
   close(fd);

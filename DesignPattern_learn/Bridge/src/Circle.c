@@ -23,7 +23,7 @@ typedef struct {
 
 static void shape_init(struct Shape *shape, int radius, int x, int y,
                        struct DrawAPI *draw_api) {
-  shape->priv = (void *)calloc(1, sizeof(priv_t));
+  shape->priv = calloc(1, sizeof(priv_t));
   priv_t *priv = shape->priv;
   priv->radius = radius;
   priv->x = x;
@@ -33,8 +33,9 @@ static void shape_init(struct Shape *shape, int radius, int x, int y,
 
 static void shape_draw(struct Shape *shape) {
   priv_t *priv = shape->priv;
-  if (NULL == priv)
+  if (NULL == priv) {
     return;
+}
 
   if (priv->draw_api && priv->draw_api->draw_circle) {
     priv->draw_api->draw_circle(priv->draw_api, priv->radius, priv->x, priv->y);
@@ -51,8 +52,9 @@ static void shape_destroy(struct Shape *shape) {
 struct Shape *circle_create(int radius, int x, int y,
                             struct DrawAPI *draw_api) {
   struct Shape *shape = (struct Shape *)calloc(1, sizeof(struct Shape));
-  if (NULL == shape)
+  if (NULL == shape) {
     return NULL;
+}
 
   shape_init(shape, radius, x, y, draw_api);
   shape->draw = shape_draw;

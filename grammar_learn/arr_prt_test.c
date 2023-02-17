@@ -4,33 +4,37 @@
 #define NUM 3
 
 // 数组 与 指针
-void test1() {
-  int A[10];
-  int B[5][10];
-  printf("sizeof A=%ld\n", sizeof(A));
-  printf("sizeof B=%ld\n", sizeof(B));
+void test1()
+{
+    int A[10];
+    int B[5][10];
+    printf("sizeof A=%ld\n", sizeof(A));
+    printf("sizeof B=%ld\n", sizeof(B));
 
-  int(*pA) = A;
-  int(*pB)[10] = B;
-  (void)pA;
-  (void)pB;
+    int(*pA) = A;
+    int(*pB)[10] = B;
+    (void)pA;
+    (void)pB;
 }
 
 // 指针数组空间分配
-void test2() {
-  int(*pipes)[2];
+void test2()
+{
+    int(*pipes)[2];
 
-  pipes = malloc(NUM * sizeof(*pipes));
-  if (pipes == NULL) {
-    exit(EXIT_FAILURE);
-  }
+    pipes = malloc(NUM * sizeof(*pipes));
+    if (pipes == NULL)
+    {
+        exit(EXIT_FAILURE);
+    }
 
-  for (int i = 0; i < NUM; i++) {
-    pipes[i][0] = -1;
-    pipes[i][1] = -1;
-  }
+    for (int i = 0; i < NUM; i++)
+    {
+        pipes[i][0] = -1;
+        pipes[i][1] = -1;
+    }
 
-  free(pipes);
+    free(pipes);
 }
 
 // void test3() {
@@ -45,9 +49,10 @@ void test2() {
 //   }
 // }
 
-int main(int argc, char *argv[]) {
-  test1();
-  test2();
+int main(int argc, char *argv[])
+{
+    test1();
+    test2();
 
-  exit(EXIT_SUCCESS);
+    exit(EXIT_SUCCESS);
 }

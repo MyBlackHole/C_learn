@@ -14,35 +14,42 @@
 /* 如果是扩大内存操作会把 ptr 指向的内存中的数据复制到新地址（新地址也可
  * 会和原地址相同，但依旧不能对原指针进行任何操作）；如果是缩小内存操作，原始据会被复制并截取新长度。
  */
-int main() {
-  int input, n;
-  int count = 0;
-  int *numbers = NULL;
-  int *more_numbers = NULL;
+int main()
+{
+    int input, n;
+    int count = 0;
+    int *numbers = NULL;
+    int *more_numbers = NULL;
 
-  do {
-    printf("Enter an integer value (0 to end): ");
-    scanf("%d", &input);
-    count++;
+    do
+    {
+        printf("Enter an integer value (0 to end): ");
+        scanf("%d", &input);
+        count++;
 
-    more_numbers = (int *)realloc(numbers, count * sizeof(int));
+        more_numbers = (int *)realloc(numbers, count * sizeof(int));
 
-    if (more_numbers != NULL) {
-      numbers = more_numbers;
-      numbers[count - 1] = input;
-    } else {
-      free(numbers);
-      puts("Error (re)allocating memory");
-      exit(1);
+        if (more_numbers != NULL)
+        {
+            numbers = more_numbers;
+            numbers[count - 1] = input;
+        }
+        else
+        {
+            free(numbers);
+            puts("Error (re)allocating memory");
+            exit(1);
+        }
+    } while (input != 0);
+
+    printf("Numbers entered: ");
+    for (n = 0; n < count; n++)
+    {
+        printf("%d ", numbers[n]);
     }
-  } while (input != 0);
+    free(numbers);
 
-  printf("Numbers entered: ");
-  for (n = 0; n < count; n++)
-    printf("%d ", numbers[n]);
-  free(numbers);
-
-  fflush(stdout);
-  system("ls");
-  return 0;
+    fflush(stdout);
+    system("ls");
+    return 0;
 }

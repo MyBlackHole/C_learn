@@ -16,24 +16,27 @@
 #include <wchar.h>
 
 int My_fwide(FILE *fp, int mode) {
-  if (NULL == fp)
+  if (NULL == fp) {
     return 0;
+}
   int result = fwide(fp, mode);
-  if (result > 0)
+  if (result > 0) {
     printf("fp(%p) is wide-byte-flow\n", fp);
-  else if (result < 0)
+  } else if (result < 0) {
     printf("fp(%p) is byte-flow\n", fp);
-  else
+  } else {
     printf("fp(%p) is unordered\n", fp);
+}
   return result; // 没有失败的情况
 }
 int My_setvbuf(FILE *fp, char *buf, int mode, size_t size) {
   int result = setvbuf(fp, buf, mode, size);
-  if (0 != result) // 失败返回非 0
-    printf("setvbuf(%p,%p,%d,%d) failed,because %s\n", fp, buf, mode, size,
+  if (0 != result) { // 失败返回非 0
+    printf("setvbuf(%p,%p,%d,%zu) failed,because %s\n", fp, buf, mode, size,
            strerror(errno));
-  else
-    printf("setvbuf(%p,%p,%d,%d) ok\n", fp, buf, mode, size);
+  } else {
+    printf("setvbuf(%p,%p,%d,%zu) ok\n", fp, buf, mode, size);
+}
   return result;
 }
 int My_fflush(FILE *fp) {
@@ -41,8 +44,9 @@ int My_fflush(FILE *fp) {
   if (EOF == result) //失败返回 EOF 而不是 -1
   {
     printf("fflush(%p) failed,because %s\n", fp, strerror(errno));
-  } else
+  } else {
     printf("fflush(%p) ok\n", fp);
+}
   return result;
 }
 FILE *My_fopen(const char *pathname, const char *type) {
@@ -57,24 +61,27 @@ FILE *My_fopen(const char *pathname, const char *type) {
 }
 void set_no_buf(FILE *fp) {
   int result = setvbuf(fp, NULL, _IONBF, 0);
-  if (0 != result) // 失败返回非 0
+  if (0 != result) { // 失败返回非 0
     printf("set_no_buf(%p) failed,because %s\n", fp, strerror(errno));
-  else
+  } else {
     printf("set_no_buf(%p) ok\n", fp);
+}
 }
 void set_line_buf(FILE *fp) {
   int result = setvbuf(fp, NULL, _IOLBF, 0);
-  if (0 != result) // 失败返回非 0
+  if (0 != result) { // 失败返回非 0
     printf("set_line_buf(%p) failed,because %s\n", fp, strerror(errno));
-  else
+  } else {
     printf("set_line_buf(%p) ok\n", fp);
+}
 }
 void set_full_buf(FILE *fp) {
   int result = setvbuf(fp, NULL, _IOFBF, 0);
-  if (0 != result) // 失败返回非 0
+  if (0 != result) { // 失败返回非 0
     printf("set_full_buf(%p) failed,because %s\n", fp, strerror(errno));
-  else
+  } else {
     printf("set_full_buf(%p) ok\n", fp);
+}
 }
 void print_FILE(const FILE *fp) {
   printf("FILE %p is :", fp);
@@ -83,8 +90,8 @@ void print_FILE(const FILE *fp) {
     return;
   }
   printf("\tfile descriptor is :%d\n", fp->_fileno);
-  printf("\tbuffer address is :0x%x\n", fp->_IO_buf_base);
-  printf("\tbuffer length is :%d\n", fp->_IO_buf_end - fp->_IO_buf_base);
+  printf("\tbuffer address is :0x%s\n", fp->_IO_buf_base);
+  printf("\tbuffer length is :%ld\n", fp->_IO_buf_end - fp->_IO_buf_base);
   printf("\tFILE status is :0x%x\n", fp->_flags);
 }
 

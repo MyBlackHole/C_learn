@@ -28,7 +28,7 @@ static void clean_func(void *arg) { printf("clearn_up with arg %d\n", arg); }
  * \return :直接返回参数
  */
 static void *thread_func(void *arg) {
-  printf("\n****** Begin Thread:thread id=0x%x ******\n", pthread_self());
+  printf("\n****** Begin Thread:thread id=0x%lx ******\n", pthread_self());
   printf("arg is %d\n", arg);
   pthread_cleanup_push(clean_func, (int)arg - 2); // 第一次注册
   pthread_cleanup_push(clean_func, (int)arg - 1); // 第二次注册
@@ -39,7 +39,7 @@ static void *thread_func(void *arg) {
   pthread_cleanup_pop(1); // 对应第二次注册
   printf("-- 2 --\n");
   pthread_cleanup_pop(2); // 对应第一次注册
-  printf("****** End Thread:thread id=0x%x ******\n\n", pthread_self());
+  printf("****** End Thread:thread id=0x%lx ******\n\n", pthread_self());
   return arg;
 }
 

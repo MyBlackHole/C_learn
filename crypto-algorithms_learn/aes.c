@@ -18,10 +18,10 @@ available at:
 
 /*************************** HEADER FILES ***************************/
 #include "aes.h"
-#include <memory.h>
-#include <stdlib.h>
 
+#include <memory.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 /****************************** MACROS ******************************/
 // The least significant byte of the word is rotated to the end.
@@ -260,131 +260,147 @@ static const BYTE gf_mul[256][6] = {
 
 /*********************** FUNCTION DEFINITIONS ***********************/
 // XORs the in and out buffers, storing the result in out. Length is in bytes.
-void xor_buf(const BYTE in[], BYTE out[], size_t len) {
-  size_t idx;
+void xor_buf(const BYTE in[], BYTE out[], size_t len)
+{
+    size_t idx;
 
-  for (idx = 0; idx < len; idx++)
-    out[idx] ^= in[idx];
+    for (idx = 0; idx < len; idx++) out[idx] ^= in[idx];
 }
 
 /*******************
  * AES - CBC
  *******************/
 int aes_encrypt_cbc(const BYTE in[], size_t in_len, BYTE out[],
-                    const WORD key[], int keysize, const BYTE iv[]) {
-  BYTE buf_in[AES_BLOCK_SIZE], buf_out[AES_BLOCK_SIZE], iv_buf[AES_BLOCK_SIZE];
-  int blocks, idx;
+                    const WORD key[], int keysize, const BYTE iv[])
+{
+    BYTE buf_in[AES_BLOCK_SIZE], buf_out[AES_BLOCK_SIZE],
+        iv_buf[AES_BLOCK_SIZE];
+    int blocks, idx;
 
-  if (in_len % AES_BLOCK_SIZE != 0)
-    return (FALSE);
+    if (in_len % AES_BLOCK_SIZE != 0)
+        return (FALSE);
 
-  blocks = in_len / AES_BLOCK_SIZE;
+    blocks = in_len / AES_BLOCK_SIZE;
 
-  memcpy(iv_buf, iv, AES_BLOCK_SIZE);
+    memcpy(iv_buf, iv, AES_BLOCK_SIZE);
 
-  for (idx = 0; idx < blocks; idx++) {
-    memcpy(buf_in, &in[idx * AES_BLOCK_SIZE], AES_BLOCK_SIZE);
-    xor_buf(iv_buf, buf_in, AES_BLOCK_SIZE);
-    aes_encrypt(buf_in, buf_out, key, keysize);
-    memcpy(&out[idx * AES_BLOCK_SIZE], buf_out, AES_BLOCK_SIZE);
-    memcpy(iv_buf, buf_out, AES_BLOCK_SIZE);
-  }
+    for (idx = 0; idx < blocks; idx++)
+    {
+        memcpy(buf_in, &in[idx * AES_BLOCK_SIZE], AES_BLOCK_SIZE);
+        xor_buf(iv_buf, buf_in, AES_BLOCK_SIZE);
+        aes_encrypt(buf_in, buf_out, key, keysize);
+        memcpy(&out[idx * AES_BLOCK_SIZE], buf_out, AES_BLOCK_SIZE);
+        memcpy(iv_buf, buf_out, AES_BLOCK_SIZE);
+    }
 
-  return (TRUE);
+    return (TRUE);
 }
 
 int aes_encrypt_cbc_mac(const BYTE in[], size_t in_len, BYTE out[],
-                        const WORD key[], int keysize, const BYTE iv[]) {
-  BYTE buf_in[AES_BLOCK_SIZE], buf_out[AES_BLOCK_SIZE], iv_buf[AES_BLOCK_SIZE];
-  int blocks, idx;
+                        const WORD key[], int keysize, const BYTE iv[])
+{
+    BYTE buf_in[AES_BLOCK_SIZE], buf_out[AES_BLOCK_SIZE],
+        iv_buf[AES_BLOCK_SIZE];
+    int blocks, idx;
 
-  if (in_len % AES_BLOCK_SIZE != 0)
-    return (FALSE);
+    if (in_len % AES_BLOCK_SIZE != 0)
+        return (FALSE);
 
-  blocks = in_len / AES_BLOCK_SIZE;
+    blocks = in_len / AES_BLOCK_SIZE;
 
-  memcpy(iv_buf, iv, AES_BLOCK_SIZE);
+    memcpy(iv_buf, iv, AES_BLOCK_SIZE);
 
-  for (idx = 0; idx < blocks; idx++) {
-    memcpy(buf_in, &in[idx * AES_BLOCK_SIZE], AES_BLOCK_SIZE);
-    xor_buf(iv_buf, buf_in, AES_BLOCK_SIZE);
-    aes_encrypt(buf_in, buf_out, key, keysize);
-    memcpy(iv_buf, buf_out, AES_BLOCK_SIZE);
-    // Do not output all encrypted blocks.
-  }
+    for (idx = 0; idx < blocks; idx++)
+    {
+        memcpy(buf_in, &in[idx * AES_BLOCK_SIZE], AES_BLOCK_SIZE);
+        xor_buf(iv_buf, buf_in, AES_BLOCK_SIZE);
+        aes_encrypt(buf_in, buf_out, key, keysize);
+        memcpy(iv_buf, buf_out, AES_BLOCK_SIZE);
+        // Do not output all encrypted blocks.
+    }
 
-  memcpy(out, buf_out, AES_BLOCK_SIZE); // Only output the last block.
+    memcpy(out, buf_out, AES_BLOCK_SIZE);  // Only output the last block.
 
-  return (TRUE);
+    return (TRUE);
 }
 
 int aes_decrypt_cbc(const BYTE in[], size_t in_len, BYTE out[],
-                    const WORD key[], int keysize, const BYTE iv[]) {
-  BYTE buf_in[AES_BLOCK_SIZE], buf_out[AES_BLOCK_SIZE], iv_buf[AES_BLOCK_SIZE];
-  int blocks, idx;
+                    const WORD key[], int keysize, const BYTE iv[])
+{
+    BYTE buf_in[AES_BLOCK_SIZE], buf_out[AES_BLOCK_SIZE],
+        iv_buf[AES_BLOCK_SIZE];
+    int blocks, idx;
 
-  if (in_len % AES_BLOCK_SIZE != 0)
-    return (FALSE);
+    if (in_len % AES_BLOCK_SIZE != 0)
+        return (FALSE);
 
-  blocks = in_len / AES_BLOCK_SIZE;
+    blocks = in_len / AES_BLOCK_SIZE;
 
-  memcpy(iv_buf, iv, AES_BLOCK_SIZE);
+    memcpy(iv_buf, iv, AES_BLOCK_SIZE);
 
-  for (idx = 0; idx < blocks; idx++) {
-    memcpy(buf_in, &in[idx * AES_BLOCK_SIZE], AES_BLOCK_SIZE);
-    aes_decrypt(buf_in, buf_out, key, keysize);
-    xor_buf(iv_buf, buf_out, AES_BLOCK_SIZE);
-    memcpy(&out[idx * AES_BLOCK_SIZE], buf_out, AES_BLOCK_SIZE);
-    memcpy(iv_buf, buf_in, AES_BLOCK_SIZE);
-  }
+    for (idx = 0; idx < blocks; idx++)
+    {
+        memcpy(buf_in, &in[idx * AES_BLOCK_SIZE], AES_BLOCK_SIZE);
+        aes_decrypt(buf_in, buf_out, key, keysize);
+        xor_buf(iv_buf, buf_out, AES_BLOCK_SIZE);
+        memcpy(&out[idx * AES_BLOCK_SIZE], buf_out, AES_BLOCK_SIZE);
+        memcpy(iv_buf, buf_in, AES_BLOCK_SIZE);
+    }
 
-  return (TRUE);
+    return (TRUE);
 }
 
 /*******************
  * AES - CTR
  *******************/
-void increment_iv(BYTE iv[], int counter_size) {
-  int idx;
+void increment_iv(BYTE iv[], int counter_size)
+{
+    int idx;
 
-  // Use counter_size bytes at the end of the IV as the big-endian integer to
-  // increment.
-  for (idx = AES_BLOCK_SIZE - 1; idx >= AES_BLOCK_SIZE - counter_size; idx--) {
-    iv[idx]++;
-    if (iv[idx] != 0 || idx == AES_BLOCK_SIZE - counter_size)
-      break;
-  }
+    // Use counter_size bytes at the end of the IV as the big-endian integer to
+    // increment.
+    for (idx = AES_BLOCK_SIZE - 1; idx >= AES_BLOCK_SIZE - counter_size; idx--)
+    {
+        iv[idx]++;
+        if (iv[idx] != 0 || idx == AES_BLOCK_SIZE - counter_size)
+            break;
+    }
 }
 
 // Performs the encryption in-place, the input and output buffers may be the
 // same. Input may be an arbitrary length (in bytes).
 void aes_encrypt_ctr(const BYTE in[], size_t in_len, BYTE out[],
-                     const WORD key[], int keysize, const BYTE iv[]) {
-  size_t idx = 0, last_block_length;
-  BYTE iv_buf[AES_BLOCK_SIZE], out_buf[AES_BLOCK_SIZE];
+                     const WORD key[], int keysize, const BYTE iv[])
+{
+    size_t idx = 0, last_block_length;
+    BYTE iv_buf[AES_BLOCK_SIZE], out_buf[AES_BLOCK_SIZE];
 
-  if (in != out)
-    memcpy(out, in, in_len);
+    if (in != out)
+        memcpy(out, in, in_len);
 
-  memcpy(iv_buf, iv, AES_BLOCK_SIZE);
-  last_block_length = in_len - AES_BLOCK_SIZE;
+    memcpy(iv_buf, iv, AES_BLOCK_SIZE);
+    last_block_length = in_len - AES_BLOCK_SIZE;
 
-  if (in_len > AES_BLOCK_SIZE) {
-    for (idx = 0; idx < last_block_length; idx += AES_BLOCK_SIZE) {
-      aes_encrypt(iv_buf, out_buf, key, keysize);
-      xor_buf(out_buf, &out[idx], AES_BLOCK_SIZE);
-      increment_iv(iv_buf, AES_BLOCK_SIZE);
+    if (in_len > AES_BLOCK_SIZE)
+    {
+        for (idx = 0; idx < last_block_length; idx += AES_BLOCK_SIZE)
+        {
+            aes_encrypt(iv_buf, out_buf, key, keysize);
+            xor_buf(out_buf, &out[idx], AES_BLOCK_SIZE);
+            increment_iv(iv_buf, AES_BLOCK_SIZE);
+        }
     }
-  }
 
-  aes_encrypt(iv_buf, out_buf, key, keysize);
-  xor_buf(out_buf, &out[idx], in_len - idx); // Use the Most Significant bytes.
+    aes_encrypt(iv_buf, out_buf, key, keysize);
+    xor_buf(out_buf, &out[idx],
+            in_len - idx);  // Use the Most Significant bytes.
 }
 
 void aes_decrypt_ctr(const BYTE in[], size_t in_len, BYTE out[],
-                     const WORD key[], int keysize, const BYTE iv[]) {
-  // CTR encryption is its own inverse function.
-  aes_encrypt_ctr(in, in_len, out, key, keysize, iv);
+                     const WORD key[], int keysize, const BYTE iv[])
+{
+    // CTR encryption is its own inverse function.
+    aes_encrypt_ctr(in, in_len, out, key, keysize, iv);
 }
 
 /*******************
@@ -394,70 +410,73 @@ void aes_decrypt_ctr(const BYTE in[], size_t in_len, BYTE out[],
 int aes_encrypt_ccm(const BYTE payload[], WORD payload_len, const BYTE assoc[],
                     unsigned short assoc_len, const BYTE nonce[],
                     unsigned short nonce_len, BYTE out[], WORD *out_len,
-                    WORD mac_len, const BYTE key_str[], int keysize) {
-  BYTE temp_iv[AES_BLOCK_SIZE], counter[AES_BLOCK_SIZE], mac[16], *buf;
-  int end_of_buf, payload_len_store_size;
-  WORD key[60];
+                    WORD mac_len, const BYTE key_str[], int keysize)
+{
+    BYTE temp_iv[AES_BLOCK_SIZE], counter[AES_BLOCK_SIZE], mac[16], *buf;
+    int end_of_buf, payload_len_store_size;
+    WORD key[60];
 
-  if (mac_len != 4 && mac_len != 6 && mac_len != 8 && mac_len != 10 &&
-      mac_len != 12 && mac_len != 14 && mac_len != 16)
-    return (FALSE);
+    if (mac_len != 4 && mac_len != 6 && mac_len != 8 && mac_len != 10 &&
+        mac_len != 12 && mac_len != 14 && mac_len != 16)
+        return (FALSE);
 
-  if (nonce_len < 7 || nonce_len > 13)
-    return (FALSE);
+    if (nonce_len < 7 || nonce_len > 13)
+        return (FALSE);
 
-  if (assoc_len > 32768 /* = 2^15 */)
-    return (FALSE);
+    if (assoc_len > 32768 /* = 2^15 */)
+        return (FALSE);
 
-  buf = (BYTE *) malloc(payload_len + assoc_len +
+    buf = (BYTE *) malloc(payload_len + assoc_len +
                           48 /*Round both payload and associated data up a block size and add an extra block.*/);
-  if (!buf)
-    return (FALSE);
+    if (!buf)
+        return (FALSE);
 
-  // Prepare the key for usage.
-  aes_key_setup(key_str, key, keysize);
+    // Prepare the key for usage.
+    aes_key_setup(key_str, key, keysize);
 
-  // Format the first block of the formatted data.
-  payload_len_store_size = AES_BLOCK_SIZE - 1 - nonce_len;
-  ccm_prepare_first_format_blk(buf, assoc_len, payload_len,
-                               payload_len_store_size, mac_len, nonce,
-                               nonce_len);
-  end_of_buf = AES_BLOCK_SIZE;
+    // Format the first block of the formatted data.
+    payload_len_store_size = AES_BLOCK_SIZE - 1 - nonce_len;
+    ccm_prepare_first_format_blk(buf, assoc_len, payload_len,
+                                 payload_len_store_size, mac_len, nonce,
+                                 nonce_len);
+    end_of_buf = AES_BLOCK_SIZE;
 
-  // Format the Associated Data, aka, assoc[].
-  ccm_format_assoc_data(buf, &end_of_buf, assoc, assoc_len);
+    // Format the Associated Data, aka, assoc[].
+    ccm_format_assoc_data(buf, &end_of_buf, assoc, assoc_len);
 
-  // Format the Payload, aka payload[].
-  ccm_format_payload_data(buf, &end_of_buf, payload, payload_len);
+    // Format the Payload, aka payload[].
+    ccm_format_payload_data(buf, &end_of_buf, payload, payload_len);
 
-  // Create the first counter block.
-  ccm_prepare_first_ctr_blk(counter, nonce, nonce_len, payload_len_store_size);
+    // Create the first counter block.
+    ccm_prepare_first_ctr_blk(counter, nonce, nonce_len,
+                              payload_len_store_size);
 
-  // Perform the CBC operation with an IV of zeros on the formatted buffer to
-  // calculate the MAC.
-  memset(temp_iv, 0, AES_BLOCK_SIZE);
-  aes_encrypt_cbc_mac(buf, end_of_buf, mac, key, keysize, temp_iv);
+    // Perform the CBC operation with an IV of zeros on the formatted buffer to
+    // calculate the MAC.
+    memset(temp_iv, 0, AES_BLOCK_SIZE);
+    aes_encrypt_cbc_mac(buf, end_of_buf, mac, key, keysize, temp_iv);
 
-  // Copy the Payload and MAC to the output buffer.
-  memcpy(out, payload, payload_len);
-  memcpy(&out[payload_len], mac, mac_len);
+    // Copy the Payload and MAC to the output buffer.
+    memcpy(out, payload, payload_len);
+    memcpy(&out[payload_len], mac, mac_len);
 
-  // Encrypt the Payload with CTR mode with a counter starting at 1.
-  memcpy(temp_iv, counter, AES_BLOCK_SIZE);
-  increment_iv(temp_iv,
-               AES_BLOCK_SIZE - 1 -
-                   mac_len); // Last argument is the byte size of the counting
-                             // portion of the counter block. /*BUG?*/
-  aes_encrypt_ctr(out, payload_len, out, key, keysize, temp_iv);
+    // Encrypt the Payload with CTR mode with a counter starting at 1.
+    memcpy(temp_iv, counter, AES_BLOCK_SIZE);
+    increment_iv(
+        temp_iv,
+        AES_BLOCK_SIZE - 1 -
+            mac_len);  // Last argument is the byte size of the counting
+                       // portion of the counter block. /*BUG?*/
+    aes_encrypt_ctr(out, payload_len, out, key, keysize, temp_iv);
 
-  // Encrypt the MAC with CTR mode with a counter starting at 0.
-  aes_encrypt_ctr(&out[payload_len], mac_len, &out[payload_len], key, keysize,
-                  counter);
+    // Encrypt the MAC with CTR mode with a counter starting at 0.
+    aes_encrypt_ctr(&out[payload_len], mac_len, &out[payload_len], key, keysize,
+                    counter);
 
-  free(buf);
-  *out_len = payload_len + mac_len;
+    free(buf);
+    *out_len = payload_len + mac_len;
 
-  return (TRUE);
+    return (TRUE);
 }
 
 // plaintext_len = ciphertext_len - mac_len
@@ -466,130 +485,141 @@ int aes_decrypt_ccm(const BYTE ciphertext[], WORD ciphertext_len,
                     const BYTE assoc[], unsigned short assoc_len,
                     const BYTE nonce[], unsigned short nonce_len,
                     BYTE plaintext[], WORD *plaintext_len, WORD mac_len,
-                    int *mac_auth, const BYTE key_str[], int keysize) {
-  BYTE temp_iv[AES_BLOCK_SIZE], counter[AES_BLOCK_SIZE], mac[16], mac_buf[16],
-      *buf;
-  int end_of_buf, plaintext_len_store_size;
-  WORD key[60];
+                    int *mac_auth, const BYTE key_str[], int keysize)
+{
+    BYTE temp_iv[AES_BLOCK_SIZE], counter[AES_BLOCK_SIZE], mac[16], mac_buf[16],
+        *buf;
+    int end_of_buf, plaintext_len_store_size;
+    WORD key[60];
 
-  if (ciphertext_len <= mac_len)
-    return (FALSE);
+    if (ciphertext_len <= mac_len)
+        return (FALSE);
 
-  buf = (BYTE *)malloc(
-      assoc_len + ciphertext_len /*ciphertext_len = plaintext_len + mac_len*/ +
-      48);
-  if (!buf)
-    return (FALSE);
+    buf = (BYTE *)malloc(
+        assoc_len +
+        ciphertext_len /*ciphertext_len = plaintext_len + mac_len*/ + 48);
+    if (!buf)
+        return (FALSE);
 
-  // Prepare the key for usage.
-  aes_key_setup(key_str, key, keysize);
+    // Prepare the key for usage.
+    aes_key_setup(key_str, key, keysize);
 
-  // Copy the plaintext and MAC to the output buffers.
-  *plaintext_len = ciphertext_len - mac_len;
-  plaintext_len_store_size = AES_BLOCK_SIZE - 1 - nonce_len;
-  memcpy(plaintext, ciphertext, *plaintext_len);
-  memcpy(mac, &ciphertext[*plaintext_len], mac_len);
-
-  // Prepare the first counter block for use in decryption.
-  ccm_prepare_first_ctr_blk(counter, nonce, nonce_len,
-                            plaintext_len_store_size);
-
-  // Decrypt the Payload with CTR mode with a counter starting at 1.
-  memcpy(temp_iv, counter, AES_BLOCK_SIZE);
-  increment_iv(temp_iv,
-               AES_BLOCK_SIZE - 1 -
-                   mac_len); // (AES_BLOCK_SIZE - 1 - mac_len) is the byte size
-                             // of the counting portion of the counter block.
-  aes_decrypt_ctr(plaintext, *plaintext_len, plaintext, key, keysize, temp_iv);
-
-  // Setting mac_auth to NULL disables the authentication check.
-  if (mac_auth != NULL) {
-    // Decrypt the MAC with CTR mode with a counter starting at 0.
-    aes_decrypt_ctr(mac, mac_len, mac, key, keysize, counter);
-
-    // Format the first block of the formatted data.
+    // Copy the plaintext and MAC to the output buffers.
+    *plaintext_len = ciphertext_len - mac_len;
     plaintext_len_store_size = AES_BLOCK_SIZE - 1 - nonce_len;
-    ccm_prepare_first_format_blk(buf, assoc_len, *plaintext_len,
-                                 plaintext_len_store_size, mac_len, nonce,
-                                 nonce_len);
-    end_of_buf = AES_BLOCK_SIZE;
+    memcpy(plaintext, ciphertext, *plaintext_len);
+    memcpy(mac, &ciphertext[*plaintext_len], mac_len);
 
-    // Format the Associated Data into the authentication buffer.
-    ccm_format_assoc_data(buf, &end_of_buf, assoc, assoc_len);
+    // Prepare the first counter block for use in decryption.
+    ccm_prepare_first_ctr_blk(counter, nonce, nonce_len,
+                              plaintext_len_store_size);
 
-    // Format the Payload into the authentication buffer.
-    ccm_format_payload_data(buf, &end_of_buf, plaintext, *plaintext_len);
+    // Decrypt the Payload with CTR mode with a counter starting at 1.
+    memcpy(temp_iv, counter, AES_BLOCK_SIZE);
+    increment_iv(
+        temp_iv,
+        AES_BLOCK_SIZE - 1 -
+            mac_len);  // (AES_BLOCK_SIZE - 1 - mac_len) is the byte size
+                       // of the counting portion of the counter block.
+    aes_decrypt_ctr(plaintext, *plaintext_len, plaintext, key, keysize,
+                    temp_iv);
 
-    // Perform the CBC operation with an IV of zeros on the formatted buffer to
-    // calculate the MAC.
-    memset(temp_iv, 0, AES_BLOCK_SIZE);
-    aes_encrypt_cbc_mac(buf, end_of_buf, mac_buf, key, keysize, temp_iv);
+    // Setting mac_auth to NULL disables the authentication check.
+    if (mac_auth != NULL)
+    {
+        // Decrypt the MAC with CTR mode with a counter starting at 0.
+        aes_decrypt_ctr(mac, mac_len, mac, key, keysize, counter);
 
-    // Compare the calculated MAC against the MAC embedded in the ciphertext to
-    // see if they are the same.
-    if (!memcmp(mac, mac_buf, mac_len)) {
-      *mac_auth = TRUE;
-    } else {
-      *mac_auth = FALSE;
-      memset(plaintext, 0, *plaintext_len);
+        // Format the first block of the formatted data.
+        plaintext_len_store_size = AES_BLOCK_SIZE - 1 - nonce_len;
+        ccm_prepare_first_format_blk(buf, assoc_len, *plaintext_len,
+                                     plaintext_len_store_size, mac_len, nonce,
+                                     nonce_len);
+        end_of_buf = AES_BLOCK_SIZE;
+
+        // Format the Associated Data into the authentication buffer.
+        ccm_format_assoc_data(buf, &end_of_buf, assoc, assoc_len);
+
+        // Format the Payload into the authentication buffer.
+        ccm_format_payload_data(buf, &end_of_buf, plaintext, *plaintext_len);
+
+        // Perform the CBC operation with an IV of zeros on the formatted buffer
+        // to calculate the MAC.
+        memset(temp_iv, 0, AES_BLOCK_SIZE);
+        aes_encrypt_cbc_mac(buf, end_of_buf, mac_buf, key, keysize, temp_iv);
+
+        // Compare the calculated MAC against the MAC embedded in the ciphertext
+        // to see if they are the same.
+        if (!memcmp(mac, mac_buf, mac_len))
+        {
+            *mac_auth = TRUE;
+        }
+        else
+        {
+            *mac_auth = FALSE;
+            memset(plaintext, 0, *plaintext_len);
+        }
     }
-  }
 
-  free(buf);
+    free(buf);
 
-  return (TRUE);
+    return (TRUE);
 }
 
 // Creates the first counter block. First byte is flags, then the nonce, then
 // the incremented part.
 void ccm_prepare_first_ctr_blk(BYTE counter[], const BYTE nonce[],
-                               int nonce_len, int payload_len_store_size) {
-  memset(counter, 0, AES_BLOCK_SIZE);
-  counter[0] = (payload_len_store_size - 1) & 0x07;
-  memcpy(&counter[1], nonce, nonce_len);
+                               int nonce_len, int payload_len_store_size)
+{
+    memset(counter, 0, AES_BLOCK_SIZE);
+    counter[0] = (payload_len_store_size - 1) & 0x07;
+    memcpy(&counter[1], nonce, nonce_len);
 }
 
 void ccm_prepare_first_format_blk(BYTE buf[], int assoc_len, int payload_len,
                                   int payload_len_store_size, int mac_len,
-                                  const BYTE nonce[], int nonce_len) {
-  // Set the flags for the first byte of the first block.
-  buf[0] = ((((mac_len - 2) / 2) & 0x07) << 3) |
-           ((payload_len_store_size - 1) & 0x07);
-  if (assoc_len > 0)
-    buf[0] += 0x40;
-  // Format the rest of the first block, storing the nonce and the size of the
-  // payload.
-  memcpy(&buf[1], nonce, nonce_len);
-  memset(&buf[1 + nonce_len], 0, AES_BLOCK_SIZE - 1 - nonce_len);
-  buf[15] = payload_len & 0x000000FF;
-  buf[14] = (payload_len >> 8) & 0x000000FF;
+                                  const BYTE nonce[], int nonce_len)
+{
+    // Set the flags for the first byte of the first block.
+    buf[0] = ((((mac_len - 2) / 2) & 0x07) << 3) |
+             ((payload_len_store_size - 1) & 0x07);
+    if (assoc_len > 0)
+        buf[0] += 0x40;
+    // Format the rest of the first block, storing the nonce and the size of the
+    // payload.
+    memcpy(&buf[1], nonce, nonce_len);
+    memset(&buf[1 + nonce_len], 0, AES_BLOCK_SIZE - 1 - nonce_len);
+    buf[15] = payload_len & 0x000000FF;
+    buf[14] = (payload_len >> 8) & 0x000000FF;
 }
 
 void ccm_format_assoc_data(BYTE buf[], int *end_of_buf, const BYTE assoc[],
-                           int assoc_len) {
-  int pad;
+                           int assoc_len)
+{
+    int pad;
 
-  buf[*end_of_buf + 1] = assoc_len & 0x00FF;
-  buf[*end_of_buf] = (assoc_len >> 8) & 0x00FF;
-  *end_of_buf += 2;
-  memcpy(&buf[*end_of_buf], assoc, assoc_len);
-  *end_of_buf += assoc_len;
-  pad = AES_BLOCK_SIZE - (*end_of_buf % AES_BLOCK_SIZE); /*BUG?*/
-  memset(&buf[*end_of_buf], 0, pad);
-  *end_of_buf += pad;
+    buf[*end_of_buf + 1] = assoc_len & 0x00FF;
+    buf[*end_of_buf] = (assoc_len >> 8) & 0x00FF;
+    *end_of_buf += 2;
+    memcpy(&buf[*end_of_buf], assoc, assoc_len);
+    *end_of_buf += assoc_len;
+    pad = AES_BLOCK_SIZE - (*end_of_buf % AES_BLOCK_SIZE); /*BUG?*/
+    memset(&buf[*end_of_buf], 0, pad);
+    *end_of_buf += pad;
 }
 
 void ccm_format_payload_data(BYTE buf[], int *end_of_buf, const BYTE payload[],
-                             int payload_len) {
-  int pad;
+                             int payload_len)
+{
+    int pad;
 
-  memcpy(&buf[*end_of_buf], payload, payload_len);
-  *end_of_buf += payload_len;
-  pad = *end_of_buf % AES_BLOCK_SIZE;
-  if (pad != 0)
-    pad = AES_BLOCK_SIZE - pad;
-  memset(&buf[*end_of_buf], 0, pad);
-  *end_of_buf += pad;
+    memcpy(&buf[*end_of_buf], payload, payload_len);
+    *end_of_buf += payload_len;
+    pad = *end_of_buf % AES_BLOCK_SIZE;
+    if (pad != 0)
+        pad = AES_BLOCK_SIZE - pad;
+    memset(&buf[*end_of_buf], 0, pad);
+    *end_of_buf += pad;
 }
 
 /*******************
@@ -600,59 +630,66 @@ void ccm_format_payload_data(BYTE buf[], int *end_of_buf, const BYTE payload[],
 /////////////////
 
 // Substitutes a word using the AES S-Box.
-WORD SubWord(WORD word) {
-  unsigned int result;
+WORD SubWord(WORD word)
+{
+    unsigned int result;
 
-  result = (int)aes_sbox[(word >> 4) & 0x0000000F][word & 0x0000000F];
-  result += (int)aes_sbox[(word >> 12) & 0x0000000F][(word >> 8) & 0x0000000F]
-            << 8;
-  result += (int)aes_sbox[(word >> 20) & 0x0000000F][(word >> 16) & 0x0000000F]
-            << 16;
-  result += (int)aes_sbox[(word >> 28) & 0x0000000F][(word >> 24) & 0x0000000F]
-            << 24;
-  return (result);
+    result = (int)aes_sbox[(word >> 4) & 0x0000000F][word & 0x0000000F];
+    result += (int)aes_sbox[(word >> 12) & 0x0000000F][(word >> 8) & 0x0000000F]
+              << 8;
+    result +=
+        (int)aes_sbox[(word >> 20) & 0x0000000F][(word >> 16) & 0x0000000F]
+        << 16;
+    result +=
+        (int)aes_sbox[(word >> 28) & 0x0000000F][(word >> 24) & 0x0000000F]
+        << 24;
+    return (result);
 }
 
 // Performs the action of generating the keys that will be used in every round
 // of encryption. "key" is the user-supplied input key, "w" is the output key
 // schedule, "keysize" is the length in bits of "key", must be 128, 192, or 256.
-void aes_key_setup(const BYTE key[], WORD w[], int key_size) {
-  int Nb = 4, Nr, Nk, idx;
-  WORD temp,
-      Rcon[] = {0x01000000, 0x02000000, 0x04000000, 0x08000000, 0x10000000,
-                0x20000000, 0x40000000, 0x80000000, 0x1b000000, 0x36000000,
-                0x6c000000, 0xd8000000, 0xab000000, 0x4d000000, 0x9a000000};
+void aes_key_setup(const BYTE key[], WORD w[], int key_size)
+{
+    int Nb = 4, Nr, Nk, idx;
+    WORD temp,
+        Rcon[] = {0x01000000, 0x02000000, 0x04000000, 0x08000000, 0x10000000,
+                  0x20000000, 0x40000000, 0x80000000, 0x1b000000, 0x36000000,
+                  0x6c000000, 0xd8000000, 0xab000000, 0x4d000000, 0x9a000000};
 
-  switch (key_size) {
-  case 128:
-    Nr = 10;
-    Nk = 4;
-    break;
-  case 192:
-    Nr = 12;
-    Nk = 6;
-    break;
-  case 256:
-    Nr = 14;
-    Nk = 8;
-    break;
-  default:
-    return;
-  }
+    switch (key_size)
+    {
+    case 128:
+        Nr = 10;
+        Nk = 4;
+        break;
+    case 192:
+        Nr = 12;
+        Nk = 6;
+        break;
+    case 256:
+        Nr = 14;
+        Nk = 8;
+        break;
+    default:
+        return;
+    }
 
-  for (idx = 0; idx < Nk; ++idx) {
-    w[idx] = ((key[4 * idx]) << 24) | ((key[4 * idx + 1]) << 16) |
-             ((key[4 * idx + 2]) << 8) | ((key[4 * idx + 3]));
-  }
+    for (idx = 0; idx < Nk; ++idx)
+    {
+        w[idx] = ((key[4 * idx]) << 24) | ((key[4 * idx + 1]) << 16) |
+                 ((key[4 * idx + 2]) << 8) | ((key[4 * idx + 3]));
+    }
 
-  for (idx = Nk; idx < Nb * (Nr + 1); ++idx) {
-    temp = w[idx - 1];
-    if ((idx % Nk) == 0)
-      temp = SubWord(KE_ROTWORD(temp)) ^ Rcon[(idx - 1) / Nk];
-    else if (Nk > 6 && (idx % Nk) == 4)
-      temp = SubWord(temp);
-    w[idx] = w[idx - Nk] ^ temp;
-  }
+    for (idx = Nk; idx < Nb * (Nr + 1); ++idx)
+    {
+        temp = w[idx - 1];
+        if ((idx % Nk) == 0)
+            temp = SubWord(KE_ROTWORD(temp)) ^ Rcon[(idx - 1) / Nk];
+        else if (Nk > 6 && (idx % Nk) == 4)
+            temp = SubWord(temp);
+        w[idx] = w[idx - Nk] ^ temp;
+    }
 }
 
 /////////////////
@@ -663,46 +700,47 @@ void aes_key_setup(const BYTE key[], WORD w[], int key_size) {
 // key in the form of 4 integers (the "w" array). Each integer is XOR'd by one
 // column of the state. Also performs the job of InvAddRoundKey(); since the
 // function is a simple XOR process, it is its own inverse.
-void AddRoundKey(BYTE state[][4], const WORD w[]) {
-  BYTE subkey[4];
+void AddRoundKey(BYTE state[][4], const WORD w[])
+{
+    BYTE subkey[4];
 
-  // memcpy(subkey,&w[idx],4); // Not accurate for big endian machines
-  // Subkey 1
-  subkey[0] = w[0] >> 24;
-  subkey[1] = w[0] >> 16;
-  subkey[2] = w[0] >> 8;
-  subkey[3] = w[0];
-  state[0][0] ^= subkey[0];
-  state[1][0] ^= subkey[1];
-  state[2][0] ^= subkey[2];
-  state[3][0] ^= subkey[3];
-  // Subkey 2
-  subkey[0] = w[1] >> 24;
-  subkey[1] = w[1] >> 16;
-  subkey[2] = w[1] >> 8;
-  subkey[3] = w[1];
-  state[0][1] ^= subkey[0];
-  state[1][1] ^= subkey[1];
-  state[2][1] ^= subkey[2];
-  state[3][1] ^= subkey[3];
-  // Subkey 3
-  subkey[0] = w[2] >> 24;
-  subkey[1] = w[2] >> 16;
-  subkey[2] = w[2] >> 8;
-  subkey[3] = w[2];
-  state[0][2] ^= subkey[0];
-  state[1][2] ^= subkey[1];
-  state[2][2] ^= subkey[2];
-  state[3][2] ^= subkey[3];
-  // Subkey 4
-  subkey[0] = w[3] >> 24;
-  subkey[1] = w[3] >> 16;
-  subkey[2] = w[3] >> 8;
-  subkey[3] = w[3];
-  state[0][3] ^= subkey[0];
-  state[1][3] ^= subkey[1];
-  state[2][3] ^= subkey[2];
-  state[3][3] ^= subkey[3];
+    // memcpy(subkey,&w[idx],4); // Not accurate for big endian machines
+    // Subkey 1
+    subkey[0] = w[0] >> 24;
+    subkey[1] = w[0] >> 16;
+    subkey[2] = w[0] >> 8;
+    subkey[3] = w[0];
+    state[0][0] ^= subkey[0];
+    state[1][0] ^= subkey[1];
+    state[2][0] ^= subkey[2];
+    state[3][0] ^= subkey[3];
+    // Subkey 2
+    subkey[0] = w[1] >> 24;
+    subkey[1] = w[1] >> 16;
+    subkey[2] = w[1] >> 8;
+    subkey[3] = w[1];
+    state[0][1] ^= subkey[0];
+    state[1][1] ^= subkey[1];
+    state[2][1] ^= subkey[2];
+    state[3][1] ^= subkey[3];
+    // Subkey 3
+    subkey[0] = w[2] >> 24;
+    subkey[1] = w[2] >> 16;
+    subkey[2] = w[2] >> 8;
+    subkey[3] = w[2];
+    state[0][2] ^= subkey[0];
+    state[1][2] ^= subkey[1];
+    state[2][2] ^= subkey[2];
+    state[3][2] ^= subkey[3];
+    // Subkey 4
+    subkey[0] = w[3] >> 24;
+    subkey[1] = w[3] >> 16;
+    subkey[2] = w[3] >> 8;
+    subkey[3] = w[3];
+    state[0][3] ^= subkey[0];
+    state[1][3] ^= subkey[1];
+    state[2][3] ^= subkey[2];
+    state[3][3] ^= subkey[3];
 }
 
 /////////////////
@@ -711,42 +749,44 @@ void AddRoundKey(BYTE state[][4], const WORD w[]) {
 
 // Performs the SubBytes step. All bytes in the state are substituted with a
 // pre-calculated value from a lookup table.
-void SubBytes(BYTE state[][4]) {
-  state[0][0] = aes_sbox[state[0][0] >> 4][state[0][0] & 0x0F];
-  state[0][1] = aes_sbox[state[0][1] >> 4][state[0][1] & 0x0F];
-  state[0][2] = aes_sbox[state[0][2] >> 4][state[0][2] & 0x0F];
-  state[0][3] = aes_sbox[state[0][3] >> 4][state[0][3] & 0x0F];
-  state[1][0] = aes_sbox[state[1][0] >> 4][state[1][0] & 0x0F];
-  state[1][1] = aes_sbox[state[1][1] >> 4][state[1][1] & 0x0F];
-  state[1][2] = aes_sbox[state[1][2] >> 4][state[1][2] & 0x0F];
-  state[1][3] = aes_sbox[state[1][3] >> 4][state[1][3] & 0x0F];
-  state[2][0] = aes_sbox[state[2][0] >> 4][state[2][0] & 0x0F];
-  state[2][1] = aes_sbox[state[2][1] >> 4][state[2][1] & 0x0F];
-  state[2][2] = aes_sbox[state[2][2] >> 4][state[2][2] & 0x0F];
-  state[2][3] = aes_sbox[state[2][3] >> 4][state[2][3] & 0x0F];
-  state[3][0] = aes_sbox[state[3][0] >> 4][state[3][0] & 0x0F];
-  state[3][1] = aes_sbox[state[3][1] >> 4][state[3][1] & 0x0F];
-  state[3][2] = aes_sbox[state[3][2] >> 4][state[3][2] & 0x0F];
-  state[3][3] = aes_sbox[state[3][3] >> 4][state[3][3] & 0x0F];
+void SubBytes(BYTE state[][4])
+{
+    state[0][0] = aes_sbox[state[0][0] >> 4][state[0][0] & 0x0F];
+    state[0][1] = aes_sbox[state[0][1] >> 4][state[0][1] & 0x0F];
+    state[0][2] = aes_sbox[state[0][2] >> 4][state[0][2] & 0x0F];
+    state[0][3] = aes_sbox[state[0][3] >> 4][state[0][3] & 0x0F];
+    state[1][0] = aes_sbox[state[1][0] >> 4][state[1][0] & 0x0F];
+    state[1][1] = aes_sbox[state[1][1] >> 4][state[1][1] & 0x0F];
+    state[1][2] = aes_sbox[state[1][2] >> 4][state[1][2] & 0x0F];
+    state[1][3] = aes_sbox[state[1][3] >> 4][state[1][3] & 0x0F];
+    state[2][0] = aes_sbox[state[2][0] >> 4][state[2][0] & 0x0F];
+    state[2][1] = aes_sbox[state[2][1] >> 4][state[2][1] & 0x0F];
+    state[2][2] = aes_sbox[state[2][2] >> 4][state[2][2] & 0x0F];
+    state[2][3] = aes_sbox[state[2][3] >> 4][state[2][3] & 0x0F];
+    state[3][0] = aes_sbox[state[3][0] >> 4][state[3][0] & 0x0F];
+    state[3][1] = aes_sbox[state[3][1] >> 4][state[3][1] & 0x0F];
+    state[3][2] = aes_sbox[state[3][2] >> 4][state[3][2] & 0x0F];
+    state[3][3] = aes_sbox[state[3][3] >> 4][state[3][3] & 0x0F];
 }
 
-void InvSubBytes(BYTE state[][4]) {
-  state[0][0] = aes_invsbox[state[0][0] >> 4][state[0][0] & 0x0F];
-  state[0][1] = aes_invsbox[state[0][1] >> 4][state[0][1] & 0x0F];
-  state[0][2] = aes_invsbox[state[0][2] >> 4][state[0][2] & 0x0F];
-  state[0][3] = aes_invsbox[state[0][3] >> 4][state[0][3] & 0x0F];
-  state[1][0] = aes_invsbox[state[1][0] >> 4][state[1][0] & 0x0F];
-  state[1][1] = aes_invsbox[state[1][1] >> 4][state[1][1] & 0x0F];
-  state[1][2] = aes_invsbox[state[1][2] >> 4][state[1][2] & 0x0F];
-  state[1][3] = aes_invsbox[state[1][3] >> 4][state[1][3] & 0x0F];
-  state[2][0] = aes_invsbox[state[2][0] >> 4][state[2][0] & 0x0F];
-  state[2][1] = aes_invsbox[state[2][1] >> 4][state[2][1] & 0x0F];
-  state[2][2] = aes_invsbox[state[2][2] >> 4][state[2][2] & 0x0F];
-  state[2][3] = aes_invsbox[state[2][3] >> 4][state[2][3] & 0x0F];
-  state[3][0] = aes_invsbox[state[3][0] >> 4][state[3][0] & 0x0F];
-  state[3][1] = aes_invsbox[state[3][1] >> 4][state[3][1] & 0x0F];
-  state[3][2] = aes_invsbox[state[3][2] >> 4][state[3][2] & 0x0F];
-  state[3][3] = aes_invsbox[state[3][3] >> 4][state[3][3] & 0x0F];
+void InvSubBytes(BYTE state[][4])
+{
+    state[0][0] = aes_invsbox[state[0][0] >> 4][state[0][0] & 0x0F];
+    state[0][1] = aes_invsbox[state[0][1] >> 4][state[0][1] & 0x0F];
+    state[0][2] = aes_invsbox[state[0][2] >> 4][state[0][2] & 0x0F];
+    state[0][3] = aes_invsbox[state[0][3] >> 4][state[0][3] & 0x0F];
+    state[1][0] = aes_invsbox[state[1][0] >> 4][state[1][0] & 0x0F];
+    state[1][1] = aes_invsbox[state[1][1] >> 4][state[1][1] & 0x0F];
+    state[1][2] = aes_invsbox[state[1][2] >> 4][state[1][2] & 0x0F];
+    state[1][3] = aes_invsbox[state[1][3] >> 4][state[1][3] & 0x0F];
+    state[2][0] = aes_invsbox[state[2][0] >> 4][state[2][0] & 0x0F];
+    state[2][1] = aes_invsbox[state[2][1] >> 4][state[2][1] & 0x0F];
+    state[2][2] = aes_invsbox[state[2][2] >> 4][state[2][2] & 0x0F];
+    state[2][3] = aes_invsbox[state[2][3] >> 4][state[2][3] & 0x0F];
+    state[3][0] = aes_invsbox[state[3][0] >> 4][state[3][0] & 0x0F];
+    state[3][1] = aes_invsbox[state[3][1] >> 4][state[3][1] & 0x0F];
+    state[3][2] = aes_invsbox[state[3][2] >> 4][state[3][2] & 0x0F];
+    state[3][3] = aes_invsbox[state[3][3] >> 4][state[3][3] & 0x0F];
 }
 
 /////////////////
@@ -754,53 +794,55 @@ void InvSubBytes(BYTE state[][4]) {
 /////////////////
 
 // Performs the ShiftRows step. All rows are shifted cylindrically to the left.
-void ShiftRows(BYTE state[][4]) {
-  int t;
+void ShiftRows(BYTE state[][4])
+{
+    int t;
 
-  // Shift left by 1
-  t = state[1][0];
-  state[1][0] = state[1][1];
-  state[1][1] = state[1][2];
-  state[1][2] = state[1][3];
-  state[1][3] = t;
-  // Shift left by 2
-  t = state[2][0];
-  state[2][0] = state[2][2];
-  state[2][2] = t;
-  t = state[2][1];
-  state[2][1] = state[2][3];
-  state[2][3] = t;
-  // Shift left by 3
-  t = state[3][0];
-  state[3][0] = state[3][3];
-  state[3][3] = state[3][2];
-  state[3][2] = state[3][1];
-  state[3][1] = t;
+    // Shift left by 1
+    t = state[1][0];
+    state[1][0] = state[1][1];
+    state[1][1] = state[1][2];
+    state[1][2] = state[1][3];
+    state[1][3] = t;
+    // Shift left by 2
+    t = state[2][0];
+    state[2][0] = state[2][2];
+    state[2][2] = t;
+    t = state[2][1];
+    state[2][1] = state[2][3];
+    state[2][3] = t;
+    // Shift left by 3
+    t = state[3][0];
+    state[3][0] = state[3][3];
+    state[3][3] = state[3][2];
+    state[3][2] = state[3][1];
+    state[3][1] = t;
 }
 
 // All rows are shifted cylindrically to the right.
-void InvShiftRows(BYTE state[][4]) {
-  int t;
+void InvShiftRows(BYTE state[][4])
+{
+    int t;
 
-  // Shift right by 1
-  t = state[1][3];
-  state[1][3] = state[1][2];
-  state[1][2] = state[1][1];
-  state[1][1] = state[1][0];
-  state[1][0] = t;
-  // Shift right by 2
-  t = state[2][3];
-  state[2][3] = state[2][1];
-  state[2][1] = t;
-  t = state[2][2];
-  state[2][2] = state[2][0];
-  state[2][0] = t;
-  // Shift right by 3
-  t = state[3][3];
-  state[3][3] = state[3][0];
-  state[3][0] = state[3][1];
-  state[3][1] = state[3][2];
-  state[3][2] = t;
+    // Shift right by 1
+    t = state[1][3];
+    state[1][3] = state[1][2];
+    state[1][2] = state[1][1];
+    state[1][1] = state[1][0];
+    state[1][0] = t;
+    // Shift right by 2
+    t = state[2][3];
+    state[2][3] = state[2][1];
+    state[2][1] = t;
+    t = state[2][2];
+    state[2][2] = state[2][0];
+    state[2][0] = t;
+    // Shift right by 3
+    t = state[3][3];
+    state[3][3] = state[3][0];
+    state[3][0] = state[3][1];
+    state[3][1] = state[3][2];
+    state[3][2] = t;
 }
 
 /////////////////
@@ -811,409 +853,425 @@ void InvShiftRows(BYTE state[][4]) {
 // multiplication in a Galios Field 2^8. All multiplication is pre-computed in a
 // table. Addition is equivilent to XOR. (Must always make a copy of the column
 // as the original values will be destoyed.)
-void MixColumns(BYTE state[][4]) {
-  BYTE col[4];
+void MixColumns(BYTE state[][4])
+{
+    BYTE col[4];
 
-  // Column 1
-  col[0] = state[0][0];
-  col[1] = state[1][0];
-  col[2] = state[2][0];
-  col[3] = state[3][0];
-  state[0][0] = gf_mul[col[0]][0];
-  state[0][0] ^= gf_mul[col[1]][1];
-  state[0][0] ^= col[2];
-  state[0][0] ^= col[3];
-  state[1][0] = col[0];
-  state[1][0] ^= gf_mul[col[1]][0];
-  state[1][0] ^= gf_mul[col[2]][1];
-  state[1][0] ^= col[3];
-  state[2][0] = col[0];
-  state[2][0] ^= col[1];
-  state[2][0] ^= gf_mul[col[2]][0];
-  state[2][0] ^= gf_mul[col[3]][1];
-  state[3][0] = gf_mul[col[0]][1];
-  state[3][0] ^= col[1];
-  state[3][0] ^= col[2];
-  state[3][0] ^= gf_mul[col[3]][0];
-  // Column 2
-  col[0] = state[0][1];
-  col[1] = state[1][1];
-  col[2] = state[2][1];
-  col[3] = state[3][1];
-  state[0][1] = gf_mul[col[0]][0];
-  state[0][1] ^= gf_mul[col[1]][1];
-  state[0][1] ^= col[2];
-  state[0][1] ^= col[3];
-  state[1][1] = col[0];
-  state[1][1] ^= gf_mul[col[1]][0];
-  state[1][1] ^= gf_mul[col[2]][1];
-  state[1][1] ^= col[3];
-  state[2][1] = col[0];
-  state[2][1] ^= col[1];
-  state[2][1] ^= gf_mul[col[2]][0];
-  state[2][1] ^= gf_mul[col[3]][1];
-  state[3][1] = gf_mul[col[0]][1];
-  state[3][1] ^= col[1];
-  state[3][1] ^= col[2];
-  state[3][1] ^= gf_mul[col[3]][0];
-  // Column 3
-  col[0] = state[0][2];
-  col[1] = state[1][2];
-  col[2] = state[2][2];
-  col[3] = state[3][2];
-  state[0][2] = gf_mul[col[0]][0];
-  state[0][2] ^= gf_mul[col[1]][1];
-  state[0][2] ^= col[2];
-  state[0][2] ^= col[3];
-  state[1][2] = col[0];
-  state[1][2] ^= gf_mul[col[1]][0];
-  state[1][2] ^= gf_mul[col[2]][1];
-  state[1][2] ^= col[3];
-  state[2][2] = col[0];
-  state[2][2] ^= col[1];
-  state[2][2] ^= gf_mul[col[2]][0];
-  state[2][2] ^= gf_mul[col[3]][1];
-  state[3][2] = gf_mul[col[0]][1];
-  state[3][2] ^= col[1];
-  state[3][2] ^= col[2];
-  state[3][2] ^= gf_mul[col[3]][0];
-  // Column 4
-  col[0] = state[0][3];
-  col[1] = state[1][3];
-  col[2] = state[2][3];
-  col[3] = state[3][3];
-  state[0][3] = gf_mul[col[0]][0];
-  state[0][3] ^= gf_mul[col[1]][1];
-  state[0][3] ^= col[2];
-  state[0][3] ^= col[3];
-  state[1][3] = col[0];
-  state[1][3] ^= gf_mul[col[1]][0];
-  state[1][3] ^= gf_mul[col[2]][1];
-  state[1][3] ^= col[3];
-  state[2][3] = col[0];
-  state[2][3] ^= col[1];
-  state[2][3] ^= gf_mul[col[2]][0];
-  state[2][3] ^= gf_mul[col[3]][1];
-  state[3][3] = gf_mul[col[0]][1];
-  state[3][3] ^= col[1];
-  state[3][3] ^= col[2];
-  state[3][3] ^= gf_mul[col[3]][0];
+    // Column 1
+    col[0] = state[0][0];
+    col[1] = state[1][0];
+    col[2] = state[2][0];
+    col[3] = state[3][0];
+    state[0][0] = gf_mul[col[0]][0];
+    state[0][0] ^= gf_mul[col[1]][1];
+    state[0][0] ^= col[2];
+    state[0][0] ^= col[3];
+    state[1][0] = col[0];
+    state[1][0] ^= gf_mul[col[1]][0];
+    state[1][0] ^= gf_mul[col[2]][1];
+    state[1][0] ^= col[3];
+    state[2][0] = col[0];
+    state[2][0] ^= col[1];
+    state[2][0] ^= gf_mul[col[2]][0];
+    state[2][0] ^= gf_mul[col[3]][1];
+    state[3][0] = gf_mul[col[0]][1];
+    state[3][0] ^= col[1];
+    state[3][0] ^= col[2];
+    state[3][0] ^= gf_mul[col[3]][0];
+    // Column 2
+    col[0] = state[0][1];
+    col[1] = state[1][1];
+    col[2] = state[2][1];
+    col[3] = state[3][1];
+    state[0][1] = gf_mul[col[0]][0];
+    state[0][1] ^= gf_mul[col[1]][1];
+    state[0][1] ^= col[2];
+    state[0][1] ^= col[3];
+    state[1][1] = col[0];
+    state[1][1] ^= gf_mul[col[1]][0];
+    state[1][1] ^= gf_mul[col[2]][1];
+    state[1][1] ^= col[3];
+    state[2][1] = col[0];
+    state[2][1] ^= col[1];
+    state[2][1] ^= gf_mul[col[2]][0];
+    state[2][1] ^= gf_mul[col[3]][1];
+    state[3][1] = gf_mul[col[0]][1];
+    state[3][1] ^= col[1];
+    state[3][1] ^= col[2];
+    state[3][1] ^= gf_mul[col[3]][0];
+    // Column 3
+    col[0] = state[0][2];
+    col[1] = state[1][2];
+    col[2] = state[2][2];
+    col[3] = state[3][2];
+    state[0][2] = gf_mul[col[0]][0];
+    state[0][2] ^= gf_mul[col[1]][1];
+    state[0][2] ^= col[2];
+    state[0][2] ^= col[3];
+    state[1][2] = col[0];
+    state[1][2] ^= gf_mul[col[1]][0];
+    state[1][2] ^= gf_mul[col[2]][1];
+    state[1][2] ^= col[3];
+    state[2][2] = col[0];
+    state[2][2] ^= col[1];
+    state[2][2] ^= gf_mul[col[2]][0];
+    state[2][2] ^= gf_mul[col[3]][1];
+    state[3][2] = gf_mul[col[0]][1];
+    state[3][2] ^= col[1];
+    state[3][2] ^= col[2];
+    state[3][2] ^= gf_mul[col[3]][0];
+    // Column 4
+    col[0] = state[0][3];
+    col[1] = state[1][3];
+    col[2] = state[2][3];
+    col[3] = state[3][3];
+    state[0][3] = gf_mul[col[0]][0];
+    state[0][3] ^= gf_mul[col[1]][1];
+    state[0][3] ^= col[2];
+    state[0][3] ^= col[3];
+    state[1][3] = col[0];
+    state[1][3] ^= gf_mul[col[1]][0];
+    state[1][3] ^= gf_mul[col[2]][1];
+    state[1][3] ^= col[3];
+    state[2][3] = col[0];
+    state[2][3] ^= col[1];
+    state[2][3] ^= gf_mul[col[2]][0];
+    state[2][3] ^= gf_mul[col[3]][1];
+    state[3][3] = gf_mul[col[0]][1];
+    state[3][3] ^= col[1];
+    state[3][3] ^= col[2];
+    state[3][3] ^= gf_mul[col[3]][0];
 }
 
-void InvMixColumns(BYTE state[][4]) {
-  BYTE col[4];
+void InvMixColumns(BYTE state[][4])
+{
+    BYTE col[4];
 
-  // Column 1
-  col[0] = state[0][0];
-  col[1] = state[1][0];
-  col[2] = state[2][0];
-  col[3] = state[3][0];
-  state[0][0] = gf_mul[col[0]][5];
-  state[0][0] ^= gf_mul[col[1]][3];
-  state[0][0] ^= gf_mul[col[2]][4];
-  state[0][0] ^= gf_mul[col[3]][2];
-  state[1][0] = gf_mul[col[0]][2];
-  state[1][0] ^= gf_mul[col[1]][5];
-  state[1][0] ^= gf_mul[col[2]][3];
-  state[1][0] ^= gf_mul[col[3]][4];
-  state[2][0] = gf_mul[col[0]][4];
-  state[2][0] ^= gf_mul[col[1]][2];
-  state[2][0] ^= gf_mul[col[2]][5];
-  state[2][0] ^= gf_mul[col[3]][3];
-  state[3][0] = gf_mul[col[0]][3];
-  state[3][0] ^= gf_mul[col[1]][4];
-  state[3][0] ^= gf_mul[col[2]][2];
-  state[3][0] ^= gf_mul[col[3]][5];
-  // Column 2
-  col[0] = state[0][1];
-  col[1] = state[1][1];
-  col[2] = state[2][1];
-  col[3] = state[3][1];
-  state[0][1] = gf_mul[col[0]][5];
-  state[0][1] ^= gf_mul[col[1]][3];
-  state[0][1] ^= gf_mul[col[2]][4];
-  state[0][1] ^= gf_mul[col[3]][2];
-  state[1][1] = gf_mul[col[0]][2];
-  state[1][1] ^= gf_mul[col[1]][5];
-  state[1][1] ^= gf_mul[col[2]][3];
-  state[1][1] ^= gf_mul[col[3]][4];
-  state[2][1] = gf_mul[col[0]][4];
-  state[2][1] ^= gf_mul[col[1]][2];
-  state[2][1] ^= gf_mul[col[2]][5];
-  state[2][1] ^= gf_mul[col[3]][3];
-  state[3][1] = gf_mul[col[0]][3];
-  state[3][1] ^= gf_mul[col[1]][4];
-  state[3][1] ^= gf_mul[col[2]][2];
-  state[3][1] ^= gf_mul[col[3]][5];
-  // Column 3
-  col[0] = state[0][2];
-  col[1] = state[1][2];
-  col[2] = state[2][2];
-  col[3] = state[3][2];
-  state[0][2] = gf_mul[col[0]][5];
-  state[0][2] ^= gf_mul[col[1]][3];
-  state[0][2] ^= gf_mul[col[2]][4];
-  state[0][2] ^= gf_mul[col[3]][2];
-  state[1][2] = gf_mul[col[0]][2];
-  state[1][2] ^= gf_mul[col[1]][5];
-  state[1][2] ^= gf_mul[col[2]][3];
-  state[1][2] ^= gf_mul[col[3]][4];
-  state[2][2] = gf_mul[col[0]][4];
-  state[2][2] ^= gf_mul[col[1]][2];
-  state[2][2] ^= gf_mul[col[2]][5];
-  state[2][2] ^= gf_mul[col[3]][3];
-  state[3][2] = gf_mul[col[0]][3];
-  state[3][2] ^= gf_mul[col[1]][4];
-  state[3][2] ^= gf_mul[col[2]][2];
-  state[3][2] ^= gf_mul[col[3]][5];
-  // Column 4
-  col[0] = state[0][3];
-  col[1] = state[1][3];
-  col[2] = state[2][3];
-  col[3] = state[3][3];
-  state[0][3] = gf_mul[col[0]][5];
-  state[0][3] ^= gf_mul[col[1]][3];
-  state[0][3] ^= gf_mul[col[2]][4];
-  state[0][3] ^= gf_mul[col[3]][2];
-  state[1][3] = gf_mul[col[0]][2];
-  state[1][3] ^= gf_mul[col[1]][5];
-  state[1][3] ^= gf_mul[col[2]][3];
-  state[1][3] ^= gf_mul[col[3]][4];
-  state[2][3] = gf_mul[col[0]][4];
-  state[2][3] ^= gf_mul[col[1]][2];
-  state[2][3] ^= gf_mul[col[2]][5];
-  state[2][3] ^= gf_mul[col[3]][3];
-  state[3][3] = gf_mul[col[0]][3];
-  state[3][3] ^= gf_mul[col[1]][4];
-  state[3][3] ^= gf_mul[col[2]][2];
-  state[3][3] ^= gf_mul[col[3]][5];
+    // Column 1
+    col[0] = state[0][0];
+    col[1] = state[1][0];
+    col[2] = state[2][0];
+    col[3] = state[3][0];
+    state[0][0] = gf_mul[col[0]][5];
+    state[0][0] ^= gf_mul[col[1]][3];
+    state[0][0] ^= gf_mul[col[2]][4];
+    state[0][0] ^= gf_mul[col[3]][2];
+    state[1][0] = gf_mul[col[0]][2];
+    state[1][0] ^= gf_mul[col[1]][5];
+    state[1][0] ^= gf_mul[col[2]][3];
+    state[1][0] ^= gf_mul[col[3]][4];
+    state[2][0] = gf_mul[col[0]][4];
+    state[2][0] ^= gf_mul[col[1]][2];
+    state[2][0] ^= gf_mul[col[2]][5];
+    state[2][0] ^= gf_mul[col[3]][3];
+    state[3][0] = gf_mul[col[0]][3];
+    state[3][0] ^= gf_mul[col[1]][4];
+    state[3][0] ^= gf_mul[col[2]][2];
+    state[3][0] ^= gf_mul[col[3]][5];
+    // Column 2
+    col[0] = state[0][1];
+    col[1] = state[1][1];
+    col[2] = state[2][1];
+    col[3] = state[3][1];
+    state[0][1] = gf_mul[col[0]][5];
+    state[0][1] ^= gf_mul[col[1]][3];
+    state[0][1] ^= gf_mul[col[2]][4];
+    state[0][1] ^= gf_mul[col[3]][2];
+    state[1][1] = gf_mul[col[0]][2];
+    state[1][1] ^= gf_mul[col[1]][5];
+    state[1][1] ^= gf_mul[col[2]][3];
+    state[1][1] ^= gf_mul[col[3]][4];
+    state[2][1] = gf_mul[col[0]][4];
+    state[2][1] ^= gf_mul[col[1]][2];
+    state[2][1] ^= gf_mul[col[2]][5];
+    state[2][1] ^= gf_mul[col[3]][3];
+    state[3][1] = gf_mul[col[0]][3];
+    state[3][1] ^= gf_mul[col[1]][4];
+    state[3][1] ^= gf_mul[col[2]][2];
+    state[3][1] ^= gf_mul[col[3]][5];
+    // Column 3
+    col[0] = state[0][2];
+    col[1] = state[1][2];
+    col[2] = state[2][2];
+    col[3] = state[3][2];
+    state[0][2] = gf_mul[col[0]][5];
+    state[0][2] ^= gf_mul[col[1]][3];
+    state[0][2] ^= gf_mul[col[2]][4];
+    state[0][2] ^= gf_mul[col[3]][2];
+    state[1][2] = gf_mul[col[0]][2];
+    state[1][2] ^= gf_mul[col[1]][5];
+    state[1][2] ^= gf_mul[col[2]][3];
+    state[1][2] ^= gf_mul[col[3]][4];
+    state[2][2] = gf_mul[col[0]][4];
+    state[2][2] ^= gf_mul[col[1]][2];
+    state[2][2] ^= gf_mul[col[2]][5];
+    state[2][2] ^= gf_mul[col[3]][3];
+    state[3][2] = gf_mul[col[0]][3];
+    state[3][2] ^= gf_mul[col[1]][4];
+    state[3][2] ^= gf_mul[col[2]][2];
+    state[3][2] ^= gf_mul[col[3]][5];
+    // Column 4
+    col[0] = state[0][3];
+    col[1] = state[1][3];
+    col[2] = state[2][3];
+    col[3] = state[3][3];
+    state[0][3] = gf_mul[col[0]][5];
+    state[0][3] ^= gf_mul[col[1]][3];
+    state[0][3] ^= gf_mul[col[2]][4];
+    state[0][3] ^= gf_mul[col[3]][2];
+    state[1][3] = gf_mul[col[0]][2];
+    state[1][3] ^= gf_mul[col[1]][5];
+    state[1][3] ^= gf_mul[col[2]][3];
+    state[1][3] ^= gf_mul[col[3]][4];
+    state[2][3] = gf_mul[col[0]][4];
+    state[2][3] ^= gf_mul[col[1]][2];
+    state[2][3] ^= gf_mul[col[2]][5];
+    state[2][3] ^= gf_mul[col[3]][3];
+    state[3][3] = gf_mul[col[0]][3];
+    state[3][3] ^= gf_mul[col[1]][4];
+    state[3][3] ^= gf_mul[col[2]][2];
+    state[3][3] ^= gf_mul[col[3]][5];
 }
 
 /////////////////
 // (En/De)Crypt
 /////////////////
 
-void aes_encrypt(const BYTE in[], BYTE out[], const WORD key[], int keysize) {
-  BYTE state[4][4];
+void aes_encrypt(const BYTE in[], BYTE out[], const WORD key[], int keysize)
+{
+    BYTE state[4][4];
 
-  // Copy input array (should be 16 bytes long) to a matrix (sequential bytes
-  // are ordered by row, not col) called "state" for processing.
-  // *** Implementation note: The official AES documentation references the
-  // state by column, then row. Accessing an element in C requires row then
-  // column. Thus, all state references in AES must have the column and row
-  // indexes reversed for C implementation.
-  state[0][0] = in[0];
-  state[1][0] = in[1];
-  state[2][0] = in[2];
-  state[3][0] = in[3];
-  state[0][1] = in[4];
-  state[1][1] = in[5];
-  state[2][1] = in[6];
-  state[3][1] = in[7];
-  state[0][2] = in[8];
-  state[1][2] = in[9];
-  state[2][2] = in[10];
-  state[3][2] = in[11];
-  state[0][3] = in[12];
-  state[1][3] = in[13];
-  state[2][3] = in[14];
-  state[3][3] = in[15];
+    // Copy input array (should be 16 bytes long) to a matrix (sequential bytes
+    // are ordered by row, not col) called "state" for processing.
+    // *** Implementation note: The official AES documentation references the
+    // state by column, then row. Accessing an element in C requires row then
+    // column. Thus, all state references in AES must have the column and row
+    // indexes reversed for C implementation.
+    state[0][0] = in[0];
+    state[1][0] = in[1];
+    state[2][0] = in[2];
+    state[3][0] = in[3];
+    state[0][1] = in[4];
+    state[1][1] = in[5];
+    state[2][1] = in[6];
+    state[3][1] = in[7];
+    state[0][2] = in[8];
+    state[1][2] = in[9];
+    state[2][2] = in[10];
+    state[3][2] = in[11];
+    state[0][3] = in[12];
+    state[1][3] = in[13];
+    state[2][3] = in[14];
+    state[3][3] = in[15];
 
-  // Perform the necessary number of rounds. The round key is added first.
-  // The last round does not perform the MixColumns step.
-  AddRoundKey(state, &key[0]);
-  SubBytes(state);
-  ShiftRows(state);
-  MixColumns(state);
-  AddRoundKey(state, &key[4]);
-  SubBytes(state);
-  ShiftRows(state);
-  MixColumns(state);
-  AddRoundKey(state, &key[8]);
-  SubBytes(state);
-  ShiftRows(state);
-  MixColumns(state);
-  AddRoundKey(state, &key[12]);
-  SubBytes(state);
-  ShiftRows(state);
-  MixColumns(state);
-  AddRoundKey(state, &key[16]);
-  SubBytes(state);
-  ShiftRows(state);
-  MixColumns(state);
-  AddRoundKey(state, &key[20]);
-  SubBytes(state);
-  ShiftRows(state);
-  MixColumns(state);
-  AddRoundKey(state, &key[24]);
-  SubBytes(state);
-  ShiftRows(state);
-  MixColumns(state);
-  AddRoundKey(state, &key[28]);
-  SubBytes(state);
-  ShiftRows(state);
-  MixColumns(state);
-  AddRoundKey(state, &key[32]);
-  SubBytes(state);
-  ShiftRows(state);
-  MixColumns(state);
-  AddRoundKey(state, &key[36]);
-  if (keysize != 128) {
+    // Perform the necessary number of rounds. The round key is added first.
+    // The last round does not perform the MixColumns step.
+    AddRoundKey(state, &key[0]);
     SubBytes(state);
     ShiftRows(state);
     MixColumns(state);
-    AddRoundKey(state, &key[40]);
+    AddRoundKey(state, &key[4]);
     SubBytes(state);
     ShiftRows(state);
     MixColumns(state);
-    AddRoundKey(state, &key[44]);
-    if (keysize != 192) {
-      SubBytes(state);
-      ShiftRows(state);
-      MixColumns(state);
-      AddRoundKey(state, &key[48]);
-      SubBytes(state);
-      ShiftRows(state);
-      MixColumns(state);
-      AddRoundKey(state, &key[52]);
-      SubBytes(state);
-      ShiftRows(state);
-      AddRoundKey(state, &key[56]);
-    } else {
-      SubBytes(state);
-      ShiftRows(state);
-      AddRoundKey(state, &key[48]);
+    AddRoundKey(state, &key[8]);
+    SubBytes(state);
+    ShiftRows(state);
+    MixColumns(state);
+    AddRoundKey(state, &key[12]);
+    SubBytes(state);
+    ShiftRows(state);
+    MixColumns(state);
+    AddRoundKey(state, &key[16]);
+    SubBytes(state);
+    ShiftRows(state);
+    MixColumns(state);
+    AddRoundKey(state, &key[20]);
+    SubBytes(state);
+    ShiftRows(state);
+    MixColumns(state);
+    AddRoundKey(state, &key[24]);
+    SubBytes(state);
+    ShiftRows(state);
+    MixColumns(state);
+    AddRoundKey(state, &key[28]);
+    SubBytes(state);
+    ShiftRows(state);
+    MixColumns(state);
+    AddRoundKey(state, &key[32]);
+    SubBytes(state);
+    ShiftRows(state);
+    MixColumns(state);
+    AddRoundKey(state, &key[36]);
+    if (keysize != 128)
+    {
+        SubBytes(state);
+        ShiftRows(state);
+        MixColumns(state);
+        AddRoundKey(state, &key[40]);
+        SubBytes(state);
+        ShiftRows(state);
+        MixColumns(state);
+        AddRoundKey(state, &key[44]);
+        if (keysize != 192)
+        {
+            SubBytes(state);
+            ShiftRows(state);
+            MixColumns(state);
+            AddRoundKey(state, &key[48]);
+            SubBytes(state);
+            ShiftRows(state);
+            MixColumns(state);
+            AddRoundKey(state, &key[52]);
+            SubBytes(state);
+            ShiftRows(state);
+            AddRoundKey(state, &key[56]);
+        }
+        else
+        {
+            SubBytes(state);
+            ShiftRows(state);
+            AddRoundKey(state, &key[48]);
+        }
     }
-  } else {
-    SubBytes(state);
-    ShiftRows(state);
-    AddRoundKey(state, &key[40]);
-  }
+    else
+    {
+        SubBytes(state);
+        ShiftRows(state);
+        AddRoundKey(state, &key[40]);
+    }
 
-  // Copy the state to the output array.
-  out[0] = state[0][0];
-  out[1] = state[1][0];
-  out[2] = state[2][0];
-  out[3] = state[3][0];
-  out[4] = state[0][1];
-  out[5] = state[1][1];
-  out[6] = state[2][1];
-  out[7] = state[3][1];
-  out[8] = state[0][2];
-  out[9] = state[1][2];
-  out[10] = state[2][2];
-  out[11] = state[3][2];
-  out[12] = state[0][3];
-  out[13] = state[1][3];
-  out[14] = state[2][3];
-  out[15] = state[3][3];
+    // Copy the state to the output array.
+    out[0] = state[0][0];
+    out[1] = state[1][0];
+    out[2] = state[2][0];
+    out[3] = state[3][0];
+    out[4] = state[0][1];
+    out[5] = state[1][1];
+    out[6] = state[2][1];
+    out[7] = state[3][1];
+    out[8] = state[0][2];
+    out[9] = state[1][2];
+    out[10] = state[2][2];
+    out[11] = state[3][2];
+    out[12] = state[0][3];
+    out[13] = state[1][3];
+    out[14] = state[2][3];
+    out[15] = state[3][3];
 }
 
-void aes_decrypt(const BYTE in[], BYTE out[], const WORD key[], int keysize) {
-  BYTE state[4][4];
+void aes_decrypt(const BYTE in[], BYTE out[], const WORD key[], int keysize)
+{
+    BYTE state[4][4];
 
-  // Copy the input to the state.
-  state[0][0] = in[0];
-  state[1][0] = in[1];
-  state[2][0] = in[2];
-  state[3][0] = in[3];
-  state[0][1] = in[4];
-  state[1][1] = in[5];
-  state[2][1] = in[6];
-  state[3][1] = in[7];
-  state[0][2] = in[8];
-  state[1][2] = in[9];
-  state[2][2] = in[10];
-  state[3][2] = in[11];
-  state[0][3] = in[12];
-  state[1][3] = in[13];
-  state[2][3] = in[14];
-  state[3][3] = in[15];
+    // Copy the input to the state.
+    state[0][0] = in[0];
+    state[1][0] = in[1];
+    state[2][0] = in[2];
+    state[3][0] = in[3];
+    state[0][1] = in[4];
+    state[1][1] = in[5];
+    state[2][1] = in[6];
+    state[3][1] = in[7];
+    state[0][2] = in[8];
+    state[1][2] = in[9];
+    state[2][2] = in[10];
+    state[3][2] = in[11];
+    state[0][3] = in[12];
+    state[1][3] = in[13];
+    state[2][3] = in[14];
+    state[3][3] = in[15];
 
-  // Perform the necessary number of rounds. The round key is added first.
-  // The last round does not perform the MixColumns step.
-  if (keysize > 128) {
-    if (keysize > 192) {
-      AddRoundKey(state, &key[56]);
-      InvShiftRows(state);
-      InvSubBytes(state);
-      AddRoundKey(state, &key[52]);
-      InvMixColumns(state);
-      InvShiftRows(state);
-      InvSubBytes(state);
-      AddRoundKey(state, &key[48]);
-      InvMixColumns(state);
-    } else {
-      AddRoundKey(state, &key[48]);
+    // Perform the necessary number of rounds. The round key is added first.
+    // The last round does not perform the MixColumns step.
+    if (keysize > 128)
+    {
+        if (keysize > 192)
+        {
+            AddRoundKey(state, &key[56]);
+            InvShiftRows(state);
+            InvSubBytes(state);
+            AddRoundKey(state, &key[52]);
+            InvMixColumns(state);
+            InvShiftRows(state);
+            InvSubBytes(state);
+            AddRoundKey(state, &key[48]);
+            InvMixColumns(state);
+        }
+        else
+        {
+            AddRoundKey(state, &key[48]);
+        }
+        InvShiftRows(state);
+        InvSubBytes(state);
+        AddRoundKey(state, &key[44]);
+        InvMixColumns(state);
+        InvShiftRows(state);
+        InvSubBytes(state);
+        AddRoundKey(state, &key[40]);
+        InvMixColumns(state);
+    }
+    else
+    {
+        AddRoundKey(state, &key[40]);
     }
     InvShiftRows(state);
     InvSubBytes(state);
-    AddRoundKey(state, &key[44]);
+    AddRoundKey(state, &key[36]);
     InvMixColumns(state);
     InvShiftRows(state);
     InvSubBytes(state);
-    AddRoundKey(state, &key[40]);
+    AddRoundKey(state, &key[32]);
     InvMixColumns(state);
-  } else {
-    AddRoundKey(state, &key[40]);
-  }
-  InvShiftRows(state);
-  InvSubBytes(state);
-  AddRoundKey(state, &key[36]);
-  InvMixColumns(state);
-  InvShiftRows(state);
-  InvSubBytes(state);
-  AddRoundKey(state, &key[32]);
-  InvMixColumns(state);
-  InvShiftRows(state);
-  InvSubBytes(state);
-  AddRoundKey(state, &key[28]);
-  InvMixColumns(state);
-  InvShiftRows(state);
-  InvSubBytes(state);
-  AddRoundKey(state, &key[24]);
-  InvMixColumns(state);
-  InvShiftRows(state);
-  InvSubBytes(state);
-  AddRoundKey(state, &key[20]);
-  InvMixColumns(state);
-  InvShiftRows(state);
-  InvSubBytes(state);
-  AddRoundKey(state, &key[16]);
-  InvMixColumns(state);
-  InvShiftRows(state);
-  InvSubBytes(state);
-  AddRoundKey(state, &key[12]);
-  InvMixColumns(state);
-  InvShiftRows(state);
-  InvSubBytes(state);
-  AddRoundKey(state, &key[8]);
-  InvMixColumns(state);
-  InvShiftRows(state);
-  InvSubBytes(state);
-  AddRoundKey(state, &key[4]);
-  InvMixColumns(state);
-  InvShiftRows(state);
-  InvSubBytes(state);
-  AddRoundKey(state, &key[0]);
+    InvShiftRows(state);
+    InvSubBytes(state);
+    AddRoundKey(state, &key[28]);
+    InvMixColumns(state);
+    InvShiftRows(state);
+    InvSubBytes(state);
+    AddRoundKey(state, &key[24]);
+    InvMixColumns(state);
+    InvShiftRows(state);
+    InvSubBytes(state);
+    AddRoundKey(state, &key[20]);
+    InvMixColumns(state);
+    InvShiftRows(state);
+    InvSubBytes(state);
+    AddRoundKey(state, &key[16]);
+    InvMixColumns(state);
+    InvShiftRows(state);
+    InvSubBytes(state);
+    AddRoundKey(state, &key[12]);
+    InvMixColumns(state);
+    InvShiftRows(state);
+    InvSubBytes(state);
+    AddRoundKey(state, &key[8]);
+    InvMixColumns(state);
+    InvShiftRows(state);
+    InvSubBytes(state);
+    AddRoundKey(state, &key[4]);
+    InvMixColumns(state);
+    InvShiftRows(state);
+    InvSubBytes(state);
+    AddRoundKey(state, &key[0]);
 
-  // Copy the state to the output array.
-  out[0] = state[0][0];
-  out[1] = state[1][0];
-  out[2] = state[2][0];
-  out[3] = state[3][0];
-  out[4] = state[0][1];
-  out[5] = state[1][1];
-  out[6] = state[2][1];
-  out[7] = state[3][1];
-  out[8] = state[0][2];
-  out[9] = state[1][2];
-  out[10] = state[2][2];
-  out[11] = state[3][2];
-  out[12] = state[0][3];
-  out[13] = state[1][3];
-  out[14] = state[2][3];
-  out[15] = state[3][3];
+    // Copy the state to the output array.
+    out[0] = state[0][0];
+    out[1] = state[1][0];
+    out[2] = state[2][0];
+    out[3] = state[3][0];
+    out[4] = state[0][1];
+    out[5] = state[1][1];
+    out[6] = state[2][1];
+    out[7] = state[3][1];
+    out[8] = state[0][2];
+    out[9] = state[1][2];
+    out[10] = state[2][2];
+    out[11] = state[3][2];
+    out[12] = state[0][3];
+    out[13] = state[1][3];
+    out[14] = state[2][3];
+    out[15] = state[3][3];
 }
 
 /*******************

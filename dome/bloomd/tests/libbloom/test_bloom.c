@@ -419,8 +419,9 @@ START_TEST(test_bf_fp_prob) {
   for (int i = 0; i < 1100; i++) {
     snprintf((char *)&buf, 100, "test%d", i);
     res = bf_add(&filter, (char *)&buf);
-    if (res == 0)
+    if (res == 0) {
       num_wrong++;
+}
   }
 
   // We added 1100 items, with a capacity of 1K and error of 1/100.
@@ -444,8 +445,9 @@ START_TEST(test_bf_fp_prob_extended) {
   for (int i = 0; i < 1e6; i++) {
     snprintf((char *)&buf, 100, "test%d", i);
     res = bf_add(&filter, (char *)&buf);
-    if (res == 0)
+    if (res == 0) {
       num_wrong++;
+}
   }
 
   // We added 1M items, with a capacity of 1M and error of 1/1000.

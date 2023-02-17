@@ -16,21 +16,22 @@
 /* locale -- 如果 locale 是 NULL 或空字符串
  * ""，则区域名称将根据环境变量值来设置，其名称与上述的类别名称相同。 */
 
-int main() {
-  time_t currtime;
-  struct tm *timer;
-  char buffer[80];
+int main()
+{
+    time_t currtime;
+    struct tm *timer;
+    char buffer[80];
 
-  time(&currtime);
-  timer = localtime(&currtime);
+    time(&currtime);
+    timer = localtime(&currtime);
 
-  printf("Locale is:%s\n", setlocale(LC_ALL, "zh_CN.UTF-8"));
-  strftime(buffer, 80, "%c", timer);
-  printf("Data is:%s\n", buffer);
+    printf("Locale is:%s\n", setlocale(LC_ALL, "zh_CN.UTF-8"));
+    strftime(buffer, 80, "%c", timer);
+    printf("Data is:%s\n", buffer);
 
-  printf("Locale is:%s\n", setlocale(LC_ALL, "en_GB.UTF-8"));
-  strftime(buffer, 80, "%c", timer);
-  printf("Data is:%s\n", buffer);
+    printf("Locale is:%s\n", setlocale(LC_ALL, "en_GB.UTF-8"));
+    strftime(buffer, 80, "%c", timer);
+    printf("Data is:%s\n", buffer);
 
-  return 0;
+    return 0;
 }

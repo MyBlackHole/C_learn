@@ -15,9 +15,9 @@ int max(int a, int b) { return (a > b) ? a : b; }
 avlNode *newNode(int key) {
   avlNode *node = (avlNode *)malloc(sizeof(avlNode));
 
-  if (node == NULL)
+  if (node == NULL) {
     printf("!! Out of Space !!\n");
-  else {
+  } else {
     node->key = key;
     node->left = NULL;
     node->right = NULL;
@@ -28,25 +28,28 @@ avlNode *newNode(int key) {
 }
 
 int nodeHeight(avlNode *node) {
-  if (node == NULL)
+  if (node == NULL) {
     return -1;
-  else
+  } else {
     return (node->height);
+}
 }
 
 int heightDiff(avlNode *node) {
-  if (node == NULL)
+  if (node == NULL) {
     return 0;
-  else
+  } else {
     return (nodeHeight(node->left) - nodeHeight(node->right));
+}
 }
 
 /* Returns the node with min key in the left subtree*/
 avlNode *minNode(avlNode *node) {
   avlNode *temp = node;
 
-  while (temp->left != NULL)
+  while (temp->left != NULL) {
     temp = temp->left;
+}
 
   return temp;
 }
@@ -57,8 +60,9 @@ void printAVL(avlNode *node, int level) {
     printAVL(node->right, level + 1);
     printf("\n\n");
 
-    for (i = 0; i < level; i++)
+    for (i = 0; i < level; i++) {
       printf("\t");
+}
 
     printf("%d", node->key);
 
@@ -105,17 +109,19 @@ avlNode *RightLeftRotate(avlNode *z) {
 }
 
 avlNode *insert(avlNode *node, int key) {
-  if (node == NULL)
+  if (node == NULL) {
     return (newNode(key));
+}
 
   /*Binary Search Tree insertion*/
 
-  if (key < node->key)
+  if (key < node->key) {
     /*Recursive insertion in L subtree*/
     node->left = insert(node->left, key);
-  else if (key > node->key)
+  } else if (key > node->key) {
     /*Recursive insertion in R subtree*/
     node->right = insert(node->right, key);
+}
 
   /* Node  Height as per the AVL formula*/
   node->height = (max(nodeHeight(node->left), nodeHeight(node->right)) + 1);
@@ -124,12 +130,14 @@ avlNode *insert(avlNode *node, int key) {
   int balance = heightDiff(node);
 
   /*Left Left */
-  if (balance > 1 && key < (node->left->key))
+  if (balance > 1 && key < (node->left->key)) {
     return rightRotate(node);
+}
 
   /*Right Right */
-  if (balance < -1 && key > (node->right->key))
+  if (balance < -1 && key > (node->right->key)) {
     return leftRotate(node);
+}
 
   /*Left Right */
   if (balance > 1 && key > (node->left->key)) {
@@ -145,16 +153,17 @@ avlNode *insert(avlNode *node, int key) {
 }
 
 avlNode *delete (avlNode *node, int queryNum) {
-  if (node == NULL)
+  if (node == NULL) {
     return node;
+}
 
-  if (queryNum < node->key)
+  if (queryNum < node->key) {
     /*Recursive deletion in L subtree*/
     node->left = delete (node->left, queryNum);
-  else if (queryNum > node->key)
+  } else if (queryNum > node->key) {
     /*Recursive deletion in R subtree*/
     node->right = delete (node->right, queryNum);
-  else {
+  } else {
     /*Single or No Child*/
     if ((node->left == NULL) || (node->right == NULL)) {
       avlNode *temp = node->left ? node->left : node->right;
@@ -182,8 +191,9 @@ avlNode *delete (avlNode *node, int queryNum) {
   }
 
   /*single node in tree*/
-  if (node == NULL)
+  if (node == NULL) {
     return node;
+}
 
   /*Update height*/
   node->height = (max(nodeHeight(node->left), nodeHeight(node->right)) + 1);
@@ -191,8 +201,9 @@ avlNode *delete (avlNode *node, int queryNum) {
   int balance = heightDiff(node);
 
   /*Left Left */
-  if ((balance > 1) && (heightDiff(node->left) >= 0))
+  if ((balance > 1) && (heightDiff(node->left) >= 0)) {
     return rightRotate(node);
+}
 
   /*Left Right */
   if ((balance > 1) && (heightDiff(node->left) < 0)) {
@@ -200,8 +211,9 @@ avlNode *delete (avlNode *node, int queryNum) {
   }
 
   /*Right Right */
-  if ((balance < -1) && (heightDiff(node->right) >= 0))
+  if ((balance < -1) && (heightDiff(node->right) >= 0)) {
     return leftRotate(node);
+}
 
   /*Right Left */
   if ((balance < -1) && (heightDiff(node->right) < 0)) {
@@ -213,18 +225,20 @@ avlNode *delete (avlNode *node, int queryNum) {
 
 avlNode *findNode(avlNode *node, int queryNum) {
   if (node != NULL) {
-    if (queryNum < node->key)
+    if (queryNum < node->key) {
       node = findNode(node->left, queryNum);
-    else if (queryNum > node->key)
+    } else if (queryNum > node->key) {
       node = findNode(node->right, queryNum);
+}
   }
 
   return node;
 }
 
 void printPreOrder(avlNode *node) {
-  if (node == NULL)
+  if (node == NULL) {
     return;
+}
 
   printf("  %d  ", (node->key));
   printPreOrder(node->left);
@@ -232,16 +246,18 @@ void printPreOrder(avlNode *node) {
 }
 
 void printInOrder(avlNode *node) {
-  if (node == NULL)
+  if (node == NULL) {
     return;
+}
   printInOrder(node->left);
   printf("  %d  ", (node->key));
   printInOrder(node->right);
 }
 
 void printPostOrder(avlNode *node) {
-  if (node == NULL)
+  if (node == NULL) {
     return;
+}
   printPostOrder(node->left);
   printPostOrder(node->right);
   printf("  %d  ", (node->key));

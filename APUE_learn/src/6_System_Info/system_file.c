@@ -15,9 +15,9 @@
 
 struct passwd *My_getpwuid(uid_t uid) {
   struct passwd *result = getpwuid(uid);
-  if (NULL == result)
+  if (NULL == result) {
     printf("getpwuid(%d) failed,because %s\n", uid, strerror(errno));
-  else {
+  } else {
     printf("getpwuid(%d) ok:\t", uid);
     print_passwd(result);
   }
@@ -25,9 +25,9 @@ struct passwd *My_getpwuid(uid_t uid) {
 }
 struct passwd *My_getpwnam(const char *name) {
   struct passwd *result = getpwnam(name);
-  if (NULL == result)
+  if (NULL == result) {
     printf("getpwnam(\"%s\") failed,because %s\n", name, strerror(errno));
-  else {
+  } else {
     printf("getpwnam(\"%s\") ok:\t", name);
     print_passwd(result);
   }
@@ -36,10 +36,11 @@ struct passwd *My_getpwnam(const char *name) {
 struct passwd *My_getpwent() {
   struct passwd *result = getpwent();
   if (NULL == result) {
-    if (errno != 0) // 出现错误
+    if (errno != 0) { // 出现错误
       printf("getpwent() failed,because %s\n", strerror(errno));
-    else // EOF
+    } else { // EOF
       printf("getpwent() at the EOF\n");
+}
   } else {
     printf("getpwent() ok\n");
     print_passwd(result);
@@ -49,9 +50,9 @@ struct passwd *My_getpwent() {
 
 struct spwd *My_getspnam(const char *name) {
   struct spwd *result = getspnam(name);
-  if (NULL == result)
+  if (NULL == result) {
     printf("getspnam(\"%s\") failed,because %s\n", name, strerror(errno));
-  else {
+  } else {
     printf("getspnam(\"%s\") ok:\t", name);
     print_spwd(result);
   }
@@ -60,10 +61,11 @@ struct spwd *My_getspnam(const char *name) {
 struct spwd *My_getspent(void) {
   struct spwd *result = getspent();
   if (NULL == result) {
-    if (errno != 0) // 出现错误
+    if (errno != 0) { // 出现错误
       printf("getspent() failed,because %s\n", strerror(errno));
-    else // EOF
+    } else { // EOF
       printf("getspent() at the EOF\n");
+}
   } else {
     printf("getspent() ok\n");
     print_spwd(result);
@@ -73,9 +75,9 @@ struct spwd *My_getspent(void) {
 
 struct group *My_getgrgid(gid_t gid) {
   struct group *result = getgrgid(gid);
-  if (NULL == result)
+  if (NULL == result) {
     printf("getgrgid(%d) failed,because %s\n", gid, strerror(errno));
-  else {
+  } else {
     printf("getgrgid(%d) ok:\t", gid);
     print_group(result);
   }
@@ -83,9 +85,9 @@ struct group *My_getgrgid(gid_t gid) {
 }
 struct group *My_getgrnam(const char *name) {
   struct group *result = getgrnam(name);
-  if (NULL == result)
+  if (NULL == result) {
     printf("getgrnam(\"%s\") failed,because %s\n", name, strerror(errno));
-  else {
+  } else {
     printf("getgrnam(\"%s\") ok:\t", name);
     print_group(result);
   }
@@ -94,10 +96,11 @@ struct group *My_getgrnam(const char *name) {
 struct group *My_getgrent(void) {
   struct group *result = getgrent();
   if (NULL == result) {
-    if (errno != 0) // 出现错误
+    if (errno != 0) { // 出现错误
       printf("getgrent() failed,because %s\n", strerror(errno));
-    else // EOF
+    } else { // EOF
       printf("getgrent() at the EOF\n");
+}
   } else {
     printf("getgrent() ok\n");
     print_group(result);
@@ -111,16 +114,17 @@ struct group *My_getgrent(void) {
  */
 static void print_grouplist(int gidsetsize, gid_t grouplist[]) {
   printf("grouplist is:");
-  for (int i = 0; i < gidsetsize; i++)
+  for (int i = 0; i < gidsetsize; i++) {
     printf("\t%d,");
+}
   printf("\n");
 }
 int My_getgroups(int gidsetsize, gid_t grouplist[]) {
   int result = getgroups(gidsetsize, grouplist);
-  if (-1 == result)
+  if (-1 == result) {
     printf("getgroups(%d,%p) failed,because %s\n", gidsetsize, grouplist,
            strerror(errno));
-  else {
+  } else {
     printf("getgroups(%d,%p) ok,returns %d items\n", gidsetsize, grouplist,
            result);
     print_grouplist(result, grouplist);
@@ -129,20 +133,22 @@ int My_getgroups(int gidsetsize, gid_t grouplist[]) {
 }
 int My_setgroups(int ngroups, const gid_t grouplist[]) {
   int result = setgroups(ngroups, grouplist);
-  if (-1 == result)
+  if (-1 == result) {
     printf("setgroups(%d,%p) failed,because %s\n", ngroups, grouplist,
            strerror(errno));
-  else
+  } else {
     printf("setgroups(%d,%p) ok\n", ngroups, grouplist);
+}
   return result;
 }
 int My_initgroups(const char *username, gid_t basegid) {
   int result = initgroups(username, basegid);
-  if (-1 == result)
+  if (-1 == result) {
     printf("initgroups(\"%s\",%d) failed,because %s\n", username, basegid,
            strerror(errno));
-  else
+  } else {
     printf("initgroups(\"%s\",%d) ok\n", username, basegid);
+}
   return result;
 }
 
@@ -158,10 +164,10 @@ int My_uname(struct utsname *name) {
 }
 int My_gethostname(char *name, int namelen) {
   int result = gethostname(name, namelen);
-  if (-1 == result)
+  if (-1 == result) {
     printf("gethostname(%p,%d) failed,because %s\n", name, namelen,
            strerror(errno));
-  else {
+  } else {
     printf("gethostname(%p,%d) ok,host name is:\t", name, namelen);
     print_char_buffer(name, namelen);
   }
@@ -169,9 +175,9 @@ int My_gethostname(char *name, int namelen) {
 }
 struct hostent *My_gethostent(void) {
   struct hostent *result = gethostent();
-  if (NULL == result)
+  if (NULL == result) {
     printf("gethostent() failed,because %s\n", strerror(errno));
-  else {
+  } else {
     printf("gethostent() ok:\t");
     print_hostent(result);
   }
@@ -199,13 +205,13 @@ void print_spwd(const struct spwd *data) {
   }
   printf("\n\tuser name：%s;", data->sp_namp);
   printf("\n\tuser encrypt password：%s;", data->sp_pwdp);
-  printf("\n\tsince last changed：%d;", data->sp_lstchg);
-  printf("\n\tnext changed after：%d;", data->sp_min);
-  printf("\n\tnext change before：%d;", data->sp_max);
-  printf("\n\twarn after：%d;", data->sp_warn);
-  printf("\n\tinactive after：%d;", data->sp_inact);
-  printf("\n\texpire after：%d;", data->sp_expire);
-  printf("\n\tunuse：%d\n", data->sp_flag);
+  printf("\n\tsince last changed：%ld;", data->sp_lstchg);
+  printf("\n\tnext changed after：%ld;", data->sp_min);
+  printf("\n\tnext change before：%ld;", data->sp_max);
+  printf("\n\twarn after：%ld;", data->sp_warn);
+  printf("\n\tinactive after：%ld;", data->sp_inact);
+  printf("\n\texpire after：%ld;", data->sp_expire);
+  printf("\n\tunuse：%lu\n", data->sp_flag);
 }
 void print_group(const struct group *data) {
   printf("struct group：");
@@ -273,8 +279,9 @@ void _test_passwd() {
   My_getpwnam("huaxz1"); //不存在
 
   struct passwd *entry;
-  while ((entry = My_getpwent()) != NULL)
+  while ((entry = My_getpwent()) != NULL) {
     ;
+}
   endpwent();
 }
 void _test_shadow() {
@@ -282,8 +289,9 @@ void _test_shadow() {
   My_getspnam("huaxz1"); //不存在
 
   struct spwd *entry;
-  while ((entry = My_getspent()) != NULL)
+  while ((entry = My_getspent()) != NULL) {
     ;
+}
   endspent();
 }
 void _test_group() {
@@ -292,8 +300,9 @@ void _test_group() {
   My_getgrnam("huaxz1986");
   My_getgrnam("huaxz1"); //不存在
   struct group *entry;
-  while ((entry = My_getgrent()) != NULL)
+  while ((entry = My_getgrent()) != NULL) {
     ;
+}
   endgrent();
 }
 void _test_attach_groups() {
@@ -308,8 +317,9 @@ void _test_host() {
   My_gethostname(buffer, 1024);
 
   struct hostent *entry;
-  while ((entry = My_gethostent()) != NULL)
+  while ((entry = My_gethostent()) != NULL) {
     ;
+}
   endhostent();
 }
 

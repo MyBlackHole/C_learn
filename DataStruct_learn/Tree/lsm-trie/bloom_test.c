@@ -169,8 +169,9 @@ void multi_level_false_positive_test(void) {
   for (uint64_t l = 0; l < level; l++) {
     for (uint64_t k = 0; k < nr_keys; k++) {
       const bool m = bloom_match(bfs[l], keys[level * nr_keys + k]);
-      if (m)
+      if (m) {
         fp++;
+}
     }
   }
   printf("multi-level exist keys fp: %lu levels, %lu keys/level, %lu probes, "
@@ -183,8 +184,9 @@ void multi_level_false_positive_test(void) {
     for (uint64_t k = 0; k < nr_nonprobe; k++) {
       const uint64_t h = random_uint64();
       const bool m = bloom_match(bfs[l], h);
-      if (m)
+      if (m) {
         fp++;
+}
     }
   }
   printf("multi-level non-exist keys fp: %lu levels, %lu probes, %lu f-p, "
@@ -238,10 +240,11 @@ void containertest(void) {
       const uint8_t m = bloomcontainer_match(bcs[0], i, sha);
       assert(m);
       const uint8_t n = bloomcontainer_match(bcs[0], i, sha + 1);
-      if (n)
+      if (n) {
         match++;
-      else
+      } else {
         nomatch++;
+}
     }
   }
   printf("match %lu, nomatch %lu (m/n should < 1%%)\n", match, nomatch);
@@ -256,15 +259,17 @@ void containertest(void) {
       SHA1((const unsigned char *)(&h0), 8, hash);
       const uint64_t sha0 = *((uint64_t *)(&hash[7]));
       const uint8_t m0 = bloomcontainer_match(bcs[1], i, sha0);
-      if (m0 < 4)
+      if (m0 < 4) {
         match01[m0]++;
+}
       const uint64_t h1 =
           i + (j << 20) + (j << 30) + (j << 40) + (UINT64_C(1) << 50);
       SHA1((const unsigned char *)(&h1), 8, hash);
       const uint64_t sha1 = *((uint64_t *)(&hash[7]));
       const uint8_t m1 = bloomcontainer_match(bcs[1], i, sha1);
-      if (m1 < 4)
+      if (m1 < 4) {
         match01[m1]++;
+}
     }
   }
   printf("match1:%lu, 2:%lu\n", match01[1], match01[2]);
@@ -296,13 +301,15 @@ void containertest(void) {
         const uint8_t m = bloomcontainer_match(bcs[7], i, sha);
         assert(m);
         mc[z]++;
-        if ((m & (1 << z)) == 0)
+        if ((m & (1 << z)) == 0) {
           mismatch++;
+}
         const uint8_t n = bloomcontainer_match(bcs[7], i, sha + 1);
-        if (n)
+        if (n) {
           match++;
-        else
+        } else {
           nomatch++;
+}
       }
     }
   }

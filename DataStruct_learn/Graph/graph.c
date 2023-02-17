@@ -80,10 +80,13 @@ void showGraph(Graph g) {
 
   printf("Number of vertices: %d\n", g->nV);
   printf("Number of edges: %d\n", g->nE);
-  for (i = 0; i < g->nV; i++)
-    for (j = i + 1; j < g->nV; j++)
-      if (g->edges[i][j])
+  for (i = 0; i < g->nV; i++) {
+    for (j = i + 1; j < g->nV; j++) {
+      if (g->edges[i][j]) {
         printf("Edge %d - %d\n", i, j);
+}
+}
+}
 }
 
 // 释放图
@@ -91,8 +94,9 @@ void freeGraph(Graph g) {
   assert(g != NULL);
 
   int i;
-  for (i = 0; i < g->nV; i++)
+  for (i = 0; i < g->nV; i++) {
     free(g->edges[i]);
+}
   free(g->edges);
   free(g);
 }

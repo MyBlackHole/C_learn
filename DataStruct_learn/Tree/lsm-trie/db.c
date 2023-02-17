@@ -214,8 +214,9 @@ static bool db_dump_bloomcontainer_meta(struct DB *const db,
 }
 
 static void db_log(struct DB *const db, const char *const msg, ...) {
-  if (db->log == NULL)
+  if (db->log == NULL) {
     return;
+}
   const double sec = debug_time_sec();
   char th_name[16] = {0};
   pthread_getname_np(pthread_self(), th_name, sizeof(th_name));
@@ -234,8 +235,9 @@ static void db_log(struct DB *const db, const char *const msg, ...) {
 // 记录日志
 static void db_log_diff(struct DB *const db, const double sec0,
                         const char *const msg, ...) {
-  if (db->log == NULL)
+  if (db->log == NULL) {
     return;
+}
   const double sec1 = debug_time_sec();
   // 获取线程名
   char th_name[16] = {0};
@@ -298,8 +300,9 @@ static void vc_recursive_free(struct VirtualContainer *const vc) {
 
 // return 8 ... (DB_CONTAINER_NR) for compaction, 0 for NO compaction
 static uint64_t vc_count_feed(struct VirtualContainer *const vc) {
-  if (vc == NULL)
+  if (vc == NULL) {
     return 0;
+}
   uint64_t vc_cap = 0;
   for (uint64_t j = 0; j < vc->cc.count; j++) {
     assert(vc->cc.metatables[j]);
@@ -318,8 +321,9 @@ vc_pick_compaction(struct VirtualContainer *const *const vcs,
   uint64_t max_id = 8;
   uint64_t max_height = 0;
   for (uint64_t i = start; i < 8; i += inc) {
-    if (vcs[i] == NULL)
+    if (vcs[i] == NULL) {
       continue;
+}
     const uint64_t height = vc_count_feed(vcs[i]);
     if (height > max_height) {
       max_height = height;
@@ -338,8 +342,9 @@ static struct VirtualContainer *
 vc_pick_full(struct VirtualContainer *const *const vcs, const uint64_t start,
              const uint64_t inc) {
   for (uint64_t i = start; i < 8; i += inc) {
-    if (vcs[i] == NULL)
+    if (vcs[i] == NULL) {
       continue;
+}
     if (vcs[i]->cc.count == DB_CONTAINER_NR) {
       return vcs[i];
     }
@@ -394,8 +399,9 @@ recursive_parse(FILE *const in, const uint64_t start_bit, struct DB *const db) {
   const bool load_bf = (buf[1] == '!') ? false : true;
   for (uint64_t j = 0; j < DB_CONTAINER_NR; j++) {
     fgets(buf, 28, in);
-    if (buf[0] == '>')
+    if (buf[0] == '>') {
       break;
+}
 
     const uint64_t mtid = strtoull(buf, NULL, 16);
     assert(db->cms[start_bit / 3]);
@@ -686,8 +692,9 @@ static bool compaction_feed(struct Compaction *const comp) {
       __sync_fetch_and_add(&(comp->feed_token), DB_FEED_UNIT);
   assert(token < TABLE_MAX_BARRELS);
   struct MetaTable *const mt = comp->mts_old[comp->feed_id];
-  if (token >= TABLE_NR_BARRELS)
+  if (token >= TABLE_NR_BARRELS) {
     return true;
+}
   const uint64_t nr_fetch = ((TABLE_NR_BARRELS - token) < DB_FEED_UNIT)
                                 ? (TABLE_NR_BARRELS - token)
                                 : DB_FEED_UNIT;
@@ -880,8 +887,9 @@ static void recursive_compaction(struct DB *const db,
                                  struct VirtualContainer *const vc) {
   assert(vc);
   // disable compaction for last level
-  if (vc->start_bit >= BC_START_BIT)
+  if (vc->start_bit >= BC_START_BIT) {
     return;
+}
 
   const uint64_t nr_input = vc_count_feed(vc);
   if (nr_input == 0) {
@@ -948,8 +956,9 @@ static void *thread_meta_dumper(void *ptr) {
   do {
     const uint64_t last_mtid = db->next_mtid;
     for (uint64_t i = 0; i < 100; i++) {
-      if (db->closing || db->need_dump_meta)
+      if (db->closing || db->need_dump_meta) {
         break;
+}
       sleep(6);
     }
     const uint64_t next_mtid = db->next_mtid;
@@ -1128,8 +1137,9 @@ static struct KeyValue *recursive_lookup(struct Stat *const stat,
     // 获取元表
     struct MetaTable *const mt = vc->cc.metatables[j];
 
-    if (mt == NULL)
+    if (mt == NULL) {
       continue;
+}
 
     if ((bitmap & (1u << j)) == 0u) {
       stat_inc(&(stat->nr_true_negative));
@@ -1165,8 +1175,9 @@ struct KeyValue *db_lookup(struct DB *const db, const uint16_t klen,
   // 查询表一与表二
   for (uint64_t i = 0; i < 2; i++) {
     struct Table *t = db->active_table[i];
-    if (t == NULL)
+    if (t == NULL) {
       continue;
+}
     // immutable item
     // 对表查询 key
     struct KeyValue *const kv = table_lookup(t, klen, key, hash);
@@ -1270,12 +1281,14 @@ static struct DB *db_create(const char *const meta_dir,
   const double sec0 = debug_time_sec();
   // touch dir
   // 创建目录
-  if (false == db_touch_dir(meta_dir, ""))
+  if (false == db_touch_dir(meta_dir, "")) {
     return NULL;
+}
   // touch meta_backup dir
   // 创建目录
-  if (false == db_touch_dir(meta_dir, DB_META_BACKUP_DIR))
+  if (false == db_touch_dir(meta_dir, DB_META_BACKUP_DIR)) {
     return NULL;
+}
 
   // pre make 256 sub-dirs
   char sub_dir[16];
@@ -1283,8 +1296,9 @@ static struct DB *db_create(const char *const meta_dir,
     // 拼接 00 ~ ff
     sprintf(sub_dir, "%02lx", i);
     // 创建目录
-    if (false == db_touch_dir(meta_dir, sub_dir))
+    if (false == db_touch_dir(meta_dir, sub_dir)) {
       return NULL;
+}
   }
 
   // 创建、零初始化
@@ -1440,8 +1454,9 @@ static struct ContainerMapConf *db_load_cm_conf(const char *const fn) {
     buf[0] = 0;
     // 读取一行
     fgets(buf, 1000, fi);
-    if (buf[0] == '$')
+    if (buf[0] == '$') {
       break;
+}
     // 获取第一次出现 \n 的地址
     char *const peol = strchr(buf, '\n');
     if (peol) {
@@ -1488,7 +1503,7 @@ struct DB *db_touch(const char *const meta_dir, const char *const cm_conf_fn) {
   // cm conf
   // 断言
   assert(cm_conf_fn);
-  // TODO: free cm_conf at later time
+  // TODO(black): free cm_conf at later time
   // 创建初始化 ContainerMapConf
   struct ContainerMapConf *const cm_conf = db_load_cm_conf(cm_conf_fn);
   assert(cm_conf);

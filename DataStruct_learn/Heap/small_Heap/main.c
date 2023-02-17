@@ -23,8 +23,9 @@ int main(int argc, char *argv[]) {
   while (!EmptyHeap(&mh)) {
     x = DeleteHeap(&mh);
     printf("%d", x);
-    if (!EmptyHeap(&mh))
+    if (!EmptyHeap(&mh)) {
       printf(",");
+}
   }
   printf("\n");
   ClearHeap(&mh);

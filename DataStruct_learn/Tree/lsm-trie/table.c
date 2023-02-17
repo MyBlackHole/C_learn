@@ -131,11 +131,13 @@ static inline uint32_t item_hash_ht(const struct Item *const item) {
 static inline bool item_identical(const struct Item *const a,
                                   const struct Item *const b) {
   // 地址一致
-  if (a == b)
+  if (a == b) {
     return true;
+}
   // 键长度不同
-  if (a->klen != b->klen)
+  if (a->klen != b->klen) {
     return false;
+}
   return (memcmp(a->kv, b->kv, a->klen) == 0) ? true : false;
 }
 
@@ -143,8 +145,9 @@ static inline int item_identical_key(const uint16_t klen,
                                      const uint8_t *const pk,
                                      const struct Item *const i) {
   // 键长度不同
-  if (klen != i->klen)
+  if (klen != i->klen) {
     return false;
+}
   return (memcmp(pk, i->kv, klen) == 0) ? true : false;
 }
 
@@ -298,8 +301,9 @@ static struct Item *rawitem_to_item(const struct RawItem *const ri,
   assert(mempool);
   const size_t msize = sizeof(struct Item) + ri->klen + ri->vlen;
   struct Item *const item = (typeof(item))mempool_alloc(mempool, msize);
-  if (item == NULL)
+  if (item == NULL) {
     return NULL;
+}
   bzero(item, msize);
   // rb leave empty
   item->klen = ri->klen;
@@ -326,8 +330,9 @@ static struct Item *keyvalue_to_item(const struct KeyValue *const kv,
   assert(mempool);
   const size_t msize = sizeof(struct Item) + kv->klen + kv->vlen;
   struct Item *const item = (typeof(item))mempool_alloc(mempool, msize);
-  if (item == NULL)
+  if (item == NULL) {
     return NULL;
+}
   bzero(item, msize);
   // rb leave empty
   item->klen = kv->klen;
@@ -487,8 +492,9 @@ __find_metaindex(const uint64_t nr_mi, const struct MetaIndex *const mis,
       lid = mid + 1;
     }
   }
-  while ((lid < rid) && (mis[lid].id < id))
+  while ((lid < rid) && (mis[lid].id < id)) {
     lid++;
+}
   if ((lid < rid) && (mis[lid].id == id)) {
     return &(mis[lid]);
   } else {
@@ -642,14 +648,16 @@ static inline void table_insert_rawitem_mt(struct Table *const table,
 // return false on full
 bool table_insert_kv_safe(struct Table *const table,
                           const struct KeyValue *const kv) {
-  if (table_full(table))
+  if (table_full(table)) {
     // 使用的空间大于最大分配空间
     // 退出
     return false;
+}
   struct Item *const item = keyvalue_to_item(kv, table->mempool);
-  if (item == NULL)
+  if (item == NULL) {
     // 退出
     return false;
+}
   // 给表添加元素， 允许重复添加
   table_insert_item(table, item);
   return true;
@@ -776,8 +784,9 @@ static bool retaining_move_sorted(struct Barrel **const barrels) {
     // 把符合条件的 br 元素移动到 bl
     const bool rm = retaining_move_barrels(br, bl);
 
-    if (rm == false)
+    if (rm == false) {
       return false;
+}
     // 循环
     rid--;
     lid++;
@@ -858,8 +867,9 @@ static void retaining_build_metaindex(struct Table *const table) {
     mi_buf[i].rid = barrel->rid;
     mi_buf[i].min = barrel->min;
     nr_mi++;
-    if (barrel->nr_out >= nr_todo)
+    if (barrel->nr_out >= nr_todo) {
       break;
+}
     nr_todo -= barrel->nr_out;
   }
   // sort mi by id
@@ -877,9 +887,10 @@ static void retaining_build_metaindex(struct Table *const table) {
 bool table_retain(struct Table *const table) {
   uint64_t count = 0;
   while (true) {
-    if (count >= 100)
+    if (count >= 100) {
       // 限制均衡次数
       return false;
+}
     struct Barrel *barrels[TABLE_NR_BARRELS];
     // 填充数据到 barrels, 同时以 volume 为指标对 barrels 排序,
     retaining_sort_barrels_by_volume(table, barrels);
@@ -1009,8 +1020,9 @@ void table_analysis_verbose(struct Table *const table, FILE *const out) {
     assert(volume < (4096 * 4));
     x_volume[volume]++;
     x_volume_all += volume;
-    if (volume > x_volume_max)
+    if (volume > x_volume_max) {
       x_volume_max = volume;
+}
 
     count_lookup += barrel_count_lookup(barrel);
     count_items += barrel_count(barrel);
@@ -1097,7 +1109,7 @@ static bool raw_barrel_fetch_multiple(struct MetaTable *const mt,
 }
 
 static const struct MetaIndex *raw_barrel_metaindex(const uint8_t *const buf) {
-  const uint8_t *const pmi = (typeof(pmi))(buf + BARREL_CAP);
+  const uint8_t *const pmi = (buf + BARREL_CAP);
   const struct MetaIndex *const mi = (typeof(mi))pmi;
   return mi;
 }
@@ -1109,8 +1121,9 @@ static bool raw_barrel_feed_to_tables(
   struct RawItem ri;
   uint8_t hash[HASHBYTES] __attribute__((aligned(8)));
   const bool r = rawitem_init(&ri, raw);
-  if (r == false)
+  if (r == false) {
     return false;
+}
   do {
     SHA1(ri.pk, ri.klen, hash);
     const uint64_t tid = select_table(hash, arg2);

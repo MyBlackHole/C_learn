@@ -20,8 +20,9 @@ extern struct Shape *rectangle_create(void);
 extern struct Shape *square_create(void);
 
 Shape *shape_factory_get_shape(const char *shape_type) {
-  if (NULL == shape_type)
+  if (NULL == shape_type) {
     return NULL;
+}
 
   if (0 == strcasecmp("CIRCLE", shape_type)) {
     return circle_create();

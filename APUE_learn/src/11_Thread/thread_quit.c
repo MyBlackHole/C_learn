@@ -19,10 +19,10 @@ extern int My_pthread_create(pthread_t *tidp, const pthread_attr_t *attr,
 int My_pthread_cancel(pthread_t tid) {
   int result = pthread_cancel(tid);
   if (0 != result) {
-    printf("thread(0x%x) call pthread_cancel(0x%x) failed,because %s\n",
+    printf("thread(0x%lx) call pthread_cancel(0x%lx) failed,because %s\n",
            pthread_self(), tid, strerror(result));
   } else {
-    printf("thread(0x%x) call pthread_cancel(0x%x) ok\n", pthread_self(), tid);
+    printf("thread(0x%lx) call pthread_cancel(0x%lx) ok\n", pthread_self(), tid);
   }
   return result;
 }
@@ -38,10 +38,10 @@ static pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
  */
 static void *thread_func_return(void *arg) {
   pthread_mutex_lock(&mutex); //必须同步。否则多个线程的输出交叉进行
-  printf("\n****** Begin Thread_Return:thread id=0x%x ******\n",
+  printf("\n****** Begin Thread_Return:thread id=0x%lx ******\n",
          pthread_self());
   printf("arg is %d\n", arg);
-  printf("****** End Thread_Return:thread id=0x%x ******\n\n", pthread_self());
+  printf("****** End Thread_Return:thread id=0x%lx ******\n\n", pthread_self());
   pthread_mutex_unlock(&mutex);
   return arg;
 }
@@ -51,10 +51,10 @@ static void *thread_func_return(void *arg) {
  */
 static void *thread_func_exit(void *arg) {
   pthread_mutex_lock(&mutex); //必须同步。否则多个线程的输出交叉进行
-  printf("\n****** Begin Thread_Exit:thread id=0x%x ******\n", pthread_self());
+  printf("\n****** Begin Thread_Exit:thread id=0x%lx ******\n", pthread_self());
   printf("arg is %d\n", arg);
   sleep(3); //确保主线程运行到 pthread_cancel 时，子线程并没有结束
-  printf("****** End Thread_Exit:thread id=0x%x ******\n\n", pthread_self());
+  printf("****** End Thread_Exit:thread id=0x%lx ******\n\n", pthread_self());
   pthread_mutex_unlock(&mutex);
   pthread_exit(arg);
 }

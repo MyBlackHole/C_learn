@@ -21,10 +21,10 @@ extern int My_chmod(const char *pathname, mode_t mode);
 
 int My_utimes(const char *pathname, const struct timeval times[]) {
   int result = utimes(pathname, times);
-  if (-1 == result)
+  if (-1 == result) {
     printf("utimes(\"%s\",%p) failed,because %s\n", pathname, times,
            strerror(errno));
-  else {
+  } else {
     printf("utimes(\"%s\",%p) ok\n", pathname, times);
     print_file_time(pathname);
   }

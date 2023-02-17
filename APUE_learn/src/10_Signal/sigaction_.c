@@ -80,17 +80,20 @@ void add_sigaction(int signo, sigset_t *set, int no_deffer, int restart,
   action.sa_sigaction = handler;
 
   action.sa_flags = SA_SIGINFO;
-  if (no_deffer != 0) //捕捉到信号时，在执行信号处理函数时，不自动阻塞该信号
+  if (no_deffer != 0) { //捕捉到信号时，在执行信号处理函数时，不自动阻塞该信号
     action.sa_flags |= SA_NODEFER;
-  if (0 == restart) // 由此信号中断的系统调用并不会自动重启
+}
+  if (0 == restart) { // 由此信号中断的系统调用并不会自动重启
     action.sa_flags |= SA_INTERRUPT;
-  else // 由此信号中断的系统调用会自动重启
+  } else { // 由此信号中断的系统调用会自动重启
     action.sa_flags |= SA_RESTART;
+}
 
-  if (NULL == set)
+  if (NULL == set) {
     action.sa_mask = empty_set;
-  else
+  } else {
     action.sa_mask = *set;
+}
   My_sigaction(signo, &action, NULL);
 }
 void test_sigaction() {

@@ -47,8 +47,9 @@ static int containermap_open_raw(const char *const raw_fn,
     const int blk_flags = O_RDWR | O_LARGEFILE | O_SYNC | O_DIRECT;
     // 打开
     raw_fd = open(raw_fn, blk_flags);
-    if (raw_fd < 0)
+    if (raw_fd < 0) {
       return -1;
+}
   } else { // is a normal file anyway
     // 字符文件流程
     // O_LARGEFILE 大文件
@@ -56,16 +57,18 @@ static int containermap_open_raw(const char *const raw_fn,
     // O_CREAT 不存在创建, 创建权限 644
     const int normal_flags = O_CREAT | O_RDWR | O_LARGEFILE;
     raw_fd = open(raw_fn, normal_flags, 00644);
-    if (raw_fd < 0)
+    if (raw_fd < 0) {
       return -1;
+}
     const int rst1 = stat(raw_fn, &rawst);
     assert(rst1 == 0);
     // 小于 cap_hint 扩充大小
     if (rawst.st_size < cap_hint) { // increase file size
       // 截断文件使其大小为 cap_hint
       const int rt = ftruncate(raw_fd, cap_hint);
-      if (rt != 0)
+      if (rt != 0) {
         return -1;
+}
     }
   }
   // 返回文件描述符

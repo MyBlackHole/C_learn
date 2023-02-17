@@ -29,28 +29,33 @@ char *cstrcpy(const char *src, char *dst) {
 
 size_t cstrlcpy(char *dst, const char *src, size_t size) {
   size_t len = 0;
-  while (++len < size && *src)
+  while (++len < size && *src) {
     *dst++ = *src++;
-  if (len <= size)
+}
+  if (len <= size) {
     *dst = 0;
+}
   return len + strlen(src) - 1;
 }
 
 size_t cstrlcat(char *dst, const char *src, size_t size) {
   size_t len = strlen(dst);
-  if (size <= len + 1)
+  if (size <= len + 1) {
     return len + strlen(src);
+}
   return len + cstrlcpy(dst + len, src, size - len);
 }
 
 char *cstrnstr(const char *haystack, const char *needle, size_t hay_length) {
   size_t needle_len = strlen(needle);
-  if (!needle_len)
+  if (!needle_len) {
     return (char *)haystack;
+}
   while (hay_length >= needle_len) {
     hay_length--;
-    if (!memcmp(haystack, needle, needle_len))
+    if (!memcmp(haystack, needle, needle_len)) {
       return (char *)haystack;
+}
     haystack++;
   }
   return NULL;
@@ -72,8 +77,9 @@ char *cstrdup(const char *s) {
   if (s) {
     size_t len = strlen(s) + 1;
     ptr = realloc(NULL, len);
-    if (ptr)
+    if (ptr) {
       memcpy(ptr, s, len);
+}
   }
   return ptr;
 }
@@ -81,16 +87,19 @@ char *cstrdup(const char *s) {
 char *cstrndup(const char *s, size_t len) {
   char *ret = NULL, *end;
 
-  if (!s)
+  if (!s) {
     return NULL;
+}
 
   end = memchr(s, 0, len);
-  if (end)
+  if (end) {
     len = end - s;
+}
 
   ret = realloc(NULL, len + 1);
-  if (!ret)
+  if (!ret) {
     return NULL;
+}
 
   memcpy(ret, s, len);
   ret[len] = 0;

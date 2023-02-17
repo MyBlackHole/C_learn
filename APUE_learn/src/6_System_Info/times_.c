@@ -15,9 +15,9 @@
 time_t My_time(time_t *calptr) {
   time_t result = time(calptr);
 
-  if (-1 == result)
+  if (-1 == result) {
     printf("time(%p) failed,because %s\n", calptr, strerror(errno));
-  else {
+  } else {
     printf("time(%p) ok:", calptr);
     print_time_t(result);
   }
@@ -102,8 +102,9 @@ void print_tm(const struct tm *tm_tm) {
     return;
   }
   time_t tm_t = mktime(tm_tm);
-  if (-1 == tm_t)
+  if (-1 == tm_t) {
     return;
+}
 
   struct tm *gtm = gmtime(&tm_t);
   char buffer[128];
@@ -119,7 +120,7 @@ void print_timeval(const struct timeval *tm_val) {
   struct tm *gtm = gmtime(&t_tm);
   char buffer[128];
   strftime(buffer, 128, "%F  %T", gtm);
-  printf("%s <us:%d>\n", buffer, tm_val->tv_usec);
+  printf("%s <us:%ld>\n", buffer, tm_val->tv_usec);
 }
 void print_timespec(const struct timespec *tm_tsp) {
   if (tm_tsp == NULL) {
@@ -130,7 +131,7 @@ void print_timespec(const struct timespec *tm_tsp) {
   struct tm *gtm = gmtime(&t_tm);
   char buffer[128];
   strftime(buffer, 128, "%F  %T", gtm);
-  printf("%s <ns:%d>\n", buffer, tm_tsp->tv_nsec);
+  printf("%s <ns:%ld>\n", buffer, tm_tsp->tv_nsec);
 }
 void test_times() {
   M_TRACE("---------  Begin test_times()  ---------\n");

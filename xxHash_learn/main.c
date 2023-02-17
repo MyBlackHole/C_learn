@@ -25,7 +25,7 @@
  *   - xxHash source repository: https://github.com/Cyan4973/xxHash
  */
 
-#include <stdio.h>   /* printf */
+#include <stdio.h> /* printf */
 
 /* Normal include, gives access to public symbols */
 #include "xxhash.h"
@@ -58,10 +58,9 @@
 #define XXH_INLINE_ALL
 #include "xxhash.h"
 
-
 void hash_advanced(void)
 {
-    XXH3_state_t state;   /* this type is part of experimental API */
+    XXH3_state_t state; /* this type is part of experimental API */
 
     XXH3_64bits_reset(&state);
     const char input[] = "Hello World !";
@@ -72,7 +71,4 @@ void hash_advanced(void)
     printf("hash '%s': %08x%08x \n", input, (unsigned)(h >> 32), (unsigned)h);
 }
 
-int main(void)
-{
-    hash_advanced();
-}
+int main(void) { hash_advanced(); }

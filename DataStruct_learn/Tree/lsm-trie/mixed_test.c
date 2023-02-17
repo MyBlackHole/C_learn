@@ -114,8 +114,9 @@ static void mixed_worker(const struct DBParams *const ps) {
 
   // wait for instruction
   for (;;) {
-    if (__ts.test_running == true)
+    if (__ts.test_running == true) {
       break;
+}
     usleep(100);
   }
   // loop
@@ -208,8 +209,9 @@ static uint64_t wait_for_deadline(const uint64_t sec) {
   while (__ts.test_running == true) {
     sleep(1);
     const uint64_t now = debug_time_usec();
-    if (now - start > dur)
+    if (now - start > dur) {
       break;
+}
   }
   __ts.test_running = false;
 
@@ -327,8 +329,9 @@ int main(int argc, char **argv) {
     switch (opt) {
     case 'x': {
       const uint64_t id = strtoull(optarg, NULL, 10);
-      if (id < nr_configs)
+      if (id < nr_configs) {
         ps = pstable[id];
+}
       break;
     }
     case 'v':

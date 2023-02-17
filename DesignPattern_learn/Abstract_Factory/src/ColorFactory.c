@@ -27,8 +27,9 @@ static struct Shape *factory_get_shape(struct Factory *factory,
 
 static struct Color *factory_get_color(struct Factory *factory,
                                        const char *color_type) {
-  if (NULL == color_type)
+  if (NULL == color_type) {
     return NULL;
+}
 
   if (0 == strcasecmp("RED", color_type)) {
     return red_create();
@@ -43,8 +44,9 @@ static struct Color *factory_get_color(struct Factory *factory,
 
 struct Factory *color_factory_create(void) {
   struct Factory *factory = (struct Factory *)calloc(1, sizeof(struct Factory));
-  if (NULL == factory)
+  if (NULL == factory) {
     return NULL;
+}
 
   factory->get_color = factory_get_color;
   factory->get_shape = factory_get_shape;

@@ -25,9 +25,11 @@ extern ssize_t My_write(int fd, const void *buf, size_t nbytes);
 int prepare_file(const char *pathname, const void *buffer, int len,
                  mode_t mode) {
   // 如果删除失败，且原因不是 ENOENT ，则返回 false
-  if (-1 == unlink(pathname))
-    if (errno != ENOENT)
+  if (-1 == unlink(pathname)) {
+    if (errno != ENOENT) {
       return -1;
+}
+}
   // 打开失败
   int fd = open(pathname, O_CREAT | O_RDWR, mode);
   if (-1 == fd) {
@@ -54,9 +56,10 @@ void un_prepare_file(const char *pathname) { unlink(pathname); }
 void print_char_buffer(const char *buf, int n) {
   printf("char buffer is:");
   for (int i = 0; i < n; i++) {
-    if (0 == buf[i])
+    if (0 == buf[i]) {
       // 终止符
       break;
+}
     printf("%c", buf[i]);
   }
   printf("\n");

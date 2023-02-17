@@ -426,8 +426,9 @@ void BTree_recursive_remove(BTree *tree, KeyType key) {
       if ((leftSibling && leftSibling->keynum >= BTree_D) ||
           (rightSibling && rightSibling->keynum >= BTree_D)) {
         int richR = 0;
-        if (rightSibling)
+        if (rightSibling) {
           richR = 1;
+}
         if (leftSibling && rightSibling) {
           richR = cmp(rightSibling->keynum, leftSibling->keynum);
         }

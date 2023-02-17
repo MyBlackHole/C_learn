@@ -38,9 +38,9 @@ int main() {
 
       tempNode = findNode(root, insertNum);
 
-      if (tempNode != NULL)
+      if (tempNode != NULL) {
         printf("\n\t %d Already exists in the tree\n", insertNum);
-      else {
+      } else {
         printf("\n\tPrinting AVL Tree\n");
         printAVL(root, 1);
         printf("\n");
@@ -60,9 +60,9 @@ int main() {
 
       tempNode = findNode(root, queryNum);
 
-      if (tempNode == NULL)
+      if (tempNode == NULL) {
         printf("\n\t %d Does not exist in the tree\n", queryNum);
-      else {
+      } else {
         printf("\n\tPrinting AVL Tree\n");
         printAVL(root, 1);
         printf("\n");
@@ -82,9 +82,9 @@ int main() {
 
       tempNode = findNode(root, queryNum);
 
-      if (tempNode == NULL)
+      if (tempNode == NULL) {
         printf("\n\t %d : Not Found\n", queryNum);
-      else {
+      } else {
         printf("\n\t %d : Found at height %d \n", queryNum, tempNode->height);
 
         printf("\n\tPrinting AVL Tree\n");

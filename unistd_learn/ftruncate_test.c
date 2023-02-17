@@ -3,11 +3,12 @@
 #include <unistd.h>
 
 // 文件截取
-int main(int argc, char *argv[]) {
-  char *filename = argv[1];
-  int length = atoi(argv[2]);
-  // length 超过文件原长度零填充，小于文件原长度截断保留 length
-  // 文件最终长度都是 length
-  truncate(filename, length);
-  return 0;
+int main(int argc, char *argv[])
+{
+    char *filename = argv[1];
+    int length = atoi(argv[2]);
+    // length 超过文件原长度零填充，小于文件原长度截断保留 length
+    // 文件最终长度都是 length
+    truncate(filename, length);
+    return 0;
 }

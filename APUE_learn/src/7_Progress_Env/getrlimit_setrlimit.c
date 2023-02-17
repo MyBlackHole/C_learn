@@ -18,7 +18,7 @@ void print_rlimit(const struct rlimit *rlptr) {
     printf("\tNULL\n");
     return;
   }
-  printf("cur_limit=%d;\t max_limit=%d \n", rlptr->rlim_cur, rlptr->rlim_max);
+  printf("cur_limit=%lu;\t max_limit=%lu \n", rlptr->rlim_cur, rlptr->rlim_max);
 }
 int My_getrlimit(int resource, struct rlimit *rlptr) {
   int result = getrlimit(resource, rlptr);

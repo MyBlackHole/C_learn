@@ -16,8 +16,9 @@
 
 ListNode *list_node_new(int64_t val) {
   ListNode *self;
-  if (!(self = malloc(sizeof(ListNode))))
+  if (!(self = malloc(sizeof(ListNode)))) {
     return NULL;
+}
   self->prev = NULL;
   self->next = NULL;
   self->val = val;
@@ -26,8 +27,9 @@ ListNode *list_node_new(int64_t val) {
 
 List *list_create() {
   List *self;
-  if (!(self = malloc(sizeof(List))))
+  if (!(self = malloc(sizeof(List)))) {
     return NULL;
+}
   self->head = NULL;
   self->tail = NULL;
   self->free_func = NULL;
@@ -37,23 +39,26 @@ List *list_create() {
 }
 
 void list_destroy(List *self) {
-  if (NULL == self)
+  if (NULL == self) {
     return;
+}
   list_clear(self);
   free(self);
 }
 
 void list_clear(List *self) {
-  if (NULL == self)
+  if (NULL == self) {
     return;
+}
   unsigned int len = self->len;
   ListNode *next;
   ListNode *curr = self->head;
 
   while (len--) {
     next = curr->next;
-    if (self->free_func)
+    if (self->free_func) {
       self->free_func(curr->val);
+}
     free(curr);
     curr = next;
   }
@@ -64,8 +69,9 @@ void list_clear(List *self) {
 }
 
 ListNode *list_push_back(List *self, ListNode *node) {
-  if (!node)
+  if (!node) {
     return NULL;
+}
 
   if (self->len) {
     node->prev = self->tail;
@@ -82,8 +88,9 @@ ListNode *list_push_back(List *self, ListNode *node) {
 }
 
 ListNode *list_pop_back(List *self) {
-  if (!self->len)
+  if (!self->len) {
     return NULL;
+}
 
   ListNode *node = self->tail;
   if (--self->len) {
@@ -97,8 +104,9 @@ ListNode *list_pop_back(List *self) {
 }
 
 ListNode *list_push_front(List *self, ListNode *node) {
-  if (!node)
+  if (!node) {
     return NULL;
+}
 
   if (self->len) {
     node->next = self->head;
@@ -115,8 +123,9 @@ ListNode *list_push_front(List *self, ListNode *node) {
 }
 
 ListNode *list_pop_front(List *self) {
-  if (!self->len)
+  if (!self->len) {
     return NULL;
+}
 
   ListNode *node = self->head;
 
@@ -181,8 +190,9 @@ ListNode *list_at(List *self, int index) {
   if ((unsigned)index < self->len) {
     ListIterator *it = list_iterator_new(self, direction);
     ListNode *node = list_iterator_next(it);
-    while (index--)
+    while (index--) {
       node = list_iterator_next(it);
+}
     list_iterator_destroy(it);
     return node;
   }
@@ -196,8 +206,9 @@ void list_remove(List *self, ListNode *node, bool free_node) {
   node->next ? (node->next->prev = node->prev) : (self->tail = node->prev);
 
   if (free_node) {
-    if (self->free_func)
+    if (self->free_func) {
       self->free_func(node->val);
+}
     free(node);
   }
   --self->len;
@@ -211,8 +222,9 @@ ListIterator *list_iterator_new(List *list, ListDirection direction) {
 ListIterator *list_iterator_new_from_node(ListNode *node,
                                           ListDirection direction) {
   ListIterator *self;
-  if (!(self = malloc(sizeof(ListIterator))))
+  if (!(self = malloc(sizeof(ListIterator)))) {
     return NULL;
+}
   self->next = node;
   self->direction = direction;
   return self;

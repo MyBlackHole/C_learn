@@ -222,13 +222,15 @@ int bf_close(bloom_bloomfilter *filter) {
 int bf_params_for_capacity(bloom_filter_params *params) {
   // Sets the required size
   int res = bf_size_for_capacity_prob(params);
-  if (res != 0)
+  if (res != 0) {
     return res;
+}
 
   // Sets the ideal k
   res = bf_ideal_k_num(params);
-  if (res != 0)
+  if (res != 0) {
     return res;
+}
 
   // Adjust for the header size
   params->bytes += sizeof(bloom_filter_header);

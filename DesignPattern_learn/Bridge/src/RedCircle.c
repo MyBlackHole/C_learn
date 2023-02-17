@@ -21,8 +21,9 @@ static void draw_circle(struct DrawAPI *draw_api, int radius, int x, int y) {
 
 struct DrawAPI *red_circle_create(void) {
   struct DrawAPI *api = (struct DrawAPI *)calloc(1, sizeof(struct DrawAPI));
-  if (NULL == api)
+  if (NULL == api) {
     return NULL;
+}
 
   api->draw_circle = draw_circle;
   return api;

@@ -12,8 +12,9 @@ bool findPathBFS(Graph g, int nV, Vertex src, Vertex dest) {
   Vertex v;
 
   // 初始化节点访问状态
-  for (v = 0; v < nV; v++)
+  for (v = 0; v < nV; v++) {
     visited[v] = -1;
+}
 
   // 开始节点
   // 初始化队列
@@ -25,14 +26,16 @@ bool findPathBFS(Graph g, int nV, Vertex src, Vertex dest) {
   while (!QueueIsEmpty(Q)) {
     v = QueueDequeue(Q);
     Vertex w;
-    for (w = 0; w < nV; w++)
+    for (w = 0; w < nV; w++) {
       if (adjacent(g, v, w) && visited[w] == -1) {
         visited[w] = v;
-        if (w == dest)
+        if (w == dest) {
           return true;
-        else
+        } else {
           QueueEnqueue(Q, w);
+}
       }
+}
   }
   return false;
 }

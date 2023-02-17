@@ -31,12 +31,12 @@
 
 #define	FORCE_INLINE __attribute__((always_inline))
 
-inline uint32_t rotl32 ( uint32_t x, int8_t r )
+inline auto rotl32 ( uint32_t x, int8_t r ) -> uint32_t
 {
   return (x << r) | (x >> (32 - r));
 }
 
-inline uint64_t rotl64 ( uint64_t x, int8_t r )
+inline auto rotl64 ( uint64_t x, int8_t r ) -> uint64_t
 {
   return (x << r) | (x >> (64 - r));
 }
@@ -52,12 +52,12 @@ inline uint64_t rotl64 ( uint64_t x, int8_t r )
 // Block read - if your platform needs to do endian-swapping or can only
 // handle aligned reads, do the conversion here
 
-FORCE_INLINE uint32_t getblock ( const uint32_t * p, int i )
+FORCE_INLINE auto getblock ( const uint32_t * p, int i ) -> uint32_t
 {
   return p[i];
 }
 
-FORCE_INLINE uint64_t getblock ( const uint64_t * p, int i )
+FORCE_INLINE auto getblock ( const uint64_t * p, int i ) -> uint64_t
 {
   return p[i];
 }
@@ -65,7 +65,7 @@ FORCE_INLINE uint64_t getblock ( const uint64_t * p, int i )
 //-----------------------------------------------------------------------------
 // Finalization mix - force all bits of a hash block to avalanche
 
-FORCE_INLINE uint32_t fmix ( uint32_t h )
+FORCE_INLINE auto fmix ( uint32_t h ) -> uint32_t
 {
   h ^= h >> 16;
   h *= 0x85ebca6b;
@@ -78,7 +78,7 @@ FORCE_INLINE uint32_t fmix ( uint32_t h )
 
 //----------
 
-FORCE_INLINE uint64_t fmix ( uint64_t k )
+FORCE_INLINE auto fmix ( uint64_t k ) -> uint64_t
 {
   k ^= k >> 33;
   k *= BIG_CONSTANT(0xff51afd7ed558ccd);
@@ -94,7 +94,7 @@ FORCE_INLINE uint64_t fmix ( uint64_t k )
 extern "C" void MurmurHash3_x86_32 ( const void * key, int len,
                           uint32_t seed, void * out )
 {
-  const uint8_t * data = (const uint8_t*)key;
+  const auto * data = (const uint8_t*)key;
   const int nblocks = len / 4;
 
   uint32_t h1 = seed;
@@ -105,7 +105,7 @@ extern "C" void MurmurHash3_x86_32 ( const void * key, int len,
   //----------
   // body
 
-  const uint32_t * blocks = (const uint32_t *)(data + nblocks*4);
+  const auto * blocks = (const uint32_t *)(data + nblocks*4);
 
   for(int i = -nblocks; i; i++)
   {
@@ -123,7 +123,7 @@ extern "C" void MurmurHash3_x86_32 ( const void * key, int len,
   //----------
   // tail
 
-  const uint8_t * tail = (const uint8_t*)(data + nblocks*4);
+  const auto * tail = (data + nblocks*4);
 
   uint32_t k1 = 0;
 
@@ -150,7 +150,7 @@ extern "C" void MurmurHash3_x86_32 ( const void * key, int len,
 extern "C" void MurmurHash3_x86_128 ( const void * key, const int len,
                            uint32_t seed, void * out )
 {
-  const uint8_t * data = (const uint8_t*)key;
+  const auto * data = (const uint8_t*)key;
   const int nblocks = len / 16;
 
   uint32_t h1 = seed;
@@ -166,7 +166,7 @@ extern "C" void MurmurHash3_x86_128 ( const void * key, const int len,
   //----------
   // body
 
-  const uint32_t * blocks = (const uint32_t *)(data + nblocks*16);
+  const auto * blocks = (const uint32_t *)(data + nblocks*16);
 
   for(int i = -nblocks; i; i++)
   {
@@ -195,7 +195,7 @@ extern "C" void MurmurHash3_x86_128 ( const void * key, const int len,
   //----------
   // tail
 
-  const uint8_t * tail = (const uint8_t*)(data + nblocks*16);
+  const auto * tail = (data + nblocks*16);
 
   uint32_t k1 = 0;
   uint32_t k2 = 0;
@@ -255,7 +255,7 @@ extern "C" void MurmurHash3_x86_128 ( const void * key, const int len,
 extern "C" void MurmurHash3_x64_128 ( const void * key, const int len,
                            uint32_t seed, void * out )
 {
-  const uint8_t * data = (const uint8_t*)key;
+  const auto * data = (const uint8_t*)key;
   const int nblocks = len / 16;
 
   uint64_t h1 = seed;
@@ -267,7 +267,7 @@ extern "C" void MurmurHash3_x64_128 ( const void * key, const int len,
   //----------
   // body
 
-  const uint64_t * blocks = (const uint64_t *)(data);
+  const auto * blocks = (const uint64_t *)(data);
 
   for(int i = 0; i < nblocks; i++)
   {
@@ -286,7 +286,7 @@ extern "C" void MurmurHash3_x64_128 ( const void * key, const int len,
   //----------
   // tail
 
-  const uint8_t * tail = (const uint8_t*)(data + nblocks*16);
+  const auto * tail = (data + nblocks*16);
 
   uint64_t k1 = 0;
   uint64_t k2 = 0;

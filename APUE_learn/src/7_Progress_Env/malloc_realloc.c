@@ -15,27 +15,27 @@
 void *My_malloc(size_t size) {
   void *result = malloc(size);
   if (NULL == result) {
-    printf("malloc(%d) failed,because %s\n", size, strerror(errno));
+    printf("malloc(%zu) failed,because %s\n", size, strerror(errno));
   } else {
-    printf("malloc(%d) ok,return %p\n", size, result);
+    printf("malloc(%zu) ok,return %p\n", size, result);
   }
   return result;
 }
 void *My_calloc(size_t nobj, size_t size) {
   void *result = calloc(nobj, size);
   if (NULL == result) {
-    printf("calloc(%d,%d) failed,because %s\n", nobj, size, strerror(errno));
+    printf("calloc(%zu,%zu) failed,because %s\n", nobj, size, strerror(errno));
   } else {
-    printf("calloc(%d,%d) ok,return %p\n", nobj, size, result);
+    printf("calloc(%zu,%zu) ok,return %p\n", nobj, size, result);
   }
   return result;
 }
 void *My_realloc(void *ptr, size_t newsize) {
   void *result = realloc(ptr, newsize);
   if (NULL == result) {
-    printf("realloc(%p,%d) failed,because %s\n", ptr, newsize, strerror(errno));
+    printf("realloc(%p,%zu) failed,because %s\n", ptr, newsize, strerror(errno));
   } else {
-    printf("realloc(%p,%d) ok,return %p\n", ptr, newsize, result);
+    printf("realloc(%p,%zu) ok,return %p\n", ptr, newsize, result);
   }
   return result;
 }

@@ -20,10 +20,10 @@ extern int My_pthread_create(pthread_t *tidp, const pthread_attr_t *attr,
 int My_pthread_detach(pthread_t tid) {
   int result = pthread_detach(tid);
   if (0 != result) {
-    printf("thread(0x%x) call pthread_detach(0x%x) failed,because %s\n",
+    printf("thread(0x%lx) call pthread_detach(0x%lx) failed,because %s\n",
            pthread_self(), tid, strerror(result));
   } else {
-    printf("thread(0x%x) call pthread_detach(0x%x) ok\n", pthread_self(), tid);
+    printf("thread(0x%lx) call pthread_detach(0x%lx) ok\n", pthread_self(), tid);
   }
   return result;
 }
@@ -43,11 +43,12 @@ static pthread_t threads[3];
  */
 static void *thread_func(void *arg) {
   pthread_mutex_lock(&mutex); //必须同步。否则多个线程的输出交叉进行
-  printf("\n****** Begin Thread:thread id=0x%x ******\n", pthread_self());
+  printf("\n****** Begin Thread:thread id=0x%lx ******\n", pthread_self());
   printf("arg is %d\n", arg);
-  if (pthread_equal(pthread_self(), threads[1]))
+  if (pthread_equal(pthread_self(), threads[1])) {
     My_pthread_detach(threads[2]); // 第二个子线程会设置第三个子线程为分离状态
-  printf("****** End Thread:thread id=0x%x ******\n\n", pthread_self());
+}
+  printf("****** End Thread:thread id=0x%lx ******\n\n", pthread_self());
   pthread_mutex_unlock(&mutex);
   sleep(2); // 让子线程存续时间足够长
   return arg;
@@ -57,8 +58,9 @@ void test_thread_detach() {
   M_TRACE("---------  Begin test_thread_detach()  ---------\n");
   //******** 创建子线程 *********//
   pthread_mutex_lock(&mutex); //必须同步。否则多个线程的输出交叉进行
-  for (int i = 0; i < 3; i++)
+  for (int i = 0; i < 3; i++) {
     My_pthread_create(threads + i, NULL, thread_func, i);
+}
   pthread_mutex_unlock(&mutex);
 
   My_pthread_detach(threads[0]); // 主线程会设置第一个子线程为分离状态

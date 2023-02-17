@@ -20,8 +20,9 @@ static void draw(struct Shape *shape) {
 
 struct Shape *square_create(void) {
   struct Shape *shape = (struct Shape *)calloc(1, sizeof(struct Shape));
-  if (NULL == shape)
+  if (NULL == shape) {
     return NULL;
+}
   shape->draw = draw;
   return shape;
 }

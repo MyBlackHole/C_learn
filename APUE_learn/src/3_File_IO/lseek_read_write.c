@@ -17,29 +17,32 @@ extern int My_open(const char *path, int oflag);
 
 off_t My_lseek(int fd, off_t offset, int whence) {
   off_t result = lseek(fd, offset, whence);
-  if (-1 == result)
-    printf("lseek(%d,%d,%d) failed,because %s\n", fd, offset, whence,
+  if (-1 == result) {
+    printf("lseek(%d,%ld,%d) failed,because %s\n", fd, offset, whence,
            strerror(errno));
-  else
-    printf("lseek(%d,%d,%d) to offset %d\n", fd, offset, SEEK_SET, result);
+  } else {
+    printf("lseek(%d,%ld,%d) to offset %ld\n", fd, offset, SEEK_SET, result);
+}
   return result;
 }
 ssize_t My_read(int fd, void *buf, size_t nbytes) {
   ssize_t result = read(fd, buf, nbytes);
-  if (-1 == result)
-    printf("read(%d,%p,%d) failed,because %s\n", fd, buf, nbytes,
+  if (-1 == result) {
+    printf("read(%d,%p,%zu) failed,because %s\n", fd, buf, nbytes,
            strerror(errno));
-  else
-    printf("read(%d,%p,%d) %d bytes\n", fd, buf, nbytes, result);
+  } else {
+    printf("read(%d,%p,%zu) %zd bytes\n", fd, buf, nbytes, result);
+}
   return result;
 }
 ssize_t My_write(int fd, const void *buf, size_t nbytes) {
   ssize_t result = write(fd, buf, nbytes);
-  if (-1 == result)
-    printf("write(%d,%p,%d) failed,because %s\n", fd, buf, nbytes,
+  if (-1 == result) {
+    printf("write(%d,%p,%zu) failed,because %s\n", fd, buf, nbytes,
            strerror(errno));
-  else
-    printf("write(%d,%p,%d) %d bytes\n", fd, buf, nbytes, result);
+  } else {
+    printf("write(%d,%p,%zu) %zd bytes\n", fd, buf, nbytes, result);
+}
   return result;
 }
 
@@ -48,8 +51,9 @@ void test_lseek_read_write() {
   assert(prepare_file("test", NULL, 0, S_IRWXU) == 0);
 
   int fd = My_open_with_mode("test", O_RDWR | O_TRUNC); // 读写打开，并截断
-  if (-1 == fd)
+  if (-1 == fd) {
     return; // 文件打开失败
+}
   char read_buffer[20];
   char write_buffer[10];
 

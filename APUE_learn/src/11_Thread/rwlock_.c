@@ -147,42 +147,49 @@ static void *thread_func(void *arg) {
   case 0: //不加锁
     break;
   case 1: // 加读锁
-    if (0 != My_pthread_rwlock_rdlock(&rwlock))
+    if (0 != My_pthread_rwlock_rdlock(&rwlock)) {
       return -1; // 加锁失败
+}
     break;
   case 2: // 加写锁
-    if (0 != My_pthread_rwlock_wrlock(&rwlock))
+    if (0 != My_pthread_rwlock_wrlock(&rwlock)) {
       return -1; // 加锁失败
+}
     break;
   case 3: // tryrdlock；
-    if (0 != My_pthread_rwlock_tryrdlock(&rwlock))
+    if (0 != My_pthread_rwlock_tryrdlock(&rwlock)) {
       return -1; // 加锁失败
+}
     break;
   case 4: // trywrlock；
-    if (0 != My_pthread_rwlock_trywrlock(&rwlock))
+    if (0 != My_pthread_rwlock_trywrlock(&rwlock)) {
       return -1; // 加锁失败
+}
     break;
   case 5: // timedrdlock
-    if (0 != My_pthread_rwlock_timedrdlock(&rwlock, rel_to_abs_time(1)))
+    if (0 != My_pthread_rwlock_timedrdlock(&rwlock, rel_to_abs_time(1))) {
       return -1; // 加锁失败
+}
     break;
   case 6: // timedwrlock
-    if (0 != My_pthread_rwlock_timedwrlock(&rwlock, rel_to_abs_time(1)))
+    if (0 != My_pthread_rwlock_timedwrlock(&rwlock, rel_to_abs_time(1))) {
       return -1; // 加锁失败
+}
     break;
   default:
     break;
   }
 
-  printf("\n****** Begin Thread:thread id=0x%x ******\n", pthread_self());
+  printf("\n****** Begin Thread:thread id=0x%lx ******\n", pthread_self());
   int read_data = shared_int;
   printf("read shared_int :%d.\n", read_data);
   shared_int = read_data + 1;
   sleep(2); // 让线程多运行几秒
-  printf("****** End Thread:thread id=0x%x ******\n\n", pthread_self());
+  printf("****** End Thread:thread id=0x%lx ******\n\n", pthread_self());
   //********** 解锁 ****************//
-  if (0 != (int)arg) // 曾经加锁，则解锁
+  if (0 != (int)arg) { // 曾经加锁，则解锁
     My_pthread_rwlock_unlock(&rwlock);
+}
   return read_data;
 }
 
@@ -195,12 +202,14 @@ void test_rwlock() {
   const int N = 5;
   pthread_t threads[N];
   int rw_int[] = {2, 2, 2, 2, 2}; // 每个线程的锁的类型
-  for (int i = 0; i < N; i++)
+  for (int i = 0; i < N; i++) {
     My_pthread_create(threads + i, NULL, thread_func, rw_int[i]);
+}
   //******** 等待子线程结束 *********//
   int values[N];
-  for (int i = 0; i < N; i++)
+  for (int i = 0; i < N; i++) {
     thread_join_int(threads[i], values + i);
+}
 
   My_pthread_rwlock_destroy(&rwlock);
   M_TRACE("---------  End test_rwlock()  ---------\n\n");

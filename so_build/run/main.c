@@ -1,7 +1,9 @@
-#include "./skfapi.h"
 #include <stdio.h>
 
-int main() {
+#include "./skfapi.h"
+
+int main()
+{
     ULONG ulRslt;
     char szDevName[256] = {0};
     ULONG ulNameLen = 256;

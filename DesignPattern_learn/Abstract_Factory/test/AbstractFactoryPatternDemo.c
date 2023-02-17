@@ -18,8 +18,9 @@
 int main(int argc, char const *argv[]) {
   //获取形状工厂
   struct Factory *shape_factory = factory_producer_get_factory("SHAPE");
-  if (NULL == shape_factory)
+  if (NULL == shape_factory) {
     return 0;
+}
 
   //获取形状为 Circle 的对象
   struct Shape *shape1 = factory_get_shape(shape_factory, "CIRCLE");
@@ -43,8 +44,9 @@ int main(int argc, char const *argv[]) {
 
   //获取颜色工厂
   struct Factory *color_factory = factory_producer_get_factory("COLOR");
-  if (NULL == color_factory)
+  if (NULL == color_factory) {
     return 0;
+}
 
   //获取颜色为 Red 的对象
   struct Color *color1 = factory_get_color(color_factory, "RED");

@@ -10,14 +10,17 @@ struct ring_queue {
 };
 
 int alloc_queue(struct ring_queue *queue, int cap) {
-  if (!queue || cap < 0)
+  if (!queue || cap < 0) {
     return -1;
-  if (queue->_q)
+}
+  if (queue->_q) {
     return -1;
+}
 
   queue->_q = (int *)malloc(cap * sizeof(int));
-  if (!queue->_q)
+  if (!queue->_q) {
     return -1;
+}
 
   queue->head = queue->tail = 0;
   queue->cap = cap;
@@ -46,8 +49,9 @@ bool is_full(struct ring_queue *queue) {
 }
 
 int enqueue(struct ring_queue *queue, int elem) {
-  if (is_full(queue))
+  if (is_full(queue)) {
     return -1;
+}
 
   queue->_q[queue->tail] = elem;
   queue->tail = _next(queue->tail, queue->cap);
@@ -55,11 +59,13 @@ int enqueue(struct ring_queue *queue, int elem) {
 }
 
 int dequeue(struct ring_queue *queue, int *elem) {
-  if (is_empty(queue))
+  if (is_empty(queue)) {
     return -1;
+}
 
-  if (elem)
+  if (elem) {
     *elem = queue->_q[queue->head];
+}
   queue->head = _next(queue->head, queue->cap);
   return 0;
 }
@@ -68,8 +74,9 @@ int dequeue(struct ring_queue *queue, int *elem) {
 int size(struct ring_queue *queue) {
   int size = queue->tail - queue->head;
 
-  if (size < 0)
+  if (size < 0) {
     size += queue->cap;
+}
   return size;
 }
 
@@ -101,8 +108,9 @@ int main() {
   printf("After dequeue 1 element, queue is %s\n",
          is_empty(&queue) ? "empty" : "not empty");
 
-  for (i = 0; i < 7; i++)
+  for (i = 0; i < 7; i++) {
     enqueue(&queue, i);
+}
   printf("After enqueue 7 element, queue is %s\n",
          is_full(&queue) ? "full" : "not full");
 

@@ -1,7 +1,7 @@
+#include <arpa/inet.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/socket.h>
-#include <arpa/inet.h>
 
 /* inet_aton()函数 */
 /* 功能：inet_aton()函数用于将点分十进制IP地址转换成网络字节序IP地址; */

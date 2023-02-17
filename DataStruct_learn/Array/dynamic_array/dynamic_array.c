@@ -38,8 +38,9 @@ void *add(dynamic_array_t *da, const void *value) {
 }
 
 void *put(dynamic_array_t *da, const void *value, const unsigned index) {
-  if (!contains(da->size, index))
+  if (!contains(da->size, index)) {
     return INDEX_OUT_OF_BOUNDS;
+}
 
   free(da->items[index]);
   void *copy_value = retrive_copy_of_value(value);
@@ -49,15 +50,17 @@ void *put(dynamic_array_t *da, const void *value, const unsigned index) {
 }
 
 void *get(dynamic_array_t *da, const unsigned index) {
-  if (!contains(da->size, index))
+  if (!contains(da->size, index)) {
     return INDEX_OUT_OF_BOUNDS;
+}
 
   return da->items[index];
 }
 
 void delete (dynamic_array_t *da, const unsigned index) {
-  if (!contains(da->size, index))
+  if (!contains(da->size, index)) {
     return;
+}
 
   for (unsigned i = index; i < da->size; i++) {
     da->items[i] = da->items[i + 1];
@@ -70,8 +73,9 @@ void delete (dynamic_array_t *da, const unsigned index) {
 
 // 合法性查询
 unsigned contains(const unsigned size, const unsigned index) {
-  if (size >= 0 && index < size)
+  if (size >= 0 && index < size) {
     return 1;
+}
 
   printf("index [%d] out of bounds!\n", index);
   return 0;

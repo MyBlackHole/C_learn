@@ -7,17 +7,19 @@
 
 /* seed -- 这是一个整型值，用于伪随机数生成算法播种。 */
 
-int main() {
-  int i, n;
-  time_t t;
+int main()
+{
+    int i, n;
+    time_t t;
 
-  n = 5;
+    n = 5;
 
-  srand((unsigned)time(&t));
+    srand((unsigned)time(&t));
 
-  for (i = 0; i < n; i++) {
-    printf("%d\n", rand() * 50);
-  }
+    for (i = 0; i < n; i++)
+    {
+        printf("%d\n", rand() * 50);
+    }
 
-  return 0;
+    return 0;
 }

@@ -131,8 +131,9 @@ static void update_buffer(const LogLevel level, const char *filename,
 }
 
 static void log_to_file() {
-  if (NULL == self_log_file)
+  if (NULL == self_log_file) {
     return;
+}
   fprintf(self_log_file, "%s", self_log_buffer);
 }
 
@@ -163,8 +164,9 @@ static void log_to_screen(const LogLevel level) {
 }
 
 static void log_to_callback() {
-  if (NULL == self_log_callback_function)
+  if (NULL == self_log_callback_function) {
     return;
+}
   self_log_callback_function(self_log_callback_opaque, self_log_buffer);
 }
 
@@ -198,8 +200,9 @@ static void log_to_android(const LogLevel level) {
 
 void log_print(const LogLevel level, const char *filename, const int line,
                const char *format, ...) {
-  if (level < self_log_level || LOG_MODE_NONE == self_log_mode)
+  if (level < self_log_level || LOG_MODE_NONE == self_log_mode) {
     return;
+}
 
   pthread_mutex_lock(&self_log_lock);
   va_list args;
@@ -247,8 +250,9 @@ int log_set_path(const char *path) {
     ret = ERROR_OPEN_LOG_FILE;
     self_log_file = stderr;
   }
-  if (setvbuf(self_log_file, NULL, _IONBF, 0) != 0)
+  if (setvbuf(self_log_file, NULL, _IONBF, 0) != 0) {
     ret = ERROR_OPEN_LOG_FILE;
+}
 
   pthread_mutex_unlock(&self_log_lock);
   return ret;

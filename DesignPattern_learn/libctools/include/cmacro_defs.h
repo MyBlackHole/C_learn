@@ -18,4 +18,4 @@
 #define UNUSED
 #endif
 
-#endif // CMACRO_DEFS_H_
+#endif  // CMACRO_DEFS_H_

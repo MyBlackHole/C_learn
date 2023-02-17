@@ -15,8 +15,9 @@
 
 void _test_execl(const char *pathname) {
   if (fork() == 0) { // child
-    if (-1 == execl(pathname, "execl_arg1", "execl_arg2", (char *)0))
+    if (-1 == execl(pathname, "execl_arg1", "execl_arg2", (char *)0)) {
       printf("execl error ,because %s\n", strerror(errno));
+}
     _exit(-1);
   }
 }
@@ -38,8 +39,9 @@ void _test_execle(const char *pathname) {
   envp[1] = "execle_env2=2";
   envp[2] = NULL;
   if (fork() == 0) { // child
-    if (-1 == execle(pathname, "execle_arg1", "execle_arg2", (char *)0, envp))
+    if (-1 == execle(pathname, "execle_arg1", "execle_arg2", (char *)0, envp)) {
       printf("execle error ,because %s\n", strerror(errno));
+}
     _exit(-1);
   }
 }
@@ -53,15 +55,17 @@ void _test_execve(const char *pathname) {
   envp[1] = "execve_env2=2";
   envp[2] = NULL;
   if (fork() == 0) { // child
-    if (-1 == execve(pathname, argv, envp))
+    if (-1 == execve(pathname, argv, envp)) {
       printf("execve error ,because %s\n", strerror(errno));
+}
     _exit(-1);
   }
 }
 void _test_execlp(const char *filename) {
   if (fork() == 0) { // child
-    if (-1 == execlp(filename, "execlp_arg1", "execlp_arg2", (char *)0))
+    if (-1 == execlp(filename, "execlp_arg1", "execlp_arg2", (char *)0)) {
       printf("execlp error ,because %s\n", strerror(errno));
+}
     _exit(-1);
   }
 }
@@ -71,8 +75,9 @@ void _test_execvp(const char *filename) {
   argv[1] = "execvp_arg2";
   argv[2] = NULL;
   if (fork() == 0) { // child
-    if (-1 == execvp(filename, argv))
+    if (-1 == execvp(filename, argv)) {
       printf("execvp error ,because %s\n", strerror(errno));
+}
     _exit(-1);
   }
 }

@@ -93,8 +93,9 @@ static uint8_t *alloc_buf(const struct RR *const rr) {
   assert((mask | (mask + 1u)) == ((mask << 1) + 1u));
   const size_t alloc_size = mask + 1u;
   uint8_t *const buf = aligned_alloc(4096, alloc_size);
-  if (rr->write)
+  if (rr->write) {
     memset(buf, 0x5a, alloc_size);
+}
   return buf;
 }
 
@@ -121,8 +122,9 @@ void *rw4k_thread(void *p) {
     }
     count += round;
     // 推出条件
-    if (debug_time_usec() - start > dur)
+    if (debug_time_usec() - start > dur) {
       break;
+}
   }
   // record
   rr->nr_io = count;
@@ -181,10 +183,12 @@ void threaded_rw(const int fd, const size_t mask, const int dur, const int nr_r,
       io_r += rr[i].nr_io;
     }
   }
-  if (nr_r > 0)
+  if (nr_r > 0) {
     show_io("R", io_r, dur, mask, nr_r);
-  if (nr_w > 0)
+}
+  if (nr_w > 0) {
     show_io("W", io_w, dur, mask, nr_w);
+}
   latency_95_99_999(latency, stdout);
   free(latency);
 }

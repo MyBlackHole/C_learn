@@ -25,12 +25,14 @@ extern struct ColdDrink *pepsi_create(void);
 Meal *meal_builder_prepare_veg_meal(void) {
   Meal *meal = meal_create();
   struct Burger *veg_burger = veg_burger_create();
-  if (NULL != veg_burger)
+  if (NULL != veg_burger) {
     meal_add_items(meal, veg_burger->parent);
+}
 
   struct ColdDrink *coke = coke_create();
-  if (NULL != coke)
+  if (NULL != coke) {
     meal_add_items(meal, coke->parent);
+}
 
   return meal;
 }
@@ -38,12 +40,14 @@ Meal *meal_builder_prepare_veg_meal(void) {
 Meal *meal_builder_prepare_non_veg_meal(void) {
   Meal *meal = meal_create();
   struct Burger *chicken_burger = chicken_burger_create();
-  if (NULL != chicken_burger)
+  if (NULL != chicken_burger) {
     meal_add_items(meal, chicken_burger->parent);
+}
 
   struct ColdDrink *pepsi = pepsi_create();
-  if (NULL != pepsi)
+  if (NULL != pepsi) {
     meal_add_items(meal, pepsi->parent);
+}
 
   return meal;
 }

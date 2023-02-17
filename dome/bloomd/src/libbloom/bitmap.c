@@ -45,14 +45,16 @@ int bitmap_from_file(int fileno, uint64_t len, bitmap_mode mode,
   if (mode == SHARED) {
     flags = MAP_SHARED;
     newfileno = dup(fileno);
-    if (newfileno < 0)
+    if (newfileno < 0) {
       return -errno;
+}
 
   } else if (mode == PERSISTENT) {
     flags = MAP_ANON | MAP_PRIVATE;
     newfileno = dup(fileno);
-    if (newfileno < 0)
+    if (newfileno < 0) {
       return -errno;
+}
 
   } else if (mode == ANONYMOUS) {
     flags = MAP_ANON | MAP_PRIVATE;
@@ -101,8 +103,9 @@ int bitmap_from_file(int fileno, uint64_t len, bitmap_mode mode,
     if (!dirty) {
       // 分配失败，解除映射
       munmap(addr, len);
-      if (newfileno >= 0)
+      if (newfileno >= 0) {
         close(newfileno);
+}
       return -errno;
     }
 
@@ -112,8 +115,9 @@ int bitmap_from_file(int fileno, uint64_t len, bitmap_mode mode,
     if (!new_bitmap && (res = fill_buffer(newfileno, addr, len))) {
       free(dirty);
       munmap(addr, len);
-      if (newfileno >= 0)
+      if (newfileno >= 0) {
         close(newfileno);
+}
       return res;
     }
   }
@@ -156,14 +160,15 @@ static int fill_buffer(int fileno, unsigned char *buf, uint64_t len) {
   ssize_t more;
   while (total_read < len) {
     more = pread(fileno, buf + total_read, len - total_read, total_read);
-    if (more == 0)
+    if (more == 0) {
       break;
-    else if (more < 0 && errno != EINTR) {
+    } else if (more < 0 && errno != EINTR) {
       perror("Failed to fill the bitmap buffer!");
       return -errno;
-    } else
+    } else {
       // 追加读取到的字节数量
       total_read += more;
+}
   }
   return 0;
 }
@@ -255,30 +260,34 @@ int bitmap_from_filename(char *filename, uint64_t len, int create,
  */
 int bitmap_flush(bloom_bitmap *map) {
   // Return if there is no map provided
-  if (map == NULL)
+  if (map == NULL) {
     return -EINVAL;
+}
 
   // Do nothing for anonymous maps
   int res;
-  if (map->mode == ANONYMOUS || map->mmap == NULL)
+  if (map->mode == ANONYMOUS || map->mmap == NULL) {
     return 0;
 
   // For SHARED, we can use an msync and let the kernel deal
-  else if (map->mode == SHARED) {
+  } else if (map->mode == SHARED) {
     // 落盘
     res = msync(map->mmap, map->size, MS_SYNC);
-    if (res == -1)
+    if (res == -1) {
       return -errno;
+}
 
   } else if (map->mode == PERSISTENT) {
-    if ((res = flush_dirty_pages(map)))
+    if ((res = flush_dirty_pages(map))) {
       return res;
+}
   }
 
   // SHARED / PERSISTENT both have a file backing
   res = fsync(map->fileno);
-  if (res == -1)
+  if (res == -1) {
     return -errno;
+}
   return 0;
 }
 
@@ -320,8 +329,9 @@ static int flush_dirty_pages(bloom_bitmap *map) {
     if (dirty || i == 0) {
       // Flush the page
       res = flush_page(map, i, map->size, pages - 1);
-      if (res)
+      if (res) {
         goto LEAVE;
+}
     }
   }
 LEAVE:
@@ -348,11 +358,12 @@ static int flush_page(bloom_bitmap *map, uint64_t page, uint64_t size,
   while (total < should_write) {
     res = pwrite(map->fileno, map->mmap + offset + total, should_write - total,
                  offset + total);
-    if (res == -1 && errno != EINTR)
+    if (res == -1 && errno != EINTR) {
       return -errno;
-    else
+    } else {
       // 追加数量，确保完全写入
       total += res;
+}
   }
   return 0;
 }
@@ -367,27 +378,31 @@ static int flush_page(bloom_bitmap *map, uint64_t page, uint64_t size,
  */
 int bitmap_close(bloom_bitmap *map) {
   // Return if there is no map provided
-  if (map == NULL)
+  if (map == NULL) {
     return -EINVAL;
+}
 
   // Flush first
   // 落盘
   int res = bitmap_flush(map);
-  if (res != 0)
+  if (res != 0) {
     return res;
+}
 
   // Unmap the file
   // 解除映射
   res = munmap(map->mmap, map->size);
-  if (res != 0)
+  if (res != 0) {
     return -errno;
+}
 
   // Close the file descriptor if file backed
   // 存在文件打开则关闭文件
   if (map->mode != ANONYMOUS) {
     res = close(map->fileno);
-    if (res != 0)
+    if (res != 0) {
       return -errno;
+}
   }
 
   // Remove the dirty bitfield if any

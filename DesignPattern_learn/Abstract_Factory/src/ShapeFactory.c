@@ -21,8 +21,9 @@ extern struct Shape *circle_create(void);
 
 static struct Shape *factory_get_shape(struct Factory *factory,
                                        const char *shape_type) {
-  if (NULL == shape_type)
+  if (NULL == shape_type) {
     return NULL;
+}
 
   if (0 == strcasecmp("CIRCLE", shape_type)) {
     return circle_create();
@@ -42,8 +43,9 @@ static struct Color *factory_get_color(struct Factory *factory,
 
 struct Factory *shape_factory_create(void) {
   struct Factory *factory = (struct Factory *)calloc(1, sizeof(struct Factory));
-  if (NULL == factory)
+  if (NULL == factory) {
     return NULL;
+}
 
   factory->get_color = factory_get_color;
   factory->get_shape = factory_get_shape;

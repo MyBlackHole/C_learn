@@ -15,18 +15,22 @@
 #include "ctools.h"
 
 void image_destroy(Image **image) {
-  if (NULL == image || NULL == *image)
+  if (NULL == image || NULL == *image) {
     return;
+}
   Image *self = *image;
-  if (NULL != self->destroy)
+  if (NULL != self->destroy) {
     self->destroy(self);
+}
 
   freep((void **)image);
 }
 
 void image_display(Image *image) {
-  if (NULL == image)
+  if (NULL == image) {
     return;
-  if (NULL != image->display)
+}
+  if (NULL != image->display) {
     image->display(image);
+}
 }

@@ -23,19 +23,21 @@ extern int My_rmdir(const char *pathname);
 
 char *My_tmpnam(char *ptr) {
   char *result = tmpnam(ptr);
-  if (NULL == result)
+  if (NULL == result) {
     printf("tmpnam(%p) failed,because %s\n", ptr, strerror(errno));
-  else
+  } else {
     printf("tmpnam(%p) ok,temp file name is \"%s\"\n", ptr, result);
+}
   return result;
 }
 
 char *My_mkdtemp(char *tmplate) {
   char *result = mkdtemp(tmplate);
-  if (NULL == result)
+  if (NULL == result) {
     printf("mkdtemp(\"%s\") failed,because %s\n", tmplate, strerror(errno));
-  else
+  } else {
     printf("mkdtemp(\"%s\") ok,temp file name is \"%s\"\n", tmplate, result);
+}
   return result;
 }
 
@@ -43,13 +45,15 @@ void _test_tmpnam() {
   char buffer1[1024];
   char buffer2[1024];
   char *temp_file1 = My_tmpnam(buffer1);
-  if (NULL != temp_file1) // 只是创建临时文件名，而并没有创建文件
+  if (NULL != temp_file1) { // 只是创建临时文件名，而并没有创建文件
     My_unlink(temp_file1);
+}
 
   //****** 第二次创建临时文件 ****//
   char *temp_file2 = My_tmpnam(buffer2);
-  if (NULL != temp_file2) // 只是创建临时文件名，而并没有创建文件
+  if (NULL != temp_file2) { // 只是创建临时文件名，而并没有创建文件
     My_unlink(temp_file2);
+}
 }
 void _test_mkdtemp() {
   char buffer1[128] = "AAAXXXXXX";
@@ -60,16 +64,18 @@ void _test_mkdtemp() {
   print_file_type(temp_dir1);
   print_file_perm(temp_dir1);
   print_file_time(temp_dir1);
-  if (NULL != temp_dir1)
+  if (NULL != temp_dir1) {
     My_rmdir(temp_dir1);
+}
   //****** 第二次创建临时目录 ****//
   char *temp_dir2 =
       My_mkdtemp(buffer2); //因为会修改 buffer2，因此不能用字符串常量
   print_file_type(temp_dir2);
   print_file_perm(temp_dir2);
   print_file_time(temp_dir2);
-  if (NULL != temp_dir2)
+  if (NULL != temp_dir2) {
     My_rmdir(temp_dir2);
+}
 }
 
 void test_tmpnam_mkdtemp() {

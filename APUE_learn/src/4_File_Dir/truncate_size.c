@@ -19,11 +19,11 @@ extern void print_file_size(const char *pathname);
 
 int My_truncate(const char *pathname, off_t length) {
   int result = truncate(pathname, length);
-  if (-1 == result)
-    printf("truncate(\"%s\",%d) failed,because %s\n", pathname, length,
+  if (-1 == result) {
+    printf("truncate(\"%s\",%ld) failed,because %s\n", pathname, length,
            strerror(errno));
-  else {
-    printf("truncate(\"%s\",%d) ok\n", pathname, length);
+  } else {
+    printf("truncate(\"%s\",%ld) ok\n", pathname, length);
     print_file_size(pathname);
   }
   return result;
@@ -35,8 +35,9 @@ void truncate_and_read(const char *pathname, int fd, off_t length) {
   My_lseek(fd, 0, SEEK_SET); // 读取之前先调整文件读取位置
   len = My_read(fd, buffer, length);
   printf("Read:");
-  for (int i = 0; i < len; i++) // 打印读取内容
+  for (int i = 0; i < len; i++) { // 打印读取内容
     printf("\t0x%x,", buffer[i]);
+}
   printf("\n");
 }
 

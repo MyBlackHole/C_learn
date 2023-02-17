@@ -37,8 +37,9 @@ static const bool USING_MALLOC = false;
 
 void *huge_alloc(const uint64_t cap) {
   const size_t hcap = ((cap + MEMPOOL_UNIT - 1) / MEMPOOL_UNIT) * MEMPOOL_UNIT;
-  if (hcap != cap)
+  if (hcap != cap) {
     return NULL;
+}
   if (USING_MALLOC) {
     // 对齐内存分配
     return aligned_alloc(MEMPOOL_UNIT, cap);

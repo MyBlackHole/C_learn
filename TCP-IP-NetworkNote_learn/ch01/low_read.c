@@ -7,30 +7,36 @@
 #define BUF_SIZE 100
 void error_handling(char *message);
 
-int main(int argc, char *argv[]) {
-  char *path = dirname(argv[0]);
-  char *filename = "data.txt";
-  char *name = malloc(strlen(path) + strlen(filename));
+int main(int argc, char *argv[])
+{
+    char *path = dirname(argv[0]);
+    char *filename = "data.txt";
+    char *name = malloc(strlen(path) + strlen(filename));
 
-  strcpy(name, path);
-  strcat(name, filename);
+    strcpy(name, path);
+    strcat(name, filename);
 
-  int fd;
-  char buf[BUF_SIZE];
+    int fd;
+    char buf[BUF_SIZE];
 
-  fd = open(name, O_RDONLY);
-  if (fd == -1)
-    error_handling("open() error!");
-  printf("file descriptor: %d \n", fd);
+    fd = open(name, O_RDONLY);
+    if (fd == -1)
+    {
+        error_handling("open() error!");
+    }
+    printf("file descriptor: %d \n", fd);
 
-  if (read(fd, buf, sizeof(buf)) == -1)
-    error_handling("read() error!");
-  printf("file data: %s", buf);
-  close(fd);
-  return 0;
+    if (read(fd, buf, sizeof(buf)) == -1)
+    {
+        error_handling("read() error!");
+    }
+    printf("file data: %s", buf);
+    close(fd);
+    return 0;
 }
-void error_handling(char *message) {
-  fputs(message, stderr);
-  fputc('\n', stderr);
-  exit(1);
+void error_handling(char *message)
+{
+    fputs(message, stderr);
+    fputc('\n', stderr);
+    exit(1);
 }

@@ -123,10 +123,12 @@ static void run_test(const char *const tag, const uint64_t nr_readers,
 
   // 关闭循环
   x.gameover = true;
-  for (uint64_t i = 0; i < nr_readers; i++)
+  for (uint64_t i = 0; i < nr_readers; i++) {
     pthread_join(pt_readers[i], NULL);
-  for (uint64_t i = 0; i < nr_writers; i++)
+}
+  for (uint64_t i = 0; i < nr_writers; i++) {
     pthread_join(pt_writers[i], NULL);
+}
   printf("%s: W %2lu, R %2lu, w %9lu, r %9lu\n", tag, nr_writers, nr_readers,
          x.wcount, x.rcount);
 }

@@ -319,12 +319,15 @@ struct btree *btree_new_with_allocator(
   if (max_items == 0) {
     max_items = 256;
   } else {
-    if (max_items % 2 == 1)
+    if (max_items % 2 == 1) {
       max_items--;
-    if (max_items < 4)
+}
+    if (max_items < 4) {
       max_items = 4;
-    if (max_items > 4096)
+}
+    if (max_items > 4096) {
       max_items = 4096;
+}
   }
   if (elsize == 0)
     panic("elsize is zero");

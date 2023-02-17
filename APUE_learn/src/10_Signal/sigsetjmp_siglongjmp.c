@@ -40,7 +40,7 @@ void print_sigjmp_buf(const sigjmp_buf env)
     printf("\t data is:");
     for(int i=0;i<8;i++)
     {
-       printf("%d,",env[0].__jmpbuf[i]);
+       printf("%ld,",env[0].__jmpbuf[i]);
     }
     printf("\n");
     printf("\tmask_was_saved is %d\n",env[0].__mask_was_saved);

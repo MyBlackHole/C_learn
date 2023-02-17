@@ -32,9 +32,9 @@ static pthread_t threads[4];
  */
 static void *thread_func(void *arg) {
   pthread_mutex_lock(&mutex); //必须同步。否则多个线程的输出交叉进行
-  printf("\n****** Begin Thread:thread id=0x%x ******\n", pthread_self());
+  printf("\n****** Begin Thread:thread id=0x%lx ******\n", pthread_self());
   printf("arg is %d\n", arg);
-  printf("****** End Thread:thread id=0x%x ******\n\n", pthread_self());
+  printf("****** End Thread:thread id=0x%lx ******\n\n", pthread_self());
   pthread_mutex_unlock(&mutex);
 
   //***** 倒数第二个子线程 join  最后一个子线程 ****//
@@ -56,8 +56,9 @@ void test_thread_join() {
   //******** 创建子线程 *********//
   pthread_mutex_lock(&mutex); //必须同步。否则多个线程的输出交叉进行
   threads[0] = pthread_self();
-  for (int i = 0; i < 3; i++)
+  for (int i = 0; i < 3; i++) {
     My_pthread_create(threads + i + 1, NULL, thread_func, i);
+}
   pthread_mutex_unlock(&mutex);
   //******** 等待子线程结束 *********//
   int values[3];

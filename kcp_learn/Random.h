@@ -2,9 +2,10 @@
 #define __Random_H__
 #include <tbox/container/vector.h>
 
-typedef struct Random {
-  int size;
-  tb_vector_ref_t seeds;
+typedef struct Random
+{
+    int size;
+    tb_vector_ref_t seeds;
 } Random;
 
 // // 均匀分布的随机数
@@ -40,5 +41,5 @@ Random *createRandom(int size);
 
 int getRandom(Random *random);
 
-void destroy(Random *random);
+void destroyRandom(Random *random);
 #endif

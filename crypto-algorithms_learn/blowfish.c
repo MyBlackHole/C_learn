@@ -11,24 +11,25 @@
 
 /*************************** HEADER FILES ***************************/
 #include "blowfish.h"
+
 #include <memory.h>
 #include <stdlib.h>
 
 /****************************** MACROS ******************************/
-#define F(x, t)                                                                \
-  t = keystruct->s[0][(x) >> 24];                                              \
-  t += keystruct->s[1][((x) >> 16) & 0xff];                                    \
-  t ^= keystruct->s[2][((x) >> 8) & 0xff];                                     \
-  t += keystruct->s[3][(x)&0xff];
-#define swap(r, l, t)                                                          \
-  t = l;                                                                       \
-  l = r;                                                                       \
-  r = t;
-#define ITERATION(l, r, t, pval)                                               \
-  l ^= keystruct->p[pval];                                                     \
-  F(l, t);                                                                     \
-  r ^= t;                                                                      \
-  swap(r, l, t);
+#define F(x, t)                               \
+    t = keystruct->s[0][(x) >> 24];           \
+    t += keystruct->s[1][((x) >> 16) & 0xff]; \
+    t ^= keystruct->s[2][((x) >> 8) & 0xff];  \
+    t += keystruct->s[3][(x)&0xff];
+#define swap(r, l, t) \
+    t = l;            \
+    l = r;            \
+    r = t;
+#define ITERATION(l, r, t, pval) \
+    l ^= keystruct->p[pval];     \
+    F(l, t);                     \
+    r ^= t;                      \
+    swap(r, l, t);
 
 /**************************** VARIABLES *****************************/
 static const WORD p_perm[18] = {
@@ -212,113 +213,120 @@ static const WORD s_perm[4][256] = {
 
 /*********************** FUNCTION DEFINITIONS ***********************/
 void blowfish_encrypt(const BYTE in[], BYTE out[],
-                      const BLOWFISH_KEY *keystruct) {
-  WORD l, r, t; //,i;
+                      const BLOWFISH_KEY *keystruct)
+{
+    WORD l, r, t;  //,i;
 
-  l = (in[0] << 24) | (in[1] << 16) | (in[2] << 8) | (in[3]);
-  r = (in[4] << 24) | (in[5] << 16) | (in[6] << 8) | (in[7]);
+    l = (in[0] << 24) | (in[1] << 16) | (in[2] << 8) | (in[3]);
+    r = (in[4] << 24) | (in[5] << 16) | (in[6] << 8) | (in[7]);
 
-  ITERATION(l, r, t, 0);
-  ITERATION(l, r, t, 1);
-  ITERATION(l, r, t, 2);
-  ITERATION(l, r, t, 3);
-  ITERATION(l, r, t, 4);
-  ITERATION(l, r, t, 5);
-  ITERATION(l, r, t, 6);
-  ITERATION(l, r, t, 7);
-  ITERATION(l, r, t, 8);
-  ITERATION(l, r, t, 9);
-  ITERATION(l, r, t, 10);
-  ITERATION(l, r, t, 11);
-  ITERATION(l, r, t, 12);
-  ITERATION(l, r, t, 13);
-  ITERATION(l, r, t, 14);
-  l ^= keystruct->p[15];
-  F(l, t);
-  r ^= t; // Last iteration has no swap()
-  r ^= keystruct->p[16];
-  l ^= keystruct->p[17];
+    ITERATION(l, r, t, 0);
+    ITERATION(l, r, t, 1);
+    ITERATION(l, r, t, 2);
+    ITERATION(l, r, t, 3);
+    ITERATION(l, r, t, 4);
+    ITERATION(l, r, t, 5);
+    ITERATION(l, r, t, 6);
+    ITERATION(l, r, t, 7);
+    ITERATION(l, r, t, 8);
+    ITERATION(l, r, t, 9);
+    ITERATION(l, r, t, 10);
+    ITERATION(l, r, t, 11);
+    ITERATION(l, r, t, 12);
+    ITERATION(l, r, t, 13);
+    ITERATION(l, r, t, 14);
+    l ^= keystruct->p[15];
+    F(l, t);
+    r ^= t;  // Last iteration has no swap()
+    r ^= keystruct->p[16];
+    l ^= keystruct->p[17];
 
-  out[0] = l >> 24;
-  out[1] = l >> 16;
-  out[2] = l >> 8;
-  out[3] = l;
-  out[4] = r >> 24;
-  out[5] = r >> 16;
-  out[6] = r >> 8;
-  out[7] = r;
+    out[0] = l >> 24;
+    out[1] = l >> 16;
+    out[2] = l >> 8;
+    out[3] = l;
+    out[4] = r >> 24;
+    out[5] = r >> 16;
+    out[6] = r >> 8;
+    out[7] = r;
 }
 
 void blowfish_decrypt(const BYTE in[], BYTE out[],
-                      const BLOWFISH_KEY *keystruct) {
-  WORD l, r, t; //,i;
+                      const BLOWFISH_KEY *keystruct)
+{
+    WORD l, r, t;  //,i;
 
-  l = (in[0] << 24) | (in[1] << 16) | (in[2] << 8) | (in[3]);
-  r = (in[4] << 24) | (in[5] << 16) | (in[6] << 8) | (in[7]);
+    l = (in[0] << 24) | (in[1] << 16) | (in[2] << 8) | (in[3]);
+    r = (in[4] << 24) | (in[5] << 16) | (in[6] << 8) | (in[7]);
 
-  ITERATION(l, r, t, 17);
-  ITERATION(l, r, t, 16);
-  ITERATION(l, r, t, 15);
-  ITERATION(l, r, t, 14);
-  ITERATION(l, r, t, 13);
-  ITERATION(l, r, t, 12);
-  ITERATION(l, r, t, 11);
-  ITERATION(l, r, t, 10);
-  ITERATION(l, r, t, 9);
-  ITERATION(l, r, t, 8);
-  ITERATION(l, r, t, 7);
-  ITERATION(l, r, t, 6);
-  ITERATION(l, r, t, 5);
-  ITERATION(l, r, t, 4);
-  ITERATION(l, r, t, 3);
-  l ^= keystruct->p[2];
-  F(l, t);
-  r ^= t; // Last iteration has no swap()
-  r ^= keystruct->p[1];
-  l ^= keystruct->p[0];
+    ITERATION(l, r, t, 17);
+    ITERATION(l, r, t, 16);
+    ITERATION(l, r, t, 15);
+    ITERATION(l, r, t, 14);
+    ITERATION(l, r, t, 13);
+    ITERATION(l, r, t, 12);
+    ITERATION(l, r, t, 11);
+    ITERATION(l, r, t, 10);
+    ITERATION(l, r, t, 9);
+    ITERATION(l, r, t, 8);
+    ITERATION(l, r, t, 7);
+    ITERATION(l, r, t, 6);
+    ITERATION(l, r, t, 5);
+    ITERATION(l, r, t, 4);
+    ITERATION(l, r, t, 3);
+    l ^= keystruct->p[2];
+    F(l, t);
+    r ^= t;  // Last iteration has no swap()
+    r ^= keystruct->p[1];
+    l ^= keystruct->p[0];
 
-  out[0] = l >> 24;
-  out[1] = l >> 16;
-  out[2] = l >> 8;
-  out[3] = l;
-  out[4] = r >> 24;
-  out[5] = r >> 16;
-  out[6] = r >> 8;
-  out[7] = r;
+    out[0] = l >> 24;
+    out[1] = l >> 16;
+    out[2] = l >> 8;
+    out[3] = l;
+    out[4] = r >> 24;
+    out[5] = r >> 16;
+    out[6] = r >> 8;
+    out[7] = r;
 }
 
 void blowfish_key_setup(const BYTE user_key[], BLOWFISH_KEY *keystruct,
-                        size_t len) {
-  BYTE block[8];
-  int idx, idx2;
+                        size_t len)
+{
+    BYTE block[8];
+    int idx, idx2;
 
-  // Copy over the constant init array vals (so the originals aren't destroyed).
-  memcpy(keystruct->p, p_perm, sizeof(WORD) * 18);
-  memcpy(keystruct->s, s_perm, sizeof(WORD) * 1024);
+    // Copy over the constant init array vals (so the originals aren't
+    // destroyed).
+    memcpy(keystruct->p, p_perm, sizeof(WORD) * 18);
+    memcpy(keystruct->s, s_perm, sizeof(WORD) * 1024);
 
-  // Combine the key with the P box. Assume key is standard 448 bits (56 bytes)
-  // or less.
-  for (idx = 0, idx2 = 0; idx < 18; ++idx, idx2 += 4)
-    keystruct->p[idx] ^=
-        (user_key[idx2 % len] << 24) | (user_key[(idx2 + 1) % len] << 16) |
-        (user_key[(idx2 + 2) % len] << 8) | (user_key[(idx2 + 3) % len]);
-  // Re-calculate the P box.
-  memset(block, 0, 8);
-  for (idx = 0; idx < 18; idx += 2) {
-    blowfish_encrypt(block, block, keystruct);
-    keystruct->p[idx] =
-        (block[0] << 24) | (block[1] << 16) | (block[2] << 8) | block[3];
-    keystruct->p[idx + 1] =
-        (block[4] << 24) | (block[5] << 16) | (block[6] << 8) | block[7];
-  }
-  // Recalculate the S-boxes.
-  for (idx = 0; idx < 4; ++idx) {
-    for (idx2 = 0; idx2 < 256; idx2 += 2) {
-      blowfish_encrypt(block, block, keystruct);
-      keystruct->s[idx][idx2] =
-          (block[0] << 24) | (block[1] << 16) | (block[2] << 8) | block[3];
-      keystruct->s[idx][idx2 + 1] =
-          (block[4] << 24) | (block[5] << 16) | (block[6] << 8) | block[7];
+    // Combine the key with the P box. Assume key is standard 448 bits (56
+    // bytes) or less.
+    for (idx = 0, idx2 = 0; idx < 18; ++idx, idx2 += 4)
+        keystruct->p[idx] ^=
+            (user_key[idx2 % len] << 24) | (user_key[(idx2 + 1) % len] << 16) |
+            (user_key[(idx2 + 2) % len] << 8) | (user_key[(idx2 + 3) % len]);
+    // Re-calculate the P box.
+    memset(block, 0, 8);
+    for (idx = 0; idx < 18; idx += 2)
+    {
+        blowfish_encrypt(block, block, keystruct);
+        keystruct->p[idx] =
+            (block[0] << 24) | (block[1] << 16) | (block[2] << 8) | block[3];
+        keystruct->p[idx + 1] =
+            (block[4] << 24) | (block[5] << 16) | (block[6] << 8) | block[7];
     }
-  }
+    // Recalculate the S-boxes.
+    for (idx = 0; idx < 4; ++idx)
+    {
+        for (idx2 = 0; idx2 < 256; idx2 += 2)
+        {
+            blowfish_encrypt(block, block, keystruct);
+            keystruct->s[idx][idx2] = (block[0] << 24) | (block[1] << 16) |
+                                      (block[2] << 8) | block[3];
+            keystruct->s[idx][idx2 + 1] = (block[4] << 24) | (block[5] << 16) |
+                                          (block[6] << 8) | block[7];
+        }
+    }
 }

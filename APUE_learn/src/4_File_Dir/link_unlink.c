@@ -20,10 +20,10 @@
 
 int My_link(const char *existingpath, const char *newpath) {
   int result = link(existingpath, newpath);
-  if (-1 == result)
+  if (-1 == result) {
     printf("link(\"%s\",\"%s\") failed,because %s\n", existingpath, newpath,
            strerror(errno));
-  else {
+  } else {
     printf("link(\"%s\",\"%s\") ok\n", existingpath, newpath);
     print_file_link_num(existingpath);
   }
@@ -31,9 +31,9 @@ int My_link(const char *existingpath, const char *newpath) {
 }
 int My_unlink(const char *pathname) {
   int result = unlink(pathname);
-  if (-1 == result)
+  if (-1 == result) {
     printf("unlink(\"%s\") failed,because %s\n", pathname, strerror(errno));
-  else {
+  } else {
     printf("unlink(\"%s\" ) ok\n", pathname);
   }
   return result;

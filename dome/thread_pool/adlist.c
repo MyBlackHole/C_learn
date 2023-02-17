@@ -48,8 +48,9 @@ list *listCreate(void) {
   struct list *list;
 
   // 分配内存
-  if ((list = zmalloc(sizeof(*list))) == NULL)
+  if ((list = zmalloc(sizeof(*list))) == NULL) {
     return NULL;
+}
 
   // 初始化属性
   list->head = list->tail = NULL;
@@ -81,8 +82,9 @@ void listRelease(list *list) {
     next = current->next;
 
     // 如果有设置值释放函数，那么调用它
-    if (list->free)
+    if (list->free) {
       list->free(current->value);
+}
 
     // 释放节点结构
     zfree(current);
@@ -113,8 +115,9 @@ list *listAddNodeHead(list *list, void *value) {
   listNode *node;
 
   // 为节点分配内存
-  if ((node = zmalloc(sizeof(*node))) == NULL)
+  if ((node = zmalloc(sizeof(*node))) == NULL) {
     return NULL;
+}
 
   // 保存值指针
   node->value = value;
@@ -156,8 +159,9 @@ list *listAddNodeTail(list *list, void *value) {
   listNode *node;
 
   // 为新节点分配内存
-  if ((node = zmalloc(sizeof(*node))) == NULL)
+  if ((node = zmalloc(sizeof(*node))) == NULL) {
     return NULL;
+}
 
   // 保存值指针
   node->value = value;
@@ -192,8 +196,9 @@ list *listInsertNode(list *list, listNode *old_node, void *value, int after) {
   listNode *node;
 
   // 创建新节点
-  if ((node = zmalloc(sizeof(*node))) == NULL)
+  if ((node = zmalloc(sizeof(*node))) == NULL) {
     return NULL;
+}
 
   // 保存值
   node->value = value;
@@ -244,20 +249,23 @@ list *listInsertNode(list *list, listNode *old_node, void *value, int after) {
  */
 void listDelNode(list *list, listNode *node) {
   // 调整前置节点的指针
-  if (node->prev)
+  if (node->prev) {
     node->prev->next = node->next;
-  else
+  } else {
     list->head = node->next;
+}
 
   // 调整后置节点的指针
-  if (node->next)
+  if (node->next) {
     node->next->prev = node->prev;
-  else
+  } else {
     list->tail = node->prev;
+}
 
   // 释放值
-  if (list->free)
+  if (list->free) {
     list->free(node->value);
+}
 
   // 释放节点
   zfree(node);
@@ -283,14 +291,16 @@ void listDelNode(list *list, listNode *node) {
 listIter *listGetIterator(list *list, int direction) {
   // 为迭代器分配内存
   listIter *iter;
-  if ((iter = zmalloc(sizeof(*iter))) == NULL)
+  if ((iter = zmalloc(sizeof(*iter))) == NULL) {
     return NULL;
+}
 
   // 根据迭代方向，设置迭代器的起始节点
-  if (direction == AL_START_HEAD)
+  if (direction == AL_START_HEAD) {
     iter->next = list->head;
-  else
+  } else {
     iter->next = list->tail;
+}
 
   // 记录迭代方向
   iter->direction = direction;
@@ -362,12 +372,13 @@ listNode *listNext(listIter *iter) {
 
   if (current != NULL) {
     // 根据方向选择下一个节点
-    if (iter->direction == AL_START_HEAD)
+    if (iter->direction == AL_START_HEAD) {
       // 保存下一个节点，防止当前节点被删除而造成指针丢失
       iter->next = current->next;
-    else
+    } else {
       // 保存下一个节点，防止当前节点被删除而造成指针丢失
       iter->next = current->prev;
+}
   }
 
   return current;
@@ -400,8 +411,9 @@ list *listDup(list *orig) {
   listNode *node;
 
   // 创建新链表
-  if ((copy = listCreate()) == NULL)
+  if ((copy = listCreate()) == NULL) {
     return NULL;
+}
 
   // 设置节点值处理函数
   copy->dup = orig->dup;
@@ -421,8 +433,9 @@ list *listDup(list *orig) {
         listReleaseIterator(iter);
         return NULL;
       }
-    } else
+    } else {
       value = node->value;
+}
 
     // 将节点添加到链表
     if (listAddNodeTail(copy, value) == NULL) {
@@ -511,13 +524,15 @@ listNode *listIndex(list *list, long index) {
   if (index < 0) {
     index = (-index) - 1;
     n = list->tail;
-    while (index-- && n)
+    while (index-- && n) {
       n = n->prev;
+}
     // 如果索引为正数，从表头开始查找
   } else {
     n = list->head;
-    while (index-- && n)
+    while (index-- && n) {
       n = n->next;
+}
   }
 
   return n;
@@ -532,8 +547,9 @@ listNode *listIndex(list *list, long index) {
 void listRotate(list *list) {
   listNode *tail = list->tail;
 
-  if (listLength(list) <= 1)
+  if (listLength(list) <= 1) {
     return;
+}
 
   /* Detach current tail */
   // 取出表尾节点

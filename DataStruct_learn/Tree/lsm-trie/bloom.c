@@ -83,8 +83,9 @@ static inline bool bloom_match_raw(const uint8_t *const filter,
   const uint64_t bits = bloom_bytes_to_bits(bytes);
   for (uint32_t j = 0u; j < NR_PROBES; j++) {
     const uint64_t bitpos = h % bits;
-    if ((filter[bitpos >> 3u] & (1u << (bitpos % 8u))) == 0u)
+    if ((filter[bitpos >> 3u] & (1u << (bitpos % 8u))) == 0u) {
       return false;
+}
     h += delta;
   }
   return true;

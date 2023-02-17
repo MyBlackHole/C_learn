@@ -45,8 +45,9 @@ Thread *thread_create(Thread *thread, int (*fn)(void *), void *data,
   thread->data = data;
   strncpy(thread->name, name, THREAD_FILE_NAME_LENGTH);
   int retval = pthread_create(&thread->id, NULL, thread_run, thread);
-  if (retval)
+  if (retval) {
     return NULL;
+}
 
   return thread;
 }
@@ -83,19 +84,22 @@ pthread_t thread_get_pthread_id(Thread *thread) {
 
 void thread_wait(Thread *thread, int *status) {
   assert(thread);
-  if (!thread)
+  if (!thread) {
     return;
+}
 
   pthread_join(thread->id, NULL);
 
-  if (status)
+  if (status) {
     *status = thread->retval;
+}
 }
 
 void thread_detach(Thread *thread) {
   assert(thread);
-  if (!thread)
+  if (!thread) {
     return;
+}
 
   pthread_detach(thread->id);
 }

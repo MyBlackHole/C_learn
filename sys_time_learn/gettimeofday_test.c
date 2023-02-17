@@ -17,15 +17,16 @@
 /*     int tz_dsttime;  //日光节约时间的状态 */
 /* }; */
 
-int main() {
-  struct timezone tz;
-  struct timeval tv;
+int main()
+{
+    struct timezone tz;
+    struct timeval tv;
 
-  gettimeofday(&tv, &tz);
-  printf("tv_sec:%ld\n", tv.tv_sec);
-  printf("tv_usec:%ld\n", tv.tv_usec);
-  printf("tz_minuteswest:%d\n", tz.tz_minuteswest);
-  printf("tz_dsttime:%d\n", tz.tz_dsttime);
+    gettimeofday(&tv, &tz);
+    printf("tv_sec:%ld\n", tv.tv_sec);
+    printf("tv_usec:%ld\n", tv.tv_usec);
+    printf("tz_minuteswest:%d\n", tz.tz_minuteswest);
+    printf("tz_dsttime:%d\n", tz.tz_dsttime);
 
-  return 0;
+    return 0;
 }

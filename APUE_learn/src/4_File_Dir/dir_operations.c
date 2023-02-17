@@ -79,9 +79,9 @@ int My_chdir(const char *pathname) {
 char *My_getcwd(char *buf, size_t size) {
   char *result = getcwd(buf, size);
   if (NULL == result) {
-    printf("chdir(%p,%d) failed,because %s\n", buf, size, strerror(errno));
+    printf("chdir(%p,%zu) failed,because %s\n", buf, size, strerror(errno));
   } else {
-    printf("getcwd(%p,%d) ok\n", buf, size);
+    printf("getcwd(%p,%zu) ok\n", buf, size);
   }
   return result;
 }
@@ -104,11 +104,12 @@ void print_dir(const char *pathname) {
   DIR *dir;
   struct dirent *dir_ent;
   dir = My_opendir(pathname);
-  if (NULL == dir)
+  if (NULL == dir) {
     return;
+}
   printf("%s contents is :\n", pathname);
   while ((dir_ent = My_readdir(dir)) != NULL) {
-    printf("\tid:<%d>, file_name :<%s>\n", dir_ent->d_ino, dir_ent->d_name);
+    printf("\tid:<%lu>, file_name :<%s>\n", dir_ent->d_ino, dir_ent->d_name);
 
     //*** 拼接路径
     char child_pathname[1024] = "";
@@ -116,11 +117,12 @@ void print_dir(const char *pathname) {
     strcat(child_pathname, "/");
     strcat(child_pathname, dir_ent->d_name);
     // 递归子目录
-    if (1 == file_is_dir(child_pathname))
+    if (1 == file_is_dir(child_pathname)) {
       if (strcmp(dir_ent->d_name, ".") != 0 &&
           (0 != strcmp(dir_ent->d_name, ".."))) {
         print_dir(child_pathname);
       }
+}
   }
   printf("\n");
   closedir(dir);

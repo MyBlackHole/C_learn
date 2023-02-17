@@ -20,11 +20,12 @@ extern int My_fseeko(FILE *fp, off_t offset, int whence);
 
 FILE *My_fmemopen(void *buf, size_t size, const char *type) {
   FILE *file = fmemopen(buf, size, type);
-  if (NULL == file)
-    printf("memopen(%p,%d,\"%s\") failed ,because %s\n", buf, size, type,
+  if (NULL == file) {
+    printf("memopen(%p,%zu,\"%s\") failed ,because %s\n", buf, size, type,
            strerror(errno));
-  else
-    printf("memopen(%p,%d,\"%s\") ok\n", buf, size, type);
+  } else {
+    printf("memopen(%p,%zu,\"%s\") ok\n", buf, size, type);
+}
   return file;
 }
 

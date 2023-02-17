@@ -21,11 +21,13 @@ typedef struct {
 } priv_t;
 
 static void destroy_media_adapter(struct MediaPlayer **media_adapter) {
-  if (NULL == media_adapter || NULL == *media_adapter)
+  if (NULL == media_adapter || NULL == *media_adapter) {
     return;
+}
   struct MediaPlayer *self = *media_adapter;
-  if (NULL != self->destroy)
+  if (NULL != self->destroy) {
     self->destroy(self);
+}
 
   free(*media_adapter);
   *media_adapter = NULL;
@@ -66,8 +68,9 @@ static void play(struct MediaPlayer *media_player, const char *audio_type,
 struct MediaPlayer *audio_player_create(void) {
   struct MediaPlayer *media_adapter =
       (struct MediaPlayer *)calloc(1, sizeof(struct MediaPlayer));
-  if (NULL == media_adapter)
+  if (NULL == media_adapter) {
     return NULL;
+}
 
   init(media_adapter);
   media_adapter->play = play;

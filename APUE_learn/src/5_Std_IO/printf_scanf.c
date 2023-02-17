@@ -18,10 +18,11 @@
 #include <stdio.h>
 void _test_printf() {
   int ok = printf("%d,%c,%f,%s\n", 99, 'z', 0.99, "hello");
-  if (ok < 0)
+  if (ok < 0) {
     printf("printf failed,because %s\n", strerror(errno));
-  else
+  } else {
     printf("printf ok\n");
+}
 }
 void _test_snprintf() {
   char buffer[128];
@@ -42,10 +43,11 @@ void _test_scanf() {
   char *s;
   int ok = scanf("%d,%c,%f,%ms", &i, &c, &d, &s);
   if (EOF == ok) {
-    if (ferror(stdin))
+    if (ferror(stdin)) {
       printf("scanf is error,because %s\n", strerror(errno));
-    else if (feof(stdin))
+    } else if (feof(stdin)) {
       printf("scanf read EOF\n");
+}
   } else {
     printf("scanf ok,return %d items\n", ok);
     printf("items are:%d,%c,%f,%s\n", i, c, d, s);
@@ -64,10 +66,11 @@ void _test_sscanf() {
   void *addr;
   ok = sscanf(buffer, "%d,%c,%f,%p,%ms", &i, &c, &d, &addr, &s);
   if (EOF == ok) {
-    if (ferror(stdin))
+    if (ferror(stdin)) {
       printf("sscanf is error,because %s\n", strerror(errno));
-    else if (feof(stdin))
+    } else if (feof(stdin)) {
       printf("sscanf read EOF\n");
+}
   } else {
     printf("sscanf ok,return %d items\n", ok);
     printf("items are:%d,%c,%f,%p,%s\n", i, c, d, addr, s);

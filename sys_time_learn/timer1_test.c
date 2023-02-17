@@ -12,18 +12,21 @@
 #include <stdio.h>
 #include <unistd.h>
 
-void timer(int sig) {
-  if (SIGALRM == sig) {
-    printf("timer\n");
-    alarm(2);
-  }
+void timer(int sig)
+{
+    if (SIGALRM == sig)
+    {
+        printf("timer\n");
+        alarm(2);
+    }
 
-  return;
+    return;
 }
 
-int main() {
-  signal(SIGALRM, timer);
-  alarm(1);
-  getchar();
-  return 0;
+int main()
+{
+    signal(SIGALRM, timer);
+    alarm(1);
+    getchar();
+    return 0;
 }

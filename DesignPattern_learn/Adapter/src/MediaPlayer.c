@@ -15,12 +15,14 @@
 #include "ctools.h"
 
 void media_player_destory(MediaPlayer **media_player) {
-  if (NULL == media_player || NULL == *media_player)
+  if (NULL == media_player || NULL == *media_player) {
     return;
+}
 
   struct MediaPlayer *self = *media_player;
-  if (NULL != self->destroy)
+  if (NULL != self->destroy) {
     self->destroy(self);
+}
   free(*media_player);
   *media_player = NULL;
 }

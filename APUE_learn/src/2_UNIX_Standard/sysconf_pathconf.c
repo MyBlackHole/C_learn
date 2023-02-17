@@ -20,16 +20,18 @@ long My_pathconf(const char *pathname, int name, const char *name_str) {
   if (-1 == result) {
     printf("'pathconf(\"%s\",%s)' failed,because %s\n", pathname, name_str,
            strerror(errno));
-  } else
-    printf("sysconf(%s) is %dl\n", name_str, result);
+  } else {
+    printf("sysconf(%s) is %ldl\n", name_str, result);
+}
   return result;
 }
 long My_sysconf(int name, const char *name_str) {
   long result = sysconf(name);
   if (-1 == result) {
     printf("'sysconf(%s)' failed,because %s\n", name_str, strerror(errno));
-  } else
-    printf("sysconf(\"%s\") is %d\n", name_str, result);
+  } else {
+    printf("sysconf(\"%s\") is %ld\n", name_str, result);
+}
   return result;
 }
 void test_sycconf_pathconf() {

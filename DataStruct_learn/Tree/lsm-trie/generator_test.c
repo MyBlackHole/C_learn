@@ -20,12 +20,13 @@
 static int uint64_compare(const void *p1, const void *p2) {
   const uint64_t v1 = *((uint64_t *const)p1);
   const uint64_t v2 = *((uint64_t *const)p2);
-  if (v1 < v2)
+  if (v1 < v2) {
     return -1;
-  else if (v1 > v2)
+  } else if (v1 > v2) {
     return 1;
-  else
+  } else {
     return 0;
+}
 }
 
 static void test_gen(struct GenInfo *gi, char *const tag,

@@ -22,8 +22,9 @@ static float item_price(struct Item *item) { return 25.0f; }
 
 struct Burger *veg_burger_create(void) {
   struct Burger *burger = (struct Burger *)calloc(1, sizeof(struct Burger));
-  if (NULL == burger)
+  if (NULL == burger) {
     return NULL;
+}
 
   burger->item.name = item_name;
   burger->item.packing = item_packing;

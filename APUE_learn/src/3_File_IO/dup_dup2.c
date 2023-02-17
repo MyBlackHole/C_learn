@@ -15,18 +15,20 @@
 
 int My_dup(int fd) {
   int result = dup(fd);
-  if (-1 == result)
+  if (-1 == result) {
     printf("dup(%d) failed,because %s\n", fd, strerror(errno));
-  else
+  } else {
     printf("dup(%d) is %d \n", fd, result);
+}
   return result;
 }
 int My_dup2(int fd, int fd2) {
   int result = dup2(fd, fd2);
-  if (-1 == result)
+  if (-1 == result) {
     printf("dup2(%d,%d) failed,because %s\n", fd, fd2, strerror(errno));
-  else
+  } else {
     printf("dup2(%d,%d) is %d \n", fd, fd2, result);
+}
   return result;
 }
 void test_dup_dup2() {

@@ -30,13 +30,14 @@ int My_symlink(const char *actualpath, const char *sympath) {
 ssize_t My_readlink(const char *pathname, char *buf, size_t bufsize) {
   ssize_t result = readlink(pathname, buf, bufsize);
   if (-1 == result) {
-    printf("readlink(\"%s\",%p,%d) failed,because %s\n", pathname, buf, bufsize,
+    printf("readlink(\"%s\",%p,%zu) failed,because %s\n", pathname, buf, bufsize,
            strerror(errno));
   } else {
-    printf("readlink(\"%s\",%p,%d) ok\n", pathname, buf, bufsize);
+    printf("readlink(\"%s\",%p,%zu) ok\n", pathname, buf, bufsize);
     printf("readlink result is :\t\"");
-    for (int i = 0; i < result; i++)
+    for (int i = 0; i < result; i++) {
       printf("%c", buf[i]);
+}
     printf("\"\n");
   }
   return result;
@@ -57,8 +58,9 @@ void print_link_file(const char *pathname) {
     return;
   }
   printf(" open and read file \"%s\" is:\t \"", pathname);
-  for (int i = 0; i < len; i++)
+  for (int i = 0; i < len; i++) {
     printf("%c", buffer[i]);
+}
   printf("\"\n");
   close(fd);
 }

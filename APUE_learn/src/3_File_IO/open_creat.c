@@ -16,28 +16,31 @@
 
 int My_open(const char *path, int oflag) {
   int result = open(path, oflag);
-  if (-1 == result)
+  if (-1 == result) {
     printf("open(\"%s\",%d) failed,because %s\n", path, oflag, strerror(errno));
-  else
+  } else {
     printf("open(\"%s\",%d) return file descriptor %d\n", path, oflag, result);
+}
   return result;
 }
 int My_open_with_mode(const char *path, int oflag, mode_t mode) {
   int result = open(path, oflag, mode);
-  if (-1 == result)
+  if (-1 == result) {
     printf("open(\"%s\",%d,%d) failed,because %s\n", path, oflag, mode,
            strerror(errno));
-  else
+  } else {
     printf("open(\"%s\",%d,%d) return file descriptor %d\n", path, oflag, mode,
            result);
+}
   return result;
 }
 int My_creat(const char *path, mode_t mode) {
   int result = creat(path, mode);
   if (-1 == result) {
     printf("creat(\"%s\",%d) failed,because %s\n", path, mode, strerror(errno));
-  } else
+  } else {
     printf("creat(\"%s\",%d) return file descriptor %d\n", path, mode, result);
+}
   return result;
 }
 void test_open_creat() {

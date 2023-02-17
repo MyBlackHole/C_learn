@@ -4,7 +4,8 @@
 
 #include <stdio.h>
 
-int main() {
-  int c[3] = {'a', 'b', '0'};
-  putc(c[0], stdout);
+int main()
+{
+    int c[3] = {'a', 'b', '0'};
+    putc(c[0], stdout);
 }

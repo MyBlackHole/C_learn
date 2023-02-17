@@ -101,20 +101,27 @@ void print_fl(int fd, int flag) {
    * 剩下的还有：`O_APPEND`、`O_NONBLOCK`、`O_SYNC`
    */
   printf("flag on fd(%d):", fd);
-  if (flag & O_APPEND)
+  if (flag & O_APPEND) {
     printf("\tO_APPEND;");
-  if (flag & O_NONBLOCK)
+}
+  if (flag & O_NONBLOCK) {
     printf("\tO_NONBLOCK;");
-  if (flag & O_SYNC)
+}
+  if (flag & O_SYNC) {
     printf("\tO_SYNC;");
-  if (flag & O_DSYNC)
+}
+  if (flag & O_DSYNC) {
     printf("\tO_DSYNC;");
-  if (flag & O_RSYNC)
+}
+  if (flag & O_RSYNC) {
     printf("\tO_RSYNC;");
-  if (flag & O_FSYNC)
+}
+  if (flag & O_FSYNC) {
     printf("\tO_FSYNC;");
-  if (flag & O_ASYNC)
+}
+  if (flag & O_ASYNC) {
     printf("\tO_ASYNC;");
+}
   switch (flag & O_ACCMODE) {
   case O_RDONLY:
     printf("\tO_RDONLY;");
@@ -136,8 +143,9 @@ void test_fcntl() {
   assert(prepare_file("test", NULL, 0, S_IRWXU) == 0);
 
   int fd = My_open("test", O_WRONLY);
-  if (-1 == fd) // 打开文件失败
+  if (-1 == fd) { // 打开文件失败
     return;
+}
   //测试 My_fcntl_GETFD 和 My_fcntl_DUPFD、My_fcntl_DUPFD_CLOEXEC
   My_fcntl_GETFD(My_fcntl_DUPFD(fd, 10));
   My_fcntl_GETFD(My_fcntl_DUPFD(fd, 0));

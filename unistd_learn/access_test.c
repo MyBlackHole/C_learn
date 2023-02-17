@@ -12,14 +12,16 @@ int main(int argc, char **argv) {
     // 小于 0 代表不存在
     fprintf(stderr, "\taccess error for %s", argv[1]);
     exit(1);
-  } else
+  } else {
     printf(" \tread access OK\n");
+}
 
   if (open(argv[1], O_RDONLY) < 0) {
     fprintf(stderr, "\topen error for %s", argv[1]);
     exit(1);
 
-  } else
+  } else {
     printf("\topen for reading OK \n");
+}
   exit(0);
 }

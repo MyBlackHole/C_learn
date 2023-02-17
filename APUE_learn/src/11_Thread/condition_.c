@@ -119,12 +119,12 @@ static int shared_int;
  */
 static void *thread_func_wait(void *arg) {
   My_pthread_mutex_lock(&mutex); // 加锁
-  printf("\n****** Begin Thread_wait:thread id=0x%x ******\n", pthread_self());
+  printf("\n****** Begin Thread_wait:thread id=0x%lx ******\n", pthread_self());
   My_pthread_cond_wait(&cond, &mutex); // 等待条件发生
   int read_data = shared_int;
   printf("read shared_int :%d.\n", read_data);
   shared_int = read_data * 2;
-  printf("****** End Thread_wait:thread id=0x%x ******\n\n", pthread_self());
+  printf("****** End Thread_wait:thread id=0x%lx ******\n\n", pthread_self());
   My_pthread_mutex_unlock(&mutex); // 解锁
   return read_data;
 }
@@ -135,7 +135,7 @@ static void *thread_func_wait(void *arg) {
  */
 static void *thread_func_signal(void *arg) {
   My_pthread_mutex_lock(&mutex); // 加锁
-  printf("\n****** Begin Thread_signal:thread id=0x%x ******\n",
+  printf("\n****** Begin Thread_signal:thread id=0x%lx ******\n",
          pthread_self());
   int read_data = shared_int;
   printf("read shared_int :%d.\n", read_data);
@@ -144,7 +144,7 @@ static void *thread_func_signal(void *arg) {
   {
     My_pthread_cond_signal(&cond);
   }
-  printf("****** End Thread_signal:thread id=0x%x ******\n\n", pthread_self());
+  printf("****** End Thread_signal:thread id=0x%lx ******\n\n", pthread_self());
   My_pthread_mutex_unlock(&mutex); // 解锁
   return read_data;
 }
@@ -162,22 +162,26 @@ void test_condition() {
   pthread_t thread_signals[N];
 
   My_pthread_mutex_lock(&mutex); // 加锁
-  for (int i = 0; i < N; i++)
+  for (int i = 0; i < N; i++) {
     My_pthread_create(thread_waits + i, NULL, thread_func_wait,
                       0);          //这些线程都在等待事件的发生
+}
   My_pthread_mutex_unlock(&mutex); // 解锁
 
   My_pthread_mutex_lock(&mutex); // 加锁
-  for (int i = 0; i < N; i++)
+  for (int i = 0; i < N; i++) {
     My_pthread_create(thread_signals + i, NULL, thread_func_signal,
                       0); //这些线程都在发送事件发生的信号
+}
   My_pthread_mutex_unlock(&mutex); // 解锁
   //******** 等待子线程结束 *********//
   int values[N];
-  for (int i = 0; i < N; i++)
+  for (int i = 0; i < N; i++) {
     thread_join_int(thread_waits[i], values + i);
-  for (int i = 0; i < N; i++)
+}
+  for (int i = 0; i < N; i++) {
     thread_join_int(thread_signals[i], values + i);
+}
 
   My_pthread_mutex_destroy(&mutex);
   My_pthread_cond_destroy(&cond);

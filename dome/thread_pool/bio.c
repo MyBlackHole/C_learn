@@ -147,10 +147,12 @@ void bioInit(void) {
    */
   pthread_attr_init(&attr);
   pthread_attr_getstacksize(&attr, &stacksize);
-  if (!stacksize)
+  if (!stacksize) {
     stacksize = 1; /* The world is full of Solaris Fixes */
-  while (stacksize < THREAD_STACK_SIZE)
+}
+  while (stacksize < THREAD_STACK_SIZE) {
     stacksize *= 2;
+}
   pthread_attr_setstacksize(&attr, stacksize);
 
   /* Ready to spawn our threads. We use the single argument the thread

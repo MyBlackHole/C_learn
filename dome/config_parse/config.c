@@ -47,12 +47,13 @@ struct redisServer server;
  *----------------------------------------------------------------------------*/
 
 int yesnotoi(char *s) {
-  if (!strcasecmp(s, "yes"))
+  if (!strcasecmp(s, "yes")) {
     return 1;
-  else if (!strcasecmp(s, "no"))
+  } else if (!strcasecmp(s, "no")) {
     return 0;
-  else
+  } else {
     return -1;
+}
 }
 
 void loadServerConfigFromString(char *config) {
@@ -74,8 +75,9 @@ void loadServerConfigFromString(char *config) {
 
     /* Skip comments and blank lines */
     // 跳过空白行
-    if (lines[i][0] == '#' || lines[i][0] == '\0')
+    if (lines[i][0] == '#' || lines[i][0] == '\0') {
       continue;
+}
 
     /* Split into arguments */
     // 将字符串分割成多个参数
@@ -170,10 +172,12 @@ void loadServerConfig(char *filename) {
         exit(1);
       }
     }
-    while (fgets(buf, REDIS_CONFIGLINE_MAX + 1, fp) != NULL)
+    while (fgets(buf, REDIS_CONFIGLINE_MAX + 1, fp) != NULL) {
       config = sdscat(config, buf);
-    if (fp != stdin)
+}
+    if (fp != stdin) {
       fclose(fp);
+}
   }
 
   // 根据字符串内容，设置服务器配置

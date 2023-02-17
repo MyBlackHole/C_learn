@@ -8,55 +8,68 @@
 unsigned long long count;
 struct timeval end;
 
-void checktime(char *str) {
-  struct timeval tv;
-  gettimeofday(&tv, NULL);
-  if (tv.tv_sec >= end.tv_sec && tv.tv_usec >= end.tv_usec) {
-    printf("%s\t count=\t%lld \n", str, count);
-    exit(0);
-  }
+void checktime(char *str)
+{
+    struct timeval tv;
+    gettimeofday(&tv, NULL);
+    if (tv.tv_sec >= end.tv_sec && tv.tv_usec >= end.tv_usec)
+    {
+        printf("%s\t count=\t%lld \n", str, count);
+        exit(0);
+    }
 }
 
-int main(int argc, char **argv) {
-  pid_t pid;
-  char *s;
-  int nzero, ret;
-  int adj = 0;
-  setbuf(stdout, NULL); // 设置缓冲区
+int main(int argc, char **argv)
+{
+    pid_t pid;
+    char *s;
+    int nzero, ret;
+    int adj = 0;
+    setbuf(stdout, NULL);  // 设置缓冲区
 #if defined(NZERO)
-  nzero = NZERO;
+    nzero = NZERO;
 #elif defined(_SC_NZERO)
-  nzero = sysconf(_SC_NZERO);
+    nzero = sysconf(_SC_NZERO);
 #else
 #error NZERO undefined
 #endif
-  printf("NZERO=%d \n", nzero);
-  if (argc == 2)
-    adj = strtol(argv[1], NULL, 10);
-  gettimeofday(&end, NULL); // 提供更精准的时间获取，虽然在susv系统内被舍弃
-  end.tv_sec += 10;
+    printf("NZERO=%d \n", nzero);
+    if (argc == 2)
+    {
+        adj = strtol(argv[1], NULL, 10);
+    }
+    gettimeofday(&end, NULL);  // 提供更精准的时间获取，虽然在susv系统内被舍弃
+    end.tv_sec += 10;
 
-  if ((pid = fork()) < 0) {
-    perror("fork error");
-    exit(1);
-  } else if (pid == 0) {
-    s = "child";
-    printf("current nice value in child is %d ,adjusting by %d \n",
-           nice(0) + nzero, adj);
-    errno = 0;
-    if ((ret = nice(adj)) == -1 && errno != 0) {
-      perror("child set scheduling priority");
-      exit(1);
+    if ((pid = fork()) < 0)
+    {
+        perror("fork error");
+        exit(1);
     }
-    printf("now child nice valude is %d \n", ret + nzero);
-  } else {
-    s = "parent";
-    printf("current nice value in parent is %d\n", nice(0) + nzero);
-  }
-  for (;;) {
-    if (++count == 0) {
-      printf("%s counter wrap", s);
+    else if (pid == 0)
+    {
+        s = "child";
+        printf("current nice value in child is %d ,adjusting by %d \n",
+               nice(0) + nzero, adj);
+        errno = 0;
+        if ((ret = nice(adj)) == -1 && errno != 0)
+        {
+            perror("child set scheduling priority");
+            exit(1);
+        }
+        printf("now child nice valude is %d \n", ret + nzero);
     }
-    checktime(s);
-  }
+    else
+    {
+        s = "parent";
+        printf("current nice value in parent is %d\n", nice(0) + nzero);
+    }
+    for (;;)
+    {
+        if (++count == 0)
+        {
+            printf("%s counter wrap", s);
+        }
+        checktime(s);
+    }
 }

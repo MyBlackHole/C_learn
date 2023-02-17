@@ -87,8 +87,9 @@ int sbf_contains(bloom_sbf *sbf, char *key) {
   int res;
   for (uint32_t i = 0; i < sbf->num_filters; i++) {
     res = bf_contains(sbf->filters[i], key);
-    if (res == 1)
+    if (res == 1) {
       return 1;
+}
   }
   return 0;
 }
@@ -118,8 +119,9 @@ int sbf_flush(bloom_sbf *sbf) {
   for (uint32_t i = 0; i < sbf->num_filters; i++) {
     if (sbf->dirty_filters[i] == 1) {
       res = bf_flush(sbf->filters[i]);
-      if (res != 0)
+      if (res != 0) {
         break;
+}
       sbf->dirty_filters[i] = 0;
     }
   }

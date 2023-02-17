@@ -40,11 +40,12 @@ void addEdge(struct Graph *G, int src, int dst, int weight) {
 // Utility function to find minimum distance vertex in mdist
 int minDistance(int mdist[], int vset[], int V) {
   int minVal = INT_MAX, minInd;
-  for (int i = 0; i < V; i++)
+  for (int i = 0; i < V; i++) {
     if (vset[i] == 0 && mdist[i] < minVal) {
       minVal = mdist[i];
       minInd = i;
     }
+}
 
   return minInd;
 }
@@ -53,19 +54,21 @@ int minDistance(int mdist[], int vset[], int V) {
 void print(int dist[], int V) {
   printf("\nVertex  Distance\n");
   for (int i = 0; i < V; i++) {
-    if (dist[i] != INT_MAX)
+    if (dist[i] != INT_MAX) {
       printf("%d\t%d\n", i, dist[i]);
-    else
+    } else {
       printf("%d\tINF", i);
+}
   }
 }
 
 void print1(int dist[], int V) {
   for (int i = 0; i < V; i++) {
-    if (dist[i] != INT_MAX)
+    if (dist[i] != INT_MAX) {
       printf("[%d:%d]\t", i, dist[i]);
-    else
+    } else {
       printf("[%d:-]\t", i);
+}
   }
   printf("\n");
 }
@@ -81,8 +84,9 @@ void BellmanFord(struct Graph *graph, int src) {
   // Initialize distances array as INF for all except source
   // Intialize source as zero
   // 初始化距离数组
-  for (int i = 0; i < V; i++)
+  for (int i = 0; i < V; i++) {
     dist[i] = INT_MAX;
+}
   // 自己到自己距离是零
   dist[src] = 0;
 
@@ -95,8 +99,9 @@ void BellmanFord(struct Graph *graph, int src) {
       int v = graph->edges[j].dst;
       int w = graph->edges[j].weight;
 
-      if (dist[u] != INT_MAX && dist[u] + w < dist[v])
+      if (dist[u] != INT_MAX && dist[u] + w < dist[v]) {
         dist[v] = dist[u] + w;
+}
       print1(dist, V);
     }
   }

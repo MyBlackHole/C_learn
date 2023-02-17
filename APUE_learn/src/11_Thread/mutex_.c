@@ -120,17 +120,20 @@ static int thread_func(int arg) {
   case 0: // 不加锁
     break;
   case 1:
-    if (0 != My_pthread_mutex_lock(&mutex)) //加锁
+    if (0 != My_pthread_mutex_lock(&mutex)) { //加锁
       return -1;                            // 加锁失败
+}
     break;
   case 2:
-    if (0 != My_pthread_mutex_trylock(&mutex)) // trylock
+    if (0 != My_pthread_mutex_trylock(&mutex)) { // trylock
       return -1;                               // 加锁失败
+}
     break;
   case 3:
     if (0 !=
-        My_pthread_mutex_timedlock(&mutex, rel_to_abs_time(1))) // timedlock
+        My_pthread_mutex_timedlock(&mutex, rel_to_abs_time(1))) { // timedlock
       return -1;                                                // 加锁失败
+}
     break;
   default:
     break;
@@ -143,8 +146,9 @@ static int thread_func(int arg) {
   sleep(2); // 让线程多运行几秒
   printf("****** End Thread:thread id=0x%lx ******\n\n", pthread_self());
   //********** 解锁 ****************//
-  if (0 != (int)arg) // 曾经加锁，则解锁
+  if (0 != arg) { // 曾经加锁，则解锁
     My_pthread_mutex_unlock(&mutex);
+}
   return read_data;
 }
 
@@ -156,12 +160,14 @@ void test_mutex() {
   //******** 创建子线程 *********//
   const int N = 5;
   pthread_t threads[N];
-  for (int i = 0; i < N; i++)
+  for (int i = 0; i < N; i++) {
     My_pthread_create(threads + i, NULL, thread_func, 0);
+}
   //******** 等待子线程结束 *********//
   int values[N];
-  for (int i = 0; i < N; i++)
+  for (int i = 0; i < N; i++) {
     thread_join_int(threads[i], values + i);
+}
 
   My_pthread_mutex_destroy(&mutex);
   M_TRACE("---------  End test_mutex()  ---------\n\n");

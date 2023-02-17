@@ -19,10 +19,11 @@ int main(int argc, char *argv[]) {
   ul_int hash1 = sh_simhash(test, 4);
   ul_int hash2 = sh_simhash(test, 4);
   float similarity = 0.0f;
-  if (hash1 < hash2)
+  if (hash1 < hash2) {
     similarity = hash1 * 1.0f / hash2;
-  else
+  } else {
     similarity = hash2 * 1.0f / hash1;
+}
   printf("hash1=%lx, hash2=%lx, similarity=%f\n", hash1, hash2, similarity);
   exit(0);
 }

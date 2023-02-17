@@ -130,8 +130,9 @@ void latency_show(const char *const tag, uint32_t *const counters,
       max = i;
     }
   }
-  if (sum == 0)
+  if (sum == 0) {
     return;
+}
   fprintf(out, "====Latency Stat:%s\n", tag);
   fprintf(out, "[x<L<x+%lu] %10s %10s\n", STAT_COUNTER_NUSEC, "[COUNT]", "[%]");
 
@@ -151,12 +152,15 @@ void latency_show(const char *const tag, uint32_t *const counters,
       count += counters[i];
     }
 
-    if (count && (count >= p95) && (i95 == 0))
+    if (count && (count >= p95) && (i95 == 0)) {
       i95 = i;
-    if (count && (count >= p99) && (i99 == 0))
+}
+    if (count && (count >= p99) && (i99 == 0)) {
       i99 = i;
-    if (count && (count >= p999) && (i999 == 0))
+}
+    if (count && (count >= p999) && (i999 == 0)) {
       i999 = i;
+}
 
     if (counters[i] > c1) {
       const double p = ((double)counters[i]) / d1;
@@ -179,8 +183,9 @@ void latency_95_99_999(uint32_t *const counters, FILE *const out) {
       max = i;
     }
   }
-  if (sum == 0)
+  if (sum == 0) {
     return;
+}
 
   // 1/1024
   const double sumd = (double)sum;
@@ -196,12 +201,15 @@ void latency_95_99_999(uint32_t *const counters, FILE *const out) {
       count += counters[i];
     }
 
-    if (count && (count >= p95) && (i95 == 0))
+    if (count && (count >= p95) && (i95 == 0)) {
       i95 = i;
-    if (count && (count >= p99) && (i99 == 0))
+}
+    if (count && (count >= p99) && (i99 == 0)) {
       i99 = i;
-    if (count && (count >= p999) && (i999 == 0))
+}
+    if (count && (count >= p999) && (i999 == 0)) {
       i999 = i;
+}
   }
   fprintf(out, "%s %6lu %s %6lu %s %6lu %s %6lu\n", "MAX",
           max * STAT_COUNTER_NUSEC, "95%", i95 * STAT_COUNTER_NUSEC, "99%",

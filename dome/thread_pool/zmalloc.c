@@ -129,8 +129,9 @@ static void (*zmalloc_oom_handler)(size_t) = zmalloc_default_oom;
 void *zmalloc(size_t size) {
   void *ptr = malloc(size + PREFIX_SIZE);
 
-  if (!ptr)
+  if (!ptr) {
     zmalloc_oom_handler(size);
+}
 #ifdef HAVE_MALLOC_SIZE
   update_zmalloc_stat_alloc(zmalloc_size(ptr));
   return ptr;
@@ -144,8 +145,9 @@ void *zmalloc(size_t size) {
 void *zcalloc(size_t size) {
   void *ptr = calloc(1, size + PREFIX_SIZE);
 
-  if (!ptr)
+  if (!ptr) {
     zmalloc_oom_handler(size);
+}
 #ifdef HAVE_MALLOC_SIZE
   update_zmalloc_stat_alloc(zmalloc_size(ptr));
   return ptr;
@@ -163,8 +165,9 @@ void *zrealloc(void *ptr, size_t size) {
   size_t oldsize;
   void *newptr;
 
-  if (ptr == NULL)
+  if (ptr == NULL) {
     return zmalloc(size);
+}
 #ifdef HAVE_MALLOC_SIZE
   oldsize = zmalloc_size(ptr);
   newptr = realloc(ptr, size);
@@ -178,8 +181,9 @@ void *zrealloc(void *ptr, size_t size) {
   realptr = (char *)ptr - PREFIX_SIZE;
   oldsize = *((size_t *)realptr);
   newptr = realloc(realptr, size + PREFIX_SIZE);
-  if (!newptr)
+  if (!newptr) {
     zmalloc_oom_handler(size);
+}
 
   *((size_t *)newptr) = size;
   update_zmalloc_stat_free(oldsize);
@@ -197,8 +201,9 @@ size_t zmalloc_size(void *ptr) {
   size_t size = *((size_t *)realptr);
   /* Assume at least that all the allocations are padded at sizeof(long) by
    * the underlying allocator. */
-  if (size & (sizeof(long) - 1))
+  if (size & (sizeof(long) - 1)) {
     size += sizeof(long) - (size & (sizeof(long) - 1));
+}
   return size + PREFIX_SIZE;
 }
 #endif
@@ -209,8 +214,9 @@ void zfree(void *ptr) {
   size_t oldsize;
 #endif
 
-  if (ptr == NULL)
+  if (ptr == NULL) {
     return;
+}
 #ifdef HAVE_MALLOC_SIZE
   update_zmalloc_stat_free(zmalloc_size(ptr));
   free(ptr);

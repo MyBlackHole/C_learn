@@ -22,10 +22,10 @@ extern void print_file_owner(const char *pathname);
 
 int My_chmod(const char *pathname, mode_t mode) {
   int result = chmod(pathname, mode);
-  if (-1 == result)
+  if (-1 == result) {
     printf("chmod(\"%s\",%d) failed,because %s\n", pathname, mode,
            strerror(errno));
-  else {
+  } else {
     printf("chmod(\"%s\",%d) ok\n", pathname, mode);
     print_file_perm(pathname);
   }
@@ -33,10 +33,10 @@ int My_chmod(const char *pathname, mode_t mode) {
 }
 int My_chown(const char *pathname, uid_t owner, gid_t group) {
   int result = chown(pathname, owner, group);
-  if (-1 == result)
+  if (-1 == result) {
     printf("chown(\"%s\",%d,%d) failed,because %s\n", pathname, owner, group,
            strerror(errno));
-  else {
+  } else {
     printf("chown(\"%s\",%d,%d) ok\n", pathname, owner, group);
     print_file_owner(pathname);
   }

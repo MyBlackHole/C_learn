@@ -214,6 +214,7 @@ struct GenInfo *generator_new_uniform(const uint64_t min, const uint64_t max) {
 }
 
 void generator_destroy(struct GenInfo *const geninfo) {
-  if (geninfo)
+  if (geninfo) {
     free(geninfo);
+}
 }

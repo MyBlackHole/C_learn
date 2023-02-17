@@ -12,12 +12,14 @@ Random *createRandom(int size) {
   return random;
 }
 
-void destroy(Random *random) {
+void destroyRandom(Random *random) {
   if (!random) {
     return;
   }
   if (!random->seeds) {
-    free(random->seeds);
+    // free(random->seeds);
+    // tb_vector_clear(random->seeds);
+    tb_vector_exit(random->seeds);
   }
   free(random);
 }

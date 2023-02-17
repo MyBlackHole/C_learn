@@ -12,12 +12,13 @@
 static char child_stack[STACK_SIZE];
 char *const child_args[] = {"/bin/bash", NULL};
 
-int child_main(void *args) {
-  printf("in child process\n");
-  sethostname("NewHostName", 12);
-  execv(child_args[0], child_args);
-  printf("quit child process…\n");
-  return 1;
+int child_main(void *args)
+{
+    printf("in child process\n");
+    sethostname("NewHostName", 12);
+    execv(child_args[0], child_args);
+    printf("quit child process…\n");
+    return 1;
 }
 
 // CLONE_NEWPID (since Linux 2.6.24)
@@ -28,12 +29,13 @@ int child_main(void *args) {
 // PARENT会修改进程树，因此相互矛盾的
 // 可以使用nsenter -t <PID> -p进入PID命名空间，使用ps命令查看进程信息。
 
-int main() {
-  printf("start parent process...\n");
-  int child_pid =
-      clone(child_main, child_stack + STACK_SIZE,
-            CLONE_NEWPID | CLONE_NEWIPC | CLONE_NEWUTS | SIGCHLD, NULL);
-  waitpid(child_pid, NULL, 0);
-  printf("quit parent process...\n");
-  return 0;
+int main()
+{
+    printf("start parent process...\n");
+    int child_pid =
+        clone(child_main, child_stack + STACK_SIZE,
+              CLONE_NEWPID | CLONE_NEWIPC | CLONE_NEWUTS | SIGCHLD, NULL);
+    waitpid(child_pid, NULL, 0);
+    printf("quit parent process...\n");
+    return 0;
 }

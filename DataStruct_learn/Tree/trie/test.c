@@ -14,8 +14,9 @@ void printArray(char chars[], int len) {
 
 /*---Return all the related words------*/
 void printPathsRecur(TrieNode *node, char prefix[], int filledLen) {
-  if (node == NULL)
+  if (node == NULL) {
     return;
+}
 
   prefix[filledLen] = node->character;
   filledLen++;

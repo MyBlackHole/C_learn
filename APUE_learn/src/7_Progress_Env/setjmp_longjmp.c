@@ -16,7 +16,7 @@ static jmp_buf buf; // static 全局变量
 void print_jmp_buf(const jmp_buf env) {
   printf("jmp_buf is :");
   for (int i = 0; i < 8; i++) {
-    printf("%d,", env[0].__jmpbuf[i]);
+    printf("%ld,", env[0].__jmpbuf[i]);
   }
   printf("\n");
 }

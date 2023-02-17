@@ -31,23 +31,26 @@ static void init(struct Image *image, const char *file_name) {
 
 static void display(struct Image *image) {
   priv_t *priv = (priv_t *)image->priv;
-  if (NULL == priv)
+  if (NULL == priv) {
     return;
+}
   printf("Displaying %s\n", priv->file_name);
 }
 
 static void destroy(struct Image *image) {
   priv_t *priv = (priv_t *)image->priv;
-  if (NULL == priv)
+  if (NULL == priv) {
     return;
+}
   freep((void **)&priv->file_name);
   freep((void **)&priv);
 }
 
 struct Image *real_image_create(const char *file_name) {
   struct Image *image = (struct Image *)calloc(1, sizeof(struct Image));
-  if (NULL == image)
+  if (NULL == image) {
     return NULL;
+}
 
   init(image, file_name);
   image->display = display;

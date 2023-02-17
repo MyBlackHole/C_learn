@@ -15,11 +15,12 @@
 
 int My_access(const char *pathname, int mode) {
   int result = access(pathname, mode);
-  if (-1 == result)
+  if (-1 == result) {
     printf("access(\"%s\",%d) failed,because %s\n", pathname, mode,
            strerror(errno));
-  else
+  } else {
     printf("access(\"%s\",%d) ok\n", pathname, mode);
+}
   return result;
 }
 mode_t My_umask(mode_t cmask) {

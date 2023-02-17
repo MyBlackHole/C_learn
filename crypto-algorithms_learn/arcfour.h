@@ -13,7 +13,7 @@
 #include <stddef.h>
 
 /**************************** DATA TYPES ****************************/
-typedef unsigned char BYTE; // 8-bit byte
+typedef unsigned char BYTE;  // 8-bit byte
 
 /*********************** FUNCTION DECLARATIONS **********************/
 // Input: state - the state used to generate the keystream
@@ -27,4 +27,4 @@ void arcfour_key_setup(BYTE state[], const BYTE key[], int len);
 //        len - number of bytes to generate
 void arcfour_generate_stream(BYTE state[], BYTE out[], size_t len);
 
-#endif // ARCFOUR_H
+#endif  // ARCFOUR_H

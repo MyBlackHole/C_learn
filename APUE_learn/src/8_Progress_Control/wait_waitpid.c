@@ -36,10 +36,11 @@ pid_t My_wait(int *staloc) {
     printf("wait(%p) failed,because %s\n", staloc, strerror(errno));
   } else {
     printf("wait(%p) ok, process<pid=%d> terminated.", staloc, result);
-    if (NULL == staloc)
+    if (NULL == staloc) {
       printf("\n");
-    else
+    } else {
       print_return_status(*staloc);
+}
   }
   return result;
 }
@@ -52,10 +53,11 @@ pid_t My_waitpid(pid_t pid, int *staloc, int options) {
   } else {
     printf("waitpid(%d,%p,%d) ok, process<pid=%d> terminated.", pid, staloc,
            options, result);
-    if (NULL == staloc)
+    if (NULL == staloc) {
       printf("\n");
-    else
+    } else {
       print_return_status(*staloc);
+}
   }
   return result;
 }

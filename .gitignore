@@ -1,6 +1,7 @@
 # executives
-a.out
-
+*.swp
+*.exe
+*.out
 # objective files
 *.o
 *.obj

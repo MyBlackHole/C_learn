@@ -39,23 +39,26 @@ int My_nanosleep(const struct timespec *reqtp, struct timespec *remtp) {
   if (0 != result) {
     printf("nanosleep(%p,%p) failed,because %s\n", reqtp, remtp,
            strerror(errno));
-    if (NULL != reqtp)
+    if (NULL != reqtp) {
       printf("request time  is:(%ld s, %ld ns). ", reqtp->tv_sec,
              reqtp->tv_nsec);
-    else
+    } else {
       printf("request time is NULL. ");
-    if (NULL != remtp)
+}
+    if (NULL != remtp) {
       printf("remain time  is:(%ld s, %ld ns)\n", remtp->tv_sec,
              remtp->tv_nsec);
-    else
+    } else {
       printf("remain time is NULL\n");
+}
   } else {
     printf("nanosleep(%p,%p) is finished, request time is:", reqtp, remtp);
-    if (NULL != reqtp)
+    if (NULL != reqtp) {
       printf("request time  is:(%ld s, %ld ns). ", reqtp->tv_sec,
              reqtp->tv_nsec);
-    else
+    } else {
       printf("request time is NULL. ");
+}
   }
   return result;
 }
@@ -65,25 +68,28 @@ int My_clock_nanosleep(clockid_t clock_id, int flags,
   if (0 != result) {
     printf("clock_nanosleep(%d,%d,%p,%p) failed,because %s\n", clock_id, flags,
            reqtp, remtp, strerror(errno));
-    if (NULL != reqtp)
+    if (NULL != reqtp) {
       printf("request time  is:(%ld s, %ld ns). ", reqtp->tv_sec,
              reqtp->tv_nsec);
-    else
+    } else {
       printf("request time is NULL. ");
-    if (NULL != remtp)
+}
+    if (NULL != remtp) {
       printf("remain time  is:(%ld s, %ld ns)\n", remtp->tv_sec,
              remtp->tv_nsec);
-    else
+    } else {
       printf("remain time is NULL\n");
+}
   } else {
     printf("clock_nanosleep(%d,%d,%p,%p) is finished, request time is:",
            clock_id, flags, reqtp, remtp);
     printf("nanosleep(%p,%p) is finished, request time is:", reqtp, remtp);
-    if (NULL != reqtp)
+    if (NULL != reqtp) {
       printf("request time  is:(%ld s, %ld ns). ", reqtp->tv_sec,
              reqtp->tv_nsec);
-    else
+    } else {
       printf("request time is NULL. ");
+}
   }
   return result;
 }

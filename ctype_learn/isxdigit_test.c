@@ -11,10 +11,11 @@
 
 // 附加说明：此为宏定义，非真正函数。
 
-int main() {
-  char str[] = "123c@#FDsP[e?";
-  int i;
-  for (i = 0; str[i] != 0; i++)
-    if (isxdigit(str[i]))
-      printf("%c is a hexadecimal digits\n", str[i]);
+int main()
+{
+    char str[] = "123c@#FDsP[e?";
+    int i;
+    for (i = 0; str[i] != 0; i++)
+        if (isxdigit(str[i]))
+            printf("%c is a hexadecimal digits\n", str[i]);
 }

@@ -29,8 +29,9 @@ Meal *meal_create(void) {
 }
 
 void meal_destory(Meal **meal) {
-  if (NULL == meal || NULL == *meal)
+  if (NULL == meal || NULL == *meal) {
     return;
+}
 
   Meal *self = *meal;
   if (NULL != self->items) {

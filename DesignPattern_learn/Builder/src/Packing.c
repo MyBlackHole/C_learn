@@ -15,17 +15,20 @@
 #include "mem.h"
 
 const char *packing_pack(Packing *packing) {
-  if (NULL == packing || NULL == packing->pack)
+  if (NULL == packing || NULL == packing->pack) {
     return NULL;
+}
   return packing->pack(packing);
 }
 
 void packing_destroy(Packing **packing) {
-  if (NULL == packing || NULL == *packing)
+  if (NULL == packing || NULL == *packing) {
     return;
+}
 
   Packing *self = *packing;
-  if (NULL != self->destroy)
+  if (NULL != self->destroy) {
     self->destroy(self);
+}
   freep((void **)packing);
 }
