@@ -6,12 +6,11 @@
  * normal files */
 
 #include <assert.h>
+#include <lz4file.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <sys/stat.h>
-
-#include "lz4file.h"
 
 #define CHUNK_SIZE (16 * 1024)
 
@@ -165,9 +164,13 @@ int compareFiles(FILE *fp0, FILE *fp1)
 
         result = (r0 != r1);
         if (!r0 || !r1)
+        {
             break;
+        }
         if (!result)
+        {
             result = memcmp(b0, b1, r0);
+        }
     }
 
     return result;

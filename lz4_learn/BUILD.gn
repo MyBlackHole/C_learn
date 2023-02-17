@@ -8,7 +8,7 @@ executable("main") {
 
 executable("fileCompress") {
   cflags = ["-g", "-Wall"]
-  ldflags = ["-l:liblz4.a"]
+  ldflags = ["/usr/local/lib/liblz4.a"]
   sources = [
     "fileCompress.c",
   ]
