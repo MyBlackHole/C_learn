@@ -1,0 +1,20 @@
+executable("main") {
+  cflags = ["-g", "-Wall"]
+
+  # ldflags = ["-lrt"]
+
+  deps = [":munit"]
+
+  sources = [
+    "main.c",
+  ]
+}
+
+static_library("munit") {
+  cflags = ["-g", "-Wall"]
+
+  sources = [ 
+    "munit.h",
+    "munit.c",
+  ]
+}
