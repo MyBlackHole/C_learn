@@ -46,7 +46,9 @@ void echo_read(uv_stream_t *client, ssize_t nread, const uv_buf_t *buf)
     if (nread < 0)
     {
         if (nread != UV_EOF)
+        {
             fprintf(stderr, "Read error %s\n", uv_err_name(nread));
+        }
         uv_close((uv_handle_t *)client, NULL);
     }
 

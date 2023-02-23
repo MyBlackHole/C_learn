@@ -16,10 +16,11 @@ int main()
     uv_timer_init(loop, &gc_req);
 
     uv_timer_start(&gc_req, gc, 0, 2000);
+
     uv_unref((uv_handle_t *)&gc_req);
 
-    // could actually be a TCP download or something
-    uv_timer_init(loop, &fake_job_req);
-    uv_timer_start(&fake_job_req, fake_job, 9000, 0);
+    // // could actually be a TCP download or something
+    // uv_timer_init(loop, &fake_job_req);
+    // uv_timer_start(&fake_job_req, fake_job, 9000, 0);
     return uv_run(loop, UV_RUN_DEFAULT);
 }

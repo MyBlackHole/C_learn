@@ -1,15 +1,15 @@
 executable("main") {
   cflags = ["-g", "-Wall"]
+  cflags_c = ["-Wl,--export-dynamic"]
   libs = ["uv"]
   sources = [
     "main.c",
   ]
 }
 
-executable("uv_fs_stat_test") {
-  cflags = ["-g", "-Wall"]
-  libs = ["uv"]
+shared_library("libhello") {
+  cflags = ["-fPIC", "-g", "-Wall"]
   sources = [
-    "uv_fs_stat_test.c",
+    "hello.c",
   ]
 }
