@@ -13,3 +13,11 @@ executable("uv_fs_stat_test") {
     "uv_fs_stat_test.c",
   ]
 }
+
+executable("uv_fs_scandir_test") {
+  cflags = ["-g", "-Wall"]
+  libs = ["uv"]
+  sources = [
+    "uv_fs_scandir_test.c",
+  ]
+}

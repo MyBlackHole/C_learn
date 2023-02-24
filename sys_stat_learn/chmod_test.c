@@ -9,11 +9,13 @@ int main(int argc, char **argv)
     {
         perror("stat error for foo");
     }
+    // 权限修改
     if (chmod("foo", (buf.st_mode & ~S_IXGRP) | S_ISGID) < 0)
     {
         perror("chmod error for foo");
     }
 
+    // 权限修改
     if (chmod("bar", S_IRUSR | S_IWUSR | S_IRWXG) < 0)
     {
         perror("chmod error for bar");

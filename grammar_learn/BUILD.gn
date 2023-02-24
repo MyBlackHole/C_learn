@@ -1,3 +1,11 @@
+executable("const_test") {
+  cflags = ["-g", "-Wall"]
+
+  sources = [
+    "const_test.c",
+  ]
+}
+
 executable("arr_prt_test") {
   cflags = ["-g", "-Wall"]
 

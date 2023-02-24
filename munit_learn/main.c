@@ -23,6 +23,8 @@ static MunitResult test_example(const MunitParameter params[], void *user_data)
     return MUNIT_OK;
 }
 
+MunitSuite _main_suites[64];
+
 static MunitTest test[] = {
     {(char *)"/example", test_example, NULL, NULL, MUNIT_TEST_OPTION_NONE,
      NULL},
@@ -34,5 +36,7 @@ static MunitSuite suite = {(char *)"", test, NULL, 1, MUNIT_SUITE_OPTION_NONE};
 #include <stdlib.h>
 int main(int argc, char *argv[MUNIT_ARRAY_PARAM(argc + 1)])
 {
+    // MunitSuite suite = {(char *)"", NULL, _main_suites, 1,
+    //                     MUNIT_SUITE_OPTION_NONE};
     return munit_suite_main(&suite, (void *)"black", argc, argv);
 }
