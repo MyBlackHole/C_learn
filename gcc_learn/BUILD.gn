@@ -1,3 +1,9 @@
 executable("__builtin_clz_test") {
+  cflags = ["-g", "-Wall"]
   sources = [ "__builtin_clz_test.c" ]
+}
+
+executable("__builtin_offsetof_test") {
+  cflags = ["-g", "-Wall"]
+  sources = [ "__builtin_offsetof_test.c" ]
 }
