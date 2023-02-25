@@ -6,6 +6,13 @@ executable("gethostname_test") {
   ]
 }
 
+executable("truncate_test") {
+  cflags = ["-g", "-Wall"]
+  sources = [
+    "truncate_test.c",
+  ]
+}
+
 executable("ftruncate_test") {
   cflags = ["-g", "-Wall"]
   sources = [

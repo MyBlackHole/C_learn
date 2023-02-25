@@ -1,3 +1,11 @@
+executable("fallocate_test") {
+  cflags = ["-g", "-Wall"]
+
+  sources = [
+    "fallocate_test.c",
+  ]
+}
+
 executable("splice1_test") {
   cflags = ["-g", "-Wall"]
 
