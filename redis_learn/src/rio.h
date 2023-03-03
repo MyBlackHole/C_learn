@@ -28,19 +28,19 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-
 #ifndef __REDIS_RIO_H
 #define __REDIS_RIO_H
 
-#include <stdio.h>
 #include <stdint.h>
+#include <stdio.h>
+
 #include "sds.h"
 
 /*
  * RIO API 接口和状态
  */
-struct _rio {
-
+struct _rio
+{
     /* Backend functions.
      * Since this functions do not tolerate short writes or reads the return
      * value is simplified to: zero on error, non zero on complete success. */
@@ -68,16 +68,18 @@ struct _rio {
     size_t max_processing_chunk;
 
     /* Backend-specific vars. */
-    union {
-
-        struct {
+    union
+    {
+        struct
+        {
             // 缓存指针
             sds ptr;
             // 偏移量
             off_t pos;
         } buffer;
 
-        struct {
+        struct
+        {
             // 被打开文件的指针
             FILE *fp;
             // 最近一次 fsync() 以来，写入的字节量
@@ -99,13 +101,19 @@ typedef struct _rio rio;
  *
  * 写入成功返回实际写入的字节数，写入失败返回 -1 。
  */
-static inline size_t rioWrite(rio *r, const void *buf, size_t len) {
-    while (len) {
-        size_t bytes_to_write = (r->max_processing_chunk && r->max_processing_chunk < len) ? r->max_processing_chunk : len;
-        if (r->update_cksum) r->update_cksum(r,buf,bytes_to_write);
-        if (r->write(r,buf,bytes_to_write) == 0)
+static inline size_t rioWrite(rio *r, const void *buf, size_t len)
+{
+    while (len)
+    {
+        size_t bytes_to_write =
+            (r->max_processing_chunk && r->max_processing_chunk < len)
+                ? r->max_processing_chunk
+                : len;
+        if (r->update_cksum)
+            r->update_cksum(r, buf, bytes_to_write);
+        if (r->write(r, buf, bytes_to_write) == 0)
             return 0;
-        buf = (char*)buf + bytes_to_write;
+        buf = (char *)buf + bytes_to_write;
         len -= bytes_to_write;
         r->processed_bytes += bytes_to_write;
     }
@@ -117,13 +125,19 @@ static inline size_t rioWrite(rio *r, const void *buf, size_t len) {
  *
  * 读取成功返回 1 ，失败返回 0 。
  */
-static inline size_t rioRead(rio *r, void *buf, size_t len) {
-    while (len) {
-        size_t bytes_to_read = (r->max_processing_chunk && r->max_processing_chunk < len) ? r->max_processing_chunk : len;
-        if (r->read(r,buf,bytes_to_read) == 0)
+static inline size_t rioRead(rio *r, void *buf, size_t len)
+{
+    while (len)
+    {
+        size_t bytes_to_read =
+            (r->max_processing_chunk && r->max_processing_chunk < len)
+                ? r->max_processing_chunk
+                : len;
+        if (r->read(r, buf, bytes_to_read) == 0)
             return 0;
-        if (r->update_cksum) r->update_cksum(r,buf,bytes_to_read);
-        buf = (char*)buf + bytes_to_read;
+        if (r->update_cksum)
+            r->update_cksum(r, buf, bytes_to_read);
+        buf = (char *)buf + bytes_to_read;
         len -= bytes_to_read;
         r->processed_bytes += bytes_to_read;
     }
@@ -133,9 +147,7 @@ static inline size_t rioRead(rio *r, void *buf, size_t len) {
 /*
  * 返回 r 的当前偏移量。
  */
-static inline off_t rioTell(rio *r) {
-    return r->tell(r);
-}
+static inline off_t rioTell(rio *r) { return r->tell(r); }
 
 void rioInitWithFile(rio *r, FILE *fp);
 void rioInitWithBuffer(rio *r, sds s);

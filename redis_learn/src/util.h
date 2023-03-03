@@ -32,7 +32,8 @@
 
 #include "sds.h"
 
-int stringmatchlen(const char *p, int plen, const char *s, int slen, int nocase);
+int stringmatchlen(const char *p, int plen, const char *s, int slen,
+                   int nocase);
 int stringmatch(const char *p, const char *s, int nocase);
 long long memtoll(const char *p, int *err);
 int ll2string(char *s, size_t len, long long value);

@@ -27,16 +27,13 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-
 #include <assert.h>
 #include <errno.h>
-#include <port.h>
 #include <poll.h>
-
-#include <sys/types.h>
-#include <sys/time.h>
-
+#include <port.h>
 #include <stdio.h>
+#include <sys/time.h>
+#include <sys/types.h>
 
 static int evport_debug = 0;
 
@@ -65,27 +62,32 @@ static int evport_debug = 0;
  */
 #define MAX_EVENT_BATCHSZ 512
 
-typedef struct aeApiState {
-    int     portfd;                             /* event port */
-    int     npending;                           /* # of pending fds */
-    int     pending_fds[MAX_EVENT_BATCHSZ];     /* pending fds */
-    int     pending_masks[MAX_EVENT_BATCHSZ];   /* pending fds' masks */
+typedef struct aeApiState
+{
+    int portfd;                           /* event port */
+    int npending;                         /* # of pending fds */
+    int pending_fds[MAX_EVENT_BATCHSZ];   /* pending fds */
+    int pending_masks[MAX_EVENT_BATCHSZ]; /* pending fds' masks */
 } aeApiState;
 
-static int aeApiCreate(aeEventLoop *eventLoop) {
+static int aeApiCreate(aeEventLoop *eventLoop)
+{
     int i;
     aeApiState *state = zmalloc(sizeof(aeApiState));
-    if (!state) return -1;
+    if (!state)
+        return -1;
 
     state->portfd = port_create();
-    if (state->portfd == -1) {
+    if (state->portfd == -1)
+    {
         zfree(state);
         return -1;
     }
 
     state->npending = 0;
 
-    for (i = 0; i < MAX_EVENT_BATCHSZ; i++) {
+    for (i = 0; i < MAX_EVENT_BATCHSZ; i++)
+    {
         state->pending_fds[i] = -1;
         state->pending_masks[i] = AE_NONE;
     }
@@ -94,22 +96,26 @@ static int aeApiCreate(aeEventLoop *eventLoop) {
     return 0;
 }
 
-static int aeApiResize(aeEventLoop *eventLoop, int setsize) {
+static int aeApiResize(aeEventLoop *eventLoop, int setsize)
+{
     /* Nothing to resize here. */
     return 0;
 }
 
-static void aeApiFree(aeEventLoop *eventLoop) {
+static void aeApiFree(aeEventLoop *eventLoop)
+{
     aeApiState *state = eventLoop->apidata;
 
     close(state->portfd);
     zfree(state);
 }
 
-static int aeApiLookupPending(aeApiState *state, int fd) {
+static int aeApiLookupPending(aeApiState *state, int fd)
+{
     int i;
 
-    for (i = 0; i < state->npending; i++) {
+    for (i = 0; i < state->npending; i++)
+    {
         if (state->pending_fds[i] == fd)
             return (i);
     }
@@ -120,7 +126,8 @@ static int aeApiLookupPending(aeApiState *state, int fd) {
 /*
  * Helper function to invoke port_associate for the given fd and mask.
  */
-static int aeApiAssociate(const char *where, int portfd, int fd, int mask) {
+static int aeApiAssociate(const char *where, int portfd, int fd, int mask)
+{
     int events = 0;
     int rv, err;
 
@@ -133,13 +140,14 @@ static int aeApiAssociate(const char *where, int portfd, int fd, int mask) {
         fprintf(stderr, "%s: port_associate(%d, 0x%x) = ", where, fd, events);
 
     rv = port_associate(portfd, PORT_SOURCE_FD, fd, events,
-        (void *)(uintptr_t)mask);
+                        (void *)(uintptr_t)mask);
     err = errno;
 
     if (evport_debug)
         fprintf(stderr, "%d (%s)\n", rv, rv == 0 ? "no error" : strerror(err));
 
-    if (rv == -1) {
+    if (rv == -1)
+    {
         fprintf(stderr, "%s: port_associate: %s\n", where, strerror(err));
 
         if (err == EAGAIN)
@@ -149,7 +157,8 @@ static int aeApiAssociate(const char *where, int portfd, int fd, int mask) {
     return rv;
 }
 
-static int aeApiAddEvent(aeEventLoop *eventLoop, int fd, int mask) {
+static int aeApiAddEvent(aeEventLoop *eventLoop, int fd, int mask)
+{
     aeApiState *state = eventLoop->apidata;
     int fullmask, pfd;
 
@@ -164,7 +173,8 @@ static int aeApiAddEvent(aeEventLoop *eventLoop, int fd, int mask) {
     fullmask = mask | eventLoop->events[fd].mask;
     pfd = aeApiLookupPending(state, fd);
 
-    if (pfd != -1) {
+    if (pfd != -1)
+    {
         /*
          * This fd was recently returned from aeApiPoll.  It should be safe to
          * assume that the consumer has processed that poll event, but we play
@@ -180,7 +190,8 @@ static int aeApiAddEvent(aeEventLoop *eventLoop, int fd, int mask) {
     return (aeApiAssociate("aeApiAddEvent", state->portfd, fd, fullmask));
 }
 
-static void aeApiDelEvent(aeEventLoop *eventLoop, int fd, int mask) {
+static void aeApiDelEvent(aeEventLoop *eventLoop, int fd, int mask)
+{
     aeApiState *state = eventLoop->apidata;
     int fullmask, pfd;
 
@@ -189,7 +200,8 @@ static void aeApiDelEvent(aeEventLoop *eventLoop, int fd, int mask) {
 
     pfd = aeApiLookupPending(state, fd);
 
-    if (pfd != -1) {
+    if (pfd != -1)
+    {
         if (evport_debug)
             fprintf(stderr, "deleting event from pending fd %d\n", fd);
 
@@ -215,7 +227,8 @@ static void aeApiDelEvent(aeEventLoop *eventLoop, int fd, int mask) {
      */
 
     fullmask = eventLoop->events[fd].mask;
-    if (fullmask == AE_NONE) {
+    if (fullmask == AE_NONE)
+    {
         /*
          * We're removing *all* events, so use port_dissociate to remove the
          * association completely.  Failure here indicates a bug.
@@ -223,24 +236,27 @@ static void aeApiDelEvent(aeEventLoop *eventLoop, int fd, int mask) {
         if (evport_debug)
             fprintf(stderr, "aeApiDelEvent: port_dissociate(%d)\n", fd);
 
-        if (port_dissociate(state->portfd, PORT_SOURCE_FD, fd) != 0) {
+        if (port_dissociate(state->portfd, PORT_SOURCE_FD, fd) != 0)
+        {
             perror("aeApiDelEvent: port_dissociate");
             abort(); /* will not return */
         }
-    } else if (aeApiAssociate("aeApiDelEvent", state->portfd, fd,
-        fullmask) != 0) {
+    }
+    else if (aeApiAssociate("aeApiDelEvent", state->portfd, fd, fullmask) != 0)
+    {
         /*
          * ENOMEM is a potentially transient condition, but the kernel won't
          * generally return it unless things are really bad.  EAGAIN indicates
          * we've reached an resource limit, for which it doesn't make sense to
-         * retry (counter-intuitively).  All other errors indicate a bug.  In any
-         * of these cases, the best we can do is to abort.
+         * retry (counter-intuitively).  All other errors indicate a bug.  In
+         * any of these cases, the best we can do is to abort.
          */
         abort(); /* will not return */
     }
 }
 
-static int aeApiPoll(aeEventLoop *eventLoop, struct timeval *tvp) {
+static int aeApiPoll(aeEventLoop *eventLoop, struct timeval *tvp)
+{
     aeApiState *state = eventLoop->apidata;
     struct timespec timeout, *tsp;
     int mask, i;
@@ -252,13 +268,15 @@ static int aeApiPoll(aeEventLoop *eventLoop, struct timeval *tvp) {
      * port now, before calling port_get().  See the block comment at the top of
      * this file for an explanation of why.
      */
-    for (i = 0; i < state->npending; i++) {
+    for (i = 0; i < state->npending; i++)
+    {
         if (state->pending_fds[i] == -1)
             /* This fd has since been deleted. */
             continue;
 
-        if (aeApiAssociate("aeApiPoll", state->portfd,
-            state->pending_fds[i], state->pending_masks[i]) != 0) {
+        if (aeApiAssociate("aeApiPoll", state->portfd, state->pending_fds[i],
+                           state->pending_masks[i]) != 0)
+        {
             /* See aeApiDelEvent for why this case is fatal. */
             abort();
         }
@@ -269,11 +287,14 @@ static int aeApiPoll(aeEventLoop *eventLoop, struct timeval *tvp) {
 
     state->npending = 0;
 
-    if (tvp != NULL) {
+    if (tvp != NULL)
+    {
         timeout.tv_sec = tvp->tv_sec;
         timeout.tv_nsec = tvp->tv_usec * 1000;
         tsp = &timeout;
-    } else {
+    }
+    else
+    {
         tsp = NULL;
     }
 
@@ -282,8 +303,10 @@ static int aeApiPoll(aeEventLoop *eventLoop, struct timeval *tvp) {
      * So if we get ETIME, we check nevents, too.
      */
     nevents = 1;
-    if (port_getn(state->portfd, event, MAX_EVENT_BATCHSZ, &nevents,
-        tsp) == -1 && (errno != ETIME || nevents == 0)) {
+    if (port_getn(state->portfd, event, MAX_EVENT_BATCHSZ, &nevents, tsp) ==
+            -1 &&
+        (errno != ETIME || nevents == 0))
+    {
         if (errno == ETIME || errno == EINTR)
             return 0;
 
@@ -294,27 +317,26 @@ static int aeApiPoll(aeEventLoop *eventLoop, struct timeval *tvp) {
 
     state->npending = nevents;
 
-    for (i = 0; i < nevents; i++) {
-            mask = 0;
-            if (event[i].portev_events & POLLIN)
-                mask |= AE_READABLE;
-            if (event[i].portev_events & POLLOUT)
-                mask |= AE_WRITABLE;
+    for (i = 0; i < nevents; i++)
+    {
+        mask = 0;
+        if (event[i].portev_events & POLLIN)
+            mask |= AE_READABLE;
+        if (event[i].portev_events & POLLOUT)
+            mask |= AE_WRITABLE;
 
-            eventLoop->fired[i].fd = event[i].portev_object;
-            eventLoop->fired[i].mask = mask;
+        eventLoop->fired[i].fd = event[i].portev_object;
+        eventLoop->fired[i].mask = mask;
 
-            if (evport_debug)
-                fprintf(stderr, "aeApiPoll: fd %d mask 0x%x\n",
+        if (evport_debug)
+            fprintf(stderr, "aeApiPoll: fd %d mask 0x%x\n",
                     (int)event[i].portev_object, mask);
 
-            state->pending_fds[i] = event[i].portev_object;
-            state->pending_masks[i] = (uintptr_t)event[i].portev_user;
+        state->pending_fds[i] = event[i].portev_object;
+        state->pending_masks[i] = (uintptr_t)event[i].portev_user;
     }
 
     return nevents;
 }
 
-static char *aeApiName(void) {
-    return "evport";
-}
+static char *aeApiName(void) { return "evport"; }

@@ -65,7 +65,7 @@
 #define HAVE_EPOLL 1
 #endif
 
-#if (defined(__APPLE__) && defined(MAC_OS_X_VERSION_10_6)) ||                  \
+#if (defined(__APPLE__) && defined(MAC_OS_X_VERSION_10_6)) || \
     defined(__FreeBSD__) || defined(__OpenBSD__) || defined(__NetBSD__)
 #define HAVE_KQUEUE 1
 #endif
@@ -137,9 +137,9 @@ void setproctitle(const char *fmt, ...);
 #define BIG_ENDIAN 4321    /* most-significant byte first (IBM, net) */
 #define PDP_ENDIAN 3412    /* LSB first in word, MSW first in long (pdp)*/
 
-#if defined(__i386__) || defined(__x86_64__) || defined(__amd64__) ||          \
-    defined(vax) || defined(ns32000) || defined(sun386) || defined(MIPSEL) ||  \
-    defined(_MIPSEL) || defined(BIT_ZERO_ON_RIGHT) || defined(__alpha__) ||    \
+#if defined(__i386__) || defined(__x86_64__) || defined(__amd64__) ||         \
+    defined(vax) || defined(ns32000) || defined(sun386) || defined(MIPSEL) || \
+    defined(_MIPSEL) || defined(BIT_ZERO_ON_RIGHT) || defined(__alpha__) ||   \
     defined(__alpha)
 #define BYTE_ORDER LITTLE_ENDIAN
 #endif
@@ -179,7 +179,7 @@ void setproctitle(const char *fmt, ...);
 #endif
 #endif
 
-#if !defined(BYTE_ORDER) ||                                                    \
+#if !defined(BYTE_ORDER) || \
     (BYTE_ORDER != BIG_ENDIAN && BYTE_ORDER != LITTLE_ENDIAN)
 /* you must determine what the correct bit order is for
  * your compiler - the next line is an intentional error
@@ -190,8 +190,8 @@ void setproctitle(const char *fmt, ...);
 #endif
 
 #if (__i386 || __amd64) && __GNUC__
-#define GNUC_VERSION                                                           \
-  (__GNUC__ * 10000 + __GNUC_MINOR__ * 100 + __GNUC_PATCHLEVEL__)
+#define GNUC_VERSION \
+    (__GNUC__ * 10000 + __GNUC_MINOR__ * 100 + __GNUC_PATCHLEVEL__)
 #if (GNUC_VERSION >= 40100) || defined(__clang__)
 #define HAVE_ATOMIC
 #endif

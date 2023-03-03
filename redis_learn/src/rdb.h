@@ -31,6 +31,7 @@
 #define __REDIS_RDB_H
 
 #include <stdio.h>
+
 #include "rio.h"
 
 /* TBD: include only necessary headers. */
@@ -65,7 +66,7 @@
  *           查看 REDIS_RDB_ENC_* 定义获得更多消息
  *
  * Lenghts up to 63 are stored using a single byte, most DB keys, and may
- * values, will fit inside. 
+ * values, will fit inside.
  *
  * 一个字节（的其中 6 个字节）可以保存的最大长度是 63 （包括在内），
  * 对于大多数键和值来说，都已经足够了。
@@ -84,10 +85,10 @@
  * 当对象是一个字符串对象时，
  * 最高两个位之后的两个位（第 3 个位和第 4 个位）指定了对象的特殊编码
  */
-#define REDIS_RDB_ENC_INT8 0        /* 8 bit signed integer */
-#define REDIS_RDB_ENC_INT16 1       /* 16 bit signed integer */
-#define REDIS_RDB_ENC_INT32 2       /* 32 bit signed integer */
-#define REDIS_RDB_ENC_LZF 3         /* string compressed with FASTLZ */
+#define REDIS_RDB_ENC_INT8 0  /* 8 bit signed integer */
+#define REDIS_RDB_ENC_INT16 1 /* 16 bit signed integer */
+#define REDIS_RDB_ENC_INT32 2 /* 32 bit signed integer */
+#define REDIS_RDB_ENC_LZF 3   /* string compressed with FASTLZ */
 
 /* Dup object types to RDB object types. Only reason is readability (are we
  * dealing with RDB types or with in-memory object types?).
@@ -95,20 +96,20 @@
  * 对象类型在 RDB 文件中的类型
  */
 #define REDIS_RDB_TYPE_STRING 0
-#define REDIS_RDB_TYPE_LIST   1
-#define REDIS_RDB_TYPE_SET    2
-#define REDIS_RDB_TYPE_ZSET   3
-#define REDIS_RDB_TYPE_HASH   4
+#define REDIS_RDB_TYPE_LIST 1
+#define REDIS_RDB_TYPE_SET 2
+#define REDIS_RDB_TYPE_ZSET 3
+#define REDIS_RDB_TYPE_HASH 4
 
 /* Object types for encoded objects.
  *
  * 对象的编码方式
  */
-#define REDIS_RDB_TYPE_HASH_ZIPMAP    9
-#define REDIS_RDB_TYPE_LIST_ZIPLIST  10
-#define REDIS_RDB_TYPE_SET_INTSET    11
-#define REDIS_RDB_TYPE_ZSET_ZIPLIST  12
-#define REDIS_RDB_TYPE_HASH_ZIPLIST  13
+#define REDIS_RDB_TYPE_HASH_ZIPMAP 9
+#define REDIS_RDB_TYPE_LIST_ZIPLIST 10
+#define REDIS_RDB_TYPE_SET_INTSET 11
+#define REDIS_RDB_TYPE_ZSET_ZIPLIST 12
+#define REDIS_RDB_TYPE_HASH_ZIPLIST 13
 
 /* Test if a type is an object type.
  *
@@ -125,9 +126,9 @@
 // 以秒计算的过期时间
 #define REDIS_RDB_OPCODE_EXPIRETIME 253
 // 选择数据库
-#define REDIS_RDB_OPCODE_SELECTDB   254
+#define REDIS_RDB_OPCODE_SELECTDB 254
 // 数据库的结尾（但不是 RDB 文件的结尾）
-#define REDIS_RDB_OPCODE_EOF        255
+#define REDIS_RDB_OPCODE_EOF 255
 
 int rdbSaveType(rio *rdb, unsigned char type);
 int rdbLoadType(rio *rdb);
@@ -146,7 +147,8 @@ off_t rdbSavedObjectLen(robj *o);
 off_t rdbSavedObjectPages(robj *o);
 robj *rdbLoadObject(int type, rio *rdb);
 void backgroundSaveDoneHandler(int exitcode, int bysignal);
-int rdbSaveKeyValuePair(rio *rdb, robj *key, robj *val, long long expiretime, long long now);
+int rdbSaveKeyValuePair(rio *rdb, robj *key, robj *val, long long expiretime,
+                        long long now);
 robj *rdbLoadStringObject(rio *rdb);
 
 #endif

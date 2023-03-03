@@ -36,8 +36,8 @@
 /*
  * 双端链表节点
  */
-typedef struct listNode {
-
+typedef struct listNode
+{
     // 前置节点
     struct listNode *prev;
 
@@ -52,8 +52,8 @@ typedef struct listNode {
 /*
  * 双端链表迭代器
  */
-typedef struct listIter {
-
+typedef struct listIter
+{
     // 当前迭代到的节点
     listNode *next;
 
@@ -65,8 +65,8 @@ typedef struct listIter {
 /*
  * 双端链表结构
  */
-typedef struct list {
-
+typedef struct list
+{
     // 表头节点
     listNode *head;
 
@@ -109,13 +109,13 @@ typedef struct list {
 
 // 将链表 l 的值复制函数设置为 m
 // T = O(1)
-#define listSetDupMethod(l,m) ((l)->dup = (m))
+#define listSetDupMethod(l, m) ((l)->dup = (m))
 // 将链表 l 的值释放函数设置为 m
 // T = O(1)
-#define listSetFreeMethod(l,m) ((l)->free = (m))
+#define listSetFreeMethod(l, m) ((l)->free = (m))
 // 将链表的对比函数设置为 m
 // T = O(1)
-#define listSetMatchMethod(l,m) ((l)->match = (m))
+#define listSetMatchMethod(l, m) ((l)->match = (m))
 
 // 返回给定链表的值复制函数
 // T = O(1)
@@ -144,7 +144,7 @@ void listRewind(list *list, listIter *li);
 void listRewindTail(list *list, listIter *li);
 void listRotate(list *list);
 
-/* Directions for iterators 
+/* Directions for iterators
  *
  * 迭代器进行迭代的方向
  */

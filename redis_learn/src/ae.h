@@ -93,21 +93,21 @@ typedef void aeBeforeSleepProc(struct aeEventLoop *eventLoop);
  *
  * 文件事件结构
  */
-typedef struct aeFileEvent {
+typedef struct aeFileEvent
+{
+    // 监听事件类型掩码，
+    // 值可以是 AE_READABLE 或 AE_WRITABLE ，
+    // 或者 AE_READABLE | AE_WRITABLE
+    int mask; /* one of AE_(READABLE|WRITABLE) */
 
-  // 监听事件类型掩码，
-  // 值可以是 AE_READABLE 或 AE_WRITABLE ，
-  // 或者 AE_READABLE | AE_WRITABLE
-  int mask; /* one of AE_(READABLE|WRITABLE) */
+    // 读事件处理器
+    aeFileProc *rfileProc;
 
-  // 读事件处理器
-  aeFileProc *rfileProc;
+    // 写事件处理器
+    aeFileProc *wfileProc;
 
-  // 写事件处理器
-  aeFileProc *wfileProc;
-
-  // 多路复用库的私有数据
-  void *clientData;
+    // 多路复用库的私有数据
+    void *clientData;
 
 } aeFileEvent;
 
@@ -115,26 +115,26 @@ typedef struct aeFileEvent {
  *
  * 时间事件结构
  */
-typedef struct aeTimeEvent {
+typedef struct aeTimeEvent
+{
+    // 时间事件的唯一标识符
+    long long id; /* time event identifier. */
 
-  // 时间事件的唯一标识符
-  long long id; /* time event identifier. */
+    // 事件的到达时间
+    long when_sec; /* seconds */
+    long when_ms;  /* milliseconds */
 
-  // 事件的到达时间
-  long when_sec; /* seconds */
-  long when_ms;  /* milliseconds */
+    // 事件处理函数
+    aeTimeProc *timeProc;
 
-  // 事件处理函数
-  aeTimeProc *timeProc;
+    // 事件释放函数
+    aeEventFinalizerProc *finalizerProc;
 
-  // 事件释放函数
-  aeEventFinalizerProc *finalizerProc;
+    // 多路复用库的私有数据
+    void *clientData;
 
-  // 多路复用库的私有数据
-  void *clientData;
-
-  // 指向下个时间事件结构，形成链表
-  struct aeTimeEvent *next;
+    // 指向下个时间事件结构，形成链表
+    struct aeTimeEvent *next;
 
 } aeTimeEvent;
 
@@ -142,15 +142,15 @@ typedef struct aeTimeEvent {
  *
  * 已就绪事件
  */
-typedef struct aeFiredEvent {
+typedef struct aeFiredEvent
+{
+    // 已就绪文件描述符
+    int fd;
 
-  // 已就绪文件描述符
-  int fd;
-
-  // 事件类型掩码，
-  // 值可以是 AE_READABLE 或 AE_WRITABLE
-  // 或者是两者的或
-  int mask;
+    // 事件类型掩码，
+    // 值可以是 AE_READABLE 或 AE_WRITABLE
+    // 或者是两者的或
+    int mask;
 
 } aeFiredEvent;
 
@@ -158,37 +158,37 @@ typedef struct aeFiredEvent {
  *
  * 事件处理器的状态
  */
-typedef struct aeEventLoop {
+typedef struct aeEventLoop
+{
+    // 目前已注册的最大描述符
+    int maxfd; /* highest file descriptor currently registered */
 
-  // 目前已注册的最大描述符
-  int maxfd; /* highest file descriptor currently registered */
+    // 目前已追踪的最大描述符
+    int setsize; /* max number of file descriptors tracked */
 
-  // 目前已追踪的最大描述符
-  int setsize; /* max number of file descriptors tracked */
+    // 用于生成时间事件 id
+    long long timeEventNextId;
 
-  // 用于生成时间事件 id
-  long long timeEventNextId;
+    // 最后一次执行时间事件的时间
+    time_t lastTime; /* Used to detect system clock skew */
 
-  // 最后一次执行时间事件的时间
-  time_t lastTime; /* Used to detect system clock skew */
+    // 已注册的文件事件
+    aeFileEvent *events; /* Registered events */
 
-  // 已注册的文件事件
-  aeFileEvent *events; /* Registered events */
+    // 已就绪的文件事件
+    aeFiredEvent *fired; /* Fired events */
 
-  // 已就绪的文件事件
-  aeFiredEvent *fired; /* Fired events */
+    // 时间事件
+    aeTimeEvent *timeEventHead;
 
-  // 时间事件
-  aeTimeEvent *timeEventHead;
+    // 事件处理器的开关
+    int stop;
 
-  // 事件处理器的开关
-  int stop;
+    // 多路复用库的私有数据
+    void *apidata; /* This is used for polling API specific data */
 
-  // 多路复用库的私有数据
-  void *apidata; /* This is used for polling API specific data */
-
-  // 在处理事件前要执行的函数
-  aeBeforeSleepProc *beforesleep;
+    // 在处理事件前要执行的函数
+    aeBeforeSleepProc *beforesleep;
 
 } aeEventLoop;
 

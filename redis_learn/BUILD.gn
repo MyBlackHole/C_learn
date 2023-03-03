@@ -54,7 +54,7 @@ group("redis"){
     "src:ae_epoll",
     "src:ae",
     "src:replication",
-    # "src:ae_select",
+    "src:ae_select",
     ## evport是Solaris 10当中提供的io多路复用机制
     # "src:ae_evport",
     ## kqueue是FreeBSD当中提供的io多路复用机制

@@ -31,9 +31,10 @@
 #ifndef __INTSET_H
 #define __INTSET_H
 #include <stdint.h>
+#include <stdlib.h>
 
-typedef struct intset {
-    
+typedef struct intset
+{
     // 编码方式
     uint32_t encoding;
 
@@ -54,4 +55,4 @@ uint8_t intsetGet(intset *is, uint32_t pos, int64_t *value);
 uint32_t intsetLen(intset *is);
 size_t intsetBlobLen(intset *is);
 
-#endif // __INTSET_H
+#endif  // __INTSET_H

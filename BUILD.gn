@@ -1,5 +1,9 @@
 group("default"){
   deps = [
+    "//Algorithms_learn/string:prefix_func",
+
+    "//crypto-algorithms_learn:des_test",
+
     "//sys_statfs_learn:statfs_test",
     "//sys_statfs_learn:statvfs_test",
 
@@ -7,6 +11,7 @@ group("default"){
 
     "//raft_learn:main",
 
+    "//uv_learn/uvtee:main",
     "//uv_learn:uv_fs_scandir_test",
     "//uv_learn:uv_fs_stat_test",
     "//uv_learn/plugin:main",
@@ -88,7 +93,7 @@ group("default"){
 
     "//execinfo_learn:backtrace_test",
 
-    # "//redis_learn:redis",
+    "//redis_learn:redis",
 
     "//openssl_learn:SHA1_test",
     "//openssl_learn:AES_cbc_encrypt_test",
@@ -363,6 +368,7 @@ group("default"){
     "//stdlib_learn:realloc_test",
 
     "//unistd_learn:gethostname_test",
+    "//unistd_learn:truncate_test",
     "//unistd_learn:ftruncate_test",
     "//unistd_learn:pathconf_test",
     "//unistd_learn:getcwd_test",
@@ -434,6 +440,7 @@ group("default"){
     "//signal_learn:SIG_IGN_test",
     "//signal_learn:SIGFPE_test",
 
+    "//fcntl_learn:fallocate_test",
     "//fcntl_learn:fcntl_F_WRLCK_test",
     "//fcntl_learn:splice1_test",
     "//fcntl_learn:splice_test",
