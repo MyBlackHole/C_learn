@@ -5,10 +5,10 @@
 #include <sys/socket.h>
 #include <unistd.h>
 
-void error_handling(char *message);
-
 #define TRUE 1
 #define FALSE 0
+
+void error_handling(char *message);
 
 int main(int argc, char *argv[])
 {
@@ -25,7 +25,9 @@ int main(int argc, char *argv[])
 
     serv_sock = socket(PF_INET, SOCK_STREAM, 0);
     if (serv_sock == -1)
+    {
         error_handling("socket() error");
+    }
     /*
     optlen = sizeof(option);
     option = TRUE;
@@ -37,9 +39,13 @@ int main(int argc, char *argv[])
     serv_adr.sin_port = htons(atoi(argv[1]));
 
     if (bind(serv_sock, (struct sockaddr *)&serv_adr, sizeof(serv_adr)))
+    {
         error_handling("bind() error");
+    }
     if (listen(serv_sock, 5) == -1)
+    {
         error_handling("listen error");
+    }
     clnt_adr_sz = sizeof(clnt_adr);
     clnt_sock = accept(serv_sock, (struct sockaddr *)&clnt_adr, &clnt_adr_sz);
 

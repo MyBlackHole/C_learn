@@ -2151,9 +2151,8 @@ void bgsaveCommand(redisClient *c)
     else if (server.aof_child_pid != -1)
     {
         addReplyError(c, "Can't BGSAVE while AOF log rewriting is in progress");
-
-        // 执行 BGSAVE
     }
+    // 执行 BGSAVE
     else if (rdbSaveBackground(server.rdb_filename) == REDIS_OK)
     {
         addReplyStatus(c, "Background saving started");

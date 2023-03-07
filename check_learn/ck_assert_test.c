@@ -36,6 +36,7 @@ int main(int argc, char *argv[])
     sr = srunner_create(make_add_suite());  // 将Suite加入到SRunner
     srunner_run_all(sr, CK_NORMAL);
     int n = srunner_ntests_failed(sr);  // 运行所有测试用例
+    printf("failed number %d\n", n);
     srunner_free(sr);
 
     return 0;

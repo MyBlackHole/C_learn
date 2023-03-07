@@ -1,0 +1,6 @@
+executable("webserv_linux") {
+  cflags = ["-g", "-Wall"]
+  sources = [
+    "webserv_linux.c",
+  ]
+}

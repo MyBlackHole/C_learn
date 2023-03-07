@@ -98,6 +98,7 @@ void *handle_clnt(void *arg)
     close(clnt_sock);
     return NULL;
 }
+
 void send_msg(char *msg, int len)
 {
     // 向连接的所有客户端发送消息
@@ -109,6 +110,7 @@ void send_msg(char *msg, int len)
     }
     pthread_mutex_unlock(&mutx);
 }
+
 void error_handling(char *msg)
 {
     fputs(msg, stderr);

@@ -1,5 +1,6 @@
 executable("ck_assert_test") {
   ldflags = ["-lcheck"]
+  cflags = ["-g", "-Wall"]
   sources = [
     "ck_assert_test.c"
   ]

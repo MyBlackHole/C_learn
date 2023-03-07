@@ -14,7 +14,9 @@ char *getpass(const char *prompt)
     int c;
 
     if ((fp = fopen(ctermid(NULL), "r+")) == NULL)
+    {
         return (NULL);
+    }
     setbuf(fp, NULL);
 
     sigemptyset(&sig);
@@ -30,8 +32,12 @@ char *getpass(const char *prompt)
 
     ptr = buf;
     while ((c = getc(fp)) != EOF && c != '\n')
+    {
         if (ptr < &buf[MAX_PASS_LEN])
+        {
             *ptr++ = c;
+        }
+    }
     *ptr = 0;       /* null terminate */
     putc('\n', fp); /* we echo a newline */
 

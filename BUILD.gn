@@ -1,5 +1,6 @@
 group("default"){
   deps = [
+    "//TCP-IP-NetworkNote_learn/ch24:webserv_linux",
     "//Algorithms_learn/string:prefix_func",
 
     "//crypto-algorithms_learn:des_test",

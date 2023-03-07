@@ -8,7 +8,9 @@ int main(void)
     struct termios term;
 
     if (tcgetattr(STDIN_FILENO, &term) < 0)
+    {
         perror("tcgetattr error");
+    }
 
     switch (term.c_cflag & CSIZE)
     {
@@ -31,7 +33,9 @@ int main(void)
     term.c_cflag &= ~CSIZE; /* zero out the bits */
     term.c_cflag |= CS8;    /* set 8 bits/byte */
     if (tcsetattr(STDIN_FILENO, TCSANOW, &term) < 0)
+    {
         perror("tcsetattr error");
+    }
 
     exit(0);
 }

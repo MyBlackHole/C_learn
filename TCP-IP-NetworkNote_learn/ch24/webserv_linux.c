@@ -20,7 +20,8 @@ int main(int argc, char *argv[])
     int serv_sock, clnt_sock;
     struct sockaddr_in serv_adr, clnt_adr;
     socklen_t clnt_adr_size;
-    char buf[BUF_SIZE];
+    int on = 1;
+    // char buf[BUF_SIZE];
     pthread_t t_id;
     if (argc != 2)
     {
@@ -29,14 +30,26 @@ int main(int argc, char *argv[])
     }
 
     serv_sock = socket(PF_INET, SOCK_STREAM, 0);
+    // SO_REUSEADDR 允许重复绑定
+    if (setsockopt(serv_sock, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on)) == -1)
+    // if (setsockopt(serv_sock, SOL_SOCKET, SO_KEEPALIVE, &on, sizeof(on)) ==
+    // -1)
+    {
+        exit(1);
+    }
+
     memset(&serv_adr, 0, sizeof(serv_adr));
     serv_adr.sin_family = AF_INET;
     serv_adr.sin_addr.s_addr = htonl(INADDR_ANY);
     serv_adr.sin_port = htons(atoi(argv[1]));
     if (bind(serv_sock, (struct sockaddr *)&serv_adr, sizeof(serv_adr)) == -1)
+    {
         error_handling("bind() error");
+    }
     if (listen(serv_sock, 20) == -1)
+    {
         error_handling("listen() error");
+    }
 
     while (1)
     {
@@ -46,6 +59,7 @@ int main(int argc, char *argv[])
         printf("Connection Request : %s:%d\n", inet_ntoa(clnt_adr.sin_addr),
                ntohs(clnt_adr.sin_port));
         pthread_create(&t_id, NULL, request_handler, &clnt_sock);
+        // 将线程设置为分离状态, 使其自动回收占用资源
         pthread_detach(t_id);
     }
     close(serv_sock);
@@ -120,6 +134,7 @@ void send_data(FILE *fp, char *ct, char *file_name)
     fflush(fp);
     fclose(fp);
 }
+
 char *content_type(char *file)
 {
     char extension[SMALL_BUF];
@@ -129,10 +144,15 @@ char *content_type(char *file)
     strcpy(extension, strtok(NULL, "."));
 
     if (!strcmp(extension, "html") || !strcmp(extension, "htm"))
+    {
         return "text/html";
+    }
     else
+    {
         return "text/plain";
+    }
 }
+
 void send_error(FILE *fp)
 {
     char protocol[] = "HTTP/1.0 400 Bad Request\r\n";
@@ -147,6 +167,7 @@ void send_error(FILE *fp)
     fputs(server, fp);
     fputs(cnt_len, fp);
     fputs(cnt_type, fp);
+    fputs(content, fp);
     fflush(fp);
 }
 void error_handling(char *message)

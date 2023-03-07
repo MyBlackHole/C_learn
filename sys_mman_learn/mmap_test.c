@@ -17,19 +17,30 @@ int main(int argc, char **argv)  // map a normal file as shared mem:
 {
     int fd, i;
     people *p_map;
+    int rv;
     // 以读写方式打开， 没有自动创建
     fd = open(argv[1], O_CREAT | O_RDWR, S_IRWXU | S_IRWXG | S_IRWXO);
+    if (fd < 0)
+    {
+        perror(strerror(errno));
+        exit(EXIT_FAILURE);
+    }
 
     // 文件大小不能为 0
     // 否则读取异常
-    write(fd, "\n", 1);
+    rv = write(fd, "\n", 1);
+    if (rv < 0)
+    {
+        printf("write %s \n", strerror(rv));
+        exit(EXIT_FAILURE);
+    }
 
     p_map = mmap(NULL, sizeof(people) * 10, PROT_READ | PROT_WRITE, MAP_SHARED,
                  fd, 0);
     if (p_map == MAP_FAILED)
     {
         perror(strerror(errno));
-        exit(0);
+        exit(EXIT_FAILURE);
     }
 
     char c[2];
@@ -42,4 +53,5 @@ int main(int argc, char **argv)  // map a normal file as shared mem:
     }
     // 解除映射时会把内存数据写回文件，但是不会超出文件大小
     munmap(p_map, sizeof(people) * 10);
+    exit(EXIT_SUCCESS);
 }

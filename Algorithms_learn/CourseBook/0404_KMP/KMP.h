@@ -9,7 +9,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "SString.h"            //**▲04 串**//
+
+#include "SString.h"  //**▲04 串**//
 
 /*
  * ████████ 算法4.6 ████████

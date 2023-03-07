@@ -9,11 +9,8 @@
 int main(int argc, char *argv[])
 {
     int fd1, fd2, fd3;
-
     char *path = dirname(argv[0]);
-
     char *filename = "/test.dat";
-
     char *name = malloc(strlen(path) + strlen(filename));
 
     strcpy(name, path);
