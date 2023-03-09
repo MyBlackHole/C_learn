@@ -1,6 +1,16 @@
 group("default"){
   deps = [
+
+    "//CAlgorithm_test/dfs:1",
+    "//CAlgorithm_test/dfs:2",
+    "//CAlgorithm_test/dfs:3",
+    "//CAlgorithm_test/dfs:4",
+    "//CAlgorithm_test/tree:1",
+    "//CAlgorithm_test/tree:2",
+    "//CAlgorithm_test/tree:3",
+
     "//TCP-IP-NetworkNote_learn/ch24:webserv_linux",
+
     "//Algorithms_learn/string:prefix_func",
 
     "//crypto-algorithms_learn:des_test",
