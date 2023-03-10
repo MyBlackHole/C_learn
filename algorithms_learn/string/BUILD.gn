@@ -1,7 +1,7 @@
-executable("prefix_func") {
+executable("1") {
   cflags = ["-g", "-Wall"]
 
   sources = [ 
-    "prefix_func.c"
+    "1.c"
   ]
 }

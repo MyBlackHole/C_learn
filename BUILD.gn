@@ -1,6 +1,9 @@
 group("default"){
   deps = [
 
+    "//algorithms_learn/sort:1",
+    "//algorithms_learn/sort:2",
+    "//algorithms_learn/sort:3",
     "//algorithms_learn/greedy:1",
     "//algorithms_learn/dfs:1",
     "//algorithms_learn/dfs:2",
@@ -9,7 +12,7 @@ group("default"){
     "//algorithms_learn/tree:1",
     "//algorithms_learn/tree:2",
     "//algorithms_learn/tree:3",
-    "//algorithms_learn/string:prefix_func",
+    "//algorithms_learn/string:1",
 
     "//TCP-IP-NetworkNote_learn/ch24:webserv_linux",
 
