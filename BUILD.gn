@@ -49,6 +49,10 @@ group("default"){
 
     "//xxHash_learn:XXH3_64bits",
 
+    "//tbox_learn:sort_test",
+    "//tbox_learn:heap_test1",
+    "//tbox_learn:mem_allocator_test",
+    "//tbox_learn:heap_test",
     "//tbox_learn:vector_mem_test",
     "//tbox_learn:vector_test",
     "//tbox_learn:list_test",

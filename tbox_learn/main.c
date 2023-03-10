@@ -4,7 +4,9 @@ int main(int argc, char **argv)
 {
     // init tbox
     if (!tb_init(tb_null, tb_null))
+    {
         return 0;
+    }
 
     // trace
     tb_trace_i("hello tbox");

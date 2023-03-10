@@ -10,7 +10,9 @@
 int main(int argc, char *argv[])
 {
     if (!tb_init(tb_null, tb_null))
+    {
         return -1;
+    }
 
     tb_list_ref_t list = tb_null;
     list = tb_list_init(0, tb_element_long());

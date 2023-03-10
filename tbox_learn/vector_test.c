@@ -8,7 +8,9 @@
 int main(int argc, char *argv[])
 {
     if (!tb_init(tb_null, tb_null))
+    {
         return -1;
+    }
 
     tb_vector_ref_t vector = tb_null;
     vector = tb_vector_init(0, tb_element_long());

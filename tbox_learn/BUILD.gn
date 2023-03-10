@@ -1,3 +1,36 @@
+
+executable("sort_test") {
+  cflags = ["-g", "-Wall"]
+  ldflags = ["-ltbox"]
+  sources = [
+    "sort_test.c",
+  ]
+}
+
+executable("heap_test1") {
+  cflags = ["-g", "-Wall"]
+  ldflags = ["-ltbox"]
+  sources = [
+    "heap_test1.c",
+  ]
+}
+
+executable("mem_allocator_test") {
+  cflags = ["-g", "-Wall"]
+  ldflags = ["-ltbox"]
+  sources = [
+    "mem_allocator_test.c",
+  ]
+}
+
+executable("heap_test") {
+  cflags = ["-g", "-Wall"]
+  ldflags = ["-ltbox"]
+  sources = [
+    "heap_test.c",
+  ]
+}
+
 executable("main") {
   cflags = ["-g", "-Wall"]
   ldflags = ["-ltbox"]
