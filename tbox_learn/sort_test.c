@@ -47,6 +47,9 @@ int main(int argc, char* argv[])
     tb_sort_all(iterator, tb_null);
     time = tb_mclock() - time;
 
+    // time
+    tb_trace_i("tb_heap_sort_int_all: %lld ms", time);
+
     // 打印
     for (i = 0; i < n; i++) tb_trace_i("sort %d:%s", i, data[i]);
 

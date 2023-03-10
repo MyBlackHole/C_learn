@@ -1,0 +1,5 @@
+executable("1") {
+  cflags = ["-g", "-Wall"]
+  ldflags = ["-ltbox"]
+  sources = ["1.c"]
+}

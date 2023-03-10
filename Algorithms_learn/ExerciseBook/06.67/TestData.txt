@@ -1,7 +1,0 @@
-^A
-AB
-AC
-AD
-CE
-CF
-^^

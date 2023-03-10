@@ -1,9 +1,0 @@
-^AL
-ABL
-ACR
-BDL
-CEL
-CFR
-DGR
-FHL
-^^L
