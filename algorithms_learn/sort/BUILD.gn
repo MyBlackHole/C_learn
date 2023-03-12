@@ -1,3 +1,12 @@
+
+executable("4") {
+  cflags = ["-g", "-Wall"]
+
+  sources = [ 
+    "4.c"
+  ]
+}
+
 executable("3") {
   cflags = ["-g", "-Wall"]
 

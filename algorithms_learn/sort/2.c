@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void insert_sort(int *a, int n)
+void bubble_sort(int *a, int n)
 {
     bool flag = true;
     while (flag)
@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
 {
     int a[] = {1, 4, 6, 2, 0, 8};
     int count = sizeof(a) / sizeof(int) - 1;
-    insert_sort(a, count);
+    bubble_sort(a, count);
     for (int i = 0; i <= count; i++)
     {
         printf("%d\n", a[i]);
