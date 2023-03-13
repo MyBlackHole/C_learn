@@ -1,6 +1,7 @@
 group("default"){
   deps = [
 
+    "//algorithms_learn/difference:1",
     "//algorithms_learn/sort:1",
     "//algorithms_learn/sort:2",
     "//algorithms_learn/sort:3",
