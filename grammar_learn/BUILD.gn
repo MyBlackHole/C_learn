@@ -92,6 +92,13 @@ executable("argv_test") {
   ]
 }
 
+executable("struct2_test") {
+  cflags = ["-g", "-Wall"]
+  sources = [
+    "struct2_test.c",
+  ]
+}
+
 executable("struct_test") {
   cflags = ["-g", "-Wall"]
   sources = [

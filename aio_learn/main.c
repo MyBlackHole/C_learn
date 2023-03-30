@@ -21,6 +21,7 @@ int main(int argc, char *argv[])
     struct iocb *iocbpp;
 
     char *name = "/direct.txt";
+    // 获取文件路径的目录路径
     char *path = dirname(argv[0]);
     char *file_path = malloc(strlen(name) + strlen(path));
     strcpy(file_path, path);

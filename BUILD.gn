@@ -1,5 +1,10 @@
 group("default"){
   deps = [
+    "//readline_learn:main",
+
+    "//sys_sendfile_learn:sendfile_test",
+
+    "//libgen_learn:basename_test",
 
     "//algorithms_learn/difference:1",
     "//algorithms_learn/sort:1",
@@ -87,6 +92,8 @@ group("default"){
     # "//dome/remixdb:lib",
     # "//dome/remixdb:kv",
     # "//dome/remixdb:blkio",
+
+    "//dome/rtree.c:test",
 
     "//dome/btree.c:test",
 
@@ -293,6 +300,7 @@ group("default"){
     "//arpa_inet_learn:inet_addr_test",
     "//arpa_inet_learn:inet_ntop_test",
 
+    "//gcc_learn:inline_main",
     "//gcc_learn:__builtin_offsetof_test",
     "//gcc_learn:__builtin_clz_test",
 
@@ -319,10 +327,12 @@ group("default"){
     "//grammar_learn:continue_test",
     "//grammar_learn:do_while_test",
     "//grammar_learn:argv_test",
-    "//grammar_learn/macro:define_test",
     "//grammar_learn:long_int_test",
     "//grammar_learn:1",
     "//grammar_learn:struct_test",
+    "//grammar_learn:struct_test",
+    "//grammar_learn/macro:define_test",
+    "//grammar_learn/macro:macro",
 
     "//sys_signalfd_learn:signalfd_test",
 
@@ -388,6 +398,7 @@ group("default"){
     "//stdlib_learn:malloc_test",
     "//stdlib_learn:realloc_test",
 
+    "//unistd_learn:write_read_struct_test",
     "//unistd_learn:gethostname_test",
     "//unistd_learn:truncate_test",
     "//unistd_learn:ftruncate_test",

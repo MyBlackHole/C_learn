@@ -19,14 +19,14 @@ int main(int argc, char *argv[])
     if (argc < 3)
     {
         fprintf(stderr, "Usage: %s <str_file> <desc_file>\n", argv[0]);
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     sfd = open(argv[1], O_RDONLY);
     if (sfd < 0)
     {
         perror("open()");
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     dfd = open(argv[2], O_WRONLY | O_CREAT, O_TRUNC, 0600);
@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
     {
         close(sfd);
         perror("open()");
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     while (1)
@@ -43,7 +43,7 @@ int main(int argc, char *argv[])
         if (len < 0)
         {
             perror("read()");
-            exit(1);
+            exit(EXIT_FAILURE);
         }
         if (len == 0)
         {
@@ -58,7 +58,7 @@ int main(int argc, char *argv[])
             if (ret < 0)
             {
                 perror("write()");
-                exit(1);
+                exit(EXIT_FAILURE);
             }
             pos += pos;
             len -= ret;
@@ -68,5 +68,5 @@ int main(int argc, char *argv[])
     close(dfd);
     close(sfd);
 
-    exit(0);
+    exit(EXIT_SUCCESS);
 }

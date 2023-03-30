@@ -5,13 +5,15 @@
 void timeout(int sig)
 {
     if (sig == SIGALRM)
+    {
         puts("Time out!");
+    }
     alarm(2);
 }
 
 int main(int argc, char *argv[])
 {
-    int i;
+    // int i;
     struct sigaction act;
     act.sa_handler = timeout;     // 保存函数指针
     sigemptyset(&act.sa_mask);    // 将 sa_mask 函数的所有位初始化成0

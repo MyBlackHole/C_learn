@@ -1,5 +1,6 @@
 executable("XXH3_64bits") {
   cflags = ["-g", "-Wall"]
+  # sudo apt install libxxhash-dev
   ldflags = ["-lxxhash"]
   sources = [
     "main.c",

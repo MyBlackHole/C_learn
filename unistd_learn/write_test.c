@@ -15,6 +15,7 @@ int main(void)
         if (write(STDOUT_FILENO, buf, n) != n)
         {
             perror("write error");
+            exit(EXIT_FAILURE);
         }
     }
 
@@ -23,5 +24,5 @@ int main(void)
         perror("read error");
     }
 
-    exit(0);
+    exit(EXIT_SUCCESS);
 }

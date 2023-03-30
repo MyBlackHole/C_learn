@@ -1,4 +1,11 @@
 
+executable("write_read_struct_test") {
+  cflags = ["-g", "-Wall"]
+  sources = [
+    "write_read_struct_test.c",
+  ]
+}
+
 executable("gethostname_test") {
   cflags = ["-g", "-Wall"]
   sources = [

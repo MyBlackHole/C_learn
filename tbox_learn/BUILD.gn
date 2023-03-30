@@ -1,4 +1,5 @@
 
+# sudo apt install libtbox-dev
 executable("sort_test") {
   cflags = ["-g", "-Wall"]
   ldflags = ["-ltbox"]

@@ -18,6 +18,7 @@ executable("aio_read_test") {
   sources = [ "aio_read_test.c" ]
 }
 
+# sudo apt install libaio-dev
 executable("main") {
   cflags = ["-g", "-Wall"]
   libs = ["aio"]

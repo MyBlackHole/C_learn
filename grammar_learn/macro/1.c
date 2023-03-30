@@ -13,6 +13,7 @@ int main()
     struct Test test = {};
     struct Test *p;
     p = &test;
+    (void)p;
     printf("000\n");
     // printf("%d\n", test.a);
     // printf("%d\n", &(test).a);

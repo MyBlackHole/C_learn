@@ -28,6 +28,9 @@ int main()
     num.half.second = 'b';
     printf("%x\n", num.i);
 
+    union number b;
+    (void)b;
+
     getchar();
     return 0;
 }

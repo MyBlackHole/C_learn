@@ -1,3 +1,4 @@
+# sudo apt install liblz4-dev
 executable("main") {
   cflags = ["-g", "-Wall"]
   libs = ["lz4"]
