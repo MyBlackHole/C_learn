@@ -13,3 +13,8 @@ cmake-build-debug/
 out
 tags
 compile_commands.json
+*.cmd
+*.mod
+*.ko
+*.symvers
+*.order

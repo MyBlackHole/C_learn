@@ -1,5 +1,7 @@
 group("default"){
   deps = [
+    "//fuse_learn:hello",
+
     "//readline_learn:main",
 
     "//sys_sendfile_learn:sendfile_test",
