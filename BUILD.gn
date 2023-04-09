@@ -1,6 +1,7 @@
 group("default"){
   deps = [
     "//fuse_learn:hello",
+# "//fuse_learn:hello_ll_uds",
 
     "//readline_learn:main",
 
