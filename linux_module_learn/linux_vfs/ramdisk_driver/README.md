@@ -1,13 +1,11 @@
 1.compile:
-	cd /mnt/rlk_basic/chapter_14/lab3/
 	make
 2.test:
-	insmod 
-	cd /
-	mkfs.ext2 /dev/myramdisk
-	mkdir ramdisk
+	insmod ramdisk_driver.ko
+	sudo mkfs.ext4 /dev/ram0
+	mkdir /tmp/ramdisk
 	mount /dev/myramdisk ./ramdisk/
-	cd ./ramdisk
+	cd /tmp/ramdisk
 3.result:
 root@ubuntu:ramdisk# ls
 lost+found
