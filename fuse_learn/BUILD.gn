@@ -2,7 +2,7 @@
 # pkg-config fuse3 --cflags --libs
 executable("hello") {
   cflags = ["-g", "-Wall", "-L/usr/local/lib/x86_64-linux-gnu"]
-# include_dirs = ["/usr/local/include/fuse3"]
+  include_dirs = ["/usr/local/include/fuse3"]
   libs = ["fuse3", "pthread"]
 
   sources = [

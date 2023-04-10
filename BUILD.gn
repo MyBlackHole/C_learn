@@ -83,11 +83,11 @@ group("default"){
     "//APUE_learn/src:tools",
     "//APUE_learn/src:tcgetpgrp_tcsetpgrp",
 
-    # "//dome/twemproxy:nc_conf",
-    # "//dome/twemproxy/src/hashkit:nc_hashkit",
-
     "//uring_learn:io_uring_test",
 
+    # "//dome/twemproxy:nc_conf",
+    # "//dome/twemproxy/src/hashkit:nc_hashkit",
+#
     # "//dome/remixdb:xdbdemo",
     # "//dome/remixdb:xdb",
     # "//dome/remixdb:wh",
@@ -95,6 +95,8 @@ group("default"){
     # "//dome/remixdb:lib",
     # "//dome/remixdb:kv",
     # "//dome/remixdb:blkio",
+
+    "//dome/contained:contained",
 
     "//dome/rtree.c:test",
 
