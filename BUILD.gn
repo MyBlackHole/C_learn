@@ -1,6 +1,15 @@
 group("default"){
   deps = [
-    "//fuse_learn:hello",
+    "//rocksdb_learn:main",
+# namespace
+    "//namespace_learn:namespace",
+    "//namespace_learn/mount:unshare",
+    "//namespace_learn/uts:uts",
+    "//namespace_learn/ipc:ipc",
+    "//namespace_learn/pid:pid",
+    "//namespace_learn/mnt:mnt",
+
+# "//fuse_learn:hello",
 # "//fuse_learn:hello_ll_uds",
 
     "//readline_learn:main",

@@ -1,0 +1,9 @@
+executable("pid") {
+  cflags = ["-g", "-Wall"]
+    
+  libs = ["cap"]
+
+  sources = [
+    "pid.c",
+  ]
+}

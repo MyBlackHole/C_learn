@@ -481,6 +481,7 @@ int child(void *arg)
     return 0;
 }
 
+// 选择主机
 int choose_hostname(char *buff, size_t len)
 {
     static const char *suits[] = {"swords", "wands", "pentacles", "cups"};

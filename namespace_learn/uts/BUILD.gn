@@ -1,0 +1,7 @@
+executable("uts") {
+  cflags = ["-g", "-Wall"]
+
+  sources = [
+    "uts.c",
+  ]
+}

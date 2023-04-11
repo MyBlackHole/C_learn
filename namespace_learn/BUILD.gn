@@ -1,0 +1,15 @@
+executable("namespace") {
+  cflags = ["-g", "-Wall"]
+
+  sources = [
+    "no_namespace.c",
+  ]
+}
+
+executable("container") {
+  cflags = ["-g", "-Wall"]
+
+  sources = [
+    "container.c",
+  ]
+}
