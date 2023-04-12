@@ -7,10 +7,11 @@
 #ifndef ELINKLIST_H
 #define ELINKLIST_H
 
-#include "Status.h" //**▲ 01 绪论**//
-#include <limits.h> // 提供一些极限常量
+#include <limits.h>  // 提供一些极限常量
 #include <stdio.h>
-#include <stdlib.h> // 提供malloc、realloc、free、exit原型
+#include <stdlib.h>  // 提供malloc、realloc、free、exit原型
+
+#include "Status.h"  //**▲ 01 绪论**//
 
 /*
  * ████ 注意 ████
@@ -28,15 +29,17 @@ typedef int ElemType;
  *
  * 注：这里的线性链表存在头结点
  */
-typedef struct LNode {
-  ElemType data;
-  struct LNode *next;
+typedef struct LNode
+{
+    ElemType data;
+    struct LNode *next;
 } LNode, *Link, *Position;
 
 /* 维护线性链表头尾指针及长度信息 */
-typedef struct {
-  Link head, tail; // 分别指向线性链表中的头结点和尾结点
-  int len;         // 指示线性链表中数据元素的个数
+typedef struct
+{
+    Link head, tail;  // 分别指向线性链表中的头结点和尾结点
+    int len;          // 指示线性链表中数据元素的个数
 } ELinkList;
 
 /*━━━━━━━━━━━━━━━━━━━━━━ 内存操作 ━━━━━━━━━━━━━━━━━━━━━━*/

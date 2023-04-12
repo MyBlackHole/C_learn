@@ -12,41 +12,44 @@
 #include "mempool.h"
 #include "stat.h"
 
-struct BloomFilter {
-  // 可以存大小
-  uint32_t bytes; // bytes = bits >> 3 (length of filter)
-  // 键计数器
-  uint32_t nr_keys;
-  // 映射内存
-  uint8_t filter[];
+struct BloomFilter
+{
+    // 可以存大小
+    uint32_t bytes;  // bytes = bits >> 3 (length of filter)
+    // 键计数器
+    uint32_t nr_keys;
+    // 映射内存
+    uint8_t filter[];
 };
 
 // compact bloom_table
 // format: encoded bits, bits
 #define BLOOMTABLE_INTERVAL ((16u))
-struct BloomTable {
-  // 布隆过滤器内存指针
-  uint8_t *raw_bf;
-  // 布隆过滤器个数
-  uint32_t nr_bf;
-  // 所有布隆过滤器总大小
-  uint32_t nr_bytes; // size of raw_bf
-  // 每 16 个布隆过滤器间隔的内存大小
-  uint32_t offsets[];
+struct BloomTable
+{
+    // 布隆过滤器内存指针
+    uint8_t *raw_bf;
+    // 布隆过滤器个数
+    uint32_t nr_bf;
+    // 所有布隆过滤器总大小
+    uint32_t nr_bytes;  // size of raw_bf
+    // 每 16 个布隆过滤器间隔的内存大小
+    uint32_t offsets[];
 };
 
 // Container: storing boxes for multiple tables
 // Box: multiple related bloom-filter in one box
-struct BloomContainer {
-  int raw_fd;
-  uint64_t off_raw;       // === off_main in MetaFileHeader
-  uint32_t nr_barrels;    // === nr_main
-  uint32_t nr_bf_per_box; // 1 -- 8
-  // 桶个数
-  uint32_t nr_index;
-  uint64_t mtid;
-  // 每个桶 id
-  uint16_t index_last[]; // the LAST barrel_id in each box
+struct BloomContainer
+{
+    int raw_fd;
+    uint64_t off_raw;        // === off_main in MetaFileHeader
+    uint32_t nr_barrels;     // === nr_main
+    uint32_t nr_bf_per_box;  // 1 -- 8
+    // 桶个数
+    uint32_t nr_index;
+    uint64_t mtid;
+    // 每个桶 id
+    uint16_t index_last[];  // the LAST barrel_id in each box
 };
 
 struct BloomFilter *bloom_create(const uint32_t nr_keys,

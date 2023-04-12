@@ -12,14 +12,15 @@
 #include "mempool.h"
 #include "stat.h"
 
-struct KeyValue {
-  // 键长度
-  uint16_t klen;
-  // 值长度
-  uint16_t vlen;
-  uint8_t *pk;
-  uint8_t *pv;
-  uint8_t kv[]; // don't access it
+struct KeyValue
+{
+    // 键长度
+    uint16_t klen;
+    // 值长度
+    uint16_t vlen;
+    uint8_t *pk;
+    uint8_t *pv;
+    uint8_t kv[];  // don't access it
 };
 
 #define HASHBYTES ((20))
@@ -38,44 +39,48 @@ struct KeyValue {
 
 #define TABLE_ILOCKS_NR ((UINT64_C(64)))
 
-struct Table {
-  // 所有桶使用空间
-  uint64_t volume;
-  // 容量
-  uint64_t capacity;
-  // 内存池
-  struct Mempool *mempool; // store items
-  // 所有桶占有的内存起始地址
-  // 大小 TABLE_MAX_BARRELS 个 Barrel
-  struct Barrel *barrels;
-  // 读写缓存区
-  // 大小 BARREL_ALIGN * TABLE_NR_IO
-  uint8_t *io_buffer;
-  // 元索引个数
-  uint64_t nr_mi;
-  // 元索引
-  struct MetaIndex *mis;
-  // 布隆过滤器表
-  struct BloomTable *bt;
-  pthread_mutex_t ilocks[TABLE_ILOCKS_NR]; // used for parallel compaction feed
+struct Table
+{
+    // 所有桶使用空间
+    uint64_t volume;
+    // 容量
+    uint64_t capacity;
+    // 内存池
+    struct Mempool *mempool;  // store items
+    // 所有桶占有的内存起始地址
+    // 大小 TABLE_MAX_BARRELS 个 Barrel
+    struct Barrel *barrels;
+    // 读写缓存区
+    // 大小 BARREL_ALIGN * TABLE_NR_IO
+    uint8_t *io_buffer;
+    // 元索引个数
+    uint64_t nr_mi;
+    // 元索引
+    struct MetaIndex *mis;
+    // 布隆过滤器表
+    struct BloomTable *bt;
+    pthread_mutex_t
+        ilocks[TABLE_ILOCKS_NR];  // used for parallel compaction feed
 };
 
-struct MetaFileHeader {
-  uint64_t off;
-  // table 里所有桶使用空间
-  uint64_t volume;
-  // table 元索引个数
-  uint64_t nr_mi;
+struct MetaFileHeader
+{
+    uint64_t off;
+    // table 里所有桶使用空间
+    uint64_t volume;
+    // table 元索引个数
+    uint64_t nr_mi;
 } __attribute__((packed));
 
-struct MetaTable {
-  struct MetaFileHeader mfh;
-  int raw_fd;
-  uint64_t mtid;
-  struct MetaIndex *mis;
-  // 布隆过滤器表
-  struct BloomTable *bt;
-  struct Stat *stat;
+struct MetaTable
+{
+    struct MetaFileHeader mfh;
+    int raw_fd;
+    uint64_t mtid;
+    struct MetaIndex *mis;
+    // 布隆过滤器表
+    struct BloomTable *bt;
+    struct Stat *stat;
 };
 
 // ----Table

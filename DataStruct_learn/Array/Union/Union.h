@@ -7,9 +7,10 @@
 #ifndef UNION_H
 #define UNION_H
 
-#include "SqList.h" //**▲02 线性表**//
-#include "Status.h" //**▲01 绪论**//
 #include <stdio.h>
+
+#include "SqList.h"  //**▲02 线性表**//
+#include "Status.h"  //**▲01 绪论**//
 
 /*
  * ████████ 算法2.1 ████████

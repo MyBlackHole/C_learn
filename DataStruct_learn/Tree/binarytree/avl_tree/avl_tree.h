@@ -1,8 +1,9 @@
-struct AVLnode {
-  int key;
-  struct AVLnode *left;
-  struct AVLnode *right;
-  int height;
+struct AVLnode
+{
+    int key;
+    struct AVLnode *left;
+    struct AVLnode *right;
+    int height;
 };
 
 typedef struct AVLnode avlNode;
@@ -28,7 +29,7 @@ avlNode *RightLeftRotate(avlNode *z);
 
 avlNode *insert(avlNode *node, int key);
 
-avlNode *delete (avlNode *node, int queryNum);
+avlNode *delete(avlNode *node, int queryNum);
 
 avlNode *findNode(avlNode *node, int queryNum);
 

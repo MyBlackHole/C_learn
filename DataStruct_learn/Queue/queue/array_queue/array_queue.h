@@ -1,17 +1,18 @@
 #ifndef ARRAY_QUEUE_H
 #define ARRAY_QUEUE_H
 
-typedef struct _array_queue {
-  int size;   /*队列的大小*/
-  int num;    /*当前存储数据的大小*/
-  int head;   /*队列的头*/
-  int tail;   /*队列的尾*/
-  int *array; /*数据存储区*/
+typedef struct _array_queue
+{
+    int size;   /*队列的大小*/
+    int num;    /*当前存储数据的大小*/
+    int head;   /*队列的头*/
+    int tail;   /*队列的尾*/
+    int *array; /*数据存储区*/
 } array_queue;
 
 #define array_queue_is_empty(array_queue) (array_queue->num == 0)
-#define array_queue_is_full(array_queue)                                       \
-  ((array_queue->num) == (array_queue->size))
+#define array_queue_is_full(array_queue) \
+    ((array_queue->num) == (array_queue->size))
 
 extern array_queue *array_queue_create(int size);
 extern void array_queue_destory(array_queue *queue);

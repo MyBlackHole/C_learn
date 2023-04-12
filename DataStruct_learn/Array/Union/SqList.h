@@ -7,13 +7,14 @@
 #ifndef SQLIST_H
 #define SQLIST_H
 
-#include "Status.h" //**▲01 绪论**//
 #include <stdio.h>
-#include <stdlib.h> // 提供malloc、realloc、free、exit原型
+#include <stdlib.h>  // 提供malloc、realloc、free、exit原型
+
+#include "Status.h"  //**▲01 绪论**//
 
 /* 宏定义 */
-#define LIST_INIT_SIZE 100 // 顺序表存储空间的初始分配量
-#define LISTINCREMENT 10   // 顺序表存储空间的分配增量
+#define LIST_INIT_SIZE 100  // 顺序表存储空间的初始分配量
+#define LISTINCREMENT 10    // 顺序表存储空间的分配增量
 
 /* 顺序表元素类型定义 */
 typedef int ElemType;
@@ -23,10 +24,11 @@ typedef int ElemType;
  *
  * 注：elem在使用前需要先为其分配内存，且元素从elem[0]处开始存储
  */
-typedef struct {
-  ElemType *elem; // 顺序表存储空间的基址（指向顺序表所占内存的起始位置）
-  int length;     // 当前顺序表长度（包含多少元素）
-  int listsize;   // 当前分配的存储容量（可以存储多少元素）
+typedef struct
+{
+    ElemType *elem;  // 顺序表存储空间的基址（指向顺序表所占内存的起始位置）
+    int length;      // 当前顺序表长度（包含多少元素）
+    int listsize;  // 当前分配的存储容量（可以存储多少元素）
 } SqList;
 
 /*

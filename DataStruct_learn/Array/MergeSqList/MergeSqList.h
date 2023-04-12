@@ -7,9 +7,10 @@
 #ifndef MERGESQLIST_H
 #define MERGESQLIST_H
 
-#include "SqList.h" //**▲ 02 线性表**//
 #include <stdio.h>
 #include <stdlib.h>
+
+#include "SqList.h"  //**▲ 02 线性表**//
 
 /*
  * ████████ 算法2.2 ████████

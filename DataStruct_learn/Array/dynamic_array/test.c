@@ -1,41 +1,47 @@
-#include "dynamic_array.h"
 #include <stdio.h>
 #include <stdlib.h>
 
-int main() {
-  dynamic_array_t *da = init_dynamic_array();
+#include "dynamic_array.h"
 
-  if (!da) {
-    free(da);
-    exit(1);
-  }
+int main()
+{
+    dynamic_array_t *da = init_dynamic_array();
 
-  for (int i = 1; i <= 50; i++) {
-    if (!add(da, &i)) {
-      free(da->items);
-      free(da);
-      exit(1);
+    if (!da)
+    {
+        free(da);
+        exit(1);
     }
-  }
 
-  delete (da, 10);
+    for (int i = 1; i <= 50; i++)
+    {
+        if (!add(da, &i))
+        {
+            free(da->items);
+            free(da);
+            exit(1);
+        }
+    }
 
-  int value = 1000;
+    delete (da, 10);
 
-  put(da, &value, 0);
+    int value = 1000;
 
-  value = 5000;
+    put(da, &value, 0);
 
-  int another_value = 7000;
+    value = 5000;
 
-  add(da, &another_value);
+    int another_value = 7000;
 
-  for (int i = 0; i < da->size; i++) {
-    printf("value %d\n", *(int *)get(da, i));
-  }
+    add(da, &another_value);
 
-  int value_for_invalid_index = 10000;
+    for (int i = 0; i < da->size; i++)
+    {
+        printf("value %d\n", *(int *)get(da, i));
+    }
 
-  put(da, &value_for_invalid_index, 150);
-  return 0;
+    int value_for_invalid_index = 10000;
+
+    put(da, &value_for_invalid_index, 150);
+    return 0;
 }

@@ -1,15 +1,17 @@
 #ifndef __SINGLELIST_H__
 #define __SINGLELIST_H__
 
-#include <stdlib.h>
 #include <stdbool.h>
+#include <stdlib.h>
 
-typedef struct listNode {
+typedef struct listNode
+{
     struct listNode *next;
     void *value;
 } listNode;
 
-typedef struct linkedList {
+typedef struct linkedList
+{
     listNode *head;
     size_t len;
     size_t typesize;
@@ -39,7 +41,8 @@ linkedList *listAddNodeHead(linkedList *list, void *value);
 
 linkedList *listAddNodeTail(linkedList *list, void *value);
 
-linkedList *listInsertNode(linkedList *list, listNode *old_node, void *value, bool after);
+linkedList *listInsertNode(linkedList *list, listNode *old_node, void *value,
+                           bool after);
 
 void listDelNode(linkedList *list, listNode *node);
 
@@ -51,4 +54,4 @@ linkedList *listRewind(linkedList *list);
 
 size_t listLength(linkedList *list);
 
-#endif // !__SINGLELIST_H__
+#endif  // !__SINGLELIST_H__

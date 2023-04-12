@@ -3,26 +3,30 @@
  > Author:  jinshaohui
  > Mail:    jinshaohui789@163.com
  > Time:    18-10-12
- > Desc:   数组实现顺序栈 
+ > Desc:   数组实现顺序栈
  ************************************************************************/
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
-#include"./arrayStack.h"
+#include "./arrayStack.h"
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 /*创建并初始化顺序栈*/
-stArrayStack *arrayStack_create(int size) {
+stArrayStack *arrayStack_create(int size)
+{
     stArrayStack *parrStack = NULL;
 
-    parrStack = (stArrayStack *) malloc(sizeof(stArrayStack));
-    if (parrStack == NULL) {
+    parrStack = (stArrayStack *)malloc(sizeof(stArrayStack));
+    if (parrStack == NULL)
+    {
         return NULL;
     }
 
     parrStack->size = size;
     parrStack->pos = -1;
-    parrStack->array = (int *) malloc(sizeof(int) * size);
-    if (parrStack->array == NULL) {
+    parrStack->array = (int *)malloc(sizeof(int) * size);
+    if (parrStack->array == NULL)
+    {
         free(parrStack);
         return NULL;
     }
@@ -31,12 +35,15 @@ stArrayStack *arrayStack_create(int size) {
 }
 
 /*销毁顺序栈*/
-void arrayStack_destory(stArrayStack *parrStack) {
-    if (parrStack == NULL) {
+void arrayStack_destory(stArrayStack *parrStack)
+{
+    if (parrStack == NULL)
+    {
         return;
     }
 
-    if (parrStack->array != NULL) {
+    if (parrStack->array != NULL)
+    {
         free(parrStack->array);
     }
 
@@ -45,10 +52,12 @@ void arrayStack_destory(stArrayStack *parrStack) {
 }
 
 /*出栈*/
-int arrayStack_pop(stArrayStack *parrStack) {
+int arrayStack_pop(stArrayStack *parrStack)
+{
     int data = 0;
 
-    if (arrayStack_is_empty(parrStack)) {
+    if (arrayStack_is_empty(parrStack))
+    {
         return -1;
     }
     data = parrStack->array[parrStack->pos];
@@ -58,8 +67,10 @@ int arrayStack_pop(stArrayStack *parrStack) {
 }
 
 /*入栈*/
-int arrayStack_push(stArrayStack *parrStack, int data) {
-    if (arrayStack_is_full(parrStack)) {
+int arrayStack_push(stArrayStack *parrStack, int data)
+{
+    if (arrayStack_is_full(parrStack))
+    {
         return -1;
     }
 
@@ -69,17 +80,20 @@ int arrayStack_push(stArrayStack *parrStack, int data) {
     return 0;
 }
 
-int arrayStack_push_new(stArrayStack *parrStack, int data) {
+int arrayStack_push_new(stArrayStack *parrStack, int data)
+{
     int *ptmp = NULL;
 
     /*如果栈不满，直接插入*/
-    if (!arrayStack_is_full(parrStack)) {
+    if (!arrayStack_is_full(parrStack))
+    {
         return arrayStack_push(parrStack, data);
     }
 
     /*如果栈已经满，申请内存*/
-    ptmp = (int *) malloc(2 * parrStack->size * sizeof(int));
-    if (ptmp == NULL) {
+    ptmp = (int *)malloc(2 * parrStack->size * sizeof(int));
+    if (ptmp == NULL)
+    {
         return -1;
     }
 
@@ -92,24 +106,28 @@ int arrayStack_push_new(stArrayStack *parrStack, int data) {
     parrStack->pos++;
     parrStack->array[parrStack->pos] = data;
 
-    return;
+    return 0;
 }
 
-void arrayStack_dump(stArrayStack *parrStack) {
+void arrayStack_dump(stArrayStack *parrStack)
+{
     int i = 0;
 
-    if (arrayStack_is_empty(parrStack)) {
+    if (arrayStack_is_empty(parrStack))
+    {
         printf("\r\n arrayStack is empty.");
         return;
     }
-    printf("\r\narrayStack size = %d,pos= %d,",
-           parrStack->size, parrStack->pos);
-    for (i = 0; i <= parrStack->pos; i++) {
+    printf("\r\narrayStack size = %d,pos= %d,", parrStack->size,
+           parrStack->pos);
+    for (i = 0; i <= parrStack->pos; i++)
+    {
         printf("\r\narry[%d] = %d", i, parrStack->array[i]);
     }
 }
 
-int main() {
+int main()
+{
     int i = 0;
     int ret = 0;
     stArrayStack *parrStack = NULL;
@@ -117,27 +135,30 @@ int main() {
     printf("\r\n create size = 4 arrayStack.");
 
     parrStack = arrayStack_create(4);
-    if (parrStack == NULL) {
+    if (parrStack == NULL)
+    {
         printf("\r\n create size = 4 arrayStack faided.");
         return 0;
     }
 
-    for (i = 0; i < 5; i++) {
+    for (i = 0; i < 5; i++)
+    {
         ret = arrayStack_push(parrStack, i);
-        if (ret != 0) {
+        if (ret != 0)
+        {
             printf("\r\n push size = %d arrayStack faided.", i);
-
         }
     }
     arrayStack_dump(parrStack);
 
     ret = arrayStack_push_new(parrStack, 4);
-    if (ret != 0) {
+    if (ret != 0)
+    {
         printf("\r\n push size = %d arrayStack faided.", 4);
     }
     arrayStack_dump(parrStack);
 
     arrayStack_destory(parrStack);
 
-    return;
+    return 0;
 }

@@ -7,9 +7,10 @@
 #ifndef DULINKLIST_H
 #define DULINKLIST_H
 
-#include "Status.h" //**▲ 01 绪论**//
 #include <stdio.h>
-#include <stdlib.h> //提供malloc、realloc、free、exit原型
+#include <stdlib.h>  //提供malloc、realloc、free、exit原型
+
+#include "Status.h"  //**▲ 01 绪论**//
 
 /* 双向循环链表元素类型定义 */
 typedef int ElemType;
@@ -19,10 +20,11 @@ typedef int ElemType;
  *
  * 注：这里的双向循环链表存在头结点
  */
-typedef struct DuLNode {
-  ElemType data;
-  struct DuLNode *prior; // 前驱
-  struct DuLNode *next;  // 后继
+typedef struct DuLNode
+{
+    ElemType data;
+    struct DuLNode *prior;  // 前驱
+    struct DuLNode *next;   // 后继
 } DuLNode;
 
 // 指向双向循环链表结点的指针

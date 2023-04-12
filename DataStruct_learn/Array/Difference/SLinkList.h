@@ -7,12 +7,13 @@
 #ifndef SLINKLIST_H
 #define SLINKLIST_H
 
-#include "Status.h" //**▲01 绪论**//
 #include <stdio.h>
-#include <stdlib.h> //提供malloc、realloc、free、exit原型
+#include <stdlib.h>  //提供malloc、realloc、free、exit原型
+
+#include "Status.h"  //**▲01 绪论**//
 
 /* 宏定义 */
-#define MAXSIZE 1000 // 备用空间最大容量，近似于静态链表的最大长度
+#define MAXSIZE 1000  // 备用空间最大容量，近似于静态链表的最大长度
 
 /* 静态链表元素类型定义 */
 typedef int ElemType;
@@ -22,10 +23,11 @@ typedef int ElemType;
  *
  * 注：静态链表依托于一个数组，该数组包含了已占用空间和空闲空间
  */
-typedef struct SLinkLNode {
-  ElemType data;
-  int cur; // cur是游标，做指针用，用来链接下一个结点（区别于数组下标）
-} SLinkList[MAXSIZE]; // 链表空间类型
+typedef struct SLinkLNode
+{
+    ElemType data;
+    int cur;  // cur是游标，做指针用，用来链接下一个结点（区别于数组下标）
+} SLinkList[MAXSIZE];  // 链表空间类型
 
 /*
  * ████ 提示 ████
