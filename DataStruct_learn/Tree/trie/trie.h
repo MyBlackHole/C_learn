@@ -1,4 +1,3 @@
-
 #include <stdbool.h>
 #define ALPHABET_SIZE 26
 

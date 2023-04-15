@@ -9,7 +9,7 @@
 
 pid_t pid;
 
-static void sleepm(int i);
+// static void sleepm(int i);
 
 static void pppp(int i) { printf("pppp\n"); }
 
@@ -62,10 +62,12 @@ int main(void)
     return 0;
 }
 
-static void sleepm(int i)
-{
-    time_t t = time((time_t*)NULL);
-    printf("start time: %lu\n", t);
-    for (; time((time_t*)NULL) < t + 10;)
-        ;
-}
+// static void sleepm(int i)
+// {
+//     time_t t = time((time_t*)NULL);
+//     printf("start time: %lu\n", t);
+//     for (; time((time_t*)NULL) < t + 10;)
+//     {
+//         ;
+//     }
+// }

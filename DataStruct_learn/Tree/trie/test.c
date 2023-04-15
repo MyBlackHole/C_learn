@@ -54,8 +54,11 @@ void traverse(char prefix[], TrieNode *root)
 
 /*------Demonstrate purposes uses text file called dictionary -------*/
 
-#define NUMBER_OF_WORDS (354935)
-#define INPUT_WORD_SIZE (100)
+enum
+{
+    NUMBER_OF_WORDS = 354935,
+    INPUT_WORD_SIZE = 100,
+};
 
 /*----Get input from the user------*/
 char *receiveInput(char *s)

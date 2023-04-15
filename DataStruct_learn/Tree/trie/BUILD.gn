@@ -1,16 +1,16 @@
-executable("test") {
-  cflags = ["-g", "-Wall"]
-  deps = [":trie"]
-  sources = [
-    "test.c",
-  ]
-}
-
 static_library("trie") {
   cflags = ["-g", "-Wall"]
   sources = [
     "trie.c",
     "trie.h",
+  ]
+}
+
+executable("test") {
+  cflags = ["-g", "-Wall"]
+  deps = [":trie"]
+  sources = [
+    "test.c",
   ]
 }
 

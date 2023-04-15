@@ -29,7 +29,7 @@ void Init(TriePtr *T)
 void Insert(TriePtr T, char *str)
 {
     int index;
-    char c;
+    char c = '\0';
 
     while (c == *str++)
     {
@@ -52,7 +52,7 @@ void Insert(TriePtr T, char *str)
 Status Search(TriePtr T, char *str)
 {
     int index;
-    char c;
+    char c = '\0';
 
     while (c == *str++)
     {

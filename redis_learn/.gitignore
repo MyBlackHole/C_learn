@@ -11,10 +11,8 @@ redis-server
 doc-tools
 release
 misc/*
-src/release.h
 appendonly.aof
 SHORT_TERM_TODO
-release.h
 src/transfer.sh
 src/configs
 redis.ds

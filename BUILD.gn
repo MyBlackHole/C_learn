@@ -135,7 +135,7 @@ group("default"){
 
     "//execinfo_learn:backtrace_test",
 
-    "//redis_learn:redis",
+    # "//redis_learn:redis",
 
     "//openssl_learn:SHA1_test",
     "//openssl_learn:AES_cbc_encrypt_test",
@@ -179,7 +179,6 @@ group("default"){
     "//DataStruct_learn/hash/hash_list:test",
     "//DataStruct_learn/List/Dlisthash:test",
     "//DataStruct_learn/List/skiplist:skiplist_test",
-    "//DataStruct_learn/Tree/trie:test",
     "//DataStruct_learn/Tree/lsm-trie:mixed_test",
     "//DataStruct_learn/Tree/lsm-trie:cm_util",
     "//DataStruct_learn/Tree/lsm-trie:cmap_test",
