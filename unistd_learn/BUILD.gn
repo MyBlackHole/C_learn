@@ -1,4 +1,11 @@
 
+executable("readlink_test") {
+  cflags = ["-g", "-Wall"]
+  sources = [
+    "readlink_test.c",
+  ]
+}
+
 executable("write_read_struct_test") {
   cflags = ["-g", "-Wall"]
   sources = [

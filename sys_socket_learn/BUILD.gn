@@ -18,3 +18,14 @@ executable("AF_LOCAL_test") {
   sources = [ "AF_LOCAL_test.c" ]
 }
 
+
+executable("settimeout") {
+  cflags = ["-g", "-Wall"]
+  sources = [ "settimeout.c" ]
+}
+
+
+executable("test_setopt_error") {
+  cflags = ["-g", "-Wall"]
+  sources = [ "test_setopt_error.c" ]
+}

@@ -264,6 +264,8 @@ group("default"){
 
     "//glob_learn:glob_test",
 
+    "//sys_socket_learn:test_setopt_error",
+    "//sys_socket_learn:settimeout",
     "//sys_socket_learn:AF_LOCAL_test",
     "//sys_socket_learn:getsockopt_test",
     "//sys_socket_learn:sendmsg_test",
@@ -411,6 +413,7 @@ group("default"){
     "//stdlib_learn:malloc_test",
     "//stdlib_learn:realloc_test",
 
+    "//unistd_learn:readlink_test",
     "//unistd_learn:write_read_struct_test",
     "//unistd_learn:gethostname_test",
     "//unistd_learn:truncate_test",
