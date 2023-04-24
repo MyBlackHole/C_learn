@@ -21,7 +21,7 @@ int main(int argc, char **argv)
         }
 
         // major minor 主次设备号
-        printf("dev=%d%d", major(buf.st_dev), minor(buf.st_dev));
+        printf("dev=%d:%d", major(buf.st_dev), minor(buf.st_dev));
         if (S_ISCHR(buf.st_mode) || S_ISBLK(buf.st_mode))
         {
             printf("(%s)rdev=%d%d",

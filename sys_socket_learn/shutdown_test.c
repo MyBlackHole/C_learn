@@ -33,13 +33,19 @@ int main(int argc, char *argv[])
     serv_adr.sin_port = htons(atoi(argv[2]));
 
     if (connect(sock, (struct sockaddr *)&serv_adr, sizeof(serv_adr)) == -1)
+    {
         error_handling("connect() error!");
+    }
 
     pid = fork();
     if (pid == 0)
+    {
         write_routine(sock, buf);
+    }
     else
+    {
         read_routine(sock, buf);
+    }
 
     close(sock);
     return 0;
@@ -51,7 +57,9 @@ void read_routine(int sock, char *buf)
     {
         int str_len = read(sock, buf, BUF_SIZE);
         if (str_len == 0)
+        {
             return;
+        }
 
         buf[str_len] = 0;
         printf("Message from server: %s", buf);

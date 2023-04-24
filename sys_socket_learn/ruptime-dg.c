@@ -27,7 +27,9 @@ void print_uptime(int sockfd, struct addrinfo *aip)
     if ((n = recvfrom(sockfd, buf, BUFLEN, 0, NULL, NULL)) < 0)
     {
         if (errno != EINTR)
+        {
             alarm(0);
+        }
         perror("recv error");
     }
     alarm(0);
@@ -50,7 +52,9 @@ int main(int argc, char *argv[])
     sa.sa_flags = 0;
     sigemptyset(&sa.sa_mask);
     if (sigaction(SIGALRM, &sa, NULL) < 0)
+    {
         perror("sigaction error");
+    }
     memset(&hint, 0, sizeof(hint));
     hint.ai_socktype = SOCK_DGRAM;
     hint.ai_canonname = NULL;

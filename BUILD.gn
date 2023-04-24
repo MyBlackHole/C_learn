@@ -264,6 +264,8 @@ group("default"){
 
     "//glob_learn:glob_test",
 
+    "//sys_socket_learn:SO_BINDTODEVICE_test",
+    "//sys_socket_learn:listen_test",
     "//sys_socket_learn:test_setopt_error",
     "//sys_socket_learn:settimeout",
     "//sys_socket_learn:AF_LOCAL_test",

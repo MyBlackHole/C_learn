@@ -25,7 +25,9 @@ int connect_retry(int sockfd, const struct sockaddr *addr, socklen_t alen)
          * Delay before trying again.
          */
         if (numsec <= MAXSLEEP / 2)
+        {
             sleep(numsec);
+        }
     }
     return (-1);
 }

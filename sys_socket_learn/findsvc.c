@@ -86,17 +86,29 @@ void print_flags(struct addrinfo *aip)
     else
     {
         if (aip->ai_flags & AI_PASSIVE)
+        {
             printf(" passive");
+        }
         if (aip->ai_flags & AI_CANONNAME)
+        {
             printf(" canon");
+        }
         if (aip->ai_flags & AI_NUMERICHOST)
+        {
             printf(" numhost");
+        }
         if (aip->ai_flags & AI_NUMERICSERV)
+        {
             printf(" numserv");
+        }
         if (aip->ai_flags & AI_V4MAPPED)
+        {
             printf(" v4mapped");
+        }
         if (aip->ai_flags & AI_ALL)
+        {
             printf(" all");
+        }
     }
 }
 

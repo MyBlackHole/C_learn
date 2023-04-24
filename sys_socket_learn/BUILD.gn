@@ -1,3 +1,14 @@
+
+executable("SO_BINDTODEVICE_test") {
+  cflags = ["-g", "-Wall"]
+  sources = [ "SO_BINDTODEVICE_test.c" ]
+}
+
+executable("listen_test") {
+  cflags = ["-g", "-Wall"]
+  sources = [ "listen_test.c" ]
+}
+
 executable("getsockopt_test") {
   cflags = ["-g", "-Wall"]
   sources = [ "getsockopt_test.c" ]

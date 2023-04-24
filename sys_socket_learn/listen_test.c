@@ -1,0 +1,53 @@
+#include <arpa/inet.h>
+#include <netinet/in.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/socket.h>
+#include <unistd.h>
+
+int main(int argc, char *argv[])
+{
+    int listen_fd = socket(AF_INET, SOCK_STREAM, 0);
+    if (listen_fd < 0)
+    {
+        perror("Create Socket Error");
+        goto ERR;
+    }
+    struct sockaddr_in server;
+    memset(&server, 0, sizeof(struct sockaddr_in));
+    server.sin_family = AF_INET;
+    server.sin_port = htons(8000);
+    server.sin_addr.s_addr = htonl(INADDR_ANY);
+
+    int ss =
+        bind(listen_fd, (struct sockaddr *)&server, sizeof(struct sockaddr_in));
+    if (ss < 0)
+    {
+        perror("Bind Error");
+        goto ERR;
+    }
+
+    ss = listen(listen_fd, 64);
+    if (ss < 0)
+    {
+        perror("Listen Error");
+        goto ERR;
+    }
+    while (1)
+    {
+        struct sockaddr_in cli;
+        socklen_t len = sizeof(struct sockaddr_in);
+        int client_fd = accept(listen_fd, (struct sockaddr *)&cli, &len);
+        struct in_addr ip_addr = cli.sin_addr;
+        char client_addr[INET_ADDRSTRLEN];
+        inet_ntop(AF_INET, &ip_addr, client_addr, INET_ADDRSTRLEN);
+        printf("Client Address is : %s\n", client_addr);
+        close(client_fd);
+    }
+    return EXIT_SUCCESS;
+
+ERR:
+    close(listen_fd);
+    return EXIT_FAILURE;
+}

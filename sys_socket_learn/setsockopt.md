@@ -1,5 +1,4 @@
 ```
-
 SO_DEBUG，打开或关闭调试信息。
 当option_value不等于0时，打开调试信息，否则，关闭调试信息。它实际所做的工作是在sock->sk->sk_flag中置 SOCK_DBG(第10)位，或清SOCK_DBG位。
 SO_REUSEADDR，打开或关闭地址复用功能。
@@ -36,12 +35,16 @@ SO_TIMESTAMP，打开或关闭数据报中的时间戳接收。
 netstamp_needed加1。
 SO_RCVLOWAT，设置接收数据前的缓冲区内的最小字节数。
 在Linux中，缓冲区内的最小字节数是固定的，为1。即将sock->sk->sk_rcvlowat固定赋值为1。
+
 SO_RCVTIMEO，设置接收超时时间。
 该选项最终将接收超时时间赋给sock->sk->sk_rcvtimeo。
+
 SO_SNDTIMEO，设置发送超时时间。
 该选项最终将发送超时时间赋给sock->sk->sk_sndtimeo。
+
 SO_BINDTODEVICE，将套接字绑定到一个特定的设备上。
 该选项最终将设备赋给sock->sk->sk_bound_dev_if。
+
 SO_ATTACH_FILTER和SO_DETACH_FILTER。
 关于数据包过滤，它们最终会影响sk->sk_filter。
 
