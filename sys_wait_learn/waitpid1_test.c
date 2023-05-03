@@ -22,7 +22,9 @@ int main(int argc, char *argv[])
         }
 
         if (WIFEXITED(status))
+        {
             printf("Child send %d \n", WEXITSTATUS(status));
+        }
     }
     return 0;
 }

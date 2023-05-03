@@ -79,6 +79,7 @@ int main(int argc, char *argv[])
         usage(argv[0]);
     }
 
+    // 脱离当前命名空间移动到其他上
     if (unshare(flags) == -1)
     {
         errExit("unshare");

@@ -160,8 +160,13 @@ group("default"){
 
     "//seccomp_learn:SECCOMP_MODE_STRICT_test",
 
+    "//sched_learn:CPU_CLR_test",
+    "//sched_learn:setns_test",
+    "//sched_learn:CPU_ZERO_test",
     "//sched_learn:CLONE_NEWUSER_test",
+    "//sched_learn:CLONE_NEWPID_test",
     "//sched_learn:CLONE_NEWIPC_test",
+    "//sched_learn:CLONE_NEWUTS_test",
     "//sched_learn:clone_test",
 
     # "//opengl_learn:test",
@@ -415,6 +420,7 @@ group("default"){
     "//stdlib_learn:malloc_test",
     "//stdlib_learn:realloc_test",
 
+    "//unistd_learn:pipe2_test",
     "//unistd_learn:readlink_test",
     "//unistd_learn:write_read_struct_test",
     "//unistd_learn:gethostname_test",
@@ -450,6 +456,7 @@ group("default"){
     "//unistd_learn:fork4_test",
     "//unistd_learn:setsid_test",
 
+    "//stdio_learn:print_time",
     "//stdio_learn:feof_test",
     "//stdio_learn:hex_str_To_hex",
     "//stdio_learn:scanf_test",

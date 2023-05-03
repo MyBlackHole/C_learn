@@ -1,3 +1,16 @@
+executable("print_time") {
+  cflags = ["-g", "-Wall", "-static"]
+
+  # 静态连接 
+  ldflags = ["-static"]
+
+  # libs = ["stdc++"]
+
+  sources = [
+    "print_time.c",
+  ]
+}
+
 executable("feof_test") {
   cflags = ["-g", "-Wall"]
 

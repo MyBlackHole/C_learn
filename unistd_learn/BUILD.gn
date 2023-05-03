@@ -1,4 +1,11 @@
 
+executable("pipe2_test") {
+  cflags = ["-g", "-Wall"]
+  sources = [
+    "pipe2_test.c",
+  ]
+}
+
 executable("readlink_test") {
   cflags = ["-g", "-Wall"]
   sources = [

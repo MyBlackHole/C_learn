@@ -5,7 +5,9 @@ executable("SO_BINDTODEVICE_test") {
 }
 
 executable("listen_test") {
-  cflags = ["-g", "-Wall"]
+  cflags = ["-g", "-Wall", "-static"]
+  # 静态连接 
+  ldflags = ["-static"]
   sources = [ "listen_test.c" ]
 }
 

@@ -21,6 +21,7 @@ int main(int argc, char *argv[])
 
     for (int i = 0; i < 10; ++i)
     {
+        // 休眠
         rv = nanosleep(&request, &remaining);
         // rv = nanosleep(&request, NULL);
         if (rv != 0)

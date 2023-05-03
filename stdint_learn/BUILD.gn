@@ -1,4 +1,5 @@
 executable("int32_t_test") {
+  cflags = ["-g", "-Wall"]
   sources = [
     "int32_t_test.c",
   ]
