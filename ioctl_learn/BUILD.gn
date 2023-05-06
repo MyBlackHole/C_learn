@@ -4,3 +4,10 @@ executable("ioctl_test") {
     "ioctl_test.c",
   ]
 }
+
+executable("app") {
+  cflags = ["-g", "-Wall"]
+  sources = [
+    "app.c",
+  ]
+}

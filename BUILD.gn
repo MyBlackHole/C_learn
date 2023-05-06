@@ -136,6 +136,7 @@ group("default"){
 
     "//sys_mman_learn:mmap_test",
 
+    "//ioctl_learn:app",
     "//ioctl_learn:ioctl_test",
 
     "//execinfo_learn:backtrace_test",

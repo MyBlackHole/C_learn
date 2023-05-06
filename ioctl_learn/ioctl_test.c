@@ -9,15 +9,18 @@
 #include <sys/types.h>
 #include <unistd.h>
 
+#define NUM 30
+
 int main(void)
 {
-    int fd;
+    int fdTest;
     // off_t size
-    uint64_t size;
+    int size;
     int len;
-    int r;
+    int ret;
 
-    if ((fd = open("/dev/sda", O_RDONLY)) < 0)
+    fdTest = open("/dev/sda", O_RDONLY);
+    if (fdTest < 0)
     {
         printf("open error %d\n", errno);
         exit(-1);
@@ -32,13 +35,14 @@ int main(void)
     }
 #endif
     // 获取设备块大小 bytes
-    if ((r = ioctl(fd, BLKGETSIZE64, &size)) < 0)
+    ret = ioctl(fdTest, BLKGETSIZE64, &size);
+    if (ret < 0)
     {
         printf("ioctl error %d\n", errno);
         exit(-1);
     }
 
-    len = (size >> 30);
+    len = (size >> NUM);
     printf("size of sda = %d G\n", len);
 
     return 0;
