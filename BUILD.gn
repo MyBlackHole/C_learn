@@ -1,5 +1,10 @@
 group("default"){
   deps = [
+    "//oracle_rman_sbt:sbt",
+
+    "//dlfcn_learn:main",
+    "//dlfcn_learn:add",
+
     "//rocksdb_learn:main",
 # namespace
     "//namespace_learn:namespace",

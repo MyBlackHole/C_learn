@@ -1,0 +1,14 @@
+executable("main") {
+  cflags = ["-g", "-Wall"]
+  sources = [
+    "main.c",
+  ]
+}
+
+# 在 out/ 下
+shared_library("add") {
+  cflags = ["-fPIC", "-g", "-Wall"]
+  sources = [
+    "add.c",
+  ]
+}
