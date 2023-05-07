@@ -1,5 +1,10 @@
 group("default"){
   deps = [
+    "//yajl_learn:main",
+
+    "//libudev_learn:udev_enumerate_scan_devices_test",
+    "//libudev_learn:udev_new_test",
+
     "//oracle_rman_sbt:sbt",
 
     "//dlfcn_learn:main",

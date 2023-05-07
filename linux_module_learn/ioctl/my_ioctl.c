@@ -77,7 +77,7 @@ static int hello_init(void)
 static void hello_exit(void) { misc_deregister(&misc_dev); }
 
 MODULE_LICENSE("Dual BSD/GPL");
-MODULE_AUTHOR("TAXUE");
+MODULE_AUTHOR("BlackHole");
 
 module_init(hello_init);
 module_exit(hello_exit);
