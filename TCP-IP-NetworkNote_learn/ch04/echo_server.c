@@ -1,4 +1,5 @@
 #include <arpa/inet.h>
+#include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -10,11 +11,14 @@ void error_handling(char *message);
 
 int main(int argc, char *argv[])
 {
-    int serv_sock, clnt_sock;
+    int serv_sock;
+    int clnt_sock;
     char message[BUF_SIZE];
-    int str_len, i;
+    int str_len;
+    int i;
 
-    struct sockaddr_in serv_adr, clnt_adr;
+    struct sockaddr_in serv_adr;
+    struct sockaddr_in clnt_adr;
     socklen_t clnt_adr_sz;
 
     if (argc != 2)
@@ -75,6 +79,8 @@ int main(int argc, char *argv[])
 void error_handling(char *message)
 {
     fputs(message, stderr);
+    fputc('\n', stderr);
+    fputs(strerror(errno), stderr);
     fputc('\n', stderr);
     exit(1);
 }

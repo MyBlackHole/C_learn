@@ -1,3 +1,7 @@
+executable("shutdown_test") {
+  cflags = ["-g", "-Wall"]
+  sources = [ "shutdown_test.c" ]
+}
 
 executable("SO_BINDTODEVICE_test") {
   cflags = ["-g", "-Wall"]

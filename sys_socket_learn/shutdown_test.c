@@ -1,4 +1,5 @@
 #include <arpa/inet.h>
+#include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -26,6 +27,9 @@ int main(int argc, char *argv[])
         printf("Usage : %s <IP> <port>\n", argv[0]);
         exit(1);
     }
+
+    fprintf(stdout, "pid: %d\n", getpid());
+
     sock = socket(PF_INET, SOCK_STREAM, 0);
     memset(&serv_adr, 0, sizeof(serv_adr));
     serv_adr.sin_family = AF_INET;
@@ -37,6 +41,7 @@ int main(int argc, char *argv[])
         error_handling("connect() error!");
     }
 
+    printf("connect SUCCESS");
     pid = fork();
     if (pid == 0)
     {
@@ -48,17 +53,24 @@ int main(int argc, char *argv[])
     }
 
     close(sock);
-    return 0;
+    return EXIT_SUCCESS;
 }
 
 void read_routine(int sock, char *buf)
 {
+    int str_len;
     while (1)
     {
-        int str_len = read(sock, buf, BUF_SIZE);
+        str_len = read(sock, buf, BUF_SIZE);
         if (str_len == 0)
         {
             return;
+        }
+
+        if (str_len < 0)
+        {
+            fprintf(stderr, "%s\n", strerror(errno));
+            break;
         }
 
         buf[str_len] = 0;
@@ -67,17 +79,26 @@ void read_routine(int sock, char *buf)
 }
 void write_routine(int sock, char *buf)
 {
+    ssize_t str_len;
     while (1)
     {
         fgets(buf, BUF_SIZE, stdin);
         if (!strcmp(buf, "q\n") || !strcmp(buf, "Q\n"))
         {
-            shutdown(sock,
-                     SHUT_WR);  // 向服务器端传递 EOF,因为fork函数复
-                                // 了文件描述度，所以通过1次close调用不够
+            // 向服务器端传递 EOF,因为 fork
+            // 函数复用了文件描述度，所以通过1次close调用不够
+            shutdown(sock, SHUT_WR);
+
             return;
         }
-        write(sock, buf, strlen(buf));
+
+        str_len = write(sock, buf, strlen(buf));
+
+        if (str_len < 0)
+        {
+            fprintf(stderr, "%s\n", strerror(errno));
+            break;
+        }
     }
 }
 

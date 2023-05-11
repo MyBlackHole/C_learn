@@ -8,7 +8,8 @@ int initserver(int type, const struct sockaddr *addr, socklen_t alen, int qlen)
     int fd;
     int err = 0;
 
-    if ((fd = socket(addr->sa_family, type, 0)) < 0)
+    fd = socket(addr->sa_family, type, 0);
+    if (fd < 0)
     {
         return EXIT_FAILURE;
     }
