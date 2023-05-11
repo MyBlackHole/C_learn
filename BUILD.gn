@@ -372,6 +372,7 @@ group("default"){
     # "//libev_learn/case:ev1_test",
     # "//libev_learn/case:ev_signal_test",
 
+    "//pthread_learn:pthread_getname_np_test",
     "//pthread_learn:pthread_barrier_init_test",
     "//pthread_learn:pthread_create3_test",
     "//pthread_learn:pthread_cond_broadcast_test",

@@ -74,4 +74,4 @@ pid_t child_signal(int fd);
  * \brief test_wait_waitpid :测试 wait 函数、 waitpid 函数
  */
 void test_wait_waitpid();
-#endif // WAIT_WAITPID
+#endif  // WAIT_WAITPID

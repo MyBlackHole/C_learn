@@ -1,3 +1,10 @@
+executable("pthread_getname_np_test") {
+  cflags = ["-g", "-Wall"]
+  sources = [
+    "pthread_getname_np_test.c",
+  ]
+}
+
 executable("pthread_barrier_init_test") {
   cflags = ["-g", "-Wall"]
   sources = [

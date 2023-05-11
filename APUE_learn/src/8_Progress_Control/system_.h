@@ -22,4 +22,4 @@ int My_system(const char *cmdstring);
  * \brief test_system :测试 system 函数的用法
  */
 void test_system();
-#endif // SYSTEM_
+#endif  // SYSTEM_
