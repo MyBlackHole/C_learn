@@ -1,4 +1,6 @@
 #include <arpa/inet.h>
+#include <errno.h>
+#include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -11,9 +13,13 @@ void error_handling(char *message);
 int main(int argc, char *argv[])
 {
     int sock;
+    ssize_t ret;
     char message[BUF_SIZE];
-    int str_len;
+    ssize_t str_len;
     struct sockaddr_in serv_adr;
+    struct sigaction sig;
+    sig.sa_handler = SIG_IGN;
+    
 
     if (argc != 3)
     {
@@ -21,11 +27,14 @@ int main(int argc, char *argv[])
         exit(1);
     }
 
+    sigaction(SIGPIPE, &sig, NULL);
+
     sock = socket(PF_INET, SOCK_STREAM, 0);
     if (sock == -1)
     {
         error_handling("socket() error");
     }
+
 
     memset(&serv_adr, 0, sizeof(serv_adr));
     serv_adr.sin_family = AF_INET;
@@ -51,8 +60,18 @@ int main(int argc, char *argv[])
             break;
         }
 
-        write(sock, message, strlen(message));
+        ret = write(sock, message, strlen(message));
+        if (ret < 0)
+        {
+            printf("%s\n", strerror(errno));
+        }
+
         str_len = read(sock, message, BUF_SIZE - 1);
+        if (str_len < 0)
+        {
+            printf("%s\n", strerror(errno));
+        }
+
         message[str_len] = 0;
         printf("Message from server: %s", message);
     }

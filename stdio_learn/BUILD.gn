@@ -1,3 +1,14 @@
+executable("STDERR_test") {
+  cflags = ["-g", "-Wall", "-static"]
+
+  # 静态连接 
+  ldflags = ["-static"]
+
+  sources = [
+    "STDERR_test.c",
+  ]
+}
+
 executable("print_time") {
   cflags = ["-g", "-Wall", "-static"]
 

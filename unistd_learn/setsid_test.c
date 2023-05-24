@@ -8,7 +8,11 @@ int main(int argc, char **argv)
     if (fork() > 0)
     {
         printf("parent begin\n");
-        sleep(10);
+        for (size_t i = 0; i < 30; i++)
+        {
+            sleep(1);
+            printf("parent count:%ld pid:%d\n", i, getpid());
+        }
 
         printf("parent exit\n");
         exit(0);
@@ -18,7 +22,12 @@ int main(int argc, char **argv)
     setsid();
 
     printf("child begin\n");
-    sleep(100);
+
+    for (size_t i = 0; i < 100; i++)
+    {
+        sleep(1);
+        printf("child count:%ld pid:%d\n", i, getpid());
+    }
 
     printf("child exit\n");
     return 0;

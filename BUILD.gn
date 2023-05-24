@@ -1,5 +1,7 @@
 group("default"){
   deps = [
+    "//pcap_learn:pcap_lookupdev_test",
+
     "//yajl_learn:main",
 
     "//libudev_learn:udev_enumerate_scan_devices_test",
@@ -280,6 +282,7 @@ group("default"){
 
     "//glob_learn:glob_test",
 
+    "//sys_socket_learn:listen_fork_test",
     "//sys_socket_learn:shutdown_test",
     "//sys_socket_learn:SO_BINDTODEVICE_test",
     "//sys_socket_learn:listen_test",
@@ -469,6 +472,7 @@ group("default"){
     "//unistd_learn:fork4_test",
     "//unistd_learn:setsid_test",
 
+    "//stdio_learn:STDERR_test",
     "//stdio_learn:print_time",
     "//stdio_learn:feof_test",
     "//stdio_learn:hex_str_To_hex",
