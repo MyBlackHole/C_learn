@@ -1,5 +1,7 @@
 group("default"){
   deps = [
+    "//linux_module_learn/netlink:user",
+
     "//pcap_learn:pcap_lookupdev_test",
 
     "//yajl_learn:main",
@@ -402,6 +404,7 @@ group("default"){
 
     "//shadow_learn:getspnam_test",
 
+    "//string_learn:strchr_test",
     "//string_learn:strncmp_test",
     "//string_learn:strlen_test",
     "//string_learn:strcoll_test",
@@ -530,6 +533,8 @@ group("default"){
 
     "//dirent_learn:readdir_test",
 
+    "//errno_learn/EAGAIN:client",
+    "//errno_learn/EAGAIN:server",
     "//errno_learn:errno_learn",
 
     "//sys_time_learn:localtime2_test",

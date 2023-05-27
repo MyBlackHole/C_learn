@@ -65,6 +65,7 @@ int main(int argc, char *argv[])
     if (pid == 0)
     {
         // setsid();
+        close(listen_fd);
         fprintf(stdout, "client, pid:%d\n", getpid());
         my_sleep();
         goto RET;
