@@ -1,1 +1,1 @@
-./out/obj/unistd_learn/setsid_test 
+./ot/obj/unistd_learn/setsid_test 

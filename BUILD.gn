@@ -11,6 +11,7 @@ group("default"){
 
     "//oracle_rman_sbt:sbt",
 
+    "//dlfcn_learn:dlsym_test",
     "//dlfcn_learn:main",
     "//dlfcn_learn:add",
 
@@ -373,6 +374,7 @@ group("default"){
     "//grammar_learn/macro:define_test",
     "//grammar_learn/macro:macro",
 
+    "//sys_signalfd_learn:signalfd1_test",
     "//sys_signalfd_learn:signalfd_test",
 
     # "//libev_learn/case:ev1_test",
@@ -399,7 +401,7 @@ group("default"){
 
     "//utsname_learn:uname_test",
 
-
+    "//pwd_learn:getpwnam_p1_test",
     "//pwd_learn:getpwent_test",
 
     "//shadow_learn:getspnam_test",

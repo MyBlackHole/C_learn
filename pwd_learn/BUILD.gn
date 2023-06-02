@@ -7,3 +7,10 @@ executable("getpwent_test") {
     "getpwent_test.c",
   ]
 }
+
+executable("getpwnam_p1_test") {
+  cflags = ["-g", "-Wall"]
+  sources = [
+    "getpwnam_p1_test.c",
+  ]
+}

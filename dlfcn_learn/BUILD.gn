@@ -5,6 +5,13 @@ executable("main") {
   ]
 }
 
+executable("dlsym_test") {
+  cflags = ["-g", "-Wall"]
+  sources = [
+    "dlsym_test.c",
+  ]
+}
+
 # 在 out/ 下
 shared_library("add") {
   cflags = ["-fPIC", "-g", "-Wall"]

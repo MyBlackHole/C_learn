@@ -16,10 +16,16 @@
         exit(EXIT_FAILURE); \
     } while (0)
 
+
+// ./out/obj/sys_signalfd_learn/signalfd_test
+// 1633334
+// Got SIGQUIT
+// kill -QUIT 1633334
 int main(void)
 {
+    printf("%d\n", getpid());
     int sfd;
-    ssize_t rc;
+    ssize_t ret;
     struct signalfd_siginfo fdsi;
 
     sigset_t mask;
@@ -38,7 +44,8 @@ int main(void)
         handle_error("sigprocmask");
     }
 
-    if ((sfd = signalfd(-1, &mask, 0)) == -1)
+    sfd = signalfd(-1, &mask, 0);
+    if (sfd == -1)
     {
         handle_error("signalfd");
     }
@@ -46,8 +53,8 @@ int main(void)
     while (1)
     {
         // 读取发生的信号
-        rc = read(sfd, &fdsi, sizeof(struct signalfd_siginfo));
-        if (rc != sizeof(struct signalfd_siginfo))
+        ret = read(sfd, &fdsi, sizeof(struct signalfd_siginfo));
+        if (ret != sizeof(struct signalfd_siginfo))
         {
             handle_error("read");
         }
