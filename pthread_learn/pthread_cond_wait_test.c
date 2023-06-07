@@ -14,6 +14,7 @@
 #include <unistd.h>
 
 // 条件变量初始化
+// 线程同步
 pthread_cond_t taxicond = PTHREAD_COND_INITIALIZER;
 
 // 互斥锁初始化
@@ -26,6 +27,10 @@ void *traveler_arrive(void *name)
     printf("Travelr: %s need a taxi now!\n", p);
     // 加锁，把信号量加入队列，释放信号量
     pthread_mutex_lock(&taximutex);
+
+    // 堵塞在 taxicond
+    // 进入时解开 taximutex
+    // 出来时再次获得 taximutex
     pthread_cond_wait(&taxicond, &taximutex);
     pthread_mutex_unlock(&taximutex);
     printf("traveler: %s now got a taxi!\n", p);

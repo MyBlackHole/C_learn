@@ -1,4 +1,5 @@
 #include "date.h"
+
 void date_prog_1(char *host)
 {
     CLIENT *clnt;

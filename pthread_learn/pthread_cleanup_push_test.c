@@ -10,7 +10,9 @@ void *thr_fn1(void *arg)
     pthread_cleanup_push(cleanup, "thread 1 second handler");
     printf("thread 1 push complete\n");
     if (arg)
+    {
         return ((void *)1);
+    }
     pthread_cleanup_pop(0);
     pthread_cleanup_pop(0);
     return ((void *)1);
@@ -22,7 +24,9 @@ void *thr_fn2(void *arg)
     pthread_cleanup_push(cleanup, "thread 2 second handler");
     printf("thread 2 push complete\n");
     if (arg)
+    {
         pthread_exit((void *)2);
+    }
     pthread_cleanup_pop(0);
     pthread_cleanup_pop(0);
     pthread_exit((void *)2);
@@ -30,7 +34,8 @@ void *thr_fn2(void *arg)
 int main()
 {
     int err;
-    pthread_t tid1, tid2;
+    pthread_t tid1;
+    pthread_t tid2;
     void *tret;
     err = pthread_create(&tid1, NULL, thr_fn1, (void *)1);
     if (err != 0)

@@ -15,9 +15,8 @@ long *get_date_1_svc(void *argp, struct svc_req *rqstp)
     /*
      * insert server code here
      */
-    result = time((
-        long
-            *)0);  // 加一句这个，运行后产生的是从1970年1月1日0时0分0秒到此时的秒数
+    // 加一句这个，运行后产生的是从1970年1月1日0时0分0秒到此时的秒数
+    result = time((long *)0);
 
     return &result;
 }

@@ -1,5 +1,7 @@
 group("default"){
   deps = [
+    "//sys_file_learn:flock_test",
+
     "//linux_module_learn/netlink:user",
 
     "//pcap_learn:pcap_lookupdev_test",
@@ -350,6 +352,7 @@ group("default"){
     "//aio_learn:aio_suspend_test",
     "//aio_learn:lio_listio_test",
 
+    "//grammar_learn/bug/non_static__declaration:main",
     "//grammar_learn:const_test",
     "//grammar_learn:arr_prt_test",
     "//grammar_learn:pointer3_test",

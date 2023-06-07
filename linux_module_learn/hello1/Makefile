@@ -1,3 +1,5 @@
+# obj-m:= hello1.o
+# hello 将会是 lsmod name
 obj-m:= hello.o
 CURRENT_PATH:=$(shell pwd)
 LINUX_KERNEL:=$(shell uname -r)
