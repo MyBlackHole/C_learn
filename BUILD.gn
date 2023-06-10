@@ -1,5 +1,10 @@
 group("default"){
   deps = [
+
+    "//bintl_learn:dome",
+
+    "//getopt_learn:dome",
+
     "//sys_file_learn:flock_test",
 
     "//linux_module_learn/netlink:user",
