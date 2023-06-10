@@ -1,5 +1,9 @@
 group("default"){
   deps = [
+    "//rpc_learn/math:math_server",
+    "//rpc_learn/math:math_client",
+
+    "//systemd_learn:sd_notify_test",
 
     "//bintl_learn:dome",
 
