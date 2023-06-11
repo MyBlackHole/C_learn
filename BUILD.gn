@@ -1,5 +1,7 @@
 group("default"){
   deps = [
+    "//syslog_learn:openlog_test",
+
     "//rpc_learn/math:math_server",
     "//rpc_learn/math:math_client",
 
@@ -361,6 +363,7 @@ group("default"){
     "//aio_learn:aio_suspend_test",
     "//aio_learn:lio_listio_test",
 
+    "//grammar_learn:func_arr",
     "//grammar_learn/bug/non_static__declaration:main",
     "//grammar_learn:const_test",
     "//grammar_learn:arr_prt_test",
