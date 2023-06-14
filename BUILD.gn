@@ -1,5 +1,8 @@
 group("default"){
   deps = [
+    "//debug/conn_queue_full:client",
+    "//debug/conn_queue_full:server",
+
     "//syslog_learn:openlog_test",
 
     "//rpc_learn/math:math_server",
@@ -521,6 +524,7 @@ group("default"){
     "//stdio_learn:fgetc_test",
     "//stdio_learn:fread_test",
 
+    "//signal_learn:SIGKILL_test",
     "//signal_learn:raise_test",
     "//signal_learn:sigprocmask_test",
     "//signal_learn:kill_test",

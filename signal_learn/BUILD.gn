@@ -3,6 +3,11 @@ executable("raise_test") {
   sources = ["raise_test.c"]
 }
 
+executable("SIGKILL_test") {
+  cflags = ["-g", "-Wall"]
+  sources = ["SIGKILL_test.c"]
+}
+
 executable("sigprocmask_test") {
   cflags = ["-g", "-Wall"]
   sources = ["sigprocmask_test.c"]

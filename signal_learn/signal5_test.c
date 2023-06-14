@@ -5,15 +5,19 @@
 void timeout(int sig)  // 信号处理器
 {
     if (sig == SIGALRM)
+    {
         puts("Time out!");
+    }
     alarm(2);  // 为了每隔 2 秒重复产生 SIGALRM 信号，在信号处理器中调用 alarm
                // 函数
 }
+
 void keycontrol(int sig)  // 信号处理器
 {
     if (sig == SIGINT)
         puts("CTRL+C pressed");
 }
+
 int main(int argc, char *argv[])
 {
     int i;
