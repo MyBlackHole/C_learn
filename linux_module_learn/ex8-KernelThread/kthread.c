@@ -59,6 +59,7 @@ static int __init my_init(void)
 		}
 		kthread_bind(tsk[i], i);
 		pr_info("About to wake up and run the thread for cpu=%d\n", i);
+        // 启动运行 线程
 		wake_up_process(tsk[i]);
 		pr_info("Staring thread for cpu %d", i);
 		print_cpu("on");

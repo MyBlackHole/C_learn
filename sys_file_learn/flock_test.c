@@ -12,18 +12,18 @@
 int main()
 {
     char path[] = "/tmp/file.txt";
-    int myFd = 0;
+    int my_fd = 0;
     int count;
 
-    myFd = open(path, O_WRONLY | O_CREAT);
-    if (myFd < 0)
+    my_fd = open(path, O_WRONLY | O_CREAT);
+    if (my_fd < 0)
     {
         fprintf(stderr, "%s\n", strerror(errno));
         exit(EXIT_FAILURE);
     }
 
     // 堵塞获取
-    if (flock(myFd, LOCK_EX) == 0)
+    if (flock(my_fd, LOCK_EX) == 0)
     {
         printf("the file was locked.\n");
     }
@@ -44,6 +44,8 @@ int main()
             count++;
         }
     }
+
+    close(my_fd);
 
     return 0;
 }

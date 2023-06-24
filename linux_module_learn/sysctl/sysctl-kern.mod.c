@@ -29,16 +29,18 @@ MODULE_INFO(retpoline, "Y");
 
 static const char ____versions[]
 __used __section("__versions") =
-	"\x14\x00\x00\x00\xbb\x6d\xfb\xbd"
-	"__fentry__\0\0"
+	"\x20\x00\x00\x00\x4f\x9c\x44\x6a"
+	"register_sysctl_table\0\0\0"
 	"\x10\x00\x00\x00\x7e\x3a\x2c\x12"
 	"_printk\0"
 	"\x1c\x00\x00\x00\xca\x39\x82\x5b"
 	"__x86_return_thunk\0\0"
-	"\x18\x00\x00\x00\x0a\xfe\x2e\x5d"
-	"misc_register\0\0\0"
-	"\x18\x00\x00\x00\xa4\xf1\x39\xa5"
-	"misc_deregister\0"
+	"\x18\x00\x00\x00\xdf\x1a\x18\xa8"
+	"proc_dointvec\0\0\0"
+	"\x20\x00\x00\x00\xa9\xc6\x91\xd6"
+	"unregister_sysctl_table\0"
+	"\x14\x00\x00\x00\xbb\x6d\xfb\xbd"
+	"__fentry__\0\0"
 	"\x18\x00\x00\x00\xc1\x35\x7c\x15"
 	"module_layout\0\0\0"
 	"\x00\x00\x00\x00\x00\x00\x00\x00";
@@ -46,4 +48,4 @@ __used __section("__versions") =
 MODULE_INFO(depends, "");
 
 
-MODULE_INFO(srcversion, "76423A720F557CFEB6A290C");
+MODULE_INFO(srcversion, "0BD1FC28BD2028ACE8E3E53");
