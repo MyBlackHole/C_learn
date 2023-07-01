@@ -1,0 +1,14 @@
+executable("block_run") {
+  cflags = ["-g", "-Wall"]
+  sources = [
+    "block_run.c",
+  ]
+}
+
+
+executable("setsid_test") {
+  cflags = ["-g", "-Wall"]
+  sources = [
+    "setsid_test.c",
+  ]
+}

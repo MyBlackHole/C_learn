@@ -136,6 +136,8 @@ group("default"){
     # "//dome/remixdb:kv",
     # "//dome/remixdb:blkio",
 
+    "//dome/shell:shell",
+
     "//dome/contained:contained",
 
     "//dome/rtree.c:test",
@@ -459,6 +461,10 @@ group("default"){
     "//stdlib_learn:malloc_test",
     "//stdlib_learn:realloc_test",
 
+    "//unistd_learn/bug:setsid_test",
+    "//unistd_learn/bug:block_run",
+    "//unistd_learn:execve_test",
+    "//unistd_learn:execv_test",
     "//unistd_learn:pipe2_test",
     "//unistd_learn:readlink_test",
     "//unistd_learn:write_read_struct_test",

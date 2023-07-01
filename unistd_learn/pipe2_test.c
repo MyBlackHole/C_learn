@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
             write(pipefd[1], &write_buf, 1);
         }
 
-         // // 多写一个字节， 使其超过 64 * 1024 堵塞
+        // // 多写一个字节， 使其超过 64 * 1024 堵塞
         // write(pipefd[1], &write_buf, 1);
 
         // sleep(10);

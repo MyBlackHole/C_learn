@@ -1,3 +1,17 @@
+executable("execve_test") {
+  cflags = ["-g", "-Wall"]
+  sources = [
+    "execve_test.c",
+  ]
+}
+
+
+executable("execv_test") {
+  cflags = ["-g", "-Wall"]
+  sources = [
+    "execv_test.c",
+  ]
+}
 
 executable("pipe2_test") {
   cflags = ["-g", "-Wall"]

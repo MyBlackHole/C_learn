@@ -34,7 +34,10 @@ int main(int argc, char *argv[])
     {                     /* Child reads from pipe */
         close(pipefd[1]); /* Close unused write end */
 
-        while (read(pipefd[0], &buf, 1) > 0) write(STDOUT_FILENO, &buf, 1);
+        while (read(pipefd[0], &buf, 1) > 0)
+        {
+            write(STDOUT_FILENO, &buf, 1);
+        }
 
         write(STDOUT_FILENO, "\n", 1);
         close(pipefd[0]);
