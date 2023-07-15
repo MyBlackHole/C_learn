@@ -426,6 +426,7 @@ group("default"){
 
     "//shadow_learn:getspnam_test",
 
+    "//string_learn:strrchr_test",
     "//string_learn:strchr_test",
     "//string_learn:strncmp_test",
     "//string_learn:strlen_test",
@@ -441,6 +442,7 @@ group("default"){
 
     "//strings_learn:strcasecmp_test",
 
+    "//stdlib_learn:realpath_test",
     "//stdlib_learn:abort_test",
     "//stdlib_learn:aligned_alloc_test",
     "//stdlib_learn:qsort_test",

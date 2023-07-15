@@ -1,4 +1,12 @@
 
+
+executable("realpath_test") {
+  cflags = ["-g", "-Wall"]
+  sources = [
+    "realpath_test.c",
+  ]
+}
+
 executable("abort_test") {
   cflags = ["-g", "-Wall"]
   sources = [

@@ -1,3 +1,11 @@
+executable("strrchr_test") {
+  cflags = ["-g", "-Wall"]
+
+  sources = [
+    "strrchr_test.c",
+  ]
+}
+
 executable("strchr_test") {
   cflags = ["-g", "-Wall"]
 
