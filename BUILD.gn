@@ -136,6 +136,9 @@ group("default"){
     # "//dome/remixdb:kv",
     # "//dome/remixdb:blkio",
 
+    "//dome/change_pid_mem:app",
+    "//dome/change_pid_mem:change",
+
     "//dome/shell:shell",
 
     "//dome/contained:contained",
