@@ -1,11 +1,3 @@
-/**********************************************************
- * Author        : 梁金荣
- * Email         : Liangjinrong111@163.com
- * Last modified : 2019-09-21 23:21
- * Filename      : rbtree.c
- * Description   : Using rbtree
- * *******************************************************/
-
 #include <linux/init.h>
 #include <linux/kernel.h>
 #include <linux/list.h>
@@ -35,18 +27,25 @@ struct mytype *my_search(struct rb_root *root, int new)
         struct mytype *data = container_of(node, struct mytype, node);
 
         if (data->key > new)
+        {
             node = node->rb_left;
+        }
         else if (data->key < new)
+        {
             node = node->rb_right;
+        }
         else
+        {
             return data;
+        }
     }
     return NULL;
 }
 
 int my_insert(struct rb_root *root, struct mytype *data)
 {
-    struct rb_node **new = &(root->rb_node), *parent = NULL;
+    struct rb_node **new = &(root->rb_node);
+    struct rb_node *parent = NULL;
 
     /* Figure out where to put new node */
     while (*new)
@@ -55,13 +54,17 @@ int my_insert(struct rb_root *root, struct mytype *data)
 
         parent = *new;
         if (this->key > data->key)
+        {
             new = &((*new)->rb_left);
+        }
         else if (this->key < data->key)
         {
             new = &((*new)->rb_right);
         }
         else
+        {
             return -1;
+        }
     }
 
     /* Add new node and rebalance tree. */
@@ -73,20 +76,22 @@ int my_insert(struct rb_root *root, struct mytype *data)
 
 static int __init my_init(void)
 {
-    int i;
+    int iii;
     struct mytype *data;
     struct rb_node *node;
     printk("The rbtree kernel is starting!\n");
-    for (i = 0; i < 10; i++)
+    for (iii = 0; iii < 10; iii++)
     {
         data = kmalloc(sizeof(struct mytype), GFP_KERNEL);
-        data->key = i + 1;
+        data->key = iii + 1;
         my_insert(&mytree, data);
     }
 
     /*list all tree*/
     for (node = rb_first(&mytree); node; node = rb_next(node))
+    {
         printk("data=%d\n", rb_entry(node, struct mytype, node)->key);
+    }
 
     return 0;
 }

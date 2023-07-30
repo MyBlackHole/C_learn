@@ -35,6 +35,8 @@ __used __section("__versions") =
 	"_printk\0"
 	"\x1c\x00\x00\x00\xca\x39\x82\x5b"
 	"__x86_return_thunk\0\0"
+	"\x18\x00\x00\x00\x98\x68\xb0\xc7"
+	"param_ops_int\0\0\0"
 	"\x18\x00\x00\x00\xc1\x35\x7c\x15"
 	"module_layout\0\0\0"
 	"\x00\x00\x00\x00\x00\x00\x00\x00";
@@ -42,4 +44,4 @@ __used __section("__versions") =
 MODULE_INFO(depends, "");
 
 
-MODULE_INFO(srcversion, "193B5AAEC498EC7AF00DB25");
+MODULE_INFO(srcversion, "116A9009F0D8323C172A3DD");

@@ -10,13 +10,15 @@ static int kernusr_callback(struct ctl_table *table, int write,
 {
     int rc;
     int *data = table->data;
+    rc = proc_dointvec(table, write, buffer, lenp, ppos);
 
     printk(KERN_INFO "original value = %d\n", *data);
 
-    rc = proc_dointvec(table, write, buffer, lenp, ppos);
     if (write)
+    {
         printk(KERN_INFO "this is write operation, current value = %d\n",
                *data);
+    }
 
     return rc;
 }

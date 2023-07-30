@@ -33,6 +33,8 @@ __used __section("__versions") =
 	"__fentry__\0\0"
 	"\x10\x00\x00\x00\x7e\x3a\x2c\x12"
 	"_printk\0"
+	"\x14\x00\x00\x00\x1c\x83\x8c\x43"
+	"init_task\0\0\0"
 	"\x1c\x00\x00\x00\xca\x39\x82\x5b"
 	"__x86_return_thunk\0\0"
 	"\x18\x00\x00\x00\xc1\x35\x7c\x15"
@@ -42,4 +44,4 @@ __used __section("__versions") =
 MODULE_INFO(depends, "");
 
 
-MODULE_INFO(srcversion, "193B5AAEC498EC7AF00DB25");
+MODULE_INFO(srcversion, "C4D8773BDC7A81ADB63A17B");

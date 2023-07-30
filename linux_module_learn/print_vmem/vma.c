@@ -6,52 +6,52 @@
 static int pid;
 module_param(pid, int, 0644);
 
-static void printit(struct task_struct *tsk)
+static void print_task_vma(struct task_struct *task)
 {
-    struct mm_struct *mm;
+    struct mm_struct *mms = task->mm;
     struct vm_area_struct *vma;
-    int j = 0;
-    unsigned long start, end, length;
+    int count = 0;
+    unsigned long start;
+    unsigned long end;
+    unsigned long length;
+    VMA_ITERATOR(vmi, mms, 0);
 
-    mm = tsk->mm;
-    pr_info("mm_struct addr = 0x%p\n", mm);
-    vma = mm->mmap;
+    pr_info("mm_struct addr = 0x%p\n", mms);
 
-    /* protect from simultaneous modification */
-    down_read(&mm->mmap_sem);
-    pr_info(
-        "vmas:                vma        start          end        length\n");
+    mmap_read_lock(mms);
+    pr_info("vmas:            vma        start          end        length\n");
 
-    while (vma)
+    for_each_vma(vmi, vma)
     {
-        j++;
+        count++;
         start = vma->vm_start;
         end = vma->vm_end;
         length = end - start;
-        pr_info("%6d: %16p %12lx %12lx   %8ld\n", j, vma, start, end, length);
-        vma = vma->vm_next;
+        pr_info("%6d: %16p %12lx %12lx   %8ld\n", count, vma, start, end, length);
     }
-    up_read(&mm->mmap_sem);
+    mmap_read_unlock(mms);
 }
 
 static int __init my_init(void)
 {
-    struct task_struct *tsk;
+    struct task_struct *task;
     /* if don't pass the pid over insmod, then use the current process */
     if (pid == 0)
     {
-        tsk = current;
+        task = current;
         pid = current->pid;
         pr_info("using current process\n");
     }
     else
     {
-        tsk = pid_task(find_vpid(pid), PIDTYPE_PID);
+        task = pid_task(find_vpid(pid), PIDTYPE_PID);
     }
-    if (!tsk)
+    if (!task)
+    {
         return -1;
-    pr_info(" Examining vma's for pid=%d, command=%s\n", pid, tsk->comm);
-    printit(tsk);
+    }
+    pr_info(" Examining vma's for pid=%d, command=%s\n", pid, task->comm);
+    print_task_vma(task);
     return 0;
 }
 
