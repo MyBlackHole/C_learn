@@ -1,9 +1,11 @@
 executable("main") {
-  cflags = ["-g", "-Wall"]
+  cflags = ["-g", "-Wall", "-Wl,--export-dynamic"]
   cflags_c = ["-Wl,--export-dynamic"]
   libs = ["uv"]
+  deps = [":libhello"]
   sources = [
     "main.c",
+    "plugin.h",
   ]
 }
 
@@ -11,5 +13,6 @@ shared_library("libhello") {
   cflags = ["-fPIC", "-g", "-Wall"]
   sources = [
     "hello.c",
+    "plugin.h",
   ]
 }

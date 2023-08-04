@@ -80,6 +80,7 @@ group("default"){
     "//uv_learn:uv_fs_scandir_test",
     "//uv_learn:uv_fs_stat_test",
     "//uv_learn/plugin:main",
+    "//uv_learn/plugin:main",
     "//uv_learn/detach:main",
     "//uv_learn/pipe-echo-server:main",
     "//uv_learn/multi-echo-server:main",

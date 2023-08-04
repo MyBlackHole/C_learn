@@ -3,17 +3,7 @@
 #include <linux/kthread.h>
 #include <linux/module.h>
 
-static struct task_struct *tsk[NR_CPUS];
-
-static void show_reg(void)
-{
-    unsigned int cpsr, sp;
-
-    asm("mrs %0, cpsr" : "=r"(cpsr) : : "cc");
-    asm("mov %0, sp" : "=r"(sp) : : "cc");
-
-    printk("cpsr:0x%x, sp:0x%x\n", cpsr, sp);
-}
+static struct task_struct *task[NR_CPUS];
 
 static void show_prio(void)
 {
@@ -24,14 +14,14 @@ static void show_prio(void)
            task->static_prio, task->normal_prio);
 }
 
-static void print_cpu(char *s)
+static void print_cpu(char *str)
 {
     preempt_disable();
-    pr_info("%s cpu=%d.\n", s, smp_processor_id());
+    pr_info("%s cpu=%d.\n", str, smp_processor_id());
     preempt_enable();
 }
 
-static int thread_fun(void *t)
+static int thread_fun(void *data)
 {
     do
     {
@@ -39,7 +29,6 @@ static int thread_fun(void *t)
         msleep_interruptible(2000);
         print_cpu("msleep over in Thread Function");
         print_cpu("running");
-        show_reg();
         show_prio();
     } while (!kthread_should_stop());
     return 0;
@@ -47,21 +36,22 @@ static int thread_fun(void *t)
 
 static int __init my_init(void)
 {
-    int i;
+    int count;
     print_cpu("Loading module");
-    for_each_online_cpu(i)
+    // 每个 cpu 遍历
+    for_each_online_cpu(count)
     {
-        tsk[i] = kthread_create(thread_fun, NULL, "kdemo/%d", i);
-        if (!tsk[i])
+        task[count] = kthread_create(thread_fun, NULL, "kdemo/%d", count);
+        if (!task[count])
         {
             pr_info("Failed to generate a kernel thread\n");
             return -1;
         }
-        kthread_bind(tsk[i], i);
-        pr_info("About to wake up and run the thread for cpu=%d\n", i);
+        kthread_bind(task[count], count);
+        pr_info("About to wake up and run the thread for cpu=%d\n", count);
         // 启动运行 线程
-        wake_up_process(tsk[i]);
-        pr_info("Staring thread for cpu %d", i);
+        wake_up_process(task[count]);
+        pr_info("Staring thread for cpu %d", count);
         print_cpu("on");
     }
     return 0;
@@ -69,11 +59,11 @@ static int __init my_init(void)
 
 static void __exit my_exit(void)
 {
-    int i;
-    for_each_online_cpu(i)
+    int count;
+    for_each_online_cpu(count)
     {
-        pr_info(" Kill Thread %d", i);
-        kthread_stop(tsk[i]);
+        pr_info(" Kill Thread %d", count);
+        kthread_stop(task[count]);
         print_cpu("Kill was done on ");
     }
 }
