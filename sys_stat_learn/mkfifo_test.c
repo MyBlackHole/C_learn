@@ -6,6 +6,8 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
+#define NUM 1024
+
 #define FIFO "stdout_fifo"
 
 int main()
@@ -14,7 +16,7 @@ int main()
     // 清除 FIFO
     unlink(FIFO);
     // 创建 FIFO
-    int res = mkfifo(FIFO, 0777);
+    int res = mkfifo(FIFO, ACCESSPERMS);
     if (res == -1)
     {
         perror("mkfifo");
@@ -24,26 +26,26 @@ int main()
     // 分裂
     if (fork() == 0)
     {
-        int fd = open(FIFO, O_WRONLY);
+        int o_fd = open(FIFO, O_WRONLY);
 
         // 重定向 输出
-        dup2(fd, 1);
+        dup2(o_fd, 1);
 
         execl("/bin/ls", "-a", (char*)0);
     }
     else
     {
-        char child_stdout[1024] = {0};
-        int fd = open(FIFO, O_RDONLY);
-        if (fd == -1)
+        char child_stdout[NUM] = {0};
+        int o_fd = open(FIFO, O_RDONLY);
+        if (o_fd == -1)
         {
             perror("open");
             exit(-1);
         }
 
         sleep(3);
-        read(fd, child_stdout, sizeof(child_stdout));
-        printf("Parent: %s", child_stdout);
+        read(o_fd, child_stdout, sizeof(child_stdout));
+        printf("Parent: child_stdout \n[\n%s\n]\n", child_stdout);
         printf("Finished!\n");
 
         wait(&status);

@@ -18,3 +18,12 @@ compile_commands.json
 *.ko
 *.symvers
 *.order
+
+# Xmake cache
+.xmake/
+build/
+
+# MacOS Cache
+.DS_Store
+
+
