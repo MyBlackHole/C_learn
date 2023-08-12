@@ -6,17 +6,23 @@ struct Line
 {
     uint32_t length;
     // 不占用空间, 柔性数组用法
-    uint8_t contents[];
+    // uint8_t contents[];
+
+    // 柔性数组用法
+    uint8_t contents[1];
 };
 
 int main()
 {
-    struct Line l;
-    printf("%ld\n", sizeof(l));
-
+    struct Line line;
     int length = 100;
-    struct Line *lp = (struct Line *)malloc(sizeof(struct Line) + length);
+
+    printf("%ld\n", sizeof(line));
+
+    struct Line *line_ptr = (struct Line *)malloc(sizeof(struct Line) + length);
     // 代表 contents 100 char
-    lp->length = 100;
+    line_ptr->length = 100;
+
+    printf("%ld\n", (int)line_ptr->contents[96]);
     return 0;
 }

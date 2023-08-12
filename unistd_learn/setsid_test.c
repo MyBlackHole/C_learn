@@ -5,6 +5,8 @@
 
 int main(int argc, char **argv)
 {
+    pid_t gpid;
+    pid_t old_gpid;
     if (fork() > 0)
     {
         printf("parent begin\n");
@@ -17,13 +19,14 @@ int main(int argc, char **argv)
         printf("parent exit\n");
         exit(0);
     }
-
+    old_gpid = getpgrp();
     /* 脱离父进程组 */
-    setsid();
+    gpid = setsid();
+    printf("ppid %d, gpid %d---%d\n", getppid(), old_gpid, gpid);
 
     printf("child begin\n");
 
-    for (size_t i = 0; i < 100; i++)
+    for (size_t i = 0; i < 10; i++)
     {
         sleep(1);
         printf("child count:%ld pid:%d\n", i, getpid());
