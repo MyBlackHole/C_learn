@@ -1,7 +1,0 @@
-executable("basename_test") {
-  cflags = ["-g", "-Wall"]
-  sources = [
-    "basename_test.c",
-  ]
-}
-

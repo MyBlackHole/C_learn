@@ -1,7 +1,0 @@
-executable("env_test") {
-  cflags = ["-g", "-Wall"]
-
-  sources = [
-    "env_test.c",
-  ]
-}

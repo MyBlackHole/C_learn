@@ -1,5 +1,0 @@
-executable("glob_test") {
-  cflags = ["-g", "-Wall"]
-  sources = ["glob_test.c"]
-}
-

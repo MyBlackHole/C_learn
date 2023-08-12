@@ -1,6 +1,0 @@
-executable("errno_learn") {
-  cflags = ["-g", "-Wall"]
-  sources = [
-    "errno_learn.c",
-  ]
-}

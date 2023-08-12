@@ -1,6 +1,0 @@
-executable("dome") {
-  cflags = ["-g", "-Wall"]
-  sources = [
-    "dome.c"
-  ]
-}

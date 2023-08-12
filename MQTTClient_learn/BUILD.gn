@@ -1,8 +1,0 @@
-executable("main") {
-  cflags = ["-g", "-Wall"]
-  ldflags = ["-lpaho-mqtt3c"]
-  sources = [
-    "main.c",
-  ]
-}
-

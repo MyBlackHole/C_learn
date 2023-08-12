@@ -1,6 +1,0 @@
-executable("backtrace_test") {
-  cflags = ["-g", "-Wall"]
-  sources = [
-    "backtrace_test.c",
-  ]
-}

@@ -1,7 +1,0 @@
-executable("mtrace_test") {
-  cflags = ["-g", "-Wall"]
-  sources = [
-    "mtrace_test.c",
-  ]
-}
-

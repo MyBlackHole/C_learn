@@ -214,12 +214,11 @@ int main(int argc, char **argv)
         }
         return ret;
     }
-
-    // ./zpipe -d < file.text
-    // blackhole
-    /* do decompression if -d specified */
     else if (argc == 2 && strcmp(argv[1], "-d") == 0)
     {
+        // ./zpipe -d < file.text
+        // blackhole
+        /* do decompression if -d specified */
         ret = inf(stdin, stdout);
         if (ret != Z_OK)
         {

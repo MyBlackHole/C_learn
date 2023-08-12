@@ -1,4 +1,4 @@
-#include "tbox/tbox.h"
+#include <tbox/tbox.h>
 
 int main(int argc, char **argv)
 {
