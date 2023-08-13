@@ -3,25 +3,30 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+#define OFFSET 16384
+
 char buf1[] = "qwertyuiop";
 char buf2[] = "QWERTYUIOP";
+
 int main(void)
 {
-    int fd;
-    if ((fd = creat("myfile.txt", S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH)) < 0)
+    int m_fd;
+    // 创建文件
+    m_fd = creat("myfile.txt", S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+    if (m_fd < 0)
     {
         perror("creat error");
         exit(1);
     }
-    if (write(fd, buf1, 10) != 10)
+    if (write(m_fd, buf1, sizeof(buf1)) != sizeof(buf1))
     {
         perror("write error");
     }
-    if (lseek(fd, 16384, SEEK_SET) == -1)
+    if (lseek(m_fd, OFFSET, SEEK_SET) == -1)
     {
         perror("lseek error");
     }
-    if (write(fd, buf2, 10) != 10)
+    if (write(m_fd, buf2, sizeof(buf2)) != sizeof(buf2))
     {
         perror("write error");
     }

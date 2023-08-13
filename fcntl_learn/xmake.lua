@@ -11,6 +11,5 @@ for _, file_path in ipairs(os.files(os.curdir() .. "/*.c")) do
     target(basename, function()
         set_kind("binary")
         add_files(filename)
-        add_links("curl")
     end)
 end
