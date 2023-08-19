@@ -1,7 +1,7 @@
 #include <arpa/inet.h>
 #include <stdio.h>
 
-int main(void)
+int demo_inet_ntop_main(void)
 {
     // 存放点分十进制IP地址
     char IPdotdec[20];

@@ -3,14 +3,14 @@
 #include <stdlib.h>
 #include <sys/socket.h>
 
-/* inet_ntoa()函数 */
-/* 功能inet_ntoa()函数用于网络字节序IP转化点分十进制IP; */
-/* 原型：char *inet_ntoa (struct in_addr); */
-/* 返回值：若无错误发生，inet_ntoa()返回一个字符指针。否则的话，返回NULL。其中的数据应在下一个WINDOWS套接口调用前复制出
+/* inet_addr()函数 */
+/* 功能：inet_addr()函数用于将点分十进制IP地址转换成网络字节序IP地址; */
+/* 原型：in_addr_t inet_addr(const char *cp); */
+/* 返回值：如果正确执行将返回一个无符号长整数型数。如果传入的字符串不是一个合法的IP地址，将返回INADDR_NONE;
  */
-int main()
+int demo_inet_addr_main()
 {
-    int i;
+    // int i;
     char lo[] = "127.0.0.1";
     struct in_addr netAddr;
 

@@ -3,11 +3,12 @@
 #include <stdlib.h>
 #include <sys/socket.h>
 
-/* inet_aton()函数 */
-/* 功能：inet_aton()函数用于将点分十进制IP地址转换成网络字节序IP地址; */
-/* 原型：int inet_aton(const char *string, struct in_addr *addr); */
-/* 返回值：如果这个函数成功，函数的返回值非零，如果输入地址不正确则会返回零; */
-int main()
+/* inet_ntoa()函数 */
+/* 功能inet_ntoa()函数用于网络字节序IP转化点分十进制IP; */
+/* 原型：char *inet_ntoa (struct in_addr); */
+/* 返回值：若无错误发生，inet_ntoa()返回一个字符指针。否则的话，返回NULL。其中的数据应在下一个WINDOWS套接口调用前复制出
+ */
+int demo_inet_ntoa_main()
 {
     int i;
     char lo[] = "127.0.0.1";
@@ -17,8 +18,8 @@ int main()
     printf("NetIP: 0x%x\n", netAddr.s_addr);
 
     char *strAddr = inet_ntoa(netAddr);
-    printf("StrIP: %s\n", strAddr);
 
+    printf("StrIP: %s\n", strAddr);
     int ret = inet_aton(strAddr, &netAddr);
     printf("NetIP: 0x%x\n", netAddr.s_addr);
     return 0;
