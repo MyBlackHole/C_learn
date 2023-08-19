@@ -13,9 +13,7 @@
 
 #define BUFFER_SIZE 1024
 
-int MAX_LIST = 2;
-
-int main(int argc, char **argv)
+int demo_aio_read_main(int argc, char **argv)
 {
     // aio操作所需结构体
     struct aiocb rd;
@@ -26,6 +24,7 @@ int main(int argc, char **argv)
     if (fd < 0)
     {
         perror("test.txt");
+        return EXIT_FAILURE;
     }
 
     // 将rd结构体清空
@@ -45,7 +44,7 @@ int main(int argc, char **argv)
     if (ret < 0)
     {
         perror("aio_read");
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     couter = 0;
@@ -60,5 +59,5 @@ int main(int argc, char **argv)
 
     printf("\n\n返回值为:%d", ret);
 
-    return 0;
+    return EXIT_SUCCESS;
 }

@@ -13,7 +13,7 @@
 
 #define BUFFER_SIZE 1025
 
-int main(int argc, char **argv)
+int demo_aio_write_main(int argc, char **argv)
 {
     // 定义aio控制块结构体
     struct aiocb wr;

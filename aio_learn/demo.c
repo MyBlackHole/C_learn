@@ -11,7 +11,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-int main(int argc, char *argv[])
+int demo_demo_main(int argc, char *argv[])
 {
     int errcode;
     int fd;

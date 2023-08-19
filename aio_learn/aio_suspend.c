@@ -13,9 +13,9 @@
 
 #define BUFFER_SIZE 1024
 
-int MAX_LIST = 2;
+#define MAX_LIST 2
 
-int main(int argc, char **argv)
+int demo_aio_suspend_main(int argc, char **argv)
 {
     // aio操作所需结构体
     struct aiocb rd;
