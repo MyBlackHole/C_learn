@@ -1,0 +1,18 @@
+-- add_requires("linux-headers", {configs = {driver_modules = true}})
+
+-- 自定义 linux-headers 路径
+package("linux-headers")
+    on_fetch(function(package, opt)
+        return { includedirs = "/usr/src/linux-headers-6.2.0-25-generic/include" }
+    end)
+package_end()
+add_requires("linux-headers")
+
+-- 遍历获取文件
+-- 构建目标
+target("xarray", function()
+    -- add_rules("platform.linux.driver")
+    add_files("*.c")
+    add_packages("linux-headers")
+    set_license("GPL-2.0")
+end)
