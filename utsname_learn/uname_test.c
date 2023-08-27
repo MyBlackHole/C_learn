@@ -3,17 +3,19 @@
 #include <sys/utsname.h>
 #include <unistd.h>
 
-int main(void)
+int demo_uname_test_main(void)
 {
-    int i;
+    int ret;
     struct utsname myuname;
-    if ((i = uname(&myuname)) < 0)
+
+    ret = uname(&myuname);
+    if (ret < 0)
     {
         perror("uname error");
     }
     else
     {
-        printf("%s\t%s\t%s\t%s\t%s", myuname.sysname, myuname.nodename,
+        printf("%s\t%s\t%s\t%s\t%s\n", myuname.sysname, myuname.nodename,
                myuname.version, myuname.release, myuname.machine);
     }
     //	char buf[64];
