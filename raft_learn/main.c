@@ -43,7 +43,7 @@ static int ensureDir(const char *dir)
     return 0;
 }
 
-int main(int argc, char *argv[])
+int demo_main_main(int argc, char *argv[])
 {
     const char *dir = "/tmp/raft_test";
     struct uv_loop_s loop;
