@@ -21,7 +21,8 @@
 static unsigned char fileData[65536];
 
 // ./out/obj/yajl_learn/main < yajl_learn/sample.config
-int main(void)
+// ./build/linux/x86_64/debug/yajl_learn < yajl_learn/sample.config
+int demo_main_main(void)
 {
     size_t rd;
     yajl_val node;
