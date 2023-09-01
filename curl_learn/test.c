@@ -6,7 +6,7 @@
 
 // #pragma comment(lib, "libcurl.lib")
 
-int main(void)
+int demo_test_main(void)
 {
     CURL *curl;
     CURLcode res;

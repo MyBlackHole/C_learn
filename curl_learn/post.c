@@ -22,7 +22,7 @@ bool Post(char *Url, char *Cookie, char *PostVal)
     return true;
 }
 
-int main(int argc, char *argv[])
+int demo_post_main(int argc, char *argv[])
 {
     Post("https://www.baidu.com/post.php", "exfffffx",
          "&logintype=uid&u=xieyan&psw=xxx86");

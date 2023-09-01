@@ -4,7 +4,7 @@
 
 #include "curl/curl.h"
 
-int main(void)
+int demo_test1_main(void)
 {
     CURL *curl;
     CURLcode res;

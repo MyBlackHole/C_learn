@@ -11,7 +11,7 @@ size_t write_data(void *ptr, size_t size, size_t nmemb, void *stream)
     return written;
 }
 
-bool GetUrl(char *URL, char *FileName)
+bool get(char *URL, char *FileName)
 {
     CURL *curl;
 
@@ -38,9 +38,9 @@ bool GetUrl(char *URL, char *FileName)
     return true;
 }
 
-int main(int argc, char *argv[])
+int demo_get_main(int argc, char *argv[])
 {
-    GetUrl("https://www.baidu.com", "c://baidu.html");
+    get("https://www.baidu.com", "c://baidu.html");
 
     return 0;
 }
