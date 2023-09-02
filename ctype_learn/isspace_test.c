@@ -9,22 +9,22 @@
 
 void func1()
 {
-    char c;
-    int i = 0;
+    char value;
+    int index = 0;
     char str[] = "Example sentence to test isspace\n";
-    while (str[i])
+    while (str[index])
     {
-        c = str[i];
-        if (isspace(c))
+        value = str[index];
+        if (isspace(value))
         {
-            c = '\n';
+            value = '\n';
         }
-        putchar(c);
-        i++;
+        putchar(value);
+        index++;
     }
 }
 
-int main()
+int demo_isspace_test_main()
 {
     func1();
     return 0;

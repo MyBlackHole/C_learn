@@ -10,11 +10,16 @@
 
 // 注意，此为宏定义，非真正函数。
 
-int main()
+int demo_islower_test_main()
 {
     char str[] = "123@#FDsP[e?";
-    int i;
-    for (i = 0; str[i] != 0; i++)
-        if (islower(str[i]))
-            printf("%c is a lower-case character\n", str[i]);
+    int index;
+    for (index = 0; str[index] != 0; index++)
+    {
+        if (islower(str[index]))
+        {
+            printf("%c is a lower-case character\n", str[index]);
+        }
+    }
+    return 0;
 }

@@ -9,11 +9,18 @@
  *
  */
 
-int main()
+int demo_isdigit_test_main()
 {
     char str[] = "123@#FDsP[e?";
-    int i;
-    for (i = 0; str[i] != 0; i++)
-        if (isdigit(str[i]))
-            printf("%c is an digit character\n", str[i]);
+    int index;
+    for (index = 0; str[index] != 0; index++)
+    {
+
+        if (isdigit(str[index]))
+        {
+
+            printf("%c is an digit character\n", str[index]);
+        }
+    }
+    return 0;
 }

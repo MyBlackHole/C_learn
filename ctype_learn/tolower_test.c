@@ -6,14 +6,14 @@
 /*
  * 大写转小写
  */
-int main(int argc, char *argv[])
+int demo_tolower_test_main(int argc, char *argv[])
 {
-    int i;
+    int index;
     char string[] = "BLACK HOLE;";
     printf("%s\n", string);
-    for (i = 0; i < strlen(string); i++)
+    for (index = 0; index < strlen(string); index++)
     {
-        putchar(tolower(string[i]));
+        putchar(tolower(string[index]));
     }
     printf("\n");
     exit(0);
