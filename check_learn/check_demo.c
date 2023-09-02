@@ -30,7 +30,7 @@ Suite *make_add_suite(void)
     return s;
 }
 
-int main(int argc, char *argv[])
+int demo_check_demo_main(int argc, char *argv[])
 {
     SRunner *sr;
     sr = srunner_create(make_add_suite());  // 将Suite加入到SRunner
