@@ -9,6 +9,14 @@
 
 #define DEMO_MAIN_DECL(name) int demo_##name##_main(int argc, char** argv)
 
+#define DEMO_MAIN_ENV_ITEM(name)  \
+    {                             \
+        #name, demo_##name##_main \
+    }
+
+#define DEMO_MAIN_ENV_DECL(name) \
+    int demo_##name##_main(int argc, char** argv, char** env)
+
 /* //////////////////////////////////////////////////////////////////////////////////////
  * types
  */
@@ -26,4 +34,14 @@ typedef struct demo
 
 } demo_t;
 
+// the demo type
+typedef struct demo_env
+{
+    // the demo name
+    char const* name;
+
+    // the demo main
+    int (*main)(int argc, char** argv, char** env);
+
+} demo_env_t;
 #endif
