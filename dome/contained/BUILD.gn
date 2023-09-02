@@ -1,9 +1,0 @@
-executable("contained") {
-  cflags = ["-g", "-Wall"]
-
-  ldflags = ["-lcap", "-lseccomp"]
-
-  sources = [
-    "contained.c",
-  ]
-}
