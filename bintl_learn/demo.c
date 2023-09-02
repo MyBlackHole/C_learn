@@ -9,7 +9,7 @@
 // 定义系统语言环境的目录，该目录下存放着国际化的语言
 #define LOCALEDIR "/media/black/Data/Documents/C/bintl_learn/"
 
-int main()
+int demo_demo_main()
 {
     // 设置使用环境变量(系统当前的值)
     setlocale(LC_ALL, "");
