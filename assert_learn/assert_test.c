@@ -7,7 +7,7 @@
 
 static void handler(int signal) { printf("触发了-[%d]\n", signal); }
 
-int main()
+int demo_assert_test_main()
 {
     signal(SIGABRT, handler);
     /* signal(SIGABRT, SIG_IGN); */
