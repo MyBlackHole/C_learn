@@ -16,7 +16,7 @@
         exit(1);                                                               \
     }
 
-void test_full_sock_buf_1()
+void server_handle()
 {
     int listenfd;
     int r;
@@ -68,9 +68,9 @@ void test_full_sock_buf_1()
     sleep(15);
 }
 
-int main()
+int demo_server_main()
 {
-    test_full_sock_buf_1();
+    server_handle();
 
     return 0;
 }

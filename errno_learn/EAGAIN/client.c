@@ -26,7 +26,7 @@ void setNonBlock(int fd)
     exit_if(r < 0, "fcntl failed");
 }
 
-void test_full_sock_buf_1()
+void client_handle()
 {
     int fd;
     int ret;
@@ -59,9 +59,9 @@ void test_full_sock_buf_1()
     }
 }
 
-int main()
+int demo_client_main()
 {
-    test_full_sock_buf_1();
+    client_handle();
 
     return 0;
 }
