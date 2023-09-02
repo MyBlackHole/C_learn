@@ -2,9 +2,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(int argc, char **argv)
+int demo_readdir_test_main(int argc, char **argv)
 {
-    DIR *dp;
+    DIR *dir;
     struct dirent *dirp;
 
     if (argc < 2)
@@ -12,15 +12,15 @@ int main(int argc, char **argv)
         fprintf(stderr, "usage:ls directory_name");
         exit(1);
     }
-
-    if ((dp = opendir(argv[1])) == NULL)
+    dir = opendir(argv[1]);
+    if (dir == NULL)
     {
         fprintf(stderr, "can't open %s", argv[1]);
     }
-    while ((dirp = readdir(dp)) != NULL)
+    while ((dirp = readdir(dir)) != NULL)
     {
         printf("%s\n", dirp->d_name);
     }
-    closedir(dp);
+    closedir(dir);
     exit(0);
 }

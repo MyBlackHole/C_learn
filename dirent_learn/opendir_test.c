@@ -2,18 +2,25 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(int argc, char *argv[])
+int demo_opendir_test_main(int argc, char *argv[])
 {
-    DIR *dp;
+    DIR *dir;
     struct dirent *dirp;
 
     if (argc != 2)
+    {
         perror("usage: ls directory_name");
-
-    if ((dp = opendir(argv[1])) == NULL)
+    }
+    dir = opendir(argv[1]);
+    if (dir == NULL)
+    {
         fprintf(stderr, "can't open %s", argv[1]);
-    while ((dirp = readdir(dp)) != NULL) fprintf(stderr, "%s\n", dirp->d_name);
+    }
+    while ((dirp = readdir(dir)) != NULL)
+    {
+        fprintf(stderr, "%s\n", dirp->d_name);
+    }
 
-    closedir(dp);
+    closedir(dir);
     exit(0);
 }
