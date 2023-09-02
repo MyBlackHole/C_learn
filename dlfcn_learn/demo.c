@@ -2,12 +2,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define LIB_PATH "/media/black/Data/Documents/C/out/libadd.so"
+#define LIB_PATH "/media/black/Data/Documents/C/build/linux/x86_64/debug/libadd.so"
 // #define LIB_PATH "/root/libadd.so"
 
 typedef int FUNC(int, int);
 
-int main()
+int demo_demo_main()
 {
     void *handle;
     char *error;

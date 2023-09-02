@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(int argc, char **argv)
+int demo_dlsym_test_main(int argc, char **argv)
 {
     void *handle;
     double (*cosine)(double);
@@ -25,8 +25,8 @@ int main(int argc, char **argv)
         POSIX specification of dlsym(). */
 
     *(void **)(&cosine) = dlsym(handle, "cos");
-
-    if ((error = dlerror()) != NULL)
+    error = dlerror();
+    if (error != NULL)
     {
         fprintf(stderr, "%s\n", error);
         exit(EXIT_FAILURE);
