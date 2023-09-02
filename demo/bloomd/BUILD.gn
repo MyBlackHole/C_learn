@@ -1,0 +1,54 @@
+executable("runner") {
+  ldflags = ["-lcheck"]
+  deps = [":sbf", ":bitmap", ":bloom"]
+  include_dirs = ["src/libbloom"]
+  cflags = ["-g", "-Wall"]
+  sources = [
+    "tests/libbloom/runner.c",
+    "tests/libbloom/test_sbf.c",
+    "tests/libbloom/test_bitmap.c",
+    "tests/libbloom/test_bloom.c",
+  ]
+}
+
+static_library("sbf") {
+  cflags = ["-g", "-Wall"]
+  sources = [
+    "src/libbloom/sbf.c",
+    "src/libbloom/sbf.h",
+  ]
+}
+
+static_library("bitmap") {
+  cflags = ["-g", "-Wall"]
+  sources = [
+    "src/libbloom/bitmap.c",
+    "src/libbloom/bitmap.h",
+  ]
+}
+
+static_library("bloom") {
+  cflags = ["-g", "-Wall"]
+  deps = [":MurmurHash3", ":spooky"]
+  sources = [
+    "src/libbloom/bloom.c",
+    "src/libbloom/bloom.h",
+  ]
+}
+
+static_library("MurmurHash3") {
+  cflags = ["-g", "-Wall"]
+  sources = [
+    "deps/murmurhash/MurmurHash3.h",
+    "deps/murmurhash/MurmurHash3.cpp",
+  ]
+}
+
+static_library("spooky") {
+  cflags = ["-g", "-Wall"]
+  sources = [
+    "deps/spookyhash/spooky.cpp",
+    "deps/spookyhash/spooky.h",
+  ]
+}
+

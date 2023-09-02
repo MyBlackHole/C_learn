@@ -1,0 +1,42 @@
+executable("main") {
+  cflags = ["-g"]
+  deps = [":config", ":sds", ":zmalloc"]
+  sources = [
+    "main.c",
+  ]
+}
+
+executable("sds_test") {
+  cflags = ["-g"]
+  deps = [":sds", ":zmalloc"]
+  sources = [
+    "sds_test.c",
+    "testhelp.h",
+  ]
+}
+
+
+static_library("zmalloc") {
+  cflags = ["-g"]
+  sources = [
+    "zmalloc.c",
+    "zmalloc.h",
+  ]
+}
+
+static_library("config") {
+  cflags = ["-g"]
+  sources = [
+    "config.c",
+    "config.h",
+  ]
+}
+
+static_library("sds") {
+  cflags = ["-g"]
+  sources = [
+    "sds.c",
+    "sds.h",
+  ]
+}
+

@@ -1,0 +1,16 @@
+executable("test") {
+  cflags = ["-g", "-Wall"]
+  deps = [":rtree"]
+  sources = [
+    "tests.c",
+  ]
+}
+
+static_library("rtree") {
+  cflags = ["-g", "-Wall"]
+  sources = [
+    "rtree.c",
+    "rtree.h",
+  ]
+}
+

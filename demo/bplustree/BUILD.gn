@@ -1,0 +1,26 @@
+executable("bplustree_demo") {
+  cflags = ["-g"]
+  deps = [":bplustree"]
+  include_dirs = ["lib"]
+  sources = [
+    "tests/bplustree_demo.c",
+  ]
+}
+
+executable("bplustree_coverage") {
+  cflags = ["-g"]
+  deps = [":bplustree"]
+  include_dirs = ["lib"]
+  sources = [
+    "tests/bplustree_coverage.c",
+  ]
+}
+
+static_library("bplustree") {
+  cflags = ["-g"]
+  sources = [
+    "lib/bplustree.c",
+    "lib/bplustree.h",
+  ]
+}
+

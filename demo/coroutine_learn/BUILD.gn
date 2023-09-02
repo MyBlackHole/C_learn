@@ -1,0 +1,18 @@
+executable("main") {
+  cflags = ["-g", "-Wall"]
+  sources = [
+    "main.c",
+  ]
+
+  deps = [
+    ":coroutine",
+  ]
+}
+
+static_library("coroutine") {
+  cflags = ["-g", "-Wall"]
+  sources = [
+    "coroutine.c",
+    "coroutine.h",
+  ]
+}
