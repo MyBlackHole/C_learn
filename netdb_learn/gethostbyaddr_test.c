@@ -9,7 +9,7 @@ void error_handling(char *message);
 
 int main(int argc, char *argv[])
 {
-    int i;
+    int index;
     struct hostent *host;
     struct sockaddr_in addr;
     if (argc != 2)
@@ -27,17 +27,17 @@ int main(int argc, char *argv[])
     }
 
     printf("Official name: %s \n", host->h_name);
-    for (i = 0; host->h_aliases[i]; i++)
+    for (index = 0; host->h_aliases[index]; index++)
     {
-        printf("Aliases %d:%s \n", i + 1, host->h_aliases[i]);
+        printf("Aliases %d:%s \n", index + 1, host->h_aliases[index]);
     }
     printf("Address type: %s \n",
            (host->h_addrtype == AF_INET) ? "AF_INET" : "AF_INET6");
 
-    for (i = 0; host->h_addr_list[i]; i++)
+    for (index = 0; host->h_addr_list[index]; index++)
     {
-        printf("IP addr %d: %s \n", i + 1,
-               inet_ntoa(*(struct in_addr *)host->h_addr_list[i]));
+        printf("IP addr %d: %s \n", index + 1,
+               inet_ntoa(*(struct in_addr *)host->h_addr_list[index]));
     }
 
     return 0;

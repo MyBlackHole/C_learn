@@ -21,11 +21,15 @@ void handler(int sig)
 
 int main(void)
 {
-    char host[100] = {0};
-    if (gethostname(host, sizeof(host)) < 0)
-    {
-        ERR_EXIT("gethostname");
-    }
+    // char host[100] = {0};
+    // if (gethostname(host, sizeof(host)) < 0)
+    // {
+    //     ERR_EXIT("gethostname");
+    // }
+
+    // printf("gethostname: %s\n", host);
+
+    char host[100] = "aio.backup.com";
 
     struct hostent *hp;
     if ((hp = gethostbyname(host)) == NULL)

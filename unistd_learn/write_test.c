@@ -1,4 +1,5 @@
 #include <fcntl.h>
+#include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -7,19 +8,19 @@
 
 int main(void)
 {
-    int n;
+    size_t num;
     char buf[BUFFSIZE];
 
-    while ((n = read(STDIN_FILENO, buf, BUFFSIZE)) > 0)
+    while ((num = read(STDIN_FILENO, buf, BUFFSIZE)) > 0)
     {
-        if (write(STDOUT_FILENO, buf, n) != n)
+        if (write(STDOUT_FILENO, buf, num) != num)
         {
             perror("write error");
             exit(EXIT_FAILURE);
         }
     }
 
-    if (n < 0)
+    if (num < 0)
     {
         perror("read error");
     }

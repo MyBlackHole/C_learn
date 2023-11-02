@@ -15,7 +15,8 @@
 
 void dump(void)
 {
-    int j, nptrs;
+    int index;
+    int nptrs;
     void *buffer[100];
     char **strings;
 
@@ -29,9 +30,9 @@ void dump(void)
         exit(EXIT_FAILURE);
     }
 
-    for (j = 0; j < nptrs; j++)
+    for (index = 0; index < nptrs; index++)
     {
-        printf("  [%02d] %s\n", j, strings[j]);
+        printf("  [%02d] %s\n", index, strings[index]);
     }
 
     free(strings);

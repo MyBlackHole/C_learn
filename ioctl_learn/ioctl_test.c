@@ -13,14 +13,14 @@
 
 int main(void)
 {
-    int fdTest;
+    int fd_test;
     // off_t size
     int size;
     int len;
     int ret;
 
-    fdTest = open("/dev/sda", O_RDONLY);
-    if (fdTest < 0)
+    fd_test = open("/dev/sda", O_RDONLY);
+    if (fd_test < 0)
     {
         printf("open error %d\n", errno);
         exit(-1);
@@ -35,7 +35,7 @@ int main(void)
     }
 #endif
     // 获取设备块大小 bytes
-    ret = ioctl(fdTest, BLKGETSIZE64, &size);
+    ret = ioctl(fd_test, BLKGETSIZE64, &size);
     if (ret < 0)
     {
         printf("ioctl error %d\n", errno);

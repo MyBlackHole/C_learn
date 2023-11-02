@@ -5,23 +5,24 @@
 
 int main(int argc, char *argv[])
 {
-    int fd = 0;
+    int fd_i = 0;
+    int num = 10;
+    char *str = malloc(num);
+
     if (argc < 2)
     {
         fprintf(stderr, "<path>\n");
         exit(1);
     }
 
-    fd = open(argv[1], O_RDONLY);
-    lseek(fd, 1, SEEK_SET);
+    fd_i = open(argv[1], O_RDONLY);
+    lseek(fd_i, 1, SEEK_SET);
 
     // write(fd, "ok", 3);
-    int n = 10;
-    char *s = malloc(n);
-    read(fd, s, n);
-    printf("%s\n", s);
+    read(fd_i, str, num);
+    printf("%s\n", str);
 
-    close(fd);
+    close(fd_i);
 
     exit(0);
 }

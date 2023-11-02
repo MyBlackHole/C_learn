@@ -1,5 +1,6 @@
 #include <fcntl.h>
 #include <libgen.h>
+#include <stddef.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -8,19 +9,19 @@
 
 #define BUFFSIZE 4096
 
-struct T
+struct point
 {
     int64_t a;
     int32_t b;
 };
 
-typedef struct T t;
+typedef struct point point_t;
 
 int main(int argc, char *argv[])
 {
-    int n;
-    t tr;
-    t tw;
+    size_t n;
+    point_t tr;
+    point_t tw;
 
     char *name = "/write_read_struct_test.bin";
     char *path = dirname(argv[0]);
