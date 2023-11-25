@@ -6,17 +6,18 @@
 #define LOG_PREFIX "path dentry test: "
 
 #define FILE_TEST \
-    "/media/black/Data/Documents/C/linux_module_learn/fs/path/path_test.c"
+    "/home/black/.bashrc"
+
+#define TASK_PATH_MAX_LENGTH 512
 
 static int __init path_init(void)
 {
     struct path path;
+    char* pathname = NULL;
+    char buf[TASK_PATH_MAX_LENGTH] = {0};
     int ret = 0;
 
     printk(KERN_INFO "%s: init called\n", __func__);
-    // const char* pathname;
-
-    // pathname = kmalloc(PAGE_SIZE, GFP_KERNEL);
 
     ret = kern_path(FILE_TEST, 0, &path);
     if (ret)
@@ -25,11 +26,22 @@ static int __init path_init(void)
                 ret, FILE_TEST);
         return ret;
     }
-
     pr_info(LOG_PREFIX "lookup path, d_iname: %s\n", path.dentry->d_iname);
+
+
+    pathname = d_path(&path, buf, TASK_PATH_MAX_LENGTH);
+
+	if (IS_ERR(pathname)) {
+        printk(LOG_PREFIX "d_path -> %ld\n", PTR_ERR(pathname));
+        path_put(&path);
+        return -1;
+    }
+
+    pr_info(LOG_PREFIX "pathname: %s\n", pathname);
 
     // 释放 path 内存
     path_put(&path);
+
     return 0;
 }
 

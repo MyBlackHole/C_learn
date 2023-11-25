@@ -37,6 +37,8 @@ __used __section("__versions") =
 	"__fentry__\0\0"
 	"\x14\x00\x00\x00\x0b\xd5\xbf\x1e"
 	"kern_path\0\0\0"
+	"\x10\x00\x00\x00\xc2\x27\xa2\x9d"
+	"d_path\0\0"
 	"\x14\x00\x00\x00\x7e\x60\xfa\x4e"
 	"path_put\0\0\0\0"
 	"\x1c\x00\x00\x00\x56\xb9\x19\x0a"
@@ -48,4 +50,4 @@ __used __section("__versions") =
 MODULE_INFO(depends, "");
 
 
-MODULE_INFO(srcversion, "D4D7A110311A0686AE9412E");
+MODULE_INFO(srcversion, "317309E89C274A0B4D7C8D4");
