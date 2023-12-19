@@ -6,7 +6,7 @@
 
 #define BUF_SIZE 500
 
-int main(int argc, char *argv[])
+int demo_getaddrinfo_main(int argc, char *argv[])
 {
     struct addrinfo hints;
     struct addrinfo *result;

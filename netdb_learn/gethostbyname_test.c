@@ -4,9 +4,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-void error_handling(char *message);
 
-int main(int argc, char *argv[])
+int demo_gethostbyname_main(int argc, char *argv[])
 {
     int index;
     struct hostent *host;
@@ -38,10 +37,4 @@ int main(int argc, char *argv[])
                inet_ntoa(*(struct in_addr *)host->h_addr_list[index]));
     }
     return 0;
-}
-void error_handling(char *message)
-{
-    fputs(message, stderr);
-    fputc('\n', stderr);
-    exit(1);
 }

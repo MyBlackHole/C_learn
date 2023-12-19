@@ -7,7 +7,7 @@
 
 void error_handling(char *message);
 
-int main(int argc, char *argv[])
+int demo_gethostbyaddr_main(int argc, char *argv[])
 {
     int index;
     struct hostent *host;
@@ -42,6 +42,7 @@ int main(int argc, char *argv[])
 
     return 0;
 }
+
 void error_handling(char *message)
 {
     fputs(message, stderr);
