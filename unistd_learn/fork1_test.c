@@ -5,6 +5,7 @@
 #include <unistd.h>
 
 static void charactatime(char *);
+
 int main(void)
 {
     pid_t pid;
@@ -25,6 +26,7 @@ int main(void)
 
     exit(0);
 }
+
 static void charactatime(char *str)
 {
     char *ptr;
