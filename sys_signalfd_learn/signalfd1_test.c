@@ -1,42 +1,47 @@
 #include <signal.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <sys/epoll.h>
 #include <sys/signalfd.h>
 #include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
+
+#define NUM 1024
 
 void signalCallBackFunc(int signalFd)
 {
-    struct signalfd_siginfo fdsiI;
+    struct signalfd_siginfo fd_siginfo;
     printf("signalCallBackFunc\n");
-    read(signalFd, &fdsiI, sizeof(struct signalfd_siginfo));
+    read(signalFd, &fd_siginfo, sizeof(struct signalfd_siginfo));
 }
 
-int main()
+int demo_signalfd1_test_main()
 {
     printf("%d\n", getpid());
     int epfd = epoll_create1(0);
-    sigset_t sigintMask;
+    int num;
+    sigset_t sigint_mask;
 
-    sigemptyset(&sigintMask);
-    sigaddset(&sigintMask, SIGINT);
-    sigprocmask(SIG_BLOCK, &sigintMask, NULL);
+    sigemptyset(&sigint_mask);
+    sigaddset(&sigint_mask, SIGINT);
+    sigprocmask(SIG_BLOCK, &sigint_mask, NULL);
 
     int sigintfd;
-    sigintfd = signalfd(-1, &sigintMask, 0);
+    sigintfd = signalfd(-1, &sigint_mask, 0);
 
-    struct epoll_event sigintEvent;
-    sigintEvent.data.fd = sigintfd;
-    sigintEvent.events = EPOLLIN;
+    struct epoll_event sigint_event;
+    sigint_event.data.fd = sigintfd;
+    sigint_event.events = EPOLLIN;
 
-    epoll_ctl(epfd, EPOLL_CTL_ADD, sigintfd, &sigintEvent);
+    // 添加监控
+    epoll_ctl(epfd, EPOLL_CTL_ADD, sigintfd, &sigint_event);
 
-    struct epoll_event events[1024];
+    struct epoll_event events[NUM];
     while (1)
     {
-        int n = epoll_wait(epfd, events, 1024, -1);
+        // 等待事件
+        num = epoll_wait(epfd, events, NUM, -1);
 
-        for (int i = 0; i < n; i++)
+        for (int i = 0; i < num; i++)
         {
             int returnfd = events[i].data.fd;
             signalCallBackFunc(returnfd);

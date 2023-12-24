@@ -4,10 +4,10 @@
 #include <sys/signalfd.h>
 #include <unistd.h>
 
-/* fd: -1 生成新文件描述符；或者指定存在有效的 fd ，而 mask
- * 会替换掉之前相关联的信号集。 */
-/* mask: 这个文件描述符接受的信号集，可以通过sigsetops()宏初始化。 */
-/* int signalfd(int fd, const sigset_t*mask, intflags); */
+/*这个例子只是很简单的说明了使用signalfd的方法，并没有真正发挥它的作用，有了这个API，就可以将信号处理作为IO看待，
+每一个信号集合（或者某一个对应的信号）就会有对应的文件描述符，这样将信号处理的流程大大简化，将应用程序中的业务作为文件来操作，也体现了linux下的一切皆文件
+的说法，非常好，假如有很多种信号等待着处理，每一个信号描述符对待一种信号的处理，那么就可以将信号文件描述符设置为非阻塞，同时结合epoll使用，对信号的
+处理转化为IO复用，和这个有相似之处的API还有timerfd*/
 
 #define handle_error(msg)   \
     do                      \
@@ -16,29 +16,28 @@
         exit(EXIT_FAILURE); \
     } while (0)
 
-
-// ./out/obj/sys_signalfd_learn/signalfd_test
-// 1633334
+// xmake run sys_signalfd_learn signalfd2_test
+// ^C                   # Control-C generates SIGINT
+// Got SIGINT
+// ^C
+// Got SIGINT
+// ^\                    # Control-\ generates SIGQUIT
 // Got SIGQUIT
-// kill -QUIT 1633334
-int demo_signalfd_test_main(void)
+// $
+
+
+int demo_signalfd2_test_main(int argc, char *argv[])
 {
-    printf("%d\n", getpid());
-    int sfd;
-    ssize_t ret;
-    struct signalfd_siginfo fdsi;
-
     sigset_t mask;
-    // 信号清零
-    sigemptyset(&mask);
+    int sfd;
+    struct signalfd_siginfo fdsi;
+    ssize_t ret;
 
-    // 添加信号到掩码集
+    sigemptyset(&mask);
     sigaddset(&mask, SIGINT);
     sigaddset(&mask, SIGQUIT);
 
-    // 设置该进程为对应的信号集的内容（当前已经的信号集合做并集、交集、覆盖）
-    // 这行代码才是真正的信号设置；
-    // 设置屏蔽信号集
+    /* 阻塞信号以使得它们不被默认的处理试方式处理 */
     if (sigprocmask(SIG_BLOCK, &mask, NULL) == -1)
     {
         handle_error("sigprocmask");
@@ -50,9 +49,8 @@ int demo_signalfd_test_main(void)
         handle_error("signalfd");
     }
 
-    while (1)
+    for (;;)
     {
-        // 读取发生的信号
         ret = read(sfd, &fdsi, sizeof(struct signalfd_siginfo));
         if (ret != sizeof(struct signalfd_siginfo))
         {
@@ -73,6 +71,4 @@ int demo_signalfd_test_main(void)
             printf("Read unexpected signal\n");
         }
     }
-
-    return 0;
 }
