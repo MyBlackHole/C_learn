@@ -1,29 +1,20 @@
-/**
- * @file Shape.h
- * @author {Layne} ({shu_huanglei@163.com})
- * @brief
- * @version 0.1
- * @date 2020-07-25
- *
- * @copyright Copyright (c) 2020
- *
- */
 #ifndef SHAPE_H_
 #define SHAPE_H_
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif
 
 #include "DrawAPI.h"
 
-typedef struct Shape Shape;
+    typedef struct Shape Shape;
 
-Shape *circle_create(int radius, int x, int y, struct DrawAPI *draw_api);
-void shape_destory(Shape **shape);
-void shape_draw(Shape *shape);
+    Shape *circle_create(int radius, int x, int y, struct DrawAPI *draw_api);
+    void shape_destory(Shape **shape);
+    void shape_draw(Shape *shape);
 
 #ifdef __cplusplus
 }
 #endif
-#endif // SHAPE_H_
+#endif  // SHAPE_H_

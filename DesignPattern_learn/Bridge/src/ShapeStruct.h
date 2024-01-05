@@ -1,13 +1,3 @@
-/**
- * @file ShapeStruct.h
- * @author {Layne} ({shu_huanglei@163.com})
- * @brief
- * @version 0.1
- * @date 2020-07-19
- *
- * @copyright Copyright (c) 2020
- *
- */
 #ifndef SHAPE_STRUCT_H_
 #define SHAPE_STRUCT_H_
 
