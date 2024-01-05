@@ -1,18 +1,10 @@
-/**
- * @file AudioPlayer.c
- * @author {Layne} ({shu_huanglei@163.com})
- * @brief
- * @version 0.1
- * @date 2020-07-25
- *
- * @copyright Copyright (c) 2020
- *
- */
-
 #include <stdio.h>
+#include <stddef.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
 
 #include "MediaPlayerStruct.h"
-#include "ctools.h"
 
 extern struct MediaPlayer *media_adapter_create(void);
 
