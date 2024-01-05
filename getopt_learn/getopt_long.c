@@ -2,7 +2,7 @@
 #include <stdio.h>  /* for printf */
 #include <stdlib.h> /* for exit */
 
-int main(int argc, char **argv)
+int demo_getopt_long_main(int argc, char **argv)
 {
     int one_c;
     int digit_optind = 0;
