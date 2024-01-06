@@ -1,14 +1,3 @@
-/**
- * @file cstring.h
- * @author {Layne} ({shu_huanglei@163.com})
- * @brief
- * @version 0.1
- * @date 2020-05-29
- *
- * @copyright Copyright (c) 2020
- *
- */
-
 #ifndef STRING_HELPER_H_
 #define STRING_HELPER_H_
 

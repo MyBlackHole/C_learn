@@ -1,14 +1,3 @@
-/**
- * @file cmap.h
- * @author {Layne} ({shu_huanglei@163.com})
- * @brief
- * @version 0.1
- * @date 2020-05-29
- *
- * @copyright Copyright (c) 2020
- *
- */
-
 #ifndef CMAP_H_
 #define CMAP_H_
 

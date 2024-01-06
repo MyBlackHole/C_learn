@@ -1,14 +1,3 @@
-/**
- * @file mem_leak_detection.c
- * @author {Layne} ({shu_huanglei@163.com})
- * @brief
- * @version 0.1
- * @date 2020-06-28
- *
- * @copyright Copyright (c) 2020
- *
- */
-
 #include <pthread.h>
 #include <stdio.h>
 #include <sys/syscall.h>

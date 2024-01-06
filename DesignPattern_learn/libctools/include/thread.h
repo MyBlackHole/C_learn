@@ -1,14 +1,3 @@
-/**
- * @file thread.h
- * @author {Layne} ({shu_huanglei@163.com})
- * @brief
- * @version 0.1
- * @date 2020-05-29
- *
- * @copyright Copyright (c) 2020
- *
- */
-
 #ifndef THREAD_H_
 #define THREAD_H_
 
