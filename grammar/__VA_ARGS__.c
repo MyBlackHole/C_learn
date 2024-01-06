@@ -1,10 +1,13 @@
+/*
+* 日志
+* 参数测试
+*/
 #include <stdio.h>
-#include <stdlib.h>
 
 #define Logf(SERVER_ID, FORMAT, ...) \
     printf("%d: " FORMAT "\n", SERVER_ID, __VA_ARGS__)
 
-int main(int argc, char *argv[])
+int demo_VA_ARGS_main(int argc, char *argv[])
 {
     Logf(1, "main %d", 1);
     return 0;

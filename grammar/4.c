@@ -1,6 +1,9 @@
+/*
+* 指针测试
+*/
 #include <stdio.h>
 
-int main(void)
+int demo_4_main(void)
 {
     char *ptr = "Linux";
     printf("%c\n", *ptr++);

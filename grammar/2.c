@@ -1,7 +1,6 @@
-//
-// Created by Black Hole on 2020/11/14.
-//
-
+/*
+ * 逻辑测试
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/time.h>
@@ -191,7 +190,7 @@ void func19()
     printf("%s\n", (s + 3));
 }
 
-int main()
+int demo_2_main()
 {
     func17();
     // const int a = 0;

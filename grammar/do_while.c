@@ -1,6 +1,9 @@
+/*
+ * 变量作用域测试
+ */
 #include <stdio.h>
 
-int main()
+int demo_do_while_main()
 {
     /* 局部变量定义 */
     int a = 10;

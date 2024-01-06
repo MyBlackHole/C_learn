@@ -1,7 +1,10 @@
+/*
+ * 指针测试
+ */
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(int argc, char *argv[])
+int demo_6_main(int argc, char *argv[])
 {
     int i = 0;
     int j = 1;
