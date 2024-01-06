@@ -1,21 +1,11 @@
-/**
- * @file CommandPatternDemo.c
- * @author {Layne} ({shu_huanglei@163.com})
- * @brief
- * @version 0.1
- * @date 2020-08-09
- *
- * @copyright Copyright (c) 2020
- *
- */
-
 #include <stdio.h>
 
 #include "Broker.h"
 #include "Order.h"
 #include "Stock.h"
 
-int main(int argc, char const* argv[]) {
+int main(int argc, char const* argv[])
+{
     Stock* abc_stock = stock_create();
 
     Order* buy_stock_order = buy_stock_order_create(abc_stock);
