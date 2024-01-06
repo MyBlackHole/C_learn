@@ -1,7 +1,0 @@
-executable("res_ninit_test") {
-  cflags = ["-g", "-Wall"]
-
-  sources = [
-    "res_ninit_test.c",
-  ]
-}
