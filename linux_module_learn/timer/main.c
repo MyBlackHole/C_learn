@@ -31,8 +31,10 @@ static int driver_init_timer(void)
 {
     printk("Hello TaXue\n");
     // jiffies 当前节拍
-    taxue_timer.expires = jiffies + 1 * HZ;  // 当前节拍+1秒节拍
-    add_timer(&taxue_timer);                 // 向内核注册定时器
+    // 当前节拍+1秒节拍
+    taxue_timer.expires = jiffies + 1 * HZ;
+    // 向内核注册定时器
+    add_timer(&taxue_timer);
     return 0;
 }
 
