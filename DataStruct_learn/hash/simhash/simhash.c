@@ -1,6 +1,3 @@
-/**
- * @author Liu Yiding(odinushuaia@gmail.com)
- */
 #include "simhash.h"
 
 ul_int sh_hash(const char *arKey, unsigned int nKeyLength)
