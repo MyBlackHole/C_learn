@@ -4,7 +4,7 @@
 
 #define BSZ 48
 
-int main(void)
+int demo_memset_test_main()
 {
     FILE *fp;
     char buf[BSZ];

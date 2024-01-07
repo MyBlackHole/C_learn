@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-int main()
+int demo_memset1_test_main()
 {
     char str[50];
 

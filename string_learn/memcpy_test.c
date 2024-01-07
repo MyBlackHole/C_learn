@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 
-int main()
+int demo_memcpy_test_main()
 {
     const char src[50] = "BlackHole";
     char dest[50];

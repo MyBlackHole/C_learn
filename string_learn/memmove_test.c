@@ -6,7 +6,7 @@
 /* str2 -- 指向要复制的数据源，类型强制转换为 void* 指针。 */
 /* n -- 要被复制的字节数。 */
 /* void *memmove(void *str1, const void *str2, size_t n) */
-int main()
+int demo_memmove_test_main()
 {
     const char dest[] = "oldstring";
     const char src[] = "newstring";

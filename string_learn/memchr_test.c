@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-int main()
+int demo_memchr_test_main()
 {
     char *str = "Hello, Programmers test!";
     char *ptr;

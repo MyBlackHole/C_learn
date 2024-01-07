@@ -1,15 +1,15 @@
 #include <stdio.h>
 #include <string.h>
 
-int main()
+int demo_strstr_test_main()
 {
-    char *s = "GoldenGlobalView";
-    char *l = "lob";
-    char *p;
-    p = strstr(s, l);
-    if (p)
+    char *str = "GoldenGlobalView";
+    char *str1 = "lob";
+    char *str2;
+    str2 = strstr(str, str1);
+    if (str2)
     {
-        printf("%s\n", p);
+        printf("%s\n", str2);
     }
     else
     {

@@ -1,10 +1,12 @@
 #include <stdio.h>
 #include <string.h>
 
-int main()
+#define NUM 15
+
+int demo_strcoll_test_main()
 {
-    char str1[15];
-    char str2[15];
+    char str1[NUM];
+    char str2[NUM];
     int ret;
 
     strcpy(str1, "abc");

@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-int main(int argc, char *argv[])
+int demo_strerror_test_main(int argc, char *argv[])
 {
     fprintf(stderr, "EACCES: %s\n", strerror(EACCES));
     errno = ENOENT;

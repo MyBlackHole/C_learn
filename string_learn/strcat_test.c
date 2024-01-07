@@ -2,13 +2,13 @@
 #include <stdlib.h>
 #include <string.h>
 
-int main()
+int demo_strcat_test_main()
 {
-    char *firstName = "Theo";
-    char *lastName = "Tsao";
-    char *name = (char *)malloc(strlen(firstName) + strlen(lastName));
-    strcpy(name, firstName);
-    strcat(name, lastName);
+    char *first_name = "Theo";
+    char *last_name = "Tsao";
+    char *name = (char *)malloc(strlen(first_name) + strlen(last_name));
+    strcpy(name, first_name);
+    strcat(name, last_name);
     printf("%s\n", name);
     return 0;
 }

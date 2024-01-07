@@ -1,10 +1,12 @@
 #include <stdio.h>
 #include <string.h>
 
-int main(int argc, char *argv[])
+#define NUM 10
+
+int demo_strcmp_test_main(int argc, char *argv[])
 {
-    char str1[10];
-    char str2[10];
+    char str1[NUM];
+    char str2[NUM];
     int ret;
     strcpy(str1, "dbcbc");
     strcpy(str2, "bcb");
