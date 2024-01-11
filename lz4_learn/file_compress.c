@@ -176,7 +176,7 @@ int compareFiles(FILE *fp0, FILE *fp1)
     return result;
 }
 
-int main(int argc, const char **argv)
+int demo_file_compress_main(int argc, const char **argv)
 {
     char inpFilename[256] = {0};
     char lz4Filename[256] = {0};

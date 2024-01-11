@@ -1,23 +1,14 @@
 local dir_path = path.relative(os.curdir(), os.projectdir())
 
-set_targetdir("$(buildir)/$(arch)/$(plat)/$(mode)/" .. dir_path)
-set_objectdir("$(buildir)/.objs/$(arch)/$(plat)/$(mode)/" .. dir_path)
-set_dependir("$(buildir)/.deps/$(arch)/$(plat)/$(mode)/" .. dir_path)
-
 -- 遍历获取文件
 -- 构建目标
-for _, file_path in ipairs(os.files(os.curdir() .. "/*.c")) do
-    basename = path.basename(file_path)
-    filename = path.filename(file_path)
-
-    target(basename, function()
-        set_kind("binary")
-        add_files(filename)
-        -- add_linkdirs("/media/black/Data/lib/lz4/dev/lib/")
-        -- add_includedirs("/media/black/Data/lib/lz4/dev/include/")
-        add_links("lz4")
-
-        -- -- 自动拉去远程包
-        -- add_packages("lz4")
-    end)
-end
+target(dir_path, function()
+    set_kind("binary")
+    for _, file_path in ipairs(os.files(os.curdir() .. "/**.c")) do
+        add_files(file_path)
+    end
+    add_links("lz4")
+                       
+    -- -- 自动拉去远程包
+    -- add_packages("lz4")
+end)

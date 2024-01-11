@@ -13,11 +13,11 @@ int errfunc(const char *errpath, int errno)
 // 执行
 // ./out/obj/glob_learn/glob_test '/*'
 
-int main(int argc, char *argv[])
+int demo_glob_main(int argc, char *argv[])
 {
     glob_t globres;
     int err;
-    int i;
+    int index;
 
     if (argc < 2)
     {
@@ -33,9 +33,9 @@ int main(int argc, char *argv[])
         exit(1);
     }
 
-    for (i = 0; i < globres.gl_pathc; i++)
+    for (index = 0; index < globres.gl_pathc; index++)
     {
-        puts(globres.gl_pathv[i]);
+        puts(globres.gl_pathv[index]);
     }
     globfree(&globres);
     return 0;

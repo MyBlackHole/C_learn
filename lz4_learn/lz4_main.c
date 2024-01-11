@@ -28,7 +28,7 @@ void run_screaming(const char *message, const int code)
 /*
  * main
  */
-int main(void)
+int demo_lz4_main(void)
 {
     /* Introduction */
     // Below we will have a Compression and Decompression section to
