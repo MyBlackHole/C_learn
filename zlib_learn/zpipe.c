@@ -194,7 +194,7 @@ void zerr(int ret)
 }
 
 /* compress or decompress from stdin to stdout */
-int main(int argc, char **argv)
+int demo_zpipe_main(int argc, char **argv)
 {
     int ret;
 
