@@ -3,7 +3,7 @@
 #include <stdlib.h>
 // #include <unistd.h>
 
-int main(int argc, char *argv[])
+int demo_file_flags_main(int argc, char *argv[])
 {
     int val;
 
@@ -12,8 +12,8 @@ int main(int argc, char *argv[])
         perror("usage: <descriptor#>");
         exit(1);
     }
-
-    if ((val = fcntl(atoi(argv[1]), F_GETFL, 0)) < 0)
+    val = fcntl(atoi(argv[1]), F_GETFL, 0);
+    if (val < 0)
     {
         fprintf(stderr, "fcntl error for fd %d", atoi(argv[1]));
         exit(1);

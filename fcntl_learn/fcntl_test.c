@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 // 根据文件描述词来操作文件的特性
-int main(int argc, char **argv)
+int demo_fcntl_main(int argc, char **argv)
 {
     int val;
     if (argc != 2)
@@ -11,7 +11,8 @@ int main(int argc, char **argv)
         fprintf(stderr, "usage:%s <descriptor#>", argv[0]);
         exit(1);
     }
-    if ((val = fcntl(atoi(argv[1]), F_GETFL, 0)) < 0)
+    val = fcntl(atoi(argv[1]), F_GETFL, 0);
+    if (val < 0)
     {
         fprintf(stderr, "fcntl error for fd %d", atoi(argv[1]));
         exit(1);

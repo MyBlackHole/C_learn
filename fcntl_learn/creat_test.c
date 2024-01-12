@@ -8,7 +8,7 @@
 char buf1[] = "qwertyuiop";
 char buf2[] = "QWERTYUIOP";
 
-int main(void)
+int demo_creat_main(void)
 {
     int m_fd;
     // 创建文件

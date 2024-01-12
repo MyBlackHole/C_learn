@@ -1,15 +1,13 @@
-#include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <fcntl.h>
 #include <unistd.h>
 
-int main(int argc, char *argv[])
+int demo_open1_main(int argc, char *argv[])
 {
-	int fd = -1;
-	fd = open("/root/test/2.txt", O_RDONLY | 0, 0);
-    if (fd <= 0)
+	int fd_tmp = -1;
+	fd_tmp = open("/root/test/2.txt", O_RDONLY | 0, 0);
+    if (fd_tmp <= 0)
     {
         perror("open()");
         exit(1);
@@ -17,6 +15,6 @@ int main(int argc, char *argv[])
 
     puts("OK");
 
-    close(fd);
+    close(fd_tmp);
     exit(EXIT_SUCCESS);
 }

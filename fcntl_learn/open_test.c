@@ -9,11 +9,13 @@
 // write
 // 文件权限由open的mode参数和当前进程的umask掩码共同决定。
 // 第三个参数是在第二个参数中有O_CREAT时才作用，如果没有，则第三个参数可以忽略
-int main(int argc, char *argv[])
+int demo_open_main(int argc, char *argv[])
 {
-    int sfd = 0, dfd = 0;
+    int sfd = 0;
+    int dfd = 0;
     char buf[BUFSIZE] = {0};
-    int len = 0, ret = 0;
+    size_t len = 0;
+    size_t ret = 0;
     int pos = 0;
 
     if (argc < 3)
@@ -29,7 +31,8 @@ int main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
 
-    dfd = open(argv[2], O_WRONLY | O_CREAT, O_TRUNC, 0600);
+    dfd =
+        open(argv[2], O_WRONLY | O_CREAT, O_TRUNC, S_IRWXO | S_IRWXG | S_IRWXU);
     if (dfd < 0)
     {
         close(sfd);

@@ -1,8 +1,6 @@
-#include <stddef.h>
 #define _GNU_SOURCE /* See feature_test_macros(7) */
 #include <errno.h>
 #include <fcntl.h>
-#include <stdint.h>
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
@@ -15,7 +13,7 @@
 // int posix_fallocate(int fd, off_t offset, off_t len);
 
 // 使用fallocate 或者posix_fallocate函数 真磁盘预分配
-int main()
+int demo_fallocate_main()
 {
     int tmp_fd = -1;
     int ret = -1;
