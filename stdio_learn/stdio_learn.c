@@ -5,8 +5,39 @@
 #include <string.h>
 
 static demo_t demos[] = {
+    DEMO_MAIN_ITEM(vsnprintf),
+    DEMO_MAIN_ITEM(args),
+    DEMO_MAIN_ITEM(sprintf),
+    DEMO_MAIN_ITEM(ungetc),
+    DEMO_MAIN_ITEM(tmpfile),
+    DEMO_MAIN_ITEM(stderr),
+    DEMO_MAIN_ITEM(sprintf),
+    DEMO_MAIN_ITEM(snprintf),
+    DEMO_MAIN_ITEM(scanf),
+    DEMO_MAIN_ITEM(putchar),
+    DEMO_MAIN_ITEM(putc),
+    DEMO_MAIN_ITEM(print_time),
+    DEMO_MAIN_ITEM(hexTostr),
+    DEMO_MAIN_ITEM(getline),
+    DEMO_MAIN_ITEM(getchar),
+    DEMO_MAIN_ITEM(getc),
+    DEMO_MAIN_ITEM(fwrite),
     DEMO_MAIN_ITEM(fseek),
+    DEMO_MAIN_ITEM(fread),
+    DEMO_MAIN_ITEM(fopen),
+    DEMO_MAIN_ITEM(fopen1),
+    DEMO_MAIN_ITEM(fileno),
+    DEMO_MAIN_ITEM(fileno1),
+    DEMO_MAIN_ITEM(fgets),
+    DEMO_MAIN_ITEM(fgets1),
+    DEMO_MAIN_ITEM(fgetc),
+    DEMO_MAIN_ITEM(fflush),
+    DEMO_MAIN_ITEM(feof),
+    DEMO_MAIN_ITEM(fdopen),
+    DEMO_MAIN_ITEM(fdopen1),
+    DEMO_MAIN_ITEM(buf_test),
 };
+
 int main(int argc, char** argv)
 {
     // find the main func from the first argument

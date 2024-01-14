@@ -1,13 +1,12 @@
-#include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-int main(int argc, char *argv[])
+int demo_fopen_main(int argc, char *argv[])
 {
-    FILE *fp = NULL;
-    fp = fopen("/tmp/stdio_tmp", "r");
-    if (fp == NULL)
+    FILE *fp_tmp = NULL;
+    fp_tmp = fopen("/tmp/stdio_tmp", "r");
+    if (fp_tmp == NULL)
     {
         // fprintf(stderr, "fopen() failed!  errno = %d\n", errno);
         perror("fopen()");
@@ -17,6 +16,6 @@ int main(int argc, char *argv[])
 
     puts("OK");
 
-    fclose(fp);
+    fclose(fp_tmp);
     exit(0);
 }

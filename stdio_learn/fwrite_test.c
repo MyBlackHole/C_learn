@@ -3,9 +3,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-int main(int argc, char *argv[])
+int demo_fwrite_main(int argc, char *argv[])
 {
-    FILE *fp;
+    FILE *fp_tmp;
     char str[] = "This is runoob.com";
     char *name = "/file.txt";
     char *path = dirname(argv[0]);
@@ -14,10 +14,10 @@ int main(int argc, char *argv[])
     strncat(file_path, name, strlen(name));
 
     printf("%s\n", file_path);
-    fp = fopen(file_path, "w");
-    fwrite(str, sizeof(str), 1, fp);
+    fp_tmp = fopen(file_path, "w");
+    fwrite(str, sizeof(str), 1, fp_tmp);
 
-    fclose(fp);
+    fclose(fp_tmp);
 
     free(file_path);
 

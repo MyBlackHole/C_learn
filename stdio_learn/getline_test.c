@@ -3,9 +3,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-int main(int argc, char *argv[])
+int demo_getline_main(int argc, char *argv[])
 {
-    FILE *fp = NULL;
+    FILE *fp_tmp = NULL;
     char *linebuf = NULL;
     size_t linesize = 0;
 
@@ -15,8 +15,8 @@ int main(int argc, char *argv[])
         exit(1);
     }
 
-    fp = fopen(argv[1], "r");
-    if (fp == NULL)
+    fp_tmp = fopen(argv[1], "r");
+    if (fp_tmp == NULL)
     {
         perror("fopen()");
         exit(1);
@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
     while (1)
     {
         // 会连同换行一起读入
-        if (getline(&linebuf, &linesize, fp) < 0)
+        if (getline(&linebuf, &linesize, fp_tmp) < 0)
         {
             break;
         }
@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
     }
     free(linebuf);
 
-    fclose(fp);
+    fclose(fp_tmp);
 
     exit(0);
 }

@@ -3,10 +3,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-int main(int args, char **argv)
+int demo_feof_main(int args, char **argv)
 {
-    FILE *fp;
-    int c;
+    FILE *fp_tmp;
+    int item;
 
     char *path = dirname(argv[0]);
     char *filename = "/file.txt";
@@ -15,21 +15,21 @@ int main(int args, char **argv)
     strcpy(name, path);
     strcat(name, filename);
 
-    fp = fopen(name, "r");
-    if (fp == NULL)
+    fp_tmp = fopen(name, "r");
+    if (fp_tmp == NULL)
     {
         printf("打开文件 file:[%s] 时发生错误", name);
         return (-1);
     }
     while (1)
     {
-        c = fgetc(fp);
-        if (feof(fp))
+        item = fgetc(fp_tmp);
+        if (feof(fp_tmp))
         {
             break;
         }
-        printf("%c", c);
+        printf("%c", item);
     }
-    fclose(fp);
+    fclose(fp_tmp);
     return (0);
 }

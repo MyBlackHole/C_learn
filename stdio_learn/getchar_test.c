@@ -1,11 +1,13 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-int main(void)
+int demo_getchar_main(void)
 {
-    char c;
+    int item;
 
-    while ((c = getchar()) != EOF)
+    while ((item = getchar()) != EOF)
     {
-        putchar(c);
+        putchar(item);
     }
+    return EXIT_SUCCESS;
 }

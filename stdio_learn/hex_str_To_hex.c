@@ -13,22 +13,22 @@
 
 //-------------------------------------------------------------------
 
-static int oneHexCharToHex(char h)
+static int oneHexCharToHex(char h_item)
 {
-    int x = 0;
-    if (isdigit(h))
+    int item = 0;
+    if (isdigit(h_item))
     {
-        x = h - '0';
+        item = h_item - '0';
     }
-    else if (isupper(h))
+    else if (isupper(h_item))
     {
-        x = h - 'A' + 10;
+        item = h_item - 'A' + 10;
     }
     else
     {
-        x = h - 'a' + 10;
+        item = h_item - 'a' + 10;
     }
-    return x;
+    return item;
 }
 
 /*Chaneg TEXT HEX such as E5BC35 to
@@ -37,9 +37,10 @@ static int oneHexCharToHex(char h)
 int ChangeTHEX2CPTR(const char *inHexString, char *outHex)
 {
     int success = -1;
-    int len = 0;
-    int i;
-    char ch1, ch2;
+    unsigned int len = 0;
+    int index;
+    int ch1;
+    int ch2;
     do
     {
         if (NULL == inHexString || NULL == outHex)
@@ -54,16 +55,16 @@ int ChangeTHEX2CPTR(const char *inHexString, char *outHex)
             break;
         }
         len &= ~1;
-        for (i = 0; i < len; i += 2)
+        for (index = 0; index < len; index += 2)
         {
-            ch1 = inHexString[i];
-            ch2 = inHexString[i + 1];
-            outHex[i / 2 + 1] = 0;
+            ch1 = (int)inHexString[index];
+            ch2 = (int)inHexString[index + 1];
+            outHex[index / 2 + 1] = 0;
             if (isxdigit(ch1) && isxdigit(ch2))
             {
-                ch1 = oneHexCharToHex(ch1);
-                ch2 = oneHexCharToHex(ch2);
-                outHex[i / 2] = (ch1 << 4) | ch2;
+                ch1 = oneHexCharToHex((char)ch1);
+                ch2 = oneHexCharToHex((char)ch2);
+                outHex[index / 2] = (char)((ch1 << 4) | ch2);
             }
             else
             {
@@ -82,11 +83,11 @@ exit:
 
 static void printf_outHex(const char *outHex)
 {
-    int len = strlen(outHex);
-    int i;
-    for (i = 0; i < len; i++)
+    unsigned int len = strlen(outHex);
+    int index;
+    for (index = 0; index < len; index++)
     {
-        printf("0x%x,", outHex[i] & 0xff);
+        printf("0x%x,", outHex[index] & 0xff);
     }
     printf("\n");
 }
@@ -109,7 +110,7 @@ void test_ChangeTHEX2CPTR(void)
 }
 #endif
 
-int main(int argc, char *argv[])
+int demo_hexTostr_main(int argc, char *argv[])
 {
     test_ChangeTHEX2CPTR();
     return 0;

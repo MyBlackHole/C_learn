@@ -6,7 +6,7 @@
 // 无缓冲: 例如stderr, 需要立即输出的内容
 // setvbuf
 
-int main(int argc, char *argv[])
+int demo_fflush_main(int argc, char *argv[])
 {
     // // \n触发刷新
     // printf("Before while()\n");

@@ -3,11 +3,12 @@
 
 #define BUFSIZE 1024
 
-int main(int argc, char *argv[])
+int demo_fread_main(int argc, char *argv[])
 {
-    FILE *fps = NULL, *fpd = NULL;
+    FILE *fps = NULL;
+    FILE *fpd = NULL;
     char buf[BUFSIZE];
-    int n = 0;
+    unsigned int len = 0;
 
     if (argc < 3)
     {
@@ -30,9 +31,9 @@ int main(int argc, char *argv[])
         exit(1);
     }
 
-    while ((n = fread(buf, 1, BUFSIZE, fps)) > 0)
+    while ((len = fread(buf, 1, BUFSIZE, fps)) > 0)
     {
-        fwrite(buf, 1, n, fpd);
+        fwrite(buf, 1, len, fpd);
     }
 
     fclose(fpd);

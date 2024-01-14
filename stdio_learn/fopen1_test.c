@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(int argc, char *argv[])
+int demo_fopen1_main(int argc, char *argv[])
 {
-    FILE *fps = NULL, *fpd = NULL;
-    int ch;
+    FILE *fps = NULL;
+    FILE *fpd = NULL;
+    int item;
 
     if (argc < 3)
     {
@@ -29,12 +30,12 @@ int main(int argc, char *argv[])
 
     while (1)
     {
-        ch = fgetc(fps);
-        if (ch == EOF)
+        item = fgetc(fps);
+        if (item == EOF)
         {
             break;
         }
-        fputc(ch, fpd);
+        fputc(item, fpd);
     }
 
     fclose(fpd);

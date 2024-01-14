@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(int argc, char *argv[])
+int demo_buf_test_main(int argc, char *argv[])
 {
     printf("[%s:%d]before while().\n", __FUNCTION__, __LINE__);
     while (1)

@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(int argc, char *argv[])
+int demo_fgetc_main(int argc, char *argv[])
 {
-    FILE *fp = NULL;
+    FILE *fp_tmp = NULL;
     int count = 0;
 
     if (argc < 2)
@@ -12,21 +12,21 @@ int main(int argc, char *argv[])
         exit(1);
     }
 
-    fp = fopen(argv[1], "r");
-    if (fp == NULL)
+    fp_tmp = fopen(argv[1], "r");
+    if (fp_tmp == NULL)
     {
         perror("fopen()");
         exit(1);
     }
 
-    while (fgetc(fp) != EOF)
+    while (fgetc(fp_tmp) != EOF)
     {
         count++;
     }
 
     fprintf(stdout, "count %d\n", count);
 
-    fclose(fp);
+    fclose(fp_tmp);
 
     exit(0);
 }

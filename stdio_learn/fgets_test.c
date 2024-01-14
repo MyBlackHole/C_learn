@@ -3,9 +3,10 @@
 
 #define BUFSIZE 1024
 
-int main(int argc, char *argv[])
+int demo_fgets_main(int argc, char *argv[])
 {
-    FILE *fps = NULL, *fpd = NULL;
+    FILE *fps = NULL;
+    FILE *fpd = NULL;
     char buf[BUFSIZE];
 
     if (argc < 3)

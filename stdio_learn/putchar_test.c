@@ -1,8 +1,9 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-int main(int argc, char *argv[])
+int demo_putchar_main(int argc, char *argv[])
 {
     putchar('o');
     putchar('\n');
-    return 0;
+    return EXIT_SUCCESS;
 }

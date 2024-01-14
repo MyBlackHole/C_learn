@@ -3,9 +3,12 @@
 //
 
 #include <stdio.h>
+#include <stdlib.h>
 
-int main()
+int demo_putc_main()
 {
-    int c[3] = {'a', 'b', '0'};
-    putc(c[0], stdout);
+    int strings[3] = {'a', 'b', '0'};
+    putc(strings[0], stdout);
+
+    return EXIT_SUCCESS;
 }

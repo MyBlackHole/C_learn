@@ -1,14 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(void)
+int demo_getc_main(void)
 {
-    int c;
+    int item;
     // 获取stdin流输入字符 回车结束
-    while ((c = getc(stdin)) != EOF)
+    while ((item = getc(stdin)) != EOF)
     {
         // 写入流字符
-        if (putc(c, stdout) == EOF)
+        if (putc(item, stdout) == EOF)
         {
             perror("output error");
             exit(1);

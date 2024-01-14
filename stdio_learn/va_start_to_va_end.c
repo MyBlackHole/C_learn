@@ -7,15 +7,15 @@
 
 #define MAXLINE 2048
 
-void PrintFError(const char *format, ...);
+void print_ferror(const char *format, ...);
 
-int main()
+int demo_args_main()
 {
-    PrintFError("Error");
+    print_ferror("Error");
     return 0;
 }
 
-void PrintFError(const char *format, ...)
+void print_ferror(const char *format, ...)
 {
     char buf[MAXLINE];
     va_list args;
