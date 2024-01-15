@@ -49,7 +49,7 @@ void test2()
 //   }
 // }
 
-int main(int argc, char *argv[])
+int demo_arr_main(int argc, char *argv[])
 {
     test1();
     test2();

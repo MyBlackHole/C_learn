@@ -14,9 +14,15 @@ static demo_t demos[] = {
     DEMO_MAIN_ITEM(8),
     DEMO_MAIN_ITEM(9),
     DEMO_MAIN_ITEM(10),
+    DEMO_MAIN_ITEM(11),
     DEMO_MAIN_ITEM(argv_test),
     DEMO_MAIN_ITEM(do_while),
     DEMO_MAIN_ITEM(VA_ARGS),
+    DEMO_MAIN_ITEM(sizeof),
+    DEMO_MAIN_ITEM(int),
+    DEMO_MAIN_ITEM(uint64),
+    DEMO_MAIN_ITEM(arr),
+    DEMO_MAIN_ITEM(continue),
 };
 int main(int argc, char** argv)
 {

@@ -34,7 +34,7 @@ int cb(task *t)
     crEnd();
 }
 
-int main()
+int demo_continue_main()
 {
     task t;
     int i;

@@ -16,6 +16,10 @@ DEMO_MAIN_DECL(11);
 DEMO_MAIN_DECL(argv_test);
 DEMO_MAIN_DECL(do_while);
 DEMO_MAIN_DECL(VA_ARGS);
-
+DEMO_MAIN_DECL(sizeof);
+DEMO_MAIN_DECL(int);
+DEMO_MAIN_DECL(uint64);
+DEMO_MAIN_DECL(arr);
+DEMO_MAIN_DECL(continue);
 
 #endif
