@@ -5,7 +5,7 @@
 #include <string.h>
 #include <unistd.h>
 
-int main()
+int demo_dup21_main()
 {
     int oldfd;
     int newfd;

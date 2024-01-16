@@ -6,7 +6,7 @@
 
 #define BUFFSIZE 4096
 
-int main(void)
+int demo_write_main(void)
 {
     size_t num;
     char buf[BUFFSIZE];

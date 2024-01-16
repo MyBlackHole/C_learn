@@ -1,11 +1,12 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 
-int main(int argc, char *argv[])
+int demo_getpass_main(int argc, char *argv[])
 {
     char *input;
 
     input = getpass("intput:");
     fprintf(stdout, "p %s", input);
-    return 0;
+    return EXIT_SUCCESS;
 }

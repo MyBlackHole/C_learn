@@ -1,16 +1,17 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 
-int main(int argc, char *argv[])
+int demo_getopt_main(int argc, char *argv[])
 {
-    int ch;
+    int item;
     printf("\n\n");
     printf("optind:%d，opterr：%d\n", optind, opterr);
     printf("--------------------------\n");
-    while ((ch = getopt(argc, argv, "ab:c:de::")) != -1)
+    while ((item = getopt(argc, argv, "ab:c:de::")) != -1)
     {
         printf("optind: %d\n", optind);
-        switch (ch)
+        switch (item)
         {
         case 'a':
             printf("HAVE option: -a\n\n");
@@ -33,6 +34,9 @@ int main(int argc, char *argv[])
         case '?':
             printf("Unknown option: %c\n", (char)optopt);
             break;
+        default:
+            printf("Unknown option: %c\n", (char)optopt);
         }
     }
+    return EXIT_SUCCESS;
 }

@@ -1,17 +1,25 @@
 #include <signal.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 
-void handler() { printf("hello\n"); }
+#define SECONDS 5
 
-int main()
+void handler() { 
+    // 会死锁
+    // stdout 持有锁
+    printf("hello\n"); 
+}
+
+int demo_alarm_main()
 {
-    int i;
+    int index;
     signal(SIGALRM, handler);
-    alarm(5);
-    for (i = 1; i < 7; i++)
+    alarm(SECONDS);
+    for (index = 1; index < 7; index++)
     {
-        printf("sleep %d ...\n", i);
-        sleep(1);
+        printf("sleep %d ...\n", index);
+        sleep(EXIT_FAILURE);
     }
+    return EXIT_SUCCESS;
 }

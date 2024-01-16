@@ -3,11 +3,13 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-int main(void)
+int demo_vfork_main(void)
 {
     int count = 1;
     int child;
 
+    // 函数“vfork”不安全，因为它可能导致父进程中出现拒绝服务情况； 
+    // 应该使用 'posix_spawn' 代替
     child = vfork();
 
     if (child < 0)

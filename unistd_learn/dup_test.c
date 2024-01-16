@@ -2,34 +2,36 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <sys/stat.h>
 
 #define FNAME "/tmp/out"
 
-int main(int argc, char *argv[])
+int demo_dup_main(int argc, char *argv[])
 {
-    int fd = 0, dfd = 0;
+    int fd_in = 0;
+    int dfd = 0;
     int status = 0;
-    fd = open(FNAME, O_WRONLY | O_CREAT | O_TRUNC, 0600);
-    if (fd < 0)
+    fd_in = open(FNAME, O_WRONLY | O_CREAT | O_TRUNC, DEFFILEMODE);
+    if (fd_in < 0)
     {
         perror("open()");
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     status = close(1);
     if (status < 0)
     {
         perror("close()");
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
-    dfd = dup(fd);
+    dfd = dup(fd_in);
     if (dfd < 0)
     {
         perror("dup()");
-        exit(1);
+        exit(EXIT_FAILURE);
     }
-    close(fd);
+    close(fd_in);
     puts("black");
-    exit(0);
+    exit(EXIT_SUCCESS);
 }

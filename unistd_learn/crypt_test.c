@@ -1,8 +1,9 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
 
-int main()
+int demo_crypt_main()
 {
     char passwd[13];
     char *key;
@@ -16,4 +17,5 @@ int main()
     slat[1] = passwd[1];
     printf("After crypt(),1s t passwd:%s\n", passwd);
     printf("After crypt(),2n d passwd:%s\n", crypt(key, slat));
+    return EXIT_SUCCESS;
 }

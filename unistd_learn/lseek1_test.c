@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-int main(int argc, char *argv[])
+int demo_lseek1_main(int argc, char *argv[])
 {
     int fd_i = 0;
     int num = 10;

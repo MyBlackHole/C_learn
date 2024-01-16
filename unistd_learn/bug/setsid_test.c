@@ -6,6 +6,7 @@
 #include <unistd.h>
 
 #define NUM 100
+#define SECONDS 10
 
 int main(int argc, char **argv)
 {
@@ -22,8 +23,8 @@ int main(int argc, char **argv)
         // printf("parent begin\n");
 
         // printf("parent exit\n");
-        sleep(20);
-        exit(0);
+        sleep(SECONDS);
+        exit(EXIT_SUCCESS);
     }
 
     fprintf(stdout, "child pid:%d\n", getpid());
@@ -38,9 +39,9 @@ int main(int argc, char **argv)
     {
         fprintf(stdout, "child count:%ld pid:%d\n", i, getpid());
         fflush(stdout);
-        sleep(10);
+        sleep(SECONDS);
     }
 
     // printf("child exit\n");
-    return 0;
+    return EXIT_SUCCESS;
 }

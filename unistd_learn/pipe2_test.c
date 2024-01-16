@@ -6,7 +6,7 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
-int main(int argc, char *argv[])
+int demo_pipe2_main(int argc, char *argv[])
 {
     int pipefd[2];
     pid_t cpid;

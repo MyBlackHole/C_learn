@@ -4,7 +4,7 @@
 #include <string.h>
 #include <unistd.h>
 
-int main(int argc, char *argv[])
+int demo_getspnam_main(int argc, char *argv[])
 {
     char *crypted_pass;
     char *input_pass;
@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
     if (argc < 2)
     {
         fprintf(stderr, "user \n");
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     input_pass = getpass("PassWord:");
@@ -30,5 +30,5 @@ int main(int argc, char *argv[])
         puts("faile");
     }
 
-    exit(0);
+    exit(EXIT_SUCCESS);
 }

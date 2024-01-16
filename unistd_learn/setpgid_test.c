@@ -5,7 +5,7 @@
 
 #define SECONDS 5
 
-int main()
+int demo_setpgid_main()
 {
     pid_t pid;
     pid_t old_pgid;

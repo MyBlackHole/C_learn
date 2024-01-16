@@ -3,7 +3,7 @@
 #include <unistd.h>
 
 #define BUFFSIZE 256
-int main(void)
+int demo_pread_main(void)
 {
     char pathname[] = "/tmp/myfile"; /*文件路径*/
     int f_id;                        /*文件标识符*/

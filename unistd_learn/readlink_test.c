@@ -1,12 +1,12 @@
 #include <fcntl.h>
-#include <readline/readline.h>
+#include <sys/stat.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 
 #define SIZE 128
 
-int main(int argc, char *argv[])
+int demo_readlink_main(int argc, char *argv[])
 {
     int abs_fd;
     char *obj_file;
@@ -17,8 +17,8 @@ int main(int argc, char *argv[])
         printf("please input the filename \n");
         return EXIT_SUCCESS;
     }
-
-    if ((abs_fd = open(argv[1], O_RDWR | O_CREAT, 0666)) < 0)
+    abs_fd = open(argv[1], O_RDWR | O_CREAT, DEFFILEMODE);
+    if (abs_fd < 0)
     {
         perror("open file error \n");
         return EXIT_FAILURE;
@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
 
     snprintf(buf, sizeof(buf), "/proc/self/fd/%d", abs_fd);
 
-    if (readlink(buf, obj_file, SIZE) < 0)
+    if (readlink((const char*)buf, obj_file, SIZE) < 0)
     {
         perror("readlink() error \n");
         return EXIT_FAILURE;

@@ -5,7 +5,7 @@
 
 #define FNAME "/tmp/out"
 
-int main(int argc, char *argv[])
+int demo_dup2_main(int argc, char *argv[])
 {
     int sfd = 0;
     int dfd = 0;

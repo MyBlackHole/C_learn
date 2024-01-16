@@ -1,5 +1,5 @@
-#include <stdbool.h>
 #include <errno.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -8,8 +8,10 @@
 #include <unistd.h>
 
 #define BUF_NUM 50
+#define SECONDS 1000
 
-// ./out/obj/unistd_learn/bug/block_run /media/black/Data/Documents/C/out/obj/unistd_learn/bug/setsid_test
+// ./out/obj/unistd_learn/bug/block_run
+// /media/black/Data/Documents/C/out/obj/unistd_learn/bug/setsid_test
 int main(int argc, char *argv[])
 {
     char buf[BUF_NUM] = {};
@@ -99,9 +101,9 @@ int main(int argc, char *argv[])
         close(pout[1]);
         close(perr[1]);
 
-
         fprintf(stdout, "block_run pid:%d\n", getpid());
-        while (true) {
+        while (true)
+        {
             printf("模仿读取\n");
             // 模仿读取
             read(pout[0], buf, BUF_NUM);
@@ -112,7 +114,7 @@ int main(int argc, char *argv[])
             // memset(buf, 0, BUF_NUM);
             sleep(1);
         }
-        sleep(100);
+        sleep(SECONDS);
 
         // 等待儿子退出
         wait(NULL);

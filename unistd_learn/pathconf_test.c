@@ -1,8 +1,9 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 
 // 获取实际限制值
-int main()
+int demo_pathconf_main()
 {
     char pathname[256] = "/home";
     printf("%s:\n", pathname);
@@ -13,5 +14,5 @@ int main()
     printf("MAX_CANON=%ld\n", pathconf(pathname, _PC_MAX_CANON));
     printf("PIPE_BUF=%ld\n", pathconf(pathname, _PC_PIPE_BUF));
 
-    return 0;
+    return EXIT_SUCCESS;
 }

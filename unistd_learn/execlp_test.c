@@ -6,7 +6,7 @@
 
 #define MAXLINE 4048
 
-int main(int argc, char **argv)
+int demo_execlp_main(int argc, char **argv)
 {
     char buf[MAXLINE];  // from apue.h referrnce
     pid_t pid;
@@ -18,24 +18,25 @@ int main(int argc, char **argv)
         {
             buf[strlen(buf) - 1] = 0;  // relplace newline with null;
         }
-        if ((pid = fork()) < 0)
+        pid = fork();
+        if (pid < 0)
         {
             perror("fork error");
-            exit(1);
+            exit(EXIT_FAILURE);
         }
         else if (pid == 0)
         {
             execlp(buf, buf, (char *)0);
             fprintf(stderr, "couldn't execute :%s ", buf);
-            exit(127);
+            exit(EXIT_FAILURE);
         }
-
-        if ((pid = waitpid(pid, &status, 0)) < 0)
+        pid = waitpid(pid, &status, 0);
+        if (pid < 0)
         {
             perror("waitpaid error");
-            exit(1);
+            exit(EXIT_FAILURE);
         }
         printf("%%");
     }
-    exit(0);
+    exit(EXIT_SUCCESS);
 }

@@ -3,13 +3,13 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-int main(void)
+int demo_chdir_main(void)
 {
     // 改变工作目录
     if (chdir("/tmp") < 0)
     {
         perror("chdir error");
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     printf("chdir to /tmp successed\n");
@@ -17,7 +17,7 @@ int main(void)
     if (chdir("/tmp/lsp_python.log") < 0)
     {
         perror("chdir error");
-        exit(1);
+        exit(EXIT_FAILURE);
     }
-    exit(0);
+    exit(EXIT_SUCCESS);
 }

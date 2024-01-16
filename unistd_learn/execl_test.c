@@ -1,5 +1,6 @@
 #include <errno.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <sys/wait.h>
 #include <unistd.h>
 
@@ -7,15 +8,15 @@ int mysystem(const char *cmdstring)
 {
     pid_t pid;
     int status;
-
-    if ((pid = fork()) < 0)
+    pid = fork();
+    if (pid < 0)
     {
         status = -1;
     }
     else if (pid == 0)
     {
         execl("/bin/sh", "sh", "-c", cmdstring, (char *)0);
-        _exit(127);
+        _exit(EXIT_FAILURE);
     }
     else
     {
@@ -28,7 +29,7 @@ int mysystem(const char *cmdstring)
     return (status);
 }
 
-int main()
+int demo_execl_main()
 {
     char s[100];
     char *sp;
@@ -36,4 +37,5 @@ int main()
     {
         mysystem(s);
     }
+    return EXIT_SUCCESS;
 }

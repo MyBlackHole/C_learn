@@ -1,9 +1,10 @@
 #include <fcntl.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 
 #define BUFFSIZE 256
-int main(void)
+int demo_pwrite_main(void)
 {
     char pathname[] = "/tmp/myfile"; /*待操作文件路径*/
     int f_id;                        /*文件描述符*/
@@ -60,5 +61,5 @@ int main(void)
     /*关闭文件*/
     close(f_id);
 
-    return 0;
+    return EXIT_SUCCESS;
 }

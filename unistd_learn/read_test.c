@@ -1,1 +1,0 @@
-write_test.c

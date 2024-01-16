@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-int main(void)
+int demo_getuid_main(void)
 {
     printf("uid=%d  gid=%d  \n", getuid(), getgid());
-    exit(0);
+    exit(EXIT_SUCCESS);
 }

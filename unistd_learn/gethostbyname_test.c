@@ -1,1 +1,0 @@
-gethostname_test.c

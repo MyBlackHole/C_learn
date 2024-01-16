@@ -3,7 +3,7 @@
 #include <sys/file.h>
 #include <unistd.h>
 
-int main(int argc, char **argv)
+int demo_setsid_main(int argc, char **argv)
 {
     pid_t gpid;
     pid_t old_gpid;

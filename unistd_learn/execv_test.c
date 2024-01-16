@@ -1,8 +1,9 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <sys/wait.h>
 #include <unistd.h>
 
-int main()
+int demo_execv_main()
 {
     printf("调用execv前进程id是%d\n", getpid());
 
@@ -19,5 +20,5 @@ int main()
         wait(NULL);
         printf("\n执行完毕，退出\n");
     }
-    return 0;
+    return EXIT_SUCCESS;
 }

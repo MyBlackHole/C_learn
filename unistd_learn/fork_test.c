@@ -3,7 +3,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-int main(void)
+int demo_fork_main(void)
 {
     int count = 1;
     int child;

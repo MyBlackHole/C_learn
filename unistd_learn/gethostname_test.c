@@ -6,12 +6,6 @@
 #include <sys/socket.h>
 #include <unistd.h>
 
-void handler(int sig)
-{
-    printf("recv a sig = %d\n", sig);
-    exit(EXIT_SUCCESS);
-}
-
 #define ERR_EXIT(m)         \
     do                      \
     {                       \
@@ -19,7 +13,9 @@ void handler(int sig)
         exit(EXIT_FAILURE); \
     } while (0);
 
-int main(void)
+#define NUM 100
+
+int demo_gethostname_main(void)
 {
     // char host[100] = {0};
     // if (gethostname(host, sizeof(host)) < 0)
@@ -29,20 +25,21 @@ int main(void)
 
     // printf("gethostname: %s\n", host);
 
-    char host[100] = "aio.backup.com";
+    char host[NUM] = "aio.backup.com";
 
-    struct hostent *hp;
-    if ((hp = gethostbyname(host)) == NULL)
+    struct hostent *hosts;
+    hosts = gethostbyname(host);
+    if (hosts == NULL)
     {
         ERR_EXIT("gethostbyname");
     }
 
-    int i = 0;
-    while (hp->h_addr_list[i] != NULL)
+    int index = 0;
+    while (hosts->h_addr_list[index] != NULL)
     {
-        printf("hostname: %s\n", hp->h_name);
-        printf("    ip:%s\n", inet_ntoa(*(struct in_addr *)hp->h_addr_list[i]));
-        i++;
+        printf("hostname: %s\n", hosts->h_name);
+        printf("    ip:%s\n", inet_ntoa(*(struct in_addr *)hosts->h_addr_list[index]));
+        index++;
     }
-    return 0;
+    return EXIT_SUCCESS;
 }

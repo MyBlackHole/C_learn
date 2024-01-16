@@ -1,9 +1,11 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 
-int main(int argc, char *argv[])
+int demo_dup22_main(int argc, char *argv[])
 {
-    int cfd1, cfd2;
+    int cfd1;
+    int cfd2;
     char str1[] = "Hi~ \n";
     char str2[] = "It's nice day~ \n";
 
@@ -25,5 +27,5 @@ int main(int argc, char *argv[])
     write(1, str1, sizeof(str1));
     close(1);
     write(1, str2, sizeof(str2));  // 无法完成输出
-    return 0;
+    return EXIT_SUCCESS;
 }

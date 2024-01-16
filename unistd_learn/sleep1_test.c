@@ -3,11 +3,17 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-void sig_handler(int num) { printf("\nrecvive the signal is %d\n", num); }
-
-int main()
+void sig_handler(int num) 
 {
-    int time = 20;
+    // 会导致死锁
+    // 因为 printf 会持有输出(stdout)锁
+    // 此时发生中断进入此处就死锁了
+    printf("\nrecvive the signal is %d\n", num); 
+}
+
+int demo_sleep1_main()
+{
+    unsigned int time = 20;
 
     signal(SIGINT, sig_handler);
     printf("enter to the sleep.\n");
@@ -24,5 +30,5 @@ int main()
 
     printf("sleep is over, main over.\n");
 
-    exit(0);
+    exit(EXIT_SUCCESS);
 }
