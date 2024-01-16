@@ -1,7 +1,0 @@
-executable("sendfile_test") {
-  cflags = ["-g", "-Wall"]
-  sources = [
-    "sendfile_test.c",
-  ]
-}
-

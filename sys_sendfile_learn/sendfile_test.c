@@ -13,7 +13,7 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
-int main(int argc, char *argv[])
+int demo_sendfile_main(int argc, char *argv[])
 {
     if (argc <= 3)
     {
