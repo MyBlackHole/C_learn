@@ -12,7 +12,7 @@ int demo_gethostbyname_main(int argc, char *argv[])
     if (argc != 2)
     {
         printf("Usage : %s <addr>\n", argv[0]);
-        exit(1);
+        exit(EXIT_FAILURE);
     }
     // 把参数传递给函数，返回结构体
     host = gethostbyname(argv[1]);
@@ -36,5 +36,5 @@ int demo_gethostbyname_main(int argc, char *argv[])
         printf("IP addr %d: %s \n", index + 1,
                inet_ntoa(*(struct in_addr *)host->h_addr_list[index]));
     }
-    return 0;
+    return EXIT_SUCCESS;
 }

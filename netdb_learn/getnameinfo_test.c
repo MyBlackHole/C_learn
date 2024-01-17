@@ -7,12 +7,14 @@
 #include <sys/types.h>
 #include <unistd.h>
 
+#define NUM 128
+
 int demo_getnameinfo_main(int argc, char *argv[])
 {
     int ret;
     char *ptr;
-    char hostname[128] = {0};
-    char servername[128] = {0};
+    char hostname[NUM] = {0};
+    char servername[NUM] = {0};
     struct sockaddr_in addr_dst;
 
     ptr = argc < 2 ? "180.101.49.11" : argv[1];

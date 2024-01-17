@@ -8,6 +8,8 @@
 #include <sys/types.h>
 #include <unistd.h>
 
+#define NUM 1025
+
 int demo_getnameinfo1_main(int argc, char *argv[])
 {
     if (argc != 2)
@@ -16,7 +18,8 @@ int demo_getnameinfo1_main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
     struct addrinfo hints;
-    struct addrinfo *result, *result_pointer;
+    struct addrinfo *result;
+    struct addrinfo *result_pointer;
     int ret;
     /* obtaining address matching host */
     memset(&hints, 0, sizeof(struct addrinfo));
@@ -35,7 +38,7 @@ int demo_getnameinfo1_main(int argc, char *argv[])
     for (result_pointer = result; result_pointer != NULL;
          result_pointer = result_pointer->ai_next)
     {
-        char hostname[1025] = "";
+        char hostname[NUM] = "";
         // flags = NI_NUMERICHOST 表示任何情况下都返回数字形式地址
         ret = getnameinfo(result_pointer->ai_addr, result_pointer->ai_addrlen,
                           hostname, sizeof(hostname), NULL, 0, NI_NUMERICHOST);
@@ -44,10 +47,7 @@ int demo_getnameinfo1_main(int argc, char *argv[])
             fprintf(stderr, "error in getnameinfo: %s \n", gai_strerror(ret));
             continue;
         }
-        else
-        {
-            printf("IP: %s \n", hostname);
-        }
+        printf("IP: %s \n", hostname);
     }
     freeaddrinfo(result);
     exit(EXIT_SUCCESS);

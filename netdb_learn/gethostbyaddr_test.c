@@ -15,7 +15,7 @@ int demo_gethostbyaddr_main(int argc, char *argv[])
     if (argc != 2)
     {
         printf("Usage : %s <IP>\n", argv[0]);
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     memset(&addr, 0, sizeof(addr));
@@ -40,12 +40,12 @@ int demo_gethostbyaddr_main(int argc, char *argv[])
                inet_ntoa(*(struct in_addr *)host->h_addr_list[index]));
     }
 
-    return 0;
+    return EXIT_SUCCESS;
 }
 
 void error_handling(char *message)
 {
     fputs(message, stderr);
     fputc('\n', stderr);
-    exit(1);
+    exit(EXIT_FAILURE);
 }
