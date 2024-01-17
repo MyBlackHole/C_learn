@@ -23,6 +23,7 @@ static demo_t demos[] = {
     DEMO_MAIN_ITEM(uint64),
     DEMO_MAIN_ITEM(arr),
     DEMO_MAIN_ITEM(continue),
+    DEMO_MAIN_ITEM(wrs),
 };
 int main(int argc, char** argv)
 {

@@ -21,5 +21,6 @@ DEMO_MAIN_DECL(int);
 DEMO_MAIN_DECL(uint64);
 DEMO_MAIN_DECL(arr);
 DEMO_MAIN_DECL(continue);
+DEMO_MAIN_DECL(wrs);
 
 #endif
