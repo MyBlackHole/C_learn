@@ -10,8 +10,9 @@
 #include <unistd.h>
 
 #define NUM 30
+#define STATUS 0
 
-int main(void)
+int demo_test_main(void)
 {
     int fd_test;
     // off_t size
@@ -23,12 +24,12 @@ int main(void)
     if (fd_test < 0)
     {
         printf("open error %d\n", errno);
-        exit(-1);
+        exit(EXIT_FAILURE);
     }
 
-#if 0
+#if STATUS
     //会报错
-    if ((size = lseek(fd, 0, SEEK_END)) < 0)
+    if ((size = lseek(fd_test, 0, SEEK_END)) < 0)
     {
         printf("lseek errno %d\n", errno);
         exit(-1);
@@ -39,11 +40,11 @@ int main(void)
     if (ret < 0)
     {
         printf("ioctl error %d\n", errno);
-        exit(-1);
+        exit(EXIT_FAILURE);
     }
 
     len = (size >> NUM);
     printf("size of sda = %d G\n", len);
 
-    return 0;
+    return EXIT_SUCCESS;
 }

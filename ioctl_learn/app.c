@@ -9,14 +9,19 @@
 #define CMD_TEST_1 _IOR('A', 1, int)
 #define CMD_TEST_2 _IOW('A', 2, int)
 #define CMD_TEST_3 _IOWR('A', 3, int)
+#define CMD_TEST_4 4
 
-int main(int argc, char *argv[])
+struct struct_regs {
+    int data;
+};
+
+int demo_app_main(int argc, char *argv[])
 {
-    int fd = 0;
-    int revData = 0;
+    int fd_tmp = 0;
+    int rev_data = 0;
 
-    fd = open("/dev/test_ioctrl", O_RDWR);
-    if (fd < 0)
+    fd_tmp = open("/dev/test_ioctrl", O_RDWR);
+    if (fd_tmp < 0)
     {
         printf("open failed\n");
         exit(1);
@@ -24,16 +29,21 @@ int main(int argc, char *argv[])
     printf("open success\n");
 
     /*依次调用四个命令*/
-    ioctl(fd, CMD_TEST_0);
+    ioctl(fd_tmp, CMD_TEST_0);
 
-    revData = ioctl(fd, CMD_TEST_1);
-    printf("receive 1 data=%d\n", revData);
+    rev_data = ioctl(fd_tmp, CMD_TEST_1);
+    printf("receive 1 data=%d\n", rev_data);
 
-    ioctl(fd, CMD_TEST_2, 99);
+    ioctl(fd_tmp, CMD_TEST_2, 99);
 
-    revData = ioctl(fd, CMD_TEST_3, 101);
-    printf("receive 3 data=%d\n", revData);
+    rev_data = ioctl(fd_tmp, CMD_TEST_3, 101);
+    printf("receive 3 data=%d\n", rev_data);
 
-    close(fd);
+    struct struct_regs data = {};
+    data.data = 100;
+    printf("p=%p\n", &data);
+    ioctl(fd_tmp, 4, &data);
+
+    close(fd_tmp);
     return 0;
 }
