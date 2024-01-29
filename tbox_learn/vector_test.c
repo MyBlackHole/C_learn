@@ -5,7 +5,7 @@
 
 #define Num 4
 
-int main(int argc, char *argv[])
+int demo_vector_main(int argc, char *argv[])
 {
     if (!tb_init(tb_null, tb_null))
     {

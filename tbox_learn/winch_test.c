@@ -25,7 +25,7 @@ static void sig_winch(int signo)
     pr_winsize(STDIN_FILENO);
 }
 
-int main(void)
+int demo_winch_main(void)
 {
     if (isatty(STDIN_FILENO) == 0)
     {

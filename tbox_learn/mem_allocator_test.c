@@ -7,7 +7,7 @@
 #include <tbox/prefix/malloc.h>
 #include <tbox/tbox.h>
 
-int main(int argc, char *argv[])
+int demo_allocator_main(int argc, char *argv[])
 {
     if (!tb_init(tb_null, tb_null))
     {

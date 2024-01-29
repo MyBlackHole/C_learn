@@ -1,6 +1,6 @@
 #include <tbox/tbox.h>
 
-int main(int argc, char **argv)
+int demo_stream_main(int argc, char **argv)
 {
     // init tbox
     if (!tb_init(tb_null, tb_null))

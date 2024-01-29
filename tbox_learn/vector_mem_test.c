@@ -20,7 +20,7 @@ static tb_void_t tb_vector_mem_dump(tb_vector_ref_t vector)
     }
 }
 
-int main(int argc, char *argv[])
+int demo_vector_mem_main(int argc, char *argv[])
 {
     if (!tb_init(tb_null, tb_null))
     {

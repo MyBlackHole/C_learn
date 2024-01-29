@@ -18,7 +18,7 @@ static tb_long_t tb_test_heap_min_comp(tb_element_ref_t element,
     return ((((Test *)ldata)->a < ((Test *)rdata)->a) ? -1 : 1);
 }
 
-int main(int argc, char *argv[])
+int demo_heap1_main(int argc, char *argv[])
 {
     if (!tb_init(tb_null, tb_null))
     {
@@ -37,18 +37,18 @@ int main(int argc, char *argv[])
     tb_random_reset(tb_true);
 
     // 生成 heap 数据
-    tb_size_t i = 0;
-    for (i = 0; i < 10; i++)
+    tb_size_t index = 0;
+    for (index = 0; index < 10; index++)
     {
         tb_uint32_t val = (tb_uint32_t)tb_random_range(0, 50);
 
-        Test *t = malloc(sizeof(Test));
-        t->a = val;
+        Test *test = malloc(sizeof(Test));
+        test->a = val;
 
         // 打印
         tb_trace_i("heap min put:%u", val);
 
-        tb_heap_put(heap, t);
+        tb_heap_put(heap, test);
     }
 
     // dump heap
