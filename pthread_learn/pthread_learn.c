@@ -6,6 +6,8 @@
 
 static demo_t demos[] = {
     DEMO_MAIN_ITEM(setname_np),
+    DEMO_MAIN_ITEM(create4),
+
 };
 int main(int argc, char** argv)
 {

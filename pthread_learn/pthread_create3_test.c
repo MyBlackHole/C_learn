@@ -28,3 +28,6 @@ int demo_create3_main(void)
     printf("%d\n", index);
     return 0;
 }
+// 会出现不等于 20000
+// out:
+// 19996
