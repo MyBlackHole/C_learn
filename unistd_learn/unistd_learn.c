@@ -6,6 +6,12 @@
 
 static demo_t demos[] = {
     DEMO_MAIN_ITEM(copy_file_range),
+    DEMO_MAIN_ITEM(getcwd),
+    DEMO_MAIN_ITEM(write),
+    DEMO_MAIN_ITEM(write1),
+    DEMO_MAIN_ITEM(unlink),
+    DEMO_MAIN_ITEM(truncate),
+
 };
 int main(int argc, char** argv)
 {

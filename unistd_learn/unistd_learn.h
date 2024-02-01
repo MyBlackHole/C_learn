@@ -3,5 +3,10 @@
 
 #include "../lib/demo.h"
 DEMO_MAIN_DECL(copy_file_range);
+DEMO_MAIN_DECL(getcwd);
+DEMO_MAIN_DECL(write);
+DEMO_MAIN_DECL(write1);
+DEMO_MAIN_DECL(unlink);
+DEMO_MAIN_DECL(truncate);
 
 #endif
