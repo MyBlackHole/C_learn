@@ -23,7 +23,7 @@ static void *threadfunc(void *parm)
     return NULL;
 }
 
-int main(int argc, char **argv)
+int demo_setname_np_main(int argc, char **argv)
 {
     pthread_t thread;
     int ret;

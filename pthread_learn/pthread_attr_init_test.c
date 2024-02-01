@@ -8,7 +8,8 @@
 void *child_thread(void *arg)
 {
     int policy = 0;
-    int max_priority = 0, min_priority = 0;
+    int max_priority = 0;
+    int min_priority = 0;
     struct sched_param param;
     pthread_attr_t attr;
 
@@ -52,7 +53,7 @@ void *child_thread(void *arg)
     pthread_exit(NULL);
 }
 
-int main(int argc, char *argv[])
+int demo_attr_init_main(int argc, char *argv[])
 {
     pthread_t child_thread_id;
     pthread_create(&child_thread_id, NULL, child_thread, NULL);

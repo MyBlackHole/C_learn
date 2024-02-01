@@ -19,29 +19,30 @@ char *buf[5];  // 字符指针数组  全局变量
 int pos;       // 用于指定上面数组的下标
 
 // 1.定义互斥量
-pthread_mutex_t mutex;
+pthread_mutex_t mutex_1_1;
 
-void *task(void *p)
+void *task(void *p_str)
 {
     // 3.使用互斥量进行加锁
-    pthread_mutex_lock(&mutex);
+    pthread_mutex_lock(&mutex_1_1);
 
-    buf[pos] = (char *)p;
+    buf[pos] = (char *)p_str;
     sleep(1);
     pos++;
 
     // 4.使用互斥量进行解锁
-    pthread_mutex_unlock(&mutex);
+    pthread_mutex_unlock(&mutex_1_1);
     return NULL;
 }
 
-int main(void)
+int demo_mutex_lock1_main(void)
 {
     // 2.初始化互斥量, 默认属性
-    pthread_mutex_init(&mutex, NULL);
+    pthread_mutex_init(&mutex_1_1, NULL);
 
     // 1.启动一个线程 向数组中存储内容
-    pthread_t tid, tid2;
+    pthread_t tid;
+    pthread_t tid2;
     pthread_create(&tid, NULL, task, (void *)"zhangfei");
     pthread_create(&tid2, NULL, task, (void *)"guanyu");
     // 2.主线程进程等待,并且打印最终的结果
@@ -49,13 +50,13 @@ int main(void)
     pthread_join(tid2, NULL);
 
     // 5.销毁互斥量
-    pthread_mutex_destroy(&mutex);
+    pthread_mutex_destroy(&mutex_1_1);
 
-    int i = 0;
+    int index = 0;
     printf("字符指针数组中的内容是：");
-    for (i = 0; i < pos; ++i)
+    for (index = 0; index < pos; ++index)
     {
-        printf("%s ", buf[i]);
+        printf("%s ", buf[index]);
     }
     printf("\n");
     return 0;

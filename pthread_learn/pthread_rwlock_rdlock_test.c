@@ -6,7 +6,7 @@
 #include <unistd.h>
 
 pthread_rwlock_t rwlock;  // 读写锁
-int num = 1;
+int num_1 = 1;
 
 // 读操作，其他线程允许读操作，却不允许写操作
 void *fun1(void *arg)
@@ -14,7 +14,7 @@ void *fun1(void *arg)
     while (1)
     {
         pthread_rwlock_rdlock(&rwlock);
-        printf("read num first == %d\n", num);
+        printf("read num_1 first == %d\n", num_1);
         pthread_rwlock_unlock(&rwlock);
         sleep(1);
     }
@@ -26,7 +26,7 @@ void *fun2(void *arg)
     while (1)
     {
         pthread_rwlock_rdlock(&rwlock);
-        printf("read num second == %d\n", num);
+        printf("read num_1 second == %d\n", num_1);
         pthread_rwlock_unlock(&rwlock);
         sleep(2);
     }
@@ -38,7 +38,7 @@ void *fun3(void *arg)
     while (1)
     {
         pthread_rwlock_wrlock(&rwlock);
-        num++;
+        num_1++;
         printf("write thread first\n");
         pthread_rwlock_unlock(&rwlock);
         sleep(2);
@@ -51,16 +51,19 @@ void *fun4(void *arg)
     while (1)
     {
         pthread_rwlock_wrlock(&rwlock);
-        num++;
+        num_1++;
         printf("write thread second\n");
         pthread_rwlock_unlock(&rwlock);
         sleep(1);
     }
 }
 
-int main()
+int demo_rwlock_main()
 {
-    pthread_t ptd1, ptd2, ptd3, ptd4;
+    pthread_t ptd1;
+    pthread_t ptd2;
+    pthread_t ptd3;
+    pthread_t ptd4;
 
     pthread_rwlock_init(&rwlock, NULL);  // 初始化一个读写锁
 

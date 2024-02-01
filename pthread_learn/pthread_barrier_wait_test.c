@@ -1,1 +1,0 @@
-pthread_barrier_init_test.c

@@ -55,10 +55,12 @@ void *thread3_entry(void *arg)
     }
 }
 
-int main(void)
+int demo_cond_broadcast_main(void)
 {
     int ret = 0;
-    pthread_t tid1, tid2, tid3;
+    pthread_t tid1;
+    pthread_t tid2;
+    pthread_t tid3;
     // 初始化条件变量
     ret = pthread_cond_init(&cond, NULL);
     if (ret < 0)

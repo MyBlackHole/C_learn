@@ -4,27 +4,27 @@
 
 #define COUNT 10000
 
-static int i;
+static int index;
 
-void *thread_func(void *arg)
+void *thread_func_3_3(void *arg)
 {
     for (int j = 0; j < COUNT; j++)
     {
-        i++;
+        index++;
     }
     pthread_exit(0);
 }
 
-int main(void)
+int demo_create3_main(void)
 {
     pthread_t tid1;
     pthread_t tid2;
 
-    pthread_create(&tid1, NULL, thread_func, NULL);
-    pthread_create(&tid2, NULL, thread_func, NULL);
+    pthread_create(&tid1, NULL, thread_func_3_3, NULL);
+    pthread_create(&tid2, NULL, thread_func_3_3, NULL);
     printf("pthread tid1=%lu; pthread tid1=%lu\n", tid1, tid2);
     pthread_join(tid1, NULL);
     pthread_join(tid2, NULL);
-    printf("%d\n", i);
+    printf("%d\n", index);
     return 0;
 }

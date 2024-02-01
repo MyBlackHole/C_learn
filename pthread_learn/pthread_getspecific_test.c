@@ -1,6 +1,7 @@
 #include <pthread.h>
 #include <stdio.h>
 #include <string.h>
+
 pthread_key_t p_key;
 
 void func1()
@@ -10,28 +11,31 @@ void func1()
     printf("%d is runing in %s\n", *tmp, __func__);
 }
 
-void *thread_func(void *args)
+void *thread_func_3_2(void *args)
 {
     pthread_setspecific(p_key, args);
     // 获得线程的私有空间
     int *tmp = (int *)pthread_getspecific(p_key);
     printf("%d is runing in %s\n", *tmp, __func__);
 
-    *tmp = (*tmp) * 100;  // 修改私有变量的值
+    // 修改私有变量的值
+    *tmp = (*tmp) * 100;
 
     func1();
 
-    return (void *)0;
+    return NULL;
 }
-int main()
+
+int demo_getspecific_main()
 {
-    pthread_t pa, pb;
-    int a = 1;
-    int b = 2;
+    pthread_t pa_t;
+    pthread_t pb_t;
+    int int_a = 1;
+    int int_b = 2;
     pthread_key_create(&p_key, NULL);
-    pthread_create(&pa, NULL, thread_func, &a);
-    pthread_create(&pb, NULL, thread_func, &b);
-    pthread_join(pa, NULL);
-    pthread_join(pb, NULL);
+    pthread_create(&pa_t, NULL, thread_func_3_2, &int_a);
+    pthread_create(&pb_t, NULL, thread_func_3_2, &int_b);
+    pthread_join(pa_t, NULL);
+    pthread_join(pb_t, NULL);
     return 0;
 }

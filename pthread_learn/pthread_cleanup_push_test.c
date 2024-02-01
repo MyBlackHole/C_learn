@@ -31,7 +31,7 @@ void *thr_fn2(void *arg)
     pthread_cleanup_pop(0);
     pthread_exit((void *)2);
 }
-int main()
+int demo_cleanup_main()
 {
     int err;
     pthread_t tid1;

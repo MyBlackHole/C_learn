@@ -13,7 +13,7 @@
 #include <string.h>
 #include <time.h>
 
-int main(void)
+int demo_mutex_timedlock_main(void)
 {
     int err;
     struct timespec tout;
@@ -38,9 +38,13 @@ int main(void)
     printf("the time is now %s\n", buf);
 
     if (err == 0)
+    {
         printf("mutex locked again\n");
+    }
     else
+    {
         printf("can`t lock mutex again:%s\n", strerror(err));
+    }
 
     pthread_mutex_destroy(&lock);
 

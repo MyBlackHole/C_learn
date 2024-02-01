@@ -4,75 +4,75 @@
 #include <unistd.h>
 
 /* 初始化互斥锁 */
-pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t mutex_1_2 = PTHREAD_MUTEX_INITIALIZER;
 
 /* 初始化条件变量 */
-pthread_cond_t cond = PTHREAD_COND_INITIALIZER;
+pthread_cond_t cond_5 = PTHREAD_COND_INITIALIZER;
 
-int i = 1;
+int index = 1;
 
-void *thread1(void *);
-void *thread2(void *);
+void *thread_3(void *);
+void *thread_4(void *);
 
-int main()
+int demo_mutex_lock_main()
 {
     pthread_t t_a;
     pthread_t t_b;
 
-    pthread_create(&t_a, NULL, thread1, NULL);
-    pthread_create(&t_b, NULL, thread2, NULL);
+    pthread_create(&t_a, NULL, thread_3, NULL);
+    pthread_create(&t_b, NULL, thread_4, NULL);
 
     printf("t_a:0x%lx, t_b:0x%lx\n", t_a, t_b);
     pthread_join(t_b, NULL);
-    pthread_mutex_destroy(&mutex);
-    pthread_cond_destroy(&cond);
+    pthread_mutex_destroy(&mutex_1_2);
+    pthread_cond_destroy(&cond_5);
 
     exit(0);
 }
 
-void *thread1(void *junk)
+void *thread_3(void *junk)
 {
-    for (i = 1; i <= 9; i++)
+    for (index = 1; index <= 9; index++)
     {
-        pthread_mutex_lock(&mutex);
+        pthread_mutex_lock(&mutex_1_2);
         printf("call thread1 \n");
-        if (i % 3 == 0)
+        if (index % 3 == 0)
         {
-            pthread_cond_signal(&cond);
-            printf("thread1: ***** i=%d\n", i);
+            pthread_cond_signal(&cond_5);
+            printf("thread1: ***** i=%d\n", index);
         }
         else
         {
-            printf("thread1: %d\n", i);
+            printf("thread1: %d\n", index);
         }
 
-        pthread_mutex_unlock(&mutex);
+        pthread_mutex_unlock(&mutex_1_2);
 
-        printf("thread1: sleep i=%d\n", i);
+        printf("thread1: sleep i=%d\n", index);
         sleep(1);
-        printf("thread1: sleep i=%d ***** end\n", i);
+        printf("thread1: sleep i=%d ***** end\n", index);
     }
     return 0;
 }
 
-void *thread2(void *junk)
+void *thread_4(void *junk)
 {
-    while (i <= 9)
+    while (index <= 9)
     {
-        pthread_mutex_lock(&mutex);
+        pthread_mutex_lock(&mutex_1_2);
         printf("call thread2 \n");
-        if (i % 3 != 0)
+        if (index % 3 != 0)
         {
-            pthread_cond_wait(&cond, &mutex);
+            pthread_cond_wait(&cond_5, &mutex_1_2);
         }
 
-        printf("thread2: %d\n", i);
+        printf("thread2: %d\n", index);
 
-        pthread_mutex_unlock(&mutex);
+        pthread_mutex_unlock(&mutex_1_2);
 
-        printf("thread2: sleep i=%d\n", i);
+        printf("thread2: sleep i=%d\n", index);
         sleep(1);
-        printf("thread2: sleep i=%d ***** end\n", i);
+        printf("thread2: sleep i=%d ***** end\n", index);
     }
     return 0;
 }

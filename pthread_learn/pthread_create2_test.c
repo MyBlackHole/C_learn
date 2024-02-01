@@ -4,39 +4,51 @@
 #include <unistd.h>
 #define NUM_THREAD 100
 
-void *thread_inc(void *arg);
-void *thread_des(void *arg);
-long long num = 0;
+void *thread_inc_2_1(void *arg);
+void *thread_des_2_1(void *arg);
+long long num_3 = 0;
 
-int main(int argc, char *argv[])
+int demo_create2_main(int argc, char *argv[])
 {
     pthread_t thread_id[NUM_THREAD];
-    int i;
+    int index;
 
     printf("sizeof long long: %lu \n", sizeof(long long));
-    for (i = 0; i < NUM_THREAD; i++)
+    for (index = 0; index < NUM_THREAD; index++)
     {
-        if (i % 2)
-            pthread_create(&(thread_id[i]), NULL, thread_inc, NULL);
+        if (index % 2)
+        {
+            pthread_create(&(thread_id[index]), NULL, thread_inc_2_1, NULL);
+        }
         else
-            pthread_create(&(thread_id[i]), NULL, thread_des, NULL);
+        {
+            pthread_create(&(thread_id[index]), NULL, thread_des_2_1, NULL);
+        }
     }
 
-    for (i = 0; i < NUM_THREAD; i++) pthread_join(thread_id[i], NULL);
+    for (index = 0; index < NUM_THREAD; index++) 
+    {
+        pthread_join(thread_id[index], NULL);
+    }
 
-    printf("result: %lld \n", num);
+    printf("result: %lld \n", num_3);
     return 0;
 }
 
-void *thread_inc(void *arg)
+void *thread_inc_2_1(void *arg)
 {
     int i;
-    for (i = 0; i < 50000000; i++) num += 1;
+    for (i = 0; i < 50000000; i++) {
+        num_3 += 1;
+    } 
     return NULL;
 }
-void *thread_des(void *arg)
+void *thread_des_2_1(void *arg)
 {
     int i;
-    for (i = 0; i < 50000000; i++) num -= 1;
+    for (i = 0; i < 50000000; i++) 
+    {
+        num_3 -= 1;
+    }
     return NULL;
 }

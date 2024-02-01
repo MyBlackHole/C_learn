@@ -22,9 +22,9 @@ pthread_mutex_t taximutex = PTHREAD_MUTEX_INITIALIZER;
 
 void *traveler_arrive(void *name)
 {
-    char *p = (char *)name;
+    char *str_p = (char *)name;
 
-    printf("Travelr: %s need a taxi now!\n", p);
+    printf("Travelr: %s need a taxi now!\n", str_p);
     // 加锁，把信号量加入队列，释放信号量
     pthread_mutex_lock(&taximutex);
 
@@ -33,21 +33,21 @@ void *traveler_arrive(void *name)
     // 出来时再次获得 taximutex
     pthread_cond_wait(&taxicond, &taximutex);
     pthread_mutex_unlock(&taximutex);
-    printf("traveler: %s now got a taxi!\n", p);
+    printf("traveler: %s now got a taxi!\n", str_p);
     pthread_exit(NULL);
 }
 
 void *taxi_arrive(void *name)
 {
-    char *p = (char *)name;
+    char *str_p = (char *)name;
 
-    printf("Taxi: %s arrives.\n", p);
+    printf("Taxi: %s arrives.\n", str_p);
     // 给线程或者条件发信号，一定要在改变条件状态后再给线程发信号
     pthread_cond_signal(&taxicond);
     pthread_exit(NULL);
 }
 
-int main(int argc, char **argv)
+int demo_cond_wait_main(int argc, char **argv)
 {
     char *name;
     pthread_t thread;

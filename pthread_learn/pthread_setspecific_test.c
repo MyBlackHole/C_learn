@@ -1,1 +1,0 @@
-pthread_getspecific_test.c

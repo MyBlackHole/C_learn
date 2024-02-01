@@ -11,10 +11,10 @@ pthread_t pid;
 
 char *get_time_str(char *date)
 {
-    time_t t = time(NULL);
-    struct tm tm;
-    struct tm *tp = localtime_r(&t, &tm);
-    strftime(date, DATENUM, "%Y-%m-%d %H:%M:%S", tp);
+    time_t time1 = time(NULL);
+    struct tm tm1;
+    struct tm *tp1 = localtime_r(&time1, &tm1);
+    strftime(date, DATENUM, "%Y-%m-%d %H:%M:%S", tp1);
     return date;
 }
 
@@ -39,7 +39,7 @@ void *initor(void *args)
     return NULL;
 }
 
-int main(int argc, char *argv[])
+int demo_barrier_init_main(int argc, char *argv[])
 {
     char *data_time;
     data_time = malloc(sizeof(char) * DATENUM);

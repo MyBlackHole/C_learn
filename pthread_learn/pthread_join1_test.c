@@ -3,9 +3,10 @@
 void *thread_summation(void *arg);
 int sum = 0;
 
-int main(int argc, char *argv[])
+int demo_join1_main(int argc, char *argv[])
 {
-    pthread_t id_t1, id_t2;
+    pthread_t id_t1;
+    pthread_t id_t2;
     int range1[] = {1, 5};
     int range2[] = {6, 10};
 
@@ -17,6 +18,7 @@ int main(int argc, char *argv[])
     printf("result: %d \n", sum);
     return 0;
 }
+
 void *thread_summation(void *arg)
 {
     int start = ((int *)arg)[0];

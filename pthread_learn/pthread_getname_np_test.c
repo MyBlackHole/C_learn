@@ -1,1 +1,0 @@
-pthread_setname_np_test.c
