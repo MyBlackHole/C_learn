@@ -1,6 +1,8 @@
 #include <dirent.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <errno.h>
 
 int demo_opendir_test_main(int argc, char *argv[])
 {
@@ -14,7 +16,8 @@ int demo_opendir_test_main(int argc, char *argv[])
     dir = opendir(argv[1]);
     if (dir == NULL)
     {
-        fprintf(stderr, "can't open %s", argv[1]);
+        fprintf(stderr, "can't open %s\n", argv[1]);
+        fprintf(stderr, "err %s, id %d\n", strerror(errno), errno);
     }
     while ((dirp = readdir(dir)) != NULL)
     {

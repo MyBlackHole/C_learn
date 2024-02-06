@@ -22,5 +22,5 @@ int demo_readdir_test_main(int argc, char **argv)
         printf("%s\n", dirp->d_name);
     }
     closedir(dir);
-    exit(0);
+    exit(EXIT_SUCCESS);
 }
