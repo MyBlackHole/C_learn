@@ -60,7 +60,7 @@ static void __exit nfs_hook_exit(void)
 }
 
 module_init(nfs_hook_init);
-module_exit(nfs_hook_exitello_exit);
+module_exit(nfs_hook_exit);
 
 MODULE_AUTHOR("blackhole <1358244533@qq.com>");
 MODULE_LICENSE("GPL");
