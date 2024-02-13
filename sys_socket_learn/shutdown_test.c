@@ -12,7 +12,7 @@
 // 不会唤醒等待线程
 
 #define BUF_SIZE 30
-void error_handling(char *message);
+void error_(char *message);
 void read_routine(int sock, char *buf);
 void write_routine(int sock, char *buf);
 
@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
 
     if (connect(sock, (struct sockaddr *)&serv_adr, sizeof(serv_adr)) == -1)
     {
-        error_handling("connect() error!");
+        error_("connect() error!");
     }
 
     printf("connect SUCCESS");
@@ -102,7 +102,7 @@ void write_routine(int sock, char *buf)
     }
 }
 
-void error_handling(char *message)
+void error_(char *message)
 {
     fputs(message, stderr);
     fputc('\n', stderr);

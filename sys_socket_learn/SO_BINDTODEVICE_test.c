@@ -40,6 +40,7 @@ int main()
     strcpy(nif.ifr_name, INFACE);
 
     /* 绑定接口 */
+    // 指定网卡
     if (setsockopt(sock, SOL_SOCKET, SO_BINDTODEVICE, (char *)&nif,
                    sizeof(nif)) < 0)
     {
