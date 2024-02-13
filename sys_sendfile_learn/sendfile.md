@@ -1,5 +1,7 @@
 # sendfile
 
+零拷贝支持
+
 ## 定义
 ```shell
 #include<sys/sendfile.h>
