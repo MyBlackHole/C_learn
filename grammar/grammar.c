@@ -24,6 +24,7 @@ static demo_t demos[] = {
     DEMO_MAIN_ITEM(arr),
     DEMO_MAIN_ITEM(continue),
     DEMO_MAIN_ITEM(wrs),
+    DEMO_MAIN_ITEM(cleanup),
 };
 int main(int argc, char** argv)
 {
