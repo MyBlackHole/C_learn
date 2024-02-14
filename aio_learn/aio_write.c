@@ -1,6 +1,5 @@
 #include <aio.h>
 #include <arpa/inet.h>
-#include <assert.h>
 #include <errno.h>
 #include <fcntl.h>
 #include <netinet/in.h>
@@ -16,51 +15,52 @@
 int demo_aio_write_main(int argc, char **argv)
 {
     // 定义aio控制块结构体
-    struct aiocb wr;
+    struct aiocb wr_cb;
 
-    int ret, fd;
+    int ret;
+    int fd_tmp;
 
     char str[20] = {"hello,world"};
 
     // 置零wr结构体
     /* bzero(&wr, sizeof(wr)); */
-    memset(&wr, 0, sizeof(wr));
+    memset(&wr_cb, 0, sizeof(wr_cb));
 
     // 追加写
-    fd = open("test.txt", O_WRONLY | O_APPEND);
-    if (fd < 0)
+    fd_tmp = open("test.txt", O_WRONLY | O_APPEND);
+    if (fd_tmp < 0)
     {
         perror("test.txt");
     }
 
     // 为aio.buf申请空间
-    wr.aio_buf = (char *)malloc(BUFFER_SIZE);
-    if (wr.aio_buf == NULL)
+    wr_cb.aio_buf = (char *)malloc(BUFFER_SIZE);
+    if (wr_cb.aio_buf == NULL)
     {
         perror("buf");
     }
 
-    wr.aio_buf = str;
+    wr_cb.aio_buf = str;
 
     // 填充aiocb结构
-    wr.aio_fildes = fd;
-    wr.aio_nbytes = 1024;
+    wr_cb.aio_fildes = fd_tmp;
+    wr_cb.aio_nbytes = 1024;
 
     // 异步写操作
-    ret = aio_write(&wr);
+    ret = aio_write(&wr_cb);
     if (ret < 0)
     {
         perror("aio_write");
     }
 
     // 等待异步写完成
-    while (aio_error(&wr) == EINPROGRESS)
+    while (aio_error(&wr_cb) == EINPROGRESS)
     {
         printf("hello,world\n");
     }
 
     // 获得异步写的返回值
-    ret = aio_return(&wr);
+    ret = aio_return(&wr_cb);
     printf("\n\n\n返回值为:%d\n", ret);
 
     return 0;

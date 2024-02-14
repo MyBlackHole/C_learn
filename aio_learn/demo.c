@@ -1,6 +1,5 @@
 #define _GNU_SOURCE  // O_DIRECT
 #include <assert.h>
-#include <errno.h>
 #include <fcntl.h>
 #include <libaio.h>
 #include <libgen.h>
@@ -14,7 +13,7 @@
 int demo_demo_main(int argc, char *argv[])
 {
     int errcode;
-    int fd;
+    int fd_tmp;
     char *buf;
     io_context_t ctx;
     unsigned nr_events = 10;
@@ -38,7 +37,7 @@ int demo_demo_main(int argc, char *argv[])
     {
         printf("io_setup success\n");
     }
-    fd = open(file_path, O_CREAT | O_DIRECT | O_WRONLY,
+    fd_tmp = open(file_path, O_CREAT | O_DIRECT | O_WRONLY,
               S_IRWXU | S_IRWXG | S_IROTH);
     printf("open:%s\n", strerror(errcode));
     errcode = posix_memalign((void **)&buf, sysconf(_SC_PAGESIZE),
@@ -52,7 +51,7 @@ int demo_demo_main(int argc, char *argv[])
     iocbpp[0].data = buf;
     iocbpp[0].aio_lio_opcode = IO_CMD_PWRITE;
     iocbpp[0].aio_reqprio = 0;
-    iocbpp[0].aio_fildes = fd;
+    iocbpp[0].aio_fildes = fd_tmp;
     iocbpp[0].u.c.buf = buf;
     // 必须 512 对齐
     iocbpp[0].u.c.nbytes = sysconf(_SC_PAGESIZE);
@@ -76,7 +75,7 @@ int demo_demo_main(int argc, char *argv[])
 
     free(iocbpp);
 
-    close(fd);
+    close(fd_tmp);
     errcode = io_destroy(ctx);
     if (errcode < 0)
     {
