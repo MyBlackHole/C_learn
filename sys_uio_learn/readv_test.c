@@ -2,7 +2,7 @@
 #include <sys/uio.h>
 #define BUF_SIZE 100
 
-int main(int argc, char *argv[])
+int demo_readv_main(int argc, char *argv[])
 {
     struct iovec vec[2];
     char buf1[BUF_SIZE] = {

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <sys/uio.h>
 
-int main(int argc, char *argv[])
+int demo_writev_main(int argc, char *argv[])
 {
     struct iovec vec[2];
     char buf1[] = "ABCDEFG";
