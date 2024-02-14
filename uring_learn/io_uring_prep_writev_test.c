@@ -1,10 +1,11 @@
 #include <fcntl.h>
 #include <liburing.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
 
-int main(int argc, char **argv)
+int demo_io_uring_prep_writev_main(int argc, char **argv)
 {
     if (argc < 2)
     {
@@ -19,7 +20,7 @@ int main(int argc, char **argv)
     struct io_uring_sqe *sqe = io_uring_get_sqe(&ring);
 
     // 打开一个文件
-    int fd = open(argv[1], O_WRONLY | O_CREAT);
+    int fd_tmp = open(argv[1], O_WRONLY | O_CREAT);
 
     struct iovec iov = {
         .iov_base = "Hello world",
@@ -27,7 +28,7 @@ int main(int argc, char **argv)
     };
 
     // 初始化 sqe 写
-    io_uring_prep_writev(sqe, fd, &iov, 1, 0);
+    io_uring_prep_writev(sqe, fd_tmp, &iov, 1, 0);
     // 提交写
     io_uring_submit(&ring);
 
@@ -49,4 +50,5 @@ int main(int argc, char **argv)
     }
     io_uring_cqe_seen(&ring, cqe);
     io_uring_queue_exit(&ring);
+    return EXIT_SUCCESS;
 }

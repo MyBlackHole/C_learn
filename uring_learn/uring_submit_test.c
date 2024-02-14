@@ -20,14 +20,18 @@
 
 #define QD 4
 
-int main(int argc, char *argv[])
+int demo_uring_submit_main(int argc, char *argv[])
 {
     struct io_uring ring;
-    int i, fd, ret, pending, done;
+    int index;
+    int fd_tmp;
+    int ret;
+    int pending;
+    int done;
     struct io_uring_sqe *sqe;
     struct io_uring_cqe *cqe;
     struct iovec *iovecs;
-    struct stat sb;
+    struct stat sb_s;
     ssize_t fsize;
     off_t offset;
     void *buf;
@@ -53,8 +57,8 @@ int main(int argc, char *argv[])
 
     // 打开一个文件
     // O_DIRECT 无缓冲
-    fd = open(argv[1], O_RDONLY | O_DIRECT);
-    if (fd < 0)
+    fd_tmp = open(argv[1], O_RDONLY | O_DIRECT);
+    if (fd_tmp < 0)
     {
         perror("open");
         return 1;
@@ -62,7 +66,7 @@ int main(int argc, char *argv[])
     /*
      * 获取文件状态信息
      * */
-    if (fstat(fd, &sb) < 0)
+    if (fstat(fd_tmp, &sb_s) < 0)
     {
         perror("fstat");
         return 1;
@@ -74,7 +78,7 @@ int main(int argc, char *argv[])
      * 函数返回一个指向分配起始地址的指针；如果分配不成功，返回NULL。
      * */
     iovecs = calloc(QD, sizeof(struct iovec));
-    for (i = 0; i < QD; i++)
+    for (index = 0; index < QD; index++)
     {
         /*
          * 函数 posix_memalign() 分配大小字节，并将分配的内存地址放在 * memptr
@@ -84,14 +88,16 @@ int main(int argc, char *argv[])
          * posix_memalign() 成功返回零
          * */
         if (posix_memalign(&buf, 4096, 4096))
-            return 1;
-        iovecs[i].iov_base = buf;
-        iovecs[i].iov_len = 4096;
+        {
+            return EXIT_FAILURE;
+        }
+        iovecs[index].iov_base = buf;
+        iovecs[index].iov_len = 4096;
         fsize += 4096;
     }
 
     offset = 0;
-    i = 0;
+    index = 0;
     do
     {
         /*
@@ -103,7 +109,9 @@ int main(int argc, char *argv[])
          * */
         sqe = io_uring_get_sqe(&ring);
         if (!sqe)
+        {
             break;
+        }
         /*
          * 初始化 sqe 结构
          * 第一个参数 sqe 即前面获取的 sqe 结构指针；
@@ -113,11 +121,13 @@ int main(int argc, char *argv[])
          * offset 为文件操作的偏移量。
          * 1代表 io_uring_sqe struct 中的len (buffer size or number of iovecs)
          * */
-        io_uring_prep_readv(sqe, fd, &iovecs[i], 1, offset);
-        offset += iovecs[i].iov_len;
-        i++;
-        if (offset > sb.st_size)
+        io_uring_prep_readv(sqe, fd_tmp, &iovecs[index], 1, offset);
+        offset += iovecs[index].iov_len;
+        index++;
+        if (offset > sb_s.st_size)
+        {
             break;
+        }
     } while (1);
     /*
      * 准备好 sqe 后即可使用 io_uring_submit 提交请求。
@@ -129,7 +139,7 @@ int main(int argc, char *argv[])
         fprintf(stderr, "io_uring_submit: %s\n", strerror(-ret));
         return 1;
     }
-    else if (ret != i)
+    else if (ret != index)
     {
         fprintf(stderr, "io_uring_submit submitted less %d\n", ret);
         return 1;
@@ -138,7 +148,7 @@ int main(int argc, char *argv[])
     done = 0;
     pending = ret;
     fsize = 0;
-    for (i = 0; i < pending; i++)
+    for (index = 0; index < pending; index++)
     {
         /*
          * 获取当前已完成的 IO 操作。会阻塞线程，等待 IO 操作完成。
@@ -152,7 +162,7 @@ int main(int argc, char *argv[])
 
         done++;
         ret = 0;
-        if (cqe->res != 4096 && cqe->res + fsize != sb.st_size)
+        if (cqe->res != 4096 && cqe->res + fsize != sb_s.st_size)
         {
             fprintf(stderr, "ret=%d, wanted 4096\n", cqe->res);
             ret = 1;
@@ -165,12 +175,14 @@ int main(int argc, char *argv[])
          * */
         io_uring_cqe_seen(&ring, cqe);
         if (ret)
+        {
             break;
+        }
     }
 
     printf("Submitted=%d, completed=%d, bytes=%lu\n", pending, done,
            (unsigned long)fsize);
-    close(fd);
+    close(fd_tmp);
     /*
      * 清除 io_uring 结构
      * */
