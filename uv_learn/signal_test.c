@@ -13,11 +13,7 @@ uv_loop_t *create_loop()
     return loop;
 }
 
-void signal_handler(uv_signal_t *handle, int signum)
-{
-    printf("Signal received: %d\n", signum);
-    uv_signal_stop(handle);
-}
+extern void signal_handler(uv_signal_t *handle, int signum);
 
 // two signal handlers in one loop
 void thread1_worker(void *userp)
@@ -54,7 +50,7 @@ void thread2_worker(void *userp)
 }
 
 // kill -USR1 pid
-int main()
+int demo_signal_main()
 {
     printf("PID %d\n", getpid());
 

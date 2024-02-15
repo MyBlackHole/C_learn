@@ -15,7 +15,7 @@ void wait_for_a_while(uv_idle_t *handle)
     }
 }
 
-int main()
+int demo_idle_basic_main()
 {
     uv_idle_t idler;
 

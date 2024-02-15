@@ -3,11 +3,7 @@
 #include <string.h>
 #include <uv.h>
 
-#define DEFAULT_PORT 7000
-#define DEFAULT_BACKLOG 128
-
-uv_loop_t *loop;
-struct sockaddr_in addr;
+extern uv_loop_t *loop;
 
 typedef struct
 {
@@ -15,24 +11,15 @@ typedef struct
     uv_buf_t buf;
 } write_req_t;
 
-void free_write_req(uv_write_t *req)
-{
-    write_req_t *wr = (write_req_t *)req;
-    free(wr->buf.base);
-    free(wr);
-}
+extern void free_write_req(uv_write_t *req);
 
-void alloc_buffer(uv_handle_t *handle, size_t suggested_size, uv_buf_t *buf)
-{
-    buf->base = (char *)malloc(suggested_size);
-    buf->len = suggested_size;
-}
+extern void alloc_buffer(uv_handle_t *handle, size_t suggested_size, uv_buf_t *buf);
 
 void echo_write(uv_write_t *req, int status)
 {
-    if (status)
+    if (status < 0)
     {
-        fprintf(stderr, "Write error %s\n", uv_strerror(status));
+        fprintf(stderr, "Write error %s\n", uv_err_name(status));
     }
     free_write_req(req);
 }
@@ -46,6 +33,7 @@ void echo_read(uv_stream_t *client, ssize_t nread, const uv_buf_t *buf)
         uv_write((uv_write_t *)req, client, &req->buf, 1, echo_write);
         return;
     }
+
     if (nread < 0)
     {
         if (nread != UV_EOF)
@@ -60,15 +48,14 @@ void echo_read(uv_stream_t *client, ssize_t nread, const uv_buf_t *buf)
 
 void on_new_connection(uv_stream_t *server, int status)
 {
-    if (status < 0)
+    if (status == -1)
     {
-        fprintf(stderr, "New connection error %s\n", uv_strerror(status));
         // error!
         return;
     }
 
-    uv_tcp_t *client = (uv_tcp_t *)malloc(sizeof(uv_tcp_t));
-    uv_tcp_init(loop, client);
+    uv_pipe_t *client = (uv_pipe_t *)malloc(sizeof(uv_pipe_t));
+    uv_pipe_init(loop, client, 0);
     if (uv_accept(server, (uv_stream_t *)client) == 0)
     {
         uv_read_start((uv_stream_t *)client, alloc_buffer, echo_read);
@@ -79,23 +66,33 @@ void on_new_connection(uv_stream_t *server, int status)
     }
 }
 
-// nc 127.0.0.1 7000
-int main()
+void remove_sock(int sig)
+{
+    uv_fs_t req;
+    uv_fs_unlink(loop, &req, "echo.sock", NULL);
+    exit(0);
+}
+
+// socat - ./echo.sock
+int demo_pipe_echo_server_main()
 {
     loop = uv_default_loop();
 
-    uv_tcp_t server;
-    uv_tcp_init(loop, &server);
+    uv_pipe_t server;
+    uv_pipe_init(loop, &server, 0);
 
-    uv_ip4_addr("0.0.0.0", DEFAULT_PORT, &addr);
+    signal(SIGINT, remove_sock);
 
-    uv_tcp_bind(&server, (const struct sockaddr *)&addr, 0);
-    int r =
-        uv_listen((uv_stream_t *)&server, DEFAULT_BACKLOG, on_new_connection);
-    if (r)
+    int ret;
+    if ((ret = uv_pipe_bind(&server, "echo.sock")))
     {
-        fprintf(stderr, "Listen error %s\n", uv_strerror(r));
+        fprintf(stderr, "Bind error %s\n", uv_err_name(ret));
         return 1;
+    }
+    if ((ret = uv_listen((uv_stream_t *)&server, 128, on_new_connection)))
+    {
+        fprintf(stderr, "Listen error %s\n", uv_err_name(ret));
+        return 2;
     }
     return uv_run(loop, UV_RUN_DEFAULT);
 }

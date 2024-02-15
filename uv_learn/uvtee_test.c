@@ -11,7 +11,7 @@ typedef struct
     uv_buf_t buf;
 } write_req_t;
 
-uv_loop_t *loop;
+extern uv_loop_t *loop;
 uv_pipe_t stdin_pipe;
 uv_pipe_t stdout_pipe;
 uv_pipe_t file_pipe;
@@ -23,21 +23,21 @@ void alloc_buffer(uv_handle_t *handle, size_t suggested_size, uv_buf_t *buf)
 
 void free_write_req(uv_write_t *req)
 {
-    write_req_t *wr = (write_req_t *)req;
-    free(wr->buf.base);
-    free(wr);
+    write_req_t *w_req = (write_req_t *)req;
+    free(w_req->buf.base);
+    free(w_req);
 }
 
 void on_stdout_write(uv_write_t *req, int status) { free_write_req(req); }
 
 void on_file_write(uv_write_t *req, int status) { free_write_req(req); }
 
-void write_data(uv_stream_t *dest, size_t size, uv_buf_t buf, uv_write_cb cb)
+void write_data(uv_stream_t *dest, size_t size, uv_buf_t buf, uv_write_cb w_cb)
 {
     write_req_t *req = (write_req_t *)malloc(sizeof(write_req_t));
     req->buf = uv_buf_init((char *)malloc(size), size);
     memcpy(req->buf.base, buf.base, size);
-    uv_write((uv_write_t *)req, dest, &req->buf, 1, cb);
+    uv_write((uv_write_t *)req, dest, &req->buf, 1, w_cb);
 }
 
 void read_stdin(uv_stream_t *stream, ssize_t nread, const uv_buf_t *buf)
@@ -65,7 +65,7 @@ void read_stdin(uv_stream_t *stream, ssize_t nread, const uv_buf_t *buf)
     }
 }
 
-int main(int argc, char **argv)
+int demo_tee_main(int argc, char **argv)
 {
     loop = uv_default_loop();
 
@@ -76,9 +76,9 @@ int main(int argc, char **argv)
     uv_pipe_open(&stdout_pipe, 1);
 
     uv_fs_t file_req;
-    int fd = uv_fs_open(loop, &file_req, argv[1], O_CREAT | O_RDWR, 0644, NULL);
+    int fd_tmp = uv_fs_open(loop, &file_req, argv[1], O_CREAT | O_RDWR, 0644, NULL);
     uv_pipe_init(loop, &file_pipe, 0);
-    uv_pipe_open(&file_pipe, fd);
+    uv_pipe_open(&file_pipe, fd_tmp);
 
     uv_read_start((uv_stream_t *)&stdin_pipe, alloc_buffer, read_stdin);
 

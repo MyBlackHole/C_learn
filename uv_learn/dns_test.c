@@ -5,18 +5,16 @@
 
 uv_loop_t *loop;
 
-void alloc_buffer(uv_handle_t *handle, size_t suggested_size, uv_buf_t *buf)
-{
-    buf->base = malloc(suggested_size);
-    buf->len = suggested_size;
-}
+extern void alloc_buffer(uv_handle_t *handle, size_t suggested_size, uv_buf_t *buf);
 
-void on_read(uv_stream_t *client, ssize_t nread, const uv_buf_t *buf)
+void on_read_dns(uv_stream_t *client, ssize_t nread, const uv_buf_t *buf)
 {
     if (nread < 0)
     {
         if (nread != UV_EOF)
+        {
             fprintf(stderr, "Read error %s\n", uv_err_name(nread));
+        }
         uv_close((uv_handle_t *)client, NULL);
         free(buf->base);
         free(client);
@@ -41,7 +39,7 @@ void on_connect(uv_connect_t *req, int status)
         return;
     }
 
-    uv_read_start((uv_stream_t *)req->handle, alloc_buffer, on_read);
+    uv_read_start(req->handle, alloc_buffer, on_read_dns);
     free(req);
 }
 
@@ -67,7 +65,7 @@ void on_resolved(uv_getaddrinfo_t *resolver, int status, struct addrinfo *res)
     uv_freeaddrinfo(res);
 }
 
-int main()
+int demo_dns_main()
 {
     loop = uv_default_loop();
 
@@ -79,12 +77,12 @@ int main()
 
     uv_getaddrinfo_t resolver;
     fprintf(stderr, "www.baidu.com is... ");
-    int r = uv_getaddrinfo(loop, &resolver, on_resolved, "www.baidu.com",
-                           "6667", &hints);
+    int ret = uv_getaddrinfo(loop, &resolver, on_resolved, "www.baidu.com",
+                             "6667", &hints);
 
-    if (r)
+    if (ret)
     {
-        fprintf(stderr, "getaddrinfo call error %s\n", uv_err_name(r));
+        fprintf(stderr, "getaddrinfo call error %s\n", uv_err_name(ret));
         return 1;
     }
     return uv_run(loop, UV_RUN_DEFAULT);

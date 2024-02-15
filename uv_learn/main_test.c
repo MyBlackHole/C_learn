@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <uv.h>
 
-int main(int argc, char *argv[])
+int demo_test_main(int argc, char *argv[])
 {
     uv_loop_t *loop = malloc(sizeof(uv_loop_t));
     uv_loop_init(loop);
