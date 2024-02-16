@@ -6,19 +6,11 @@
 
 int (*funcs[FUNC_NUM])();
 
-int func1()
-{
-    printf("func1\n");
-    return EXIT_SUCCESS;
-}
+extern int func1();
 
-int func2()
-{
-    printf("func2\n");
-    return EXIT_SUCCESS;
-}
+extern int func2();
 
-int main(int argc, char *argv[])
+int demo_func_main(int argc, char *argv[])
 {
     funcs[0] = func1;
     funcs[1] = func2;

@@ -192,7 +192,7 @@ void func19()
     printf("%s\n", (str + 3));
 }
 
-int demo_2_main()
+int demo_test1_main()
 {
     func17();
     // const int a = 0;

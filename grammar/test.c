@@ -79,7 +79,7 @@ void test5()
     printf("%d", *c__1[0]);
 }
 
-int demo_10_main(int argc, char *argv[])
+int demo_test_main(int argc, char *argv[])
 {
     // printf("%d", (1100 & 0x7FFFFFFF) % 5);
     int i_1 = 3;

@@ -4,17 +4,12 @@
 #include <string.h>
 
 static demo_t demos[] = {
-    DEMO_MAIN_ITEM(1),
-    DEMO_MAIN_ITEM(2),
-    DEMO_MAIN_ITEM(3),
-    DEMO_MAIN_ITEM(4),
-    DEMO_MAIN_ITEM(5),
-    DEMO_MAIN_ITEM(6),
-    DEMO_MAIN_ITEM(7),
-    DEMO_MAIN_ITEM(8),
-    DEMO_MAIN_ITEM(9),
-    DEMO_MAIN_ITEM(10),
-    DEMO_MAIN_ITEM(11),
+    DEMO_MAIN_ITEM(pg_summary),
+    DEMO_MAIN_ITEM(test1),
+    DEMO_MAIN_ITEM(ptr),
+    DEMO_MAIN_ITEM(ptr1),
+    DEMO_MAIN_ITEM(test),
+    DEMO_MAIN_ITEM(bool),
     DEMO_MAIN_ITEM(argv_test),
     DEMO_MAIN_ITEM(do_while),
     DEMO_MAIN_ITEM(VA_ARGS),
@@ -26,6 +21,13 @@ static demo_t demos[] = {
     DEMO_MAIN_ITEM(wrs),
     DEMO_MAIN_ITEM(cleanup),
     DEMO_MAIN_ITEM(enum),
+    DEMO_MAIN_ITEM(union),
+    DEMO_MAIN_ITEM(struct),
+    DEMO_MAIN_ITEM(struct1),
+    DEMO_MAIN_ITEM(static),
+    DEMO_MAIN_ITEM(const),
+    DEMO_MAIN_ITEM(func),
+    DEMO_MAIN_ITEM(define),
 };
 int main(int argc, char** argv)
 {

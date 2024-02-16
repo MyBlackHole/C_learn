@@ -12,7 +12,7 @@ struct Line
     uint8_t contents[1];
 };
 
-int main()
+int demo_struct1_main()
 {
     struct Line line;
     int length = 100;
@@ -23,6 +23,6 @@ int main()
     // 代表 contents 100 char
     line_ptr->length = 100;
 
-    printf("%ld\n", (int)line_ptr->contents[96]);
-    return 0;
+    printf("%d\n", line_ptr->contents[96]);
+    return EXIT_SUCCESS;
 }

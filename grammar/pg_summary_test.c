@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int demo_1_main(int argc, char *argv[])
+int demo_pg_summary_main(int argc, char *argv[])
 {
     uint32_t tmp[5];
     char *name = "000000010000000008000028000000000A000028.summary";

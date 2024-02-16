@@ -3,7 +3,7 @@
 */
 #include <stdio.h>
 
-int demo_4_main(void)
+int demo_ptr2_main(void)
 {
     char *ptr = "Linux";
     printf("%c\n", *ptr++);

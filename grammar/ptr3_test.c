@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int demo_5_main(int argc, char *argv[])
+int demo_ptr3_main(int argc, char *argv[])
 {
     int i_1 = 2;
     int j_1 = 1;

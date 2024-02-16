@@ -3,11 +3,11 @@
 
 void test()
 {
-    static int j;
-    printf("%d\n", j++);
+    static int j_1;
+    printf("%d\n", j_1++);
 }
 
-int main(int argc, char *argv[])
+int demo_static_main(int argc, char *argv[])
 {
     for (int i = 0; i < 5; i++)
     {

@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int demo_3_main(int argc, char *argv[])
+int demo_argvs_main(int argc, char *argv[])
 {
     for (int i = 0; i < sizeof(argc); i++)
     {
