@@ -6,18 +6,18 @@
 
 int demo_6_main(int argc, char *argv[])
 {
-    int i = 0;
-    int j = 1;
-    int *p1;
-    int *p2;
-    int *p3;
-    p1 = &i;
-    p2 = p1;
-    p3 = &j;
-    *p3 = *p2;
-    printf("i = %d\n", i);
-    printf("p1 = %d\n", *p1);
-    printf("p2 = %d\n", *p2);
-    printf("p3 = %d\n", *p3);
+    int i_1 = 0;
+    int j_1 = 1;
+    int *p_1;
+    int *p_2;
+    int *p_3;
+    p_1 = &i_1;
+    p_2 = p_1;
+    p_3 = &j_1;
+    *p_3 = *p_2;
+    printf("i = %d\n", i_1);
+    printf("p1 = %d\n", *p_1);
+    printf("p2 = %d\n", *p_2);
+    printf("p3 = %d\n", *p_3);
     exit(0);
 }

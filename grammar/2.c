@@ -28,20 +28,20 @@ struct test1
     /* data */
     int a : 2;
     int b;
-} tt;
+} tt_t;
 
 int func9()
 {
     struct test1 ttt;
     ttt.b = 9;
-    printf("%p\n", &tt);
-    printf("%p\n", &tt.b);
-    unsigned long int count = (unsigned long int)&tt.b - (unsigned long int)&tt;
+    printf("%p\n", &tt_t);
+    printf("%p\n", &tt_t.b);
+    unsigned long int count = (unsigned long int)&tt_t.b - (unsigned long int)&tt_t;
     printf("%lu\n", count);
     printf("%p\n", &ttt);
     printf("%p\n", &ttt.b);
-    unsigned long int a = (unsigned long int)&ttt;
-    printf("%lu\n", a);
+    unsigned long int a_1 = (unsigned long int)&ttt;
+    printf("%lu\n", a_1);
 
     ttt.a = 1;
 
@@ -53,9 +53,9 @@ int func9()
 
 int func8()
 {
-    printf("%p\n", &tt);
-    printf("%p\n", &tt);
-    printf("%lu\n", sizeof(tt));
+    printf("%p\n", &tt_t);
+    printf("%p\n", &tt_t);
+    printf("%lu\n", sizeof(tt_t));
     return 0;
 }
 
@@ -67,47 +67,47 @@ struct test
 
 int func7()
 {
-    struct test t = {0};
-    printf("%d\n", t.a);
+    struct test t_1 = {0};
+    printf("%d\n", t_1.a);
     return 0;
 }
 
 int func6()
 {
-    int i = 1000;
-    printf("八进制:%d\n", (i));
+    int i_1 = 1000;
+    printf("八进制:%d\n", (i_1));
     return 0;
 }
 
 int func5()
 {
-    int i = 1000;
-    printf("八进制:%o\n", i);
-    printf("十进制:%d\n", i);
+    int i_1 = 1000;
+    printf("八进制:%o\n", i_1);
+    printf("十进制:%d\n", i_1);
     printf("十六进制:%X\n", ~0);
     return 0;
 }
 
 int func4()
 {
-    int i = 0;
-    printf("%d", ~i);
+    int i_1 = 0;
+    printf("%d", ~i_1);
     return 0;
 }
 
 int func3()
 {
-    int i = 0;
-    i &= 1 << 2;
-    printf("%d", i);
+    int i_1 = 0;
+    i_1 &= 1 << 2;
+    printf("%d", i_1);
     return 0;
 }
 
 int func2()
 {
-    int i = 0;
-    i |= 1 << 2;
-    printf("%d", i);
+    int i_1 = 0;
+    i_1 |= 1 << 2;
+    printf("%d", i_1);
     return 0;
 }
 
@@ -128,20 +128,20 @@ void func10()
 
 void func11()
 {
-    int i = 1;
-    printf("%d", 1 + --i);
+    int i_1 = 1;
+    printf("%d", 1 + --i_1);
 }
 
 void func12()
 {
-    int i = 1;
-    printf("%d", 1 + --i), printf("ok");
+    int i_1 = 1;
+    printf("%d", 1 + --i_1), printf("ok");
 }
 
 void func13()
 {
-    int i = -1;
-    printf("%d\n", i & 256);
+    int i_1 = -1;
+    printf("%d\n", i_1 & 256);
 }
 
 /* # define EV_A */
@@ -154,40 +154,42 @@ void func13()
 
 void func14()
 {
-    char c;
+    char c_1;
     char *str = "abcd";
-    c = *str++;
-    printf("%c\n", c);
+    c_1 = *str++;
+    printf("%c\n", c_1);
     printf("%c\n", *str);
 }
 
 void func15()
 {
-    struct timeval tv;
-    gettimeofday(&tv, NULL);
-    printf("%ld\n", tv.tv_sec ^ tv.tv_usec ^ getpid());
+    struct timeval tv_1;
+    gettimeofday(&tv_1, NULL);
+    printf("%ld\n", tv_1.tv_sec ^ tv_1.tv_usec ^ getpid());
 }
 
 void func16() { printf("%ld\n", sizeof(double)); }
 
 void func17()
 {
-    int a;
-    double x = 1.1, y = 3.2;
-    a = x + y;
-    printf("%d\n", a);
+    int a_1;
+    double x_1 = 1.1;
+    double y_1 = 3.2;
+    a_1 = x_1 + y_1;
+    printf("%d\n", a_1);
 }
 
 void func18()
 {
-    int test = 1, z = 1;
-    printf("%d\n", (++test + z++));
+    int test = 1;
+    int z_1 = 1;
+    printf("%d\n", (++test + z_1++));
 }
 
 void func19()
 {
-    char *s = "abckd";
-    printf("%s\n", (s + 3));
+    char *str = "abckd";
+    printf("%s\n", (str + 3));
 }
 
 int demo_2_main()

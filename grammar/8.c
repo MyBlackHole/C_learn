@@ -6,21 +6,21 @@
 
 int demo_8_main(int argc, char *argv[])
 {
-    int i = 2;
-    int *p = &i;
-    int **p1 = &p;
-    int *p2 = *p1;
+    int i_1 = 2;
+    int *p_1 = &i_1;
+    int **p__1 = &p_1;
+    int *p_2 = *p__1;
     // 值判断
-    if (p1 == NULL)
+    if (p__1 == NULL)
     {
         printf("p1 == NULL\n");
     }
 
-    printf("%p\n", &i);
-    printf("%p\n", p);
-    printf("%p\n", p2);
-    printf("%p\n", p1);
-    printf("%d\n", **p1);
-    printf("%d\n", *p2);
+    printf("%p\n", &i_1);
+    printf("%p\n", p_1);
+    printf("%p\n", p_2);
+    printf("%p\n", p__1);
+    printf("%d\n", **p__1);
+    printf("%d\n", *p_2);
     exit(0);
 }

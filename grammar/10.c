@@ -2,11 +2,7 @@
 #include "stdio.h"
 #include "string.h"
 
-#define sum(a, b)      \
-    ({                 \
-        int z = a + b; \
-        z + 1;         \
-    })
+#define sum(a, b) ({ a + b + 1; })
 #define str(a, b) a.b
 #define str1(a, b) a->b
 
@@ -21,13 +17,13 @@ unsigned int func_hash(const char *str)
     unsigned int hash = 0;
     unsigned int seed = 131;
 
-    int i = 0;
+    int i_1 = 0;
     while (*str)
     {
-        printf("%d %c\n", i++, *str);
+        printf("%d %c\n", i_1++, *str);
         hash = hash * seed + *str++;
     }
-    printf("%d %d\n", i++, *str);
+    printf("%d %d\n", i_1++, *str);
 
     return hash & (0x7FFFFFFF);
 }
@@ -62,31 +58,31 @@ void test_2() { printf("%d", sum(1, 2)); }
 
 void test_3()
 {
-    int a = 1;
-    typeof(a) b = 2;
-    printf("%d", b);
+    int a_1 = 1;
+    typeof(a_1) b_1 = 2;
+    printf("%d", b_1);
 }
 
 void test4()
 {
-    s2 a = {1, 2};
-    typeof(s2 *) b = &a;
-    printf("%d\n", str(a, b));
-    printf("%d\n", str1(b, b));
+    s2 a_1 = {1, 2};
+    typeof(s2 *) b_1 = &a_1;
+    printf("%d\n", str(a_1, b));
+    printf("%d\n", str1(b_1, b));
 }
 
 void test5()
 {
-    int a[5] = {1, 2, 3, 4};
-    int *b = a;
-    int **c = &b;
-    printf("%d", *c[0]);
+    int a_1[5] = {1, 2, 3, 4};
+    int *b_1 = a_1;
+    int **c__1 = &b_1;
+    printf("%d", *c__1[0]);
 }
 
 int demo_10_main(int argc, char *argv[])
 {
     // printf("%d", (1100 & 0x7FFFFFFF) % 5);
-    int i = 3;
-    assert(i > 4);
+    int i_1 = 3;
+    assert(i_1 > 4);
     return 0;
 }

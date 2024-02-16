@@ -10,6 +10,7 @@ void destroy_string(char **str)
 
 int demo_cleanup_main(int argc, char **argv)
 {
+    // 作用域结束(return goto break ...)后自动释放
     char *str __attribute__((__cleanup__(destroy_string))) = NULL;
     str = (char *)malloc((sizeof(char)) * 100);
     strcpy(str, "hello world!");

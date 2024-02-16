@@ -7,7 +7,7 @@
 
 int demo_11_main()
 {
-    bool b = false;
-    printf("%d\n", b);
+    bool b_1 = false;
+    printf("%d\n", b_1);
     exit(0);
 }

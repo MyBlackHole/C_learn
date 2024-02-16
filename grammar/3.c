@@ -1,7 +1,8 @@
 /*
-* 参数输入测试
-*/
+ * 参数输入测试
+ */
 #include <stdio.h>
+#include <stdlib.h>
 
 int demo_3_main(int argc, char *argv[])
 {
@@ -9,4 +10,5 @@ int demo_3_main(int argc, char *argv[])
     {
     }
     printf("%s", argv[0]);
+    return EXIT_SUCCESS;
 }
