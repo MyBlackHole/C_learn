@@ -4,11 +4,11 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-int main(void)
+int demo_select_main(void)
 {
     fd_set rfds;
 
-    struct timeval tv;
+    struct timeval tv_tmp;
     int retval;
 
     /* Watch stdin (fd 0) to see when it has input. */
@@ -16,10 +16,10 @@ int main(void)
     FD_SET(0, &rfds);
 
     /* Wait up to five seconds. */
-    tv.tv_sec = 5;
-    tv.tv_usec = 0;
+    tv_tmp.tv_sec = 5;
+    tv_tmp.tv_usec = 0;
 
-    retval = select(1, &rfds, NULL, NULL, &tv);
+    retval = select(1, &rfds, NULL, NULL, &tv_tmp);
     /* Don't rely on the value of tv now! */
 
     if (retval == -1)
