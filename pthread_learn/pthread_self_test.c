@@ -2,9 +2,9 @@
 #include <stdio.h>
 #include <unistd.h>
 
-void *thread_func_3_1(void *arg)
+void *get_pthread_id(void *arg)
 {
-    printf("thread id=%lu\n", pthread_self());
+    printf("get_pthread_id pthread id=%lu\n", pthread_self());
     return arg;
 }
 
@@ -16,7 +16,7 @@ int demo_self_main(void)
     pid = getpid();
     printf("process id=%d\n", pid);
 
-    pthread_create(&tid, NULL, thread_func_3_1, NULL);
+    pthread_create(&tid, NULL, get_pthread_id, NULL);
     printf("pthread id=%lu\n", tid);
     pthread_join(tid, NULL);
     return 0;

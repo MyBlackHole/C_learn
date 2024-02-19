@@ -9,7 +9,7 @@ pthread_rwlock_t rwlock;  // 读写锁
 int num_1 = 1;
 
 // 读操作，其他线程允许读操作，却不允许写操作
-void *fun1(void *arg)
+void *rwlocak_test1(void *arg)
 {
     while (1)
     {
@@ -21,7 +21,7 @@ void *fun1(void *arg)
 }
 
 // 读操作，其他线程允许读操作，却不允许写操作
-void *fun2(void *arg)
+void *rwlocak_test2(void *arg)
 {
     while (1)
     {
@@ -33,7 +33,7 @@ void *fun2(void *arg)
 }
 
 // 写操作，其它线程都不允许读或写操作
-void *fun3(void *arg)
+void *wrlock_test1(void *arg)
 {
     while (1)
     {
@@ -46,7 +46,7 @@ void *fun3(void *arg)
 }
 
 // 写操作，其它线程都不允许读或写操作
-void *fun4(void *arg)
+void *wrlock_test2(void *arg)
 {
     while (1)
     {
@@ -68,10 +68,10 @@ int demo_rwlock_main()
     pthread_rwlock_init(&rwlock, NULL);  // 初始化一个读写锁
 
     // 创建线程
-    pthread_create(&ptd1, NULL, fun1, NULL);
-    pthread_create(&ptd2, NULL, fun2, NULL);
-    pthread_create(&ptd3, NULL, fun3, NULL);
-    pthread_create(&ptd4, NULL, fun4, NULL);
+    pthread_create(&ptd1, NULL, rwlocak_test1, NULL);
+    pthread_create(&ptd2, NULL, rwlocak_test2, NULL);
+    pthread_create(&ptd3, NULL, wrlock_test1, NULL);
+    pthread_create(&ptd4, NULL, wrlock_test2, NULL);
 
     // 等待线程结束，回收其资源
     pthread_join(ptd1, NULL);

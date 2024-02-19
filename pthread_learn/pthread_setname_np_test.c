@@ -17,7 +17,7 @@
         exit(EXIT_FAILURE); \
     } while (0)
 
-static void *threadfunc(void *parm)
+static void *test_set_thread_name(void *parm)
 {
     sleep(SLEEP);  // allow main program to set the thread name
     return NULL;
@@ -29,7 +29,7 @@ int demo_setname_np_main(int argc, char **argv)
     int ret;
     char thread_name[NAMELEN];
 
-    ret = pthread_create(&thread, NULL, threadfunc, NULL);
+    ret = pthread_create(&thread, NULL, test_set_thread_name, NULL);
     if (ret != 0)
     {
         errExitEN(ret, "pthread_create");
@@ -42,6 +42,7 @@ int demo_setname_np_main(int argc, char **argv)
     }
 
     printf("Created a thread. Default name is: %s\n", thread_name);
+    // 设置线程名
     ret = pthread_setname_np(thread, (argc > 1) ? argv[1] : "THREADFOO");
     if (ret != 0)
     {
@@ -50,6 +51,7 @@ int demo_setname_np_main(int argc, char **argv)
 
     sleep(2);
 
+    // 获取线程名
     ret = pthread_getname_np(thread, thread_name,
                              (argc > 2) ? atoi(argv[1]) : NAMELEN);
     if (ret != 0)

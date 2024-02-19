@@ -7,6 +7,11 @@
 static demo_t demos[] = {
     DEMO_MAIN_ITEM(setname_np),
     DEMO_MAIN_ITEM(create4),
+    DEMO_MAIN_ITEM(create3),
+    DEMO_MAIN_ITEM(pthread_setschedparam),
+    DEMO_MAIN_ITEM(self),
+    DEMO_MAIN_ITEM(once),
+    DEMO_MAIN_ITEM(mutex_unlock),
 
 };
 int main(int argc, char** argv)
