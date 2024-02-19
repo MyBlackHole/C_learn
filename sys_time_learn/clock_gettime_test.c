@@ -2,7 +2,7 @@
 #include <time.h>
 #include <unistd.h>
 
-int main(int argc, char **argv)
+int demo_clock_gettime_main(int argc, char **argv)
 {
     struct timespec time1 = {0, 0};
     struct timespec time2 = {0, 0};

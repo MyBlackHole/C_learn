@@ -10,19 +10,19 @@ struct timeval end;
 
 void checktime(char *str)
 {
-    struct timeval tv;
-    gettimeofday(&tv, NULL);
-    if (tv.tv_sec >= end.tv_sec && tv.tv_usec >= end.tv_usec)
+    struct timeval tv_tmp;
+    gettimeofday(&tv_tmp, NULL);
+    if (tv_tmp.tv_sec >= end.tv_sec && tv_tmp.tv_usec >= end.tv_usec)
     {
         printf("%s\t count=\t%lld \n", str, count);
         exit(0);
     }
 }
 
-int main(int argc, char **argv)
+int demo_gettimeofday2_main(int argc, char **argv)
 {
     pid_t pid;
-    char *s;
+    char *s_tmp;
     int nzero, ret;
     int adj = 0;
     setbuf(stdout, NULL);  // 设置缓冲区
@@ -38,7 +38,9 @@ int main(int argc, char **argv)
     {
         adj = strtol(argv[1], NULL, 10);
     }
-    gettimeofday(&end, NULL);  // 提供更精准的时间获取，虽然在susv系统内被舍弃
+
+    // 提供更精准的时间获取，虽然在susv系统内被舍弃
+    gettimeofday(&end, NULL);
     end.tv_sec += 10;
 
     if ((pid = fork()) < 0)
@@ -48,7 +50,7 @@ int main(int argc, char **argv)
     }
     else if (pid == 0)
     {
-        s = "child";
+        s_tmp = "child";
         printf("current nice value in child is %d ,adjusting by %d \n",
                nice(0) + nzero, adj);
         errno = 0;
@@ -61,15 +63,15 @@ int main(int argc, char **argv)
     }
     else
     {
-        s = "parent";
+        s_tmp = "parent";
         printf("current nice value in parent is %d\n", nice(0) + nzero);
     }
     for (;;)
     {
         if (++count == 0)
         {
-            printf("%s counter wrap", s);
+            printf("%s counter wrap", s_tmp);
         }
-        checktime(s);
+        checktime(s_tmp);
     }
 }

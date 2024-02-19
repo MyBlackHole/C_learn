@@ -2,14 +2,14 @@
 #include <stdlib.h>
 #include <time.h>
 
-int main(void)
+int demo_localtime_main(void)
 {
-    time_t t;
+    time_t t_tmp;
     struct tm *mytime;
     char buf[16];
     char buff[64];
-    time(&t);
-    mytime = localtime(&t);
+    time(&t_tmp);
+    mytime = localtime(&t_tmp);
     if (strftime(buf, 16, "time and date : %r ,%a %b %d, %Y", mytime) == 0)
     {
         printf("bufer length is too small\n");

@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <time.h>
 
-int main()
+int demo_time_main()
 {
-    time_t t1 = time((time_t*)NULL);
-    printf("start time: %lu", t1);
+    time_t t_tmp = time((time_t*)NULL);
+    printf("start time: %lu", t_tmp);
 }

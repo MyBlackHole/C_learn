@@ -23,7 +23,7 @@ void timer(int sig)
     return;
 }
 
-int main()
+int demo_timer1_main()
 {
     signal(SIGALRM, timer);
     alarm(1);

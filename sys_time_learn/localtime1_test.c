@@ -7,22 +7,22 @@
 
 #define BUFSIZE 1024
 
-int main()
+int demo_localtime1_main()
 {
-    FILE *fp = NULL;
+    FILE *fp_tmp = NULL;
     char buf[BUFSIZE];
     int count = 0;
     time_t stamp;
-    struct tm *tm = NULL;
+    struct tm *tm_tmp = NULL;
 
-    fp = fopen(FNAME, "a+");
-    if (fp == NULL)
+    fp_tmp = fopen(FNAME, "a+");
+    if (fp_tmp == NULL)
     {
         perror("fopen erron");
         exit(1);
     }
 
-    while (fgets(buf, BUFSIZE, fp) != NULL)
+    while (fgets(buf, BUFSIZE, fp_tmp) != NULL)
     {
         count++;
     }
@@ -30,15 +30,15 @@ int main()
     while (1)
     {
         time(&stamp);
-        tm = localtime(&stamp);
-        fprintf(fp, "%d----%d-%d-%d %d:%d:%d\n", ++count, tm->tm_year + 1900,
-                tm->tm_mon + 1, tm->tm_mday, tm->tm_hour, tm->tm_min,
-                tm->tm_sec);
-        fflush(fp);
+        tm_tmp = localtime(&stamp);
+        fprintf(fp_tmp, "%d----%d-%d-%d %d:%d:%d\n", ++count,
+                tm_tmp->tm_year + 1900, tm_tmp->tm_mon + 1, tm_tmp->tm_mday,
+                tm_tmp->tm_hour, tm_tmp->tm_min, tm_tmp->tm_sec);
+        fflush(fp_tmp);
         sleep(1);
     }
 
-    fclose(fp);
+    fclose(fp_tmp);
 
     exit(0);
 }

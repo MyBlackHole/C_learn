@@ -2,15 +2,15 @@
 #include <sys/time.h>
 #include <unistd.h>
 
-int main(void)
+int demo_gettimeofday1_main(void)
 {
-    int i;
-    struct timeval tv;
+    int index;
+    struct timeval tv_tmp;
 
-    for (i = 0; i < 4; i++)
+    for (index = 0; index < 4; index++)
     {
-        gettimeofday(&tv, NULL);
-        printf("%ld\t%ld\n", tv.tv_usec, tv.tv_sec);
+        gettimeofday(&tv_tmp, NULL);
+        printf("%ld\t%ld\n", tv_tmp.tv_usec, tv_tmp.tv_sec);
         sleep(1);
     }
 

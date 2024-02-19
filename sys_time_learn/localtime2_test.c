@@ -3,21 +3,21 @@
 
 #define TIMESTRSIZE 1024
 
-int main(int argc, char *argv[])
+int demo_localtime2_main(int argc, char *argv[])
 {
     time_t stamp;
-    struct tm *tm;
+    struct tm *tm_tmp;
     char timestr[TIMESTRSIZE];
 
     stamp = time(NULL);
-    tm = localtime(&stamp);
-    strftime(timestr, TIMESTRSIZE, "NOW:%Y-%m-%d", tm);
+    tm_tmp = localtime(&stamp);
+    strftime(timestr, TIMESTRSIZE, "NOW:%Y-%m-%d", tm_tmp);
     puts(timestr);
 
-    tm->tm_mday += 100;
+    tm_tmp->tm_mday += 100;
     // 处理溢出
-    mktime(tm);
-    strftime(timestr, TIMESTRSIZE, "100 days later:%Y-%m-%d", tm);
+    mktime(tm_tmp);
+    strftime(timestr, TIMESTRSIZE, "100 days later:%Y-%m-%d", tm_tmp);
     puts(timestr);
 
     return 0;
