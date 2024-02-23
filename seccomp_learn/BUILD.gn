@@ -1,9 +1,0 @@
-executable("SECCOMP_MODE_STRICT_test") {
-  cflags = ["-g", "-Wall"]
-
-  ldflags = ["-lseccomp"]
-
-  sources = [
-    "SECCOMP_MODE_STRICT_test.c",
-  ]
-}

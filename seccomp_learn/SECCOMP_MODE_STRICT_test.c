@@ -7,7 +7,7 @@
 #include <seccomp.h>
 #include <sys/socket.h>
 
-int main()
+int demo_STRICT_main()
 {
     int err;
     printf("init seccomp\n");
