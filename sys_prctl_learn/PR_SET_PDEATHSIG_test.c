@@ -7,7 +7,7 @@
 
 #define SECONDS 10
 
-int main(void)
+int demo_PR_SET_PDEATHSIG_main(void)
 {
     pid_t pid;
     // fork一个进程
