@@ -24,6 +24,7 @@ static demo_t demos[] = {
     DEMO_MAIN_ITEM(union),
     DEMO_MAIN_ITEM(struct),
     DEMO_MAIN_ITEM(struct1),
+    DEMO_MAIN_ITEM(struct2),
     DEMO_MAIN_ITEM(static),
     DEMO_MAIN_ITEM(const),
     DEMO_MAIN_ITEM(func),

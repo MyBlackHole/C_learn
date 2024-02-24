@@ -5,14 +5,13 @@
 struct Line
 {
     uint32_t length;
-    // 不占用空间, 柔性数组用法
-    // uint8_t contents[];
 
-    // 柔性数组用法
-    uint8_t contents[1];
+    // 以下两属性共用内存空间
+    uint8_t contents[0];
+    uint8_t data[];
 };
 
-int demo_struct1_main()
+int demo_struct2_main()
 {
     struct Line line;
     int length = 100;
@@ -22,7 +21,13 @@ int demo_struct1_main()
     struct Line *line_ptr = (struct Line *)malloc(sizeof(struct Line) + length);
     // 代表 contents 100 char
     line_ptr->length = 100;
-
-    printf("%d\n", line_ptr->contents[96]);
+    line_ptr->contents[96] = 100;
+    printf("contents: %d\n", line_ptr->contents[96]);
+    printf("data: %d\n", line_ptr->data[96]);
     return EXIT_SUCCESS;
 }
+
+// out:
+// 4
+// contents: 100
+// data: 100

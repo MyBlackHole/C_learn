@@ -6,15 +6,15 @@
 // 数组 与 指针
 void test1()
 {
-    int A[10];
-    int B[5][10];
-    printf("sizeof A=%ld\n", sizeof(A));
-    printf("sizeof B=%ld\n", sizeof(B));
+    int a_tmp[10];
+    int b_tmp[5][10];
+    printf("sizeof A=%ld\n", sizeof(a_tmp));
+    printf("sizeof B=%ld\n", sizeof(b_tmp));
 
-    int(*pA) = A;
-    int(*pB)[10] = B;
-    (void)pA;
-    (void)pB;
+    int(*pa_tmp) = a_tmp;
+    int(*pb_tmp)[10] = b_tmp;
+    (void)pa_tmp;
+    (void)pb_tmp;
 }
 
 // 指针数组空间分配

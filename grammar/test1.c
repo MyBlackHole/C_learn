@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/time.h>
+#include <sys/types.h>
 #include <unistd.h>
 
 /*
@@ -91,7 +92,8 @@ int func5()
 int func4()
 {
     int i_1 = 0;
-    printf("%d", ~i_1);
+    // 取反
+    printf("%ud", ~i_1);
     return 0;
 }
 
@@ -114,7 +116,13 @@ int func2()
 int func1()
 {
     printf("%d\n", 1 ? 1 : 2);
+    printf("%d\n", 1 ?: 2);
+    printf("%d\n", 0 ?: 2);
     return 0;
+    // out:
+    // 1
+    // 1
+    // 2
 }
 
 void func10()
@@ -161,13 +169,6 @@ void func14()
     printf("%c\n", *str);
 }
 
-void func15()
-{
-    struct timeval tv_1;
-    gettimeofday(&tv_1, NULL);
-    printf("%ld\n", tv_1.tv_sec ^ tv_1.tv_usec ^ getpid());
-}
-
 void func16() { printf("%ld\n", sizeof(double)); }
 
 void func17()
@@ -194,7 +195,7 @@ void func19()
 
 int demo_test1_main()
 {
-    func17();
+    func1();
     // const int a = 0;
     // char c = 'A';
     // printf("111%d\n", a++);
