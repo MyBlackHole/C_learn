@@ -27,5 +27,6 @@ DEMO_MAIN_DECL(static);
 DEMO_MAIN_DECL(const);
 DEMO_MAIN_DECL(func);
 DEMO_MAIN_DECL(define);
+DEMO_MAIN_DECL(typedef);
 
 #endif

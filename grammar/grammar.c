@@ -29,6 +29,7 @@ static demo_t demos[] = {
     DEMO_MAIN_ITEM(const),
     DEMO_MAIN_ITEM(func),
     DEMO_MAIN_ITEM(define),
+    DEMO_MAIN_ITEM(typedef),
 };
 int main(int argc, char** argv)
 {
