@@ -8,5 +8,7 @@ DEMO_MAIN_DECL(write);
 DEMO_MAIN_DECL(write1);
 DEMO_MAIN_DECL(unlink);
 DEMO_MAIN_DECL(truncate);
+DEMO_MAIN_DECL(ftruncate);
+DEMO_MAIN_DECL(ftruncate1);
 
 #endif
