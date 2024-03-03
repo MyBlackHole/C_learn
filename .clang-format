@@ -1,12 +1,15 @@
 ---
 Language:        Cpp
+BasedOnStyle: LLVM
+# UseTab: Never # 使用空格而不是制表符。
 AccessModifierOffset: -4
 AlignAfterOpenBracket: Align
-AlignConsecutiveMacros: false
-AlignConsecutiveAssignments: false
-AlignConsecutiveDeclarations: false
-AlignEscapedNewlines: Left
-AlignOperands:   true
+AlignConsecutiveMacros: Consecutive # 对齐define宏,不跨空行不跨注释
+AlignConsecutiveBitFields: Consecutive # 对齐位域,不跨空行不跨注释
+AlignConsecutiveAssignments: Consecutive # 对齐赋值,不跨空行不跨注释
+AlignConsecutiveDeclarations: Consecutive # 对齐定义，用处不大，不启用
+AlignEscapedNewlines: Left # 分行符靠左对齐
+AlignOperands:   "Align"
 AlignTrailingComments: true
 AllowAllArgumentsOnNextLine: true
 AllowAllConstructorInitializersOnNextLine: true
@@ -15,7 +18,7 @@ AllowShortBlocksOnASingleLine: Never
 AllowShortCaseLabelsOnASingleLine: false
 AllowShortFunctionsOnASingleLine: All
 AllowShortLambdasOnASingleLine: All
-AllowShortIfStatementsOnASingleLine: Never
+AllowShortIfStatementsOnASingleLine: Never # 不允许将if控制语句和语句放在同一行
 AllowShortLoopsOnASingleLine: true
 AlwaysBreakAfterDefinitionReturnType: None
 AlwaysBreakAfterReturnType: None
@@ -24,24 +27,31 @@ AlwaysBreakTemplateDeclarations: Yes
 BinPackArguments: true
 BinPackParameters: true
 BraceWrapping:
-  AfterCaseLabel:  true
+  AfterCaseLabel:  true # case 语句左大括号换行
   AfterClass:      true
-  AfterControlStatement: true
+  AfterControlStatement: MultiLine # 仅在控制语句有多行判断条件的情况下为左大括号换行
   AfterEnum:       true
-  AfterFunction:   true
+  AfterFunction:   true # 函数大括号另起一行
   AfterNamespace:  true
   AfterObjCDeclaration: true
   AfterStruct:     true
   AfterUnion:      true
-  AfterExternBlock: true
+  AfterExternBlock: true # extern 的左大括号换行
   BeforeCatch:     true
-  BeforeElse:      true
+  BeforeElse:      true # else 另起一行
   IndentBraces:    false
   SplitEmptyFunction: true
   SplitEmptyRecord: true
   SplitEmptyNamespace: true
-BreakBeforeBinaryOperators: None
-BreakBeforeBraces: Allman
+  # BeforeWhile: false # do..while中while不另起一行
+IndentCaseLabels: true # 对case标签进行额外的缩进。
+# QualifierAlignment: Right # 限定符(const)靠右，根据官方文档介绍该操作有风险，不强制规定
+# QualifierOrder: ['static', 'inline', 'type', 'const', 'volatile' ] # 限定符顺序，同上，不强制规定
+BreakBeforeBinaryOperators: NonAssignment # 在除了赋值运算符（如"="、"+="、"-="等）之外的二元运算符(如 &&)之前换行。
+SortIncludes: Never # 不要排序#include
+SpaceAroundPointerQualifiers: Both # 保证指针限定符(const)左右都有空格
+PointerAlignment: Right # 指针符靠右
+BreakBeforeBraces: Allman # 使用自定义括号风格
 BreakBeforeInheritanceComma: false
 BreakInheritanceList: BeforeColon
 BreakBeforeTernaryOperators: true
@@ -49,7 +59,7 @@ BreakConstructorInitializersBeforeComma: false
 BreakConstructorInitializers: BeforeColon
 BreakAfterJavaFieldAnnotations: false
 BreakStringLiterals: true
-ColumnLimit:     80
+ColumnLimit:     80 # 单行的长度不超过80字符
 CommentPragmas:  '^ IWYU pragma:'
 CompactNamespaces: false
 ConstructorInitializerAllOnOneLineOrOnePerLine: true
@@ -81,10 +91,10 @@ IncludeCategories:
     SortPriority:    0
 IncludeIsMainRegex: '([-_](test|unittest))?$'
 IncludeIsMainSourceRegex: ''
-IndentCaseLabels: false
 IndentGotoLabels: true
-IndentPPDirectives: None
-IndentWidth:     4
+IndentPPDirectives: BeforeHash # 嵌套宏缩进风格为‘#’前缩进
+IndentWidth:     4 # 缩进宽度为4个空格
+PPIndentWidth: -1 # 嵌套宏的缩进，使用 IndentWidth
 IndentWrappedFunctionNames: false
 JavaScriptQuotes: Leave
 JavaScriptWrapImports: true
@@ -105,7 +115,6 @@ PenaltyBreakString: 1000
 PenaltyBreakTemplateDeclaration: 10
 PenaltyExcessCharacter: 1000000
 PenaltyReturnTypeOnItsOwnLine: 200
-PointerAlignment: Left
 RawStringFormats:
   - Language:        Cpp
     Delimiters:
@@ -135,7 +144,8 @@ RawStringFormats:
     CanonicalDelimiter: ''
     BasedOnStyle:    google
 ReflowComments:  true
-SortIncludes:    true
+# BitFieldColonSpacing: None # 位域前没有空格
+# AlignConsecutiveDeclarations: Consecutive # 对齐定义，用处不大，不启用
 SortUsingDeclarations: true
 SpaceAfterCStyleCast: false
 SpaceAfterLogicalNot: false
@@ -149,7 +159,7 @@ SpaceBeforeRangeBasedForLoopColon: true
 SpaceInEmptyBlock: false
 SpaceInEmptyParentheses: false
 SpacesBeforeTrailingComments: 2
-SpacesInAngles:  false
+SpacesInAngles:  Never
 SpacesInConditionalStatement: false
 SpacesInContainerLiterals: true
 SpacesInCStyleCastParentheses: false
@@ -160,8 +170,7 @@ Standard:        Auto
 StatementMacros:
   - Q_UNUSED
   - QT_REQUIRE_VERSION
-TabWidth:        4
+TabWidth:        4 # Tab长度
 UseCRLF:         false
 UseTab:          Never
 ...
-
