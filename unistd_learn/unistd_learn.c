@@ -13,6 +13,7 @@ static demo_t demos[] = {
     DEMO_MAIN_ITEM(truncate),
     DEMO_MAIN_ITEM(ftruncate),
     DEMO_MAIN_ITEM(ftruncate1),
+    DEMO_MAIN_ITEM(symlink),
 
 };
 int main(int argc, char** argv)
