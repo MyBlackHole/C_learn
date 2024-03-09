@@ -7,18 +7,18 @@
 // // 偏移量
 // #define offsetof(type, member) __builtin_offsetof(type, member)
 
-typedef struct _test
+typedef struct test
 {
     char i;
-    int j;
+    int  j;
     char k;
-} Test;
+} test_t;
 //
-int main(int argc, char *argv[])
+int demo_offsetof_main(int argc, char *argv[])
 {
-    Test *p = malloc(sizeof(Test));
-    p->j = 100;
-    printf("%ld -- %p -- %d\n", offsetof(Test, j), p,
-           *(int *)((size_t)p + offsetof(Test, j)));
+    test_t *ptr = malloc(sizeof(test_t));
+    ptr->j      = 100;
+    printf("%ld -- %p -- %d\n", offsetof(test_t, j), ptr,
+           *(int *)((size_t)ptr + offsetof(test_t, j)));
     return EXIT_SUCCESS;
 }

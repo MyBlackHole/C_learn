@@ -8,7 +8,7 @@ void __fun(void) { printf("this is ___fun\n"); }
 
 weak_alias(__fun, fun1);
 
-int main(int argc, char *argv[])
+int demo_weak_alias_main(int argc, char *argv[])
 {
     __fun();
     fun1();

@@ -1,14 +1,14 @@
 #include <stdio.h>
 
-inline int test1();
+inline int test_1();
 
-int main()
+int demo_FUNCTION_main()
 {
-    test1();
+    test_1();
     return 0;
 }
 
-int test1()
+int test_1()
 {
     printf("%s\n", __FUNCTION__);
     return 0;
