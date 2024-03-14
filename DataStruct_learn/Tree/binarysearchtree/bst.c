@@ -14,8 +14,8 @@ enum child_dir
 struct node
 {
     unsigned long data;
-    struct node *left;
-    struct node *right;
+    struct node  *left;
+    struct node  *right;
 };
 
 struct root
@@ -141,19 +141,19 @@ struct node *delete(struct root *root, unsigned long data)
         }
 
         n->data = rn->data;
-        n = rn;
-        p = rp;
+        n       = rn;
+        p       = rp;
     }
 
     child = n->left ? n->left : n->right;
-    *p = child;
+    *p    = child;
 
     return NULL;
 }
 
 void insert_test()
 {
-    struct root tree;
+    struct root  tree;
     struct node *n;
 
     tree.r = NULL;
@@ -178,7 +178,7 @@ void insert_test()
 
 void delete_test()
 {
-    struct root tree;
+    struct root  tree;
     struct node *n;
 
     tree.r = NULL;

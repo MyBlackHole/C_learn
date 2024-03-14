@@ -1,9 +1,9 @@
 struct AVLnode
 {
-    int key;
+    int             key;
     struct AVLnode *left;
     struct AVLnode *right;
-    int height;
+    int             height;
 };
 
 typedef struct AVLnode avlNode;

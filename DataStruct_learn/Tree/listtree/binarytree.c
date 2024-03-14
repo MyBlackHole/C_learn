@@ -8,18 +8,18 @@
 
 typedef struct _treenode
 {
-    int data;
+    int               data;
     struct _treenode *lchild;
     struct _treenode *rchild;
 } Tnode, Tree;
 
 void binarytree_create(Tree **Root)
 {
-    int a = 0;
+    int index = 0;
     printf("\r\n输入节点数值((当输入为100时，当前节点创建完成))):");
-    scanf("%d", &a);
+    scanf("%d", &index);
 
-    if (a == 100)
+    if (index == 100)
     {
         *Root = NULL;
     }
@@ -31,10 +31,10 @@ void binarytree_create(Tree **Root)
             return;
         }
 
-        (*Root)->data = a;
-        printf("\r\n create %d 的左孩子:", a);
+        (*Root)->data = index;
+        printf("\r\n create %d 的左孩子:", index);
         binarytree_create(&((*Root)->lchild));
-        printf("\r\n create %d 的右孩子:", a);
+        printf("\r\n create %d 的右孩子:", index);
         binarytree_create(&((*Root)->rchild));
     }
 
@@ -95,7 +95,7 @@ void binarytree_postorder(Tree *root)
 void binarytree_levelorder(Tree *root)
 {
     list_queue *queue = NULL;
-    Tnode *node = NULL;
+    Tnode      *node  = NULL;
 
     if (root == NULL)
     {
@@ -158,8 +158,8 @@ int binarytree_getleafnum(Tree *root)
         return 1;
     }
 
-    return binarytree_getleafnum(root->lchild) +
-           binarytree_getleafnum(root->rchild);
+    return binarytree_getleafnum(root->lchild)
+           + binarytree_getleafnum(root->rchild);
 }
 
 /*打印数的高度*/

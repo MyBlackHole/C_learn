@@ -5,16 +5,16 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define OK 1
+#define OK    1
 #define ERROR 0
-#define TRUE 1
+#define TRUE  1
 #define FALSE 0
-typedef int Status;
+typedef int  Status;
 typedef char ElemType;
 
 typedef struct node
 {
-    ElemType data;
+    ElemType     data;
     struct node *lchild, *rchild;
 } BTree, *BTreePtr;
 
@@ -25,7 +25,7 @@ Status Insert(BTreePtr *T, ElemType e)
 
     if (*T == NULL)
     {
-        *T = (BTreePtr)malloc(sizeof(BTree));
+        *T         = (BTreePtr)malloc(sizeof(BTree));
         (*T)->data = e;
 
         return TRUE;
@@ -39,7 +39,7 @@ Status Insert(BTreePtr *T, ElemType e)
             {
                 if (p->rchild == NULL)
                 {
-                    p->rchild = (BTreePtr)malloc(sizeof(BTree));
+                    p->rchild       = (BTreePtr)malloc(sizeof(BTree));
                     p->rchild->data = e;
                     return TRUE;
                 }
@@ -49,7 +49,7 @@ Status Insert(BTreePtr *T, ElemType e)
             {
                 if (p->lchild == NULL)
                 {
-                    p->lchild = (BTreePtr)malloc(sizeof(BTree));
+                    p->lchild       = (BTreePtr)malloc(sizeof(BTree));
                     p->lchild->data = e;
                     return TRUE;
                 }
@@ -66,8 +66,8 @@ Status Delete(BTreePtr T, ElemType e)
 {
     BTreePtr p, pp, minP, minPP, child;
     child = NULL;
-    p = T;
-    pp = NULL;
+    p     = T;
+    pp    = NULL;
 
     while ((p != NULL) && (p->data != e))
     {
@@ -90,14 +90,14 @@ Status Delete(BTreePtr T, ElemType e)
     if ((p->lchild != NULL) && (p->rchild != NULL))
     {
         minPP = p;
-        minP = p->rchild;
+        minP  = p->rchild;
 
         while (minP->lchild != NULL)
         {
             minPP = minP;
-            minP = minP->lchild;
+            minP  = minP->lchild;
         }
-        p->data = minP->data;
+        p->data       = minP->data;
         minPP->lchild = minP->rchild;
         free(minP);
 
@@ -178,7 +178,7 @@ ElemType FindMax(BTreePtr T)
     while (T != NULL)
     {
         max = T->data;
-        T = T->rchild;
+        T   = T->rchild;
     }
     return max;
 }
@@ -191,7 +191,7 @@ ElemType FindMin(BTreePtr T)
     while (T != NULL)
     {
         min = T->data;
-        T = T->lchild;
+        T   = T->lchild;
     }
     return min;
 }
@@ -232,7 +232,7 @@ void DestroyTree(BTreePtr T)
 int main(int argc, char const *argv[])
 {
     BTreePtr T;
-    T = NULL;
+    T       = NULL;
     int a[] = {33, 16, 50, 13, 18, 34, 58, 15, 17, 25, 51, 66, 19, 27, 55};
     int i;
     for (i = 0; i < 15; i++)

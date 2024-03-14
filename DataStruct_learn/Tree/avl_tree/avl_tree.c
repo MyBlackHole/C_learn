@@ -3,10 +3,10 @@
 
 struct AVLnode
 {
-    int key;
+    int             key;
     struct AVLnode *left;
     struct AVLnode *right;
-    int height;
+    int             height;
 };
 
 typedef struct AVLnode avlNode;
@@ -23,9 +23,9 @@ avlNode *newNode(int key)
     }
     else
     {
-        node->key = key;
-        node->left = NULL;
-        node->right = NULL;
+        node->key    = key;
+        node->left   = NULL;
+        node->right  = NULL;
         node->height = 0;
     }
 
@@ -71,13 +71,13 @@ avlNode *minNode(avlNode *node)
 
 void printAVL(avlNode *node, int level)
 {
-    int i;
+    int index;
     if (node != NULL)
     {
         printAVL(node->right, level + 1);
         printf("\n\n");
 
-        for (i = 0; i < level; i++)
+        for (index = 0; index < level; index++)
         {
             printf("\t");
         }
@@ -90,11 +90,11 @@ void printAVL(avlNode *node, int level)
 
 avlNode *rightRotate(avlNode *z)
 {
-    avlNode *y = z->left;
+    avlNode *y  = z->left;
     avlNode *T3 = y->right;
 
     y->right = z;
-    z->left = T3;
+    z->left  = T3;
 
     z->height = (max(nodeHeight(z->left), nodeHeight(z->right)) + 1);
     y->height = (max(nodeHeight(y->left), nodeHeight(y->right)) + 1);
@@ -104,10 +104,10 @@ avlNode *rightRotate(avlNode *z)
 
 avlNode *leftRotate(avlNode *z)
 {
-    avlNode *y = z->right;
+    avlNode *y  = z->right;
     avlNode *T3 = y->left;
 
-    y->left = z;
+    y->left  = z;
     z->right = T3;
 
     z->height = (max(nodeHeight(z->left), nodeHeight(z->right)) + 1);

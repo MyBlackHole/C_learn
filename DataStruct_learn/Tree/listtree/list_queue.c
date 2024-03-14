@@ -15,7 +15,7 @@ list_queue *list_queue_create()
         return NULL;
     }
 
-    queue->num = 0;
+    queue->num  = 0;
     queue->head = NULL;
     queue->tail = NULL;
 
@@ -63,8 +63,8 @@ int list_queue_dequeue(list_queue *queue, void **data)
         return -1;
     }
 
-    *data = queue->head->data;
-    ptmp = queue->head;
+    *data       = queue->head->data;
+    ptmp        = queue->head;
     queue->head = queue->head->next;
     queue->num--;
 

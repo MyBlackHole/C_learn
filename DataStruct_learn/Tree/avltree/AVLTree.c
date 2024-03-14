@@ -8,23 +8,23 @@
 typedef int KEY_TYPE;
 typedef struct node
 {
-    KEY_TYPE key;
-    int height;  // 平衡因子
+    KEY_TYPE     key;
+    int          height;  // 平衡因子
     struct node *lChild;
     struct node *rChild;
 } AVLTree;
 
 void avltree_rr_rotate(AVLTree **tree)
 {
-    AVLTree *right = (*tree)->rChild;
-    right->lChild = *tree;
+    AVLTree *right  = (*tree)->rChild;
+    right->lChild   = *tree;
     (*tree)->rChild = right->lChild;
 }
 
 void avltree_ll_rotate(AVLTree **tree)
 {
-    AVLTree *left = (*tree)->lChild;
-    left->rChild = *tree;
+    AVLTree *left   = (*tree)->lChild;
+    left->rChild    = *tree;
     (*tree)->lChild = left->rChild;
 }
 
@@ -38,30 +38,30 @@ void avltree_left_balance(AVLTree **root)
     left = (*root)->lChild;
     switch (left->height)
     {
-    // 检查T的左子树平衡度，并作相应的平衡处理
-    case LH:  // 新节点插入在T的左孩子的左子树上，做单右旋处理
-        (*root)->height = left->height = EH;
-        avltree_ll_rotate(root);
-        break;
-    case RH:  // 新插入节点在T的左孩子的右子树上，做双旋处理
-        lr = left->rChild;
-        switch (lr->height)
-        {
-        case LH:
-            (*root)->height = RH;
-            left->height = EH;
-            break;
-        case EH:
+        // 检查T的左子树平衡度，并作相应的平衡处理
+        case LH:  // 新节点插入在T的左孩子的左子树上，做单右旋处理
             (*root)->height = left->height = EH;
+            avltree_ll_rotate(root);
             break;
-        case RH:
-            (*root)->height = EH;
-            left->height = LH;
-            break;
-        }
-        lr->height = EH;
-        L_Rotate(&(*T)->lChild);
-        R_Rotate(T);
+        case RH:  // 新插入节点在T的左孩子的右子树上，做双旋处理
+            lr = left->rChild;
+            switch (lr->height)
+            {
+                case LH:
+                    (*root)->height = RH;
+                    left->height    = EH;
+                    break;
+                case EH:
+                    (*root)->height = left->height = EH;
+                    break;
+                case RH:
+                    (*root)->height = EH;
+                    left->height    = LH;
+                    break;
+            }
+            lr->height = EH;
+            L_Rotate(&(*T)->lChild);
+            R_Rotate(T);
     }
 }
 
@@ -71,29 +71,29 @@ void avltree_right_balance(AVLTree **root)
     right = *((*root)->rChild);
     switch (right->height)
     {
-    case RH:  // 新节点插在T的右孩子的右子树上，要做单左旋处理
-        (*root)->height = right->height = EH;
-        avltree_rr_rotate(root);
-        break;
-    case LH:  // 新节点插在T的右孩子的左子树上，要做双旋处理
-        rl = right->lChild;
-        switch (rl->height)
-        {
-        case LH:
-            (*root)->height = EH;
-            right->height = RH;
-            break;
-        case EH:
+        case RH:  // 新节点插在T的右孩子的右子树上，要做单左旋处理
             (*root)->height = right->height = EH;
+            avltree_rr_rotate(root);
             break;
-        case RH:
-            (*root)->height = LH;
-            right->height = EH;
-            break;
-        }
-        rl->height = EH;
-        R_Rotate(&(*root)->rChild);
-        L_Rotate(T);
+        case LH:  // 新节点插在T的右孩子的左子树上，要做双旋处理
+            rl = right->lChild;
+            switch (rl->height)
+            {
+                case LH:
+                    (*root)->height = EH;
+                    right->height   = RH;
+                    break;
+                case EH:
+                    (*root)->height = right->height = EH;
+                    break;
+                case RH:
+                    (*root)->height = LH;
+                    right->height   = EH;
+                    break;
+            }
+            rl->height = EH;
+            R_Rotate(&(*root)->rChild);
+            L_Rotate(T);
     }
 }
 
@@ -121,7 +121,7 @@ AVLTree *avltree_insert(AVLTree *root, KEY_TYPE key)
             printf("内存分配失败,插入节点失败\n");
             return root;
         }
-        root.key = key;
+        root.key    = key;
         root.lChild = NULL;
         root.rChild = NULL;
         root.height = 0;

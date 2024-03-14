@@ -1,10 +1,3 @@
-/*************************************************************************
- > File Name: binarysearchtree.c
- > Author:  jinshaohui
- > Mail:    jinshaohui789@163.com
- > Time:    18-11-12
- > Desc:
- ************************************************************************/
 #include "binarysearchtree.h"
 
 #include <assert.h>
@@ -22,17 +15,17 @@ bstree *bstree_create(compare_fuc compare, destory_fuc destory)
         return NULL;
     }
 
-    tree->size = 0;
+    tree->size    = 0;
     tree->compare = compare;
     tree->destory = destory;
-    tree->root = NULL;
+    tree->root    = NULL;
     return tree;
 }
 
 bstree_node *bstree_search(bstree *tree, mytype data)
 {
     bstree_node *node = NULL;
-    int res = 0;
+    int          res  = 0;
 
     if ((tree == NULL) || (bstree_is_empty(tree)))
     {
@@ -63,8 +56,8 @@ bstree_node *bstree_search(bstree *tree, mytype data)
 int bstree_insert(bstree *tree, mytype data)
 {
     bstree_node *node = NULL;
-    bstree_node *tmp = NULL;
-    int res = 0;
+    bstree_node *tmp  = NULL;
+    int          res  = 0;
 
     if (tree == NULL)
     {
@@ -77,7 +70,7 @@ int bstree_insert(bstree *tree, mytype data)
         return -2;
     }
 
-    node->data = data;
+    node->data   = data;
     node->lchild = NULL;
     node->rchild = NULL;
 
@@ -121,12 +114,12 @@ int bstree_insert(bstree *tree, mytype data)
 
 int bstree_delete(bstree *tree, mytype data)
 {
-    bstree_node *node = NULL;     /*要删除的节点*/
-    bstree_node *pnode = NULL;    /*要删除节点的父节点*/
-    bstree_node *minnode = NULL;  /*要删除节点的父节点*/
+    bstree_node *node     = NULL; /*要删除的节点*/
+    bstree_node *pnode    = NULL; /*要删除节点的父节点*/
+    bstree_node *minnode  = NULL; /*要删除节点的父节点*/
     bstree_node *pminnode = NULL; /*要删除节点的父节点*/
-    mytype tmp = 0;
-    int res = 0;
+    mytype       tmp      = 0;
+    int          res      = 0;
 
     if ((tree == NULL) || (bstree_is_empty(tree)))
     {
@@ -157,21 +150,21 @@ int bstree_delete(bstree *tree, mytype data)
      * 再更新node和pnode节点指向要删除的节点*/
     if ((node->lchild != NULL) && (node->rchild != NULL))
     {
-        minnode = node->rchild;
+        minnode  = node->rchild;
         pminnode = node;
 
         while (minnode->lchild != NULL)
         {
             pminnode = minnode;
-            minnode = minnode->lchild;
+            minnode  = minnode->lchild;
         }
 
         /*node 节点和minnode节点数据互换*/
-        tmp = node->data;
-        node->data = minnode->data;
+        tmp           = node->data;
+        node->data    = minnode->data;
         minnode->data = tmp;
         /*更新要删除的节点和其父节点*/
-        node = minnode;
+        node  = minnode;
         pnode = pminnode;
     }
 
@@ -273,10 +266,10 @@ int bstree_compare(mytype key1, mytype key2)
 
 int main()
 {
-    bstree *tree = NULL;
+    bstree      *tree = NULL;
     bstree_node *node = NULL;
-    mytype data = 0;
-    int res = 0;
+    mytype       data = 0;
+    int          res  = 0;
 
     setenv("MALLOC_TRACE", "1.txt", 1);
     mtrace();

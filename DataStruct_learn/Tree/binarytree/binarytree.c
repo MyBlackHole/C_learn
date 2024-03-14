@@ -5,6 +5,7 @@
 #include <time.h>
 
 /* Implement binary tree in array */
+/* 在数组中实现二叉树 */
 
 #define MAX_TREE_NODES (1 << 8)
 
@@ -18,41 +19,46 @@ struct binary_tree
     union
     {
         unsigned long nodes;
-        struct node *n[MAX_TREE_NODES];
+        struct node  *n[MAX_TREE_NODES];
     };
 };
 
 void init_binary_tree(struct binary_tree *tree)
 {
-    int i;
+    int index;
 
-    for (i = 0; i < MAX_TREE_NODES; i++)
+    for (index = 0; index < MAX_TREE_NODES; index++)
     {
-        tree->n[i] = NULL;
+        tree->n[index] = NULL;
     }
 }
 
 struct node *create_node(int data)
 {
-    struct node *n;
+    struct node *node_p;
 
-    n = malloc(sizeof(struct node));
+    node_p = malloc(sizeof(struct node));
 
-    if (n)
-        n->data = data;
+    if (node_p)
+    {
+        node_p->data = data;
+    }
 
-    return n;
+    return node_p;
 }
 
 void fake_a_tree(struct binary_tree *tree)
 {
     /* data is in ordered */
-    int i, data[10] = {7, 4, 9, 2, 6, 8, 10, 1, 3, 5};
+    int index, data[10] = {7, 4, 9, 2, 6, 8, 10, 1, 3, 5};
 
     init_binary_tree(tree);
 
     /* root start at 1 */
-    for (i = 0; i < 10; i++) tree->n[i + 1] = create_node(data[i]);
+    for (index = 0; index < 10; index++)
+    {
+        tree->n[index + 1] = create_node(data[index]);
+    }
 
     tree->nodes = 10;
 }
@@ -60,7 +66,9 @@ void fake_a_tree(struct binary_tree *tree)
 void _in_order(struct binary_tree *tree, int index)
 {
     if (!tree->n[index])
+    {
         return;
+    }
 
     /* left child at (index << 1) */
     _in_order(tree, index << 1);
