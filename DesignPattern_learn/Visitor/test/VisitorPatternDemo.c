@@ -14,9 +14,11 @@
 #include "ComputerPart.h"
 #include "ComputerPartVisitor.h"
 
-int main(int argc, char const* argv[]) {
-    ComputerPart* computer = computer_part_create_computer();
-    ComputerPartVisitor* computer_part_visitor = computer_part_display_visitor_create();
+int main(int argc, char const * argv[])
+{
+    ComputerPart*        computer = computer_part_create_computer();
+    ComputerPartVisitor* computer_part_visitor =
+        computer_part_display_visitor_create();
     computer_part_accept(computer, computer_part_visitor);
     computer_part_destroy(&computer);
     computer_part_visitor_destroy(&computer_part_visitor);

@@ -117,10 +117,10 @@ int main()
     struct sockaddr_in bind_addr;
     uv_ip4_addr("0.0.0.0", 7000, &bind_addr);
     uv_tcp_bind(&server, (const struct sockaddr *)&bind_addr, 0);
-    int r;
-    if ((r = uv_listen((uv_stream_t *)&server, 128, on_new_connection)))
+    int ret;
+    if ((ret = uv_listen((uv_stream_t *)&server, 128, on_new_connection)))
     {
-        fprintf(stderr, "Listen error %s\n", uv_err_name(r));
+        fprintf(stderr, "Listen error %s\n", uv_err_name(ret));
         return 2;
     }
     return uv_run(loop, UV_RUN_DEFAULT);

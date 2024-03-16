@@ -5,16 +5,11 @@
 #include <string.h>
 
 static demo_env_t demos[] = {
-    DEMO_MAIN_ENV_ITEM(timeval),
-    DEMO_MAIN_ENV_ITEM(timer),
-    DEMO_MAIN_ENV_ITEM(timer1),
-    DEMO_MAIN_ENV_ITEM(time),
-    DEMO_MAIN_ENV_ITEM(localtime),
-    DEMO_MAIN_ENV_ITEM(localtime1),
-    DEMO_MAIN_ENV_ITEM(localtime2),
-    DEMO_MAIN_ENV_ITEM(gettimeofday),
-    DEMO_MAIN_ENV_ITEM(gettimeofday1),
-    DEMO_MAIN_ENV_ITEM(gettimeofday2),
+    DEMO_MAIN_ENV_ITEM(timeval),       DEMO_MAIN_ENV_ITEM(timer),
+    DEMO_MAIN_ENV_ITEM(timer1),        DEMO_MAIN_ENV_ITEM(time),
+    DEMO_MAIN_ENV_ITEM(localtime),     DEMO_MAIN_ENV_ITEM(localtime1),
+    DEMO_MAIN_ENV_ITEM(localtime2),    DEMO_MAIN_ENV_ITEM(gettimeofday),
+    DEMO_MAIN_ENV_ITEM(gettimeofday1), DEMO_MAIN_ENV_ITEM(gettimeofday2),
     DEMO_MAIN_ENV_ITEM(clock_gettime),
 
 };
@@ -22,9 +17,9 @@ static demo_env_t demos[] = {
 int main(int argc, char** argv, char** env)
 {
     // find the main func from the first argument
-    int ret_ok = 0;
-    char const* name = NULL;
-    size_t num = arrayn(demos);
+    int          ret_ok = 0;
+    char const * name   = NULL;
+    size_t       num    = arrayn(demos);
     if (argc > 1 && argv[1])
     {
         size_t index = 0;

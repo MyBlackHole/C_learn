@@ -13,16 +13,18 @@
 #define COMPUTER_PART_H_
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif
 
 #include "ComputerPartVisitor.h"
 
-ComputerPart* computer_part_create_computer(void);
+    ComputerPart* computer_part_create_computer(void);
 
-void computer_part_destroy(ComputerPart** computer_part);
+    void computer_part_destroy(ComputerPart** computer_part);
 
-void computer_part_accept(ComputerPart* computer_part, ComputerPartVisitor* computer_part_visitor);
+    void computer_part_accept(ComputerPart*        computer_part,
+                              ComputerPartVisitor* computer_part_visitor);
 
 #ifdef __cplusplus
 }

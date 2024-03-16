@@ -17,7 +17,7 @@ int demo_getopt_long_main(int argc, char **argv)
             {"delete", required_argument, 0, 0},
             {"verbose", no_argument, 0, 0},
             {"create", required_argument, 0, 'c'},
-            {"file", required_argument, 0, 0},
+            {"file", required_argument, 0, 1},
             {0, 0, 0, 0}};
 
         one_c =
@@ -29,6 +29,9 @@ int demo_getopt_long_main(int argc, char **argv)
 
         switch (one_c)
         {
+        case 1:
+            printf("%s\n", optarg);
+            break;
         case 0:
             printf("option %s", long_options[option_index].name);
             if (optarg)

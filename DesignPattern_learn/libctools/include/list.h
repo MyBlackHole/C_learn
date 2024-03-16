@@ -23,16 +23,16 @@ extern "C"
     {
         struct ListNode *prev;
         struct ListNode *next;
-        int64_t val;
+        int64_t          val;
     } ListNode;
 
     typedef struct
     {
-        ListNode *head;
-        ListNode *tail;
+        ListNode    *head;
+        ListNode    *tail;
         unsigned int len;
-        void (*free_func)(int64_t val);
-        bool (*match_func)(int64_t a, int64_t b);
+        void         (*free_func)(int64_t val);
+        bool         (*match_func)(int64_t a, int64_t b);
     } List;
 
     /**
@@ -41,7 +41,7 @@ extern "C"
      */
     typedef struct
     {
-        ListNode *next;
+        ListNode     *next;
         ListDirection direction;
     } ListIterator;
 
@@ -170,7 +170,7 @@ extern "C"
      * @param direction
      * @return ListIterator*
      */
-    ListIterator *list_iterator_new_from_node(ListNode *node,
+    ListIterator *list_iterator_new_from_node(ListNode     *node,
                                               ListDirection direction);
 
     /**

@@ -21,10 +21,10 @@ Boolean debug = FALSE;
  */
 int ReadData(FILE *fp, char *format, ...)
 {
-    int *i;    // 存储读取到的整型
-    float *f;  // 存储读取到的浮点型
-    char *ch;  // 存储读取到的字符型
-    char *s;   // 存储读取到的字符串型
+    int   *i;   // 存储读取到的整型
+    float *f;   // 存储读取到的浮点型
+    char  *ch;  // 存储读取到的字符型
+    char  *s;   // 存储读取到的字符串型
 
     int n;  // 遍历存储字符串的字符数组
 
@@ -103,8 +103,8 @@ int ReadData(FILE *fp, char *format, ...)
 
             while ((tmp = getc(fp)) != EOF)
             {
-                if ((tmp >= '0' && tmp <= '9') || tmp == '-' || tmp == '+' ||
-                    tmp == '.')
+                if ((tmp >= '0' && tmp <= '9') || tmp == '-' || tmp == '+'
+                    || tmp == '.')
                 {
                     ungetc(tmp, fp);
                     break;
@@ -196,14 +196,14 @@ void PressEnterToContinue(Boolean debug)
  */
 void Wait(long time)
 {
-    double i;
+    double index;
 
     if (time < 0)
     {
         time = -time;
     }
 
-    for (i = 0.01; i <= 100000.0 * time; i += 0.01)
+    for (index = 0.01; index <= 100000.0 * time; index += 0.01)
     {
         // 空循环
     }
@@ -215,27 +215,27 @@ void Wait(long time)
  * 此方法常用在读取字符的语句之前，这会跳过遇到目标字符之前的空白符号，
  * 比如跳过'\r'、'\n'、'\r\n'、' '、'\t'、'\f'。
  */
-void skipBlank(FILE *fp)
+void skipBlank(FILE *file_p)
 {
-    int ch;
+    int cha;
 
-    if (fp == NULL)
+    if (file_p == NULL)
     {
         return;
     }
 
-    while ((ch = getc(fp)) != EOF)
+    while ((cha = getc(file_p)) != EOF)
     {
         // 如果遇到ANSI码之外的符号，比如汉字，则直接跳过
-        if (ch >= 0 && ch <= 127)
+        if (cha >= 0 && cha <= 127)
         {
             // 如果遇到的ANSI码不是空白，比如'\r'、'\n'、'\r\n'、'
             // '、'\t'、'\f'，则表示该符号"可读"
-            if (ch != '\r' && ch != '\n' && ch != ' ' && ch != '\t' &&
-                ch != '\f')
+            if (cha != '\r' && cha != '\n' && cha != ' ' && cha != '\t'
+                && cha != '\f')
             {
                 // 将"可读"符号放入输入流，以待后续工具来读取它
-                ungetc(ch, fp);
+                ungetc(cha, file_p);
                 break;  // 可以跳出循环了，因为已经找到了"可读"符号
             }
         }

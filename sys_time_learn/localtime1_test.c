@@ -9,10 +9,10 @@
 
 int demo_localtime1_main()
 {
-    FILE *fp_tmp = NULL;
-    char buf[BUFSIZE];
-    int count = 0;
-    time_t stamp;
+    FILE      *fp_tmp = NULL;
+    char       buf[BUFSIZE];
+    int        count = 0;
+    time_t     stamp;
     struct tm *tm_tmp = NULL;
 
     fp_tmp = fopen(FNAME, "a+");

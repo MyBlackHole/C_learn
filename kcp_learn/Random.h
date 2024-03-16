@@ -4,7 +4,7 @@
 
 typedef struct Random
 {
-    int size;
+    int             size;
     tb_vector_ref_t seeds;
 } Random;
 

@@ -19,11 +19,11 @@
 #include "zlib.h"
 
 #if defined(MSDOS) || defined(OS2) || defined(WIN32) || defined(__CYGWIN__)
-#include <fcntl.h>
-#include <io.h>
-#define SET_BINARY_MODE(file) setmode(fileno(file), O_BINARY)
+    #include <fcntl.h>
+    #include <io.h>
+    #define SET_BINARY_MODE(file) setmode(fileno(file), O_BINARY)
 #else
-#define SET_BINARY_MODE(file)
+    #define SET_BINARY_MODE(file)
 #endif
 
 #define CHUNK 16384
@@ -36,17 +36,17 @@
    an error reading or writing the files. */
 int def(FILE *source, FILE *dest, int level)
 {
-    int ret, flush;
-    unsigned have;
-    z_stream strm;
+    int           ret, flush;
+    unsigned      have;
+    z_stream      strm;
     unsigned char in[CHUNK];
     unsigned char out[CHUNK];
 
     /* allocate deflate state */
     strm.zalloc = Z_NULL;
-    strm.zfree = Z_NULL;
+    strm.zfree  = Z_NULL;
     strm.opaque = Z_NULL;
-    ret = deflateInit(&strm, level);
+    ret         = deflateInit(&strm, level);
     if (ret != Z_OK)
     {
         return ret;
@@ -61,7 +61,7 @@ int def(FILE *source, FILE *dest, int level)
             (void)deflateEnd(&strm);
             return Z_ERRNO;
         }
-        flush = feof(source) ? Z_FINISH : Z_NO_FLUSH;
+        flush        = feof(source) ? Z_FINISH : Z_NO_FLUSH;
         strm.next_in = in;
 
         /* run deflate() on input until output buffer not full, finish
@@ -69,9 +69,9 @@ int def(FILE *source, FILE *dest, int level)
         do
         {
             strm.avail_out = CHUNK;
-            strm.next_out = out;
-            ret = deflate(&strm, flush);   /* no bad return value */
-            assert(ret != Z_STREAM_ERROR); /* state not clobbered */
+            strm.next_out  = out;
+            ret            = deflate(&strm, flush); /* no bad return value */
+            assert(ret != Z_STREAM_ERROR);          /* state not clobbered */
             have = CHUNK - strm.avail_out;
             if (fwrite(out, 1, have, dest) != have || ferror(dest))
             {
@@ -98,19 +98,19 @@ int def(FILE *source, FILE *dest, int level)
    is an error reading or writing the files. */
 int inf(FILE *source, FILE *dest)
 {
-    int ret;
-    unsigned have;
-    z_stream strm;
+    int           ret;
+    unsigned      have;
+    z_stream      strm;
     unsigned char in[CHUNK];
     unsigned char out[CHUNK];
 
     /* allocate inflate state */
-    strm.zalloc = Z_NULL;
-    strm.zfree = Z_NULL;
-    strm.opaque = Z_NULL;
+    strm.zalloc   = Z_NULL;
+    strm.zfree    = Z_NULL;
+    strm.opaque   = Z_NULL;
     strm.avail_in = 0;
-    strm.next_in = Z_NULL;
-    ret = inflateInit(&strm);
+    strm.next_in  = Z_NULL;
+    ret           = inflateInit(&strm);
     if (ret != Z_OK)
     {
         return ret;
@@ -135,17 +135,17 @@ int inf(FILE *source, FILE *dest)
         do
         {
             strm.avail_out = CHUNK;
-            strm.next_out = out;
-            ret = inflate(&strm, Z_NO_FLUSH);
+            strm.next_out  = out;
+            ret            = inflate(&strm, Z_NO_FLUSH);
             assert(ret != Z_STREAM_ERROR); /* state not clobbered */
             switch (ret)
             {
-            case Z_NEED_DICT:
-                ret = Z_DATA_ERROR; /* and fall through */
-            case Z_DATA_ERROR:
-            case Z_MEM_ERROR:
-                (void)inflateEnd(&strm);
-                return ret;
+                case Z_NEED_DICT:
+                    ret = Z_DATA_ERROR; /* and fall through */
+                case Z_DATA_ERROR:
+                case Z_MEM_ERROR:
+                    (void)inflateEnd(&strm);
+                    return ret;
             }
             have = CHUNK - strm.avail_out;
             if (fwrite(out, 1, have, dest) != have || ferror(dest))
@@ -169,27 +169,27 @@ void zerr(int ret)
     fputs("zpipe: ", stderr);
     switch (ret)
     {
-    case Z_ERRNO:
-        if (ferror(stdin))
-        {
-            fputs("error reading stdin\n", stderr);
-        }
-        if (ferror(stdout))
-        {
-            fputs("error writing stdout\n", stderr);
-        }
-        break;
-    case Z_STREAM_ERROR:
-        fputs("invalid compression level\n", stderr);
-        break;
-    case Z_DATA_ERROR:
-        fputs("invalid or incomplete deflate data\n", stderr);
-        break;
-    case Z_MEM_ERROR:
-        fputs("out of memory\n", stderr);
-        break;
-    case Z_VERSION_ERROR:
-        fputs("zlib version mismatch!\n", stderr);
+        case Z_ERRNO:
+            if (ferror(stdin))
+            {
+                fputs("error reading stdin\n", stderr);
+            }
+            if (ferror(stdout))
+            {
+                fputs("error writing stdout\n", stderr);
+            }
+            break;
+        case Z_STREAM_ERROR:
+            fputs("invalid compression level\n", stderr);
+            break;
+        case Z_DATA_ERROR:
+            fputs("invalid or incomplete deflate data\n", stderr);
+            break;
+        case Z_MEM_ERROR:
+            fputs("out of memory\n", stderr);
+            break;
+        case Z_VERSION_ERROR:
+            fputs("zlib version mismatch!\n", stderr);
     }
 }
 

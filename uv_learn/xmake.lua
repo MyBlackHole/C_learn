@@ -7,5 +7,5 @@ target(dir_path, function()
     for _, file_path in ipairs(os.files(os.curdir() .. "/*.c")) do
         add_files(file_path)
     end
-    add_links("uv")
+    add_links("uv", "pthread")
 end)

@@ -5,11 +5,11 @@
 
 int demo_localtime2_main(int argc, char *argv[])
 {
-    time_t stamp;
+    time_t     stamp;
     struct tm *tm_tmp;
-    char timestr[TIMESTRSIZE];
+    char       timestr[TIMESTRSIZE];
 
-    stamp = time(NULL);
+    stamp  = time(NULL);
     tm_tmp = localtime(&stamp);
     strftime(timestr, TIMESTRSIZE, "NOW:%Y-%m-%d", tm_tmp);
     puts(timestr);

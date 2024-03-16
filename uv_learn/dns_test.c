@@ -5,7 +5,8 @@
 
 uv_loop_t *loop;
 
-extern void alloc_buffer(uv_handle_t *handle, size_t suggested_size, uv_buf_t *buf);
+extern void alloc_buffer(uv_handle_t *handle, size_t suggested_size,
+                         uv_buf_t *buf);
 
 void on_read_dns(uv_stream_t *client, ssize_t nread, const uv_buf_t *buf)
 {
@@ -21,7 +22,7 @@ void on_read_dns(uv_stream_t *client, ssize_t nread, const uv_buf_t *buf)
         return;
     }
 
-    char *data = (char *)malloc(sizeof(char) * (nread + 1));
+    char *data  = (char *)malloc(sizeof(char) * (nread + 1));
     data[nread] = '\0';
     strncpy(data, buf->base, nread);
 
@@ -56,7 +57,7 @@ void on_resolved(uv_getaddrinfo_t *resolver, int status, struct addrinfo *res)
     fprintf(stderr, "%s\n", addr);
 
     uv_connect_t *connect_req = (uv_connect_t *)malloc(sizeof(uv_connect_t));
-    uv_tcp_t *socket = (uv_tcp_t *)malloc(sizeof(uv_tcp_t));
+    uv_tcp_t     *socket      = (uv_tcp_t *)malloc(sizeof(uv_tcp_t));
     uv_tcp_init(loop, socket);
 
     uv_tcp_connect(connect_req, socket, (const struct sockaddr *)res->ai_addr,
@@ -70,10 +71,10 @@ int demo_dns_main()
     loop = uv_default_loop();
 
     struct addrinfo hints;
-    hints.ai_family = PF_INET;
+    hints.ai_family   = PF_INET;
     hints.ai_socktype = SOCK_STREAM;
     hints.ai_protocol = IPPROTO_TCP;
-    hints.ai_flags = 0;
+    hints.ai_flags    = 0;
 
     uv_getaddrinfo_t resolver;
     fprintf(stderr, "www.baidu.com is... ");

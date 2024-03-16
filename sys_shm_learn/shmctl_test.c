@@ -1,1 +1,0 @@
-shmget_test.c

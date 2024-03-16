@@ -1,1 +1,0 @@
-srandom_test.c

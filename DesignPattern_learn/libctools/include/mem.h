@@ -86,20 +86,20 @@ extern "C"
     uint32_t mem_nrefs(const void *data);
 
 #ifdef DEBUG
-// 重新实现malloc
-#define malloc(size) mem_leak_detection_malloc(size, __FILE__, __LINE__)
-// 重新实现mallocz
-#define mallocz(size) mem_leak_detection_mallocz(size, __FILE__, __LINE__)
-// 重新实现calloc
-#define calloc(elements, size) \
-    mem_leak_detection_calloc(elements, size, __FILE__, __LINE__)
-// 重新实现relloc
-#define realloc(ptr, size) \
-    mem_leak_detection_realloc(ptr, size, __FILE__, __LINE__)
-// 重新实现free
-#define free(ptr) mem_leak_detection_free(ptr, __FILE__, __LINE__)
-// 重新实现freep
-#define freep(ptr) mem_leak_detection_freep(ptr, __FILE__, __LINE__)
+    // 重新实现malloc
+    #define malloc(size) mem_leak_detection_malloc(size, __FILE__, __LINE__)
+    // 重新实现mallocz
+    #define mallocz(size) mem_leak_detection_mallocz(size, __FILE__, __LINE__)
+    // 重新实现calloc
+    #define calloc(elements, size) \
+        mem_leak_detection_calloc(elements, size, __FILE__, __LINE__)
+    // 重新实现relloc
+    #define realloc(ptr, size) \
+        mem_leak_detection_realloc(ptr, size, __FILE__, __LINE__)
+    // 重新实现free
+    #define free(ptr) mem_leak_detection_free(ptr, __FILE__, __LINE__)
+    // 重新实现freep
+    #define freep(ptr) mem_leak_detection_freep(ptr, __FILE__, __LINE__)
 
     void *mem_leak_detection_malloc(size_t size, const char *file,
                                     unsigned int line);
@@ -109,11 +109,11 @@ extern "C"
                                     unsigned int line);
     void *mem_leak_detection_realloc(void *ptr, size_t size, const char *file,
                                      unsigned int line);
-    void mem_leak_detection_free(void *ptr, const char *file,
-                                 unsigned int line);
-    void mem_leak_detection_freep(void **ptr, const char *file,
+    void  mem_leak_detection_free(void *ptr, const char *file,
                                   unsigned int line);
-    void mem_leak_detection_report();
+    void  mem_leak_detection_freep(void **ptr, const char *file,
+                                   unsigned int line);
+    void  mem_leak_detection_report();
 
 #endif
 

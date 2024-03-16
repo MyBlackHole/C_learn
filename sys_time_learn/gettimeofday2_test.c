@@ -6,7 +6,7 @@
 
 // 对于linux下的适配，取消了对于macos 和 solaris
 unsigned long long count;
-struct timeval end;
+struct timeval     end;
 
 void checktime(char *str)
 {
@@ -23,15 +23,15 @@ int demo_gettimeofday2_main(int argc, char **argv)
 {
     pid_t pid;
     char *s_tmp;
-    int nzero, ret;
-    int adj = 0;
+    int   nzero, ret;
+    int   adj = 0;
     setbuf(stdout, NULL);  // 设置缓冲区
 #if defined(NZERO)
     nzero = NZERO;
 #elif defined(_SC_NZERO)
     nzero = sysconf(_SC_NZERO);
 #else
-#error NZERO undefined
+    #error NZERO undefined
 #endif
     printf("NZERO=%d \n", nzero);
     if (argc == 2)

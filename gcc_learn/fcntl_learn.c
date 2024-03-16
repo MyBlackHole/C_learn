@@ -11,6 +11,7 @@ static demo_t demos[] = {
     DEMO_MAIN_ITEM(offsetof),
     DEMO_MAIN_ITEM(builtin_clz),
     DEMO_MAIN_ITEM(weak_alias),
+    DEMO_MAIN_ITEM(attribute1),
 
 };
 

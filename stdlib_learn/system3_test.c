@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <sys/types.h>
 #include <unistd.h>
 
 #define PSCMD "ps -o pid,ppid,state,tty,command"
+
 int main(void)
 {
     setbuf(stdout, NULL);

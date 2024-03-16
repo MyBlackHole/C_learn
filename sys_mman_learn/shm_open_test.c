@@ -17,11 +17,11 @@
 // hello, world!
 int demo_shm_open_main()
 {
-    const char *name = "/my_shared_memory";
+    const char *name   = "/my_shared_memory";
     const char *buffer = "hello, world!\n";
-    mode_t mode = DEFFILEMODE;
-    int my_fd;
-    size_t ret;
+    mode_t      mode   = DEFFILEMODE;
+    int         my_fd;
+    size_t      ret;
 
     // 创建共享内存对象
     my_fd = shm_open(name, O_CREAT | O_RDWR, mode);

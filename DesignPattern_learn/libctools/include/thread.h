@@ -14,7 +14,7 @@ extern "C"
  *
  */
 #ifdef __linux__
-#define getthreadid() syscall(__NR_gettid)
+    #define getthreadid() syscall(__NR_gettid)
 #else
 inline static pid_t getthreadid()
 {
@@ -35,10 +35,10 @@ inline static pid_t getthreadid()
     typedef struct Thread
     {
         pthread_t id;
-        int (*func)(void *);
-        void *data;
-        char name[THREAD_FILE_NAME_LENGTH];
-        int retval;
+        int       (*func)(void *);
+        void     *data;
+        char      name[THREAD_FILE_NAME_LENGTH];
+        int       retval;
     } Thread;
 
     /**

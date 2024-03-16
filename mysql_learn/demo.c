@@ -7,19 +7,19 @@
 int main(int argc, char** argv)
 {
     mysql_library_init(0, NULL, NULL);
-    MYSQL* mysql = mysql_init(NULL);
-    char* host_name = "127.0.0.1";  // set your mysql host
-    char* user_name = "root";       // set your user_name
-    char* password = "123456";      // set your password
-    char* db_name = "test";         // set your databasename
-    int port_num = PORT;            // set your mysql port
-    char* socket_name = NULL;
+    MYSQL*     mysql       = mysql_init(NULL);
+    char*      host_name   = "127.0.0.1";  // set your mysql host
+    char*      user_name   = "root";       // set your user_name
+    char*      password    = "123456";     // set your password
+    char*      db_name     = "test";       // set your databasename
+    int        port_num    = PORT;         // set your mysql port
+    char*      socket_name = NULL;
     MYSQL_RES* result;
-    int status = 0;
+    int        status = 0;
     /* connect to server with the CLIENT_MULTI_STATEMENTS option */
     if (mysql_real_connect(mysql, host_name, user_name, password, db_name,
-                           port_num, socket_name,
-                           CLIENT_MULTI_STATEMENTS) == NULL)
+                           port_num, socket_name, CLIENT_MULTI_STATEMENTS)
+        == NULL)
     {
         printf("mysql_real_connect() failed\n");
         mysql_close(mysql);
@@ -56,7 +56,7 @@ int main(int argc, char** argv)
         {
             if (mysql_field_count(mysql) == 0)
             {
-                printf("%ld rows affected\n", mysql_affected_rows(mysql));
+                printf("%lld rows affected\n", mysql_affected_rows(mysql));
             }
             else /* some error occurred */
             {

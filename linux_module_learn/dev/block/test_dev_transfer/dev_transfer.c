@@ -11,17 +11,17 @@
 #include <linux/types.h>
 #include <linux/vmalloc.h>
 
-#define BLK_NAME "ram_blk"
-#define BLK_MAJOR 222
-#define DISK_SECTOR_SIZE 512                        // 每扇区大小
-#define DISK_SECTOR 1024                            // 总扇区数，
-#define DISK_SIZE (DISK_SECTOR_SIZE * DISK_SECTOR)  // 总大小，共0.5M
+#define BLK_NAME         "ram_blk"
+#define BLK_MAJOR        222
+#define DISK_SECTOR_SIZE 512                               // 每扇区大小
+#define DISK_SECTOR      1024                              // 总扇区数，
+#define DISK_SIZE        (DISK_SECTOR_SIZE * DISK_SECTOR)  // 总大小，共0.5M
 
 typedef struct  // 设备结构体
 {
-    unsigned char *data;
+    unsigned char        *data;
     struct request_queue *queue;
-    struct gendisk *gd;
+    struct gendisk       *gd;
 } disk_dev;
 
 disk_dev device;  // 定义设备结构体
@@ -29,13 +29,13 @@ disk_dev device;  // 定义设备结构体
 //--------------------------------------------------------------------------
 // 在硬盘等带柱面扇区等的设备上使用request，可以整理队列。但是ramdisk等可以
 // 使用make_request
-static int disk_make_request(struct request_queue *q, struct bio *bio)
+static int disk_make_request(struct request_queue *queue, struct bio *bio)
 {
     struct bvec_iter iter;
-    char *mem_pbuf;
-    char *disk_pbuf;
-    disk_dev *pdevice;
-    struct bio_vec pbvec;
+    char            *mem_pbuf;
+    char            *disk_pbuf;
+    disk_dev        *pdevice;
+    struct bio_vec   pbvec;
 
     // /*在遍历段之前先判断要传输数据的总长度大小是否超过范围*/
     // iter = bio->bi_iter.bi_sector * DISK_SECTOR_SIZE + bio->bi_iter.bi_size;
@@ -55,15 +55,15 @@ static int disk_make_request(struct request_queue *q, struct bio *bio)
         mem_pbuf = kmap(pbvec.bv_page) + pbvec.bv_offset;
         switch (bio_data_dir(bio))
         {  // 读写
-        case READ:
-            memcpy(mem_pbuf, disk_pbuf, pbvec.bv_len);
-            break;
-        case WRITE:
-            memcpy(disk_pbuf, mem_pbuf, pbvec.bv_len);
-            break;
-        default:
-            kunmap(pbvec.bv_page);
-            goto fail;
+            case READ:
+                memcpy(mem_pbuf, disk_pbuf, pbvec.bv_len);
+                break;
+            case WRITE:
+                memcpy(disk_pbuf, mem_pbuf, pbvec.bv_len);
+                break;
+            default:
+                kunmap(pbvec.bv_page);
+                goto fail;
         }
         // 清除映射
         kunmap(pbvec.bv_page);
@@ -76,9 +76,9 @@ fail:
     return 0;
 }
 
-int blk_open(struct block_device *dev, fmode_t mode) { return 0; }
+int blk_open(struct gendisk *disk, blk_mode_t mode) { return 0; }
 
-void blk_release(struct gendisk *gd, fmode_t mode) { ; }
+void blk_release(struct gendisk *disk) { ; }
 
 int blk_ioctl(struct block_device *dev, fmode_t no, unsigned cmd,
               unsigned long arg)
@@ -87,10 +87,10 @@ int blk_ioctl(struct block_device *dev, fmode_t no, unsigned cmd,
 }
 
 static struct block_device_operations blk_fops = {
-    .owner = THIS_MODULE,
-    .open = blk_open,
+    .owner   = THIS_MODULE,
+    .open    = blk_open,
     .release = blk_release,
-    .ioctl = blk_ioctl,
+    .ioctl   = blk_ioctl,
 };
 
 int disk_init(void)
@@ -109,12 +109,12 @@ int disk_init(void)
 
     printk("make_request succeed\n");
 
-    device.gd = blk_alloc_disk(GFP_KERNEL);  // 生成gendisk
-    device.queue = device.gd->queue;         // 赋值 queue
-    device.gd->major = BLK_MAJOR;            // 主设备号
-    device.gd->first_minor = 0;              // 此设备号
-    device.gd->fops = &blk_fops;             // 块文件结构体变量
-    device.gd->queue = device.queue;         // 请求队列
+    device.gd               = blk_alloc_disk(GFP_KERNEL);  // 生成gendisk
+    device.queue            = device.gd->queue;            // 赋值 queue
+    device.gd->major        = BLK_MAJOR;                   // 主设备号
+    device.gd->first_minor  = 0;                           // 此设备号
+    device.gd->fops         = &blk_fops;     // 块文件结构体变量
+    device.gd->queue        = device.queue;  // 请求队列
     device.gd->private_data = &device;
     sprintf(device.gd->disk_name, "disk%c", 'a');  // 名字
     set_capacity(device.gd, DISK_SECTOR);          // 设置大小

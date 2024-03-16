@@ -1,10 +1,12 @@
-obj-m:= bdev_test.o
-CURRENT_PATH:=$(shell pwd)
-LINUX_KERNEL:=$(shell uname -r)
-LINUX_KERNEL_PATH:=/usr/src/linux-headers-$(LINUX_KERNEL)
-
-all:
-	make -C $(LINUX_KERNEL_PATH) M=$(CURRENT_PATH) KCFLAGS+=-DDEBUG modules
+PWD = $(shell pwd)
+KVERS =$(shell uname -r)
+KERNDIR =/lib/modules/${KVERS}/build/
+obj-m += bdev_test.o
+ 
+build: kernel_modules
+ 
+kernel_modules:
+	make -C $(KERNDIR) M=$(PWD) modules
+ 
 clean:
-	make -C $(LINUX_KERNEL_PATH) M=$(CURRENT_PATH) clean
-
+	make -C $(KERNDIR) M=$(PWD) clean

@@ -108,14 +108,14 @@ extern "C"
                   __VA_ARGS__);                                     \
     } while (0)
 
-#define log_trace(...) log_trace_priv(__VA_ARGS__, "\n")
-#define log_debug(...) log_debug_priv(__VA_ARGS__, "\n")
+#define log_trace(...)   log_trace_priv(__VA_ARGS__, "\n")
+#define log_debug(...)   log_debug_priv(__VA_ARGS__, "\n")
 #define log_verbose(...) log_verbose_priv(__VA_ARGS__, "\n")
-#define log_info(...) log_info_priv(__VA_ARGS__, "\n")
+#define log_info(...)    log_info_priv(__VA_ARGS__, "\n")
 #define log_warning(...) log_warning_priv(__VA_ARGS__, "\n")
-#define log_error(...) log_error_priv(__VA_ARGS__, "\n")
-#define log_fatal(...) log_fatal_priv(__VA_ARGS__, "\n")
-#define log_panic(...) log_panic_priv(__VA_ARGS__, "\n")
+#define log_error(...)   log_error_priv(__VA_ARGS__, "\n")
+#define log_fatal(...)   log_fatal_priv(__VA_ARGS__, "\n")
+#define log_panic(...)   log_panic_priv(__VA_ARGS__, "\n")
 
 #ifdef __cplusplus
 }

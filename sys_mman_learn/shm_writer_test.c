@@ -28,8 +28,8 @@ int demo_shm_writer_main(int argc, char* argv[])
     if (USE_MMAP)
     {
         // 映射目标的存储区
-        data =
-            (char*)mmap(NULL, MMAP_DATA_SIZE, PROT_READ | PROT_WRITE, MAP_SHARED, shm_fd, 0);
+        data = (char*)mmap(NULL, MMAP_DATA_SIZE, PROT_READ | PROT_WRITE,
+                           MAP_SHARED, shm_fd, 0);
         if (!data)
         {
             printf("mmap failed\n");
@@ -44,7 +44,8 @@ int demo_shm_writer_main(int argc, char* argv[])
     else
     {
         char buf[MMAP_DATA_SIZE];
-        int len = sprintf(buf, "This is a share memory by write! ! %d\n", shm_fd);
+        int  len =
+            sprintf(buf, "This is a share memory by write! ! %d\n", shm_fd);
         if (write(shm_fd, buf, len) <= 0)
         {
             printf("write file %d failed!%d\n", len, errno);

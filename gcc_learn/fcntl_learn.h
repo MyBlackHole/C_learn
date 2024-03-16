@@ -8,5 +8,6 @@ DEMO_MAIN_DECL(alias);
 DEMO_MAIN_DECL(offsetof);
 DEMO_MAIN_DECL(builtin_clz);
 DEMO_MAIN_DECL(weak_alias);
+DEMO_MAIN_DECL(attribute1);
 
 #endif

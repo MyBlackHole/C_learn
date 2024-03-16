@@ -4,10 +4,10 @@
 
 int demo_localtime_main(void)
 {
-    time_t t_tmp;
+    time_t     t_tmp;
     struct tm *mytime;
-    char buf[16];
-    char buff[64];
+    char       buf[16];
+    char       buff[64];
     time(&t_tmp);
     mytime = localtime(&t_tmp);
     if (strftime(buf, 16, "time and date : %r ,%a %b %d, %Y", mytime) == 0)

@@ -24,7 +24,7 @@ int demo_app_main(int argc, char *argv[])
     if (fd_tmp < 0)
     {
         printf("open failed\n");
-        exit(1);
+        exit(EXIT_FAILURE);
     }
     printf("open success\n");
 
@@ -45,5 +45,5 @@ int demo_app_main(int argc, char *argv[])
     ioctl(fd_tmp, 4, &data);
 
     close(fd_tmp);
-    return 0;
+    return EXIT_SUCCESS;
 }

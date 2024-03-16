@@ -18,10 +18,10 @@ int demo_sort_main(int argc, char* argv[])
     }
     tb_trace_i("sort");
 
-    int num;
-    int ret;
+    int                       num;
+    int                       ret;
     __tb_volatile__ tb_size_t i = 0;
-    ret = scanf("%d", &num);
+    ret                         = scanf("%d", &num);
     tb_assert_and_check_return_val(ret, -1);
 
     // 初始化数据
@@ -30,7 +30,7 @@ int demo_sort_main(int argc, char* argv[])
 
     // 初始化迭代器
     tb_array_iterator_t array_iterator;
-    tb_iterator_ref_t iterator =
+    tb_iterator_ref_t   iterator =
         tb_array_iterator_init_str(&array_iterator, data, num);
 
     // 生成
@@ -38,8 +38,8 @@ int demo_sort_main(int argc, char* argv[])
     for (i = 0; i < num; i++)
     {
         tb_long_t r = tb_snprintf(string, 256, "%ld", tb_random_value());
-        string[r] = '\0';
-        data[i] = tb_strdup(string);
+        string[r]   = '\0';
+        data[i]     = tb_strdup(string);
     }
 
     // 排序

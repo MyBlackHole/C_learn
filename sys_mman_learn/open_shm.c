@@ -8,11 +8,11 @@
 
 int demo_open_shm_main()
 {
-    const char *name = "/dev/shm/my_shared_memory";
+    const char *name   = "/dev/shm/my_shared_memory";
     const char *buffer = "hello, world!\n";
-    mode_t mode = DEFFILEMODE;
-    int my_fd;
-    size_t ret;
+    mode_t      mode   = DEFFILEMODE;
+    int         my_fd;
+    size_t      ret;
 
     my_fd = open(name, O_CREAT | O_RDWR | O_NOFOLLOW | O_CLOEXEC, mode);
     if (my_fd == -1)

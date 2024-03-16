@@ -5,7 +5,6 @@
 #include <string.h>
 
 static demo_t demos[] = {
-    DEMO_MAIN_ITEM(file_compress),
     DEMO_MAIN_ITEM(lz4),
 };
 

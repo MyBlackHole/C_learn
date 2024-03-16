@@ -13,16 +13,16 @@
 typedef struct
 {
     char name[4];
-    int age;
+    int  age;
 } people;
 
 // map a normal file as shared mem:
 int demo_mmap_main(int argc, char **argv)
 {
-    int myfd;
-    int index;
+    int     myfd;
+    int     index;
     people *p_map;
-    size_t ret;
+    size_t  ret;
     // 以读写方式打开， 没有自动创建
     myfd = open(argv[1], O_CREAT | O_RDWR, S_IRWXU | S_IRWXG | S_IRWXO);
     if (myfd < 0)
@@ -57,7 +57,9 @@ int demo_mmap_main(int argc, char **argv)
         printf("name: %s age %d;\n", (*(p_map + index)).name,
                (*(p_map + index)).age);
     }
-    // 解除映射时会把内存数据写回文件，但是不会超出文件大小
+
+    // 解除映射时会把内存数据写回文件(后台达到条件也会写)，
+    // 但是不会超出文件大小
     munmap(p_map, sizeof(people) * NUM);
     exit(EXIT_SUCCESS);
 }

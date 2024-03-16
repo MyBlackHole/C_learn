@@ -6,8 +6,8 @@
 typedef struct DelayPacket
 {
     unsigned char *_ptr;
-    int _size;
-    IUINT32 _ts;
+    int            _size;
+    IUINT32        _ts;
 } DelayPacket;
 
 // class DelayPacket {

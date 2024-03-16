@@ -5,18 +5,16 @@
 #include <string.h>
 
 static demo_t demos[] = {
-    DEMO_MAIN_ITEM(mmap),
-    DEMO_MAIN_ITEM(shm_reader),
-    DEMO_MAIN_ITEM(shm_writer),
-    DEMO_MAIN_ITEM(open_shm),
+    DEMO_MAIN_ITEM(mmap),       DEMO_MAIN_ITEM(shm_reader),
+    DEMO_MAIN_ITEM(shm_writer), DEMO_MAIN_ITEM(open_shm),
     DEMO_MAIN_ITEM(shm_open),
 };
 int main(int argc, char** argv)
 {
     // find the main func from the first argument
-    int ret_ok = 0;
-    char const* name = NULL;
-    size_t num = arrayn(demos);
+    int          ret_ok = 0;
+    char const * name   = NULL;
+    size_t       num    = arrayn(demos);
     if (argc > 1 && argv[1])
     {
         size_t index = 0;

@@ -4,7 +4,7 @@
 
 int demo_strdup_test_main()
 {
-    char str[] = "strdup";
+    char  str[] = "strdup";
     char *str_dup;
     str_dup = strdup(str);
     printf("b[]=\"%s\"\n", str_dup);

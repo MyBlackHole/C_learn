@@ -6,7 +6,7 @@
 #define BUFFERSIZE 1024
 int main(int argc, char const *argv[])
 {
-    int shmid;
+    int   shmid;
     char *shmadd;
     // 创建一个共享内存对象
     if ((shmid = shmget(IPC_PRIVATE, BUFFERSIZE, 0666)) < 0)

@@ -8,9 +8,9 @@
 DelayPacket *createDelayPacket(int size, const void *src)
 {
     struct DelayPacket *delayPacket = NULL;
-    delayPacket = malloc(sizeof(*delayPacket));
-    delayPacket->_ptr = malloc(sizeof(char) * size);
-    delayPacket->_size = size;
+    delayPacket                     = malloc(sizeof(*delayPacket));
+    delayPacket->_ptr               = malloc(sizeof(char) * size);
+    delayPacket->_size              = size;
     if (src)
     {
         memcpy(delayPacket->_ptr, src, size);

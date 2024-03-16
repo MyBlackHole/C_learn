@@ -10,16 +10,16 @@
 #include "ikcp.h"
 
 #if defined(WIN32) || defined(_WIN32) || defined(WIN64) || defined(_WIN64)
-#include <windows.h>
+    #include <windows.h>
 #elif !defined(__unix)
-#define __unix
+    #define __unix
 #endif
 
 #ifdef __unix
-#include <sys/time.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <unistd.h>
+    #include <sys/time.h>
+    #include <sys/types.h>
+    #include <sys/wait.h>
+    #include <unistd.h>
 #endif
 
 /* get system time */
@@ -33,18 +33,18 @@ static inline void itimeofday(long *sec, long *usec)
     if (usec)
         *usec = time.tv_usec;
 #else
-    static long mode = 0, addsec = 0;
-    BOOL retval;
+    static long   mode = 0, addsec = 0;
+    BOOL          retval;
     static IINT64 freq = 1;
-    IINT64 qpc;
+    IINT64        qpc;
     if (mode == 0)
     {
         retval = QueryPerformanceFrequency((LARGE_INTEGER *)&freq);
-        freq = (freq == 0) ? 1 : freq;
+        freq   = (freq == 0) ? 1 : freq;
         retval = QueryPerformanceCounter((LARGE_INTEGER *)&qpc);
         addsec = (long)time(NULL);
         addsec = addsec - (long)((qpc / freq) & 0x7fffffff);
-        mode = 1;
+        mode   = 1;
     }
     retval = QueryPerformanceCounter((LARGE_INTEGER *)&qpc);
     retval = retval * 2;
@@ -58,7 +58,7 @@ static inline void itimeofday(long *sec, long *usec)
 /* get clock in millisecond 64 */
 static inline IINT64 iclock64(void)
 {
-    long s, u;
+    long   s, u;
     IINT64 value;
     itimeofday(&s, &u);
     value = ((IINT64)s) * 1000 + (u / 1000);
@@ -72,7 +72,7 @@ static inline void isleep(unsigned long millisecond)
 {
 #ifdef __unix /* usleep( time * 1000 ); */
     struct timespec ts;
-    ts.tv_sec = (time_t)(millisecond / 1000);
+    ts.tv_sec  = (time_t)(millisecond / 1000);
     ts.tv_nsec = (long)((millisecond % 1000) * 1000000);
     /*nanosleep(&ts, NULL);*/
     usleep((millisecond << 10) - (millisecond << 4) - (millisecond << 3));
@@ -83,8 +83,8 @@ static inline void isleep(unsigned long millisecond)
 }
 
 #ifdef __cplusplus
-#include <list>
-#include <vector>
+    #include <list>
+    #include <vector>
 
 // 带延迟的数据包
 class DelayPacket
@@ -99,7 +99,7 @@ public:
 
     DelayPacket(int size, const void *src = NULL)
     {
-        _ptr = new unsigned char[size];
+        _ptr  = new unsigned char[size];
         _size = size;
         if (src)
         {
@@ -107,17 +107,17 @@ public:
         }
     }
 
-    unsigned char *ptr() { return _ptr; }
+    unsigned char       *ptr() { return _ptr; }
     const unsigned char *ptr() const { return _ptr; }
 
-    int size() const { return _size; }
+    int     size() const { return _size; }
     IUINT32 ts() const { return _ts; }
-    void setts(IUINT32 ts) { _ts = ts; }
+    void    setts(IUINT32 ts) { _ts = ts; }
 
 protected:
     unsigned char *_ptr;
-    int _size;
-    IUINT32 _ts;
+    int            _size;
+    IUINT32        _ts;
 };
 
 // 均匀分布的随机数
@@ -143,14 +143,14 @@ public:
             }
             size = (int)seeds.size();
         }
-        i = rand() % size;
-        x = seeds[i];
+        i        = rand() % size;
+        x        = seeds[i];
         seeds[i] = seeds[--size];
         return x;
     }
 
 protected:
-    int size;
+    int              size;
     std::vector<int> seeds;
 };
 
@@ -172,7 +172,7 @@ public:
         this->lostrate = lostrate / 2;  // 上面数据是往返丢包率，单程除以2
         this->rttmin = rttmin / 2;
         this->rttmax = rttmax / 2;
-        this->nmax = nmax;
+        this->nmax   = nmax;
         tx1 = tx2 = 0;
     }
 
@@ -213,8 +213,8 @@ public:
                 return;
         }
         DelayPacket *pkt = new DelayPacket(size, data);
-        current = iclock();
-        IUINT32 delay = rttmin;
+        current          = iclock();
+        IUINT32 delay    = rttmin;
         if (rttmax > rttmin)
             delay += rand() % (rttmax - rttmin);
         // 设置延迟时间
@@ -246,7 +246,7 @@ public:
                 return -1;
         }
         DelayPacket *pkt = *it;
-        current = iclock();
+        current          = iclock();
         // 判断是否大于延迟时间
         if (current < pkt->ts())
             return -2;
@@ -271,16 +271,16 @@ public:
     int tx2;
 
 protected:
-    IUINT32 current;
-    int lostrate;
-    int rttmin;
-    int rttmax;
-    int nmax;
+    IUINT32                          current;
+    int                              lostrate;
+    int                              rttmin;
+    int                              rttmax;
+    int                              nmax;
     typedef std::list<DelayPacket *> DelayTunnel;
-    DelayTunnel p12;
-    DelayTunnel p21;
-    Random r12;
-    Random r21;
+    DelayTunnel                      p12;
+    DelayTunnel                      p21;
+    Random                           r12;
+    Random                           r21;
 };
 
 #endif

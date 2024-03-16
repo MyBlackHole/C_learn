@@ -44,10 +44,10 @@ void invoke_cgi_script(uv_tcp_t *client)
     options.args = args;
 
     child_req.data = (void *)client;
-    int r;
-    if ((r = uv_spawn(loop, &child_req, &options)))
+    int ret;
+    if ((ret = uv_spawn(loop, &child_req, &options)))
     {
-        fprintf(stderr, "%s\n", uv_strerror(r));
+        fprintf(stderr, "%s\n", uv_strerror(ret));
         return;
     }
 }
@@ -82,10 +82,10 @@ int main(int argc, char *argv[])
     struct sockaddr_in bind_addr;
     uv_ip4_addr("0.0.0.0", 7000, &bind_addr);
     uv_tcp_bind(&server, (const struct sockaddr *)&bind_addr, 0);
-    int r = uv_listen((uv_stream_t *)&server, 128, on_new_connection);
-    if (r)
+    int ret = uv_listen((uv_stream_t *)&server, 128, on_new_connection);
+    if (ret)
     {
-        fprintf(stderr, "Listen error %s\n", uv_err_name(r));
+        fprintf(stderr, "Listen error %s\n", uv_err_name(ret));
         return 1;
     }
     return uv_run(loop, UV_RUN_DEFAULT);

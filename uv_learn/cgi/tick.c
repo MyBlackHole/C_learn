@@ -3,8 +3,8 @@
 
 int main()
 {
-    int i;
-    for (i = 0; i < 10; i++)
+    int index;
+    for (index = 0; index < 10; index++)
     {
         printf("tick\n");
         fflush(stdout);

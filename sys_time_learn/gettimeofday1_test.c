@@ -4,7 +4,7 @@
 
 int demo_gettimeofday1_main(void)
 {
-    int index;
+    int            index;
     struct timeval tv_tmp;
 
     for (index = 0; index < 4; index++)

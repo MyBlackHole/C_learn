@@ -12,7 +12,7 @@
 int demo_shm_reader_main(int argc, char* argv[])
 {
     char* data;
-    int my_fd = shm_open("shm-file0001", O_RDWR, S_IRWXU);
+    int   my_fd = shm_open("shm-file0001", O_RDWR, S_IRWXU);
     if (my_fd < 0)
     {
         printf("error open shm object\n");
@@ -30,6 +30,7 @@ int demo_shm_reader_main(int argc, char* argv[])
 
     printf("%s\n", data);
 
+    // 取消内存映射
     munmap(data, MMAP_DATA_SIZE);
 
     close(my_fd);

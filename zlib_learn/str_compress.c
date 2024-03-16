@@ -14,14 +14,14 @@
 int demo_str_compress_main()
 {
     /* 原始数据 */
-    unsigned char str_src[] = "000000010000000000000014";
-    unsigned char buf[NUM] = {0};
+    unsigned char str_src[]    = "000000010000000000000014";
+    unsigned char buf[NUM]     = {0};
     unsigned char str_dst[NUM] = {0};
-    unsigned long src_len = sizeof(str_src);
-    unsigned long buf_len = sizeof(buf);
-    unsigned long dst_len = sizeof(str_dst);
-    int tmp_fd;
-    size_t write_len = 0;
+    unsigned long src_len      = sizeof(str_src);
+    unsigned long buf_len      = sizeof(buf);
+    unsigned long dst_len      = sizeof(str_dst);
+    int           tmp_fd;
+    size_t        write_len = 0;
 
     printf("Src string:%s\nLength:%ld\n", str_src, src_len);
 

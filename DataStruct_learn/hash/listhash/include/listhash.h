@@ -8,8 +8,8 @@
 
 typedef struct _hashtab_node
 {
-    void *key;
-    void *data;
+    void                 *key;
+    void                 *data;
     struct _hashtab_node *next;
 } hash_tab_node;
 
@@ -28,7 +28,7 @@ typedef struct _hashtab
     int (*hash_value)(struct _hashtab *h, const void *key);
 
     /*哈希key比较函数，当哈希数值一致时使用*/
-    int (*keycmp)(struct _hashtab *h, const void *key1, const void *key2);
+    int  (*keycmp)(struct _hashtab *h, const void *key1, const void *key2);
     void (*hash_node_free)(hash_tab_node *node);
 } hash_tab;
 
@@ -38,7 +38,7 @@ typedef struct _hashtab
 typedef int (*hash_key_func)(struct _hashtab *h, const void *key);
 
 /*哈希key比较函数，当哈希数值一致时使用*/
-typedef int (*keycmp_func)(struct _hashtab *h, const void *key1,
+typedef int  (*keycmp_func)(struct _hashtab *h, const void *key1,
                            const void *key2);
 typedef void (*hash_node_free_func)(hash_tab_node *node);
 
@@ -51,7 +51,7 @@ typedef void (*hash_node_free_func)(hash_tab_node *node);
     })
 
 hash_tab *hash_tab_create(int size, hash_key_func hash_value,
-                          keycmp_func key_cmp,
+                          keycmp_func         key_cmp,
                           hash_node_free_func hash_node_free);
 
 void hash_tab_destory(hash_tab *h);

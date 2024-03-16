@@ -20,9 +20,9 @@ static blk_status_t my_queue_rq(struct blk_mq_hw_ctx *hctx,
     return BLK_STS_OK;
 }
 
-static int z2_open(struct block_device *bdev, fmode_t mode) { return 0; }
+static int z2_open(struct gendisk *disk, blk_mode_t mode) { return 0; }
 
-static void z2_release(struct gendisk *disk, fmode_t mode) {}
+static void z2_release(struct gendisk *disk) {}
 
 static const struct block_device_operations my_fops = {
     .owner = THIS_MODULE,

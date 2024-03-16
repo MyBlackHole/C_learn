@@ -5,6 +5,7 @@
 #include "MealInternal.h"
 #include "Packing.h"
 #include "list.h"
+#include "mem.h"
 
 struct Meal
 {
@@ -13,8 +14,8 @@ struct Meal
 
 Meal *meal_create(void)
 {
-    Meal *meal = (Meal *)calloc(1, sizeof(Meal));
-    meal->items = list_create();
+    Meal *meal             = (Meal *)calloc(1, sizeof(Meal));
+    meal->items            = list_create();
     meal->items->free_func = (void (*)(int64_t))item_destroy;
     return meal;
 }
@@ -44,24 +45,24 @@ void meal_add_items(Meal *meal, Item *item)
 
 float meal_get_cost(Meal *meal)
 {
-    float cost = 0.0f;
-    ListIterator *it = list_iterator_new(meal->items, LIST_HEAD);
-    ListNode *node;
-    while ((node = list_iterator_next(it)))
+    float         cost = 0.0f;
+    ListIterator *iter   = list_iterator_new(meal->items, LIST_HEAD);
+    ListNode     *node;
+    while ((node = list_iterator_next(iter)))
     {
         Item *item = (Item *)node->val;
         cost += item_price(item);
     }
-    list_iterator_destroy(it);
+    list_iterator_destroy(iter);
 
     return cost;
 }
 
 void meal_show_items(Meal *meal)
 {
-    ListIterator *it = list_iterator_new(meal->items, LIST_HEAD);
-    ListNode *node;
-    while ((node = list_iterator_next(it)))
+    ListIterator *iter = list_iterator_new(meal->items, LIST_HEAD);
+    ListNode     *node;
+    while ((node = list_iterator_next(iter)))
     {
         Item *item = (Item *)node->val;
         printf("Item : %s ", item_name(item));
@@ -70,5 +71,5 @@ void meal_show_items(Meal *meal)
         packing_destroy(&packing);
         printf(", Price : %f\n", item_price(item));
     }
-    list_iterator_destroy(it);
+    list_iterator_destroy(iter);
 }

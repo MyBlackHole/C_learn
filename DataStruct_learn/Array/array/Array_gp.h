@@ -26,25 +26,25 @@ typedef struct Array
     void *p;
 } Array;
 
-#define arraySetDupMethod(a, m) ((a)->dup = (m))
-#define arraySetFreeMethod(a, m) ((a)->free = (m))
+#define arraySetDupMethod(a, m)   ((a)->dup = (m))
+#define arraySetFreeMethod(a, m)  ((a)->free = (m))
 #define arraySetMatchMethod(a, m) ((a)->match = (m))
 
-#define arrayGetDupMethod(a) ((a)->dup)
-#define arrayGetFree(a) ((a)->free)
+#define arrayGetDupMethod(a)   ((a)->dup)
+#define arrayGetFree(a)        ((a)->free)
 #define arrayGetMatchMethod(a) ((a)->match)
 
 Array *arrayCreate();
 
 void arrayInit(Array *array, int size, int typeSize);
 
-int arrayInsert(Array *array, size_t pos, void *const value);
+int arrayInsert(Array *array, size_t pos, void * const value);
 
-size_t arraySearchValue(Array *array, void *const value);
+size_t arraySearchValue(Array *array, void * const value);
 
 void *arrayIndex(Array *array, size_t index);
 
-int arrayModify(Array *array, size_t pos, void *const value);
+int arrayModify(Array *array, size_t pos, void * const value);
 
 size_t arrayLen(Array *array);
 

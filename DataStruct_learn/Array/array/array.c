@@ -4,8 +4,8 @@
 
 struct array
 {
-    int size;
-    int used;
+    int  size;
+    int  used;
     int *arr;
 };
 
@@ -85,7 +85,7 @@ int search(struct array *array, int elem)
 
 int main()
 {
-    int idx;
+    int          idx;
     struct array ten_int = {10, 0, NULL};
 
     alloc(&ten_int);

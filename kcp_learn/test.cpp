@@ -23,7 +23,7 @@ auto udp_output(const char *buf, int len, ikcpcb *kcp, void *user) -> int
     // 公用体 id 与 ptr 公用 4 个字节
     union
     {
-        int id;
+        int   id;
         void *ptr;
     } parameter;
     parameter.ptr = user;
@@ -47,12 +47,12 @@ void test(int mode)
     kcp2->output = udp_output;
 
     IUINT32 current = iclock();
-    IUINT32 slap = current + 20;
-    IUINT32 index = 0;
-    IUINT32 next = 0;
-    IINT64 sumrtt = 0;
-    int count = 0;
-    int maxrtt = 0;
+    IUINT32 slap    = current + 20;
+    IUINT32 index   = 0;
+    IUINT32 next    = 0;
+    IINT64  sumrtt  = 0;
+    int     count   = 0;
+    int     maxrtt  = 0;
 
     // 配置窗口大小：平均延迟200ms，每20ms发送一个包，
     // 而考虑到丢包重发，设置最大收发窗口为128
@@ -81,12 +81,12 @@ void test(int mode)
         // 第五个参数 为是否禁用常规流控，这里禁止
         ikcp_nodelay(kcp1, 2, 10, 2, 1);
         ikcp_nodelay(kcp2, 2, 10, 2, 1);
-        kcp1->rx_minrto = 10;
+        kcp1->rx_minrto  = 10;
         kcp1->fastresend = 1;
     }
 
     char buffer[2000];
-    int hr;
+    int  hr;
 
     IUINT32 ts1 = iclock();
 
@@ -153,8 +153,8 @@ void test(int mode)
             {
                 break;
             }
-            IUINT32 sn = *reinterpret_cast<IUINT32 *>(buffer + 0);
-            IUINT32 ts = *reinterpret_cast<IUINT32 *>(buffer + 4);
+            IUINT32 sn  = *reinterpret_cast<IUINT32 *>(buffer + 0);
+            IUINT32 ts  = *reinterpret_cast<IUINT32 *>(buffer + 4);
             IUINT32 rtt = current - ts;
 
             if (sn != next)

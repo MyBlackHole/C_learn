@@ -20,7 +20,7 @@
 int demo_gettimeofday_main()
 {
     struct timezone timezone;
-    struct timeval timeval;
+    struct timeval  timeval;
 
     gettimeofday(&timeval, &timezone);
     printf("tv_sec:%ld\n", timeval.tv_sec);

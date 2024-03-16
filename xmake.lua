@@ -1,8 +1,13 @@
-add_rules("mode.debug", "mode.release")
+set_xmakever("2.3.6")
+-- set_warnings("all", "error")
+-- set_languages("c99", "cxx11")
+add_cxflags("-Wno-error=deprecated-declarations", "-fno-strict-aliasing")
+add_mxflags("-Wno-error=deprecated-declarations", "-fno-strict-aliasing")
 
+add_rules("mode.release", "mode.debug")
 
--- includes("mysql_learn")
--- includes("namespace_learn")
+add_requires("tbox", {debug = is_mode("debug")})
+
 
 -- 递归遍历获取所有层级子目录
 for _, dir in ipairs(os.dirs(os.curdir() .. "/**")) do

@@ -15,7 +15,7 @@ static void *thread_run(void *data)
     return NULL;
 }
 #else
-#include <sys/syscall.h>
+    #include <sys/syscall.h>
 static void *thread_run(void *data)
 {
     Thread *thread = data;
@@ -23,9 +23,9 @@ static void *thread_run(void *data)
     //    thread->name);
     // pthread_setname_np(pthread_self(), thread->name);
     thread->retval = thread->func(thread->data);
-#ifdef __ANDROID__
-//    SDL_JNI_DetachThreadEnv();
-#endif
+    #ifdef __ANDROID__
+    //    SDL_JNI_DetachThreadEnv();
+    #endif
     return NULL;
 }
 #endif
@@ -45,11 +45,12 @@ Thread *thread_create(Thread *thread, int (*fn)(void *), void *data,
     return thread;
 }
 
+// 设置线程优先级
 int thread_set_priority(ThreadPriority priority)
 {
     struct sched_param sched;
-    int policy;
-    pthread_t thread = pthread_self();
+    int                policy;
+    pthread_t          thread = pthread_self();
 
     if (pthread_getschedparam(thread, &policy, &sched) < 0)
     {
