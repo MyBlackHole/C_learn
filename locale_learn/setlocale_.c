@@ -16,7 +16,7 @@
 /* locale -- 如果 locale 是 NULL 或空字符串
  * ""，则区域名称将根据环境变量值来设置，其名称与上述的类别名称相同。 */
 
-int main()
+int demo_setlocale_main()
 {
     time_t currtime;
     struct tm *timer;

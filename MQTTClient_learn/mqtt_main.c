@@ -38,7 +38,7 @@ int on_message(void *context, char *topicName, int topicLen,
 
 int main(int argc, char *argv[])
 {
-    int rc;
+    int ret;
     MQTTClient client;
     int status;
 
@@ -53,9 +53,9 @@ int main(int argc, char *argv[])
     conn_opts.username = USERNAME;
     conn_opts.password = PASSWORD;
     MQTTClient_setCallbacks(client, NULL, NULL, on_message, NULL);
-    if ((rc = MQTTClient_connect(client, &conn_opts)) != MQTTCLIENT_SUCCESS)
+    if ((ret = MQTTClient_connect(client, &conn_opts)) != MQTTCLIENT_SUCCESS)
     {
-        printf("Failed to connect, return code %d\n", rc);
+        printf("Failed to connect, return code %d\n", ret);
         exit(-1);
     }
     else
@@ -74,5 +74,5 @@ int main(int argc, char *argv[])
     }
     MQTTClient_disconnect(client, TIMEOUT);
     MQTTClient_destroy(&client);
-    return rc;
+    return ret;
 }

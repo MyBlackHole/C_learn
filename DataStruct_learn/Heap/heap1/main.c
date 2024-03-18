@@ -33,7 +33,7 @@ void InitHeap(struct HeapSq *HBT, int MS)
         exit(1);
     }
     HBT->MaxSize = MS;
-    HBT->len = 0;
+    HBT->len     = 0;
 }
 
 // 2、清除堆
@@ -42,7 +42,7 @@ void ClearHeap(struct HeapSq *HBT)
     if (HBT->heap != NULL)
     {
         free(HBT->heap);
-        HBT->len = 0;
+        HBT->len     = 0;
         HBT->MaxSize = 0;
     }
 }
@@ -61,9 +61,9 @@ int EmptyHeap(struct HeapSq *HBT)
 }
 
 // 4、向堆中插入一个元素
-void InsertHeap(struct HeapSq *HBT, ElemType x)
+void InsertHeap(struct HeapSq *HBT, ElemType item)
 {
-    int i;
+    int index;
     // 若堆满，将数组空间扩展为原来的2倍
     if (HBT->len == HBT->MaxSize)
     {
@@ -75,39 +75,39 @@ void InsertHeap(struct HeapSq *HBT, ElemType x)
             exit(1);
         }
         printf("存储空间已扩展为原来的2倍！\n");
-        HBT->heap = p;
+        HBT->heap    = p;
         HBT->MaxSize = 2 * HBT->MaxSize;
     }
 
     // 向堆尾添加新元素
-    HBT->heap[HBT->len] = x;
+    HBT->heap[HBT->len] = item;
     // 堆长度加1
     HBT->len++;
     // i指向待调整元素的位置，即其数组下标，初始指向新元素所在的堆尾位置
-    i = HBT->len - 1;
-    while (i != 0)
+    index = HBT->len - 1;
+    while (index != 0)
     {
         // j指向下标为i的元素的双亲
-        int j = (i - 1) / 2;
-        if (x >= HBT->heap[j])
+        int j = (index - 1) / 2;
+        if (item >= HBT->heap[j])
         {
             // 若新元素大于待调整元素的双亲，则比较调整结束，退出循环
             break;
         }
         // 将双亲元素下移到待调整元素的位置
-        HBT->heap[i] = HBT->heap[j];
+        HBT->heap[index] = HBT->heap[j];
         // 使待调整位置变为其双亲位置，进行下一次循环
-        i = j;
+        index = j;
     }
     // 把新元素调整到最终位置
-    HBT->heap[i] = x;
+    HBT->heap[index] = item;
 }
 
 // 5、从堆中删除堆顶元素并返回
 ElemType DeleteHeap(struct HeapSq *HBT)
 {
     ElemType temp, x;
-    int i, j;
+    int      index, j;
     if (HBT->len == 0)
     {
         printf("堆已空，退出运行！\n");
@@ -124,9 +124,9 @@ ElemType DeleteHeap(struct HeapSq *HBT)
     // 将待调整的原堆尾元素暂存x中，以便放入最终位置
     x = HBT->heap[HBT->len];
     // 用i指向待调整元素的位置，初始指向堆顶位置
-    i = 0;
+    index = 0;
     // 用j指向i的左孩子位置，初始指向下标为1的位置
-    j = 2 * i + 1;
+    j = 2 * index + 1;
     // 寻找待调整元素的最终位置，每次使孩子元素上移一层，调整到孩子为空时止
     while (j <= HBT->len - 1)
     {
@@ -141,14 +141,14 @@ ElemType DeleteHeap(struct HeapSq *HBT)
             break;
         }
         // 否则，将孩子元素移到双亲位置
-        HBT->heap[i] = HBT->heap[j];
+        HBT->heap[index] = HBT->heap[j];
         // 将待调整位置变为其较小的孩子位置
-        i = j;
+        index = j;
         // 将j变为新的待调整位置的左孩子位置，继续下一次循环
-        j = 2 * i + 1;
+        j = 2 * index + 1;
     }
     // 把x放到最终位置
-    HBT->heap[i] = x;
+    HBT->heap[index] = x;
     // 返回原堆顶元素
     return temp;
 }
@@ -156,8 +156,8 @@ ElemType DeleteHeap(struct HeapSq *HBT)
 // 主函数
 int main()
 {
-    int i, x;
-    int a[8] = {23, 56, 40, 62, 38, 55, 10, 16};
+    int           i, x;
+    int           a[8] = {23, 56, 40, 62, 38, 55, 10, 16};
     struct HeapSq b;
     InitHeap(&b, 5);
     for (i = 0; i < 8; i++)
@@ -170,7 +170,9 @@ int main()
         x = DeleteHeap(&b);
         printf("%d", x);
         if (!EmptyHeap(&b))
+        {
             printf(",");
+        }
     }
     printf("\n");
     ClearHeap(&b);

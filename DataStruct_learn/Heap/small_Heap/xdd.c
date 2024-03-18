@@ -29,7 +29,7 @@ MinHeap *InitMinHeap(MinHeap *heap, int size)
         exit(1);
     }
 
-    heap->len = 0;
+    heap->len     = 0;
     heap->MaxSize = size;
     return heap;
 }
@@ -48,10 +48,10 @@ int FixUp(MinHeap *heap)
             break;
         }
 
-        int tmpe = heap->array[f];
+        int tmpe       = heap->array[f];
         heap->array[f] = heap->array[j];
         heap->array[j] = tmpe;
-        j = f;
+        j              = f;
     }
 
     return f;
@@ -76,10 +76,10 @@ int FixDown(MinHeap *heap)
             break;
         }
 
-        int tmpe = heap->array[f];
+        int tmpe       = heap->array[f];
         heap->array[f] = heap->array[k];
         heap->array[k] = tmpe;
-        f = k;
+        f              = k;
     }
     return f;
 }
@@ -96,7 +96,7 @@ int InsertHeap(MinHeap *heap, Node node)
             printf("(Node *)realloc(heap->array, heap->MaxSize * 2)");
             exit(1);
         }
-        heap->array = p;
+        heap->array   = p;
         heap->MaxSize = heap->MaxSize * 2;
     }
 
@@ -112,8 +112,8 @@ Node DeleteHeap(MinHeap *heap)
         printf("heap->len <= 0");
         exit(1);
     }
-    int value = heap->array[0];
-    heap->array[0] = heap->array[--heap->len];
+    int value              = heap->array[0];
+    heap->array[0]         = heap->array[--heap->len];
     heap->array[heap->len] = 0;
     FixDown(heap);
     return value;
@@ -124,7 +124,7 @@ int ClearHeap(MinHeap *heap)
     if (heap->array != NULL)
     {
         free(heap->array);
-        heap->len = 0;
+        heap->len     = 0;
         heap->MaxSize = 0;
     }
     return 0;

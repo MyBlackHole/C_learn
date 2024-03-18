@@ -5,7 +5,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-int main(int argc, char *argv[])
+int demo_mq_open_main(int argc, char *argv[])
 {
     int flag = O_RDWR | O_CREAT | O_EXCL;
     int mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH;

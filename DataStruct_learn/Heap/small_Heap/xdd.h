@@ -4,8 +4,8 @@ typedef struct MinHeap
 {
     /* data */
     Node *array;
-    int len;
-    int MaxSize;
+    int   len;
+    int   MaxSize;
 } MinHeap;
 
 /* 初始化堆 */

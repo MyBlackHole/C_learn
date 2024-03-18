@@ -12,22 +12,22 @@ int main()
     setenv("MALLOC_TRACE", "1.txt", 1);
     // 通过对内存管理系列函数(malloc，realloc，memalign，free)注册钩子来达到监控内存泄露和其他内存错误操作
     mtrace();
-    int i;
-    void *p[10];
-    void *c;
+    int   index;
+    void *void_p[10];
+    void *int_p;
 
-    for (i = 0; i < 10; i++)
+    for (index = 0; index < 10; index++)
     {
-        p[i] = malloc(sizeof(int) * 10);
+        void_p[index] = malloc(sizeof(int) * 10);
     }
 
     // 会清零
-    c = calloc(sizeof(int), sizeof(long int));
-    (void)c;
+    int_p = calloc(sizeof(int), sizeof(long int));
+    (void)int_p;
 
-    for (i = 0; i < 10; i++)
+    for (index = 0; index < 10; index++)
     {
-        free(p[i]);
+        free(void_p[index]);
     }
 
     // 解除mtrace注册的钩子
