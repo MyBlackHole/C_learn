@@ -36,10 +36,10 @@
    private implementation details that can be changed or removed.  */
 
 #ifndef YY_YY_Y_TAB_H_INCLUDED
-# define YY_YY_Y_TAB_H_INCLUDED
+#define YY_YY_Y_TAB_H_INCLUDED
 /* Debug traces.  */
 #ifndef YYDEBUG
-# define YYDEBUG 0
+    #define YYDEBUG 0
 #endif
 #if YYDEBUG
 extern int yydebug;
@@ -47,55 +47,51 @@ extern int yydebug;
 
 /* Token kinds.  */
 #ifndef YYTOKENTYPE
-# define YYTOKENTYPE
-  enum yytokentype
-  {
-    YYEMPTY = -2,
-    YYEOF = 0,                     /* "end of file"  */
-    YYerror = 256,                 /* error  */
-    YYUNDEF = 257,                 /* "invalid token"  */
-    INT_LITERAL = 258,             /* INT_LITERAL  */
-    ADD = 259,                     /* ADD  */
-    SUB = 260,                     /* SUB  */
-    MUL = 261,                     /* MUL  */
-    DIV = 262,                     /* DIV  */
-    CR = 263                       /* CR  */
-  };
-  typedef enum yytokentype yytoken_kind_t;
+    #define YYTOKENTYPE
+enum yytokentype
+{
+    YYEMPTY     = -2,
+    YYEOF       = 0,   /* "end of file"  */
+    YYerror     = 256, /* error  */
+    YYUNDEF     = 257, /* "invalid token"  */
+    INT_LITERAL = 258, /* INT_LITERAL  */
+    ADD         = 259, /* ADD  */
+    SUB         = 260, /* SUB  */
+    MUL         = 261, /* MUL  */
+    DIV         = 262, /* DIV  */
+    CR          = 263  /* CR  */
+};
+typedef enum yytokentype yytoken_kind_t;
 #endif
 /* Token kinds.  */
-#define YYEMPTY -2
-#define YYEOF 0
-#define YYerror 256
-#define YYUNDEF 257
+#define YYEMPTY     -2
+#define YYEOF       0
+#define YYerror     256
+#define YYUNDEF     257
 #define INT_LITERAL 258
-#define ADD 259
-#define SUB 260
-#define MUL 261
-#define DIV 262
-#define CR 263
+#define ADD         259
+#define SUB         260
+#define MUL         261
+#define DIV         262
+#define CR          263
 
 /* Value type.  */
-#if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
+#if !defined YYSTYPE && !defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 6 "calc.y"
+    #line 6 "calc.y"
 
     int int_value;
 
-#line 87 "y.tab.h"
-
+    #line 87 "y.tab.h"
 };
 typedef union YYSTYPE YYSTYPE;
-# define YYSTYPE_IS_TRIVIAL 1
-# define YYSTYPE_IS_DECLARED 1
+    #define YYSTYPE_IS_TRIVIAL  1
+    #define YYSTYPE_IS_DECLARED 1
 #endif
-
 
 extern YYSTYPE yylval;
 
-
-int yyparse (void);
-
+int yyparse(void);
 
 #endif /* !YY_YY_Y_TAB_H_INCLUDED  */
