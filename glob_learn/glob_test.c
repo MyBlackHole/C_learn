@@ -26,7 +26,7 @@ int demo_glob_main(int argc, char *argv[])
     }
 
     // err = glob(argv[1], 0, NULL, &globres);
-    err = glob(argv[1], 0, errfunc, &globres);
+    err = glob(argv[1], GLOB_TILDE, errfunc, &globres);
     if (err)
     {
         fprintf(stderr, "ERROR %d\n", err);
@@ -40,3 +40,13 @@ int demo_glob_main(int argc, char *argv[])
     globfree(&globres);
     return 0;
 }
+
+// out:
+
+// xmake run glob_learn glob '/run/media/black/Data/Documents/C/y???_learn'
+// /run/media/black/Data/Documents/C/yacc_learn
+// /run/media/black/Data/Documents/C/yajl_learn
+//
+// xmake run glob_learn glob '/run/media/black/Data/Documents/C/y???_*'
+// /run/media/black/Data/Documents/C/yacc_learn
+// /run/media/black/Data/Documents/C/yajl_learn
