@@ -1,4 +1,4 @@
-#include "fcntl_learn.h"
+#include "gcc_learn.h"
 
 #include <stddef.h>
 #include <stdio.h>
@@ -17,6 +17,7 @@ static demo_t demos[] = {
 
 int main(int argc, char** argv)
 {
+    printf("start main\n");
     // find the main func from the first argument
     int ret_ok = 0;
     char const* name = NULL;

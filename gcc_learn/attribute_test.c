@@ -14,6 +14,6 @@ __attribute__((constructor)) static void beforeFunction()
     printf("beforeFunction\n");
 }
 
-// out: 
+// out: (比 main 开先)
 // beforeFunction
 // main function

@@ -12,6 +12,6 @@ static __attribute__((constructor(101))) void before1() { printf("before1\n"); }
 static __attribute__((constructor(102))) void before2() { printf("before2\n"); }
 static __attribute__((constructor(102))) void before3() { printf("before3\n"); }
 
-// out:
+// out: (比 main 开先)
 // beforeFunction
 // main function
