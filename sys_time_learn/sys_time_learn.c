@@ -5,12 +5,11 @@
 #include <string.h>
 
 static demo_env_t demos[] = {
-    DEMO_MAIN_ENV_ITEM(timeval),       DEMO_MAIN_ENV_ITEM(timer),
-    DEMO_MAIN_ENV_ITEM(timer1),        DEMO_MAIN_ENV_ITEM(time),
-    DEMO_MAIN_ENV_ITEM(localtime),     DEMO_MAIN_ENV_ITEM(localtime1),
-    DEMO_MAIN_ENV_ITEM(localtime2),    DEMO_MAIN_ENV_ITEM(gettimeofday),
-    DEMO_MAIN_ENV_ITEM(gettimeofday1), DEMO_MAIN_ENV_ITEM(gettimeofday2),
-    DEMO_MAIN_ENV_ITEM(clock_gettime),
+    DEMO_MAIN_ENV_ITEM(timeval),       DEMO_MAIN_ENV_ITEM(timer1),
+    DEMO_MAIN_ENV_ITEM(time),          DEMO_MAIN_ENV_ITEM(localtime),
+    DEMO_MAIN_ENV_ITEM(localtime1),    DEMO_MAIN_ENV_ITEM(localtime2),
+    DEMO_MAIN_ENV_ITEM(gettimeofday),  DEMO_MAIN_ENV_ITEM(gettimeofday1),
+    DEMO_MAIN_ENV_ITEM(gettimeofday2), DEMO_MAIN_ENV_ITEM(clock_gettime),
 
 };
 

@@ -16,3 +16,8 @@ for _, file_path in ipairs(os.files(os.curdir() .. "/*.c")) do
         add_links("udev")
     end)
 end
+
+
+-- target(dir_path)
+--     set_kind("binary")
+--     add_files("*.c")

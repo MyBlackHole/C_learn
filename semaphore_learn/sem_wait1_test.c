@@ -5,14 +5,14 @@
 #include <unistd.h>
 
 sem_t sem_g, sem_p;  // 定义两个信号量
-char ch = 'a';
+char char_itme = 'a';
 
 void *pthread_g(void *arg)  // 此线程改变字符ch的值
 {
     while (1)
     {
         sem_wait(&sem_g);
-        ch++;
+        char_itme++;
         sleep(1);
         sem_post(&sem_p);
     }
@@ -23,7 +23,7 @@ void *pthread_p(void *arg)  // 此线程打印ch的值
     while (1)
     {
         sem_wait(&sem_p);
-        printf("%c", ch);
+        printf("%c", char_itme);
         fflush(stdout);
         sem_post(&sem_g);
     }

@@ -1,6 +1,0 @@
-executable("echo_selectserv") {
-  sources = [
-    "echo_selectserv.c",
-  ]
-}
-

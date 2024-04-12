@@ -1,23 +1,23 @@
+#include <stdio.h>
 #include <readline/history.h>
 #include <readline/readline.h>
-#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 int main(int argc, char *argv[])
 {
     using_history();
-    char *s;
+    char *str;
 
     while (1)
     {
-        s = readline("输入:");
-        if (strcmp(s, "q") == 0)
+        str = readline("输入:");
+        if (strcmp(str, "q") == 0)
         {
             break;
         }
 
-        add_history(s);
+        add_history(str);
     }
     return EXIT_SUCCESS;
 }

@@ -2,11 +2,11 @@
 #include <semaphore.h>
 #include <stdio.h>
 
-void *read(void *arg);
-void *accu(void *arg);
+void        *read(void *arg);
+void        *accu(void *arg);
 static sem_t sem_one;
 static sem_t sem_two;
-static int num;
+static int   num;
 
 int main(int argc, char const *argv[])
 {
@@ -27,8 +27,8 @@ int main(int argc, char const *argv[])
 
 void *read(void *arg)
 {
-    int i;
-    for (i = 0; i < 5; i++)
+    int index;
+    for (index = 0; index < 5; index++)
     {
         fputs("Input num: ", stdout);
 
@@ -38,10 +38,11 @@ void *read(void *arg)
     }
     return NULL;
 }
+
 void *accu(void *arg)
 {
-    int sum = 0, i;
-    for (i = 0; i < 5; i++)
+    int sum = 0, index;
+    for (index = 0; index < 5; index++)
     {
         sem_wait(&sem_one);
         sum += num;

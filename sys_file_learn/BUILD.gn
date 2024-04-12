@@ -1,7 +1,0 @@
-executable("flock_test") {
-  cflags = ["-g", "-Wall"]
-
-  sources = [
-    "flock_test.c"
-  ]
-}

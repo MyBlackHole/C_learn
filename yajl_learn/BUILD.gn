@@ -1,9 +1,0 @@
-executable("main") {
-  cflags = ["-g", "-Wall"]
-  # sudo apt-get install libyajl-dev
-  libs = ["yajl"]
-  sources = [
-    "main.c",
-  ]
-}
-

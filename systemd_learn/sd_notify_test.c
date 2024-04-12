@@ -2,7 +2,6 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <systemd/sd-daemon.h>
-#include <time.h>
 #include <unistd.h>
 
 #define INTERVAL 1000

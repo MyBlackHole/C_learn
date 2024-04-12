@@ -9,15 +9,15 @@
 #include <time.h>
 #include <unistd.h>
 
-#define SBTERROR_FATAL 7501      // fatal error, IO error etc
-#define SBTERROR_NOTFOUND 7502   // file is not found
-#define SBTERROR_EXIST 7503      // file already exists in catalog
-#define SBTERROR_EOF 7504        // end of file
+#define SBTERROR_FATAL     7501  // fatal error, IO error etc
+#define SBTERROR_NOTFOUND  7502  // file is not found
+#define SBTERROR_EXIST     7503  // file already exists in catalog
+#define SBTERROR_EOF       7504  // end of file
 #define SBTERROR_NOTFOUND2 7090  // no such file
-#define SBTERROR_7505 7505       // could not proxy backup file
-#define SBTERROR_7012 7012       // file is already open
-#define SBTERROR_NOTOPEN 7020    // no file is open
-#define SBTERROR_CLOSE 7023      // error closing backup file
+#define SBTERROR_7505      7505  // could not proxy backup file
+#define SBTERROR_7012      7012  // file is already open
+#define SBTERROR_NOTOPEN   7020  // no file is open
+#define SBTERROR_CLOSE     7023  // error closing backup file
 
 #define LOG(fmt, ...)                                                \
     do                                                               \
@@ -28,13 +28,13 @@
 
 struct sbtinfo
 {
-    int type;
+    int   type;
     void *value;
 };
 
 struct sbtopt
 {
-    int type;
+    int   type;
     void *value;
 };
 
@@ -74,23 +74,23 @@ struct global_data_area
 {
     struct sbtopt options[10];
     struct sbtapi api;
-    int api_version;
-    int mm_version;
-    int context_size;
-    int proxy_limit;
-    int proxy_copy_support;
-    int maxsize;
+    int           api_version;
+    int           mm_version;
+    int           context_size;
+    int           proxy_limit;
+    int           proxy_copy_support;
+    int           maxsize;
 };
 
 struct sbtctx
 {
-    int fd;
-    int error;
-    int block_size;
-    int pid;
-    int tid;
+    int   fd;
+    int   error;
+    int   block_size;
+    int   pid;
+    int   tid;
     char *file;
-    char path[256];
+    char  path[256];
     // Logger
     FILE *fp;
     // Related sbtinfo for backup or restore files
@@ -113,47 +113,47 @@ int sbtremove(void) { return (-1); }
 
 enum
 {
-    SBTOPT_END = 1,
-    SBTOPT_2 = 2,
-    SBTOPT_MAXSIZE = 3,
-    SBTOPT_API_VERSION = 4,
-    SBTOPT_VENDOR = 5,
-    SBTOPT_API = 6,
+    SBTOPT_END          = 1,
+    SBTOPT_2            = 2,
+    SBTOPT_MAXSIZE      = 3,
+    SBTOPT_API_VERSION  = 4,
+    SBTOPT_VENDOR       = 5,
+    SBTOPT_API          = 6,
     SBTOPT_CONTEXT_SIZE = 7,
-    SBTOPT_MM_VERSION = 8,
-    SBTOPT_PROXY_COPY = 9,
-    SBTOPT_PROXY_LIMIT = 10,
+    SBTOPT_MM_VERSION   = 8,
+    SBTOPT_PROXY_COPY   = 9,
+    SBTOPT_PROXY_LIMIT  = 10,
 
-    SBTINFO_NAME = 1,    // (value -> char *)  File name
+    SBTINFO_NAME   = 1,  // (value -> char *)  File name
     SBTINFO_METHOD = 2,  // (value -> int*)    1 - stream, 2 - proxy copy
-    SBTINFO_CTIME = 3,   // (value -> time_t*) File creation date and time
-    SBTINFO_ETIME = 4,   // (value -> time_t*) File expiration date and time
-    SBTINFO_LABEL = 5,   // (value -> char *)  Media ID
+    SBTINFO_CTIME  = 3,  // (value -> time_t*) File creation date and time
+    SBTINFO_ETIME  = 4,  // (value -> time_t*) File expiration date and time
+    SBTINFO_LABEL  = 5,  // (value -> char *)  Media ID
     SBTINFO_SHARE =
         6,  // (value -> int*)    1 - Single user, 2 - Multiple concurrent users
-    SBTINFO_ORDER = 7,     // (value -> int*)    1 - Sequential, 2 - Random
-    SBTINFO_NOTFOUND = 8,  // (value -> NULL)    No such file
-    SBTINFO_COMMENT = 9,   // (value -> char*)   Comment
-    SBTINFO_END = 9999,    // (value -> NULL)    End marker
+    SBTINFO_ORDER    = 7,     // (value -> int*)    1 - Sequential, 2 - Random
+    SBTINFO_NOTFOUND = 8,     // (value -> NULL)    No such file
+    SBTINFO_COMMENT  = 9,     // (value -> char*)   Comment
+    SBTINFO_END      = 9999,  // (value -> NULL)    End marker
 };
 
 #define ROOT "/opt/oracle/data"
 
 int catenate(char *buf, size_t n, const char *dir, const char *file)
 {
-    const char *p = file;
+    const char *char_ref_ref = file;
 
     // Remove leading slash
-    while (*p == '/') ++p;
+    while (*char_ref_ref == '/') ++char_ref_ref;
 
-    return snprintf(buf, n, "%s/%s", dir, p);
+    return snprintf(buf, n, "%s/%s", dir, char_ref_ref);
 }
 
 int make_dir(char *buf, size_t n, const char *dir, const char *file)
 {
-    char *path = NULL;
+    char *path   = NULL;
     char *cursor = NULL;
-    int ret = 0;
+    int   ret    = 0;
 
     if (catenate(buf, n, dir, file) < 0)
     {
@@ -161,7 +161,7 @@ int make_dir(char *buf, size_t n, const char *dir, const char *file)
     }
 
     // mkdir
-    path = strdup(buf);
+    path   = strdup(buf);
     cursor = path + 1;
     while ((cursor = strchr(cursor, '/')) != NULL)
     {
@@ -185,7 +185,7 @@ int make_dir(char *buf, size_t n, const char *dir, const char *file)
 
 int sbtinit2(struct sbtctx *ctx, int flags, const struct sbtinfo *args)
 {
-    char buf[256];
+    char                  buf[256];
     const struct sbtinfo *arg = args;
 
     ctx->pid = getpid();
@@ -216,7 +216,7 @@ int sbtbackup(struct sbtctx *ctx, int flags, const char *filename,
               const struct sbtinfo *info, int block_size, int not_used,
               int duplex)
 {
-    ctx->file = strdup(filename);
+    ctx->file       = strdup(filename);
     ctx->block_size = block_size;
     if (make_dir(ctx->path, sizeof(ctx->path), ROOT, filename) == -1)
     {
@@ -295,25 +295,25 @@ int sbterror(struct sbtctx *ctx, int flags, int *error,
     *error = ctx->error;
     LOG("error = %d\n", *error);
     *error_native = strerror(*error);
-    *error_utf8 = "Error message in utf8";
+    *error_utf8   = "Error message in utf8";
     return (0);
 }
 
 int sbtinfo2(struct sbtctx *ctx, char flags, const char **files,
              struct sbtinfo **output)
 {
-    char path[256];
-    struct stat meta;
-    const char **p = files;
-    const char *file = NULL;
+    char         path[256];
+    struct stat  meta;
+    const char **char_ref_ref = files;
+    const char  *file         = NULL;
     ;
-    int count = 0;
-    int i = 0;
-    int ret = 0;
-    time_t *ts = NULL;
-    int *v = NULL;
+    int     count    = 0;
+    int     index    = 0;
+    int     ret      = 0;
+    time_t *time_ref = NULL;
+    int    *value    = NULL;
 
-    while (*p++) ++count;
+    while (*char_ref_ref++) ++count;
 
     // Allocate n sbtinfo groups,
     // each group starts with SBTINFO_NAME,
@@ -322,57 +322,57 @@ int sbtinfo2(struct sbtctx *ctx, char flags, const char **files,
     ctx->pairs = calloc(count * 9 + 1, sizeof(struct sbtinfo));
     ctx->error = 0;
 
-    p = files;
-    i = 0;
-    while (*p)
+    char_ref_ref = files;
+    index        = 0;
+    while (*char_ref_ref)
     {
-        file = *p++;
+        file = *char_ref_ref++;
         catenate(path, sizeof(path), ROOT, file);
         LOG("%s\n", path);
 
         // Media information for backup file
-        ctx->pairs[i].type = SBTINFO_NAME;
-        ctx->pairs[i].value = strdup(file);
-        ++i;
+        ctx->pairs[index].type  = SBTINFO_NAME;
+        ctx->pairs[index].value = strdup(file);
+        ++index;
 
         if ((ret = stat(path, &meta)) == -1)
         {
             LOG("no such file %s\n", path);
-            ctx->error = SBTERROR_NOTFOUND;
-            ctx->pairs[i].type = SBTINFO_NOTFOUND;
-            ctx->pairs[i].value = NULL;
-            ++i;
+            ctx->error              = SBTERROR_NOTFOUND;
+            ctx->pairs[index].type  = SBTINFO_NOTFOUND;
+            ctx->pairs[index].value = NULL;
+            ++index;
             continue;
         }
 
         // Media sharing mode
-        *(v = (int *)malloc(4)) = 1;
-        ctx->pairs[i].type = SBTINFO_SHARE;
-        ctx->pairs[i].value = v;
-        ++i;
+        *(value = (int *)malloc(4)) = 1;
+        ctx->pairs[index].type      = SBTINFO_SHARE;
+        ctx->pairs[index].value     = value;
+        ++index;
 
         // File ordering mode
-        *(v = (int *)malloc(4)) = 1;
-        ctx->pairs[i].type = SBTINFO_ORDER;
-        ctx->pairs[i].value = v;
-        ++i;
+        *(value = (int *)malloc(4)) = 1;
+        ctx->pairs[index].type      = SBTINFO_ORDER;
+        ctx->pairs[index].value     = value;
+        ++index;
 
         // File creation method, stream
-        *(v = (int *)malloc(4)) = 1;
-        ctx->pairs[i].type = SBTINFO_METHOD;
-        ctx->pairs[i].value = v;
-        ++i;
+        *(value = (int *)malloc(4)) = 1;
+        ctx->pairs[index].type      = SBTINFO_METHOD;
+        ctx->pairs[index].value     = value;
+        ++index;
 
         // Media ID
-        ctx->pairs[i].type = SBTINFO_LABEL;
-        ctx->pairs[i].value = strdup("Media ID");
-        ++i;
+        ctx->pairs[index].type  = SBTINFO_LABEL;
+        ctx->pairs[index].value = strdup("Media ID");
+        ++index;
 
         // File creation date and time
-        *(ts = (time_t *)malloc(sizeof(time_t))) = meta.st_ctime;
-        ctx->pairs[i].type = SBTINFO_CTIME;
-        ctx->pairs[i].value = ts;
-        ++i;
+        *(time_ref = (time_t *)malloc(sizeof(time_t))) = meta.st_ctime;
+        ctx->pairs[index].type                         = SBTINFO_CTIME;
+        ctx->pairs[index].value                        = time_ref;
+        ++index;
 
 #if 0
         // File expiration date and time
@@ -383,15 +383,15 @@ int sbtinfo2(struct sbtctx *ctx, char flags, const char **files,
 #endif
 
         // Comment
-        ctx->pairs[i].type = SBTINFO_COMMENT;
-        ctx->pairs[i].value = strdup("Comment of the file");
-        ++i;
+        ctx->pairs[index].type  = SBTINFO_COMMENT;
+        ctx->pairs[index].value = strdup("Comment of the file");
+        ++index;
     }
 
     // END marker
-    ctx->pairs[i].type = SBTINFO_END;
-    ctx->pairs[i].value = NULL;
-    *output = ctx->pairs;
+    ctx->pairs[index].type  = SBTINFO_END;
+    ctx->pairs[index].value = NULL;
+    *output                 = ctx->pairs;
 
     return (0);
 }
@@ -430,8 +430,8 @@ int sbtwrite2(struct sbtctx *ctx, int flags, void *buf)
 int sbtremove2(struct sbtctx *ctx, int flags, const char **files)
 {
     const char **file = files;
-    char buf[256];
-    int ret;
+    char         buf[256];
+    int          ret;
 
     while (*file)
     {
@@ -447,7 +447,7 @@ int sbtremove2(struct sbtctx *ctx, int flags, const char **files)
 int sbtrestore(struct sbtctx *ctx, int flags, char *filename, int block_size)
 {
     ctx->block_size = block_size;
-    ctx->file = strdup(filename);
+    ctx->file       = strdup(filename);
 
     if (catenate(ctx->path, sizeof(ctx->path), ROOT, filename) == -1)
     {
@@ -467,48 +467,48 @@ int sbtrestore(struct sbtctx *ctx, int flags, char *filename, int block_size)
 int sbtinit(struct sbtdata *data, const struct sbtinfo *input,
             struct sbtopt **output)
 {
-    int i = 0;
-    int ret = 0;
+    int index = 0;
+    int ret   = 0;
 
     data->status = 0;
-    data->error = 0;
+    data->error  = 0;
 
     // Setup SBT version 2 api
-    global.api.sbtbackup = sbtbackup;
-    global.api.sbtclose2 = sbtclose2;
+    global.api.sbtbackup  = sbtbackup;
+    global.api.sbtclose2  = sbtclose2;
     global.api.sbtcommand = sbtcommand;
-    global.api.sbtend = sbtend;
-    global.api.sbterror = sbterror;
-    global.api.sbtinfo2 = sbtinfo2;
-    global.api.sbtinit2 = sbtinit2;
-    global.api.sbtread2 = sbtread2;
+    global.api.sbtend     = sbtend;
+    global.api.sbterror   = sbterror;
+    global.api.sbtinfo2   = sbtinfo2;
+    global.api.sbtinit2   = sbtinit2;
+    global.api.sbtread2   = sbtread2;
     global.api.sbtremove2 = sbtremove2;
     global.api.sbtrestore = sbtrestore;
-    global.api.sbtwrite2 = sbtwrite2;
+    global.api.sbtwrite2  = sbtwrite2;
 
-    global.api_version = 0x0200;
-    global.options[i].type = SBTOPT_API_VERSION;
-    global.options[i].value = &global.api_version;
-    ++i;
+    global.api_version          = 0x0200;
+    global.options[index].type  = SBTOPT_API_VERSION;
+    global.options[index].value = &global.api_version;
+    ++index;
 
-    global.options[i].type = SBTOPT_VENDOR;
-    global.options[i].value = "SBT by Dingding Technology";
-    ++i;
+    global.options[index].type  = SBTOPT_VENDOR;
+    global.options[index].value = "SBT by Dingding Technology";
+    ++index;
 
-    global.options[i].type = SBTOPT_API;
-    global.options[i].value = &global.api;
-    ++i;
+    global.options[index].type  = SBTOPT_API;
+    global.options[index].value = &global.api;
+    ++index;
 
-    global.context_size = sizeof(struct sbtctx);
-    global.options[i].type = SBTOPT_CONTEXT_SIZE;
-    global.options[i].value = &global.context_size;
-    ++i;
+    global.context_size         = sizeof(struct sbtctx);
+    global.options[index].type  = SBTOPT_CONTEXT_SIZE;
+    global.options[index].value = &global.context_size;
+    ++index;
 
     // Media manager version
-    global.mm_version = 0x01020304;
-    global.options[i].type = SBTOPT_MM_VERSION;
-    global.options[i].value = &global.mm_version;
-    ++i;
+    global.mm_version           = 0x01020304;
+    global.options[index].type  = SBTOPT_MM_VERSION;
+    global.options[index].value = &global.mm_version;
+    ++index;
 
 #if 0
     // Maximum backup file size
@@ -530,9 +530,9 @@ int sbtinit(struct sbtdata *data, const struct sbtinfo *input,
 #endif
 
     // End
-    global.options[i].type = SBTOPT_END;
-    global.options[i].value = NULL;
-    ++i;
+    global.options[index].type  = SBTOPT_END;
+    global.options[index].value = NULL;
+    ++index;
 
     *output = global.options;
 

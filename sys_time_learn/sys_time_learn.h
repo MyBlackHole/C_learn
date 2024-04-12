@@ -3,7 +3,6 @@
 
 #include "../lib/demo.h"
 DEMO_MAIN_ENV_DECL(timeval);
-DEMO_MAIN_ENV_DECL(timer);
 DEMO_MAIN_ENV_DECL(timer1);
 DEMO_MAIN_ENV_DECL(time);
 DEMO_MAIN_ENV_DECL(localtime);

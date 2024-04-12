@@ -1,9 +1,0 @@
-executable("main") {
-  cflags = ["-g", "-Wall"]
-
-  sources = [ 
-    "main.c"
-  ]
-}
-
-

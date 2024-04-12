@@ -1,1 +1,0 @@
-sem_wait1_test.c

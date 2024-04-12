@@ -1,9 +1,6 @@
 local dir_path = path.relative(os.curdir(), os.projectdir())
 
-target(dir_path, function()
+target(dir_path)
     set_kind("binary")
-    for _, file_path in ipairs(os.files(os.curdir() .. "/*.c")) do
-        add_files(file_path)
-        add_links("yajl")
-    end
-end)
+    add_files("*.c")
+    add_links("yajl")
