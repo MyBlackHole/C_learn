@@ -3,5 +3,6 @@
 
 #include "../lib/demo.h"
 DEMO_MAIN_DECL(lz4);
+DEMO_MAIN_DECL(LZ4_compress_HC);
 
 #endif

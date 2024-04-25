@@ -6,6 +6,7 @@
 
 static demo_t demos[] = {
     DEMO_MAIN_ITEM(lz4),
+    DEMO_MAIN_ITEM(LZ4_compress_HC),
 };
 
 int main(int argc, char** argv)
