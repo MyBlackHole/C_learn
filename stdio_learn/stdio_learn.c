@@ -17,6 +17,7 @@ static demo_t demos[] = {
     DEMO_MAIN_ITEM(putchar),
     DEMO_MAIN_ITEM(putc),
     DEMO_MAIN_ITEM(print_time),
+    DEMO_MAIN_ITEM(print_test),
     DEMO_MAIN_ITEM(hexTostr),
     DEMO_MAIN_ITEM(getline),
     DEMO_MAIN_ITEM(getchar),

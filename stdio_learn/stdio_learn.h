@@ -14,6 +14,7 @@ DEMO_MAIN_DECL(scanf);
 DEMO_MAIN_DECL(putchar);
 DEMO_MAIN_DECL(putc);
 DEMO_MAIN_DECL(print_time);
+DEMO_MAIN_DECL(print_test);
 DEMO_MAIN_DECL(hexTostr);
 DEMO_MAIN_DECL(getline);
 DEMO_MAIN_DECL(getchar);

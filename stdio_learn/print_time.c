@@ -5,7 +5,6 @@
 #include <time.h>
 #include <unistd.h>
 
-
 #define NUM 60
 
 enum
@@ -16,10 +15,10 @@ enum
 
 int demo_print_time_main(int argc, char *argv[])
 {
-    struct tm tm_tmp;
-    time_t t_tmp;
-    char data_time[NUM];
-    int ret;
+    struct tm       tm_tmp;
+    time_t          t_tmp;
+    char            data_time[NUM];
+    int             ret;
     struct timespec remaining;
     struct timespec request = {SECS_TO_SLEEP, NSEC_TO_SLEEP};
 
@@ -42,6 +41,5 @@ int demo_print_time_main(int argc, char *argv[])
         // // 刷新系统缓冲区
         // sync();
     }
-
     return EXIT_SUCCESS;
 }
