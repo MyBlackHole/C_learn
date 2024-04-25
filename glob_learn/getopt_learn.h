@@ -3,5 +3,6 @@
 
 #include "../lib/demo.h"
 DEMO_MAIN_DECL(glob);
+DEMO_MAIN_DECL(glob1);
 
 #endif

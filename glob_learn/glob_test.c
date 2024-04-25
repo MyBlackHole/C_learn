@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-int errfunc(const char *errpath, int errno)
+int err_func(const char *errpath, int errno)
 {
     puts(errpath);
     fprintf(stderr, "ERROR MSG%s\n", strerror(errno));
@@ -26,7 +26,7 @@ int demo_glob_main(int argc, char *argv[])
     }
 
     // err = glob(argv[1], 0, NULL, &globres);
-    err = glob(argv[1], GLOB_TILDE, errfunc, &globres);
+    err = glob(argv[1], GLOB_TILDE, err_func, &globres);
     if (err)
     {
         fprintf(stderr, "ERROR %d\n", err);

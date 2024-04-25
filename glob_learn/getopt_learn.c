@@ -6,6 +6,7 @@
 
 static demo_t demos[] = {
     DEMO_MAIN_ITEM(glob),
+    DEMO_MAIN_ITEM(glob1),
 };
 
 int main(int argc, char** argv)
