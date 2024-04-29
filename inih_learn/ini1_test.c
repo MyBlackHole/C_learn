@@ -18,7 +18,7 @@
 const char *argp_program_version = "argp_parse_test 1";
 const char *argp_program_bug_address = "1358244533@qq.com";
 
-const char *DEFAULT_PATH = "test.ini";
+const char *DEFAULT_PATH = "/run/media/black/Data/Documents/C/inih_learn/test.ini";
 
 static char doc[] =
     "Argp example #3 -- a program with options and arguments using argp";
@@ -83,7 +83,7 @@ static int handler(void *user, const char *section, const char *name,
     return 1;
 }
 
-static bool is_file(char *fname)
+bool is_file(char *fname)
 {
     struct stat statres;
     if (stat(fname, &statres) < 0)
@@ -99,7 +99,7 @@ static bool is_file(char *fname)
     return false;
 }
 
-int main(int argc, char *argv[])
+int demo_ini1_main(int argc, char *argv[])
 {
     struct arguments arguments;
 
@@ -112,7 +112,7 @@ int main(int argc, char *argv[])
     if (!is_file(arguments.config_file))
     {
         fprintf(stderr, "%s error\n", arguments.config_file);
-        exit(-1);
+        exit(EXIT_FAILURE);
     }
 
     configuration config;

@@ -16,7 +16,7 @@ int main(int argc, char* argv[])
 
     // 这是官网的例子
     char *dirc, *basec, *bname, *dname;
-    char* path = "/etc/passwd";
+    char* path = "/etc/passwd/";
 
     dirc  = strdup(path);
     basec = strdup(path);

@@ -10,6 +10,7 @@ int demo_localtime2_main(int argc, char *argv[])
     char       timestr[TIMESTRSIZE];
 
     stamp  = time(NULL);
+    printf("%ld\n", stamp);
     tm_tmp = localtime(&stamp);
     strftime(timestr, TIMESTRSIZE, "NOW:%Y-%m-%d", tm_tmp);
     puts(timestr);
@@ -22,3 +23,5 @@ int demo_localtime2_main(int argc, char *argv[])
 
     return 0;
 }
+
+// xmake run sys_time_learn localtime2
