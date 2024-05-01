@@ -5,23 +5,19 @@
 #include <string.h>
 
 static demo_t demos[] = {
-    DEMO_MAIN_ITEM(FUNCTION),
-    DEMO_MAIN_ITEM(attribute),
-    DEMO_MAIN_ITEM(alias),
-    DEMO_MAIN_ITEM(offsetof),
-    DEMO_MAIN_ITEM(builtin_clz),
-    DEMO_MAIN_ITEM(weak_alias),
-    DEMO_MAIN_ITEM(attribute1),
-
+    DEMO_MAIN_ITEM(FUNCTION),    DEMO_MAIN_ITEM(attribute),
+    DEMO_MAIN_ITEM(alias),       DEMO_MAIN_ITEM(offsetof),
+    DEMO_MAIN_ITEM(builtin_clz), DEMO_MAIN_ITEM(weak_alias),
+    DEMO_MAIN_ITEM(attribute1),  DEMO_MAIN_ITEM(destructor),
 };
 
 int main(int argc, char** argv)
 {
     printf("start main\n");
     // find the main func from the first argument
-    int ret_ok = 0;
-    char const* name = NULL;
-    size_t num = arrayn(demos);
+    int          ret_ok = 0;
+    char const * name   = NULL;
+    size_t       num    = arrayn(demos);
     if (argc > 1 && argv[1])
     {
         size_t index = 0;
