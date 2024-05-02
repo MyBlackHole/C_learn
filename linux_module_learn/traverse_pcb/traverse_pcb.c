@@ -10,10 +10,10 @@
 // 内核模块初始化函数
 static int __init traverse_pcb(void)
 {
-    struct task_struct *task;  // 定义指向task_struct类型的指针
-    struct task_struct *pcb;   // 定义指向task_struct类型的指针
-    struct list_head *pos;     // 定义双向链表指针
-    int count = 0;             // 定义统计系统进程个数的变量
+    struct task_struct *task;       // 定义指向task_struct类型的指针
+    struct task_struct *pcb;        // 定义指向task_struct类型的指针
+    struct list_head   *pos;        // 定义双向链表指针
+    int                 count = 0;  // 定义统计系统进程个数的变量
     printk("Printf process'message begin:\n");  // 提示模块开始运行
     task = &init_task;                          // 指向0号进程的PCB
 
@@ -52,6 +52,7 @@ static int __init traverse_pcb(void)
 
 // 内核模块退出函数
 static void __exit end_pcb(void) { printk("traverse pcb is end."); }
+
 module_init(traverse_pcb);  // 入口
 module_exit(end_pcb);       // 出口
 MODULE_LICENSE("GPL");      // 许可证

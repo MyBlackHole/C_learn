@@ -6,7 +6,7 @@
 
 struct my_data
 {
-    int index;
+    int  index;
     char name[20];
 };
 typedef struct my_data my_data_t;
@@ -16,7 +16,7 @@ DEFINE_XARRAY(my_xarray);
 static void insert_data(int index, const char* name)
 {
     my_data_t* data;
-    data = kmalloc(sizeof *data, GFP_KERNEL);
+    data        = kmalloc(sizeof *data, GFP_KERNEL);
     data->index = index;
     strncpy(data->name, name, sizeof(data->name));
 
@@ -33,7 +33,7 @@ static void remove_data(int index)
 static my_data_t* get_data(int index) { return xa_load(&my_xarray, index); }
 static int __init xarray_example_init(void)
 {
-    my_data_t* data;
+    my_data_t*    data;
     unsigned long index;
 
     pr_info("xarray_example: Initializing XArray example module\n");
@@ -64,7 +64,7 @@ static int __init xarray_example_init(void)
 
 static void __exit xarray_example_exit(void)
 {
-    my_data_t* data;
+    my_data_t*    data;
     unsigned long index;
 
     pr_info("xarray_example: Cleaning up XArray example module\n");

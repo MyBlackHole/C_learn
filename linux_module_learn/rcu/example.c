@@ -32,12 +32,12 @@
  */
 struct book
 {
-    int id;
-    char name[64];
-    char author[64];
-    int borrow;
+    int              id;
+    char             name[64];
+    char             author[64];
+    int              borrow;
     struct list_head node;
-    struct rcu_head rcu;
+    struct rcu_head  rcu;
 };
 
 static LIST_HEAD(books);
@@ -90,7 +90,7 @@ static void add_book(int id, const char *name, const char *author)
 
 static int borrow_book(int id, int async)
 {
-    struct book *b = NULL;
+    struct book *b     = NULL;
     struct book *new_b = NULL;
     struct book *old_b = NULL;
 
@@ -180,7 +180,7 @@ static int is_borrowed_book(int id)
 
 static int return_book(int id, int async)
 {
-    struct book *b = NULL;
+    struct book *b     = NULL;
     struct book *new_b = NULL;
     struct book *old_b = NULL;
 
