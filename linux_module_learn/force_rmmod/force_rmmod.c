@@ -8,7 +8,6 @@
 #include <linux/kallsyms.h>
 #include <linux/sched.h>
 
-
 /*
  *  加载模块的时候, 传递字符串到模块的一个全局字符数组里面
  *
@@ -22,10 +21,10 @@
  * */
 static char *modname = NULL;
 module_param(modname, charp, 0644);
-MODULE_PARM_DESC(modname, "The name of module you want do clean or delete...\n");
+MODULE_PARM_DESC(modname,
+                 "The name of module you want do clean or delete...\n");
 
-
-//#define CONFIG_REPLACE_EXIT_FUNCTION
+// #define CONFIG_REPLACE_EXIT_FUNCTION
 
 #ifdef CONFIG_REPLACE_EXIT_FUNCTION
 //  此处为外部注册的待卸载模块的exit函数
@@ -38,32 +37,33 @@ MODULE_PARM_DESC(modname, "The name of module you want do clean or delete...\n")
     /////////////////////
 
     printk("module %s exit SUCCESS...\n", modname);
-//    platform_device_unregister((struct platform_device*)(*(int*)symbol_addr));
+    //    platform_device_unregister((struct
+    //    platform_device*)(*(int*)symbol_addr));
 }
 #endif  //  CONFIG_REPLACE_EXIT_FUNCTION
 
 static struct module *find_insert_module(const char *name)
 {
-     struct module *list_mod = NULL;
-     /* traverse the module list and find corresponding module*/
-     list_for_each_entry(list_mod, THIS_MODULE->list.prev, list)
-     {
-         if (strcmp(list_mod->name, name) == 0)
-         {
+    struct module *list_mod = NULL;
+    /* traverse the module list and find corresponding module*/
+    list_for_each_entry(list_mod, THIS_MODULE->list.prev, list)
+    {
+        if (strcmp(list_mod->name, name) == 0)
+        {
             return list_mod;
-         }
-     }
-     printk("[%s] module %s not found\n", THIS_MODULE->name, name);
-    //printk("[%s] module %s not found\n", THIS_MODULE->name, name);
-     return NULL;
- }
+        }
+    }
+    printk("[%s] module %s not found\n", THIS_MODULE->name, name);
+    // printk("[%s] module %s not found\n", THIS_MODULE->name, name);
+    return NULL;
+}
 
 static int force_cleanup_module(char *del_mod_name)
 {
-    struct module   *mod = NULL, *relate = NULL;
-    int              cpu;
+    struct module *mod = NULL, *relate = NULL;
+    int            cpu;
 #ifdef CONFIG_REPLACE_EXIT_FUNCTION
-    void            *origin_exit_addr = NULL;
+    void *origin_exit_addr = NULL;
 #endif
 
     /////////////////////
@@ -90,15 +90,15 @@ static int force_cleanup_module(char *del_mod_name)
 #endif
 
     //  方法二, 通过find_mod函数查找
-    if((mod = find_insert_module(del_mod_name)) == NULL)
+    if ((mod = find_insert_module(del_mod_name)) == NULL)
     {
         printk("[%s] module %s not found\n", THIS_MODULE->name, del_mod_name);
         return -1;
     }
     else
     {
-        printk("[before] name:%s, state:%d, refcnt:%u\n",
-                mod->name ,mod->state, module_refcount(mod));
+        printk("[before] name:%s, state:%d, refcnt:%u\n", mod->name, mod->state,
+               module_refcount(mod));
     }
 
     /////////////////////
@@ -127,10 +127,10 @@ static int force_cleanup_module(char *del_mod_name)
     //  清除驱动的引用计数
     for_each_possible_cpu(cpu)
     {
-        local_set((local_t*)per_cpu_ptr(&(mod->refcnt), cpu), 0);
-        //local_set(__module_ref_addr(mod, cpu), 0);
-        //per_cpu_ptr(mod->refptr, cpu)->decs;
-        //module_put(mod);
+        local_set((local_t *)per_cpu_ptr(&(mod->refcnt), cpu), 0);
+        // local_set(__module_ref_addr(mod, cpu), 0);
+        // per_cpu_ptr(mod->refptr, cpu)->decs;
+        // module_put(mod);
     }
     atomic_set(&mod->refcnt, 1);
 
@@ -145,29 +145,30 @@ static int force_cleanup_module(char *del_mod_name)
     }
     else
     {
-        printk("module %s exit function address %p\n", mod->name, origin_exit_addr);
+        printk("module %s exit function address %p\n", mod->name,
+               origin_exit_addr);
     }
 
     mod->exit = force_replace_exit_module_function;
-    printk("replace module %s exit function address (%p -=> %p)\n", mod->name, origin_exit_addr, mod->exit);
+    printk("replace module %s exit function address (%p -=> %p)\n", mod->name,
+           origin_exit_addr, mod->exit);
 #endif
 
-    printk("[after] name:%s, state:%d, refcnt:%u\n",
-            mod->name, mod->state, module_refcount(mod));
+    printk("[after] name:%s, state:%d, refcnt:%u\n", mod->name, mod->state,
+           module_refcount(mod));
 
     return 0;
 }
-
 
 static int __init force_rmmod_init(void)
 {
     return force_cleanup_module(modname);
 }
 
-
 static void __exit force_rmmod_exit(void)
 {
-    printk("=======name : %s, state : %d EXIT=======\n", THIS_MODULE->name, THIS_MODULE->state);
+    printk("=======name : %s, state : %d EXIT=======\n", THIS_MODULE->name,
+           THIS_MODULE->state);
 }
 
 module_init(force_rmmod_init);

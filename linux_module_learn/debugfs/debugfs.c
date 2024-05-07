@@ -6,7 +6,7 @@
 #include <linux/types.h>
 #include <linux/uaccess.h>
 
-static char zen_buf[512] = "hello\n";
+static char           zen_buf[512] = "hello\n";
 static struct dentry *zen_dir;
 
 static int zen_open(struct inode *inode, struct file *filp)
@@ -67,15 +67,15 @@ out:
 
 struct file_operations my_fops = {
     .owner = THIS_MODULE,
-    .read = zen_read,
+    .read  = zen_read,
     .write = zen_write,
-    .open = zen_open,
+    .open  = zen_open,
 };
 
 static int __init debugfs_init(void)
 {
     static struct dentry *sub_zen_dir;
-    struct dentry *filent;
+    struct dentry        *filent;
     printk("INIT MODULE\n");
     zen_dir = debugfs_create_dir("zen_dir4", NULL);
     if (!zen_dir)

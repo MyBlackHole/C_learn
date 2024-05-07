@@ -31,8 +31,9 @@ __section(".gnu.linkonce.this_module") = {
 MODULE_INFO(retpoline, "Y");
 #endif
 
+KSYMTAB_DATA(global_var, "", "");
 
 MODULE_INFO(depends, "");
 
 
-MODULE_INFO(srcversion, "5C7DA0E2CBDB32A51E2A3D0");
+MODULE_INFO(srcversion, "D8DD654B82316B88F7AB3C0");

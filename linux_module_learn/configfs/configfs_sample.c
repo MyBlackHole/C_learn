@@ -31,8 +31,8 @@
 struct childless
 {
     struct configfs_subsystem subsys;
-    int showme;
-    int storeme;
+    int                       showme;
+    int                       storeme;
 };
 
 static inline struct childless *to_childless(struct config_item *item)
@@ -44,7 +44,7 @@ static inline struct childless *to_childless(struct config_item *item)
 static ssize_t childless_showme_show(struct config_item *item, char *page)
 {
     struct childless *childless = to_childless(item);
-    ssize_t pos;
+    ssize_t           pos;
 
     pos = sprintf(page, "%d\n", childless->showme);
     childless->showme++;
@@ -61,7 +61,7 @@ static ssize_t childless_storeme_store(struct config_item *item,
                                        const char *page, size_t count)
 {
     struct childless *childless = to_childless(item);
-    int ret;
+    int               ret;
 
     ret = kstrtoint(page, 10, &childless->storeme);
     if (ret)
@@ -106,7 +106,7 @@ static struct childless childless_subsys = {
                     .cg_item =
                         {
                             .ci_namebuf = "01-childless",
-                            .ci_type = &childless_type,
+                            .ci_type    = &childless_type,
                         },
                 },
         },
@@ -126,7 +126,7 @@ static struct childless childless_subsys = {
 struct simple_child
 {
     struct config_item item;
-    int storeme;
+    int                storeme;
 };
 
 static inline struct simple_child *to_simple_child(struct config_item *item)
@@ -143,7 +143,7 @@ static ssize_t simple_child_storeme_store(struct config_item *item,
                                           const char *page, size_t count)
 {
     struct simple_child *simple_child = to_simple_child(item);
-    int ret;
+    int                  ret;
 
     ret = kstrtoint(page, 10, &simple_child->storeme);
     if (ret)
@@ -170,8 +170,8 @@ static struct configfs_item_operations simple_child_item_ops = {
 
 static const struct config_item_type simple_child_type = {
     .ct_item_ops = &simple_child_item_ops,
-    .ct_attrs = simple_child_attrs,
-    .ct_owner = THIS_MODULE,
+    .ct_attrs    = simple_child_attrs,
+    .ct_owner    = THIS_MODULE,
 };
 
 struct simple_children
@@ -186,7 +186,7 @@ static inline struct simple_children *to_simple_children(
 }
 
 static struct config_item *simple_children_make_item(struct config_group *group,
-                                                     const char *name)
+                                                     const char          *name)
 {
     struct simple_child *simple_child;
 
@@ -200,7 +200,7 @@ static struct config_item *simple_children_make_item(struct config_group *group,
 }
 
 static ssize_t simple_children_description_show(struct config_item *item,
-                                                char *page)
+                                                char               *page)
 {
     return sprintf(
         page,
@@ -235,10 +235,10 @@ static struct configfs_group_operations simple_children_group_ops = {
 };
 
 static const struct config_item_type simple_children_type = {
-    .ct_item_ops = &simple_children_item_ops,
+    .ct_item_ops  = &simple_children_item_ops,
     .ct_group_ops = &simple_children_group_ops,
-    .ct_attrs = simple_children_attrs,
-    .ct_owner = THIS_MODULE,
+    .ct_attrs     = simple_children_attrs,
+    .ct_owner     = THIS_MODULE,
 };
 
 static struct configfs_subsystem simple_children_subsys = {
@@ -247,7 +247,7 @@ static struct configfs_subsystem simple_children_subsys = {
             .cg_item =
                 {
                     .ci_namebuf = "02-simple-children",
-                    .ci_type = &simple_children_type,
+                    .ci_type    = &simple_children_type,
                 },
         },
 };
@@ -280,7 +280,7 @@ static struct config_group *group_children_make_group(
 }
 
 static ssize_t group_children_description_show(struct config_item *item,
-                                               char *page)
+                                               char               *page)
 {
     return sprintf(
         page,
@@ -307,8 +307,8 @@ static struct configfs_group_operations group_children_group_ops = {
 
 static const struct config_item_type group_children_type = {
     .ct_group_ops = &group_children_group_ops,
-    .ct_attrs = group_children_attrs,
-    .ct_owner = THIS_MODULE,
+    .ct_attrs     = group_children_attrs,
+    .ct_owner     = THIS_MODULE,
 };
 
 static struct configfs_subsystem group_children_subsys = {
@@ -317,7 +317,7 @@ static struct configfs_subsystem group_children_subsys = {
             .cg_item =
                 {
                     .ci_namebuf = "03-group-children",
-                    .ci_type = &group_children_type,
+                    .ci_type    = &group_children_type,
                 },
         },
 };
@@ -341,7 +341,7 @@ static struct configfs_subsystem *example_subsys[] = {
 static int __init configfs_example_init(void)
 {
     struct configfs_subsystem *subsys;
-    int ret, i;
+    int                        ret, i;
 
     for (i = 0; example_subsys[i]; i++)
     {
