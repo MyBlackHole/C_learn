@@ -11,7 +11,7 @@ void test1()
     printf("sizeof A=%ld\n", sizeof(a_tmp));
     printf("sizeof B=%ld\n", sizeof(b_tmp));
 
-    int(*pa_tmp) = a_tmp;
+    int(*pa_tmp)     = a_tmp;
     int(*pb_tmp)[10] = b_tmp;
     (void)pa_tmp;
     (void)pb_tmp;

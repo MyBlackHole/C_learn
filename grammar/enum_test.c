@@ -3,9 +3,9 @@
 
 enum
 {
-    OPTION_VERSION = 'v',
+    OPTION_VERSION     = 'v',
     OPTION_VERSION_CAP = 'V',
-    OPTION_DEBUG = 1000,
+    OPTION_DEBUG       = 1000,
     OPTION_SYSTEMD_CGROUP,
     OPTION_CGROUP_MANAGER,
     OPTION_LOG,
@@ -20,6 +20,5 @@ int demo_enum_main(void)
     return EXIT_SUCCESS;
 }
 
-// out: 
+// out:
 // 1002
-

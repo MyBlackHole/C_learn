@@ -37,7 +37,8 @@ int func9()
     ttt.b = 9;
     printf("%p\n", &tt_t);
     printf("%p\n", &tt_t.b);
-    unsigned long int count = (unsigned long int)&tt_t.b - (unsigned long int)&tt_t;
+    unsigned long int count =
+        (unsigned long int)&tt_t.b - (unsigned long int)&tt_t;
     printf("%lu\n", count);
     printf("%p\n", &ttt);
     printf("%p\n", &ttt.b);
@@ -162,9 +163,9 @@ void func13()
 
 void func14()
 {
-    char c_1;
+    char  c_1;
     char *str = "abcd";
-    c_1 = *str++;
+    c_1       = *str++;
     printf("%c\n", c_1);
     printf("%c\n", *str);
 }
@@ -173,17 +174,17 @@ void func16() { printf("%ld\n", sizeof(double)); }
 
 void func17()
 {
-    int a_1;
+    int    a_1;
     double x_1 = 1.1;
     double y_1 = 3.2;
-    a_1 = x_1 + y_1;
+    a_1        = x_1 + y_1;
     printf("%d\n", a_1);
 }
 
 void func18()
 {
     int test = 1;
-    int z_1 = 1;
+    int z_1  = 1;
     printf("%d\n", (++test + z_1++));
 }
 

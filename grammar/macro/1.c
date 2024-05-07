@@ -10,7 +10,7 @@ struct Test
 
 int main()
 {
-    struct Test test = {};
+    struct Test  test = {};
     struct Test *p;
     p = &test;
     (void)p;

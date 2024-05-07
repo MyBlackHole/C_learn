@@ -1,6 +1,6 @@
 /*
-* 布尔类型测试
-*/
+ * 布尔类型测试
+ */
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>

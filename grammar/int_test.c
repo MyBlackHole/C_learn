@@ -1,6 +1,5 @@
 #include <stdio.h>
 
-
 int demo_int_main(int argc, char *argv[])
 {
     int flag1 = 0;

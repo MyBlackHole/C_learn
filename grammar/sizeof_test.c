@@ -6,8 +6,8 @@
 
 int demo_sizeof_main(int argc, char *argv[])
 {
-    char *str = "1234567891000";
-    int *test = malloc(NUM);
+    char *str  = "1234567891000";
+    int  *test = malloc(NUM);
     // 无法获取 malloc 空间大小
     //
     // 此是获取一个 int 大小

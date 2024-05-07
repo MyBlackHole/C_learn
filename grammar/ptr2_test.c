@@ -1,6 +1,6 @@
 /*
-* 指针测试
-*/
+ * 指针测试
+ */
 #include <stdio.h>
 
 int demo_ptr2_main(void)

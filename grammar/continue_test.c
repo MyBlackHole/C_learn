@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 typedef struct
 {
@@ -10,7 +11,7 @@ typedef struct
 #define crBegin(state) \
     switch (state)     \
     {                  \
-    case 0:
+        case 0:
 
 #define crReturn(state, ret) \
     (state) = __LINE__;      \
@@ -32,17 +33,18 @@ int cb(task *t)
         }
     }
     crEnd();
+    return EXIT_SUCCESS;
 }
 
 int demo_continue_main()
 {
     task t;
-    int i;
+    int  i;
 
     t.state = 0;
     for (i = 0; i < 100; i++)
     {
         printf("%d ", cb(&t));
     }
-    return 0;
+    return EXIT_SUCCESS;
 }

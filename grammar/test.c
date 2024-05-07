@@ -2,8 +2,8 @@
 #include "stdio.h"
 #include "string.h"
 
-#define sum(a, b) ({ a + b + 1; })
-#define str(a, b) a.b
+#define sum(a, b)  ({ a + b + 1; })
+#define str(a, b)  a.b
 #define str1(a, b) a->b
 
 typedef struct s1
@@ -41,7 +41,7 @@ void test_1()
 {
     char str1[3];
     char str2[3];
-    int ret = 0;
+    int  ret = 0;
 
     strcpy(str1, "a");
     strcpy(str2, "A");
@@ -58,14 +58,14 @@ void test_2() { printf("%d", sum(1, 2)); }
 
 void test_3()
 {
-    int a_1 = 1;
+    int         a_1 = 1;
     typeof(a_1) b_1 = 2;
     printf("%d", b_1);
 }
 
 void test4()
 {
-    s2 a_1 = {1, 2};
+    s2           a_1 = {1, 2};
     typeof(s2 *) b_1 = &a_1;
     printf("%d\n", str(a_1, b));
     printf("%d\n", str1(b_1, b));
@@ -73,9 +73,9 @@ void test4()
 
 void test5()
 {
-    int a_1[5] = {1, 2, 3, 4};
-    int *b_1 = a_1;
-    int **c__1 = &b_1;
+    int   a_1[5] = {1, 2, 3, 4};
+    int  *b_1    = a_1;
+    int **c__1   = &b_1;
     printf("%d", *c__1[0]);
 }
 

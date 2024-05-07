@@ -6,16 +6,16 @@
 
 int demo_ptr3_main(int argc, char *argv[])
 {
-    int i_1 = 2;
-    int j_1 = 1;
-    int *p_1 = malloc(sizeof(int) * 2);
-    *p_1 = i_1;
+    int  i_1   = 2;
+    int  j_1   = 1;
+    int *p_1   = malloc(sizeof(int) * 2);
+    *p_1       = i_1;
     *(p_1 + 1) = j_1;
-    int *p_2 = malloc(sizeof(int) * 2);
-    *p_2 = i_1;
+    int *p_2   = malloc(sizeof(int) * 2);
+    *p_2       = i_1;
     *(p_2 + 1) = j_1;
-    int **pp1 = malloc(sizeof(int *) * 2);
-    *pp1 = p_1;
+    int **pp1  = malloc(sizeof(int *) * 2);
+    *pp1       = p_1;
     *(pp1 + 1) = p_2;
     printf("i = %d\n", *p_1);
     printf("j = %d\n", *(p_1 + 1));

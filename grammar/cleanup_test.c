@@ -18,6 +18,6 @@ int demo_cleanup_main(int argc, char **argv)
     return 0;
 }
 
-// out: 
+// out:
 // current str : hello world
 // final str : hello world

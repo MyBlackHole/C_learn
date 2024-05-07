@@ -2,13 +2,9 @@
 #include <stdlib.h>
 
 #if 0
-#define MAX(i, j) ((i) > (j) ? (i) : (j))
-
+    #define MAX(i, j) ((i) > (j) ? (i) : (j))
 #else
-#define MAX(i, j)              \
-    ({                         \
-        (i) > (j) ? (i) : (j); \
-    })
+    #define MAX(i, j) ({ (i) > (j) ? (i) : (j); })
 int max(int a__, int b__) { return a__ > b__ ? a__ : b__; }
 #endif
 

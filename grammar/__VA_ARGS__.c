@@ -1,7 +1,7 @@
 /*
-* 日志
-* 参数测试
-*/
+ * 日志
+ * 参数测试
+ */
 #include <stdio.h>
 
 #define Logf(SERVER_ID, FORMAT, ...) \

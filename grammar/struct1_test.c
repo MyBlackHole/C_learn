@@ -15,7 +15,7 @@ struct Line
 int demo_struct1_main()
 {
     struct Line line;
-    int length = 100;
+    int         length = 100;
 
     printf("%ld\n", sizeof(line));
 
