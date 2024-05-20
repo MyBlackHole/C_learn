@@ -7,45 +7,41 @@
 #include <linux/uaccess.h>
 
 #define DEVICE_NAME "cdev_test"
-#define CLASS_NAME "my_cdev"
-#define TRUE 1
-#define FALSE 0
+#define CLASS_NAME  "my_cdev"
+#define TRUE        1
+#define FALSE       0
 
-MODULE_LICENSE("GPL");
-MODULE_AUTHOR("Lakshya A Agrawal");
-MODULE_DESCRIPTION("A simple device driver for XOR decryption");
-
-static int majorNumber;
-static struct class *decdevClass = NULL;
-static struct device *decdev = NULL;
+static int            majorNumber;
+static struct class  *decdevClass = NULL;
+static struct device *decdev      = NULL;
 
 char *Message;
-int isKeyRead = FALSE;
-int Length;
+int   isKeyRead = FALSE;
+int   Length;
 
-static int dev_open(struct inode *, struct file *);
-static int dev_release(struct inode *, struct file *);
+static int     dev_open(struct inode *, struct file *);
+static int     dev_release(struct inode *, struct file *);
 static ssize_t dev_read(struct file *, char *, size_t, loff_t *);
 static ssize_t dev_write(struct file *, const char *, size_t, loff_t *);
 
 static struct file_operations fops = {
-    .open = dev_open,
-    .read = dev_read,
-    .write = dev_write,
+    .open    = dev_open,
+    .read    = dev_read,
+    .write   = dev_write,
     .release = dev_release,
 };
 
 static int __init decdev_init(void)
 {
     majorNumber = register_chrdev(0, DEVICE_NAME, &fops);
-    Message = kmalloc(200, GFP_KERNEL);
-    Length = 0;
+    Message     = kmalloc(200, GFP_KERNEL);
+    Length      = 0;
     if (majorNumber < 0)
     {
         return majorNumber;
     }
     // 创建设备类
-    decdevClass = class_create(THIS_MODULE, CLASS_NAME);
+    decdevClass = class_create(CLASS_NAME);
     if (IS_ERR(decdevClass))
     {
         unregister_chrdev(majorNumber, DEVICE_NAME);
@@ -95,7 +91,7 @@ static ssize_t dev_read(struct file *filep, char *buffer, size_t len,
         return -EFAULT;
     }
     ret_len = Length;
-    Length = 0;
+    Length  = 0;
     return ret_len;
 }
 
@@ -110,7 +106,7 @@ static ssize_t dev_write(struct file *filep, const char *buffer, size_t len,
         return -EFAULT;
     }
     Message[len] = '\0';
-    Length = len;
+    Length       = len;
     Length++;
     printk("%s: dev_write Length:[%d], len:[%ld]", DEVICE_NAME, Length, len);
     return len;
@@ -125,3 +121,6 @@ static int dev_release(struct inode *inodep, struct file *filep)
 
 module_init(decdev_init);
 module_exit(decdev_exit);
+MODULE_LICENSE("GPL");
+MODULE_AUTHOR("Lakshya A Agrawal");
+MODULE_DESCRIPTION("A simple device driver for XOR decryption");
