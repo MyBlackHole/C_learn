@@ -26,16 +26,13 @@ typedef struct  // 设备结构体
 
 disk_dev device;  // 定义设备结构体
 
-//--------------------------------------------------------------------------
-// 在硬盘等带柱面扇区等的设备上使用request，可以整理队列。但是ramdisk等可以
-// 使用make_request
-static int disk_make_request(struct request_queue *queue, struct bio *bio)
+void submit_bio(struct bio *bio)
 {
     struct bvec_iter iter;
     char            *mem_pbuf;
     char            *disk_pbuf;
     disk_dev        *pdevice;
-    struct bio_vec   pbvec;
+    struct bio_vec   vec;
 
     // /*在遍历段之前先判断要传输数据的总长度大小是否超过范围*/
     // iter = bio->bi_iter.bi_sector * DISK_SECTOR_SIZE + bio->bi_iter.bi_size;
@@ -49,72 +46,54 @@ static int disk_make_request(struct request_queue *queue, struct bio *bio)
 
     /*开始遍历这个bio中的每个bio_vec*/
     // 循环分散的内存segment
-    bio_for_each_segment(pbvec, bio, iter)
+    bio_for_each_segment(vec, bio, iter)
     {
         // 获得实际内存地址
-        mem_pbuf = kmap(pbvec.bv_page) + pbvec.bv_offset;
+        mem_pbuf = kmap(vec.bv_page) + vec.bv_offset;
         switch (bio_data_dir(bio))
         {  // 读写
             case READ:
-                memcpy(mem_pbuf, disk_pbuf, pbvec.bv_len);
+                memcpy(mem_pbuf, disk_pbuf, vec.bv_len);
                 break;
             case WRITE:
-                memcpy(disk_pbuf, mem_pbuf, pbvec.bv_len);
+                memcpy(disk_pbuf, mem_pbuf, vec.bv_len);
                 break;
             default:
-                kunmap(pbvec.bv_page);
+                kunmap(vec.bv_page);
                 goto fail;
         }
         // 清除映射
-        kunmap(pbvec.bv_page);
-        disk_pbuf += pbvec.bv_len;
+        kunmap(vec.bv_page);
+        disk_pbuf += vec.bv_len;
     }
     bio_endio(bio);  // 这个函数2.6.25和2.6.4是不一样的，
-    return 0;
 fail:
     bio_io_error(bio);  // 这个函数2.6.25和2.6.4是不一样的，
-    return 0;
-}
-
-int blk_open(struct gendisk *disk, blk_mode_t mode) { return 0; }
-
-void blk_release(struct gendisk *disk) { ; }
-
-int blk_ioctl(struct block_device *dev, fmode_t no, unsigned cmd,
-              unsigned long arg)
-{
-    return -ENOTTY;
 }
 
 static struct block_device_operations blk_fops = {
-    .owner   = THIS_MODULE,
-    .open    = blk_open,
-    .release = blk_release,
-    .ioctl   = blk_ioctl,
+    .submit_bio = submit_bio,
+    .owner      = THIS_MODULE,
 };
 
-int disk_init(void)
+static int __init disk_init(void)
 {
     int error;
     // 注册驱动
-    if (!register_blkdev(BLK_MAJOR, BLK_NAME))
+    error = register_blkdev(BLK_MAJOR, BLK_NAME);
+    if (error)
     {
-        ;
-    }
-    {
-        printk("register blk_dev succeed\n");
+        goto blk_dev_fail;
     }
 
     device.data = (unsigned char *)vmalloc(DISK_SIZE);
 
     printk("make_request succeed\n");
 
-    device.gd               = blk_alloc_disk(GFP_KERNEL);  // 生成gendisk
-    device.queue            = device.gd->queue;            // 赋值 queue
-    device.gd->major        = BLK_MAJOR;                   // 主设备号
-    device.gd->first_minor  = 0;                           // 此设备号
-    device.gd->fops         = &blk_fops;     // 块文件结构体变量
-    device.gd->queue        = device.queue;  // 请求队列
+    device.gd        = blk_alloc_disk(NULL, NUMA_NO_NODE);  // 生成gendisk
+    device.gd->major = BLK_MAJOR;                           // 主设备号
+    device.gd->first_minor  = 0;                            // 此设备号
+    device.gd->fops         = &blk_fops;  // 块文件结构体变量
     device.gd->private_data = &device;
     sprintf(device.gd->disk_name, "disk%c", 'a');  // 名字
     set_capacity(device.gd, DISK_SECTOR);          // 设置大小
@@ -125,12 +104,16 @@ int disk_init(void)
     }
     printk("gendisk succeed\n");
     return 0;
+
+blk_dev_fail:
+    printk("register blk_dev succeed\n");
+    unregister_blkdev(BLK_MAJOR, BLK_NAME);
 out_put_disk:
     put_disk(device.gd);
     return error;
 }
 
-void disk_exit(void)
+static void __exit disk_exit(void)
 {
     del_gendisk(device.gd);
     put_disk(device.gd);

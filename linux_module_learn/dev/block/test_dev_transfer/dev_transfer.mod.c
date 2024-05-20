@@ -27,7 +27,7 @@ __section(".gnu.linkonce.this_module") = {
 	.arch = MODULE_ARCH_INIT,
 };
 
-#ifdef CONFIG_RETPOLINE
+#ifdef CONFIG_MITIGATION_RETPOLINE
 MODULE_INFO(retpoline, "Y");
 #endif
 
@@ -35,4 +35,4 @@ MODULE_INFO(retpoline, "Y");
 MODULE_INFO(depends, "");
 
 
-MODULE_INFO(srcversion, "159341797632B9D373C27AD");
+MODULE_INFO(srcversion, "2390DD438E2E91DEB6DAC83");
