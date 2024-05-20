@@ -10,6 +10,7 @@
  */
 
 #include <linux/backing-dev.h>
+#include <linux/string.h>
 #include <linux/bio.h>
 #include <linux/blkdev.h>
 #include <linux/debugfs.h>
@@ -35,17 +36,17 @@
  */
 struct brd_device
 {
-    int brd_number;
-    struct gendisk *brd_disk;
+    int              brd_number;
+    struct gendisk  *brd_disk;
     struct list_head brd_list;
 
     /*
      * Backing store of pages and lock to protect it. This is the contents
      * of the block device.
      */
-    spinlock_t brd_lock;
+    spinlock_t             brd_lock;
     struct radix_tree_root brd_pages;
-    u64 brd_nr_pages;
+    u64                    brd_nr_pages;
 };
 
 /*
@@ -53,7 +54,7 @@ struct brd_device
  */
 static struct page *brd_lookup_page(struct brd_device *brd, sector_t sector)
 {
-    pgoff_t idx;
+    pgoff_t      idx;
     struct page *page;
 
     /*
@@ -68,7 +69,7 @@ static struct page *brd_lookup_page(struct brd_device *brd, sector_t sector)
      * here, only deletes).
      */
     rcu_read_lock();
-    idx = sector >> PAGE_SECTORS_SHIFT; /* sector to page index */
+    idx  = sector >> PAGE_SECTORS_SHIFT; /* sector to page index */
     page = radix_tree_lookup(&brd->brd_pages, idx);
     rcu_read_unlock();
 
@@ -84,9 +85,9 @@ static struct page *brd_lookup_page(struct brd_device *brd, sector_t sector)
  */
 static struct page *brd_insert_page(struct brd_device *brd, sector_t sector)
 {
-    pgoff_t idx;
+    pgoff_t      idx;
     struct page *page;
-    gfp_t gfp_flags;
+    gfp_t        gfp_flags;
 
     page = brd_lookup_page(brd, sector);
     if (page)
@@ -97,7 +98,7 @@ static struct page *brd_insert_page(struct brd_device *brd, sector_t sector)
      * block or filesystem layers from page reclaim.
      */
     gfp_flags = GFP_NOIO | __GFP_ZERO | __GFP_HIGHMEM;
-    page = alloc_page(gfp_flags);
+    page      = alloc_page(gfp_flags);
     if (!page)
         return NULL;
 
@@ -108,7 +109,7 @@ static struct page *brd_insert_page(struct brd_device *brd, sector_t sector)
     }
 
     spin_lock(&brd->brd_lock);
-    idx = sector >> PAGE_SECTORS_SHIFT;
+    idx         = sector >> PAGE_SECTORS_SHIFT;
     page->index = idx;
     if (radix_tree_insert(&brd->brd_pages, idx, page))
     {
@@ -136,8 +137,8 @@ static struct page *brd_insert_page(struct brd_device *brd, sector_t sector)
 static void brd_free_pages(struct brd_device *brd)
 {
     unsigned long pos = 0;
-    struct page *pages[FREE_BATCH];
-    int nr_pages;
+    struct page  *pages[FREE_BATCH];
+    int           nr_pages;
 
     do
     {
@@ -179,7 +180,7 @@ static void brd_free_pages(struct brd_device *brd)
 static int copy_to_brd_setup(struct brd_device *brd, sector_t sector, size_t n)
 {
     unsigned int offset = (sector & (PAGE_SECTORS - 1)) << SECTOR_SHIFT;
-    size_t copy;
+    size_t       copy;
 
     copy = min_t(size_t, n, PAGE_SIZE - offset);
     if (!brd_insert_page(brd, sector))
@@ -200,9 +201,9 @@ static void copy_to_brd(struct brd_device *brd, const void *src,
                         sector_t sector, size_t n)
 {
     struct page *page;
-    void *dst;
+    void        *dst;
     unsigned int offset = (sector & (PAGE_SECTORS - 1)) << SECTOR_SHIFT;
-    size_t copy;
+    size_t       copy;
 
     copy = min_t(size_t, n, PAGE_SIZE - offset);
     page = brd_lookup_page(brd, sector);
@@ -233,9 +234,9 @@ static void copy_from_brd(void *dst, struct brd_device *brd, sector_t sector,
                           size_t n)
 {
     struct page *page;
-    void *src;
+    void        *src;
     unsigned int offset = (sector & (PAGE_SECTORS - 1)) << SECTOR_SHIFT;
-    size_t copy;
+    size_t       copy;
 
     copy = min_t(size_t, n, PAGE_SIZE - offset);
     page = brd_lookup_page(brd, sector);
@@ -273,7 +274,7 @@ static int brd_do_bvec(struct brd_device *brd, struct page *page,
                        sector_t sector)
 {
     void *mem;
-    int err = 0;
+    int   err = 0;
 
     if (op_is_write(op))
     {
@@ -301,19 +302,19 @@ out:
 
 static void brd_submit_bio(struct bio *bio)
 {
-    struct brd_device *brd = bio->bi_bdev->bd_disk->private_data;
-    sector_t sector = bio->bi_iter.bi_sector;
-    struct bio_vec bvec;
-    struct bvec_iter iter;
+    struct brd_device *brd    = bio->bi_bdev->bd_disk->private_data;
+    sector_t           sector = bio->bi_iter.bi_sector;
+    struct bio_vec     bvec;
+    struct bvec_iter   iter;
 
     bio_for_each_segment(bvec, bio, iter)
     {
         unsigned int len = bvec.bv_len;
-        int err;
+        int          err;
 
         /* Don't support un-aligned buffer */
-        WARN_ON_ONCE((bvec.bv_offset & (SECTOR_SIZE - 1)) ||
-                     (len & (SECTOR_SIZE - 1)));
+        WARN_ON_ONCE((bvec.bv_offset & (SECTOR_SIZE - 1))
+                     || (len & (SECTOR_SIZE - 1)));
 
         err = brd_do_bvec(brd, bvec.bv_page, len, bvec.bv_offset, bio_op(bio),
                           sector);
@@ -328,23 +329,9 @@ static void brd_submit_bio(struct bio *bio)
     bio_endio(bio);
 }
 
-static int brd_rw_page(struct block_device *bdev, sector_t sector,
-                       struct page *page, unsigned int op)
-{
-    struct brd_device *brd = bdev->bd_disk->private_data;
-    int err;
-
-    if (PageTransHuge(page))
-        return -ENOTSUPP;
-    err = brd_do_bvec(brd, page, PAGE_SIZE, 0, op, sector);
-    page_endio(page, op_is_write(op), err);
-    return err;
-}
-
 static const struct block_device_operations brd_fops = {
-    .owner = THIS_MODULE,
+    .owner      = THIS_MODULE,
     .submit_bio = brd_submit_bio,
-    .rw_page = brd_rw_page,
 };
 
 /*
@@ -386,9 +373,9 @@ static struct dentry *brd_debugfs_dir;
 static int brd_alloc(int i)
 {
     struct brd_device *brd;
-    struct gendisk *disk;
-    char buf[DISK_NAME_LEN];
-    int err = -ENOMEM;
+    struct gendisk    *disk;
+    char               buf[DISK_NAME_LEN];
+    int                err = -ENOMEM;
 
     list_for_each_entry(brd, &brd_devices,
                         brd_list) if (brd->brd_number == i) return -EEXIST;
@@ -405,16 +392,16 @@ static int brd_alloc(int i)
     if (!IS_ERR_OR_NULL(brd_debugfs_dir))
         debugfs_create_u64(buf, 0444, brd_debugfs_dir, &brd->brd_nr_pages);
 
-    disk = brd->brd_disk = blk_alloc_disk(NUMA_NO_NODE);
+    disk = brd->brd_disk = blk_alloc_disk(NULL, NUMA_NO_NODE);
     if (!disk)
         goto out_free_dev;
 
-    disk->major = RAMDISK_MAJOR;
-    disk->first_minor = i * max_part;
-    disk->minors = max_part;
-    disk->fops = &brd_fops;
+    disk->major        = RAMDISK_MAJOR;
+    disk->first_minor  = i * max_part;
+    disk->minors       = max_part;
+    disk->fops         = &brd_fops;
     disk->private_data = brd;
-    strlcpy(disk->disk_name, buf, DISK_NAME_LEN);
+    strcpy(disk->disk_name, buf);
     set_capacity(disk, rd_size * 2);
 
     /*
@@ -436,7 +423,7 @@ static int brd_alloc(int i)
     return 0;
 
 out_cleanup_disk:
-    blk_cleanup_disk(disk);
+    put_disk(disk);
 out_free_dev:
     list_del(&brd->brd_list);
     kfree(brd);
@@ -454,7 +441,7 @@ static void brd_cleanup(void)
     list_for_each_entry_safe(brd, next, &brd_devices, brd_list)
     {
         del_gendisk(brd->brd_disk);
-        blk_cleanup_disk(brd->brd_disk);
+        put_disk(brd->brd_disk);
         brd_free_pages(brd);
         list_del(&brd->brd_list);
         kfree(brd);
