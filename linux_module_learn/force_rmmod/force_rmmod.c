@@ -8,6 +8,8 @@
 #include <linux/kallsyms.h>
 #include <linux/sched.h>
 
+#define CONFIG_REPLACE_EXIT_FUNCTION 1
+
 /*
  *  加载模块的时候, 传递字符串到模块的一个全局字符数组里面
  *
