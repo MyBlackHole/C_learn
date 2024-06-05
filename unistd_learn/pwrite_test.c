@@ -7,13 +7,13 @@
 int demo_pwrite_main(void)
 {
     char pathname[] = "/tmp/myfile"; /*待操作文件路径*/
-    int f_id;                        /*文件描述符*/
+    int  f_id;                       /*文件描述符*/
 
     off_t f_offset; /*文件指针偏移量*/
 
-    ssize_t nwrite;                        /*实际写入的字节数*/
-    char buf[BUFFSIZE] = "0123456789abcd"; /*待写入数据*/
-    size_t nbytes;                         /*准备写入的字节数*/
+    ssize_t nwrite;                           /*实际写入的字节数*/
+    char    buf[BUFFSIZE] = "0123456789abcd"; /*待写入数据*/
+    size_t  nbytes;                           /*准备写入的字节数*/
 
     /*打开文件，获取文件标识符*/
     f_id = open(pathname, O_RDWR | O_CREAT);

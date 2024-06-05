@@ -9,7 +9,7 @@
 int demo_write_main(void)
 {
     size_t num;
-    char buf[BUFFSIZE];
+    char   buf[BUFFSIZE];
 
     while ((num = read(STDIN_FILENO, buf, BUFFSIZE)) > 0)
     {
