@@ -6,9 +6,9 @@
 int demo_fwrite_main(int argc, char *argv[])
 {
     FILE *fp_tmp;
-    char str[] = "This is runoob.com";
-    char *name = "/file.txt";
-    char *path = dirname(argv[0]);
+    char  str[]     = "This is runoob.com";
+    char *name      = "/file.txt";
+    char *path      = dirname(argv[0]);
     char *file_path = malloc(strlen(name) + strlen(path));
     strcpy(file_path, path);
     strncat(file_path, name, strlen(name));

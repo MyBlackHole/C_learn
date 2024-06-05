@@ -7,9 +7,9 @@
 
 int demo_fdopen_main(int argc, char *argv[])
 {
-    int fd_tmp = -1;
-    FILE *file = NULL;
-    fd_tmp = open("BUILD.gn", O_RDONLY);
+    int   fd_tmp = -1;
+    FILE *file   = NULL;
+    fd_tmp       = open("BUILD.gn", O_RDONLY);
     if (fd_tmp < 0)
     {
         perror(strerror(errno));
