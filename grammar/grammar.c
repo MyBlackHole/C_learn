@@ -8,6 +8,7 @@ static demo_t demos[] = {
     DEMO_MAIN_ITEM(test1),
     DEMO_MAIN_ITEM(ptr),
     DEMO_MAIN_ITEM(ptr1),
+    DEMO_MAIN_ITEM(ptr6),
     DEMO_MAIN_ITEM(test),
     DEMO_MAIN_ITEM(bool),
     DEMO_MAIN_ITEM(argv_test),

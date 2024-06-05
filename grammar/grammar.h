@@ -6,6 +6,7 @@ DEMO_MAIN_DECL(pg_summary);
 DEMO_MAIN_DECL(test1);
 DEMO_MAIN_DECL(ptr);
 DEMO_MAIN_DECL(ptr1);
+DEMO_MAIN_DECL(ptr6);
 DEMO_MAIN_DECL(test);
 DEMO_MAIN_DECL(bool);
 DEMO_MAIN_DECL(argv_test);
