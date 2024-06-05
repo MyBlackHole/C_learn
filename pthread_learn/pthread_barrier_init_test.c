@@ -7,12 +7,12 @@
 #define DATENUM 64
 
 pthread_barrier_t barrier;
-pthread_t pid;
+pthread_t         pid;
 
 char *get_time_str(char *date)
 {
-    time_t time1 = time(NULL);
-    struct tm tm1;
+    time_t     time1 = time(NULL);
+    struct tm  tm1;
     struct tm *tp1 = localtime_r(&time1, &tm1);
     strftime(date, DATENUM, "%Y-%m-%d %H:%M:%S", tp1);
     return date;
@@ -46,7 +46,7 @@ int demo_barrier_init_main(int argc, char *argv[])
 
     pthread_barrier_init(&barrier, NULL, 2);
     printf("*** main thread barrier init done ***\n");
-    pthread_create(&pid, NULL, &initor, NULL);
+    pthread_create(&pid, NULL, initor, NULL);
 
     printf("--- main waiting (%s) ---\n", get_time_str(data_time));
 

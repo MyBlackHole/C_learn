@@ -7,11 +7,11 @@
 
 void *child_thread(void *arg)
 {
-    int policy = 0;
-    int max_priority = 0;
-    int min_priority = 0;
+    int                policy       = 0;
+    int                max_priority = 0;
+    int                min_priority = 0;
     struct sched_param param;
-    pthread_attr_t attr;
+    pthread_attr_t     attr;
 
     pthread_attr_init(&attr);
     pthread_attr_setinheritsched(&attr, PTHREAD_EXPLICIT_SCHED);
