@@ -1,6 +1,7 @@
 %{   /*%{%}包裹c代码，这部分代码会被原样输出*/
 #include <stdio.h>
-#include "y.tab.h"   /*.y文件经yacc编译后会生成这个头文件*/
+
+#include "calc.tab.h"   /*.y文件经yacc编译后会生成这个头文件*/
 
 int
 yywrap(void)

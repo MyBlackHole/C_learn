@@ -2,7 +2,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define YYDEBUG 1
+
+int yylex();
+
+int yyerror(char const *str);
+
 %}
+
+
 %union{
     int int_value;
 }
@@ -53,7 +60,7 @@ yyerror(char const *str)
     return 0;
 }
 
-int demo_main_main(void)
+int main(void)
 {
     extern int yyparse(void);
     extern FILE *yyin;
