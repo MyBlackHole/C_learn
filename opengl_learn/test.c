@@ -5,8 +5,8 @@
 // 初始化材料属性、光源属性、光照模型，打开深度缓冲区
 void init()
 {
-    GLfloat mat_specular[] = {1.0, 1.0, 1.0, 1.0};
-    GLfloat mat_shininess[] = {50.0};
+    GLfloat mat_specular[]   = {1.0, 1.0, 1.0, 1.0};
+    GLfloat mat_shininess[]  = {50.0};
     GLfloat light_position[] = {1.0, 1.0, 1.0, 0.0};
     glClearColor(0.0, 0.0, 0.0, 0.0);
     glShadeModel(GL_SMOOTH);

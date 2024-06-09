@@ -12,7 +12,8 @@ static demo_t demos[] = {
     DEMO_MAIN_ITEM(self),
     DEMO_MAIN_ITEM(once),
     DEMO_MAIN_ITEM(mutex_unlock),
-
+    DEMO_MAIN_ITEM(rwlock1),
+    DEMO_MAIN_ITEM(rwlock2),
 };
 int main(int argc, char** argv)
 {

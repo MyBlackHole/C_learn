@@ -9,5 +9,7 @@ DEMO_MAIN_DECL(pthread_setschedparam);
 DEMO_MAIN_DECL(self);
 DEMO_MAIN_DECL(once);
 DEMO_MAIN_DECL(mutex_unlock);
+DEMO_MAIN_DECL(rwlock1);
+DEMO_MAIN_DECL(rwlock2);
 
 #endif
