@@ -10,12 +10,12 @@ enum
     NSEC_TO_SLEEP = 125
 };
 
-int main(int argc, char *argv[])
+int demo_nanosleep_main(int argc, char *argv[])
 {
     struct timespec remaining, request = {SECS_TO_SLEEP, NSEC_TO_SLEEP};
-    int rv;
-    struct tm t;
-    char data_time[64];
+    int             rv;
+    struct tm       t;
+    char            data_time[64];
 
     printf("time test\n");
 

@@ -5,6 +5,13 @@
 #include <unistd.h>
 
 
+static void error_handling(char *message)
+{
+    fputs(message, stderr);
+    fputc('\n', stderr);
+    exit(EXIT_FAILURE);
+}
+
 int demo_gethostbyname_main(int argc, char *argv[])
 {
     int index;

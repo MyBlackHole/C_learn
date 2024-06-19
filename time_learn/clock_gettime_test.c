@@ -87,7 +87,7 @@ static void clock_gettime_test()
     printf("CLOCK_TAI(2) sec = %lu, nsec = %ld\n", ts.tv_sec, ts.tv_nsec);
 }
 
-int main()
+int demo_clock_gettime_main()
 {
     clock_gettime_test();
 

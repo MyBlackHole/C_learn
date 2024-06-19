@@ -5,7 +5,12 @@
 #include <string.h>
 #include <unistd.h>
 
-void error_handling(char *message);
+static void error_handling(char *message)
+{
+    fputs(message, stderr);
+    fputc('\n', stderr);
+    exit(EXIT_FAILURE);
+}
 
 int demo_gethostbyaddr_main(int argc, char *argv[])
 {
@@ -43,9 +48,3 @@ int demo_gethostbyaddr_main(int argc, char *argv[])
     return EXIT_SUCCESS;
 }
 
-void error_handling(char *message)
-{
-    fputs(message, stderr);
-    fputc('\n', stderr);
-    exit(EXIT_FAILURE);
-}

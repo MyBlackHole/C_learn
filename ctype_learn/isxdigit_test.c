@@ -1,5 +1,7 @@
+#include <complex.h>
 #include <ctype.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 // 定义函数：int isxdigit (int c);
 
@@ -22,4 +24,5 @@ int demo_isxdigit_test_main()
             printf("%c is a hexadecimal digits\n", str[index]);
         }
     }
+    return EXIT_SUCCESS;
 }

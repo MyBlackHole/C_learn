@@ -1,12 +1,11 @@
 #include <stdbool.h>
-#include <stdio.h>
 
 #include "curl/curl.h"
 
 bool Post(char *Url, char *Cookie, char *PostVal)
 {
-    CURL *curl;
-    CURLcode res;
+    CURL    *curl;
+    CURLcode res = {0};
 
     curl = curl_easy_init();
     if (curl)

@@ -27,29 +27,12 @@ __section(".gnu.linkonce.this_module") = {
 	.arch = MODULE_ARCH_INIT,
 };
 
-#ifdef CONFIG_RETPOLINE
+#ifdef CONFIG_MITIGATION_RETPOLINE
 MODULE_INFO(retpoline, "Y");
 #endif
 
 
-
-static const char ____versions[]
-__used __section("__versions") =
-	"\x10\x00\x00\x00\x7e\x3a\x2c\x12"
-	"_printk\0"
-	"\x1c\x00\x00\x00\xca\x39\x82\x5b"
-	"__x86_return_thunk\0\0"
-	"\x18\x00\x00\x00\xcc\x8c\x4f\x39"
-	"misc_register\0\0\0"
-	"\x18\x00\x00\x00\x75\x86\x2a\xb8"
-	"misc_deregister\0"
-	"\x14\x00\x00\x00\xbb\x6d\xfb\xbd"
-	"__fentry__\0\0"
-	"\x18\x00\x00\x00\xb5\x28\xc2\x17"
-	"module_layout\0\0\0"
-	"\x00\x00\x00\x00\x00\x00\x00\x00";
-
 MODULE_INFO(depends, "");
 
 
-MODULE_INFO(srcversion, "9C76D2D4CDFF41724189B3E");
+MODULE_INFO(srcversion, "1303E8277F08FE731E27D77");

@@ -11,6 +11,7 @@
 
 #include "CriteriaStruct.h"
 #include "ctools.h"
+#include <strings.h>
 
 static List *meet_criteria(struct Criteria *criteria, List *persons) {
     List *single_persons = list_create();

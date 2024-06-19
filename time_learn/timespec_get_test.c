@@ -3,7 +3,7 @@
 #include <time.h>
 #include <sys/time.h>
 
-int main(int argc, char *argv[])
+int demo_timespec_main(int argc, char *argv[])
 {
     struct timespec now;
     timespec_get(&now, TIME_UTC);

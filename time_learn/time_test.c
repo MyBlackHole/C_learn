@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-int main(int argc, char *argv[])
+int demo_time_main(int argc, char *argv[])
 {
     time_t t;
     t = time(NULL);

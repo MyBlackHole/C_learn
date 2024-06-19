@@ -12,7 +12,7 @@ int demo_creat_main(void)
 {
     int m_fd;
     // 创建文件
-    m_fd = creat("myfile.txt", S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+    m_fd = creat("myfile.txt", S_IRWXU | S_IRGRP | S_IROTH);
     if (m_fd < 0)
     {
         perror("creat error");

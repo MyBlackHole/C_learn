@@ -28,7 +28,7 @@ static void print_persons(List *persons) {
 
 int main(int argc, char const *argv[]) {
     List *persons = list_create();
-    persons->free_func = (void (*)(long long))person_destory;
+    persons->free_func = (void (*)(int64_t))person_destory;
     list_push_back(persons, list_node_new((int64_t)person_create("Robert", "Male", "Single")));
     list_push_back(persons, list_node_new((int64_t)person_create("John", "Male", "Married")));
     list_push_back(persons, list_node_new((int64_t)person_create("Laura", "Female", "Married")));

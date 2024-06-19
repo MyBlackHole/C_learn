@@ -6,7 +6,6 @@
 // 建议锁
 int lock_set(int fd_tmp, short type)
 {
-    struct flock old_lock;
     struct flock lock;
     lock.l_whence = SEEK_SET;
     lock.l_start = 0;

@@ -30,6 +30,7 @@ int misc_release(struct inode *a, struct file *b)
 
 long misc_ioctl(struct file *fd, unsigned int cmd, unsigned long b)
 {
+    int                 ret;
     struct struct_regs *p = NULL;
     /*将命令按内容分解，打印出来*/
     printk("cmd type=%c\t nr=%d\t dir=%d\t size=%d\n", _IOC_TYPE(cmd),
@@ -37,35 +38,47 @@ long misc_ioctl(struct file *fd, unsigned int cmd, unsigned long b)
 
     switch (cmd)
     {
-    case CMD_TEST_0:
-        printk("CMD_TEST_0\n");
-        break;
-    case CMD_TEST_1:
-        printk("CMD_TEST_1\n");
-        return 1;
-        break;
-    case CMD_TEST_2:
-        printk("CMD_TEST_2 date=%ld\n", b);
-        break;
-    case CMD_TEST_3:
-        printk("CMD_TEST_3 date=%ld\n", b);
-        return b + 1;
-        break;
-    case CMD_TEST_4:
-        // 测试过了不行
-        // 需要处理
-        p = (struct struct_regs *)b;
-        printk("CMD_TEST_4 p=%p, date=%d\n", p, p->data);
-        break;
+        case CMD_TEST_0:
+            printk("CMD_TEST_0\n");
+            break;
+        case CMD_TEST_1:
+            printk("CMD_TEST_1\n");
+            return 1;
+            break;
+        case CMD_TEST_2:
+            printk("CMD_TEST_2 date=%ld\n", b);
+            break;
+        case CMD_TEST_3:
+            printk("CMD_TEST_3 date=%ld\n", b);
+            return b + 1;
+            break;
+        case CMD_TEST_4:
+            // 测试过了不行
+            // 需要处理
+            // p = (struct struct_regs *)b;
+
+            ret = copy_from_user(&p, (void *)b, sizeof(struct struct_regs));
+            if (ret)
+            {
+                printk("copy from user is error\n");
+                return -EIO;
+            }
+            printk("内核空间：data = %d\n", p->data);
+
+            printk("CMD_TEST_4 p=%p, date=%d\n", p, p->data);
+            break;
+        default:
+            printk("unknown cmd\n");
+            break;
     }
 
     return 0;
 }
 
 // 文件操作集
-struct file_operations misc_fops = {.owner = THIS_MODULE,
-                                    .open = misc_open,
-                                    .release = misc_release,
+struct file_operations misc_fops = {.owner          = THIS_MODULE,
+                                    .open           = misc_open,
+                                    .release        = misc_release,
                                     .unlocked_ioctl = misc_ioctl};
 
 struct miscdevice misc_dev = {

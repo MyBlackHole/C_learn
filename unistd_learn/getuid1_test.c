@@ -1,3 +1,4 @@
+#define _GNU_SOURCE
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -8,10 +9,10 @@
 
 int demo_getuid1_main(int argc, char *argv[])
 {
-    int fd_in;
+    int     fd_in;
     ssize_t len;
-    int ret;
-    char buf[BUFSIZE + 1] = {0};
+    int     ret;
+    char    buf[BUFSIZE + 1] = {0};
 
     // 这三个uid分别是实际用户ID，有效用户ID，保存的设置用户ID
     uid_t ruid;

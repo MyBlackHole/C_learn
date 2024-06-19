@@ -1,4 +1,4 @@
-obj-m:= my_ioctl.o
+obj-m:= ioctl_test.o
 CURRENT_PATH:=$(shell pwd)
 LINUX_KERNEL:=$(shell uname -r)
 # LINUX_KERNEL_PATH:=/usr/src/linux-headers-$(LINUX_KERNEL)
