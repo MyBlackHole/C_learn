@@ -12,7 +12,7 @@
 #define SERVER_PORT 8008
 #define MESSAGE "HTTP/1.1 200 OK\r\nContent-Length: 11\r\n\r\nhello world"
 
-int demo_SO_RCVTIMEO_main()
+int demo_SO_RCVTIMEO1_main()
 {
     struct sockaddr_in srvaddr;
     struct timeval timeout = {10, 0};
@@ -33,11 +33,6 @@ int demo_SO_RCVTIMEO_main()
     srvaddr.sin_family = AF_INET;
     srvaddr.sin_port = htons(SERVER_PORT);
     srvaddr.sin_addr.s_addr = htonl(INADDR_ANY);
-
-    // // close 的话会导致套接字异常
-    // // Bad file descriptor: Bad file descriptor
-    // close(locfd);
-    // printf("close socket\n");
 
     // 设置端口重用
     res = setsockopt(locfd, SOL_SOCKET, SO_REUSEADDR, &sockopt, sizeof(int));
@@ -76,7 +71,7 @@ int demo_SO_RCVTIMEO_main()
         {
             printf("set setsockopt recv time out error!\n");
             close(locfd);
-            return -1;
+            return EXIT_FAILURE;
         }
 
         /*bind, 将网络地址与端口绑定*/
@@ -85,7 +80,7 @@ int demo_SO_RCVTIMEO_main()
         {
             printf("accept error! %s\n", strerror(errno));
             close(locfd);
-            return -1;
+            return EXIT_FAILURE;
         }
 
         /*输出客户机的信息*/
@@ -101,7 +96,7 @@ int demo_SO_RCVTIMEO_main()
         {
             printf("set setsockopt send time out error!\n");
             close(locfd);
-            return -1;
+            return EXIT_FAILURE;
         }
 
         // 设置 读取 超时
@@ -110,7 +105,7 @@ int demo_SO_RCVTIMEO_main()
         {
             printf("set setsockopt recv time out error!\n");
             close(locfd);
-            return -1;
+            return EXIT_FAILURE;
         }
 
         /*输出客户机请求的信息*/
