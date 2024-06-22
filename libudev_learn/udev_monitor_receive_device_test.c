@@ -23,12 +23,12 @@
 #include <stdio.h>
 #include <unistd.h>
 
-int main()
+int demo_udev_monitor_receive_device_main()
 {
-    struct udev *udev;
-    struct udev_device *dev;
+    struct udev         *udev;
+    struct udev_device  *dev;
     struct udev_monitor *mon;
-    int fd;
+    int                  fd;
 
     /* create udev object */
     udev = udev_new();
@@ -45,13 +45,13 @@ int main()
 
     while (1)
     {
-        fd_set fds;
+        fd_set         fds;
         struct timeval tv;
-        int ret;
+        int            ret;
 
         FD_ZERO(&fds);
         FD_SET(fd, &fds);
-        tv.tv_sec = 0;
+        tv.tv_sec  = 0;
         tv.tv_usec = 0;
 
         ret = select(fd + 1, &fds, NULL, NULL, &tv);

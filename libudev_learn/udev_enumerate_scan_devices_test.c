@@ -27,11 +27,11 @@
 
 #define BLOCK_SIZE 512
 
-int main()
+int demo_udev_enumerate_scan_devices_main()
 {
-    struct udev *udev;
-    struct udev_device *dev;
-    struct udev_enumerate *enumerate;
+    struct udev            *udev;
+    struct udev_device     *dev;
+    struct udev_enumerate  *enumerate;
     struct udev_list_entry *devices;
     struct udev_list_entry *devListEntry;
 
@@ -64,17 +64,17 @@ int main()
 
     udev_list_entry_foreach(devListEntry, devices)
     {
-        const char *path;
-        const char *tmp;
-        unsigned long long diskSize = 0;
+        const char        *path;
+        const char        *tmp;
+        unsigned long long diskSize  = 0;
         unsigned short int blockSize = BLOCK_SIZE;
 
         path = udev_list_entry_get_name(devListEntry);
-        dev = udev_device_new_from_syspath(udev, path);
+        dev  = udev_device_new_from_syspath(udev, path);
 
         /* skip if device/disk is a partition or loop device */
-        if (strncmp(udev_device_get_devtype(dev), "partition", 9) != 0 &&
-            strncmp(udev_device_get_sysname(dev), "loop", 4) != 0)
+        if (strncmp(udev_device_get_devtype(dev), "partition", 9) != 0
+            && strncmp(udev_device_get_sysname(dev), "loop", 4) != 0)
         {
             printf("I: DEVNODE=%s\n", udev_device_get_devnode(dev));
             printf("I: KERNEL=%s\n", udev_device_get_sysname(dev));

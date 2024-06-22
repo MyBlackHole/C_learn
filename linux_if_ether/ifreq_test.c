@@ -12,7 +12,7 @@
 #define ETH_NAME "eth1"
 int do_promisc(void)
 {
-    int f, s;
+    int          f, s;
     struct ifreq ifr;
     if ((f = socket(PF_PACKET, SOCK_RAW, htons(ETH_P_ALL))) < 0)
     {
@@ -46,7 +46,7 @@ int do_promisc(void)
 int check_nic(void)
 {
     struct ifreq ifr;
-    int skfd = socket(AF_INET, SOCK_DGRAM, 0);
+    int          skfd = socket(AF_INET, SOCK_DGRAM, 0);
 
     strcpy(ifr.ifr_name, ETH_NAME);
     if (ioctl(skfd, SIOCGIFFLAGS, &ifr) < 0)

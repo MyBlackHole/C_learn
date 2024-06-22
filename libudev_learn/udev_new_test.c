@@ -24,15 +24,15 @@
 #include <stdio.h>
 
 #define SYSPATH "/sys/class/net"
-#define NUM 128
+#define NUM     128
 
 // ./out/obj/libudev_learn/udev_new_test lo
-int main(int argc, char *argv[])
+int demo_udev_new_main(int argc, char *argv[])
 {
-    struct udev *udev;
+    struct udev        *udev;
     struct udev_device *dev;
     struct udev_device *devParent;
-    char device[NUM];
+    char                device[NUM];
 
     /* verify that we have an argument, like eth0, otherwise fail */
     if (!argv[1])
