@@ -7,6 +7,7 @@ static demo_t demos[] = {
     DEMO_MAIN_ITEM(SO_RCVTIMEO),
     DEMO_MAIN_ITEM(SO_RCVTIMEO1),
     DEMO_MAIN_ITEM(SO_RCVTIMEO1_client),
+    DEMO_MAIN_ITEM(sendmsg),
 };
 int main(int argc, char** argv)
 {
