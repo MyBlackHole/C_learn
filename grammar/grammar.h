@@ -30,5 +30,6 @@ DEMO_MAIN_DECL(const);
 DEMO_MAIN_DECL(func);
 DEMO_MAIN_DECL(define);
 DEMO_MAIN_DECL(typedef);
+DEMO_MAIN_DECL(hex_to_int);
 
 #endif
