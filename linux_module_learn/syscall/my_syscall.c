@@ -1,4 +1,3 @@
-#include <asm/uaccess.h>
 #include <linux/init.h>
 #include <linux/kallsyms.h>
 #include <linux/kernel.h>
@@ -12,10 +11,10 @@
 unsigned long *sys_call_table;
 
 unsigned int clear_and_return_cr0(void);
-void setback_cr0(unsigned int val);
-static int sys_mycall(void);
+void         setback_cr0(unsigned int val);
+static int   sys_mycall(void);
 
-int orig_cr0; /* 用来存储cr0寄存器原来的值 */
+int            orig_cr0; /* 用来存储cr0寄存器原来的值 */
 unsigned long *sys_call_table = 0;
 static int (*anything_saved)(void); /*定义一个函数指针，用来保存一个系统调用*/
 /*
@@ -62,7 +61,7 @@ static int __init init_addsyscall(void)
     printk("sys_call_table: 0x%p\n", sys_call_table);
     /* 保存原始系统调用 */
     anything_saved = (int (*)(void))(sys_call_table[__NR_syscall]);
-    orig_cr0 = clear_and_return_cr0(); /* 设置cr0可更改 */
+    orig_cr0       = clear_and_return_cr0(); /* 设置cr0可更改 */
     /* 更改原始的系统调用服务地址 */
     sys_call_table[__NR_syscall] = (unsigned long)&sys_mycall;
     setback_cr0(orig_cr0); /* 设置为原始的只读cr0 */

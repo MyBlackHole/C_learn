@@ -1,6 +1,8 @@
 obj-m:=my_syscall.o
 PWD:= $(shell pwd)
 KERNELDIR:= /lib/modules/$(shell uname -r)/build
+KERNELDIR:= /run/media/black/Data/Documents/linux_debug/linux-4.19.315
+
 EXTRA_CFLAGS= -O0
 
 all:

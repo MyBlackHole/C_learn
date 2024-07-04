@@ -18,3 +18,6 @@ lrwxrwxrwx     - root 12 Jun 11:08   subsystem -> ../../../../class/ioctl_tes
 .rw-r--r--  4.1k root 12 Jun 11:08   uevent
 
 
+sudo ./main
+/dev/ioctl_test用户空间: width=20  high=210
+please input>>>>>asdfasdf
