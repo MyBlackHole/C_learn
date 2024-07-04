@@ -11,8 +11,8 @@ int main()
 
     // 创建网络通信对象
     struct sockaddr_in addr;
-    addr.sin_family = AF_INET;
-    addr.sin_port = htons(1324);
+    addr.sin_family      = AF_INET;
+    addr.sin_port        = htons(1324);
     addr.sin_addr.s_addr = inet_addr("192.168.0.143");
 
     while (1)
@@ -20,11 +20,11 @@ int main()
         printf("请输入一个数字：");
         char buf = 0;
         scanf("%hhd", &buf);
-        sendto(sockfd, &buf, sizeof(buf), 0, (struct sockaddr*)&addr,
+        sendto(sockfd, &buf, sizeof(buf), 0, (struct sockaddr *)&addr,
                sizeof(addr));
 
         socklen_t len = sizeof(addr);
-        recvfrom(sockfd, &buf, sizeof(buf), 0, (struct sockaddr*)&addr, &len);
+        recvfrom(sockfd, &buf, sizeof(buf), 0, (struct sockaddr *)&addr, &len);
 
         if (66 == buf)
         {

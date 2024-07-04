@@ -5,8 +5,8 @@
 
 int main(int argc, char *argv[])
 {
-    int s;
-    int optval;
+    int          s;
+    int          optval;
     unsigned int optlen = sizeof(int);
     if ((s = socket(AF_INET, SOCK_STREAM, 0)) < 0)
     {

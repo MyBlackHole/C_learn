@@ -16,11 +16,11 @@ void error_(char *message);
 void read_routine(int sock, char *buf);
 void write_routine(int sock, char *buf);
 
-int main(int argc, char *argv[])
+int demo_shutdown_main(int argc, char *argv[])
 {
-    int sock;
-    pid_t pid;
-    char buf[BUF_SIZE];
+    int                sock;
+    pid_t              pid;
+    char               buf[BUF_SIZE];
     struct sockaddr_in serv_adr;
     if (argc != 3)
     {
@@ -32,9 +32,9 @@ int main(int argc, char *argv[])
 
     sock = socket(PF_INET, SOCK_STREAM, 0);
     memset(&serv_adr, 0, sizeof(serv_adr));
-    serv_adr.sin_family = AF_INET;
+    serv_adr.sin_family      = AF_INET;
     serv_adr.sin_addr.s_addr = inet_addr(argv[1]);
-    serv_adr.sin_port = htons(atoi(argv[2]));
+    serv_adr.sin_port        = htons(atoi(argv[2]));
 
     if (connect(sock, (struct sockaddr *)&serv_adr, sizeof(serv_adr)) == -1)
     {

@@ -9,7 +9,7 @@
 #include <unistd.h>
 
 #define PORT 8000
-#define NUM 64
+#define NUM  64
 
 void my_sleep()
 {
@@ -19,13 +19,13 @@ void my_sleep()
     }
 }
 
-int main(int argc, char *argv[])
+int demo_listen_fork_main(int argc, char *argv[])
 {
-    int ret;
-    char client_addr[INET_ADDRSTRLEN];
-    int client_fd;
-    int listen_fd;
-    int pid;
+    int            ret;
+    char           client_addr[INET_ADDRSTRLEN];
+    int            client_fd;
+    int            listen_fd;
+    int            pid;
     struct in_addr ip_addr;
 
     listen_fd = socket(AF_INET, SOCK_STREAM, 0);
@@ -36,8 +36,8 @@ int main(int argc, char *argv[])
     }
     struct sockaddr_in server;
     memset(&server, 0, sizeof(struct sockaddr_in));
-    server.sin_family = AF_INET;
-    server.sin_port = htons(PORT);
+    server.sin_family      = AF_INET;
+    server.sin_port        = htons(PORT);
     server.sin_addr.s_addr = htonl(INADDR_ANY);
 
     ret =
@@ -76,9 +76,9 @@ int main(int argc, char *argv[])
     while (1)
     {
         struct sockaddr_in cli;
-        socklen_t len = sizeof(struct sockaddr_in);
+        socklen_t          len = sizeof(struct sockaddr_in);
         client_fd = accept(listen_fd, (struct sockaddr *)&cli, &len);
-        ip_addr = cli.sin_addr;
+        ip_addr   = cli.sin_addr;
         inet_ntop(AF_INET, &ip_addr, client_addr, INET_ADDRSTRLEN);
         printf("Client Address is : %s\n", client_addr);
         close(client_fd);
