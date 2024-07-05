@@ -1,0 +1,64 @@
+#include <linux/init.h>
+#include <linux/kernel.h>
+#include <linux/module.h>
+#include <linux/fs.h>
+#include <linux/syscalls.h>
+#include "linux/err.h"
+// #include <linux/file.h>
+
+static struct file *log_fsbackup_fp = NULL;
+
+__attribute__((optimize("O0"))) static int __init write_init(void)
+{
+    int64_t      write_size = 0;
+    char         sys_hook_event_buf[1024];
+    loff_t       pos = 0;
+    int          i, j;
+    // mm_segment_t old_fs;
+
+    // // 6.x 不需要 get_fs
+    // old_fs = get_fs();
+    // set_fs(KERNEL_DS);
+    //
+    printk("write_init!\n");
+
+    // 缺少目录时会: [ 7175.945832] error: line:29, error code: -2
+    log_fsbackup_fp = filp_open("/run/media/black/Data/Documents/c/linux_module_learn/write/test/write.img", O_RDWR | O_CREAT, 0666);
+
+    if (IS_ERR(log_fsbackup_fp))
+    {
+        printk("error: line:%d, error code: %ld\n", __LINE__,
+               PTR_ERR(log_fsbackup_fp));
+        return -1;
+    }
+
+    for (j = 0; j < 1024; j++)
+    {
+        sys_hook_event_buf[j] = 'a';
+    }
+
+    // 写入 3G 数据
+    for (i = 0; i < 3 * 1024 * 1024; i++)
+    {
+        write_size = kernel_write(log_fsbackup_fp, sys_hook_event_buf, 1024, &pos);
+        // write_size = vfs_write(log_fsbackup_fp, sys_hook_event_buf, 1024, &pos);
+        if (write_size != 1024)
+        {
+            printk("error: line:%d, error code: %ld\n", __LINE__,
+                   PTR_ERR(log_fsbackup_fp));
+            break;
+        }
+    }
+
+    if (filp_close(log_fsbackup_fp, NULL) != 0)
+    {
+        printk("error: line:%d, close failure.\n", __LINE__);
+    }
+
+    // set_fs(old_fs);
+    return 0;
+}
+static void __exit write_exit(void) { printk("write_exit!\n"); }
+module_init(write_init);
+module_exit(write_exit);
+MODULE_LICENSE("GPL");
