@@ -1,5 +1,6 @@
 #include <linux/init.h>
 #include <linux/kernel.h>
+#include <linux/delay.h>
 #include <linux/module.h>
 #include <linux/fs.h>
 #include <linux/syscalls.h>
@@ -23,7 +24,7 @@ __attribute__((optimize("O0"))) static int __init write_init(void)
     printk("write_init!\n");
 
     // 缺少目录时会: [ 7175.945832] error: line:29, error code: -2
-    log_fsbackup_fp = filp_open("/run/media/black/Data/Documents/c/linux_module_learn/write/test/write.img", O_RDWR | O_CREAT, 0666);
+    log_fsbackup_fp = filp_open("/run/media/black/Data/Documents/c/linux_module_learn/write/write.img", O_RDWR | O_CREAT, 0666);
 
     if (IS_ERR(log_fsbackup_fp))
     {
@@ -48,6 +49,8 @@ __attribute__((optimize("O0"))) static int __init write_init(void)
                    PTR_ERR(log_fsbackup_fp));
             break;
         }
+        printk("info: line:%d, ssleep.\n", __LINE__);
+        ssleep(10);
     }
 
     if (filp_close(log_fsbackup_fp, NULL) != 0)
