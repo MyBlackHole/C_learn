@@ -11,5 +11,6 @@ DEMO_MAIN_DECL(truncate);
 DEMO_MAIN_DECL(ftruncate);
 DEMO_MAIN_DECL(ftruncate1);
 DEMO_MAIN_DECL(symlink);
+DEMO_MAIN_DECL(chroot);
 
 #endif
