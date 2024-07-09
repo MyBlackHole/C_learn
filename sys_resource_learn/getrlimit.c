@@ -6,7 +6,7 @@
 
 static void pr_limits(char *, int);
 
-int main(void)
+int demo_getrlimit_main(void)
 {
 #ifdef RLIMIT_AS
     doit(RLIMIT_AS);
