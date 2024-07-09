@@ -7,6 +7,7 @@
 static demo_t demos[] = {
     DEMO_MAIN_ITEM(app),
     DEMO_MAIN_ITEM(test),
+    DEMO_MAIN_ITEM(zfs_ioctl_test),
 };
 
 int main(int argc, char** argv)

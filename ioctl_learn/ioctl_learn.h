@@ -4,5 +4,6 @@
 #include "../lib/demo.h"
 DEMO_MAIN_DECL(app);
 DEMO_MAIN_DECL(test);
+DEMO_MAIN_DECL(zfs_ioctl_test);
 
 #endif
