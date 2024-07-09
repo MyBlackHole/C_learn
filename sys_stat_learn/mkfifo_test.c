@@ -10,7 +10,7 @@
 
 #define FIFO "stdout_fifo"
 
-int main()
+int demo_mkfifo_main()
 {
     int status;
     // 清除 FIFO
@@ -31,12 +31,12 @@ int main()
         // 重定向 输出
         dup2(o_fd, 1);
 
-        execl("/bin/ls", "-a", (char*)0);
+        execl("/bin/ls", "-a", (char *)0);
     }
     else
     {
         char child_stdout[NUM] = {0};
-        int o_fd = open(FIFO, O_RDONLY);
+        int  o_fd              = open(FIFO, O_RDONLY);
         if (o_fd == -1)
         {
             perror("open");

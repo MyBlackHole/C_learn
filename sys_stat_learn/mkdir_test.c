@@ -5,12 +5,12 @@
 #include <string.h>
 #include <sys/stat.h>
 
-int main(int argc, char *argv[])
+int demo_mkdir_main(int argc, char *argv[])
 {
-    int rv;
-    char *path = dirname(argv[0]);
+    int   rv;
+    char *path     = dirname(argv[0]);
     char *filename = "/dir";
-    char *name = malloc(strlen(path) + strlen(filename));
+    char *name     = malloc(strlen(path) + strlen(filename));
 
     strcpy(name, path);
     strcat(name, filename);

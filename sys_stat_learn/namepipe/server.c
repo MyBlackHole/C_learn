@@ -2,9 +2,9 @@
 
 int main()
 {
-    int res;
-    int write_fd;
-    int read_fd;
+    int     res;
+    int     write_fd;
+    int     read_fd;
     ssize_t ret;
 
     char sendbuff[MAXLINE];

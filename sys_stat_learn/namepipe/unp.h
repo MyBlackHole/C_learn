@@ -17,4 +17,4 @@
     } while (0)
 
 #define write_fifo "write_fifo"
-#define read_fifo "read_fifo"
+#define read_fifo  "read_fifo"

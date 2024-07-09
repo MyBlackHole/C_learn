@@ -2,13 +2,13 @@
 #include <stdlib.h>
 #include <sys/stat.h>
 #ifdef SOLARIS
-#include <sys/mkdev.h>
+    #include <sys/mkdev.h>
 #endif
 #include <sys/sysmacros.h>
 
-int main(int argc, char **argv)
+int demo_stat3_main(int argc, char **argv)
 {
-    int i;
+    int         i;
     struct stat buf;
     for (i = 1; i < argc; i++)
     {

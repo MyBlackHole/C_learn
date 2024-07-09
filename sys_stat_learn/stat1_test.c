@@ -33,7 +33,7 @@ static int ftype(const char *fname)
     }
 }
 
-int main(int argc, char *argv[])
+int demo_stat1_main(int argc, char *argv[])
 {
     if (argc < 2)
     {

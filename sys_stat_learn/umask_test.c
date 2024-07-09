@@ -9,7 +9,7 @@
 
 #define RWRWRW (S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH)
 
-int main(int argc, char** argv)
+int demo_umask_test_main(int argc, char** argv)
 {
     int ret;
     char* work_path = dirname(argv[0]);
@@ -21,7 +21,9 @@ int main(int argc, char** argv)
     }
 
     // 设置mask 返回旧的mask
-    umask(0);
+    ret = umask(0);
+    // 18 == 22(8 进制)
+    printf("old mask: %d\n", ret);
     if (creat("foo.log", RWRWRW) < 0)
     {
         perror(strerror(errno));

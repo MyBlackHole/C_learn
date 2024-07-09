@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <sys/stat.h>
 
-int main(int argc, char **argv)
+int demo_chmod_main(int argc, char **argv)
 {
     struct stat buf;
     if (stat("foo", &buf) < 0)

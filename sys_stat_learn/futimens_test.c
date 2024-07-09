@@ -3,10 +3,11 @@
 #include <stdlib.h>
 #include <sys/stat.h>
 #include <unistd.h>
-int main(int argc, char **argv)
+
+int demo_futimens_main(int argc, char **argv)
 {
-    int i, fd;
-    struct stat buf;
+    int             i, fd;
+    struct stat     buf;
     struct timespec times[2];
     for (i = 1; i < argc; i++)
     {

@@ -13,7 +13,7 @@ static int flen(char *fname)
     return statres.st_size;
 }
 
-int main(int argc, char *argv[])
+int demo_stat_main(int argc, char *argv[])
 {
     if (argc < 2)
     {

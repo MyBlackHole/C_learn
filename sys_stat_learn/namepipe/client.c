@@ -2,9 +2,9 @@
 
 int main()
 {
-    int res;
-    int read_fd;
-    int write_fd;
+    int  res;
+    int  read_fd;
+    int  write_fd;
     char sendbuff[MAXLINE];
     char recvbuff[MAXLINE];
 
