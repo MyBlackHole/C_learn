@@ -5,5 +5,6 @@
 DEMO_MAIN_DECL(app);
 DEMO_MAIN_DECL(test);
 DEMO_MAIN_DECL(zfs_ioctl_test);
+DEMO_MAIN_DECL(xfs_ioctl_test);
 
 #endif
