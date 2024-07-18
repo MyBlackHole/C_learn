@@ -11,7 +11,6 @@
 
 int main(int argc, char** argv)
 {
-    // ECONNREFUSED
     int                sockfd, n;
     char               recvline[4096], sendline[4096];
     struct sockaddr_in servaddr;

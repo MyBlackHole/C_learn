@@ -194,9 +194,16 @@ void func19()
     printf("%s\n", (str + 3));
 }
 
+void func20()
+{
+    int i = 0;
+    printf("%d\n", ++i);
+    printf("%d\n", i);
+}
+
 int demo_test1_main()
 {
-    func1();
+    func20();
     // const int a = 0;
     // char c = 'A';
     // printf("111%d\n", a++);
