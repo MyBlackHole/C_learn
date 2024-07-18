@@ -6,6 +6,7 @@ sudo insmod sysfs_demo.ko
 ls /sys/kernel/sysfs_demo/
 fs_file
 
+sudo su
 # root
-echo `pwd` > add_file
+echo `pwd` >> /sys/kernel/sysfs_demo/fs_file/add_file
 
