@@ -31,7 +31,6 @@ int main(int argc, char *argv[])
     serv_addr.sin_addr.s_addr = inet_addr(argv[1]);
     serv_addr.sin_port        = htons(atoi(argv[2]));
 
-    sleep(10);
     printf("begin connect\r\n");
     if (connect(sd, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) == -1)
     {
@@ -39,10 +38,9 @@ int main(int argc, char *argv[])
     }
     printf("end connect\r\n\r\n");
 
-    sleep(10);
-    printf("begin send message\r\n");
-    write(sd, message, sizeof(message));
-    printf("end send message:%s to server\r\n", message);
+    // 关闭读端后，服务器端将接收数据大小为0,
+    // 原因是因为客户端已经关闭了读端，所以服务器端将收到一个FIN包
+    shutdown(sd, SHUT_RD);
 
     sleep(10);
     close(sd);

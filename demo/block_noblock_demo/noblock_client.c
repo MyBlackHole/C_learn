@@ -9,9 +9,9 @@ void error_handling(char *message);
 
 int main(int argc, char *argv[])
 {
-    int sd;
+    int                sd;
     struct sockaddr_in serv_addr;
-    int str_len;
+    int                str_len;
 
     char message[] = "block test message";
     if (argc != 3)
@@ -27,9 +27,9 @@ int main(int argc, char *argv[])
     }
 
     memset(&serv_addr, 0, sizeof(serv_addr));
-    serv_addr.sin_family = AF_INET;
+    serv_addr.sin_family      = AF_INET;
     serv_addr.sin_addr.s_addr = inet_addr(argv[1]);
-    serv_addr.sin_port = htons(atoi(argv[2]));
+    serv_addr.sin_port        = htons(atoi(argv[2]));
 
     sleep(10);
     printf("begin connect\r\n");

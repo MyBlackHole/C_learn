@@ -46,97 +46,122 @@ struct redisServer server;
  * Config file parsing
  *----------------------------------------------------------------------------*/
 
-int yesnotoi(char *s) {
-  if (!strcasecmp(s, "yes")) {
-    return 1;
-  } else if (!strcasecmp(s, "no")) {
-    return 0;
-  } else {
-    return -1;
-}
-}
-
-void loadServerConfigFromString(char *config) {
-  char *err = NULL;
-  int linenum = 0, totlines, i;
-  int slaveof_linenum = 0;
-  sds *lines;
-
-  // 以换行符分割返回 sds 数组 totlines 行数
-  lines = sdssplitlen(config, strlen(config), "\n", 1, &totlines);
-
-  for (i = 0; i < totlines; i++) {
-    sds *argv;
-    int argc;
-
-    linenum = i + 1;
-    // 移除字符串的前置空白和后缀空白
-    lines[i] = sdstrim(lines[i], " \t\r\n");
-
-    /* Skip comments and blank lines */
-    // 跳过空白行
-    if (lines[i][0] == '#' || lines[i][0] == '\0') {
-      continue;
+int yesnotoi(char *s)
+{
+    if (!strcasecmp(s, "yes"))
+    {
+        return 1;
+    }
+    else if (!strcasecmp(s, "no"))
+    {
+        return 0;
+    }
+    else
+    {
+        return -1;
+    }
 }
 
-    /* Split into arguments */
-    // 将字符串分割成多个参数
-    argv = sdssplitargs(lines[i], &argc);
-    if (argv == NULL) {
-      err = "Unbalanced quotes in configuration line";
-      goto loaderr;
+void loadServerConfigFromString(char *config)
+{
+    char *err             = NULL;
+    int   linenum         = 0, totlines, i;
+    int   slaveof_linenum = 0;
+    sds  *lines;
+
+    // 以换行符分割返回 sds 数组 totlines 行数
+    lines = sdssplitlen(config, strlen(config), "\n", 1, &totlines);
+
+    for (i = 0; i < totlines; i++)
+    {
+        sds *argv;
+        int  argc;
+
+        linenum = i + 1;
+        // 移除字符串的前置空白和后缀空白
+        lines[i] = sdstrim(lines[i], " \t\r\n");
+
+        /* Skip comments and blank lines */
+        // 跳过空白行
+        if (lines[i][0] == '#' || lines[i][0] == '\0')
+        {
+            continue;
+        }
+
+        /* Split into arguments */
+        // 将字符串分割成多个参数
+        argv = sdssplitargs(lines[i], &argc);
+        if (argv == NULL)
+        {
+            err = "Unbalanced quotes in configuration line";
+            goto loaderr;
+        }
+
+        /* Skip this line if the resulting command vector is empty. */
+        // 跳过空白参数
+        if (argc == 0)
+        {
+            sdsfreesplitres(argv, argc);
+            continue;
+        }
+
+        // 将选项名字转换成小写
+        // 例如 TIMEOUT 转换成 timeout
+        sdstolower(argv[0]);
+
+        /* Execute config directives */
+        if (!strcasecmp(argv[0], "maxidletime") && argc == 2)
+        {
+            // string to int
+            server.maxidletime = atoi(argv[1]);
+            if (server.maxidletime < 0)
+            {
+                err = "Invalid timeout value";
+                goto loaderr;
+            }
+        }
+        else if (!strcasecmp(argv[0], "port") && argc == 2)
+        {
+            // string to int
+            server.port = atoi(argv[1]);
+            if (server.port < 0 || server.port > 65535)
+            {
+                err = "Invalid port";
+                goto loaderr;
+            }
+        }
+        else if (!strcasecmp(argv[0], "appendfsync") && argc == 2)
+        {
+            if (!strcasecmp(argv[1], "no"))
+            {
+                server.aof_fsync = AOF_FSYNC_NO;
+            }
+            else if (!strcasecmp(argv[1], "always"))
+            {
+                server.aof_fsync = AOF_FSYNC_ALWAYS;
+            }
+            else if (!strcasecmp(argv[1], "everysec"))
+            {
+                server.aof_fsync = AOF_FSYNC_EVERYSEC;
+            }
+            else
+            {
+                err = "argument must be 'no', 'always' or 'everysec'";
+                goto loaderr;
+            }
+        }
     }
 
-    /* Skip this line if the resulting command vector is empty. */
-    // 跳过空白参数
-    if (argc == 0) {
-      sdsfreesplitres(argv, argc);
-      continue;
-    }
-
-    // 将选项名字转换成小写
-    // 例如 TIMEOUT 转换成 timeout
-    sdstolower(argv[0]);
-
-    /* Execute config directives */
-    if (!strcasecmp(argv[0], "maxidletime") && argc == 2) {
-      // string to int
-      server.maxidletime = atoi(argv[1]);
-      if (server.maxidletime < 0) {
-        err = "Invalid timeout value";
-        goto loaderr;
-      }
-    } else if (!strcasecmp(argv[0], "port") && argc == 2) {
-      // string to int
-      server.port = atoi(argv[1]);
-      if (server.port < 0 || server.port > 65535) {
-        err = "Invalid port";
-        goto loaderr;
-      }
-    } else if (!strcasecmp(argv[0], "appendfsync") && argc == 2) {
-      if (!strcasecmp(argv[1], "no")) {
-        server.aof_fsync = AOF_FSYNC_NO;
-      } else if (!strcasecmp(argv[1], "always")) {
-        server.aof_fsync = AOF_FSYNC_ALWAYS;
-      } else if (!strcasecmp(argv[1], "everysec")) {
-        server.aof_fsync = AOF_FSYNC_EVERYSEC;
-      } else {
-        err = "argument must be 'no', 'always' or 'everysec'";
-        goto loaderr;
-      }
-    }
-  }
-
-  // 释放 lines
-  sdsfreesplitres(lines, totlines);
-  return;
+    // 释放 lines
+    sdsfreesplitres(lines, totlines);
+    return;
 
 loaderr:
-  fprintf(stderr, "\n*** FATAL CONFIG FILE ERROR ***\n");
-  fprintf(stderr, "Reading the configuration file, at line %d\n", linenum);
-  fprintf(stderr, ">>> '%s'\n", lines[i]);
-  fprintf(stderr, "%s\n", err);
-  exit(1);
+    fprintf(stderr, "\n*** FATAL CONFIG FILE ERROR ***\n");
+    fprintf(stderr, "Reading the configuration file, at line %d\n", linenum);
+    fprintf(stderr, ">>> '%s'\n", lines[i]);
+    fprintf(stderr, "%s\n", err);
+    exit(1);
 }
 
 /* Load the server configuration from the specified filename.
@@ -155,106 +180,129 @@ loaderr:
  * filename 和 options 都可以是 NULL ，在这种情况下，
  * 服务器配置文件视为空文件。
  */ //先initServerConfig，后loadServerConfig
-void loadServerConfig(char *filename) {
-  sds config = sdsempty();
-  char buf[REDIS_CONFIGLINE_MAX + 1];
+void loadServerConfig(char *filename)
+{
+    sds  config = sdsempty();
+    char buf[REDIS_CONFIGLINE_MAX + 1];
 
-  /* Load the file content */
-  // 载入文件内容
-  if (filename) {
-    FILE *fp;
+    /* Load the file content */
+    // 载入文件内容
+    if (filename)
+    {
+        FILE *fp;
 
-    if (filename[0] == '-' && filename[1] == '\0') {
-      fp = stdin;
-    } else {
-      if ((fp = fopen(filename, "r")) == NULL) {
-        printf("Fatal error, can't open config file '%s'", filename);
-        exit(1);
-      }
+        if (filename[0] == '-' && filename[1] == '\0')
+        {
+            fp = stdin;
+        }
+        else
+        {
+            if ((fp = fopen(filename, "r")) == NULL)
+            {
+                printf("Fatal error, can't open config file '%s'", filename);
+                exit(1);
+            }
+        }
+        while (fgets(buf, REDIS_CONFIGLINE_MAX + 1, fp) != NULL)
+        {
+            config = sdscat(config, buf);
+        }
+        if (fp != stdin)
+        {
+            fclose(fp);
+        }
     }
-    while (fgets(buf, REDIS_CONFIGLINE_MAX + 1, fp) != NULL) {
-      config = sdscat(config, buf);
-}
-    if (fp != stdin) {
-      fclose(fp);
-}
-  }
 
-  // 根据字符串内容，设置服务器配置
-  loadServerConfigFromString(config);
+    // 根据字符串内容，设置服务器配置
+    loadServerConfigFromString(config);
 
-  sdsfree(config);
+    sdsfree(config);
 }
 
-sds getAbsolutePath(char *filename) {
-  char cwd[1024];
-  sds abspath;
-  sds relpath = sdsnew(filename);
+sds getAbsolutePath(char *filename)
+{
+    char cwd[1024];
+    sds  abspath;
+    sds  relpath = sdsnew(filename);
 
-  // 裁剪 relpath 左右的 空格、换行、tab
-  relpath = sdstrim(relpath, " \r\n\t");
-  if (relpath[0] == '/') {
-    /* Path is already absolute. */
-    // 已经是绝对路径
-    return relpath;
-  }
+    // 裁剪 relpath 左右的 空格、换行、tab
+    relpath = sdstrim(relpath, " \r\n\t");
+    if (relpath[0] == '/')
+    {
+        /* Path is already absolute. */
+        // 已经是绝对路径
+        return relpath;
+    }
 
-  /* If path is relative, join cwd and relative path. */
-  if (getcwd(cwd, sizeof(cwd)) == NULL) {
-    // 获取当前运行环境路径失败退出
+    /* If path is relative, join cwd and relative path. */
+    if (getcwd(cwd, sizeof(cwd)) == NULL)
+    {
+        // 获取当前运行环境路径失败退出
+        sdsfree(relpath);
+        return NULL;
+    }
+    abspath = sdsnew(cwd);
+    if (sdslen(abspath) && abspath[sdslen(abspath) - 1] != '/')
+    {
+        // abspath 长度为零或最后一个字符不是 / 则拼接一个 /
+        abspath = sdscat(abspath, "/");
+    }
+
+    /* At this point we have the current path always ending with "/", and
+     * the trimmed relative path. Try to normalize the obvious case of
+     * trailing ../ elements at the start of the path.
+     *
+     * For every "../" we find in the filename, we remove it and also remove
+     * the last element of the cwd, unless the current cwd is "/". */
+    while (sdslen(relpath) >= 3 && relpath[0] == '.' && relpath[1] == '.'
+           && relpath[2] == '/')
+    {
+        // 循环处理 ../ 情况
+
+        // 裁剪字符串 3 位, 保留第 3 位后
+        sdsrange(relpath, 3, -1);
+        if (sdslen(abspath) > 1)
+        {
+            // 获取倒数第二位指针
+            char *p       = abspath + sdslen(abspath) - 2;
+            int   trimlen = 1;
+
+            while (*p != '/')
+            {
+                // 寻找倒数第二个 / 位置
+                p--;
+                trimlen++;
+            }
+            // 裁去 /xxxx/xxx/ 的后面 xxx/
+            sdsrange(abspath, 0, -(trimlen + 1));
+        }
+    }
+
+    /* Finally glue the two parts together. */
+    // 拼接路径
+    abspath = sdscatsds(abspath, relpath);
     sdsfree(relpath);
-    return NULL;
-  }
-  abspath = sdsnew(cwd);
-  if (sdslen(abspath) && abspath[sdslen(abspath) - 1] != '/') {
-    // abspath 长度为零或最后一个字符不是 / 则拼接一个 /
-    abspath = sdscat(abspath, "/");
-  }
-
-  /* At this point we have the current path always ending with "/", and
-   * the trimmed relative path. Try to normalize the obvious case of
-   * trailing ../ elements at the start of the path.
-   *
-   * For every "../" we find in the filename, we remove it and also remove
-   * the last element of the cwd, unless the current cwd is "/". */
-  while (sdslen(relpath) >= 3 && relpath[0] == '.' && relpath[1] == '.' &&
-         relpath[2] == '/') {
-    // 循环处理 ../ 情况
-
-    // 裁剪字符串 3 位, 保留第 3 位后
-    sdsrange(relpath, 3, -1);
-    if (sdslen(abspath) > 1) {
-      // 获取倒数第二位指针
-      char *p = abspath + sdslen(abspath) - 2;
-      int trimlen = 1;
-
-      while (*p != '/') {
-        // 寻找倒数第二个 / 位置
-        p--;
-        trimlen++;
-      }
-      // 裁去 /xxxx/xxx/ 的后面 xxx/
-      sdsrange(abspath, 0, -(trimlen + 1));
-    }
-  }
-
-  /* Finally glue the two parts together. */
-  // 拼接路径
-  abspath = sdscatsds(abspath, relpath);
-  sdsfree(relpath);
-  return abspath;
+    return abspath;
 }
 
-void printfRedisConfig(void) {
-  printf("maxidletime:%d\r\n", server.maxidletime);
-  printf("port:%d\r\n", server.maxidletime);
-  if (server.aof_fsync == AOF_FSYNC_NO) {
-    printf("appendfsync:no\r\n");
-  } else if (server.aof_fsync == AOF_FSYNC_ALWAYS) {
-    printf("appendfsync:always\r\n");
-  } else if (server.aof_fsync == AOF_FSYNC_EVERYSEC) {
-    printf("appendfsync:everysec\r\n");
-  } else {
-    printf("appendfsync config failed, error\r\n");
-  }
+void printfRedisConfig(void)
+{
+    printf("maxidletime:%d\r\n", server.maxidletime);
+    printf("port:%d\r\n", server.maxidletime);
+    if (server.aof_fsync == AOF_FSYNC_NO)
+    {
+        printf("appendfsync:no\r\n");
+    }
+    else if (server.aof_fsync == AOF_FSYNC_ALWAYS)
+    {
+        printf("appendfsync:always\r\n");
+    }
+    else if (server.aof_fsync == AOF_FSYNC_EVERYSEC)
+    {
+        printf("appendfsync:everysec\r\n");
+    }
+    else
+    {
+        printf("appendfsync config failed, error\r\n");
+    }
 }

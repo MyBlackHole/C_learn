@@ -21,25 +21,28 @@
 
 #include "config.h"
 
-int main(int argc, char **argv) {
-  if (argc < 2) {
-    printf("error, please run with config file\r\n");
-    exit(1);
-  }
+int main(int argc, char **argv)
+{
+    if (argc < 2)
+    {
+        printf("error, please run with config file\r\n");
+        exit(1);
+    }
 
-  char *configfile = argv[1];
-  printf("config file name:%s\r\n", configfile);
+    char *configfile = argv[1];
+    printf("config file name:%s\r\n", configfile);
 
-  // 获取绝对路径的 sds
-  configfile = getAbsolutePath(configfile);
-  if (configfile == NULL) {
-    printf("error, getAbsolutePath\r\n");
-    exit(1);
-  }
+    // 获取绝对路径的 sds
+    configfile = getAbsolutePath(configfile);
+    if (configfile == NULL)
+    {
+        printf("error, getAbsolutePath\r\n");
+        exit(1);
+    }
 
-  // 载入配置
-  loadServerConfig(configfile);
+    // 载入配置
+    loadServerConfig(configfile);
 
-  // 打印配置
-  printfRedisConfig();
+    // 打印配置
+    printfRedisConfig();
 }

@@ -58,6 +58,7 @@ void adjustOpenFilesLimit(void) {
 
         limit.rlim_cur = f;
         limit.rlim_max = f;
+        // 设置文件描述符的最大打开数量
         if (setrlimit(RLIMIT_NOFILE, &limit) != -1)
           break;
         setrlimit_error = errno;

@@ -16,9 +16,9 @@ int main(int argc, char *argv[])
 {
     assert(argc == 4);
     // 将参数转化为数字
-    long int pid = strtol(argv[1], NULL, NUM);
+    long int      pid  = strtol(argv[1], NULL, NUM);
     unsigned long addr = strtoul(argv[2], NULL, NUM1);
-    long int len = strtol(argv[3], NULL, NUM);
+    long int      len  = strtol(argv[3], NULL, NUM);
     // 得到 proc-1 进程的存储位置
     char *proc_mem = malloc(NUM2);
     sprintf(proc_mem, "/proc/%ld/mem", pid);

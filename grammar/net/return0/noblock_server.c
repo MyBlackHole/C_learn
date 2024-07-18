@@ -99,7 +99,7 @@ int main(int argc, char *argv[])
             // accept系统调用不管检测到有没有可用连接，accept会立马返回
             if (errno == EINTR)
                 continue;
-            else
+            else if (errno == EAGAIN || errno == EWOULDBLOCK)
             {
                 // printf("accept: %s", strerror(errno));
                 // 由于是非阻塞(设置了anetNonBlock)方式，accept系统调用没有获取到新连接，则会直接返回，进入这里，不会阻塞
@@ -110,6 +110,11 @@ int main(int argc, char *argv[])
                 sleep(1);
                 // 继续去获取新连接，直到获取到新连接fd，通过break返回退出while循环
                 continue;
+            }
+            else
+            {
+                error_handling("accept() error");
+                break;
             }
         }
         // 获取到新连接，退出循环
@@ -133,14 +138,6 @@ int main(int argc, char *argv[])
         break;
     }
     printf("recv message:%s from client\r\n\r\n", message);
-
-    anetSetSendBuffer(fd, 10 * 1024);
-    printf("begin write message\r\n");
-
-
-    // fd设置为noblock后，即使要写的数据比sendbuf大很多，write也会立即返回
-    ret_len = write(fd, write_str, write_len);
-    printf("end write message, write len:%d\r\n", ret_len);
 
     sleep(1);
     close(fd);

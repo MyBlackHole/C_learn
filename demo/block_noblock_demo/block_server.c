@@ -14,8 +14,8 @@ void error_handling(char *message);
  */
 int anetSetSendBuffer(int fd, int buffsize)
 {
-    if (setsockopt(fd, SOL_SOCKET, SO_SNDBUF, &buffsize, sizeof(buffsize)) ==
-        -1)
+    if (setsockopt(fd, SOL_SOCKET, SO_SNDBUF, &buffsize, sizeof(buffsize))
+        == -1)
     {
         printf("set send buf failed\r\n");
         return -1;
@@ -30,11 +30,11 @@ int main(int argc, char *argv[])
 
     struct sockaddr_in serv_addr;
     struct sockaddr_in clnt_addr;
-    socklen_t clnt_addr_size;
-    int str_len;
-    int write_len = 1024 * 1024 * 10;
-    int ret_len = 0;
-    char *write_str = malloc(write_len);
+    socklen_t          clnt_addr_size;
+    int                str_len;
+    int                write_len = 1024 * 1024 * 10;
+    int                ret_len   = 0;
+    char              *write_str = malloc(write_len);
 
     char message[1000];
     if (argc != 2)
