@@ -25,14 +25,13 @@
  */
 void InitSpace(SLinkList space)
 {
-    int i;
+	int i;
 
-    for (i = 0; i < MAXSIZE - 1; ++i)
-    {
-        space[i].cur = i + 1;
-    }
+	for (i = 0; i < MAXSIZE - 1; ++i) {
+		space[i].cur = i + 1;
+	}
 
-    space[MAXSIZE - 1].cur = 0;
+	space[MAXSIZE - 1].cur = 0;
 }
 
 /*
@@ -46,16 +45,15 @@ void InitSpace(SLinkList space)
  */
 int Malloc(SLinkList space)
 {
-    int i = space[0].cur;
+	int i = space[0].cur;
 
-    if (i != 0)
-    {
-        // 将申请到的空间从备用空间中删去
-        space[0].cur = space[i].cur;
-    }
+	if (i != 0) {
+		// 将申请到的空间从备用空间中删去
+		space[0].cur = space[i].cur;
+	}
 
-    // 返回新申请结点下标
-    return i;
+	// 返回新申请结点下标
+	return i;
 }
 
 /*
@@ -69,8 +67,8 @@ int Malloc(SLinkList space)
  */
 void Free(SLinkList space, int k)
 {
-    space[k].cur = space[0].cur;
-    space[0].cur = k;
+	space[k].cur = space[0].cur;
+	space[0].cur = k;
 }
 
 /*━━━━━━━━━━━━━━━━━━━━━━ 静态链表操作 ━━━━━━━━━━━━━━━━━━━━━━*/
@@ -82,23 +80,21 @@ void Free(SLinkList space, int k)
  */
 void ListTraverse(SLinkList space, int S, void(Visit)(ElemType))
 {
-    int p;
+	int p;
 
-    // 确保链表存在
-    if (S == 0 || space[S].cur == 0)
-    {
-        return;
-    }
+	// 确保链表存在
+	if (S == 0 || space[S].cur == 0) {
+		return;
+	}
 
-    p = space[S].cur;
+	p = space[S].cur;
 
-    while (p != 0)
-    {
-        Visit(space[p].data);
-        p = space[p].cur;
-    }
+	while (p != 0) {
+		Visit(space[p].data);
+		p = space[p].cur;
+	}
 
-    printf("\n");
+	printf("\n");
 }
 
 /*━━━━━━━━━━━━━━━━━━━━━━ 图形化输出 ━━━━━━━━━━━━━━━━━━━━━━*/
@@ -106,20 +102,20 @@ void ListTraverse(SLinkList space, int S, void(Visit)(ElemType))
 // 以图形化形式输出当前结构，仅限内部测试使用
 void PrintList(SLinkList space, int S)
 {
-    int i = 0;
+	int i = 0;
 
-    printf("==== 备用空间 ====\n");
-    while (i < 20)
-    {
-        printf("%2d    | %2d | %2d |\n", i, space[i].data, space[i].cur);
-        i = space[i].cur;
-    }
+	printf("==== 备用空间 ====\n");
+	while (i < 20) {
+		printf("%2d    | %2d | %2d |\n", i, space[i].data,
+		       space[i].cur);
+		i = space[i].cur;
+	}
 
-    printf("==== 静态链表 ====\n");
-    i = S;
-    while (i > 0 && i < 20)
-    {
-        printf("%2d    | %2d | %2d |\n", i, space[i].data, space[i].cur);
-        i = space[i].cur;
-    }
+	printf("==== 静态链表 ====\n");
+	i = S;
+	while (i > 0 && i < 20) {
+		printf("%2d    | %2d | %2d |\n", i, space[i].data,
+		       space[i].cur);
+		i = space[i].cur;
+	}
 }

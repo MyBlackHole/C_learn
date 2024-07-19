@@ -5,11 +5,11 @@ int sys_gethid(unsigned int *ptr_hid)
 	lib_printf("--> sys_gethid, arg0 = 0x%x\n", ptr_hid);
 	if (ptr_hid == NULL) {
 		lib_printf("ptr_hid == NULL\n");
-       		return -1;
+		return -1;
 	} else {
 		lib_printf("ptr_hid != NULL\n");
-		 *ptr_hid = r_mhartid();
- 		 return 0;
+		*ptr_hid = r_mhartid();
+		return 0;
 	}
 }
 

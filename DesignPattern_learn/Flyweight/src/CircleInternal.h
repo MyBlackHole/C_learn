@@ -18,10 +18,10 @@ extern "C" {
 
 #include "Circle.h"
 
-Circle* circle_create(const char* color);
-void circle_destroy(Circle** circle);
+Circle *circle_create(const char *color);
+void circle_destroy(Circle **circle);
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // CIRCLE_INTERNAL_H_
+#endif // CIRCLE_INTERNAL_H_

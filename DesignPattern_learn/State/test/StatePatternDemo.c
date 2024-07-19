@@ -13,19 +13,20 @@
 
 #include "Context.h"
 
-int main(int argc, char const* argv[]) {
-    Context* context = context_create();
+int main(int argc, char const *argv[])
+{
+	Context *context = context_create();
 
-    State* start_state = start_state_create();
-    state_do_action(start_state, context);
-    printf("%s\n", state_to_string(context_get_state(context)));
+	State *start_state = start_state_create();
+	state_do_action(start_state, context);
+	printf("%s\n", state_to_string(context_get_state(context)));
 
-    State* stop_state = stop_state_create();
-    state_do_action(stop_state, context);
-    printf("%s\n", state_to_string(context_get_state(context)));
+	State *stop_state = stop_state_create();
+	state_do_action(stop_state, context);
+	printf("%s\n", state_to_string(context_get_state(context)));
 
-    context_destroy(&context);
-    state_destroy(&start_state);
-    state_destroy(&stop_state);
-    return 0;
+	context_destroy(&context);
+	state_destroy(&start_state);
+	state_destroy(&stop_state);
+	return 0;
 }

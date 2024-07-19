@@ -15,14 +15,12 @@
 
 int demo_isxdigit_test_main()
 {
-    char str[] = "123c@#FDsP[e?";
-    int index;
-    for (index = 0; str[index] != 0; index++)
-    {
-        if (isxdigit(str[index]))
-        {
-            printf("%c is a hexadecimal digits\n", str[index]);
-        }
-    }
-    return EXIT_SUCCESS;
+	char str[] = "123c@#FDsP[e?";
+	int index;
+	for (index = 0; str[index] != 0; index++) {
+		if (isxdigit(str[index])) {
+			printf("%c is a hexadecimal digits\n", str[index]);
+		}
+	}
+	return EXIT_SUCCESS;
 }

@@ -20,15 +20,15 @@ extern "C" {
 
 typedef struct Cache Cache;
 
-Cache* cache_create(void);
+Cache *cache_create(void);
 
-void cache_destroy(Cache** cache);
+void cache_destroy(Cache **cache);
 
-Service* cache_get_service(Cache* cache, const char* service_name);
+Service *cache_get_service(Cache *cache, const char *service_name);
 
-void cache_add_service(Cache* cache, Service* new_service);
+void cache_add_service(Cache *cache, Service *new_service);
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // CACHE_H_
+#endif // CACHE_H_

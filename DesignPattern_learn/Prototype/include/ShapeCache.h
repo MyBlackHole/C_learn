@@ -19,9 +19,9 @@ extern "C" {
 #include "Shape.h"
 
 void shape_cache_load_cache(void);
-Shape* shape_cache_get_shape(const int64_t shape_id);
+Shape *shape_cache_get_shape(const int64_t shape_id);
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // SHAPE_CACHE_H_
+#endif // SHAPE_CACHE_H_

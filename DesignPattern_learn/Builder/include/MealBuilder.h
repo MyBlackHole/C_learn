@@ -2,16 +2,15 @@
 #define MEAL_BUILDER_H_
 
 #ifdef __cplusplus
-extern "C"
-{
+extern "C" {
 #endif
 
 #include "Meal.h"
 
-    Meal *meal_builder_prepare_veg_meal(void);
-    Meal *meal_builder_prepare_non_veg_meal(void);
+Meal *meal_builder_prepare_veg_meal(void);
+Meal *meal_builder_prepare_non_veg_meal(void);
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // MEAL_BUILDER_H_
+#endif // MEAL_BUILDER_H_

@@ -18,12 +18,12 @@ extern "C" {
 
 typedef struct Circle Circle;
 
-void circle_set_x(Circle* circle, int x);
-void circle_set_y(Circle* circle, int y);
-void circle_set_radius(Circle* circle, int radius);
-void circle_draw(Circle* circle);
+void circle_set_x(Circle *circle, int x);
+void circle_set_y(Circle *circle, int y);
+void circle_set_radius(Circle *circle, int radius);
+void circle_draw(Circle *circle);
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // CIRCLE_H_
+#endif // CIRCLE_H_

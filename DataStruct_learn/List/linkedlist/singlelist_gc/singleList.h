@@ -4,23 +4,21 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
-typedef struct listNode
-{
-    struct listNode *next;
-    void *value;
+typedef struct listNode {
+	struct listNode *next;
+	void *value;
 } listNode;
 
-typedef struct linkedList
-{
-    listNode *head;
-    size_t len;
-    size_t typesize;
+typedef struct linkedList {
+	listNode *head;
+	size_t len;
+	size_t typesize;
 
-    void (*dup)(void *, void *);
+	void (*dup)(void *, void *);
 
-    int (*match)(void *, void *);
+	int (*match)(void *, void *);
 
-    void (*free)(void *);
+	void (*free)(void *);
 } linkedList;
 
 #define listSetDupMethod(l, m) ((l)->dup = (m))
@@ -42,7 +40,7 @@ linkedList *listAddNodeHead(linkedList *list, void *value);
 linkedList *listAddNodeTail(linkedList *list, void *value);
 
 linkedList *listInsertNode(linkedList *list, listNode *old_node, void *value,
-                           bool after);
+			   bool after);
 
 void listDelNode(linkedList *list, listNode *node);
 
@@ -54,4 +52,4 @@ linkedList *listRewind(linkedList *list);
 
 size_t listLength(linkedList *list);
 
-#endif  // !__SINGLELIST_H__
+#endif // !__SINGLELIST_H__

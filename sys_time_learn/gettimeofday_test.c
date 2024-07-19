@@ -19,14 +19,14 @@
 
 int demo_gettimeofday_main()
 {
-    struct timezone timezone;
-    struct timeval  timeval;
+	struct timezone timezone;
+	struct timeval timeval;
 
-    gettimeofday(&timeval, &timezone);
-    printf("tv_sec:%ld\n", timeval.tv_sec);
-    printf("tv_usec:%ld\n", timeval.tv_usec);
-    printf("tz_minuteswest:%d\n", timezone.tz_minuteswest);
-    printf("tz_dsttime:%d\n", timezone.tz_dsttime);
+	gettimeofday(&timeval, &timezone);
+	printf("tv_sec:%ld\n", timeval.tv_sec);
+	printf("tv_usec:%ld\n", timeval.tv_usec);
+	printf("tz_minuteswest:%d\n", timezone.tz_minuteswest);
+	printf("tz_dsttime:%d\n", timezone.tz_dsttime);
 
-    return 0;
+	return 0;
 }

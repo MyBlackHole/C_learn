@@ -15,117 +15,108 @@
 
 MinHeap *InitMinHeap(MinHeap *heap, int size)
 {
-    if (size < 0)
-    {
-        printf("size < 0");
-        exit(1);
-    }
+	if (size < 0) {
+		printf("size < 0");
+		exit(1);
+	}
 
-    heap->array = (Node *)malloc(size * sizeof(Node));
+	heap->array = (Node *)malloc(size * sizeof(Node));
 
-    if (!heap->array)
-    {
-        printf("(Node *)malloc(size * sizeof(Node))");
-        exit(1);
-    }
+	if (!heap->array) {
+		printf("(Node *)malloc(size * sizeof(Node))");
+		exit(1);
+	}
 
-    heap->len     = 0;
-    heap->MaxSize = size;
-    return heap;
+	heap->len = 0;
+	heap->MaxSize = size;
+	return heap;
 }
 
-int EmptyHeap(MinHeap *heap) { return heap->len == 0; }
+int EmptyHeap(MinHeap *heap)
+{
+	return heap->len == 0;
+}
 
 int FixUp(MinHeap *heap)
 {
-    int j = heap->len - 1;
-    int f;
-    while ((f = ((j - 1) >> 1)) >= 0)
-    {
-        /* code */
-        if (heap->array[f] <= heap->array[j])
-        {
-            break;
-        }
+	int j = heap->len - 1;
+	int f;
+	while ((f = ((j - 1) >> 1)) >= 0) {
+		/* code */
+		if (heap->array[f] <= heap->array[j]) {
+			break;
+		}
 
-        int tmpe       = heap->array[f];
-        heap->array[f] = heap->array[j];
-        heap->array[j] = tmpe;
-        j              = f;
-    }
+		int tmpe = heap->array[f];
+		heap->array[f] = heap->array[j];
+		heap->array[j] = tmpe;
+		j = f;
+	}
 
-    return f;
+	return f;
 }
 
 int FixDown(MinHeap *heap)
 {
-    int f = 0;
-    int k;
-    while ((k = ((f << 1) + 1)) < heap->len)
-    {
-        /* code */
-        if (k < heap->len - 1)
-        {
-            if (heap->array[k] > heap->array[k + 1])
-            {
-                k++;
-            }
-        }
-        if (heap->array[f] <= heap->array[k])
-        {
-            break;
-        }
+	int f = 0;
+	int k;
+	while ((k = ((f << 1) + 1)) < heap->len) {
+		/* code */
+		if (k < heap->len - 1) {
+			if (heap->array[k] > heap->array[k + 1]) {
+				k++;
+			}
+		}
+		if (heap->array[f] <= heap->array[k]) {
+			break;
+		}
 
-        int tmpe       = heap->array[f];
-        heap->array[f] = heap->array[k];
-        heap->array[k] = tmpe;
-        f              = k;
-    }
-    return f;
+		int tmpe = heap->array[f];
+		heap->array[f] = heap->array[k];
+		heap->array[k] = tmpe;
+		f = k;
+	}
+	return f;
 }
 
 int InsertHeap(MinHeap *heap, Node node)
 {
-    if (heap->len == heap->MaxSize)
-    {
-        Node *p;
-        p = (Node *)realloc(heap->array, heap->MaxSize * 2);
-        if (!p)
-        {
-            free(heap->array);
-            printf("(Node *)realloc(heap->array, heap->MaxSize * 2)");
-            exit(1);
-        }
-        heap->array   = p;
-        heap->MaxSize = heap->MaxSize * 2;
-    }
+	if (heap->len == heap->MaxSize) {
+		Node *p;
+		p = (Node *)realloc(heap->array, heap->MaxSize * 2);
+		if (!p) {
+			free(heap->array);
+			printf("(Node *)realloc(heap->array, heap->MaxSize * 2)");
+			exit(1);
+		}
+		heap->array = p;
+		heap->MaxSize = heap->MaxSize * 2;
+	}
 
-    heap->array[heap->len++] = node;
+	heap->array[heap->len++] = node;
 
-    return FixUp(heap);
+	return FixUp(heap);
 }
 
 Node DeleteHeap(MinHeap *heap)
 {
-    if (heap->len <= 0)
-    {
-        printf("heap->len <= 0");
-        exit(1);
-    }
-    int value              = heap->array[0];
-    heap->array[0]         = heap->array[--heap->len];
-    heap->array[heap->len] = 0;
-    FixDown(heap);
-    return value;
+	if (heap->len <= 0) {
+		printf("heap->len <= 0");
+		exit(1);
+	}
+	int value = heap->array[0];
+	heap->array[0] = heap->array[--heap->len];
+	heap->array[heap->len] = 0;
+	FixDown(heap);
+	return value;
 }
 
 int ClearHeap(MinHeap *heap)
 {
-    if (heap->array != NULL)
-    {
-        free(heap->array);
-        heap->len     = 0;
-        heap->MaxSize = 0;
-    }
-    return 0;
+	if (heap->array != NULL) {
+		free(heap->array);
+		heap->len = 0;
+		heap->MaxSize = 0;
+	}
+	return 0;
 }

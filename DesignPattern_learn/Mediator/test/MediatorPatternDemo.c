@@ -13,14 +13,15 @@
 
 #include "User.h"
 
-int main(int argc, char const* argv[]) {
-    User* robert = user_create("Robert");
-    User* john = user_create("John");
+int main(int argc, char const *argv[])
+{
+	User *robert = user_create("Robert");
+	User *john = user_create("John");
 
-    user_send_message(robert, "Hi! John!");
-    user_send_message(john, "Hello! Robert!");
+	user_send_message(robert, "Hi! John!");
+	user_send_message(john, "Hello! Robert!");
 
-    user_destroy(&robert);
-    user_destroy(&john);
-    return 0;
+	user_destroy(&robert);
+	user_destroy(&john);
+	return 0;
 }

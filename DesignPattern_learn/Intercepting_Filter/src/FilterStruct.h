@@ -16,13 +16,13 @@ extern "C" {
 #endif
 
 struct Filter {
-    void* priv;
+	void *priv;
 
-    void (*execute)(struct Filter* filter, const char* request);
-    void (*destroy)(struct Filter* filter);
+	void (*execute)(struct Filter *filter, const char *request);
+	void (*destroy)(struct Filter *filter);
 };
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // FILTER_STRUCT_H_
+#endif // FILTER_STRUCT_H_

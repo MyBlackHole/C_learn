@@ -17,13 +17,13 @@ extern "C" {
 #endif
 
 struct Strategy {
-    void* priv;
+	void *priv;
 
-    int (*do_operation)(struct Strategy* strategy, int num1, int num2);
-    void (*destroy)(struct Strategy* strategy);
+	int (*do_operation)(struct Strategy *strategy, int num1, int num2);
+	void (*destroy)(struct Strategy *strategy);
 };
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // STRATEGY_STRUCT_H_
+#endif // STRATEGY_STRUCT_H_

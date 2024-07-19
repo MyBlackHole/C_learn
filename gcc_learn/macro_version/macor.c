@@ -3,14 +3,14 @@
 
 int main()
 {
-    int family, type, proto;
+	int family, type, proto;
 #if SIMPLEFS_AT_LEAST(4, 19, 0)
-    struct net *net
+	struct net *net
 #endif
 
 #if SIMPLEFS_AT_LEAST(4, 19, 0)
-        sock_create_kern(net, family, type, proto, NULL);
+		sock_create_kern(net, family, type, proto, NULL);
 #else
-    sock_create_kern(family, type, proto, NULL);
+	sock_create_kern(family, type, proto, NULL);
 #endif
 }

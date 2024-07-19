@@ -2,22 +2,20 @@
 #define __BINARY_SEARCH_TREE__
 typedef int mytype;
 
-typedef struct _bstree_node
-{
-    mytype               data;
-    struct _bstree_node *lchild;
-    struct _bstree_node *rchild;
+typedef struct _bstree_node {
+	mytype data;
+	struct _bstree_node *lchild;
+	struct _bstree_node *rchild;
 } bstree_node;
 
-typedef struct _bstree
-{
-    int size;
+typedef struct _bstree {
+	int size;
 
-    int (*compare)(mytype key1, mytype key2);
+	int (*compare)(mytype key1, mytype key2);
 
-    int (*destory)(mytype data);
+	int (*destory)(mytype data);
 
-    bstree_node *root;
+	bstree_node *root;
 } bstree;
 
 typedef int (*compare_fuc)(mytype key1, mytype key2);

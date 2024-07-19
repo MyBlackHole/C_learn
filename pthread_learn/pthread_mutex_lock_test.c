@@ -16,63 +16,57 @@ void *thread_4(void *);
 
 int demo_mutex_lock_main()
 {
-    pthread_t t_a;
-    pthread_t t_b;
+	pthread_t t_a;
+	pthread_t t_b;
 
-    pthread_create(&t_a, NULL, thread_3, NULL);
-    pthread_create(&t_b, NULL, thread_4, NULL);
+	pthread_create(&t_a, NULL, thread_3, NULL);
+	pthread_create(&t_b, NULL, thread_4, NULL);
 
-    printf("t_a:0x%lx, t_b:0x%lx\n", t_a, t_b);
-    pthread_join(t_b, NULL);
-    pthread_mutex_destroy(&mutex_1_2);
-    pthread_cond_destroy(&cond_5);
+	printf("t_a:0x%lx, t_b:0x%lx\n", t_a, t_b);
+	pthread_join(t_b, NULL);
+	pthread_mutex_destroy(&mutex_1_2);
+	pthread_cond_destroy(&cond_5);
 
-    exit(0);
+	exit(0);
 }
 
 void *thread_3(void *junk)
 {
-    for (index = 1; index <= 9; index++)
-    {
-        pthread_mutex_lock(&mutex_1_2);
-        printf("call thread1 \n");
-        if (index % 3 == 0)
-        {
-            pthread_cond_signal(&cond_5);
-            printf("thread1: ***** i=%d\n", index);
-        }
-        else
-        {
-            printf("thread1: %d\n", index);
-        }
+	for (index = 1; index <= 9; index++) {
+		pthread_mutex_lock(&mutex_1_2);
+		printf("call thread1 \n");
+		if (index % 3 == 0) {
+			pthread_cond_signal(&cond_5);
+			printf("thread1: ***** i=%d\n", index);
+		} else {
+			printf("thread1: %d\n", index);
+		}
 
-        pthread_mutex_unlock(&mutex_1_2);
+		pthread_mutex_unlock(&mutex_1_2);
 
-        printf("thread1: sleep i=%d\n", index);
-        sleep(1);
-        printf("thread1: sleep i=%d ***** end\n", index);
-    }
-    return 0;
+		printf("thread1: sleep i=%d\n", index);
+		sleep(1);
+		printf("thread1: sleep i=%d ***** end\n", index);
+	}
+	return 0;
 }
 
 void *thread_4(void *junk)
 {
-    while (index <= 9)
-    {
-        pthread_mutex_lock(&mutex_1_2);
-        printf("call thread2 \n");
-        if (index % 3 != 0)
-        {
-            pthread_cond_wait(&cond_5, &mutex_1_2);
-        }
+	while (index <= 9) {
+		pthread_mutex_lock(&mutex_1_2);
+		printf("call thread2 \n");
+		if (index % 3 != 0) {
+			pthread_cond_wait(&cond_5, &mutex_1_2);
+		}
 
-        printf("thread2: %d\n", index);
+		printf("thread2: %d\n", index);
 
-        pthread_mutex_unlock(&mutex_1_2);
+		pthread_mutex_unlock(&mutex_1_2);
 
-        printf("thread2: sleep i=%d\n", index);
-        sleep(1);
-        printf("thread2: sleep i=%d ***** end\n", index);
-    }
-    return 0;
+		printf("thread2: sleep i=%d\n", index);
+		sleep(1);
+		printf("thread2: sleep i=%d ***** end\n", index);
+	}
+	return 0;
 }

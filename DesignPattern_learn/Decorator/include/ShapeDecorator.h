@@ -20,11 +20,11 @@ extern "C" {
 
 typedef struct ShapeDecorator ShapeDecorator;
 
-ShapeDecorator* red_shape_decorator_create(struct Shape* decorated_shape);
-void shape_decorator_destroy(ShapeDecorator** shape_decorator);
-void shape_decorator_draw(ShapeDecorator* shape_decorator);
+ShapeDecorator *red_shape_decorator_create(struct Shape *decorated_shape);
+void shape_decorator_destroy(ShapeDecorator **shape_decorator);
+void shape_decorator_draw(ShapeDecorator *shape_decorator);
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // SHAPE_DECORATOR_H_
+#endif // SHAPE_DECORATOR_H_

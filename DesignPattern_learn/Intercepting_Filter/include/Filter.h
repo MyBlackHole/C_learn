@@ -17,15 +17,15 @@ extern "C" {
 
 typedef struct Filter Filter;
 
-Filter* authentication_filter_create(void);
+Filter *authentication_filter_create(void);
 
-Filter* debug_filter_create(void);
+Filter *debug_filter_create(void);
 
-void filter_destroy(Filter** filter);
+void filter_destroy(Filter **filter);
 
-void filter_execute(Filter* filter, const char* request);
+void filter_execute(Filter *filter, const char *request);
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // FILTER_H_
+#endif // FILTER_H_

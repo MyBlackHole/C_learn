@@ -4,23 +4,21 @@
 
 int main(int argc, char *argv[])
 {
-    char dpath[PATH_MAX];
-    char *dir;
-    if (argc != 2)
-    {
-        perror("exec dir");
-        return EXIT_FAILURE;
-    }
+	char dpath[PATH_MAX];
+	char *dir;
+	if (argc != 2) {
+		perror("exec dir");
+		return EXIT_FAILURE;
+	}
 
-    dir = argv[1];
+	dir = argv[1];
 
-    // 获取真实路径
-    if (dir && !realpath(dir, dpath))
-    {
-        return EXIT_FAILURE;
-    }
+	// 获取真实路径
+	if (dir && !realpath(dir, dpath)) {
+		return EXIT_FAILURE;
+	}
 
-    printf("%s\n", dpath);
+	printf("%s\n", dpath);
 
-    return EXIT_SUCCESS;
+	return EXIT_SUCCESS;
 }

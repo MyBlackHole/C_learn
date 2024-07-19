@@ -14,19 +14,18 @@
 
 void timer(int sig)
 {
-    if (SIGALRM == sig)
-    {
-        printf("timer\n");
-        alarm(2);
-    }
+	if (SIGALRM == sig) {
+		printf("timer\n");
+		alarm(2);
+	}
 
-    return;
+	return;
 }
 
 int demo_timer1_main()
 {
-    signal(SIGALRM, timer);
-    alarm(1);
-    getchar();
-    return 0;
+	signal(SIGALRM, timer);
+	alarm(1);
+	getchar();
+	return 0;
 }

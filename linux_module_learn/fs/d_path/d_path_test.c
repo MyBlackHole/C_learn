@@ -12,44 +12,43 @@
 // 内核模块初始化函数
 static int __init lkm_init(void)
 {
-    struct qstr root_task_path;
-    struct qstr current_task_path;
+	struct qstr root_task_path;
+	struct qstr current_task_path;
 
-    char buf_1[TASK_PATH_MAX_LENGTH] = {0};
-    char *task_path_1 = NULL;
+	char buf_1[TASK_PATH_MAX_LENGTH] = { 0 };
+	char *task_path_1 = NULL;
 
-    char buf_2[TASK_PATH_MAX_LENGTH] = {0};
-    char *task_path_2 = NULL;
+	char buf_2[TASK_PATH_MAX_LENGTH] = { 0 };
+	char *task_path_2 = NULL;
 
-    // 获取当前目录名
-    current_task_path = current->fs->pwd.dentry->d_name;
-    // 获取根目录
-    root_task_path = current->fs->root.dentry->d_name;
+	// 获取当前目录名
+	current_task_path = current->fs->pwd.dentry->d_name;
+	// 获取根目录
+	root_task_path = current->fs->root.dentry->d_name;
 
-    // 内核线程的 mm 成员为空，这里没做判断
+	// 内核线程的 mm 成员为空，这里没做判断
 
-    // 2.6.32 没有dentry_path_raw API
-    // 获取文件全路径
-    task_path_1 = dentry_path_raw(current->mm->exe_file->f_path.dentry, buf_1,
-                                  TASK_PATH_MAX_LENGTH);
+	// 2.6.32 没有dentry_path_raw API
+	// 获取文件全路径
+	task_path_1 = dentry_path_raw(current->mm->exe_file->f_path.dentry,
+				      buf_1, TASK_PATH_MAX_LENGTH);
 
-    // 获取文件全路径
-    // 调用d_path函数文件的路径时，应该使用返回的指针：task_path_2
-    // ，而不是转递进去的参数buf：buf_2
-    task_path_2 =
-        d_path(&current->mm->exe_file->f_path, buf_2, TASK_PATH_MAX_LENGTH);
-    if (IS_ERR(task_path_2))
-    {
-        printk("Get path failed\n");
-        return -1;
-    }
+	// 获取文件全路径
+	// 调用d_path函数文件的路径时，应该使用返回的指针：task_path_2
+	// ，而不是转递进去的参数buf：buf_2
+	task_path_2 = d_path(&current->mm->exe_file->f_path, buf_2,
+			     TASK_PATH_MAX_LENGTH);
+	if (IS_ERR(task_path_2)) {
+		printk("Get path failed\n");
+		return -1;
+	}
 
-    printk("current path = %s\n", current_task_path.name);
-    printk("root path = %s\n", root_task_path.name);
-    printk("task_path_1 = %s\n", task_path_1);
-    printk("task_path_2 = %s\n", task_path_2);
+	printk("current path = %s\n", current_task_path.name);
+	printk("root path = %s\n", root_task_path.name);
+	printk("task_path_1 = %s\n", task_path_1);
+	printk("task_path_2 = %s\n", task_path_2);
 
-    return -1;
+	return -1;
 }
 
 module_init(lkm_init);

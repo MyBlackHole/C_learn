@@ -2,4 +2,5 @@
 
 struct socket;
 struct net;
-int sock_create_kern(struct net *net, int family, int type, int proto, struct socket **res);
+int sock_create_kern(struct net *net, int family, int type, int proto,
+		     struct socket **res);

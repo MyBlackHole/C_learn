@@ -10,7 +10,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "SqList.h"  //**▲ 02 线性表**//
+#include "SqList.h" //**▲ 02 线性表**//
 
 /*
  * ████████ 算法2.2 ████████

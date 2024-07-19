@@ -19,13 +19,13 @@ extern "C" {
 #include "IteratorStruct.h"
 
 struct Container {
-    void* priv;
+	void *priv;
 
-    struct Iterator* (*get_iterator)(struct Container* container);
-    void (*destroy)(struct Container* container);
+	struct Iterator *(*get_iterator)(struct Container *container);
+	void (*destroy)(struct Container *container);
 };
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // CONTAINER_STRUCT_H_
+#endif // CONTAINER_STRUCT_H_

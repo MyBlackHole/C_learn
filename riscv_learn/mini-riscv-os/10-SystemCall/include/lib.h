@@ -5,14 +5,13 @@
 #include <stddef.h>
 #include <stdarg.h>
 
-#define lib_error(...)       \
-  {                          \
-    lib_printf(__VA_ARGS__); \
-    while (1)                \
-    {                        \
-    }                        \
-  }                          \
-  }
+#define lib_error(...)                   \
+	{                                \
+		lib_printf(__VA_ARGS__); \
+		while (1) {              \
+		}                        \
+	}                                \
+	}
 
 extern char *lib_gets(char *);
 extern void uart_init();

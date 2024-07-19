@@ -7,6 +7,6 @@
 
 extern void user_init();
 extern void os_kernel();
-extern int  os_main(void);
+extern int os_main(void);
 
 #endif

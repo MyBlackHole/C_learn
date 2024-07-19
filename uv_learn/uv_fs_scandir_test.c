@@ -6,20 +6,19 @@
 
 int demo_fs_scandir_main(int argc, char *argv[])
 {
-    struct uv_fs_s req;
-    struct uv_dirent_s entry;
-    int num;
-    int ret;
+	struct uv_fs_s req;
+	struct uv_dirent_s entry;
+	int num;
+	int ret;
 
-    num = uv_fs_scandir(NULL, &req, "/tmp", 0, NULL);
-    for (int i = 0; i < num; i++)
-    {
-        const char *filename;
-        ret = uv_fs_scandir_next(&req, &entry);
-        assert(ret == 0); /* Can't fail in libuv */
+	num = uv_fs_scandir(NULL, &req, "/tmp", 0, NULL);
+	for (int i = 0; i < num; i++) {
+		const char *filename;
+		ret = uv_fs_scandir_next(&req, &entry);
+		assert(ret == 0); /* Can't fail in libuv */
 
-        filename = entry.name;
-        printf("%s\n", filename);
-    }
-    return EXIT_SUCCESS;
+		filename = entry.name;
+		printf("%s\n", filename);
+	}
+	return EXIT_SUCCESS;
 }

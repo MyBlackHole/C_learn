@@ -17,10 +17,10 @@ extern "C" {
 
 typedef struct Shape Shape;
 
-void shape_destroy(Shape** shape);
-void shape_draw(Shape* shape);
+void shape_destroy(Shape **shape);
+void shape_draw(Shape *shape);
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // SHAPE_H_
+#endif // SHAPE_H_

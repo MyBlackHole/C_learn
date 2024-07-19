@@ -19,14 +19,14 @@ extern "C" {
 #include <stdbool.h>
 
 struct Iterator {
-    void* priv;
+	void *priv;
 
-    bool (*has_next)(struct Iterator* iterator);
-    void* (*next)(struct Iterator* iterator);
-    void (*destroy)(struct Iterator* iterator);
+	bool (*has_next)(struct Iterator *iterator);
+	void *(*next)(struct Iterator *iterator);
+	void (*destroy)(struct Iterator *iterator);
 };
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // ITERATOR_STRUCT_H_
+#endif // ITERATOR_STRUCT_H_

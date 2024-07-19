@@ -19,13 +19,13 @@ extern "C" {
 #include "list.h"
 
 struct Criteria {
-    void* priv;
+	void *priv;
 
-    List* (*meet_criteria)(struct Criteria* criteria, List* persons);
-    void (*destroy)(struct Criteria* criteria);
+	List *(*meet_criteria)(struct Criteria *criteria, List *persons);
+	void (*destroy)(struct Criteria *criteria);
 };
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // CRITERIA_STRUCT_H_
+#endif // CRITERIA_STRUCT_H_

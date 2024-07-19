@@ -7,13 +7,16 @@
  * __s1 长度若小于__s2 长度则返回小于0 的值 */
 void func1()
 {
-    char s[] = "abc";
-    int bool = 0;
-    bool = strcasecmp(s, "abc");
-    printf("%d\n", bool);
+	char s[] = "abc";
+	int bool = 0;
+	bool = strcasecmp(s, "abc");
+	printf("%d\n", bool);
 
-    bool = strcasecmp(s, "ab");
-    printf("%d\n", bool);
+	bool = strcasecmp(s, "ab");
+	printf("%d\n", bool);
 }
 
-int main(int argc, char *argv[]) { func1(); }
+int main(int argc, char *argv[])
+{
+	func1();
+}

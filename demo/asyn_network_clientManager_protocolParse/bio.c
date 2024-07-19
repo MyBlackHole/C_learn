@@ -110,16 +110,15 @@ static unsigned long long bio_pending[REDIS_BIO_NUM_OPS];
  * 这个结构只由 API 使用，不会被暴露给外部。
  */
 struct bio_job {
+	// 任务创建时的时间
+	time_t time; /* Time at which the job was created. */
 
-  // 任务创建时的时间
-  time_t time; /* Time at which the job was created. */
-
-  /* Job specific arguments pointers. If we need to pass more than three
+	/* Job specific arguments pointers. If we need to pass more than three
    * arguments we can just pass a pointer to a structure or alike.
    *
    * 任务的参数。参数多于三个时，可以传递数组或者结构
    */
-  void *arg1, *arg2, *arg3;
+	void *arg1, *arg2, *arg3;
 };
 
 void *bioProcessBackgroundJobs(void *arg);
@@ -135,150 +134,158 @@ void *bioProcessBackgroundJobs(void *arg);
  *
  * 初始化后台任务系统，生成线程
  */
-void bioInit(void) {
-  pthread_attr_t attr;
-  pthread_t thread;
-  size_t stacksize;
-  int j;
+void bioInit(void)
+{
+	pthread_attr_t attr;
+	pthread_t thread;
+	size_t stacksize;
+	int j;
 
-  /* Initialization of state vars and objects
+	/* Initialization of state vars and objects
    *
    * 初始化 job 队列，以及线程状态
    */
-  for (j = 0; j < REDIS_BIO_NUM_OPS; j++) {
-    pthread_mutex_init(&bio_mutex[j], NULL);
-    pthread_cond_init(&bio_condvar[j], NULL);
-    bio_jobs[j] = listCreate();
-    bio_pending[j] = 0;
-  }
+	for (j = 0; j < REDIS_BIO_NUM_OPS; j++) {
+		pthread_mutex_init(&bio_mutex[j], NULL);
+		pthread_cond_init(&bio_condvar[j], NULL);
+		bio_jobs[j] = listCreate();
+		bio_pending[j] = 0;
+	}
 
-  /* Set the stack size as by default it may be small in some system
+	/* Set the stack size as by default it may be small in some system
    *
    * 设置栈大小
    */
-  pthread_attr_init(&attr);
-  pthread_attr_getstacksize(&attr, &stacksize);
-  if (!stacksize)
-    stacksize = 1; /* The world is full of Solaris Fixes */
-  while (stacksize < REDIS_THREAD_STACK_SIZE)
-    stacksize *= 2;
-  pthread_attr_setstacksize(&attr, stacksize);
+	pthread_attr_init(&attr);
+	pthread_attr_getstacksize(&attr, &stacksize);
+	if (!stacksize)
+		stacksize = 1; /* The world is full of Solaris Fixes */
+	while (stacksize < REDIS_THREAD_STACK_SIZE)
+		stacksize *= 2;
+	pthread_attr_setstacksize(&attr, stacksize);
 
-  /* Ready to spawn our threads. We use the single argument the thread
+	/* Ready to spawn our threads. We use the single argument the thread
    * function accepts in order to pass the job ID the thread is
    * responsible of.
    *
    * 创建线程
    */
-  for (j = 0; j < REDIS_BIO_NUM_OPS; j++) {
-    void *arg = (void *)(unsigned long)j;
-    if (pthread_create(&thread, &attr, bioProcessBackgroundJobs, arg) != 0) {
-      redisLog(REDIS_WARNING, "Fatal: Can't initialize Background Jobs.");
-      exit(1);
-    }
-    bio_threads[j] = thread;
-  }
+	for (j = 0; j < REDIS_BIO_NUM_OPS; j++) {
+		void *arg = (void *)(unsigned long)j;
+		if (pthread_create(&thread, &attr, bioProcessBackgroundJobs,
+				   arg) != 0) {
+			redisLog(REDIS_WARNING,
+				 "Fatal: Can't initialize Background Jobs.");
+			exit(1);
+		}
+		bio_threads[j] = thread;
+	}
 }
 
 /*
  * 创建后台任务
  */ //由新的线程bio_threads来执行job   bioProcessBackgroundJobs中执行
-void bioCreateBackgroundJob(int type, void *arg1, void *arg2, void *arg3) {
-  struct bio_job *job = zmalloc(sizeof(*job));
+void bioCreateBackgroundJob(int type, void *arg1, void *arg2, void *arg3)
+{
+	struct bio_job *job = zmalloc(sizeof(*job));
 
-  job->time = time(NULL);
-  job->arg1 = arg1;
-  job->arg2 = arg2;
-  job->arg3 = arg3;
+	job->time = time(NULL);
+	job->arg1 = arg1;
+	job->arg2 = arg2;
+	job->arg3 = arg3;
 
-  pthread_mutex_lock(&bio_mutex[type]);
+	pthread_mutex_lock(&bio_mutex[type]);
 
-  // 将新工作推入队列
-  listAddNodeTail(bio_jobs[type], job);
-  bio_pending[type]++;
+	// 将新工作推入队列
+	listAddNodeTail(bio_jobs[type], job);
+	bio_pending[type]++;
 
-  pthread_cond_signal(&bio_condvar[type]);
+	pthread_cond_signal(&bio_condvar[type]);
 
-  pthread_mutex_unlock(&bio_mutex[type]);
+	pthread_mutex_unlock(&bio_mutex[type]);
 }
 
 /*
  * 处理后台任务  执行队列中的任务
  */
-void *bioProcessBackgroundJobs(void *arg) {
-  struct bio_job *job;
-  unsigned long type = (unsigned long)arg;
-  sigset_t sigset;
+void *bioProcessBackgroundJobs(void *arg)
+{
+	struct bio_job *job;
+	unsigned long type = (unsigned long)arg;
+	sigset_t sigset;
 
-  /* Make the thread killable at any time, so that bioKillThreads()
+	/* Make the thread killable at any time, so that bioKillThreads()
    * can work reliably. */
-  pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
-  pthread_setcanceltype(PTHREAD_CANCEL_ASYNCHRONOUS, NULL);
+	pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
+	pthread_setcanceltype(PTHREAD_CANCEL_ASYNCHRONOUS, NULL);
 
-  pthread_mutex_lock(&bio_mutex[type]);
-  /* Block SIGALRM so we are sure that only the main thread will
+	pthread_mutex_lock(&bio_mutex[type]);
+	/* Block SIGALRM so we are sure that only the main thread will
    * receive the watchdog signal. */
-  sigemptyset(&sigset);
-  sigaddset(&sigset, SIGALRM);
-  if (pthread_sigmask(SIG_BLOCK, &sigset, NULL))
-    redisLog(REDIS_WARNING, "Warning: can't mask SIGALRM in bio.c thread: %s",
-             strerror(errno));
+	sigemptyset(&sigset);
+	sigaddset(&sigset, SIGALRM);
+	if (pthread_sigmask(SIG_BLOCK, &sigset, NULL))
+		redisLog(REDIS_WARNING,
+			 "Warning: can't mask SIGALRM in bio.c thread: %s",
+			 strerror(errno));
 
-  while (1) {
-    listNode *ln;
+	while (1) {
+		listNode *ln;
 
-    /* The loop always starts with the lock hold. */
-    if (listLength(bio_jobs[type]) == 0) {
-      pthread_cond_wait(&bio_condvar[type], &bio_mutex[type]);
-      continue;
-    }
+		/* The loop always starts with the lock hold. */
+		if (listLength(bio_jobs[type]) == 0) {
+			pthread_cond_wait(&bio_condvar[type], &bio_mutex[type]);
+			continue;
+		}
 
-    /* Pop the job from the queue.
+		/* Pop the job from the queue.
      *
      * 取出（但不删除）队列中的首个任务
      */
-    ln = listFirst(bio_jobs[type]);
-    job = ln->value;
+		ln = listFirst(bio_jobs[type]);
+		job = ln->value;
 
-    /* It is now possible to unlock the background system as we know have
+		/* It is now possible to unlock the background system as we know have
      * a stand alone job structure to process.*/
-    pthread_mutex_unlock(&bio_mutex[type]);
+		pthread_mutex_unlock(&bio_mutex[type]);
 
-    /* Process the job accordingly to its type. */
-    // 执行任务
-    if (type == REDIS_BIO_CLOSE_FILE) {
-      close((long)job->arg1);
+		/* Process the job accordingly to its type. */
+		// 执行任务
+		if (type == REDIS_BIO_CLOSE_FILE) {
+			close((long)job->arg1);
 
-    } else if (type == REDIS_BIO_AOF_FSYNC) {
-      aof_fsync((long)job->arg1);
+		} else if (type == REDIS_BIO_AOF_FSYNC) {
+			aof_fsync((long)job->arg1);
 
-    } else {
-      redisPanic("Wrong job type in bioProcessBackgroundJobs().");
-    }
+		} else {
+			redisPanic(
+				"Wrong job type in bioProcessBackgroundJobs().");
+		}
 
-    zfree(job);
+		zfree(job);
 
-    /* Lock again before reiterating the loop, if there are no longer
+		/* Lock again before reiterating the loop, if there are no longer
      * jobs to process we'll block again in pthread_cond_wait(). */
-    pthread_mutex_lock(&bio_mutex[type]);
-    // 将执行完成的任务从队列中删除，并减少任务计数器
-    listDelNode(bio_jobs[type], ln);
-    bio_pending[type]--;
-  }
+		pthread_mutex_lock(&bio_mutex[type]);
+		// 将执行完成的任务从队列中删除，并减少任务计数器
+		listDelNode(bio_jobs[type], ln);
+		bio_pending[type]--;
+	}
 }
 
 /* Return the number of pending jobs of the specified type.
  *
  * 返回等待中的 type 类型的工作的数量
  */
-unsigned long long bioPendingJobsOfType(int type) {
-  unsigned long long val;
+unsigned long long bioPendingJobsOfType(int type)
+{
+	unsigned long long val;
 
-  pthread_mutex_lock(&bio_mutex[type]);
-  val = bio_pending[type];
-  pthread_mutex_unlock(&bio_mutex[type]);
+	pthread_mutex_lock(&bio_mutex[type]);
+	val = bio_pending[type];
+	pthread_mutex_unlock(&bio_mutex[type]);
 
-  return val;
+	return val;
 }
 
 /* Kill the running bio threads in an unclean way. This function should be
@@ -289,17 +296,23 @@ unsigned long long bioPendingJobsOfType(int type) {
  * Currently Redis does this only on crash (for instance on SIGSEGV) in order
  * to perform a fast memory check without other threads messing with memory.
  */
-void bioKillThreads(void) {
-  int err, j;
+void bioKillThreads(void)
+{
+	int err, j;
 
-  for (j = 0; j < REDIS_BIO_NUM_OPS; j++) {
-    if (pthread_cancel(bio_threads[j]) == 0) {
-      if ((err = pthread_join(bio_threads[j], NULL)) != 0) {
-        redisLog(REDIS_WARNING, "Bio thread for job type #%d can be joined: %s",
-                 j, strerror(err));
-      } else {
-        redisLog(REDIS_WARNING, "Bio thread for job type #%d terminated", j);
-      }
-    }
-  }
+	for (j = 0; j < REDIS_BIO_NUM_OPS; j++) {
+		if (pthread_cancel(bio_threads[j]) == 0) {
+			if ((err = pthread_join(bio_threads[j], NULL)) != 0) {
+				redisLog(
+					REDIS_WARNING,
+					"Bio thread for job type #%d can be joined: %s",
+					j, strerror(err));
+			} else {
+				redisLog(
+					REDIS_WARNING,
+					"Bio thread for job type #%d terminated",
+					j);
+			}
+		}
+	}
 }

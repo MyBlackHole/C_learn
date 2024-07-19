@@ -17,14 +17,20 @@
 
 struct HomeView {};
 
-HomeView* home_view_create(void) {
-    HomeView* home_view = (HomeView*)calloc(1, sizeof(HomeView));
-    return home_view;
+HomeView *home_view_create(void)
+{
+	HomeView *home_view = (HomeView *)calloc(1, sizeof(HomeView));
+	return home_view;
 }
 
-void home_view_destroy(HomeView** home_view) {
-    if (NULL == home_view || NULL == *home_view) return;
-    freep((void**)home_view);
+void home_view_destroy(HomeView **home_view)
+{
+	if (NULL == home_view || NULL == *home_view)
+		return;
+	freep((void **)home_view);
 }
 
-void home_view_show(HomeView* home_view) { printf("Displaying Home Page\n"); }
+void home_view_show(HomeView *home_view)
+{
+	printf("Displaying Home Page\n");
+}

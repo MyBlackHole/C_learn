@@ -4,9 +4,9 @@
 
 int demo_getpass_main(int argc, char *argv[])
 {
-    char *input;
+	char *input;
 
-    input = getpass("intput:");
-    fprintf(stdout, "p %s", input);
-    return EXIT_SUCCESS;
+	input = getpass("intput:");
+	fprintf(stdout, "p %s", input);
+	return EXIT_SUCCESS;
 }

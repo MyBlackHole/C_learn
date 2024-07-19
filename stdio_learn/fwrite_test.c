@@ -5,21 +5,21 @@
 
 int demo_fwrite_main(int argc, char *argv[])
 {
-    FILE *fp_tmp;
-    char  str[]     = "This is runoob.com";
-    char *name      = "/file.txt";
-    char *path      = dirname(argv[0]);
-    char *file_path = malloc(strlen(name) + strlen(path));
-    strcpy(file_path, path);
-    strncat(file_path, name, strlen(name));
+	FILE *fp_tmp;
+	char str[] = "This is runoob.com";
+	char *name = "/file.txt";
+	char *path = dirname(argv[0]);
+	char *file_path = malloc(strlen(name) + strlen(path));
+	strcpy(file_path, path);
+	strncat(file_path, name, strlen(name));
 
-    printf("%s\n", file_path);
-    fp_tmp = fopen(file_path, "w");
-    fwrite(str, sizeof(str), 1, fp_tmp);
+	printf("%s\n", file_path);
+	fp_tmp = fopen(file_path, "w");
+	fwrite(str, sizeof(str), 1, fp_tmp);
 
-    fclose(fp_tmp);
+	fclose(fp_tmp);
 
-    free(file_path);
+	free(file_path);
 
-    return (0);
+	return (0);
 }

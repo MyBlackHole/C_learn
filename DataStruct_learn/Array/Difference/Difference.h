@@ -8,10 +8,10 @@
 #define DIFFERENCE_H
 
 #include <stdio.h>
-#include <string.h>  // 提供 strstr 原型
+#include <string.h> // 提供 strstr 原型
 
-#include "SLinkList.h"  //**▲ 02 线性表**//
-#include "Status.h"     //**▲ 01 绪论**//
+#include "SLinkList.h" //**▲ 02 线性表**//
+#include "Status.h" //**▲ 01 绪论**//
 
 /*
  * ████████ 算法2.17 ████████

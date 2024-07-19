@@ -13,18 +13,18 @@
 #include "SingletonHunger.h"
 #include "SingletonLazy.h"
 
+int main(int argc, char const *argv[])
+{
+	SingletonHunger *hunger1 = singleton_hunger_get_instance();
+	singleton_hunger_show_message(hunger1);
 
-int main(int argc, char const *argv[]) {
-  SingletonHunger *hunger1 = singleton_hunger_get_instance();
-  singleton_hunger_show_message(hunger1);
+	SingletonHunger *hunger2 = singleton_hunger_get_instance();
+	singleton_hunger_show_message(hunger2);
 
-  SingletonHunger *hunger2 = singleton_hunger_get_instance();
-  singleton_hunger_show_message(hunger2);
+	SingletonLazy *lazy1 = singleton_lazy_get_instance();
+	singleton_lazy_show_message(lazy1);
 
-  SingletonLazy *lazy1 = singleton_lazy_get_instance();
-  singleton_lazy_show_message(lazy1);
-
-  SingletonLazy *lazy2 = singleton_lazy_get_instance();
-  singleton_lazy_show_message(lazy2);
-  return 0;
+	SingletonLazy *lazy2 = singleton_lazy_get_instance();
+	singleton_lazy_show_message(lazy2);
+	return 0;
 }

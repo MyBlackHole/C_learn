@@ -16,21 +16,24 @@
 #include <stdlib.h>
 
 struct SingletonLazy {
-  int x;
+	int x;
 };
 
 static pthread_once_t g_create_once = PTHREAD_ONCE_INIT;
 static SingletonLazy *singleton_instance = NULL;
 
-static void create_singleton_instance(void) {
-  singleton_instance = (SingletonLazy *)calloc(1, sizeof(SingletonLazy));
+static void create_singleton_instance(void)
+{
+	singleton_instance = (SingletonLazy *)calloc(1, sizeof(SingletonLazy));
 }
 
-SingletonLazy *singleton_lazy_get_instance(void) {
-  pthread_once(&g_create_once, create_singleton_instance);
-  return singleton_instance;
+SingletonLazy *singleton_lazy_get_instance(void)
+{
+	pthread_once(&g_create_once, create_singleton_instance);
+	return singleton_instance;
 }
 
-void singleton_lazy_show_message(SingletonLazy *singleton) {
-  printf("Singleton Lazy %p\n", (void *)singleton);
+void singleton_lazy_show_message(SingletonLazy *singleton)
+{
+	printf("Singleton Lazy %p\n", (void *)singleton);
 }

@@ -17,9 +17,9 @@ extern "C" {
 
 #include "Circle.h"
 
-Circle* shape_factory_get_circle(const char* color);
+Circle *shape_factory_get_circle(const char *color);
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // SHAPE_FACTORY_H_
+#endif // SHAPE_FACTORY_H_

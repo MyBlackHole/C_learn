@@ -24,7 +24,8 @@ void user_task1(void)
 	}
 }
 
-void user_init() {
+void user_init()
+{
 	task_create(&user_task0);
 	task_create(&user_task1);
 }

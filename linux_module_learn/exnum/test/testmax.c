@@ -4,7 +4,7 @@
 
 int main()
 {
-    int x = 1, y = 2;
-    printf("max=%d\n", max(x++, y++));
-    printf("x = %d, y = %d\n", x, y);
+	int x = 1, y = 2;
+	printf("max=%d\n", max(x++, y++));
+	printf("x = %d, y = %d\n", x, y);
 }

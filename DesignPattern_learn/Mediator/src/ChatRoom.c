@@ -14,8 +14,9 @@
 #include <stdio.h>
 #include <time.h>
 
-void chat_room_show_message(User* user, const char* message) {
-    time_t t;
-    t = time(&t);
-    printf("%s[%s] : %s\n", ctime(&t), user_get_name(user), message);
+void chat_room_show_message(User *user, const char *message)
+{
+	time_t t;
+	t = time(&t);
+	printf("%s[%s] : %s\n", ctime(&t), user_get_name(user), message);
 }

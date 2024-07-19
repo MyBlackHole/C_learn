@@ -5,49 +5,46 @@
 #include <unistd.h>
 #include <stdio.h>
 
-typedef enum DBState
-{
-    DB_STARTUP = 0,
-    DB_SHUTDOWNED,
-    DB_SHUTDOWNED_IN_RECOVERY,
-    DB_SHUTDOWNING,
-    DB_IN_CRASH_RECOVERY,
-    DB_IN_ARCHIVE_RECOVERY,
-    DB_IN_PRODUCTION
+typedef enum DBState {
+	DB_STARTUP = 0,
+	DB_SHUTDOWNED,
+	DB_SHUTDOWNED_IN_RECOVERY,
+	DB_SHUTDOWNING,
+	DB_IN_CRASH_RECOVERY,
+	DB_IN_ARCHIVE_RECOVERY,
+	DB_IN_PRODUCTION
 } DBState;
 
-typedef struct CheckPoint
-{
-    int64_t redo;                 /* next RecPtr available when we began to
+typedef struct CheckPoint {
+	int64_t redo; /* next RecPtr available when we began to
                                    * create CheckPoint (i.e. REDO start point) */
-    uint32_t     ThisTimeLineID;  /* current TLI */
-    bool         fullPageWrites;  /* current full_page_writes */
-    uint64_t     nextXid;         /* next free XID */
-    unsigned int nextOid;         /* next free OID */
-    uint64_t     nextMulti;       /* next free MultiXactId */
-    uint64_t     nextMultiOffset; /* next free MultiXact offset */
-    uint64_t     oldestXid;       /* cluster-wide minimum datfrozenxid */
-    uint64_t     oldestXidDB;     /* database with minimum datfrozenxid */
-    int64_t      time;            /* time stamp of checkpoint */
-    uint64_t     remove_seg; /*the xlog segno we keep during this checkpoint*/
-    /*
+	uint32_t ThisTimeLineID; /* current TLI */
+	bool fullPageWrites; /* current full_page_writes */
+	uint64_t nextXid; /* next free XID */
+	unsigned int nextOid; /* next free OID */
+	uint64_t nextMulti; /* next free MultiXactId */
+	uint64_t nextMultiOffset; /* next free MultiXact offset */
+	uint64_t oldestXid; /* cluster-wide minimum datfrozenxid */
+	uint64_t oldestXidDB; /* database with minimum datfrozenxid */
+	int64_t time; /* time stamp of checkpoint */
+	uint64_t remove_seg; /*the xlog segno we keep during this checkpoint*/
+	/*
      * Oldest XID still running. This is only needed to initialize hot standby
      * mode from an online checkpoint, so we only bother calculating this for
      * online checkpoints and only when wal_level is hot_standby. Otherwise
      * it's set to InvalidTransactionId.
      */
-    uint64_t oldestActiveXid;
+	uint64_t oldestActiveXid;
 } CheckPoint;
 
-typedef struct ControlFileData
-{
-    /*
+typedef struct ControlFileData {
+	/*
      * Unique system identifier --- to ensure we match up xlog files with the
      * installation that produced them.
      */
-    uint64_t system_identifier;
+	uint64_t system_identifier;
 
-    /*
+	/*
      * Version identifier information.    Keep these fields at the same offset,
      * especially pg_control_version; they won't be real useful if they move
      * around.    (For historical reasons they must be 8 bytes into the file
@@ -60,21 +57,21 @@ typedef struct ControlFileData
      * example, WAL logs contain per-page magic numbers that can serve as
      * version cues for the WAL log.
      */
-    uint32_t pg_control_version; /* PG_CONTROL_VERSION */
-    uint32_t catalog_version_no; /* see catversion.h */
-    uint32_t timeline;
+	uint32_t pg_control_version; /* PG_CONTROL_VERSION */
+	uint32_t catalog_version_no; /* see catversion.h */
+	uint32_t timeline;
 
-    /*
+	/*
      * System status data
      */
-    DBState state;          /* see enum above */
-    int64_t time;           /* time stamp of last pg_control update */
-    int64_t checkPoint;     /* last check point record ptr */
-    int64_t prevCheckPoint; /* previous check point record ptr */
+	DBState state; /* see enum above */
+	int64_t time; /* time stamp of last pg_control update */
+	int64_t checkPoint; /* last check point record ptr */
+	int64_t prevCheckPoint; /* previous check point record ptr */
 
-    CheckPoint checkPointCopy; /* copy of last check point record */
+	CheckPoint checkPointCopy; /* copy of last check point record */
 
-    /*
+	/*
      * These two values determine the minimum point we must recover up to
      * before starting up:
      *
@@ -105,21 +102,21 @@ typedef struct ControlFileData
      * file was found at startup but it may have been a leftover from a stray
      * pg_start_backup() call, not accompanied by pg_stop_backup().
      */
-    int64_t minRecoveryPoint;
-    int64_t backupStartPoint;
-    int64_t backupEndPoint;
-    bool    backupEndRequired;
+	int64_t minRecoveryPoint;
+	int64_t backupStartPoint;
+	int64_t backupEndPoint;
+	bool backupEndRequired;
 
-    /*
+	/*
      * Parameter settings that determine if the WAL can be used for archival
      * or hot standby.
      */
-    int wal_level;
-    int MaxConnections;
-    int max_prepared_xacts;
-    int max_locks_per_xact;
+	int wal_level;
+	int MaxConnections;
+	int max_prepared_xacts;
+	int max_locks_per_xact;
 
-    /*
+	/*
      * This data is used to check for hardware-architecture compatibility of
      * the database and the backend executable.  We need not check endianness
      * explicitly, since the pg_control version will surely look wrong to a
@@ -131,56 +128,54 @@ typedef struct ControlFileData
      * Testing just one double value is not a very bulletproof test for
      * floating-point compatibility, but it will catch most cases.
      */
-    uint32_t maxAlign;    /* alignment requirement for tuples */
-    double   floatFormat; /* constant 1234567.0 */
+	uint32_t maxAlign; /* alignment requirement for tuples */
+	double floatFormat; /* constant 1234567.0 */
 #define FLOATFORMAT_VALUE 1234567.0
 
-    /*
+	/*
      * This data is used to make sure that configuration of this database is
      * compatible with the backend executable.
      */
-    uint32_t blcksz;      /* data block size for this DB */
-    uint32_t relseg_size; /* blocks per segment of large relation */
+	uint32_t blcksz; /* data block size for this DB */
+	uint32_t relseg_size; /* blocks per segment of large relation */
 
-    uint32_t xlog_blcksz;   /* block size within WAL files */
-    uint32_t xlog_seg_size; /* size of each WAL segment */
+	uint32_t xlog_blcksz; /* block size within WAL files */
+	uint32_t xlog_seg_size; /* size of each WAL segment */
 
-    uint32_t nameDataLen;  /* catalog name field width */
-    uint32_t indexMaxKeys; /* max number of columns in an index */
+	uint32_t nameDataLen; /* catalog name field width */
+	uint32_t indexMaxKeys; /* max number of columns in an index */
 
-    uint32_t toast_max_chunk_size; /* chunk size in TOAST tables */
+	uint32_t toast_max_chunk_size; /* chunk size in TOAST tables */
 
-    /* flag indicating internal format of timestamp, interval, time */
-    bool enableIntTimes; /* int64 storage enabled? */
+	/* flag indicating internal format of timestamp, interval, time */
+	bool enableIntTimes; /* int64 storage enabled? */
 
-    /* flags indicating pass-by-value status of various types */
-    bool float4ByVal; /* float4 pass-by-value? */
-    bool float8ByVal; /* float8, int8, etc pass-by-value? */
+	/* flags indicating pass-by-value status of various types */
+	bool float4ByVal; /* float4 pass-by-value? */
+	bool float8ByVal; /* float8, int8, etc pass-by-value? */
 
-    /* flag indicating bootstrap relations stored in segment or not */
-    bool bootstrap_segment;
+	/* flag indicating bootstrap relations stored in segment or not */
+	bool bootstrap_segment;
 
-    /* CRC of all above ... MUST BE LAST! */
-    uint32_t crc;
+	/* CRC of all above ... MUST BE LAST! */
+	uint32_t crc;
 } ControlFileData;
 
 int main(int argc, char *argv[])
 {
-    ControlFileData control_data;
-    int             fd =
-        open("/run/media/black/Data/Documents/c/demo/pg/pg_control", O_RDONLY);
-    if (fd < 0)
-    {
-        perror("open pg_control failed");
-        return EXIT_FAILURE;
-    }
-    if (read(fd, &control_data, sizeof(ControlFileData))
-        != sizeof(ControlFileData))
-    {
-        perror("read pg_control failed");
-        return EXIT_FAILURE;
-    }
-    printf("time: %ld\n", control_data.checkPointCopy.time);
-    close(fd);
-    return EXIT_SUCCESS;
+	ControlFileData control_data;
+	int fd = open("/run/media/black/Data/Documents/c/demo/pg/pg_control",
+		      O_RDONLY);
+	if (fd < 0) {
+		perror("open pg_control failed");
+		return EXIT_FAILURE;
+	}
+	if (read(fd, &control_data, sizeof(ControlFileData)) !=
+	    sizeof(ControlFileData)) {
+		perror("read pg_control failed");
+		return EXIT_FAILURE;
+	}
+	printf("time: %ld\n", control_data.checkPointCopy.time);
+	close(fd);
+	return EXIT_SUCCESS;
 }

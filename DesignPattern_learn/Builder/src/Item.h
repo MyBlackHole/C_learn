@@ -2,21 +2,20 @@
 #define ITEM_H_
 
 #ifdef __cplusplus
-extern "C"
-{
+extern "C" {
 #endif
 
-    typedef struct Item Item;
+typedef struct Item Item;
 
-    const char *item_name(struct Item *item);
+const char *item_name(struct Item *item);
 
-    struct Packing *item_packing(struct Item *item);
+struct Packing *item_packing(struct Item *item);
 
-    float item_price(struct Item *item);
+float item_price(struct Item *item);
 
-    void item_destroy(struct Item *item);
+void item_destroy(struct Item *item);
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // ITEM_H_
+#endif // ITEM_H_

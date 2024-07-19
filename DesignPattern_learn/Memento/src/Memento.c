@@ -14,24 +14,30 @@
 #include "ctools.h"
 
 struct Memento {
-    const char* state;
+	const char *state;
 };
 
-Memento* memento_create(const char* state) {
-    Memento* memento = (Memento*)calloc(1, sizeof(Memento));
-    if (NULL == memento) return NULL;
+Memento *memento_create(const char *state)
+{
+	Memento *memento = (Memento *)calloc(1, sizeof(Memento));
+	if (NULL == memento)
+		return NULL;
 
-    memento->state = cstrdup(state);
-    return memento;
+	memento->state = cstrdup(state);
+	return memento;
 }
 
-void memento_destroy(Memento* memento) {
-    if (NULL == memento) return;
-    freep((void**)&memento->state);
-    free(memento);
+void memento_destroy(Memento *memento)
+{
+	if (NULL == memento)
+		return;
+	freep((void **)&memento->state);
+	free(memento);
 }
 
-const char* memento_get_state(Memento* memento) {
-    if (NULL == memento) return NULL;
-    return memento->state;
+const char *memento_get_state(Memento *memento)
+{
+	if (NULL == memento)
+		return NULL;
+	return memento->state;
 }

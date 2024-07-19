@@ -6,103 +6,92 @@
 
 dynamic_array_t *init_dynamic_array()
 {
-    dynamic_array_t *da = malloc(sizeof(dynamic_array_t));
-    if (da)
-    {
-        da->items = calloc(DEFAULT_CAPACITY, sizeof(void *));
-        da->capacity = DEFAULT_CAPACITY;
-        return da;
-    }
-    else
-    {
-        perror("malloc(sizeof(dynamic_array_t))");
-        return NULL;
-    }
+	dynamic_array_t *da = malloc(sizeof(dynamic_array_t));
+	if (da) {
+		da->items = calloc(DEFAULT_CAPACITY, sizeof(void *));
+		da->capacity = DEFAULT_CAPACITY;
+		return da;
+	} else {
+		perror("malloc(sizeof(dynamic_array_t))");
+		return NULL;
+	}
 }
 
 void *add(dynamic_array_t *da, const void *value)
 {
-    // 已使用大于当前容量,扩容
-    if (da->size >= da->capacity)
-    {
-        void **newItems =
-            realloc(da->items, (da->capacity <<= 1) * sizeof(void **));
+	// 已使用大于当前容量,扩容
+	if (da->size >= da->capacity) {
+		void **newItems = realloc(da->items, (da->capacity <<= 1) *
+							     sizeof(void **));
 
-        // 分配失败
-        if (!newItems)
-        {
-            perror(
-                "realloc(da->items, (da->capacity <<= 1) * sizeof(void **))");
-            return NULL;
-        }
+		// 分配失败
+		if (!newItems) {
+			perror("realloc(da->items, (da->capacity <<= 1) * sizeof(void **))");
+			return NULL;
+		}
 
-        // free(da->items);
-        da->items = newItems;
-    }
+		// free(da->items);
+		da->items = newItems;
+	}
 
-    void *copy_value = retrive_copy_of_value(value);
-    da->items[da->size++] = copy_value;
+	void *copy_value = retrive_copy_of_value(value);
+	da->items[da->size++] = copy_value;
 
-    return copy_value;
+	return copy_value;
 }
 
 void *put(dynamic_array_t *da, const void *value, const unsigned index)
 {
-    if (!contains(da->size, index))
-    {
-        return INDEX_OUT_OF_BOUNDS;
-    }
+	if (!contains(da->size, index)) {
+		return INDEX_OUT_OF_BOUNDS;
+	}
 
-    free(da->items[index]);
-    void *copy_value = retrive_copy_of_value(value);
-    da->items[index] = copy_value;
+	free(da->items[index]);
+	void *copy_value = retrive_copy_of_value(value);
+	da->items[index] = copy_value;
 
-    return copy_value;
+	return copy_value;
 }
 
 void *get(dynamic_array_t *da, const unsigned index)
 {
-    if (!contains(da->size, index))
-    {
-        return INDEX_OUT_OF_BOUNDS;
-    }
+	if (!contains(da->size, index)) {
+		return INDEX_OUT_OF_BOUNDS;
+	}
 
-    return da->items[index];
+	return da->items[index];
 }
 
 void delete(dynamic_array_t *da, const unsigned index)
 {
-    if (!contains(da->size, index))
-    {
-        return;
-    }
+	if (!contains(da->size, index)) {
+		return;
+	}
 
-    for (unsigned i = index; i < da->size; i++)
-    {
-        da->items[i] = da->items[i + 1];
-    }
+	for (unsigned i = index; i < da->size; i++) {
+		da->items[i] = da->items[i + 1];
+	}
 
-    da->size--;
+	da->size--;
 
-    free(da->items[da->size]);
+	free(da->items[da->size]);
 }
 
 // 合法性查询
 unsigned contains(const unsigned size, const unsigned index)
 {
-    if (size >= 0 && index < size)
-    {
-        return 1;
-    }
+	if (size >= 0 && index < size) {
+		return 1;
+	}
 
-    printf("index [%d] out of bounds!\n", index);
-    return 0;
+	printf("index [%d] out of bounds!\n", index);
+	return 0;
 }
 
 void *retrive_copy_of_value(const void *value)
 {
-    void *value_copy = malloc(sizeof(void *));
-    memcpy(value_copy, value, sizeof(void *));
+	void *value_copy = malloc(sizeof(void *));
+	memcpy(value_copy, value, sizeof(void *));
 
-    return value_copy;
+	return value_copy;
 }

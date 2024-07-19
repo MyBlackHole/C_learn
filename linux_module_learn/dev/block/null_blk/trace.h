@@ -34,39 +34,28 @@ TRACE_EVENT(nullb_zone_op,
 	    TP_PROTO(struct nullb_cmd *cmd, unsigned int zone_no,
 		     unsigned int zone_cond),
 	    TP_ARGS(cmd, zone_no, zone_cond),
-	    TP_STRUCT__entry(
-		__array(char, disk, DISK_NAME_LEN)
-		__field(enum req_op, op)
-		__field(unsigned int, zone_no)
-		__field(unsigned int, zone_cond)
-	    ),
-	    TP_fast_assign(
-		__entry->op = req_op(cmd->rq);
-		__entry->zone_no = zone_no;
-		__entry->zone_cond = zone_cond;
-		__assign_disk_name(__entry->disk, cmd->rq->q->disk);
-	    ),
+	    TP_STRUCT__entry(__array(char, disk,
+				     DISK_NAME_LEN) __field(enum req_op, op)
+				     __field(unsigned int, zone_no)
+					     __field(unsigned int, zone_cond)),
+	    TP_fast_assign(__entry->op = req_op(cmd->rq);
+			   __entry->zone_no = zone_no;
+			   __entry->zone_cond = zone_cond;
+			   __assign_disk_name(__entry->disk,
+					      cmd->rq->q->disk);),
 	    TP_printk("%s req=%-15s zone_no=%u zone_cond=%-10s",
-		      __print_disk_name(__entry->disk),
-		      blk_op_str(__entry->op),
-		      __entry->zone_no,
-		      blk_zone_cond_str(__entry->zone_cond))
-);
+		      __print_disk_name(__entry->disk), blk_op_str(__entry->op),
+		      __entry->zone_no, blk_zone_cond_str(__entry->zone_cond)));
 
 TRACE_EVENT(nullb_report_zones,
 	    TP_PROTO(struct nullb *nullb, unsigned int nr_zones),
 	    TP_ARGS(nullb, nr_zones),
-	    TP_STRUCT__entry(
-		__array(char, disk, DISK_NAME_LEN)
-		__field(unsigned int, nr_zones)
-	    ),
-	    TP_fast_assign(
-		__entry->nr_zones = nr_zones;
-		__assign_disk_name(__entry->disk, nullb->disk);
-	    ),
-	    TP_printk("%s nr_zones=%u",
-		      __print_disk_name(__entry->disk), __entry->nr_zones)
-);
+	    TP_STRUCT__entry(__array(char, disk, DISK_NAME_LEN)
+				     __field(unsigned int, nr_zones)),
+	    TP_fast_assign(__entry->nr_zones = nr_zones;
+			   __assign_disk_name(__entry->disk, nullb->disk);),
+	    TP_printk("%s nr_zones=%u", __print_disk_name(__entry->disk),
+		      __entry->nr_zones));
 
 #endif /* _TRACE_NULLB_H */
 

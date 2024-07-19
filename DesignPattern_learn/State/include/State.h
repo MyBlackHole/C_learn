@@ -18,13 +18,13 @@ extern "C" {
 typedef struct Context Context;
 typedef struct State State;
 
-State* start_state_create(void);
-State* stop_state_create(void);
-void state_do_action(State* state, Context* context);
-const char* state_to_string(State* state);
-void state_destroy(State** state);
+State *start_state_create(void);
+State *stop_state_create(void);
+void state_do_action(State *state, Context *context);
+const char *state_to_string(State *state);
+void state_destroy(State **state);
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // STATE_H_
+#endif // STATE_H_

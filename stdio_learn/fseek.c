@@ -13,56 +13,52 @@
 
 int demo_fseek_main(int argc, char *argv[])
 {
-    size_t ret = 0;
-    FILE *file_p = NULL;
+	size_t ret = 0;
+	FILE *file_p = NULL;
 
-    if (argc < 2)
-    {
-        fprintf(stderr, "Usage: %s <file>\n", argv[0]);
-        exit(1);
-    }
+	if (argc < 2) {
+		fprintf(stderr, "Usage: %s <file>\n", argv[0]);
+		exit(1);
+	}
 
-    file_p = fopen(argv[1], "r+");
-    if (file_p == NULL)
-    {
-        perror("fopen()");
-        exit(1);
-    }
+	file_p = fopen(argv[1], "r+");
+	if (file_p == NULL) {
+		perror("fopen()");
+		exit(1);
+	}
 
-    // ret = fseek(file_p, 2, SEEK_SET);
-    // // ret = fseek(file_p, -2, SEEK_END);
-    // if (ret != 0)
-    // {
-    //     perror("fseek()");
-    //     exit(1);
-    // }
+	// ret = fseek(file_p, 2, SEEK_SET);
+	// // ret = fseek(file_p, -2, SEEK_END);
+	// if (ret != 0)
+	// {
+	//     perror("fseek()");
+	//     exit(1);
+	// }
 
-    // ret = fwrite("ppppp", 5, 1, file_p);
-    // if (ret <= 0)
-    // {
-    //     perror("fwrite()");
-    //     exit(1);
-    // }
+	// ret = fwrite("ppppp", 5, 1, file_p);
+	// if (ret <= 0)
+	// {
+	//     perror("fwrite()");
+	//     exit(1);
+	// }
 
-    // ret = fseek(file_p, 0, SEEK_SET);
-    ret = fseek(file_p, 2, SEEK_SET);
-    // ret = fseek(file_p, 0, SEEK_END);
-    if (ret != 0)
-    {
-        perror("fseek()");
-        exit(1);
-    }
+	// ret = fseek(file_p, 0, SEEK_SET);
+	ret = fseek(file_p, 2, SEEK_SET);
+	// ret = fseek(file_p, 0, SEEK_END);
+	if (ret != 0) {
+		perror("fseek()");
+		exit(1);
+	}
 
-    ret = fwrite("ccc", 3, 1, file_p);
-    if (ret <= 0)
-    {
-        perror("fwrite()");
-        exit(1);
-    }
+	ret = fwrite("ccc", 3, 1, file_p);
+	if (ret <= 0) {
+		perror("fwrite()");
+		exit(1);
+	}
 
-    fprintf(stdout, "count %ld\n", ftell(file_p));
+	fprintf(stdout, "count %ld\n", ftell(file_p));
 
-    fclose(file_p);
+	fclose(file_p);
 
-    exit(0);
+	exit(0);
 }

@@ -18,17 +18,17 @@ extern "C" {
 
 typedef struct Strategy Strategy;
 
-Strategy* strategy_create_operation_add(void);
+Strategy *strategy_create_operation_add(void);
 
-Strategy* strategy_create_operation_subtract(void);
+Strategy *strategy_create_operation_subtract(void);
 
-Strategy* strategy_create_operation_multiply(void);
+Strategy *strategy_create_operation_multiply(void);
 
-int strategy_do_operation(Strategy* strategy, int num1, int num2);
+int strategy_do_operation(Strategy *strategy, int num1, int num2);
 
-void strategy_destroy(Strategy** strategy);
+void strategy_destroy(Strategy **strategy);
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // STRATEGY_H_
+#endif // STRATEGY_H_

@@ -9,8 +9,8 @@
 
 #include <stdio.h>
 
-#include "SqList.h"  //**▲02 线性表**//
-#include "Status.h"  //**▲01 绪论**//
+#include "SqList.h" //**▲02 线性表**//
+#include "Status.h" //**▲01 绪论**//
 
 /*
  * ████████ 算法2.1 ████████

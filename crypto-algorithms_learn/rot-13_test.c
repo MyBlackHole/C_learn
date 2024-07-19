@@ -20,26 +20,26 @@
 /*********************** FUNCTION DEFINITIONS ***********************/
 int rot13_test()
 {
-    char text[] = {"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"};
-    char code[] = {"NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm"};
-    char buf[1024];
-    int pass = 1;
+	char text[] = { "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz" };
+	char code[] = { "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm" };
+	char buf[1024];
+	int pass = 1;
 
-    // To encode, just apply ROT-13.
-    strcpy(buf, text);
-    rot13(buf);
-    pass = pass && !strcmp(code, buf);
+	// To encode, just apply ROT-13.
+	strcpy(buf, text);
+	rot13(buf);
+	pass = pass && !strcmp(code, buf);
 
-    // To decode, just re-apply ROT-13.
-    rot13(buf);
-    pass = pass && !strcmp(text, buf);
+	// To decode, just re-apply ROT-13.
+	rot13(buf);
+	pass = pass && !strcmp(text, buf);
 
-    return (pass);
+	return (pass);
 }
 
 int main()
 {
-    printf("ROT-13 tests: %s\n", rot13_test() ? "SUCCEEDED" : "FAILED");
+	printf("ROT-13 tests: %s\n", rot13_test() ? "SUCCEEDED" : "FAILED");
 
-    return (0);
+	return (0);
 }

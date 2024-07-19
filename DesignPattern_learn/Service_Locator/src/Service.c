@@ -14,24 +14,33 @@
 #include "ServiceStruct.h"
 #include "ctools.h"
 
-void service_destroy(Service** service) {
-    if (NULL == service || NULL == *service) return;
-    service_free_func(*service);
-    *service = NULL;
+void service_destroy(Service **service)
+{
+	if (NULL == service || NULL == *service)
+		return;
+	service_free_func(*service);
+	*service = NULL;
 }
 
-void service_free_func(Service* service) {
-    if (NULL == service) return;
-    if (NULL != service->destroy) service->destroy(service);
-    free(service);
+void service_free_func(Service *service)
+{
+	if (NULL == service)
+		return;
+	if (NULL != service->destroy)
+		service->destroy(service);
+	free(service);
 }
 
-const char* service_get_name(Service* service) {
-    if (NULL == service || NULL == service->get_name) return NULL;
-    return service->get_name(service);
+const char *service_get_name(Service *service)
+{
+	if (NULL == service || NULL == service->get_name)
+		return NULL;
+	return service->get_name(service);
 }
 
-void serveice_execute(Service* service) {
-    if (NULL == service || NULL == service->excute) return;
-    service->excute(service);
+void serveice_execute(Service *service)
+{
+	if (NULL == service || NULL == service->excute)
+		return;
+	service->excute(service);
 }

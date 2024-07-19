@@ -5,9 +5,9 @@
 
 int main(void)
 {
-    int ret;
-    ret = add(1, 2);
-    printf("%d\n", ret);
+	int ret;
+	ret = add(1, 2);
+	printf("%d\n", ret);
 
-    return EXIT_SUCCESS;
+	return EXIT_SUCCESS;
 }

@@ -6,6 +6,6 @@
 #include "timer.h"
 
 extern void os_loop(void);
-extern int  os_main(void);
+extern int os_main(void);
 
 #endif

@@ -13,21 +13,23 @@
 
 #include "ServiceLocator.h"
 
-int main(int argc, char const* argv[]) {
-    ServiceLocator* service_locator = service_locator_create();
+int main(int argc, char const *argv[])
+{
+	ServiceLocator *service_locator = service_locator_create();
 
-    Service* service = service_locator_get_service(service_locator, "Service1");
-    serveice_execute(service);
+	Service *service =
+		service_locator_get_service(service_locator, "Service1");
+	serveice_execute(service);
 
-    service = service_locator_get_service(service_locator, "Service2");
-    serveice_execute(service);
+	service = service_locator_get_service(service_locator, "Service2");
+	serveice_execute(service);
 
-    service = service_locator_get_service(service_locator, "Service1");
-    serveice_execute(service);
+	service = service_locator_get_service(service_locator, "Service1");
+	serveice_execute(service);
 
-    service = service_locator_get_service(service_locator, "Service2");
-    serveice_execute(service);
+	service = service_locator_get_service(service_locator, "Service2");
+	serveice_execute(service);
 
-    service_locator_destroy(&service_locator);
-    return 0;
+	service_locator_destroy(&service_locator);
+	return 0;
 }

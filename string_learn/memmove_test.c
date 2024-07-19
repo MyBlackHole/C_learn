@@ -8,12 +8,12 @@
 /* void *memmove(void *str1, const void *str2, size_t n) */
 int demo_memmove_test_main()
 {
-    const char dest[] = "oldstring";
-    const char src[] = "newstring";
+	const char dest[] = "oldstring";
+	const char src[] = "newstring";
 
-    printf("Before memmove dest = %s, src = %s\n", dest, src);
-    memmove((void*)dest, (void*)src, 9);
-    printf("After memmove dest = %s, src = %s\n", dest, src);
+	printf("Before memmove dest = %s, src = %s\n", dest, src);
+	memmove((void *)dest, (void *)src, 9);
+	printf("After memmove dest = %s, src = %s\n", dest, src);
 
-    return (0);
+	return (0);
 }

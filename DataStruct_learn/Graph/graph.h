@@ -7,10 +7,9 @@ typedef struct GraphRep *Graph;
 typedef int Vertex;
 
 // edges are pairs of vertices (end-points)
-typedef struct Edge
-{
-    Vertex v;
-    Vertex w;
+typedef struct Edge {
+	Vertex v;
+	Vertex w;
 } Edge;
 
 Graph newGraph(int);

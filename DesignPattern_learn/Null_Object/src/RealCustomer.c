@@ -12,19 +12,27 @@
 #include "CustomerStruct.h"
 #include "ctools.h"
 
-static bool is_null(struct Customer* customer) { return false; }
-
-static const char* get_name(struct Customer* customer) {
-    if (NULL == customer) return NULL;
-    return customer->name;
+static bool is_null(struct Customer *customer)
+{
+	return false;
 }
 
-struct Customer* real_customer_create(const char* name) {
-    struct Customer* customer = (struct Customer*)calloc(1, sizeof(struct Customer));
-    if (NULL == customer) return NULL;
+static const char *get_name(struct Customer *customer)
+{
+	if (NULL == customer)
+		return NULL;
+	return customer->name;
+}
 
-    customer->name = cstrdup(name);
-    customer->is_null = is_null;
-    customer->get_name = get_name;
-    return customer;
+struct Customer *real_customer_create(const char *name)
+{
+	struct Customer *customer =
+		(struct Customer *)calloc(1, sizeof(struct Customer));
+	if (NULL == customer)
+		return NULL;
+
+	customer->name = cstrdup(name);
+	customer->is_null = is_null;
+	customer->get_name = get_name;
+	return customer;
 }

@@ -14,22 +14,28 @@
 #include "ctools.h"
 
 struct Context {
-    Strategy* strategy;
+	Strategy *strategy;
 };
 
-Context* context_create(Strategy* strategy) {
-    Context* context = (Context*)calloc(1, sizeof(Context));
-    if (NULL == context) return NULL;
-    context->strategy = strategy;
-    return context;
+Context *context_create(Strategy *strategy)
+{
+	Context *context = (Context *)calloc(1, sizeof(Context));
+	if (NULL == context)
+		return NULL;
+	context->strategy = strategy;
+	return context;
 }
 
-void context_destroy(Context** context) {
-    if (NULL == context || NULL == *context) return;
-    freep((void**)context);
+void context_destroy(Context **context)
+{
+	if (NULL == context || NULL == *context)
+		return;
+	freep((void **)context);
 }
 
-int context_execute_strategy(Context* context, int num1, int num2) {
-    if (NULL == context || NULL == context->strategy) return INT32_MIN;
-    return strategy_do_operation(context->strategy, num1, num2);
+int context_execute_strategy(Context *context, int num1, int num2)
+{
+	if (NULL == context || NULL == context->strategy)
+		return INT32_MIN;
+	return strategy_do_operation(context->strategy, num1, num2);
 }

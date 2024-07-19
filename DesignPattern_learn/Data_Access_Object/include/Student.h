@@ -18,21 +18,21 @@ extern "C" {
 
 typedef struct Student Student;
 
-Student* student_create(const char* name, int roll_number);
+Student *student_create(const char *name, int roll_number);
 
-void student_destroy(Student** student);
+void student_destroy(Student **student);
 
-void student_free_func(Student* student);
+void student_free_func(Student *student);
 
-const char* student_get_name(Student* student);
+const char *student_get_name(Student *student);
 
-void student_set_name(Student* student, const char* name);
+void student_set_name(Student *student, const char *name);
 
-int student_get_roll_number(Student* student);
+int student_get_roll_number(Student *student);
 
-void student_set_roll_number(Student* student, int roll_number);
+void student_set_roll_number(Student *student, int roll_number);
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // STUDENT_H_
+#endif // STUDENT_H_

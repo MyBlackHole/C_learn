@@ -14,25 +14,22 @@
 #include "ComputerPartStruct.h"
 #include "ctools.h"
 
-void computer_part_destroy(ComputerPart** computer_part)
+void computer_part_destroy(ComputerPart **computer_part)
 {
-    if (NULL == computer_part || NULL == computer_part)
-    {
-        return;
-    }
-    if (NULL != (*computer_part)->destroy)
-    {
-        (*computer_part)->destroy(*computer_part);
-    }
-    freep((void**)computer_part);
+	if (NULL == computer_part || NULL == computer_part) {
+		return;
+	}
+	if (NULL != (*computer_part)->destroy) {
+		(*computer_part)->destroy(*computer_part);
+	}
+	freep((void **)computer_part);
 }
 
-void computer_part_accept(ComputerPart*        computer_part,
-                          ComputerPartVisitor* computer_part_visitor)
+void computer_part_accept(ComputerPart *computer_part,
+			  ComputerPartVisitor *computer_part_visitor)
 {
-    if (NULL == computer_part || NULL == computer_part->accept)
-    {
-        return;
-    }
-    computer_part->accept(computer_part, computer_part_visitor);
+	if (NULL == computer_part || NULL == computer_part->accept) {
+		return;
+	}
+	computer_part->accept(computer_part, computer_part_visitor);
 }

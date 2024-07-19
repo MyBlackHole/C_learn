@@ -4,7 +4,7 @@
  * 包含算法: 2.1
  ===============*/
 
-#include "Union.h"  //**▲02 线性表**//
+#include "Union.h" //**▲02 线性表**//
 
 /*
  * ████████ 算法2.1 ████████
@@ -16,25 +16,23 @@
  */
 void Union(SqList *La, SqList Lb)
 {
-    int La_len, Lb_len;
-    int i;
-    ElemType e;
+	int La_len, Lb_len;
+	int i;
+	ElemType e;
 
-    // 求顺序表长度
-    La_len = ListLength(*La);
-    Lb_len = ListLength(Lb);
+	// 求顺序表长度
+	La_len = ListLength(*La);
+	Lb_len = ListLength(Lb);
 
-    for (i = 1; i <= Lb_len; i++)
-    {
-        // 取Lb中第i个元素赋给e
-        GetElem(Lb, i, &e);
+	for (i = 1; i <= Lb_len; i++) {
+		// 取Lb中第i个元素赋给e
+		GetElem(Lb, i, &e);
 
-        // 若e不在La中则插入
-        if (!LocateElem(*La, e, equal))
-        {
-            ListInsert(La, ++La_len, e);
-        }
-    }
+		// 若e不在La中则插入
+		if (!LocateElem(*La, e, equal)) {
+			ListInsert(La, ++La_len, e);
+		}
+	}
 }
 
 /*
@@ -43,4 +41,7 @@ void Union(SqList *La, SqList Lb)
  * 判断两元素是否相等。
  * 如果相等，则返回TRUE，否则，返回FALSE。
  */
-Status equal(ElemType e1, ElemType e2) { return e1 == e2 ? TRUE : FALSE; }
+Status equal(ElemType e1, ElemType e2)
+{
+	return e1 == e2 ? TRUE : FALSE;
+}

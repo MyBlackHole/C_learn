@@ -66,9 +66,9 @@ struct nullb_zone {
 /* Queue modes */
 // io 调度模式
 enum {
-	NULL_Q_BIO	= 0,
-	NULL_Q_RQ	= 1,
-	NULL_Q_MQ	= 2,
+	NULL_Q_BIO = 0,
+	NULL_Q_RQ = 1,
+	NULL_Q_MQ = 2,
 };
 
 // 定义 null 设备
@@ -100,9 +100,11 @@ struct nullb_device {
 	unsigned int zone_max_open; /* max number of open zones */
 	unsigned int zone_max_active; /* max number of active zones */
 	unsigned int submit_queues; /* number of submission queues */
-	unsigned int prev_submit_queues; /* number of submission queues before change */
+	unsigned int
+		prev_submit_queues; /* number of submission queues before change */
 	unsigned int poll_queues; /* number of IOPOLL submission queues */
-	unsigned int prev_poll_queues; /* number of IOPOLL submission queues before change */
+	unsigned int
+		prev_poll_queues; /* number of IOPOLL submission queues before change */
 	unsigned int home_node; /* home node for the device */
 	unsigned int queue_mode; /* block interface */
 	unsigned int blocksize; /* block size */
@@ -127,10 +129,10 @@ struct nullb {
 	struct nullb_device *dev;
 	struct list_head list;
 	unsigned int index;
-    // request io 队列
+	// request io 队列
 	struct request_queue *q;
 	struct gendisk *disk;
-    // 软件队列与硬件队列相关
+	// 软件队列与硬件队列相关
 	struct blk_mq_tag_set *tag_set;
 	struct blk_mq_tag_set __tag_set;
 	unsigned int queue_depth;
@@ -157,8 +159,8 @@ int null_report_zones(struct gendisk *disk, sector_t sector,
 		      unsigned int nr_zones, report_zones_cb cb, void *data);
 blk_status_t null_process_zoned_cmd(struct nullb_cmd *cmd, enum req_op op,
 				    sector_t sector, sector_t nr_sectors);
-size_t null_zone_valid_read_len(struct nullb *nullb,
-				sector_t sector, unsigned int len);
+size_t null_zone_valid_read_len(struct nullb *nullb, sector_t sector,
+				unsigned int len);
 ssize_t zone_cond_store(struct nullb_device *dev, const char *page,
 			size_t count, enum blk_zone_cond cond);
 #else
@@ -172,15 +174,18 @@ static inline int null_register_zoned_dev(struct nullb *nullb)
 {
 	return -ENODEV;
 }
-static inline void null_free_zoned_dev(struct nullb_device *dev) {}
+static inline void null_free_zoned_dev(struct nullb_device *dev)
+{
+}
 static inline blk_status_t null_process_zoned_cmd(struct nullb_cmd *cmd,
-			enum req_op op, sector_t sector, sector_t nr_sectors)
+						  enum req_op op,
+						  sector_t sector,
+						  sector_t nr_sectors)
 {
 	return BLK_STS_NOTSUPP;
 }
 static inline size_t null_zone_valid_read_len(struct nullb *nullb,
-					      sector_t sector,
-					      unsigned int len)
+					      sector_t sector, unsigned int len)
 {
 	return len;
 }
@@ -190,6 +195,6 @@ static inline ssize_t zone_cond_store(struct nullb_device *dev,
 {
 	return -EOPNOTSUPP;
 }
-#define null_report_zones	NULL
+#define null_report_zones NULL
 #endif /* CONFIG_BLK_DEV_ZONED */
 #endif /* __NULL_BLK_H */

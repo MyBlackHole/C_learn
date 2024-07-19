@@ -3,11 +3,10 @@
 
 int demo_getchar_main(void)
 {
-    int item;
+	int item;
 
-    while ((item = getchar()) != EOF)
-    {
-        putchar(item);
-    }
-    return EXIT_SUCCESS;
+	while ((item = getchar()) != EOF) {
+		putchar(item);
+	}
+	return EXIT_SUCCESS;
 }

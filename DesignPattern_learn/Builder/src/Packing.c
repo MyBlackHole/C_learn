@@ -7,24 +7,21 @@
 
 const char *packing_pack(Packing *packing)
 {
-    if (NULL == packing || NULL == packing->pack)
-    {
-        return NULL;
-    }
-    return packing->pack(packing);
+	if (NULL == packing || NULL == packing->pack) {
+		return NULL;
+	}
+	return packing->pack(packing);
 }
 
 void packing_destroy(Packing **packing)
 {
-    if (NULL == packing || NULL == *packing)
-    {
-        return;
-    }
+	if (NULL == packing || NULL == *packing) {
+		return;
+	}
 
-    Packing *self = *packing;
-    if (NULL != self->destroy)
-    {
-        self->destroy(self);
-    }
-    freep((void **)packing);
+	Packing *self = *packing;
+	if (NULL != self->destroy) {
+		self->destroy(self);
+	}
+	freep((void **)packing);
 }

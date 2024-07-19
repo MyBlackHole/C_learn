@@ -18,13 +18,14 @@ extern "C" {
 
 typedef struct Person Person;
 
-Person* person_create(const char* name, const char* gender, const char* marital_status);
-void person_destory(Person* person);
-const char* person_get_name(Person* person);
-const char* person_get_gender(Person* person);
-const char* person_get_marital_status(Person* person);
+Person *person_create(const char *name, const char *gender,
+		      const char *marital_status);
+void person_destory(Person *person);
+const char *person_get_name(Person *person);
+const char *person_get_gender(Person *person);
+const char *person_get_marital_status(Person *person);
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // PERSON_H_
+#endif // PERSON_H_

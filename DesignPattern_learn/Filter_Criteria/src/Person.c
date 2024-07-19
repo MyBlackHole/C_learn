@@ -14,33 +14,47 @@
 #include "ctools.h"
 
 struct Person {
-    char* name;
-    char* gender;
-    char* marital_status;
+	char *name;
+	char *gender;
+	char *marital_status;
 };
 
-Person* person_create(const char* name, const char* gender, const char* marital_status) {
-    Person* person = (Person*)calloc(1, sizeof(Person));
-    if (NULL == person) return NULL;
+Person *person_create(const char *name, const char *gender,
+		      const char *marital_status)
+{
+	Person *person = (Person *)calloc(1, sizeof(Person));
+	if (NULL == person)
+		return NULL;
 
-    person->name = cstrdup(name);
-    person->gender = cstrdup(gender);
-    person->marital_status = cstrdup(marital_status);
+	person->name = cstrdup(name);
+	person->gender = cstrdup(gender);
+	person->marital_status = cstrdup(marital_status);
 
-    return person;
+	return person;
 }
 
-void person_destory(Person* person) {
-    if (NULL == person) return;
+void person_destory(Person *person)
+{
+	if (NULL == person)
+		return;
 
-    freep((void**)&person->name);
-    freep((void**)&person->gender);
-    freep((void**)&person->marital_status);
-    freep((void**)&person);
+	freep((void **)&person->name);
+	freep((void **)&person->gender);
+	freep((void **)&person->marital_status);
+	freep((void **)&person);
 }
 
-const char* person_get_name(Person* person) { return (NULL == person) ? NULL : person->name; }
+const char *person_get_name(Person *person)
+{
+	return (NULL == person) ? NULL : person->name;
+}
 
-const char* person_get_gender(Person* person) { return (NULL == person) ? NULL : person->gender; }
+const char *person_get_gender(Person *person)
+{
+	return (NULL == person) ? NULL : person->gender;
+}
 
-const char* person_get_marital_status(Person* person) { return (NULL == person) ? NULL : person->marital_status; }
+const char *person_get_marital_status(Person *person)
+{
+	return (NULL == person) ? NULL : person->marital_status;
+}

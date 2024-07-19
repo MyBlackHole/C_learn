@@ -19,14 +19,14 @@ extern "C" {
 #include "ShapeStruct.h"
 
 struct ShapeDecorator {
-    struct Shape* decorated_shape;
-    void* priv;
+	struct Shape *decorated_shape;
+	void *priv;
 
-    void (*draw)(struct ShapeDecorator* shapedecorator);
-    void (*destroy)(struct ShapeDecorator* shapedecorator);
+	void (*draw)(struct ShapeDecorator *shapedecorator);
+	void (*destroy)(struct ShapeDecorator *shapedecorator);
 };
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // SHAPE_DECORATOR_STRUCT_H_
+#endif // SHAPE_DECORATOR_STRUCT_H_

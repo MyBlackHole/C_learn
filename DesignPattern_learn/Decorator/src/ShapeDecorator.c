@@ -14,14 +14,20 @@
 #include "ShapeDecoratorStruct.h"
 #include "ctools.h"
 
-void shape_decorator_destroy(ShapeDecorator** shape_decorator) {
-    if (NULL == shape_decorator || NULL == *shape_decorator) return;
-    if (NULL != (*shape_decorator)->destroy) (*shape_decorator)->destroy(*shape_decorator);
+void shape_decorator_destroy(ShapeDecorator **shape_decorator)
+{
+	if (NULL == shape_decorator || NULL == *shape_decorator)
+		return;
+	if (NULL != (*shape_decorator)->destroy)
+		(*shape_decorator)->destroy(*shape_decorator);
 
-    freep((void**)shape_decorator);
+	freep((void **)shape_decorator);
 }
 
-void shape_decorator_draw(ShapeDecorator* shape_decorator) {
-    if (NULL == shape_decorator) return;
-    if (NULL != shape_decorator->draw) shape_decorator->draw(shape_decorator);
+void shape_decorator_draw(ShapeDecorator *shape_decorator)
+{
+	if (NULL == shape_decorator)
+		return;
+	if (NULL != shape_decorator->draw)
+		shape_decorator->draw(shape_decorator);
 }

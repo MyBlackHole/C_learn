@@ -11,41 +11,33 @@
 
 int main()
 {
-    char path[] = "/tmp/file.txt";
-    int my_fd = 0;
-    int count;
+	char path[] = "/tmp/file.txt";
+	int my_fd = 0;
+	int count;
 
-    my_fd = open(path, O_WRONLY | O_CREAT);
-    if (my_fd < 0)
-    {
-        fprintf(stderr, "%s\n", strerror(errno));
-        exit(EXIT_FAILURE);
-    }
+	my_fd = open(path, O_WRONLY | O_CREAT);
+	if (my_fd < 0) {
+		fprintf(stderr, "%s\n", strerror(errno));
+		exit(EXIT_FAILURE);
+	}
 
-    // 堵塞获取
-    if (flock(my_fd, LOCK_EX) == 0)
-    {
-        printf("the file was locked.\n");
-    }
-    else
-    {
-        printf("the file was not locked.\n");
-    }
+	// 堵塞获取
+	if (flock(my_fd, LOCK_EX) == 0) {
+		printf("the file was locked.\n");
+	} else {
+		printf("the file was not locked.\n");
+	}
 
-    while (1)
-    {
-        sleep(1);
-        if (count == 10)
-        {
-            break;
-        }
-        else
-        {
-            count++;
-        }
-    }
+	while (1) {
+		sleep(1);
+		if (count == 10) {
+			break;
+		} else {
+			count++;
+		}
+	}
 
-    close(my_fd);
+	close(my_fd);
 
-    return 0;
+	return 0;
 }

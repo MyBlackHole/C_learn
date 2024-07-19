@@ -18,19 +18,19 @@ extern "C" {
 
 typedef struct Service Service;
 
-Service* service_create_service1(void);
+Service *service_create_service1(void);
 
-Service* service_create_service2(void);
+Service *service_create_service2(void);
 
-void service_destroy(Service** service);
+void service_destroy(Service **service);
 
-void service_free_func(Service* service);
+void service_free_func(Service *service);
 
-const char* service_get_name(Service* service);
+const char *service_get_name(Service *service);
 
-void serveice_execute(Service* service);
+void serveice_execute(Service *service);
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // SERVICE_H_
+#endif // SERVICE_H_

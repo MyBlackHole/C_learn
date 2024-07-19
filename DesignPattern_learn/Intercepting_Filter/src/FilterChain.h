@@ -21,17 +21,17 @@ extern "C" {
 
 typedef struct FilterChain FilterChain;
 
-FilterChain* filter_chain_create(void);
+FilterChain *filter_chain_create(void);
 
-void filter_chain_destroy(FilterChain** filter_chain);
+void filter_chain_destroy(FilterChain **filter_chain);
 
-void filter_chain_add_filter(FilterChain* filter_chain, Filter* filter);
+void filter_chain_add_filter(FilterChain *filter_chain, Filter *filter);
 
-void filter_chain_execute(FilterChain* filter_chain, const char* request);
+void filter_chain_execute(FilterChain *filter_chain, const char *request);
 
-void filter_chain_set_target(FilterChain* filter_chain, Target* target);
+void filter_chain_set_target(FilterChain *filter_chain, Target *target);
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // FILTER_CHAIN_H_
+#endif // FILTER_CHAIN_H_

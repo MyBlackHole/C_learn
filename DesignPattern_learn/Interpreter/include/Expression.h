@@ -19,13 +19,15 @@ extern "C" {
 
 typedef struct Expression Expression;
 
-Expression* terminal_expression_create(const char* data);
-Expression* and_expression_create(struct Expression* expression1, struct Expression* expression2);
-Expression* or_expression_create(struct Expression* expression1, struct Expression* expression2);
-void expression_destroy(Expression** expression);
-bool expression_interpret(Expression* expression, const char* context);
+Expression *terminal_expression_create(const char *data);
+Expression *and_expression_create(struct Expression *expression1,
+				  struct Expression *expression2);
+Expression *or_expression_create(struct Expression *expression1,
+				 struct Expression *expression2);
+void expression_destroy(Expression **expression);
+bool expression_interpret(Expression *expression, const char *context);
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // EXPRESSION_H_
+#endif // EXPRESSION_H_

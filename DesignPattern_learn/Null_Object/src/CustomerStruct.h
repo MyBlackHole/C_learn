@@ -18,15 +18,15 @@ extern "C" {
 #include <stdbool.h>
 
 struct Customer {
-    const char* name;
-    void* priv;
+	const char *name;
+	void *priv;
 
-    bool (*is_null)(struct Customer* customer);
-    const char* (*get_name)(struct Customer* customer);
-    void (*destroy)(struct Customer* customer);
+	bool (*is_null)(struct Customer *customer);
+	const char *(*get_name)(struct Customer *customer);
+	void (*destroy)(struct Customer *customer);
 };
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // CUSTOMER_STRUCT_H_
+#endif // CUSTOMER_STRUCT_H_

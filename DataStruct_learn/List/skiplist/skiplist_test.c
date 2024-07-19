@@ -11,13 +11,13 @@
 
 int clock_gettime(int clk_id, struct timespec *t)
 {
-    struct timeval now;
-    int rv = gettimeofday(&now, NULL);
-    if (rv)
-        return rv;
-    t->tv_sec = now.tv_sec;
-    t->tv_nsec = now.tv_usec * 1000;
-    return 0;
+	struct timeval now;
+	int rv = gettimeofday(&now, NULL);
+	if (rv)
+		return rv;
+	t->tv_sec = now.tv_sec;
+	t->tv_nsec = now.tv_usec * 1000;
+	return 0;
 }
 #else
 #include <time.h>
@@ -30,87 +30,83 @@ int clock_gettime(int clk_id, struct timespec *t)
 
 int main(void)
 {
-    int i;
-    struct timespec start, end;
+	int i;
+	struct timespec start, end;
 
-    // 分配存放随机数空间
-    int *key = malloc(N * sizeof(int));
-    if (key == NULL)
-    {
-        exit(-1);
-    }
+	// 分配存放随机数空间
+	int *key = malloc(N * sizeof(int));
+	if (key == NULL) {
+		exit(-1);
+	}
 
-    // 创建跳表
-    struct skiplist *list = skiplist_new();
-    if (list == NULL)
-    {
-        exit(-1);
-    }
+	// 创建跳表
+	struct skiplist *list = skiplist_new();
+	if (list == NULL) {
+		exit(-1);
+	}
 
-    printf("Test start!\n");
-    printf("Add %d nodes...\n", N);
+	printf("Test start!\n");
+	printf("Add %d nodes...\n", N);
 
-    /* Insert test */
-    // 初始化随机种子
-    srandom(time(NULL));
-    // 系统启动到现在时间
-    clock_gettime(CLOCK_MONOTONIC, &start);
-    for (i = 0; i < N; i++)
-    {
-        int value = key[i] = (int)random();
-        // 添加元素
-        skiplist_insert(list, key[i], value);
-    }
-    // 系统启动到现在时间
-    clock_gettime(CLOCK_MONOTONIC, &end);
-    printf("time span: %ldms\n", (end.tv_sec - start.tv_sec) * 1000 +
-                                     (end.tv_nsec - start.tv_nsec) / 1000000);
+	/* Insert test */
+	// 初始化随机种子
+	srandom(time(NULL));
+	// 系统启动到现在时间
+	clock_gettime(CLOCK_MONOTONIC, &start);
+	for (i = 0; i < N; i++) {
+		int value = key[i] = (int)random();
+		// 添加元素
+		skiplist_insert(list, key[i], value);
+	}
+	// 系统启动到现在时间
+	clock_gettime(CLOCK_MONOTONIC, &end);
+	printf("time span: %ldms\n",
+	       (end.tv_sec - start.tv_sec) * 1000 +
+		       (end.tv_nsec - start.tv_nsec) / 1000000);
 #ifdef SKIPLIST_DEBUG
-    skiplist_dump(list);
+	skiplist_dump(list);
 #endif
 
-    /* Search test */
-    printf("Now search each node...\n");
-    // 系统启动到现在时间
-    clock_gettime(CLOCK_MONOTONIC, &start);
-    for (i = 0; i < N; i++)
-    {
-        struct skipnode *node = skiplist_search(list, key[i]);
-        if (node != NULL)
-        {
+	/* Search test */
+	printf("Now search each node...\n");
+	// 系统启动到现在时间
+	clock_gettime(CLOCK_MONOTONIC, &start);
+	for (i = 0; i < N; i++) {
+		struct skipnode *node = skiplist_search(list, key[i]);
+		if (node != NULL) {
 #ifdef SKIPLIST_DEBUG
-            printf("key:0x%08x value:0x%08x\n", node->key, node->value);
+			printf("key:0x%08x value:0x%08x\n", node->key,
+			       node->value);
 #endif
-        }
-        else
-        {
-            printf("Not found:0x%08x\n", key[i]);
-        }
-    }
-    clock_gettime(CLOCK_MONOTONIC, &end);
-    printf("time span: %ldms\n", (end.tv_sec - start.tv_sec) * 1000 +
-                                     (end.tv_nsec - start.tv_nsec) / 1000000);
+		} else {
+			printf("Not found:0x%08x\n", key[i]);
+		}
+	}
+	clock_gettime(CLOCK_MONOTONIC, &end);
+	printf("time span: %ldms\n",
+	       (end.tv_sec - start.tv_sec) * 1000 +
+		       (end.tv_nsec - start.tv_nsec) / 1000000);
 
-    /* Delete test */
-    printf("Now remove all nodes...\n");
-    clock_gettime(CLOCK_MONOTONIC, &start);
-    for (i = 0; i < N; i++)
-    {
-        // 删除元素
-        skiplist_remove(list, key[i]);
-    }
-    clock_gettime(CLOCK_MONOTONIC, &end);
-    printf("time span: %ldms\n", (end.tv_sec - start.tv_sec) * 1000 +
-                                     (end.tv_nsec - start.tv_nsec) / 1000000);
+	/* Delete test */
+	printf("Now remove all nodes...\n");
+	clock_gettime(CLOCK_MONOTONIC, &start);
+	for (i = 0; i < N; i++) {
+		// 删除元素
+		skiplist_remove(list, key[i]);
+	}
+	clock_gettime(CLOCK_MONOTONIC, &end);
+	printf("time span: %ldms\n",
+	       (end.tv_sec - start.tv_sec) * 1000 +
+		       (end.tv_nsec - start.tv_nsec) / 1000000);
 #ifdef SKIPLIST_DEBUG
-    skiplist_dump(list);
+	skiplist_dump(list);
 #endif
 
-    printf("End of Test.\n");
-    // 释放跳表
-    skiplist_delete(list);
+	printf("End of Test.\n");
+	// 释放跳表
+	skiplist_delete(list);
 
-    free(key);
+	free(key);
 
-    return 0;
+	return 0;
 }

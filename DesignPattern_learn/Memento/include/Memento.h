@@ -17,11 +17,11 @@ extern "C" {
 
 typedef struct Memento Memento;
 
-Memento* memento_create(const char* state);
-void memento_destroy(Memento* memento);
-const char* memento_get_state(Memento* memento);
+Memento *memento_create(const char *state);
+void memento_destroy(Memento *memento);
+const char *memento_get_state(Memento *memento);
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // MEMENTO_H_
+#endif // MEMENTO_H_

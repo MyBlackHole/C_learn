@@ -15,28 +15,27 @@
 // 使用fallocate 或者posix_fallocate函数 真磁盘预分配
 int demo_fallocate_main()
 {
-    int tmp_fd = -1;
-    int ret = -1;
+	int tmp_fd = -1;
+	int ret = -1;
 
-    tmp_fd = open("tmp.txt", O_CREAT | O_RDWR,
-                  S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
-    if (tmp_fd < 0)
-    {
-        printf("fd < 0");
-        return -1;
-    }
+	tmp_fd = open("tmp.txt", O_CREAT | O_RDWR,
+		      S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+	if (tmp_fd < 0) {
+		printf("fd < 0");
+		return -1;
+	}
 
-    // ret = fallocate(fd, 0, 0, file_size);
-    ret = posix_fallocate(tmp_fd, 0, (off_t)FILE_SIZE);
-    if (ret < 0)
-    {
-        printf("ret = %d, errno = %d,  %s\n", ret, errno, strerror(errno));
-        return -1;
-    }
+	// ret = fallocate(fd, 0, 0, file_size);
+	ret = posix_fallocate(tmp_fd, 0, (off_t)FILE_SIZE);
+	if (ret < 0) {
+		printf("ret = %d, errno = %d,  %s\n", ret, errno,
+		       strerror(errno));
+		return -1;
+	}
 
-    printf("fallocate create %ldG file\n", (off_t)G_SIZE);
+	printf("fallocate create %ldG file\n", (off_t)G_SIZE);
 
-    close(tmp_fd);
+	close(tmp_fd);
 
-    return 0;
+	return 0;
 }

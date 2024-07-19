@@ -19,12 +19,12 @@ extern "C" {
 #include <stdbool.h>
 
 typedef struct Customer Customer;
-Customer* customer_get_customer(const char* name);
-void customer_destroy(Customer** customer);
-bool customer_is_null(Customer* customer);
-const char* customer_get_name(Customer* customer);
+Customer *customer_get_customer(const char *name);
+void customer_destroy(Customer **customer);
+bool customer_is_null(Customer *customer);
+const char *customer_get_name(Customer *customer);
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // CUSTOMER_H_
+#endif // CUSTOMER_H_

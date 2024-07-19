@@ -18,52 +18,51 @@
 // 使用 splice 时， fd_in 和 fd_out 中必须至少有一个是管道文件描述符。
 int demo_splice_main(int argc, char *argv[])
 {
-    if (argc != 2)
-    {
-        printf("usage: %s <file>\n", argv[0]);
-        return 1;
-    }
-    int filefd = open(argv[1], O_CREAT | O_WRONLY | O_TRUNC, S_IRUSR,
-                      S_IRWXO | S_IRWXG | S_IRWXU);
-    assert(filefd > 0);
+	if (argc != 2) {
+		printf("usage: %s <file>\n", argv[0]);
+		return 1;
+	}
+	int filefd = open(argv[1], O_CREAT | O_WRONLY | O_TRUNC, S_IRUSR,
+			  S_IRWXO | S_IRWXG | S_IRWXU);
+	assert(filefd > 0);
 
-    int pipefd_stdout[2];
-    size_t ret;
+	int pipefd_stdout[2];
+	size_t ret;
 
-    ret = pipe(pipefd_stdout);
-    assert(ret != -1);
+	ret = pipe(pipefd_stdout);
+	assert(ret != -1);
 
-    int pipefd_file[2];
-    ret = pipe(pipefd_file);
-    assert(ret != -1);
+	int pipefd_file[2];
+	ret = pipe(pipefd_file);
+	assert(ret != -1);
 
-    // stdin -> w_pipe_stdout
-    ret = splice(STDIN_FILENO, NULL, pipefd_stdout[1], NULL, BUF,
-                 SPLICE_F_MORE | SPLICE_F_MOVE);
-    assert(ret != -1);
+	// stdin -> w_pipe_stdout
+	ret = splice(STDIN_FILENO, NULL, pipefd_stdout[1], NULL, BUF,
+		     SPLICE_F_MORE | SPLICE_F_MOVE);
+	assert(ret != -1);
 
-    // 设置 pipe 非阻塞, 设置 buf 大小
-    // 处理管道到管道数据
-    // r_pipe_stdout -> w_pipe_fd
-    ret = tee(pipefd_stdout[0], pipefd_file[1], BUF, SPLICE_F_NONBLOCK);
-    assert(ret != -1);
+	// 设置 pipe 非阻塞, 设置 buf 大小
+	// 处理管道到管道数据
+	// r_pipe_stdout -> w_pipe_fd
+	ret = tee(pipefd_stdout[0], pipefd_file[1], BUF, SPLICE_F_NONBLOCK);
+	assert(ret != -1);
 
-    // r_pipe_fd -> w_file
-    ret = splice(pipefd_file[0], NULL, filefd, NULL, BUF,
-                 SPLICE_F_MORE | SPLICE_F_MOVE);
-    assert(ret != -1);
+	// r_pipe_fd -> w_file
+	ret = splice(pipefd_file[0], NULL, filefd, NULL, BUF,
+		     SPLICE_F_MORE | SPLICE_F_MOVE);
+	assert(ret != -1);
 
-    // r_pipe -> stdout
-    ret =
-        splice(pipefd_stdout[0], NULL, STDOUT_FILENO, NULL, BUF, SPLICE_F_GIFT);
-    printf("errno:%d\n", errno);
+	// r_pipe -> stdout
+	ret = splice(pipefd_stdout[0], NULL, STDOUT_FILENO, NULL, BUF,
+		     SPLICE_F_GIFT);
+	printf("errno:%d\n", errno);
 
-    assert(ret != -1);
+	assert(ret != -1);
 
-    close(filefd);
-    close(pipefd_stdout[0]);
-    close(pipefd_stdout[1]);
-    close(pipefd_file[0]);
-    close(pipefd_file[1]);
-    return 0;
+	close(filefd);
+	close(pipefd_stdout[0]);
+	close(pipefd_stdout[1]);
+	close(pipefd_file[0]);
+	close(pipefd_file[1]);
+	return 0;
 }

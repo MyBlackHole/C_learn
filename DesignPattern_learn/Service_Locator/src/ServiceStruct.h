@@ -17,13 +17,13 @@ extern "C" {
 #endif
 
 struct Service {
-    void* priv;
-    const char* (*get_name)(struct Service* service);
-    void (*excute)(struct Service* service);
-    void (*destroy)(struct Service* serviec);
+	void *priv;
+	const char *(*get_name)(struct Service *service);
+	void (*excute)(struct Service *service);
+	void (*destroy)(struct Service *serviec);
 };
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // SERVICE_STRUCT_H_
+#endif // SERVICE_STRUCT_H_

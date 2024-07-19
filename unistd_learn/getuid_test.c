@@ -4,6 +4,6 @@
 
 int demo_getuid_main(void)
 {
-    printf("uid=%d  gid=%d  \n", getuid(), getgid());
-    exit(EXIT_SUCCESS);
+	printf("uid=%d  gid=%d  \n", getuid(), getgid());
+	exit(EXIT_SUCCESS);
 }

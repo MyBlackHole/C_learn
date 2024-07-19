@@ -13,24 +13,25 @@
 
 #include "Context.h"
 
-int main(int argc, char const* argv[]) {
-    Strategy* operation_add = strategy_create_operation_add();
-    Context* context = context_create(operation_add);
-    printf("10 + 5 = %d\n", context_execute_strategy(context, 10, 5));
-    strategy_destroy(&operation_add);
-    context_destroy(&context);
+int main(int argc, char const *argv[])
+{
+	Strategy *operation_add = strategy_create_operation_add();
+	Context *context = context_create(operation_add);
+	printf("10 + 5 = %d\n", context_execute_strategy(context, 10, 5));
+	strategy_destroy(&operation_add);
+	context_destroy(&context);
 
-    Strategy* operation_subtract = strategy_create_operation_subtract();
-    context = context_create(operation_subtract);
-    printf("10 - 5 = %d\n", context_execute_strategy(context, 10, 5));
-    strategy_destroy(&operation_subtract);
-    context_destroy(&context);
+	Strategy *operation_subtract = strategy_create_operation_subtract();
+	context = context_create(operation_subtract);
+	printf("10 - 5 = %d\n", context_execute_strategy(context, 10, 5));
+	strategy_destroy(&operation_subtract);
+	context_destroy(&context);
 
-    Strategy* operation_multiply = strategy_create_operation_multiply();
-    context = context_create(operation_multiply);
-    printf("10 * 5 = %d\n", context_execute_strategy(context, 10, 5));
-    strategy_destroy(&operation_multiply);
-    context_destroy(&context);
+	Strategy *operation_multiply = strategy_create_operation_multiply();
+	context = context_create(operation_multiply);
+	printf("10 * 5 = %d\n", context_execute_strategy(context, 10, 5));
+	strategy_destroy(&operation_multiply);
+	context_destroy(&context);
 
-    return 0;
+	return 0;
 }

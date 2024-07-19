@@ -13,16 +13,20 @@
 #include "ExpressionStruct.h"
 #include "ctools.h"
 
-void expression_destroy(Expression** expression) {
-    if (NULL == expression || NULL == *expression) return;
-    if (NULL != (*expression)->destroy) {
-        (*expression)->destroy(*expression);
-    }
-    freep((void**)expression);
+void expression_destroy(Expression **expression)
+{
+	if (NULL == expression || NULL == *expression)
+		return;
+	if (NULL != (*expression)->destroy) {
+		(*expression)->destroy(*expression);
+	}
+	freep((void **)expression);
 }
 
-bool expression_interpret(Expression* expression, const char* context) {
-    if (NULL == expression || NULL == expression->interpret) return false;
+bool expression_interpret(Expression *expression, const char *context)
+{
+	if (NULL == expression || NULL == expression->interpret)
+		return false;
 
-    return expression->interpret(expression, context);
+	return expression->interpret(expression, context);
 }

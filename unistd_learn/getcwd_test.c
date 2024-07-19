@@ -6,8 +6,8 @@
 
 int demo_getcwd_main(int argc, char *argv[])
 {
-    char buf[NUM];
-    // 获取当前运行目录(工作目录)
-    printf("%s\n", getcwd(buf, NUM));
-    return EXIT_SUCCESS;
+	char buf[NUM];
+	// 获取当前运行目录(工作目录)
+	printf("%s\n", getcwd(buf, NUM));
+	return EXIT_SUCCESS;
 }

@@ -16,29 +16,27 @@
 // 设置线程cpu亲和性
 void conc_set_affinity_n(const uint64_t cpu)
 {
-    // bind to one cpu
-    cpu_set_t cpuset;
-    pthread_t thread;
-    thread = pthread_self();
-    CPU_ZERO(&cpuset);
-    CPU_SET(cpu, &cpuset);
-    pthread_setaffinity_np(thread, sizeof(cpuset), &cpuset);
+	// bind to one cpu
+	cpu_set_t cpuset;
+	pthread_t thread;
+	thread = pthread_self();
+	CPU_ZERO(&cpuset);
+	CPU_SET(cpu, &cpuset);
+	pthread_setaffinity_np(thread, sizeof(cpuset), &cpuset);
 }
 
 // 运行 nr 个线程堵塞到所有线程结束
 void conc_fork_reduce(const uint64_t nr, void *(*func)(void *), void *const arg)
 {
-    assert((nr > UINT64_C(0)) && (nr < UINT64_C(1024)));
-    pthread_t ths[nr];
-    pthread_attr_t attr;
-    pthread_attr_init(&attr);
-    pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_JOINABLE);
-    for (uint64_t j = 0; j < nr; j++)
-    {
-        pthread_create(&(ths[j]), &attr, func, arg);
-    }
-    for (uint64_t j = 0; j < nr; j++)
-    {
-        pthread_join(ths[j], NULL);
-    }
+	assert((nr > UINT64_C(0)) && (nr < UINT64_C(1024)));
+	pthread_t ths[nr];
+	pthread_attr_t attr;
+	pthread_attr_init(&attr);
+	pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_JOINABLE);
+	for (uint64_t j = 0; j < nr; j++) {
+		pthread_create(&(ths[j]), &attr, func, arg);
+	}
+	for (uint64_t j = 0; j < nr; j++) {
+		pthread_join(ths[j], NULL);
+	}
 }

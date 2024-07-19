@@ -12,11 +12,11 @@ extern int func2();
 
 int demo_func_main(int argc, char *argv[])
 {
-    funcs[0] = func1;
-    funcs[1] = func2;
+	funcs[0] = func1;
+	funcs[1] = func2;
 
-    funcs[0]();
-    funcs[1]();
+	funcs[0]();
+	funcs[1]();
 
-    return EXIT_SUCCESS;
+	return EXIT_SUCCESS;
 }

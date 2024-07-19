@@ -10,4 +10,4 @@
 
 int add(int i, int j);
 
-#endif  // C_TEST_H
+#endif // C_TEST_H

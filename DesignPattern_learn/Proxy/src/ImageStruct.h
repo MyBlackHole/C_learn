@@ -16,10 +16,10 @@ extern "C" {
 #endif
 
 struct Image {
-  void *priv;
+	void *priv;
 
-  void (*display)(struct Image *image);
-  void (*destroy)(struct Image *image);
+	void (*display)(struct Image *image);
+	void (*destroy)(struct Image *image);
 };
 
 #ifdef __cplusplus

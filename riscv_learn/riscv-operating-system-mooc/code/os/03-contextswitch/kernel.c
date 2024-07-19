@@ -9,17 +9,18 @@ extern void page_init(void);
 extern void sched_init(void);
 extern void schedule(void);
 
-void start_kernel(void) {
-  uart_init();
-  uart_puts("Hello, RVOS!\n");
+void start_kernel(void)
+{
+	uart_init();
+	uart_puts("Hello, RVOS!\n");
 
-  page_init();
+	page_init();
 
-  sched_init();
+	sched_init();
 
-  schedule();
+	schedule();
 
-  uart_puts("Would not go here!\n");
-  while (1) {
-  }; // stop here!
+	uart_puts("Would not go here!\n");
+	while (1) {
+	}; // stop here!
 }

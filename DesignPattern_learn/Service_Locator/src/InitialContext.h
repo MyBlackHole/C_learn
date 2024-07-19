@@ -20,13 +20,14 @@ extern "C" {
 
 typedef struct InitialContext InitialContext;
 
-InitialContext* initial_context_create(void);
+InitialContext *initial_context_create(void);
 
-void initial_context_destroy(InitialContext** initial_context);
+void initial_context_destroy(InitialContext **initial_context);
 
-Service* initial_context_lookup(InitialContext* initial_context, const char* jndi_name);
+Service *initial_context_lookup(InitialContext *initial_context,
+				const char *jndi_name);
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // INITIAL_CONTEXT_H_
+#endif // INITIAL_CONTEXT_H_

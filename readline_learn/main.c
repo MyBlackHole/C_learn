@@ -6,18 +6,16 @@
 
 int main(int argc, char *argv[])
 {
-    using_history();
-    char *str;
+	using_history();
+	char *str;
 
-    while (1)
-    {
-        str = readline("输入:");
-        if (strcmp(str, "q") == 0)
-        {
-            break;
-        }
+	while (1) {
+		str = readline("输入:");
+		if (strcmp(str, "q") == 0) {
+			break;
+		}
 
-        add_history(str);
-    }
-    return EXIT_SUCCESS;
+		add_history(str);
+	}
+	return EXIT_SUCCESS;
 }

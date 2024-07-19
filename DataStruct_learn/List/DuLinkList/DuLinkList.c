@@ -4,7 +4,7 @@
  * 包含算法: 2.18、2.19
  ======================*/
 
-#include "DuLinkList.h"  //**▲ 02 线性表**//
+#include "DuLinkList.h" //**▲ 02 线性表**//
 
 /*
  * 初始化
@@ -13,16 +13,15 @@
  */
 Status InitList(DuLinkList *L)
 {
-    *L = (DuLinkList)malloc(sizeof(DuLNode));
-    if (*L == NULL)
-    {
-        exit(OVERFLOW);
-    }
+	*L = (DuLinkList)malloc(sizeof(DuLNode));
+	if (*L == NULL) {
+		exit(OVERFLOW);
+	}
 
-    // 前驱和后继均指向自身
-    (*L)->next = (*L)->prior = *L;
+	// 前驱和后继均指向自身
+	(*L)->next = (*L)->prior = *L;
 
-    return OK;
+	return OK;
 }
 
 /*
@@ -32,19 +31,18 @@ Status InitList(DuLinkList *L)
  */
 Status DestroyList(DuLinkList *L)
 {
-    // 确保链表结构存在
-    if (L == NULL || *L == NULL)
-    {
-        return ERROR;
-    }
+	// 确保链表结构存在
+	if (L == NULL || *L == NULL) {
+		return ERROR;
+	}
 
-    ClearList(*L);
+	ClearList(*L);
 
-    free(*L);
+	free(*L);
 
-    *L = NULL;
+	*L = NULL;
 
-    return OK;
+	return OK;
 }
 
 /*
@@ -54,25 +52,23 @@ Status DestroyList(DuLinkList *L)
  */
 Status ClearList(DuLinkList L)
 {
-    DuLinkList p, q;
+	DuLinkList p, q;
 
-    if (L == NULL)
-    {
-        return ERROR;
-    }
+	if (L == NULL) {
+		return ERROR;
+	}
 
-    p = L->next;
+	p = L->next;
 
-    while (p != L)
-    {
-        q = p->next;
-        free(p);
-        p = q;
-    }
+	while (p != L) {
+		q = p->next;
+		free(p);
+		p = q;
+	}
 
-    L->next = L->prior = L;
+	L->next = L->prior = L;
 
-    return OK;
+	return OK;
 }
 
 /*
@@ -86,14 +82,11 @@ Status ClearList(DuLinkList L)
  */
 Status ListEmpty(DuLinkList L)
 {
-    if (L != NULL && L->next == L && L->prior == L)
-    {
-        return TRUE;
-    }
-    else
-    {
-        return FALSE;
-    }
+	if (L != NULL && L->next == L && L->prior == L) {
+		return TRUE;
+	} else {
+		return FALSE;
+	}
 }
 
 /*
@@ -103,25 +96,23 @@ Status ListEmpty(DuLinkList L)
  */
 int ListLength(DuLinkList L)
 {
-    DuLinkList p;
-    int i;
+	DuLinkList p;
+	int i;
 
-    if (L == NULL || L->next == L || L->prior == L)
-    {
-        return 0;
-    }
+	if (L == NULL || L->next == L || L->prior == L) {
+		return 0;
+	}
 
-    i = 0;
-    p = L->next;
+	i = 0;
+	p = L->next;
 
-    // 遍历所有结点
-    while (p != L)
-    {
-        i++;
-        p = p->next;
-    }
+	// 遍历所有结点
+	while (p != L) {
+		i++;
+		p = p->next;
+	}
 
-    return i;
+	return i;
 }
 
 /*
@@ -136,34 +127,31 @@ int ListLength(DuLinkList L)
  */
 Status GetElem(DuLinkList L, int i, ElemType *e)
 {
-    DuLinkList p;
-    int j;
+	DuLinkList p;
+	int j;
 
-    // 确保双向循环链表存在
-    if (L == NULL || L->next == L || L->prior == L)
-    {
-        return ERROR;
-    }
+	// 确保双向循环链表存在
+	if (L == NULL || L->next == L || L->prior == L) {
+		return ERROR;
+	}
 
-    p = L;
-    j = 0;
+	p = L;
+	j = 0;
 
-    // 寻找第i-1个结点，且保证该结点的后继不为L
-    while (p->next != L && j < i - 1)
-    {
-        p = p->next;
-        ++j;
-    }
+	// 寻找第i-1个结点，且保证该结点的后继不为L
+	while (p->next != L && j < i - 1) {
+		p = p->next;
+		++j;
+	}
 
-    // 如果遍历到头了，或者i的值不合规(比如i<=0)，说明没找到合乎目标的结点
-    if (p->next == L || j > i - 1)
-    {
-        return ERROR;
-    }
+	// 如果遍历到头了，或者i的值不合规(比如i<=0)，说明没找到合乎目标的结点
+	if (p->next == L || j > i - 1) {
+		return ERROR;
+	}
 
-    *e = p->next->data;
+	*e = p->next->data;
 
-    return OK;
+	return OK;
 }
 
 /*
@@ -177,32 +165,27 @@ Status GetElem(DuLinkList L, int i, ElemType *e)
  */
 int LocateElem(DuLinkList L, ElemType e, Status(Compare)(ElemType, ElemType))
 {
-    int i;
-    DuLinkList p;
+	int i;
+	DuLinkList p;
 
-    // 确保双向循环链表存在
-    if (L == NULL || L->next == L || L->prior == L)
-    {
-        return 0;
-    }
+	// 确保双向循环链表存在
+	if (L == NULL || L->next == L || L->prior == L) {
+		return 0;
+	}
 
-    i = 1;        // i的初值为第1个元素的位序
-    p = L->next;  // p的初值为第1个元素的指针
+	i = 1; // i的初值为第1个元素的位序
+	p = L->next; // p的初值为第1个元素的指针
 
-    while (p != L && !Compare(p->data, e))
-    {
-        i++;
-        p = p->next;
-    }
+	while (p != L && !Compare(p->data, e)) {
+		i++;
+		p = p->next;
+	}
 
-    if (p != L)
-    {
-        return i;
-    }
-    else
-    {
-        return 0;
-    }
+	if (p != L) {
+		return i;
+	} else {
+		return 0;
+	}
 }
 
 /*
@@ -214,41 +197,37 @@ int LocateElem(DuLinkList L, ElemType e, Status(Compare)(ElemType, ElemType))
  */
 Status PriorElem(DuLinkList L, ElemType cur_e, ElemType *pre_e)
 {
-    DuLinkList p;
+	DuLinkList p;
 
-    // 确保双向循环链表存在
-    if (L == NULL || L->next == L || L->prior == L)
-    {
-        return ERROR;
-    }
+	// 确保双向循环链表存在
+	if (L == NULL || L->next == L || L->prior == L) {
+		return ERROR;
+	}
 
-    // 指向第1个元素
-    p = L->next;
+	// 指向第1个元素
+	p = L->next;
 
-    // 第1个元素没有前驱
-    if (p->data == cur_e)
-    {
-        return ERROR;
-    }
+	// 第1个元素没有前驱
+	if (p->data == cur_e) {
+		return ERROR;
+	}
 
-    // 指向第2个元素
-    p = p->next;
+	// 指向第2个元素
+	p = p->next;
 
-    // 从第2个元素开始，查找cur_e的位置
-    while (p != L && p->data != cur_e)
-    {
-        p = p->next;
-    }
+	// 从第2个元素开始，查找cur_e的位置
+	while (p != L && p->data != cur_e) {
+		p = p->next;
+	}
 
-    // 如果没找到元素cur_e，查找失败，返回ERROR
-    if (p == L)
-    {
-        return ERROR;
-    }
+	// 如果没找到元素cur_e，查找失败，返回ERROR
+	if (p == L) {
+		return ERROR;
+	}
 
-    *pre_e = p->prior->data;
+	*pre_e = p->prior->data;
 
-    return OK;
+	return OK;
 }
 
 /*
@@ -260,32 +239,29 @@ Status PriorElem(DuLinkList L, ElemType cur_e, ElemType *pre_e)
  */
 Status NextElem(DuLinkList L, ElemType cur_e, ElemType *next_e)
 {
-    DuLinkList p;
+	DuLinkList p;
 
-    // 确保双向循环链表存在
-    if (L == NULL || L->next == L || L->prior == L)
-    {
-        return ERROR;
-    }
+	// 确保双向循环链表存在
+	if (L == NULL || L->next == L || L->prior == L) {
+		return ERROR;
+	}
 
-    // 指向第1个元素
-    p = L->next;
+	// 指向第1个元素
+	p = L->next;
 
-    // 从第1个元素开始，查找cur_e的位置，且保证该结点的后继不为L
-    while (p->next != L && p->data != cur_e)
-    {
-        p = p->next;
-    }
+	// 从第1个元素开始，查找cur_e的位置，且保证该结点的后继不为L
+	while (p->next != L && p->data != cur_e) {
+		p = p->next;
+	}
 
-    // 如果没找到cur_e，或者找到了，但它没有后继，均返回ERROR
-    if (p->next == L)
-    {
-        return ERROR;
-    }
+	// 如果没找到cur_e，或者找到了，但它没有后继，均返回ERROR
+	if (p->next == L) {
+		return ERROR;
+	}
 
-    *next_e = p->next->data;
+	*next_e = p->next->data;
 
-    return OK;
+	return OK;
 }
 
 /*
@@ -300,35 +276,32 @@ Status NextElem(DuLinkList L, ElemType cur_e, ElemType *next_e)
  */
 Status ListInsert(DuLinkList L, int i, ElemType e)
 {
-    DuLinkList p, s;
+	DuLinkList p, s;
 
-    // 确保双向循环链表存在（但可能为空表）
-    if (L == NULL)
-    {
-        return ERROR;
-    }
+	// 确保双向循环链表存在（但可能为空表）
+	if (L == NULL) {
+		return ERROR;
+	}
 
-    // 查找第i个结点位置（引用）
-    if ((p = GetElemP(L, i)) == NULL)
-    {
-        return ERROR;
-    }
+	// 查找第i个结点位置（引用）
+	if ((p = GetElemP(L, i)) == NULL) {
+		return ERROR;
+	}
 
-    // 创建新结点
-    s = (DuLinkList)malloc(sizeof(DuLNode));
-    if (s == NULL)
-    {
-        exit(OVERFLOW);
-    }
-    s->data = e;
+	// 创建新结点
+	s = (DuLinkList)malloc(sizeof(DuLNode));
+	if (s == NULL) {
+		exit(OVERFLOW);
+	}
+	s->data = e;
 
-    // 将s插入到p的前面，称为第i个结点
-    s->prior = p->prior;
-    p->prior->next = s;
-    s->next = p;
-    p->prior = s;
+	// 将s插入到p的前面，称为第i个结点
+	s->prior = p->prior;
+	p->prior->next = s;
+	s->next = p;
+	p->prior = s;
 
-    return OK;
+	return OK;
 }
 
 /*
@@ -344,35 +317,32 @@ Status ListInsert(DuLinkList L, int i, ElemType e)
  */
 Status ListDelete(DuLinkList L, int i, ElemType *e)
 {
-    DuLinkList p;
+	DuLinkList p;
 
-    // 确保双向循环链表存在
-    if (L == NULL || L->next == L || L->prior == L)
-    {
-        return ERROR;
-    }
+	// 确保双向循环链表存在
+	if (L == NULL || L->next == L || L->prior == L) {
+		return ERROR;
+	}
 
-    // 查找第i个结点位置（引用）
-    if ((p = GetElemP(L, i)) == NULL)
-    {
-        return ERROR;
-    }
+	// 查找第i个结点位置（引用）
+	if ((p = GetElemP(L, i)) == NULL) {
+		return ERROR;
+	}
 
-    // 如果p==L，说明待删除元素是第len+1个元素，不合规
-    if (p == L)
-    {
-        return ERROR;
-    }
+	// 如果p==L，说明待删除元素是第len+1个元素，不合规
+	if (p == L) {
+		return ERROR;
+	}
 
-    *e = p->data;
+	*e = p->data;
 
-    // 移除p结点
-    p->prior->next = p->next;
-    p->next->prior = p->prior;
+	// 移除p结点
+	p->prior->next = p->next;
+	p->next->prior = p->prior;
 
-    free(p);
+	free(p);
 
-    return OK;
+	return OK;
 }
 
 /*
@@ -382,23 +352,21 @@ Status ListDelete(DuLinkList L, int i, ElemType *e)
  */
 void ListTraverse(DuLinkList L, void(Visit)(ElemType))
 {
-    DuLinkList p;
+	DuLinkList p;
 
-    // 确保双向循环链表存在
-    if (L == NULL || L->next == L || L->prior == L)
-    {
-        return;
-    }
+	// 确保双向循环链表存在
+	if (L == NULL || L->next == L || L->prior == L) {
+		return;
+	}
 
-    p = L->next;
+	p = L->next;
 
-    while (p != L)
-    {
-        Visit(p->data);
-        p = p->next;
-    }
+	while (p != L) {
+		Visit(p->data);
+		p = p->next;
+	}
 
-    printf("\n");
+	printf("\n");
 }
 
 /*
@@ -410,43 +378,38 @@ void ListTraverse(DuLinkList L, void(Visit)(ElemType))
  */
 static DuLinkList GetElemP(DuLinkList L, int i)
 {
-    DuLinkList p;
-    int count;
+	DuLinkList p;
+	int count;
 
-    // 确保双向循环链表存在（但可能为空表）
-    if (L == NULL)
-    {
-        return NULL;
-    }
+	// 确保双向循环链表存在（但可能为空表）
+	if (L == NULL) {
+		return NULL;
+	}
 
-    // 位置不合规
-    if (i < 1)
-    {
-        return NULL;
-    }
+	// 位置不合规
+	if (i < 1) {
+		return NULL;
+	}
 
-    p = L;
-    count = 0;
+	p = L;
+	count = 0;
 
-    // 尝试查找第i个元素
-    while (p->next != L && count < i)
-    {
-        p = p->next;
-        ++count;
-    }
+	// 尝试查找第i个元素
+	while (p->next != L && count < i) {
+		p = p->next;
+		++count;
+	}
 
-    // 恰好找到第i个元素
-    if (count == i)
-    {
-        return p;
-    }
+	// 恰好找到第i个元素
+	if (count == i) {
+		return p;
+	}
 
-    // 至此，说明p->next==L，此时需要判断i是否过大
-    if (count + 1 < i)
-    {
-        return NULL;
-    }
+	// 至此，说明p->next==L，此时需要判断i是否过大
+	if (count + 1 < i) {
+		return NULL;
+	}
 
-    // 至此，说明需要在len+1的位置上插入元素
-    return L;
+	// 至此，说明需要在len+1的位置上插入元素
+	return L;
 }

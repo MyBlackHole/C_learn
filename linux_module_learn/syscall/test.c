@@ -6,6 +6,6 @@
 
 int main(void)
 {
-    printf("%d\n", syscall(335));
-    return 0;
+	printf("%d\n", syscall(335));
+	return 0;
 }

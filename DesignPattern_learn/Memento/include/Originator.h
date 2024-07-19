@@ -18,14 +18,15 @@ extern "C" {
 #include "Memento.h"
 
 typedef struct Originator Originator;
-Originator* originator_create(void);
-void originator_destroy(Originator** originator);
-void originator_set_state(Originator* originator, const char* state);
-const char* originator_get_state(Originator* originator);
-Memento* originator_save_state_to_memento(Originator* originator);
-void originator_get_state_from_memento(Originator* originator, Memento* memento);
+Originator *originator_create(void);
+void originator_destroy(Originator **originator);
+void originator_set_state(Originator *originator, const char *state);
+const char *originator_get_state(Originator *originator);
+Memento *originator_save_state_to_memento(Originator *originator);
+void originator_get_state_from_memento(Originator *originator,
+				       Memento *memento);
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // ORIGINATOR_H_
+#endif // ORIGINATOR_H_

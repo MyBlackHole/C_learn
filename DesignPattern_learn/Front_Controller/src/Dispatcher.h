@@ -18,13 +18,13 @@ extern "C" {
 
 typedef struct Dispatcher Dispatcher;
 
-Dispatcher* dispatcher_create(void);
+Dispatcher *dispatcher_create(void);
 
-void dispatcher_destroy(Dispatcher** dispatcher);
+void dispatcher_destroy(Dispatcher **dispatcher);
 
-void dispatcher_dispatch(Dispatcher* dispatcher, const char* request);
+void dispatcher_dispatch(Dispatcher *dispatcher, const char *request);
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // DISPATCHER_H_
+#endif // DISPATCHER_H_

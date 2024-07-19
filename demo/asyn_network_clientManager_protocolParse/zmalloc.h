@@ -36,8 +36,8 @@
 #define __str(s) #s
 
 #if defined(USE_TCMALLOC)
-#define ZMALLOC_LIB                                                            \
-  ("tcmalloc-" __xstr(TC_VERSION_MAJOR) "." __xstr(TC_VERSION_MINOR))
+#define ZMALLOC_LIB \
+	("tcmalloc-" __xstr(TC_VERSION_MAJOR) "." __xstr(TC_VERSION_MINOR))
 #include <google/tcmalloc.h>
 #if (TC_VERSION_MAJOR == 1 && TC_VERSION_MINOR >= 6) || (TC_VERSION_MAJOR > 1)
 #define HAVE_MALLOC_SIZE 1
@@ -47,12 +47,12 @@
 #endif
 
 #elif defined(USE_JEMALLOC)
-#define ZMALLOC_LIB                                                            \
-  ("jemalloc-" __xstr(JEMALLOC_VERSION_MAJOR) "." __xstr(                      \
-      JEMALLOC_VERSION_MINOR) "." __xstr(JEMALLOC_VERSION_BUGFIX))
+#define ZMALLOC_LIB                                             \
+	("jemalloc-" __xstr(JEMALLOC_VERSION_MAJOR) "." __xstr( \
+		JEMALLOC_VERSION_MINOR) "." __xstr(JEMALLOC_VERSION_BUGFIX))
 #include <jemalloc/jemalloc.h>
-#if (JEMALLOC_VERSION_MAJOR == 2 && JEMALLOC_VERSION_MINOR >= 1) ||            \
-    (JEMALLOC_VERSION_MAJOR > 2)
+#if (JEMALLOC_VERSION_MAJOR == 2 && JEMALLOC_VERSION_MINOR >= 1) || \
+	(JEMALLOC_VERSION_MAJOR > 2)
 #define HAVE_MALLOC_SIZE 1
 #define zmalloc_size(p) je_malloc_usable_size(p)
 #else

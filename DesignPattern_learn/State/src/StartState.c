@@ -15,18 +15,24 @@
 #include "StateStruct.h"
 #include "ctools.h"
 
-static void do_action(struct State* state, struct Context* context) {
-    printf("Player is in start state\n");
-    context_set_state(context, state);
+static void do_action(struct State *state, struct Context *context)
+{
+	printf("Player is in start state\n");
+	context_set_state(context, state);
 }
 
-static const char* to_string(struct State* state) { return "Start State"; }
+static const char *to_string(struct State *state)
+{
+	return "Start State";
+}
 
-struct State* start_state_create(void) {
-    struct State* state = (struct State*)calloc(1, sizeof(struct State));
-    if (NULL == state) return NULL;
+struct State *start_state_create(void)
+{
+	struct State *state = (struct State *)calloc(1, sizeof(struct State));
+	if (NULL == state)
+		return NULL;
 
-    state->do_action = do_action;
-    state->to_string = to_string;
-    return state;
+	state->do_action = do_action;
+	state->to_string = to_string;
+	return state;
 }

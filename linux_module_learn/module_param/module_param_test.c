@@ -9,17 +9,17 @@ module_param(global_val_test, int, 0644);
 
 static int __init module_param_init(void)
 {
-    printk(KERN_INFO "global_val_test = %d\n", global_val_test);
-    if (global_val_test == 9)
-        printk(KERN_INFO "hello my world enter\n");
-    else
-        printk(KERN_INFO "hello world enter\n");
-    return 0;
+	printk(KERN_INFO "global_val_test = %d\n", global_val_test);
+	if (global_val_test == 9)
+		printk(KERN_INFO "hello my world enter\n");
+	else
+		printk(KERN_INFO "hello world enter\n");
+	return 0;
 }
 
 static void __exit module_param_exit(void)
 {
-    printk(KERN_INFO "hello World exit\n");
+	printk(KERN_INFO "hello World exit\n");
 }
 
 module_init(module_param_init);

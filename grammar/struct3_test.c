@@ -3,33 +3,31 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct Line3
-{
-    uint8_t  data[0];
-    uint32_t x;
-    uint32_t y;
+typedef struct Line3 {
+	uint8_t data[0];
+	uint32_t x;
+	uint32_t y;
 } Line3;
 
 int demo_struct3_main()
 {
-    Line3 line;
-    int   length           = 100;
-    int   line_byte_length = sizeof(line);
+	Line3 line;
+	int length = 100;
+	int line_byte_length = sizeof(line);
 
-    printf("%d\n", line_byte_length);
+	printf("%d\n", line_byte_length);
 
-    Line3 *line_ref = (struct Line3 *)malloc(sizeof(struct Line3) + length);
-    line_ref->x     = length;
-    line_ref->y     = length;
-    for (int index = 0; index < line_byte_length; index++)
-    {
-        printf("data[%d]:8: %b\n", index, line_ref->data[index]);
-    }
+	Line3 *line_ref = (struct Line3 *)malloc(sizeof(struct Line3) + length);
+	line_ref->x = length;
+	line_ref->y = length;
+	for (int index = 0; index < line_byte_length; index++) {
+		printf("data[%d]:8: %b\n", index, line_ref->data[index]);
+	}
 
-    printf("data[0]:32: %d\n", line_ref->data[0]);
-    printf("data[4]:32: %d\n", line_ref->data[4]);
-    printf("data[0]:64: %lx\n", *((uint64_t *)line_ref->data));
-    return EXIT_SUCCESS;
+	printf("data[0]:32: %d\n", line_ref->data[0]);
+	printf("data[4]:32: %d\n", line_ref->data[4]);
+	printf("data[0]:64: %lx\n", *((uint64_t *)line_ref->data));
+	return EXIT_SUCCESS;
 }
 
 // ❯ xmake run grammar struct3

@@ -1,4 +1,5 @@
-obj-m:= AAAA.o
+obj-m:= AAAA1111.o
+# obj-m:= AAAA.o
 CURRENT_PATH:=$(shell pwd)
 LINUX_KERNEL:=$(shell uname -r)
 LINUX_KERNEL_PATH:=/lib/modules/$(LINUX_KERNEL)/build

@@ -2,19 +2,17 @@
 #define ORDER_STRUCT_H_
 
 #ifdef __cplusplus
-extern "C"
-{
+extern "C" {
 #endif
 
-    struct Order
-    {
-        void* priv;
+struct Order {
+	void *priv;
 
-        void (*execute)(struct Order* order);
-        void (*destroy)(struct Order* order);
-    };
+	void (*execute)(struct Order *order);
+	void (*destroy)(struct Order *order);
+};
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // ORDER_STRUCT_H_
+#endif // ORDER_STRUCT_H_

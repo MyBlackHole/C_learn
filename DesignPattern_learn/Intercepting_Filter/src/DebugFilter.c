@@ -14,12 +14,18 @@
 #include "FilterStruct.h"
 #include "ctools.h"
 
-static void execute(struct Filter* filter, const char* request) { printf("request log: %s\n", request); }
+static void execute(struct Filter *filter, const char *request)
+{
+	printf("request log: %s\n", request);
+}
 
-struct Filter* debug_filter_create(void) {
-    struct Filter* filter = (struct Filter*)calloc(1, sizeof(struct Filter));
-    if (NULL == filter) return NULL;
+struct Filter *debug_filter_create(void)
+{
+	struct Filter *filter =
+		(struct Filter *)calloc(1, sizeof(struct Filter));
+	if (NULL == filter)
+		return NULL;
 
-    filter->execute = execute;
-    return filter;
+	filter->execute = execute;
+	return filter;
 }

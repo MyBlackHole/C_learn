@@ -9,12 +9,11 @@
 #include <unistd.h>
 
 #define MAXLINE 512
-#define ERR_EXIT(sz)        \
-    do                      \
-    {                       \
-        perror(sz);         \
-        exit(EXIT_FAILURE); \
-    } while (0)
+#define ERR_EXIT(sz)                \
+	do {                        \
+		perror(sz);         \
+		exit(EXIT_FAILURE); \
+	} while (0)
 
 #define write_fifo "write_fifo"
-#define read_fifo  "read_fifo"
+#define read_fifo "read_fifo"

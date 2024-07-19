@@ -7,8 +7,8 @@
 
 int demo_putc_main()
 {
-    int strings[3] = {'a', 'b', '0'};
-    putc(strings[0], stdout);
+	int strings[3] = { 'a', 'b', '0' };
+	putc(strings[0], stdout);
 
-    return EXIT_SUCCESS;
+	return EXIT_SUCCESS;
 }

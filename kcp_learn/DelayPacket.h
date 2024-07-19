@@ -3,11 +3,10 @@
 
 #include "ikcp.h"
 
-typedef struct DelayPacket
-{
-    unsigned char *_ptr;
-    int            _size;
-    IUINT32        _ts;
+typedef struct DelayPacket {
+	unsigned char *_ptr;
+	int _size;
+	IUINT32 _ts;
 } DelayPacket;
 
 // class DelayPacket {

@@ -17,14 +17,21 @@
 
 struct StudentView {};
 
-StudentView* student_view_create(void) {
-    StudentView* student_view = (StudentView*)calloc(1, sizeof(StudentView));
-    return student_view;
+StudentView *student_view_create(void)
+{
+	StudentView *student_view =
+		(StudentView *)calloc(1, sizeof(StudentView));
+	return student_view;
 }
 
-void student_view_destroy(StudentView** student_view) {
-    if (NULL == student_view || NULL == *student_view) return;
-    freep((void**)student_view);
+void student_view_destroy(StudentView **student_view)
+{
+	if (NULL == student_view || NULL == *student_view)
+		return;
+	freep((void **)student_view);
 }
 
-void student_view_show(StudentView* student_view) { printf("Displaying Student Page\n"); }
+void student_view_show(StudentView *student_view)
+{
+	printf("Displaying Student Page\n");
+}

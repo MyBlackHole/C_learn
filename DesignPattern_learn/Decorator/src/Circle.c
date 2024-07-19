@@ -14,12 +14,17 @@
 #include "ShapeStruct.h"
 #include "ctools.h"
 
-static void shape_draw(struct Shape *shape) { printf("Shape: Circle\n"); }
+static void shape_draw(struct Shape *shape)
+{
+	printf("Shape: Circle\n");
+}
 
-struct Shape *circle_create(void) {
-    struct Shape *shape = (struct Shape *)calloc(1, sizeof(struct Shape));
-    if (NULL == shape) return NULL;
+struct Shape *circle_create(void)
+{
+	struct Shape *shape = (struct Shape *)calloc(1, sizeof(struct Shape));
+	if (NULL == shape)
+		return NULL;
 
-    shape->draw = shape_draw;
-    return shape;
+	shape->draw = shape_draw;
+	return shape;
 }

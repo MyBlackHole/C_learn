@@ -12,7 +12,7 @@ extern int uart_putc(char ch);
 extern void uart_puts(char *s);
 
 /* printf */
-extern int  printf(const char* s, ...);
+extern int printf(const char *s, ...);
 extern void panic(char *s);
 
 /* memory management */

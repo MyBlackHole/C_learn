@@ -6,15 +6,15 @@
 
 void Info(void)
 {
-    /*注意这里的数字5与第一条里面提到的local5.*里的5必须相同，并且这个数字的范围为0--7*/
-    openlog("info", LOG_PID, LOG_LOCAL5);
-    syslog(LOG_INFO, "hello %s", "woring");
+	/*注意这里的数字5与第一条里面提到的local5.*里的5必须相同，并且这个数字的范围为0--7*/
+	openlog("info", LOG_PID, LOG_LOCAL5);
+	syslog(LOG_INFO, "hello %s", "woring");
 }
 
 void Woring(void)
 {
-    openlog("woring", LOG_PID, LOG_LOCAL5);
-    syslog(LOG_WARNING, "hello %s", "test");
+	openlog("woring", LOG_PID, LOG_LOCAL5);
+	syslog(LOG_WARNING, "hello %s", "test");
 }
 
 // sudo nvim /etc/rsyslog.d/user.conf
@@ -23,8 +23,8 @@ void Woring(void)
 // LOG_LOCAL5
 int main()
 {
-    Info();
-    Woring();
-    closelog();
-    return 0;
+	Info();
+	Woring();
+	closelog();
+	return 0;
 }

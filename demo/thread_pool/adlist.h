@@ -37,15 +37,14 @@
  * 双端链表节点
  */
 typedef struct listNode {
+	// 前置节点
+	struct listNode *prev; //如果是list的头结点，则prev指向NULL
 
-    // 前置节点
-    struct listNode *prev; //如果是list的头结点，则prev指向NULL
+	// 后置节点
+	struct listNode *next; //如果是list尾部结点，则next指向NULL
 
-    // 后置节点
-    struct listNode *next;//如果是list尾部结点，则next指向NULL
-
-    // 节点的值
-    void *value;
+	// 节点的值
+	void *value;
 
 } listNode;
 
@@ -53,15 +52,13 @@ typedef struct listNode {
  * 双端链表迭代器
  */
 typedef struct listIter {
+	// 当前迭代到的节点
+	listNode *next;
 
-    // 当前迭代到的节点
-    listNode *next;
-
-    // 迭代的方向
-    int direction; //取值AL_START_HEAD等
+	// 迭代的方向
+	int direction; //取值AL_START_HEAD等
 
 } listIter;
-
 
 /*
 链表和链表节点的 API
@@ -120,24 +117,23 @@ listRelease         释放给定链表，以及链表中的所有节点。                      O(
  * 双端链表结构
  */
 typedef struct list {
+	// 表头节点
+	listNode *head;
 
-  // 表头节点
-  listNode *head;
+	// 表尾节点
+	listNode *tail;
 
-  // 表尾节点
-  listNode *tail;
+	// 节点值复制函数
+	void *(*dup)(void *ptr);
 
-  // 节点值复制函数
-  void *(*dup)(void *ptr);
+	// 节点值释放函数
+	void (*free)(void *ptr);
 
-  // 节点值释放函数
-  void (*free)(void *ptr);
+	// 节点值对比函数
+	int (*match)(void *ptr, void *key);
 
-  // 节点值对比函数
-  int (*match)(void *ptr, void *key);
-
-  // 链表所包含的节点数量
-  unsigned long len;
+	// 链表所包含的节点数量
+	unsigned long len;
 
 } list;
 

@@ -3,13 +3,12 @@
 
 int main()
 {
-    int index;
-    for (index = 0; index < 10; index++)
-    {
-        printf("tick\n");
-        fflush(stdout);
-        sleep(1);
-    }
-    printf("BOOM!\n");
-    return 0;
+	int index;
+	for (index = 0; index < 10; index++) {
+		printf("tick\n");
+		fflush(stdout);
+		sleep(1);
+	}
+	printf("BOOM!\n");
+	return 0;
 }

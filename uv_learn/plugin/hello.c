@@ -7,4 +7,7 @@
 // gcc -Wl,--export-dynamic -luv main.c -o main
 // ./main ./libhello.so
 //
-void initialize() { mfp_register("Hello World!"); }
+void initialize()
+{
+	mfp_register("Hello World!");
+}

@@ -7,7 +7,7 @@
 #include "trace.h"
 
 #undef pr_fmt
-#define pr_fmt(fmt)	"null_blk: " fmt
+#define pr_fmt(fmt) "null_blk: " fmt
 
 static inline sector_t mb_to_sects(unsigned long mb)
 {
@@ -86,8 +86,8 @@ int null_init_zoned_dev(struct nullb_device *dev, struct request_queue *q)
 	zone_capacity_sects = mb_to_sects(dev->zone_capacity);
 	dev_capacity_sects = mb_to_sects(dev->size);
 	dev->zone_size_sects = mb_to_sects(dev->zone_size);
-	dev->nr_zones = round_up(dev_capacity_sects, dev->zone_size_sects)
-		>> ilog2(dev->zone_size_sects);
+	dev->nr_zones = round_up(dev_capacity_sects, dev->zone_size_sects) >>
+			ilog2(dev->zone_size_sects);
 
 	dev->zones = kvmalloc_array(dev->nr_zones, sizeof(struct nullb_zone),
 				    GFP_KERNEL | __GFP_ZERO);
@@ -120,7 +120,7 @@ int null_init_zoned_dev(struct nullb_device *dev, struct request_queue *q)
 	dev->need_zone_res_mgmt = dev->zone_max_active || dev->zone_max_open;
 	dev->imp_close_zone_no = dev->zone_nr_conv;
 
-	for (i = 0; i <  dev->zone_nr_conv; i++) {
+	for (i = 0; i < dev->zone_nr_conv; i++) {
 		zone = &dev->zones[i];
 
 		null_init_zone_lock(dev, zone);
@@ -187,7 +187,7 @@ void null_free_zoned_dev(struct nullb_device *dev)
 }
 
 int null_report_zones(struct gendisk *disk, sector_t sector,
-		unsigned int nr_zones, report_zones_cb cb, void *data)
+		      unsigned int nr_zones, report_zones_cb cb, void *data)
 {
 	struct nullb *nullb = disk->private_data;
 	struct nullb_device *dev = nullb->dev;
@@ -233,8 +233,8 @@ int null_report_zones(struct gendisk *disk, sector_t sector,
  * This is called in the case of memory backing from null_process_cmd()
  * with the target zone already locked.
  */
-size_t null_zone_valid_read_len(struct nullb *nullb,
-				sector_t sector, unsigned int len)
+size_t null_zone_valid_read_len(struct nullb *nullb, sector_t sector,
+				unsigned int len)
 {
 	struct nullb_device *dev = nullb->dev;
 	struct nullb_zone *zone = &dev->zones[null_zone_no(dev, sector)];
@@ -309,7 +309,8 @@ static blk_status_t null_check_active(struct nullb_device *dev)
 		return BLK_STS_OK;
 
 	if (dev->nr_zones_exp_open + dev->nr_zones_imp_open +
-			dev->nr_zones_closed < dev->zone_max_active)
+		    dev->nr_zones_closed <
+	    dev->zone_max_active)
 		return BLK_STS_OK;
 
 	return BLK_STS_ZONE_ACTIVE_RESOURCE;
@@ -320,7 +321,8 @@ static blk_status_t null_check_open(struct nullb_device *dev)
 	if (!dev->zone_max_open)
 		return BLK_STS_OK;
 
-	if (dev->nr_zones_exp_open + dev->nr_zones_imp_open < dev->zone_max_open)
+	if (dev->nr_zones_exp_open + dev->nr_zones_imp_open <
+	    dev->zone_max_open)
 		return BLK_STS_OK;
 
 	if (dev->nr_zones_imp_open) {

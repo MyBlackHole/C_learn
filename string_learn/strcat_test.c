@@ -4,11 +4,11 @@
 
 int demo_strcat_test_main()
 {
-    char *first_name = "Theo";
-    char *last_name = "Tsao";
-    char *name = (char *)malloc(strlen(first_name) + strlen(last_name));
-    strcpy(name, first_name);
-    strcat(name, last_name);
-    printf("%s\n", name);
-    return 0;
+	char *first_name = "Theo";
+	char *last_name = "Tsao";
+	char *name = (char *)malloc(strlen(first_name) + strlen(last_name));
+	strcpy(name, first_name);
+	strcat(name, last_name);
+	printf("%s\n", name);
+	return 0;
 }

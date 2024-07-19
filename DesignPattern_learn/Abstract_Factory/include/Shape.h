@@ -2,17 +2,16 @@
 #define SHAPE_H_
 
 #ifdef __cplusplus
-extern "C"
-{
+extern "C" {
 #endif
 
-    typedef struct Shape Shape;
+typedef struct Shape Shape;
 
-    void shape_draw(Shape *shape);
+void shape_draw(Shape *shape);
 
-    void shape_destory(Shape **shape);
+void shape_destory(Shape **shape);
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // SHAPE_H_
+#endif // SHAPE_H_

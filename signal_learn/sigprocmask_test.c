@@ -11,11 +11,10 @@
 
 int main()
 {
-    sigset_t set;
-    sigprocmask(0, NULL, &set);
-    for (int i = 0; i < _SIGSET_NWORDS; i++)
-    {
-        printf("__val[%d] - %ld\n", i, set.__val[i]);
-    }
-    exit(0);
+	sigset_t set;
+	sigprocmask(0, NULL, &set);
+	for (int i = 0; i < _SIGSET_NWORDS; i++) {
+		printf("__val[%d] - %ld\n", i, set.__val[i]);
+	}
+	exit(0);
 }

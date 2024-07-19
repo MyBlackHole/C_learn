@@ -4,6 +4,6 @@
 // riscv64-unknown-elf-objdump -S test.o
 void foo()
 {
-    unsigned int i = 0x80000000;
-    i = i >> 4;
+	unsigned int i = 0x80000000;
+	i = i >> 4;
 }

@@ -17,14 +17,14 @@ extern "C" {
 #endif
 
 struct State {
-    void* priv;
+	void *priv;
 
-    void (*do_action)(struct State* state, struct Context* context);
-    const char* (*to_string)(struct State* state);
-    void (*destroy)(struct State* state);
+	void (*do_action)(struct State *state, struct Context *context);
+	const char *(*to_string)(struct State *state);
+	void (*destroy)(struct State *state);
 };
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // STATESTRUT_H_
+#endif // STATESTRUT_H_

@@ -10,17 +10,17 @@
  */
 int demo_inet_ntoa_main()
 {
-    int i;
-    char lo[] = "127.0.0.1";
-    struct in_addr netAddr;
+	int i;
+	char lo[] = "127.0.0.1";
+	struct in_addr netAddr;
 
-    netAddr.s_addr = inet_addr(lo);
-    printf("NetIP: 0x%x\n", netAddr.s_addr);
+	netAddr.s_addr = inet_addr(lo);
+	printf("NetIP: 0x%x\n", netAddr.s_addr);
 
-    char *strAddr = inet_ntoa(netAddr);
+	char *strAddr = inet_ntoa(netAddr);
 
-    printf("StrIP: %s\n", strAddr);
-    int ret = inet_aton(strAddr, &netAddr);
-    printf("NetIP: 0x%x\n", netAddr.s_addr);
-    return 0;
+	printf("StrIP: %s\n", strAddr);
+	int ret = inet_aton(strAddr, &netAddr);
+	printf("NetIP: 0x%x\n", netAddr.s_addr);
+	return 0;
 }

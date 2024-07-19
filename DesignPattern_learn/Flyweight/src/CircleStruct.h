@@ -17,13 +17,13 @@ extern "C" {
 #endif
 
 struct Circle {
-    const char* color;
-    int x;
-    int y;
-    int radius;
+	const char *color;
+	int x;
+	int y;
+	int radius;
 };
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // CIRCLE_STRUCT_H_
+#endif // CIRCLE_STRUCT_H_

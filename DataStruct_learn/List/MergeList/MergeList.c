@@ -4,7 +4,7 @@
  * 包含算法: 2.12
  ================*/
 
-#include "MergeList.h"  //**▲ 02 线性表**//
+#include "MergeList.h" //**▲ 02 线性表**//
 
 /*
  * ████████ 算法2.12 ████████
@@ -16,35 +16,31 @@
  */
 void MergeList(LinkList *La, LinkList *Lb, LinkList *Lc)
 {
-    LinkList pa, pb, pc;
+	LinkList pa, pb, pc;
 
-    pa = (*La)->next;
-    pb = (*Lb)->next;
-    pc = *Lc = *La;  // 用La的头结点作为Lc的头结点
+	pa = (*La)->next;
+	pb = (*Lb)->next;
+	pc = *Lc = *La; // 用La的头结点作为Lc的头结点
 
-    // 遍历La和Lb
-    while (pa && pb)
-    {
-        if (pa->data <= pb->data)
-        {
-            pc->next = pa;
-            pc = pa;
-            pa = pa->next;
-        }
-        else
-        {
-            pc->next = pb;
-            pc = pb;
-            pb = pb->next;
-        }
-    }
+	// 遍历La和Lb
+	while (pa && pb) {
+		if (pa->data <= pb->data) {
+			pc->next = pa;
+			pc = pa;
+			pa = pa->next;
+		} else {
+			pc->next = pb;
+			pc = pb;
+			pb = pb->next;
+		}
+	}
 
-    // 插入剩余段
-    pc->next = pa ? pa : pb;
+	// 插入剩余段
+	pc->next = pa ? pa : pb;
 
-    // 释放Lb的头结点所占内存
-    free(*Lb);
+	// 释放Lb的头结点所占内存
+	free(*Lb);
 
-    *La = NULL;
-    *Lb = NULL;
+	*La = NULL;
+	*Lb = NULL;
 }

@@ -3,5 +3,5 @@
 
 struct Packing *cold_drink_packing_default(struct Item *item)
 {
-    return bottle_create();
+	return bottle_create();
 }

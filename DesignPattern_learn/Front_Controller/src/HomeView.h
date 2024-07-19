@@ -18,13 +18,13 @@ extern "C" {
 
 typedef struct HomeView HomeView;
 
-HomeView* home_view_create(void);
+HomeView *home_view_create(void);
 
-void home_view_destroy(HomeView** home_view);
+void home_view_destroy(HomeView **home_view);
 
-void home_view_show(HomeView* home_view);
+void home_view_show(HomeView *home_view);
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // HOME_VIEW_H_
+#endif // HOME_VIEW_H_

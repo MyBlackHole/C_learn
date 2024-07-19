@@ -18,12 +18,12 @@ extern "C" {
 
 #include "State.h"
 
-Context* context_create(void);
-void context_destroy(Context** context);
-void context_set_state(Context* context, State* state);
-State* context_get_state(Context* context);
+Context *context_create(void);
+void context_destroy(Context **context);
+void context_set_state(Context *context, State *state);
+State *context_get_state(Context *context);
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // CONTEXT_H_
+#endif // CONTEXT_H_

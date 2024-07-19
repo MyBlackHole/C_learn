@@ -18,13 +18,13 @@ extern "C" {
 #include <stdbool.h>
 
 struct Expression {
-    void* priv;
+	void *priv;
 
-    bool (*interpret)(struct Expression* expression, const char* context);
-    void (*destroy)(struct Expression* expression);
+	bool (*interpret)(struct Expression *expression, const char *context);
+	void (*destroy)(struct Expression *expression);
 };
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // EXPRESSION_STRUCT_H_
+#endif // EXPRESSION_STRUCT_H_

@@ -21,19 +21,19 @@ extern "C" {
 
 typedef struct StudentBO StudentBO;
 
-StudentBO* student_bo_create(void);
+StudentBO *student_bo_create(void);
 
-void student_bo_destroy(StudentBO** student_bo);
+void student_bo_destroy(StudentBO **student_bo);
 
-void student_bo_delete_student(StudentBO* student_bo, StudentVO* student_vo);
+void student_bo_delete_student(StudentBO *student_bo, StudentVO *student_vo);
 
-List* student_bo_get_all_students(StudentBO* student_bo);
+List *student_bo_get_all_students(StudentBO *student_bo);
 
-StudentVO* student_bo_get_student(StudentBO* student_bo, int roll_number);
+StudentVO *student_bo_get_student(StudentBO *student_bo, int roll_number);
 
-void student_bo_update_student(StudentBO* student_bo, StudentVO* student_vo);
+void student_bo_update_student(StudentBO *student_bo, StudentVO *student_vo);
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // STUDENT_BO_H_
+#endif // STUDENT_BO_H_

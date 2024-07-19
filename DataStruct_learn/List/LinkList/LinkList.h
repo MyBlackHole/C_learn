@@ -8,10 +8,10 @@
 #define LINKLIST_H
 
 #include <stdio.h>
-#include <stdlib.h>  // 提供 malloc、realloc、free、exit 原型
-#include <string.h>  // 提供 strstr 原型
+#include <stdlib.h> // 提供 malloc、realloc、free、exit 原型
+#include <string.h> // 提供 strstr 原型
 
-#include "Status.h"  //**▲ 01 绪论**//
+#include "Status.h" //**▲ 01 绪论**//
 
 /* 单链表元素类型定义 */
 typedef int ElemType;
@@ -21,10 +21,9 @@ typedef int ElemType;
  *
  * 注：这里的单链表存在头结点
  */
-typedef struct LNode
-{
-    ElemType data;       // 数据结点
-    struct LNode *next;  // 指向下一个结点的指针
+typedef struct LNode {
+	ElemType data; // 数据结点
+	struct LNode *next; // 指向下一个结点的指针
 } LNode;
 
 // 指向单链表结点的指针

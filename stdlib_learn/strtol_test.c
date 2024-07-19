@@ -3,13 +3,13 @@
 
 int main()
 {
-    char str[30] = "2030300 This is test";
-    char *ptr;
-    long ret;
+	char str[30] = "2030300 This is test";
+	char *ptr;
+	long ret;
 
-    ret = strtol(str, &ptr, 10);
-    printf("数字（无符号长整数）是 %ld\n", ret);
-    printf("字符串部分是 |%s|", ptr);
+	ret = strtol(str, &ptr, 10);
+	printf("数字（无符号长整数）是 %ld\n", ret);
+	printf("字符串部分是 |%s|", ptr);
 
-    return (0);
+	return (0);
 }

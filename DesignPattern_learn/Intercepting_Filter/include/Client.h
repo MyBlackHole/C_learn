@@ -20,15 +20,15 @@ extern "C" {
 
 typedef struct Client Client;
 
-Client* client_create(void);
+Client *client_create(void);
 
-void client_destroy(Client** client);
+void client_destroy(Client **client);
 
-void client_set_filter_manager(Client* client, FilterManager* filter_manager);
+void client_set_filter_manager(Client *client, FilterManager *filter_manager);
 
-void client_send_request(Client* client, const char* request);
+void client_send_request(Client *client, const char *request);
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // CLIENT_H_
+#endif // CLIENT_H_

@@ -19,13 +19,14 @@ extern "C" {
 
 typedef struct ServiceLocator ServiceLocator;
 
-ServiceLocator* service_locator_create(void);
+ServiceLocator *service_locator_create(void);
 
-void service_locator_destroy(ServiceLocator** service_locator);
+void service_locator_destroy(ServiceLocator **service_locator);
 
-Service* service_locator_get_service(ServiceLocator* service_locator, const char* jndi_name);
+Service *service_locator_get_service(ServiceLocator *service_locator,
+				     const char *jndi_name);
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // SERVICE_LOCATOR_H_
+#endif // SERVICE_LOCATOR_H_

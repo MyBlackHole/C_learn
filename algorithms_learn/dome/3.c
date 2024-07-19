@@ -6,20 +6,16 @@
 
 int main(int argc, char *argv[])
 {
-    long long n, count = 0;
-    scanf("%lld", &n);
-    while (n > 1)
-    {
-        if (n % 2 == 1)
-        {
-            n = n * 3 + 1;
-        }
-        else
-        {
-            n /= 2;
-        }
-        count++;
-    }
-    printf("%lld\n", count);
-    return 0;
+	long long n, count = 0;
+	scanf("%lld", &n);
+	while (n > 1) {
+		if (n % 2 == 1) {
+			n = n * 3 + 1;
+		} else {
+			n /= 2;
+		}
+		count++;
+	}
+	printf("%lld\n", count);
+	return 0;
 }

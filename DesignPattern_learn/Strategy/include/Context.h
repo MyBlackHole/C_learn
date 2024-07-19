@@ -20,13 +20,13 @@ extern "C" {
 
 typedef struct Context Context;
 
-Context* context_create(Strategy* strategy);
+Context *context_create(Strategy *strategy);
 
-void context_destroy(Context** context);
+void context_destroy(Context **context);
 
-int context_execute_strategy(Context* context, int num1, int num2);
+int context_execute_strategy(Context *context, int num1, int num2);
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // CONTEXT_H_
+#endif // CONTEXT_H_

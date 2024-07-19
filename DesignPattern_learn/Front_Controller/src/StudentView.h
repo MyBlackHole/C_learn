@@ -18,13 +18,13 @@ extern "C" {
 
 typedef struct StudentView StudentView;
 
-StudentView* student_view_create(void);
+StudentView *student_view_create(void);
 
-void student_view_destroy(StudentView** student_view);
+void student_view_destroy(StudentView **student_view);
 
-void student_view_show(StudentView* student_view);
+void student_view_show(StudentView *student_view);
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // STUDENT_VIEW_H_
+#endif // STUDENT_VIEW_H_

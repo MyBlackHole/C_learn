@@ -27,126 +27,106 @@
  */
 void difference(SLinkList space, int *S, char *path)
 {
-    int m, n;  // 集合A和集合B中元素数量
-    int j;     // 循环计数器
-    int R;     // 指向静态链表最后一个结点
-    int i, k, p;
-    int b;  // 临时存储从集合B中读到的数据
-    FILE *fp;
-    int readFromConsole;  // 是否从控制台读取数据
+	int m, n; // 集合A和集合B中元素数量
+	int j; // 循环计数器
+	int R; // 指向静态链表最后一个结点
+	int i, k, p;
+	int b; // 临时存储从集合B中读到的数据
+	FILE *fp;
+	int readFromConsole; // 是否从控制台读取数据
 
-    // 如果没有文件路径信息，则从控制台读取输入
-    readFromConsole = path == NULL || strcmp(path, "") == 0;
+	// 如果没有文件路径信息，则从控制台读取输入
+	readFromConsole = path == NULL || strcmp(path, "") == 0;
 
-    // 初始化备用空间
-    InitSpace(space);
+	// 初始化备用空间
+	InitSpace(space);
 
-    // 获取静态链表头结点
-    *S = Malloc(space);
+	// 获取静态链表头结点
+	*S = Malloc(space);
 
-    // 让R执行静态链表最后的结点
-    R = *S;
+	// 让R执行静态链表最后的结点
+	R = *S;
 
-    // 读取集合A和集合B的元素个数
-    if (readFromConsole)
-    {
-        printf("请输入集合A的元素个数：");
-        scanf("%d", &m);
-        printf("请输入集合B的元素个数：");
-        scanf("%d", &n);
-    }
-    else
-    {
-        // 打开文件，准备读取测试数据
-        fp = fopen(path, "r");
-        if (fp == NULL)
-        {
-            exit(ERROR);
-        }
+	// 读取集合A和集合B的元素个数
+	if (readFromConsole) {
+		printf("请输入集合A的元素个数：");
+		scanf("%d", &m);
+		printf("请输入集合B的元素个数：");
+		scanf("%d", &n);
+	} else {
+		// 打开文件，准备读取测试数据
+		fp = fopen(path, "r");
+		if (fp == NULL) {
+			exit(ERROR);
+		}
 
-        ReadData(fp, "%d%d", &m, &n);
-    }
+		ReadData(fp, "%d%d", &m, &n);
+	}
 
-    if (readFromConsole)
-    {
-        printf("请输入 %d 个元素存入集合A：", m);
-    }
+	if (readFromConsole) {
+		printf("请输入 %d 个元素存入集合A：", m);
+	}
 
-    // 录入集合A的数据
-    for (j = 1; j <= m; ++j)
-    {
-        // 分配结点
-        i = Malloc(space);
+	// 录入集合A的数据
+	for (j = 1; j <= m; ++j) {
+		// 分配结点
+		i = Malloc(space);
 
-        // 输入集合A的元素值
-        if (readFromConsole)
-        {
-            scanf("%d", &space[i].data);
-        }
-        else
-        {
-            ReadData(fp, "%d", &space[i].data);
-        }
+		// 输入集合A的元素值
+		if (readFromConsole) {
+			scanf("%d", &space[i].data);
+		} else {
+			ReadData(fp, "%d", &space[i].data);
+		}
 
-        // 将新结点插入到表尾
-        space[R].cur = i;
-        R = i;
-    }
+		// 将新结点插入到表尾
+		space[R].cur = i;
+		R = i;
+	}
 
-    // 尾结点的指针置空
-    space[R].cur = 0;
+	// 尾结点的指针置空
+	space[R].cur = 0;
 
-    if (readFromConsole)
-    {
-        printf("请输入 %d 个元素存入集合B：", n);
-    }
+	if (readFromConsole) {
+		printf("请输入 %d 个元素存入集合B：", n);
+	}
 
-    // 录入集合B的数据
-    for (j = 1; j <= n; ++j)
-    {
-        // 输入集合B的元素值
-        if (readFromConsole)
-        {
-            scanf("%d", &b);
-        }
-        else
-        {
-            ReadData(fp, "%d", &b);
-        }
+	// 录入集合B的数据
+	for (j = 1; j <= n; ++j) {
+		// 输入集合B的元素值
+		if (readFromConsole) {
+			scanf("%d", &b);
+		} else {
+			ReadData(fp, "%d", &b);
+		}
 
-        p = *S;  // 指向静态链表头结点，后续总是指向k的前一个位置
-        k = space[*S].cur;  // 指向静态链表中的首个元素
+		p = *S; // 指向静态链表头结点，后续总是指向k的前一个位置
+		k = space[*S].cur; // 指向静态链表中的首个元素
 
-        // 在当前静态链表中查找是否存在b元素
-        while (k != space[R].cur && space[k].data != b)
-        {
-            p = k;
-            k = space[k].cur;
-        }
+		// 在当前静态链表中查找是否存在b元素
+		while (k != space[R].cur && space[k].data != b) {
+			p = k;
+			k = space[k].cur;
+		}
 
-        // 如果该元素不存在，则加入静态链表
-        if (k == space[R].cur)
-        {
-            i = Malloc(space);
-            space[i].data = b;
-            space[i].cur = space[R].cur;
-            space[R].cur = i;
+		// 如果该元素不存在，则加入静态链表
+		if (k == space[R].cur) {
+			i = Malloc(space);
+			space[i].data = b;
+			space[i].cur = space[R].cur;
+			space[R].cur = i;
 
-            // 如果该元素已存在，则需要移除
-        }
-        else
-        {
-            space[p].cur = space[k].cur;
-            Free(space, k);
-            if (R == k)
-            {
-                R = p;
-            }
-        }
-    }
+			// 如果该元素已存在，则需要移除
+		} else {
+			space[p].cur = space[k].cur;
+			Free(space, k);
+			if (R == k) {
+				R = p;
+			}
+		}
+	}
 
-    if (!readFromConsole)
-    {
-        fclose(fp);
-    }
+	if (!readFromConsole) {
+		fclose(fp);
+	}
 }

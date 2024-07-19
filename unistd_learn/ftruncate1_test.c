@@ -10,21 +10,19 @@
 // 使用fallocate 或者posix_fallocate函数 真磁盘预分配
 int demo_ftruncate1_main()
 {
-    int fd_in = -1;
+	int fd_in = -1;
 
-    fd_in = open("/home/black/1.txt", O_RDWR | O_CREAT, ALLPERMS);
-    if (fd_in < 0)
-    {
-        printf("open failed\n");
-        return -1;
-    }
+	fd_in = open("/home/black/1.txt", O_RDWR | O_CREAT, ALLPERMS);
+	if (fd_in < 0) {
+		printf("open failed\n");
+		return -1;
+	}
 
-    if (ftruncate(fd_in, 0))
-    {
-        printf("ftruncate error\n");
-        return -1;
-    }
+	if (ftruncate(fd_in, 0)) {
+		printf("ftruncate error\n");
+		return -1;
+	}
 
-    close(fd_in);
-    return 0;
+	close(fd_in);
+	return 0;
 }

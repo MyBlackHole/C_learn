@@ -18,9 +18,9 @@ extern "C" {
 
 #include "User.h"
 
-void chat_room_show_message(User* user, const char* message);
+void chat_room_show_message(User *user, const char *message);
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // CHAT_ROOM_H_
+#endif // CHAT_ROOM_H_

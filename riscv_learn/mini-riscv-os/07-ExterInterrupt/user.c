@@ -7,8 +7,7 @@ lock_t lock;
 void user_task0(void)
 {
 	lib_puts("Task0: Created!\n");
-	while (1)
-	{
+	while (1) {
 		lib_puts("Task0: Running...\n");
 		lib_delay(1000);
 	}
@@ -17,8 +16,7 @@ void user_task0(void)
 void user_task1(void)
 {
 	lib_puts("Task1: Created!\n");
-	while (1)
-	{
+	while (1) {
 		lib_puts("Task1: Running...\n");
 		lib_delay(1000);
 	}
@@ -27,10 +25,8 @@ void user_task1(void)
 void user_task2(void)
 {
 	lib_puts("Task2: Created!\n");
-	while (1)
-	{
-		for (int i = 0; i < 50; i++)
-		{
+	while (1) {
+		for (int i = 0; i < 50; i++) {
 			lock_acquire(&lock);
 			shared_var++;
 			lock_free(&lock);
@@ -43,8 +39,7 @@ void user_task2(void)
 void user_task3(void)
 {
 	lib_puts("Task3: Created!\n");
-	while (1)
-	{
+	while (1) {
 		lib_puts("Trying to get the lock... \n");
 		lock_acquire(&lock);
 		lib_puts("Get the lock!\n");

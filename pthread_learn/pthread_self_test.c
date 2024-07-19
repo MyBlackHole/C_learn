@@ -4,20 +4,20 @@
 
 void *get_pthread_id(void *arg)
 {
-    printf("get_pthread_id pthread id=%lu\n", pthread_self());
-    return arg;
+	printf("get_pthread_id pthread id=%lu\n", pthread_self());
+	return arg;
 }
 
 int demo_self_main(void)
 {
-    pid_t pid;
-    pthread_t tid;
+	pid_t pid;
+	pthread_t tid;
 
-    pid = getpid();
-    printf("process id=%d\n", pid);
+	pid = getpid();
+	printf("process id=%d\n", pid);
 
-    pthread_create(&tid, NULL, get_pthread_id, NULL);
-    printf("pthread id=%lu\n", tid);
-    pthread_join(tid, NULL);
-    return 0;
+	pthread_create(&tid, NULL, get_pthread_id, NULL);
+	printf("pthread id=%lu\n", tid);
+	pthread_join(tid, NULL);
+	return 0;
 }

@@ -11,30 +11,28 @@
 
 int main()
 {
-    int fd;
-    int sockopt = 1;
-    int res;
+	int fd;
+	int sockopt = 1;
+	int res;
 
-    fd = socket(AF_INET, SOCK_STREAM, 0);
-    if (fd < 0)
-    {
-        printf("create socket error!\n");
-        exit(-1);
-    }
+	fd = socket(AF_INET, SOCK_STREAM, 0);
+	if (fd < 0) {
+		printf("create socket error!\n");
+		exit(-1);
+	}
 
-    // sleep(20);
+	// sleep(20);
 
-    printf("close socket\n");
-    close(fd);
+	printf("close socket\n");
+	close(fd);
 
-    res = setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, &sockopt, sizeof(int));
-    if (res < 0)
-    {
-        perror(strerror(errno));
-        exit(-1);
-    }
+	res = setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, &sockopt, sizeof(int));
+	if (res < 0) {
+		perror(strerror(errno));
+		exit(-1);
+	}
 
-    close(fd);
+	close(fd);
 
-    exit(0);
+	exit(0);
 }

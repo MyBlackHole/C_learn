@@ -1,9 +1,10 @@
 #include "os.h"
 
-void plic_init(void) {
-  int hart = r_tp();
+void plic_init(void)
+{
+	int hart = r_tp();
 
-  /*
+	/*
    * Set priority for UART0.
    *
    * Each PLIC interrupt source can be assigned a priority by writing
@@ -16,17 +17,17 @@ void plic_init(void) {
    * the Interrupt ID; interrupts with the lowest ID have the highest
    * effective priority.
    */
-  *(uint32_t *)PLIC_PRIORITY(UART0_IRQ) = 1;
+	*(uint32_t *)PLIC_PRIORITY(UART0_IRQ) = 1;
 
-  /*
+	/*
    * Enable UART0
    *
    * Each global interrupt can be enabled by setting the corresponding
    * bit in the enables registers.
    */
-  *(uint32_t *)PLIC_MENABLE(hart) = (1 << UART0_IRQ);
+	*(uint32_t *)PLIC_MENABLE(hart) = (1 << UART0_IRQ);
 
-  /*
+	/*
    * Set priority threshold for UART0.
    *
    * PLIC will mask all interrupts of a priority less than or equal to
@@ -35,10 +36,10 @@ void plic_init(void) {
    * all interrupts. Notice, the threshold is global for PLIC, not for each
    * interrupt source.
    */
-  *(uint32_t *)PLIC_MTHRESHOLD(hart) = 0;
+	*(uint32_t *)PLIC_MTHRESHOLD(hart) = 0;
 
-  /* enable machine-mode external interrupts. */
-  w_mie(r_mie() | MIE_MEIE);
+	/* enable machine-mode external interrupts. */
+	w_mie(r_mie() | MIE_MEIE);
 }
 
 /*
@@ -50,10 +51,11 @@ void plic_init(void) {
  *corresponding pending bit on the interrupt source. RETURN VALUE: the ID of the
  *highest-priority pending interrupt or zero if there is no pending interrupt.
  */
-int plic_claim(void) {
-  int hart = r_tp();
-  int irq = *(uint32_t *)PLIC_MCLAIM(hart);
-  return irq;
+int plic_claim(void)
+{
+	int hart = r_tp();
+	int irq = *(uint32_t *)PLIC_MCLAIM(hart);
+	return irq;
 }
 
 /*
@@ -65,7 +67,8 @@ int plic_claim(void) {
  *	interrupt source that is currently enabled for the target, the
  *completion is silently ignored. RETURN VALUE: none
  */
-void plic_complete(int irq) {
-  int hart = r_tp();
-  *(uint32_t *)PLIC_MCOMPLETE(hart) = irq;
+void plic_complete(int irq)
+{
+	int hart = r_tp();
+	*(uint32_t *)PLIC_MCOMPLETE(hart) = irq;
 }

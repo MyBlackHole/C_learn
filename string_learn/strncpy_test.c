@@ -9,14 +9,14 @@
 
 int demo_strncpy_test_main()
 {
-    ////    strcpy
-    //    char buf[10];
-    //    strcpy(buf, "hello");
-    //    printf("%sok", buf);
+	////    strcpy
+	//    char buf[10];
+	//    strcpy(buf, "hello");
+	//    printf("%sok", buf);
 
-    //    strncpy
-    char buf[NUM];
-    strncpy(buf, "hello world", sizeof(buf));
-    printf("%sok", buf);
-    return EXIT_SUCCESS;
+	//    strncpy
+	char buf[NUM];
+	strncpy(buf, "hello world", sizeof(buf));
+	printf("%sok", buf);
+	return EXIT_SUCCESS;
 }

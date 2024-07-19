@@ -67,11 +67,12 @@
 #define uart_read_reg(reg) (*(UART_REG(reg)))
 #define uart_write_reg(reg, v) (*(UART_REG(reg)) = (v))
 
-void uart_init() {
-  /* disable interrupts. */
-  uart_write_reg(IER, 0x00);
+void uart_init()
+{
+	/* disable interrupts. */
+	uart_write_reg(IER, 0x00);
 
-  /*
+	/*
    * Setting baud rate. Just a demo here if we care about the divisor,
    * but for our purpose [QEMU-virt], this doesn't really do anything.
    *
@@ -87,12 +88,12 @@ void uart_init() {
    * split the value of 3(0x0003) into two bytes, DLL stores the low byte,
    * DLM stores the high byte.
    */
-  uint8_t lcr = uart_read_reg(LCR);
-  uart_write_reg(LCR, lcr | (1 << 7));
-  uart_write_reg(DLL, 0x03);
-  uart_write_reg(DLM, 0x00);
+	uint8_t lcr = uart_read_reg(LCR);
+	uart_write_reg(LCR, lcr | (1 << 7));
+	uart_write_reg(DLL, 0x03);
+	uart_write_reg(DLM, 0x00);
 
-  /*
+	/*
    * Continue setting the asynchronous data communication format.
    * - number of the word length: 8 bits
    * - number of stop bits：1 bit when word length is 8 bits
@@ -100,18 +101,20 @@ void uart_init() {
    * - no break control
    * - disabled baud latch
    */
-  lcr = 0;
-  uart_write_reg(LCR, lcr | (3 << 0));
+	lcr = 0;
+	uart_write_reg(LCR, lcr | (3 << 0));
 }
 
-int uart_putc(char ch) {
-  while ((uart_read_reg(LSR) & LSR_TX_IDLE) == 0)
-    ;
-  return uart_write_reg(THR, ch);
+int uart_putc(char ch)
+{
+	while ((uart_read_reg(LSR) & LSR_TX_IDLE) == 0)
+		;
+	return uart_write_reg(THR, ch);
 }
 
-void uart_puts(char *s) {
-  while (*s) {
-    uart_putc(*s++);
-  }
+void uart_puts(char *s)
+{
+	while (*s) {
+		uart_putc(*s++);
+	}
 }

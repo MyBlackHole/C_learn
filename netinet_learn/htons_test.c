@@ -7,8 +7,8 @@
 
 int demo_htons_test_main(int argc, char *argv[])
 {
-    uint16_t ret;
-    ret = htons(PORT);
-    printf("%x\n", ret);
-    return EXIT_SUCCESS;
+	uint16_t ret;
+	ret = htons(PORT);
+	printf("%x\n", ret);
+	return EXIT_SUCCESS;
 }

@@ -3,7 +3,7 @@
 
 int main(int argc, char *argv[])
 {
-    printf("calling abort \n");
-    abort();
-    return 0;
+	printf("calling abort \n");
+	abort();
+	return 0;
 }

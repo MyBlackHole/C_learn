@@ -12,14 +12,12 @@
 
 int demo_islower_test_main()
 {
-    char str[] = "123@#FDsP[e?";
-    int index;
-    for (index = 0; str[index] != 0; index++)
-    {
-        if (islower(str[index]))
-        {
-            printf("%c is a lower-case character\n", str[index]);
-        }
-    }
-    return 0;
+	char str[] = "123@#FDsP[e?";
+	int index;
+	for (index = 0; str[index] != 0; index++) {
+		if (islower(str[index])) {
+			printf("%c is a lower-case character\n", str[index]);
+		}
+	}
+	return 0;
 }

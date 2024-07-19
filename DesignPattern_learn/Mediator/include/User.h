@@ -18,13 +18,13 @@ extern "C" {
 
 typedef struct User User;
 
-User* user_create(const char* name);
-void user_destroy(User** user);
-void user_set_name(User* user, const char* name);
-const char* user_get_name(User* user);
-void user_send_message(User* user, const char* message);
+User *user_create(const char *name);
+void user_destroy(User **user);
+void user_set_name(User *user, const char *name);
+const char *user_get_name(User *user);
+void user_send_message(User *user, const char *message);
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // USER_H_
+#endif // USER_H_

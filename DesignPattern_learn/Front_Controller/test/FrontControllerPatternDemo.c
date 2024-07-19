@@ -13,12 +13,13 @@
 
 #include "FrontController.h"
 
-int main(int argc, char const* argv[]) {
-    FrontController* front_controller = front_controller_create();
+int main(int argc, char const *argv[])
+{
+	FrontController *front_controller = front_controller_create();
 
-    front_controller_dispatch_request(front_controller, "HOME");
-    front_controller_dispatch_request(front_controller, "STUDENT");
+	front_controller_dispatch_request(front_controller, "HOME");
+	front_controller_dispatch_request(front_controller, "STUDENT");
 
-    front_controller_destroy(&front_controller);
-    return 0;
+	front_controller_destroy(&front_controller);
+	return 0;
 }

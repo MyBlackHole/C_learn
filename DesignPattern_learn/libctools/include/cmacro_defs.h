@@ -2,9 +2,9 @@
 #define CMACRO_DEFS_H_
 
 #ifdef __GNUC__
-    #define UNUSED __attribute__((unused))
+#define UNUSED __attribute__((unused))
 #else
-    #define UNUSED
+#define UNUSED
 #endif
 
-#endif  // CMACRO_DEFS_H_
+#endif // CMACRO_DEFS_H_

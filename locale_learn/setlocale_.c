@@ -18,20 +18,20 @@
 
 int demo_setlocale_main()
 {
-    time_t currtime;
-    struct tm *timer;
-    char buffer[80];
+	time_t currtime;
+	struct tm *timer;
+	char buffer[80];
 
-    time(&currtime);
-    timer = localtime(&currtime);
+	time(&currtime);
+	timer = localtime(&currtime);
 
-    printf("Locale is:%s\n", setlocale(LC_ALL, "zh_CN.UTF-8"));
-    strftime(buffer, 80, "%c", timer);
-    printf("Data is:%s\n", buffer);
+	printf("Locale is:%s\n", setlocale(LC_ALL, "zh_CN.UTF-8"));
+	strftime(buffer, 80, "%c", timer);
+	printf("Data is:%s\n", buffer);
 
-    printf("Locale is:%s\n", setlocale(LC_ALL, "en_GB.UTF-8"));
-    strftime(buffer, 80, "%c", timer);
-    printf("Data is:%s\n", buffer);
+	printf("Locale is:%s\n", setlocale(LC_ALL, "en_GB.UTF-8"));
+	strftime(buffer, 80, "%c", timer);
+	printf("Data is:%s\n", buffer);
 
-    return 0;
+	return 0;
 }

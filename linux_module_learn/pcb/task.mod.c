@@ -12,8 +12,7 @@ BUILD_LTO_INFO;
 MODULE_INFO(vermagic, VERMAGIC_STRING);
 MODULE_INFO(name, KBUILD_MODNAME);
 
-__visible struct module __this_module
-__section(".gnu.linkonce.this_module") = {
+__visible struct module __this_module __section(".gnu.linkonce.this_module") = {
 	.name = KBUILD_MODNAME,
 	.init = init_module,
 #ifdef CONFIG_MODULE_UNLOAD
@@ -26,21 +25,19 @@ __section(".gnu.linkonce.this_module") = {
 MODULE_INFO(retpoline, "Y");
 #endif
 
-
-static const struct modversion_info ____versions[]
-__used __section("__versions") = {
-	{ 0xbdfb6dbb, "__fentry__" },
-	{ 0x92997ed8, "_printk" },
-	{ 0xf301d0c, "kmalloc_caches" },
-	{ 0x35789eee, "kmem_cache_alloc_trace" },
-	{ 0xa2e9ed7e, "init_task" },
-	{ 0x24c7d1b8, "d_path" },
-	{ 0x37a0cba, "kfree" },
-	{ 0x5b8239ca, "__x86_return_thunk" },
-	{ 0x541a6db8, "module_layout" },
-};
+static const struct modversion_info ____versions[] __used
+	__section("__versions") = {
+		{ 0xbdfb6dbb, "__fentry__" },
+		{ 0x92997ed8, "_printk" },
+		{ 0xf301d0c, "kmalloc_caches" },
+		{ 0x35789eee, "kmem_cache_alloc_trace" },
+		{ 0xa2e9ed7e, "init_task" },
+		{ 0x24c7d1b8, "d_path" },
+		{ 0x37a0cba, "kfree" },
+		{ 0x5b8239ca, "__x86_return_thunk" },
+		{ 0x541a6db8, "module_layout" },
+	};
 
 MODULE_INFO(depends, "");
-
 
 MODULE_INFO(srcversion, "BF09BCE954C119FC9711C49");

@@ -13,21 +13,19 @@
 #define COMPUTER_PART_STRUCT_H_
 
 #ifdef __cplusplus
-extern "C"
-{
+extern "C" {
 #endif
 
-    struct ComputerPartVisitor;
-    struct ComputerPart
-    {
-        void* priv;
+struct ComputerPartVisitor;
+struct ComputerPart {
+	void *priv;
 
-        void (*accept)(struct ComputerPart*        computer_part,
-                       struct ComputerPartVisitor* computer_part_visitor);
-        void (*destroy)(struct ComputerPart* computer_part);
-    };
+	void (*accept)(struct ComputerPart *computer_part,
+		       struct ComputerPartVisitor *computer_part_visitor);
+	void (*destroy)(struct ComputerPart *computer_part);
+};
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // COMPUTER_PART_STRUCT_H_
+#endif // COMPUTER_PART_STRUCT_H_

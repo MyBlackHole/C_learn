@@ -15,21 +15,20 @@
 
 void setTimer(int seconds, int mseconds)
 {
-    struct timeval temp;
-    temp.tv_sec = seconds;
-    temp.tv_usec = mseconds * 1000;
-    printf("setTimer: %d\n", seconds);
-    // 设置超时 temp
-    select(0, NULL, NULL, NULL, &temp);
-    printf("timer\n");
+	struct timeval temp;
+	temp.tv_sec = seconds;
+	temp.tv_usec = mseconds * 1000;
+	printf("setTimer: %d\n", seconds);
+	// 设置超时 temp
+	select(0, NULL, NULL, NULL, &temp);
+	printf("timer\n");
 }
 
 int demo_timeval_main()
 {
-    int index;
-    for (index = 0; index < 100; index++)
-    {
-        setTimer(1, 0);
-    }
-    return 0;
+	int index;
+	for (index = 0; index < 100; index++) {
+		setTimer(1, 0);
+	}
+	return 0;
 }

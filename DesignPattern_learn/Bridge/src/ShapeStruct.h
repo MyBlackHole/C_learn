@@ -8,10 +8,10 @@ extern "C" {
 #include "DrawAPIStruct.h"
 
 struct Shape {
-  void *priv;
+	void *priv;
 
-  void (*draw)(struct Shape *shape);
-  void (*destroy)(struct Shape *shape);
+	void (*draw)(struct Shape *shape);
+	void (*destroy)(struct Shape *shape);
 };
 
 #ifdef __cplusplus

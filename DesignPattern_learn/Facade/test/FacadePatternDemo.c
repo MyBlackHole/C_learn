@@ -11,12 +11,13 @@
 
 #include "ShapeMaker.h"
 
-int main(int argc, char const* argv[]) {
-    ShapeMaker* shape_maker = shape_maker_create();
-    shape_maker_draw_circle(shape_maker);
-    shape_maker_draw_rectangle(shape_maker);
-    shape_maker_draw_square(shape_maker);
-    shape_maker_destroy(&shape_maker);
+int main(int argc, char const *argv[])
+{
+	ShapeMaker *shape_maker = shape_maker_create();
+	shape_maker_draw_circle(shape_maker);
+	shape_maker_draw_rectangle(shape_maker);
+	shape_maker_draw_square(shape_maker);
+	shape_maker_destroy(&shape_maker);
 
-    return 0;
+	return 0;
 }

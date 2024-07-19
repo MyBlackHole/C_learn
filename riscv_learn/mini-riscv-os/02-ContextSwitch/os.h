@@ -4,6 +4,6 @@
 #include "riscv.h"
 #include "lib.h"
 
-extern int  os_main(void);
+extern int os_main(void);
 
 #endif

@@ -14,25 +14,32 @@
 #include "ctools.h"
 
 struct Context {
-    State* state;
+	State *state;
 };
 
-Context* context_create(void) {
-    Context* context = (Context*)calloc(1, sizeof(Context));
-    return context;
+Context *context_create(void)
+{
+	Context *context = (Context *)calloc(1, sizeof(Context));
+	return context;
 }
 
-void context_destroy(Context** context) {
-    if (NULL == context || NULL == context) return;
-    freep((void**)context);
+void context_destroy(Context **context)
+{
+	if (NULL == context || NULL == context)
+		return;
+	freep((void **)context);
 }
 
-void context_set_state(Context* context, State* state) {
-    if (NULL == context) return;
-    context->state = state;
+void context_set_state(Context *context, State *state)
+{
+	if (NULL == context)
+		return;
+	context->state = state;
 }
 
-State* context_get_state(Context* context) {
-    if (NULL == context) return NULL;
-    return context->state;
+State *context_get_state(Context *context)
+{
+	if (NULL == context)
+		return NULL;
+	return context->state;
 }

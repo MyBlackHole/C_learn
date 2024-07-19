@@ -12,9 +12,8 @@ extern int os_main(void);
 extern void basic_lock();
 extern void basic_unlock();
 
-typedef struct lock
-{
-  volatile int locked;
+typedef struct lock {
+	volatile int locked;
 } lock_t;
 
 extern int atomic_swap(lock_t *);

@@ -2,21 +2,20 @@
 #define CLIENT_H_
 
 #ifdef __cplusplus
-extern "C"
-{
+extern "C" {
 #endif
 
-    typedef struct Client Client;
+typedef struct Client Client;
 
-    Client* client_create(void);
+Client *client_create(void);
 
-    void client_destroy(Client** client);
+void client_destroy(Client **client);
 
-    void client_set_data(Client* client, const char* data1, const char* data2);
+void client_set_data(Client *client, const char *data1, const char *data2);
 
-    void client_print_data(Client* client);
+void client_print_data(Client *client);
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // CLIENT_H_
+#endif // CLIENT_H_

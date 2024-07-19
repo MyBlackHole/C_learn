@@ -20,15 +20,18 @@ extern "C" {
 #include "list.h"
 
 struct StudentDao {
-    void* priv;
+	void *priv;
 
-    List* (*get_all_students)(struct StudentDao* student_dao);
-    Student* (*get_student)(struct StudentDao* student_dao, int roll_number);
-    void (*update_student)(struct StudentDao* student_dao, Student* student);
-    void (*delete_student)(struct StudentDao* student_dao, Student* student);
+	List *(*get_all_students)(struct StudentDao *student_dao);
+	Student *(*get_student)(struct StudentDao *student_dao,
+				int roll_number);
+	void (*update_student)(struct StudentDao *student_dao,
+			       Student *student);
+	void (*delete_student)(struct StudentDao *student_dao,
+			       Student *student);
 };
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // STUDENT_DAO_STRUCT_H_
+#endif // STUDENT_DAO_STRUCT_H_

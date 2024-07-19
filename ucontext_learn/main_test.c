@@ -4,11 +4,11 @@
 
 int main(int argc, const char *argv[])
 {
-    ucontext_t context;
+	ucontext_t context;
 
-    getcontext(&context);
-    puts("Hello world");
-    sleep(1);
-    setcontext(&context);
-    return 0;
+	getcontext(&context);
+	puts("Hello world");
+	sleep(1);
+	setcontext(&context);
+	return 0;
 }

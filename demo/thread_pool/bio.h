@@ -39,24 +39,23 @@ typedef int (*taskRunFunc)(void *arg1, void *arg2, void *arg3);
  * 这个结构只由 API 使用，不会被暴露给外部。
  */
 struct bio_job {
+	// 任务创建时的时间
+	time_t time; /* Time at which the job was created. */
 
-  // 任务创建时的时间
-  time_t time; /* Time at which the job was created. */
-
-  /* Job specific arguments pointers. If we need to pass more than three
+	/* Job specific arguments pointers. If we need to pass more than three
    * arguments we can just pass a pointer to a structure or alike.
    *
    * 任务的参数。参数多于三个时，可以传递数组或者结构
    */
-  void *arg1, *arg2, *arg3;
+	void *arg1, *arg2, *arg3;
 
-  taskRunFunc func;
+	taskRunFunc func;
 };
 
 /* Exported API */
 void bioInit(void);
 int bioCreateBackgroundJob(int type, void *arg1, void *arg2, void *arg3,
-                           taskRunFunc func);
+			   taskRunFunc func);
 unsigned long long bioPendingJobsOfType(int type);
 void bioWaitPendingJobsLE(int type, unsigned long long num);
 // time_t bioOlderJobOfType(int type);

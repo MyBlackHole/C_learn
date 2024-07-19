@@ -16,17 +16,23 @@
 #include "ctools.h"
 
 struct Target {
-    /* data */
+	/* data */
 };
 
-Target* target_create(void) {
-    Target* target = (Target*)calloc(1, sizeof(Target));
-    return target;
+Target *target_create(void)
+{
+	Target *target = (Target *)calloc(1, sizeof(Target));
+	return target;
 }
 
-void target_destroy(Target** target) {
-    if (NULL == target || NULL == *target) return;
-    freep((void**)target);
+void target_destroy(Target **target)
+{
+	if (NULL == target || NULL == *target)
+		return;
+	freep((void **)target);
 }
 
-void target_execute(Target* target, const char* request) { printf("Executing request: %s\n", request); }
+void target_execute(Target *target, const char *request)
+{
+	printf("Executing request: %s\n", request);
+}

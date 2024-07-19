@@ -18,13 +18,13 @@ extern "C" {
 
 typedef struct Observer Observer;
 typedef struct Subject Subject;
-Observer* hexa_observer_create(Subject* subject);
-Observer* octal_observer_create(Subject* subject);
-Observer* binary_obbserver_create(Subject* subject);
-void observer_update(Observer* Observer);
-void observer_destroy(Observer** Observer);
+Observer *hexa_observer_create(Subject *subject);
+Observer *octal_observer_create(Subject *subject);
+Observer *binary_obbserver_create(Subject *subject);
+void observer_update(Observer *Observer);
+void observer_destroy(Observer **Observer);
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // OBSERVER_H_
+#endif // OBSERVER_H_

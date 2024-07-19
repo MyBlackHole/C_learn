@@ -8,79 +8,76 @@
 #include <unistd.h>
 #include <signal.h>
 
-#define exit_if(r, ...)                                                        \
-    if (r)                                                                     \
-    {                                                                          \
-        printf(__VA_ARGS__);                                                   \
-        printf("%s:%d error no: %d error msg %s\n", __FILE__, __LINE__, errno, \
-               strerror(errno));                                               \
-        exit(1);                                                               \
-    }
+#define exit_if(r, ...)                                               \
+	if (r) {                                                      \
+		printf(__VA_ARGS__);                                  \
+		printf("%s:%d error no: %d error msg %s\n", __FILE__, \
+		       __LINE__, errno, strerror(errno));             \
+		exit(1);                                              \
+	}
 
 void setNonBlock(int fd)
 {
-    int r;
-    int flags;
-    flags = fcntl(fd, F_GETFL, 0);
-    exit_if(flags < 0, "fcntl failed");
-    r = fcntl(fd, F_SETFL, flags | O_NONBLOCK);
-    exit_if(r < 0, "fcntl failed");
+	int r;
+	int flags;
+	flags = fcntl(fd, F_GETFL, 0);
+	exit_if(flags < 0, "fcntl failed");
+	r = fcntl(fd, F_SETFL, flags | O_NONBLOCK);
+	exit_if(r < 0, "fcntl failed");
 }
 
 void client_handle()
 {
-    int                fd;
-    int                ret;
-    short              port = 8888;
-    struct sockaddr_in addr;
+	int fd;
+	int ret;
+	short port = 8888;
+	struct sockaddr_in addr;
 
-    memset(&addr, 0, sizeof addr);
-    addr.sin_family      = AF_INET;
-    addr.sin_port        = htons(port);
-    addr.sin_addr.s_addr = INADDR_ANY;
+	memset(&addr, 0, sizeof addr);
+	addr.sin_family = AF_INET;
+	addr.sin_port = htons(port);
+	addr.sin_addr.s_addr = INADDR_ANY;
 
-    fd = socket(AF_INET, SOCK_STREAM, 0);
-    exit_if(fd < 0, "create socket error");
+	fd = socket(AF_INET, SOCK_STREAM, 0);
+	exit_if(fd < 0, "create socket error");
 
-    ret = connect(fd, (struct sockaddr *)&addr, sizeof(struct sockaddr));
-    exit_if(ret < 0, "connect to server error");
-    setNonBlock(fd);
+	ret = connect(fd, (struct sockaddr *)&addr, sizeof(struct sockaddr));
+	exit_if(ret < 0, "connect to server error");
+	setNonBlock(fd);
 
-    printf("connect to server success");
+	printf("connect to server success");
 
-    const int LEN = 1000;
-    char      msg[LEN];  // 1MB data
-    memset(msg, 'a', LEN);
+	const int LEN = 1000;
+	char msg[LEN]; // 1MB data
+	memset(msg, 'a', LEN);
 
-    for (int i = 0; i < 1000; ++i)
-    {
-        int len = send(fd, msg, LEN, 0);
-        printf("send: %d, erron: %d, %s \n", len, errno, strerror(errno));
-        read(fd, msg, LEN);
-    }
+	for (int i = 0; i < 1000; ++i) {
+		int len = send(fd, msg, LEN, 0);
+		printf("send: %d, erron: %d, %s \n", len, errno,
+		       strerror(errno));
+		read(fd, msg, LEN);
+	}
 }
-
 
 void sigshutdown(int number)
 {
-    fprintf(stderr, "sign:%d.\n", number);
-    fprintf(stderr, "[%s]%d,pid:%d\n", __FUNCTION__, number, getpid());  
-    exit(-1);
+	fprintf(stderr, "sign:%d.\n", number);
+	fprintf(stderr, "[%s]%d,pid:%d\n", __FUNCTION__, number, getpid());
+	exit(-1);
 }
 
 void signalset(void)
 {
-    // 忽略SIGPIPE信号
-    signal(SIGPIPE, SIG_IGN);
-    // signal(SIGPIPE, sigshutdown);
-    // EPIPE
+	// 忽略SIGPIPE信号
+	signal(SIGPIPE, SIG_IGN);
+	// signal(SIGPIPE, sigshutdown);
+	// EPIPE
 }
-
 
 int main()
 {
-    signalset();
-    client_handle();
+	signalset();
+	client_handle();
 
-    return 0;
+	return 0;
 }

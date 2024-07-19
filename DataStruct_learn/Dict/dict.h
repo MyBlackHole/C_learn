@@ -14,16 +14,15 @@
     special data type called 'Dictionary'
     for generic use
 */
-typedef struct Dict
-{
-    /*
+typedef struct Dict {
+	/*
         void* array for generic use of the dictionary.
         there actual saves the entries.
     */
-    void *elements[MAXELEMENTS];
+	void *elements[MAXELEMENTS];
 
-    /* contains the number of elements in this dictionary */
-    int number_of_elements;
+	/* contains the number of elements in this dictionary */
+	int number_of_elements;
 
 } Dictionary;
 

@@ -18,10 +18,10 @@ void db_close(struct DB *const db);
 bool db_insert(struct DB *const db, struct KeyValue *const kv);
 
 bool db_multi_insert(struct DB *const db, const uint64_t nr_items,
-                     const struct KeyValue *const kvs);
+		     const struct KeyValue *const kvs);
 
 struct KeyValue *db_lookup(struct DB *const db, const uint16_t klen,
-                           const uint8_t *const key);
+			   const uint8_t *const key);
 
 //----misc
 

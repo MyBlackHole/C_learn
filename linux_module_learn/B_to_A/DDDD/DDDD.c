@@ -9,25 +9,25 @@ static int global_var = 1;
 
 static int __init aaaa_hello(void)
 {
-    printk("aaaa_hello\n");
-    printk("global_var[%d]\n", global_var);
-    return 0;
+	printk("aaaa_hello\n");
+	printk("global_var[%d]\n", global_var);
+	return 0;
 }
 
 static void __exit aaaa_exit(void)
 {
-    int index = 0;
-    // while (global_var)
-    // {
-    //     ssleep(1);
-    //     printk("%d sys hook count: %d", __LINE__, index);
-    //     index++;
-    // }
-    printk("aaaa_exit\n");
-    int a = 1 / index;
+	int index = 0;
+	// while (global_var)
+	// {
+	//     ssleep(1);
+	//     printk("%d sys hook count: %d", __LINE__, index);
+	//     index++;
+	// }
+	printk("aaaa_exit\n");
+	int a = 1 / index;
 	*(int *)0x00000000 = 100;
-    printk("aaaa_exit %d\n", a);
-    printk("global_var[%d]\n", global_var);
+	printk("aaaa_exit %d\n", a);
+	printk("global_var[%d]\n", global_var);
 }
 
 module_init(aaaa_hello);

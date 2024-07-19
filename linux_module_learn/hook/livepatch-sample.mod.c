@@ -12,8 +12,7 @@ BUILD_LTO_INFO;
 MODULE_INFO(vermagic, VERMAGIC_STRING);
 MODULE_INFO(name, KBUILD_MODNAME);
 
-__visible struct module __this_module
-__section(".gnu.linkonce.this_module") = {
+__visible struct module __this_module __section(".gnu.linkonce.this_module") = {
 	.name = KBUILD_MODNAME,
 	.init = init_module,
 #ifdef CONFIG_MODULE_UNLOAD
@@ -26,22 +25,19 @@ __section(".gnu.linkonce.this_module") = {
 MODULE_INFO(retpoline, "Y");
 #endif
 
-
-static const char ____versions[]
-__used __section("__versions") =
-	"\x1c\x00\x00\x00\xca\x39\x82\x5b"
-	"__x86_return_thunk\0\0"
-	"\x1c\x00\x00\x00\x55\xc1\x33\xa1"
-	"klp_enable_patch\0\0\0\0"
-	"\x14\x00\x00\x00\x21\x4e\x5b\xd6"
-	"seq_printf\0\0"
-	"\x14\x00\x00\x00\xbb\x6d\xfb\xbd"
-	"__fentry__\0\0"
-	"\x18\x00\x00\x00\x6a\xb7\x61\x9e"
-	"module_layout\0\0\0"
-	"\x00\x00\x00\x00\x00\x00\x00\x00";
+static const char ____versions[] __used
+	__section("__versions") = "\x1c\x00\x00\x00\xca\x39\x82\x5b"
+				  "__x86_return_thunk\0\0"
+				  "\x1c\x00\x00\x00\x55\xc1\x33\xa1"
+				  "klp_enable_patch\0\0\0\0"
+				  "\x14\x00\x00\x00\x21\x4e\x5b\xd6"
+				  "seq_printf\0\0"
+				  "\x14\x00\x00\x00\xbb\x6d\xfb\xbd"
+				  "__fentry__\0\0"
+				  "\x18\x00\x00\x00\x6a\xb7\x61\x9e"
+				  "module_layout\0\0\0"
+				  "\x00\x00\x00\x00\x00\x00\x00\x00";
 
 MODULE_INFO(depends, "");
-
 
 MODULE_INFO(srcversion, "6380CFB20E58D2B31716FB4");

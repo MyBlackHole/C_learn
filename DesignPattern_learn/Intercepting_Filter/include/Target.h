@@ -18,13 +18,13 @@ extern "C" {
 
 typedef struct Target Target;
 
-Target* target_create(void);
+Target *target_create(void);
 
-void target_destroy(Target** target);
+void target_destroy(Target **target);
 
-void target_execute(Target* target, const char* request);
+void target_execute(Target *target, const char *request);
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // TARGET_H_
+#endif // TARGET_H_

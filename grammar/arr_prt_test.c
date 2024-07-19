@@ -6,35 +6,33 @@
 // 数组 与 指针
 void test1()
 {
-    int a_tmp[10];
-    int b_tmp[5][10];
-    printf("sizeof A=%ld\n", sizeof(a_tmp));
-    printf("sizeof B=%ld\n", sizeof(b_tmp));
+	int a_tmp[10];
+	int b_tmp[5][10];
+	printf("sizeof A=%ld\n", sizeof(a_tmp));
+	printf("sizeof B=%ld\n", sizeof(b_tmp));
 
-    int(*pa_tmp)     = a_tmp;
-    int(*pb_tmp)[10] = b_tmp;
-    (void)pa_tmp;
-    (void)pb_tmp;
+	int(*pa_tmp) = a_tmp;
+	int(*pb_tmp)[10] = b_tmp;
+	(void)pa_tmp;
+	(void)pb_tmp;
 }
 
 // 指针数组空间分配
 void test2()
 {
-    int(*pipes)[2];
+	int(*pipes)[2];
 
-    pipes = malloc(NUM * sizeof(*pipes));
-    if (pipes == NULL)
-    {
-        exit(EXIT_FAILURE);
-    }
+	pipes = malloc(NUM * sizeof(*pipes));
+	if (pipes == NULL) {
+		exit(EXIT_FAILURE);
+	}
 
-    for (int i = 0; i < NUM; i++)
-    {
-        pipes[i][0] = -1;
-        pipes[i][1] = -1;
-    }
+	for (int i = 0; i < NUM; i++) {
+		pipes[i][0] = -1;
+		pipes[i][1] = -1;
+	}
 
-    free(pipes);
+	free(pipes);
 }
 
 // void test3() {
@@ -51,8 +49,8 @@ void test2()
 
 int demo_arr_main(int argc, char *argv[])
 {
-    test1();
-    test2();
+	test1();
+	test2();
 
-    exit(EXIT_SUCCESS);
+	exit(EXIT_SUCCESS);
 }

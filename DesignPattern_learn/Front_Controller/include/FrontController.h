@@ -18,13 +18,14 @@ extern "C" {
 
 typedef struct FrontController FrontController;
 
-FrontController* front_controller_create(void);
+FrontController *front_controller_create(void);
 
-void front_controller_destroy(FrontController** front_controller);
+void front_controller_destroy(FrontController **front_controller);
 
-void front_controller_dispatch_request(FrontController* front_controller, const char* request);
+void front_controller_dispatch_request(FrontController *front_controller,
+				       const char *request);
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // FRONT_CONTROLLER_H_
+#endif // FRONT_CONTROLLER_H_

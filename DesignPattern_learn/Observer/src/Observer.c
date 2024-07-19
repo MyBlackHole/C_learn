@@ -12,13 +12,18 @@
 #include "ObserverStruct.h"
 #include "ctools.h"
 
-void observer_update(struct Observer* observer) {
-    if (NULL == observer || NULL == observer->update) return;
-    observer->update(observer);
+void observer_update(struct Observer *observer)
+{
+	if (NULL == observer || NULL == observer->update)
+		return;
+	observer->update(observer);
 }
 
-void observer_destroy(struct Observer** observer) {
-    if (NULL == observer || NULL == *observer) return;
-    if (NULL != (*observer)->destroy) (*observer)->destroy(*observer);
-    freep((void**)observer);
+void observer_destroy(struct Observer **observer)
+{
+	if (NULL == observer || NULL == *observer)
+		return;
+	if (NULL != (*observer)->destroy)
+		(*observer)->destroy(*observer);
+	freep((void **)observer);
 }

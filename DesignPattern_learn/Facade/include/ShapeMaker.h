@@ -18,13 +18,13 @@ extern "C" {
 
 typedef struct ShapeMaker ShapeMaker;
 
-ShapeMaker* shape_maker_create(void);
-void shape_maker_destroy(ShapeMaker** shape_maker);
-void shape_maker_draw_circle(ShapeMaker* shape_maker);
-void shape_maker_draw_rectangle(ShapeMaker* shape_maker);
-void shape_maker_draw_square(ShapeMaker* shape_maker);
+ShapeMaker *shape_maker_create(void);
+void shape_maker_destroy(ShapeMaker **shape_maker);
+void shape_maker_draw_circle(ShapeMaker *shape_maker);
+void shape_maker_draw_rectangle(ShapeMaker *shape_maker);
+void shape_maker_draw_square(ShapeMaker *shape_maker);
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // SHAPE_MAKER_H_
+#endif // SHAPE_MAKER_H_

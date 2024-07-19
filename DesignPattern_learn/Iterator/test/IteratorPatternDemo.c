@@ -14,16 +14,17 @@
 #include "Iterator.h"
 #include "NameRepository.h"
 
-int main(int argc, char const* argv[]) {
-    NameRepository* names_repository = name_repository_create();
-    Iterator* iterator = name_repository_get_iterator(names_repository);
+int main(int argc, char const *argv[])
+{
+	NameRepository *names_repository = name_repository_create();
+	Iterator *iterator = name_repository_get_iterator(names_repository);
 
-    while (iterator_has_next(iterator)) {
-        const char* name = (const char*)iterator_next(iterator);
-        printf("Name : %s\n", name);
-    }
+	while (iterator_has_next(iterator)) {
+		const char *name = (const char *)iterator_next(iterator);
+		printf("Name : %s\n", name);
+	}
 
-    name_repository_destroy(&names_repository);
-    iterator_destroy(&iterator);
-    return 0;
+	name_repository_destroy(&names_repository);
+	iterator_destroy(&iterator);
+	return 0;
 }

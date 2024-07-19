@@ -15,17 +15,22 @@
 #include "Subject.h"
 #include "ctools.h"
 
-static void update(struct Observer* observer) {
-    if (NULL == observer) return;
-    printf("Octal String: %o\n", subject_get_state(observer->subject));
+static void update(struct Observer *observer)
+{
+	if (NULL == observer)
+		return;
+	printf("Octal String: %o\n", subject_get_state(observer->subject));
 }
 
-struct Observer* octal_observer_create(struct Subject* subject) {
-    struct Observer* observer = (struct Observer*)calloc(1, sizeof(struct Observer));
-    if (NULL == observer) return NULL;
+struct Observer *octal_observer_create(struct Subject *subject)
+{
+	struct Observer *observer =
+		(struct Observer *)calloc(1, sizeof(struct Observer));
+	if (NULL == observer)
+		return NULL;
 
-    observer->subject = subject;
-    observer->update = update;
-    subject_attach(subject, observer);
-    return observer;
+	observer->subject = subject;
+	observer->update = update;
+	subject_attach(subject, observer);
+	return observer;
 }

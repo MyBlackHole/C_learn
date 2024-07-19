@@ -5,43 +5,39 @@
 
 int demo_test_nofile_main()
 {
-    struct rlimit nofile = {0};
+	struct rlimit nofile = { 0 };
 
-    if (getrlimit(RLIMIT_NOFILE, &nofile) < 0)
-    {
-        perror("unable to query NOFILE limit:");
-        return EXIT_FAILURE;
-    }
+	if (getrlimit(RLIMIT_NOFILE, &nofile) < 0) {
+		perror("unable to query NOFILE limit:");
+		return EXIT_FAILURE;
+	}
 
-    nofile.rlim_cur = 10;
+	nofile.rlim_cur = 10;
 
-    if (setrlimit(RLIMIT_NOFILE, &nofile) == -1)
-    {
-        perror("setrlimit");
-        return EXIT_FAILURE;
-    }
+	if (setrlimit(RLIMIT_NOFILE, &nofile) == -1) {
+		perror("setrlimit");
+		return EXIT_FAILURE;
+	}
 
-    printf("Current limit: %lu\n", nofile.rlim_cur);
+	printf("Current limit: %lu\n", nofile.rlim_cur);
 
-    // 测试打开文件数量是否受到限制
-    FILE *fp;
-    int count = 0;
-    for (int i = 0; i < 10; i++)
-    {
-        fp = fopen("test.txt", "w");
-        if (fp == NULL)
-        {
-            perror("fopen");
-            printf("errno: %d\n", errno);
-            return EXIT_FAILURE;
-        }
-        printf("File opened: %d\n", i);
-        count++;
-    }
-    // fclose(fp);
+	// 测试打开文件数量是否受到限制
+	FILE *fp;
+	int count = 0;
+	for (int i = 0; i < 10; i++) {
+		fp = fopen("test.txt", "w");
+		if (fp == NULL) {
+			perror("fopen");
+			printf("errno: %d\n", errno);
+			return EXIT_FAILURE;
+		}
+		printf("File opened: %d\n", i);
+		count++;
+	}
+	// fclose(fp);
 
-    printf("File opened successfully.\n");
-    return EXIT_SUCCESS;
+	printf("File opened successfully.\n");
+	return EXIT_SUCCESS;
 }
 
 // out:

@@ -4,12 +4,12 @@
 
 void __attribute__((weak)) print(void)
 {
-    printf("%s\n", "test");
-    return;
+	printf("%s\n", "test");
+	return;
 }
 
 void Test(void)
 {
-    print();
-    return;
+	print();
+	return;
 }

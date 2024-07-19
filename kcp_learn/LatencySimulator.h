@@ -5,20 +5,19 @@
 #include "ikcp.h"
 #include <tbox/container/vector.h>
 
-typedef struct LatencySimulator
-{
-    int tx1;
-    int tx2;
+typedef struct LatencySimulator {
+	int tx1;
+	int tx2;
 
-    IUINT32         current;
-    int             lostrate;
-    int             rttmin;
-    int             rttmax;
-    int             nmax;
-    tb_vector_ref_t p12;
-    tb_vector_ref_t p21;
-    Random         *r12;
-    Random         *r21;
+	IUINT32 current;
+	int lostrate;
+	int rttmin;
+	int rttmax;
+	int nmax;
+	tb_vector_ref_t p12;
+	tb_vector_ref_t p21;
+	Random *r12;
+	Random *r21;
 
 } LatencySimulator;
 
@@ -26,14 +25,14 @@ typedef struct LatencySimulator
 // rttmin：rtt最小值，默认 60
 // rttmax：rtt最大值，默认 125
 LatencySimulator *createLatencySimulator(int lostrate, int rttmin, int rttmax,
-                                         int nmax);
+					 int nmax);
 
 void destroyLatencySimulator(LatencySimulator *latencySimulator);
 
 // 发送数据
 // peer - 端点0/1，从0发送，从1接收；从1发送从0接收
 void sendLatencySimulator(LatencySimulator *latencySimulator, int peer,
-                          const void *data, int size);
+			  const void *data, int size);
 
 // 清除数据
 void clearLatencySimulator(LatencySimulator *latencySimulator);

@@ -2,14 +2,13 @@
 #define ALPHABET_SIZE 26
 
 /*--Node in the Trie--*/
-typedef struct TrieNode
-{
-    // 每个节点的所有子 a~z
-    struct TrieNode *children[ALPHABET_SIZE];
-    // 对应字符
-    char character;
-    // 是否可以是字符结束
-    bool isEndOfWord;
+typedef struct TrieNode {
+	// 每个节点的所有子 a~z
+	struct TrieNode *children[ALPHABET_SIZE];
+	// 对应字符
+	char character;
+	// 是否可以是字符结束
+	bool isEndOfWord;
 } TrieNode;
 
 // 创建

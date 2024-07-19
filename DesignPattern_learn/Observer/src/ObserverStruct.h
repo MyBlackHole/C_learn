@@ -17,14 +17,14 @@ extern "C" {
 #endif
 
 struct Observer {
-    void* priv;
+	void *priv;
 
-    struct Subject* subject;
-    void (*update)(struct Observer* observer);
-    void (*destroy)(struct Observer* observer);
+	struct Subject *subject;
+	void (*update)(struct Observer *observer);
+	void (*destroy)(struct Observer *observer);
 };
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // OBSERVER_STRUCT_H_
+#endif // OBSERVER_STRUCT_H_

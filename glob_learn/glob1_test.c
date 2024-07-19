@@ -6,17 +6,15 @@
 
 int demo_glob1_main()
 {
-    glob_t globbuf;
-    int    err = glob("**/*.c", GLOB_MARK, NULL, &globbuf);
-    if (err != 0)
-    {
-        perror("glob error");
-        return 1;
-    }
-    for (size_t i = 0; i < globbuf.gl_pathc; i++)
-    {
-        printf("%s\n", globbuf.gl_pathv[i]);
-    }
-    globfree(&globbuf);
-    return 0;
+	glob_t globbuf;
+	int err = glob("**/*.c", GLOB_MARK, NULL, &globbuf);
+	if (err != 0) {
+		perror("glob error");
+		return 1;
+	}
+	for (size_t i = 0; i < globbuf.gl_pathc; i++) {
+		printf("%s\n", globbuf.gl_pathv[i]);
+	}
+	globfree(&globbuf);
+	return 0;
 }

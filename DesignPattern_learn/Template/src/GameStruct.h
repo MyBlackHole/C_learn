@@ -17,13 +17,13 @@ extern "C" {
 #endif
 
 struct Game {
-  void *priv;
+	void *priv;
 
-  void (*initialize)(struct Game *game);
-  void (*start_play)(struct Game *game);
-  void (*end_play)(struct Game *game);
-  void (*play)(struct Game *game);
-  void (*destroy)(struct Game *game);
+	void (*initialize)(struct Game *game);
+	void (*start_play)(struct Game *game);
+	void (*end_play)(struct Game *game);
+	void (*play)(struct Game *game);
+	void (*destroy)(struct Game *game);
 };
 
 void game_play_default(struct Game *game);

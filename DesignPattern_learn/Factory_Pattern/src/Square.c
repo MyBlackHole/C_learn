@@ -14,15 +14,17 @@
 
 #include "ShapeStruct.h"
 
-static void draw(struct Shape *shape) {
-  printf("Inside Square::draw() method.\n");
+static void draw(struct Shape *shape)
+{
+	printf("Inside Square::draw() method.\n");
 }
 
-struct Shape *square_create(void) {
-  struct Shape *shape = (struct Shape *)calloc(1, sizeof(struct Shape));
-  if (NULL == shape) {
-    return NULL;
-}
-  shape->draw = draw;
-  return shape;
+struct Shape *square_create(void)
+{
+	struct Shape *shape = (struct Shape *)calloc(1, sizeof(struct Shape));
+	if (NULL == shape) {
+		return NULL;
+	}
+	shape->draw = draw;
+	return shape;
 }

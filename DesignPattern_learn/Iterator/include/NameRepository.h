@@ -18,11 +18,11 @@ extern "C" {
 
 typedef struct Container NameRepository;
 
-NameRepository* name_repository_create(void);
-void name_repository_destroy(NameRepository** name_repository);
-struct Iterator* name_repository_get_iterator(NameRepository* name_repository);
+NameRepository *name_repository_create(void);
+void name_repository_destroy(NameRepository **name_repository);
+struct Iterator *name_repository_get_iterator(NameRepository *name_repository);
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // NAME_REPOSITORY_H_
+#endif // NAME_REPOSITORY_H_

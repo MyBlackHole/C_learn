@@ -36,19 +36,18 @@ static int livepatch_cmdline_proc_show(struct seq_file *m, void *v)
 	return 0;
 }
 
-static struct klp_func funcs[] = {
-	{
-		.old_name = "cmdline_proc_show",
-		.new_func = livepatch_cmdline_proc_show,
-	}, { }
-};
+static struct klp_func funcs[] = { {
+					   .old_name = "cmdline_proc_show",
+					   .new_func =
+						   livepatch_cmdline_proc_show,
+				   },
+				   {} };
 
-static struct klp_object objs[] = {
-	{
-		/* name being NULL means vmlinux */
-		.funcs = funcs,
-	}, { }
-};
+static struct klp_object objs[] = { {
+					    /* name being NULL means vmlinux */
+					    .funcs = funcs,
+				    },
+				    {} };
 
 static struct klp_patch patch = {
 	.mod = THIS_MODULE,

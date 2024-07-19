@@ -6,9 +6,8 @@
 
 int demo_argvs_main(int argc, char *argv[])
 {
-    for (int i = 0; i < sizeof(argc); i++)
-    {
-    }
-    printf("%s", argv[0]);
-    return EXIT_SUCCESS;
+	for (int i = 0; i < sizeof(argc); i++) {
+	}
+	printf("%s", argv[0]);
+	return EXIT_SUCCESS;
 }

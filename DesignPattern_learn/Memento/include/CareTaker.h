@@ -19,12 +19,12 @@ extern "C" {
 #include "Memento.h"
 
 typedef struct CareTaker CareTaker;
-CareTaker* care_taker_create(void);
-void care_taker_destroy(CareTaker** care_taker);
-void care_taker_add_memento(CareTaker* care_taker, Memento* memento);
-Memento* care_taker_get_memento(CareTaker* care_taker, int index);
+CareTaker *care_taker_create(void);
+void care_taker_destroy(CareTaker **care_taker);
+void care_taker_add_memento(CareTaker *care_taker, Memento *memento);
+Memento *care_taker_get_memento(CareTaker *care_taker, int index);
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // CARE_TAKER_H_
+#endif // CARE_TAKER_H_

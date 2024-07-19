@@ -19,11 +19,11 @@ extern "C" {
 
 typedef struct Iterator Iterator;
 
-bool iterator_has_next(Iterator* iterator);
-void* iterator_next(Iterator* iterator);
-void iterator_destroy(Iterator** iterator);
+bool iterator_has_next(Iterator *iterator);
+void *iterator_next(Iterator *iterator);
+void iterator_destroy(Iterator **iterator);
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // ITERATOR_H_
+#endif // ITERATOR_H_

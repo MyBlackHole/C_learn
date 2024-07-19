@@ -32,22 +32,21 @@
 
 #include "sds.h"
 
-struct redisServer
-{
-    int maxidletime;
-    int port;
-    int aof_fsync;
+struct redisServer {
+	int maxidletime;
+	int port;
+	int aof_fsync;
 };
 
 #define REDIS_CONFIGLINE_MAX 1024
 
 /* Append only defines */
-#define AOF_FSYNC_NO            0
-#define AOF_FSYNC_ALWAYS        1
-#define AOF_FSYNC_EVERYSEC      2
+#define AOF_FSYNC_NO 0
+#define AOF_FSYNC_ALWAYS 1
+#define AOF_FSYNC_EVERYSEC 2
 #define REDIS_DEFAULT_AOF_FSYNC AOF_FSYNC_EVERYSEC
 
-sds  getAbsolutePath(char *filename);
+sds getAbsolutePath(char *filename);
 void printfRedisConfig(void);
 void loadServerConfig(char *filename);
 

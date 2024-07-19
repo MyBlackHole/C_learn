@@ -5,33 +5,28 @@
 #include <rpc/types.h>
 #include <rpc/xdr.h>
 
-struct MATH
-{
-    int op;
-    float arg1;
-    float arg2;
-    float result;
+struct MATH {
+	int op;
+	float arg1;
+	float arg2;
+	float result;
 };
 
 bool xdr_math(XDR *xdrsp, struct MATH *resp)
 {
-    if (!xdr_int(xdrsp, &resp->op))
-    {
-        return false;
-    }
-    if (!xdr_float(xdrsp, &resp->arg1))
-    {
-        return false;
-    }
-    if (!xdr_float(xdrsp, &resp->arg2))
-    {
-        return false;
-    }
-    if (!xdr_float(xdrsp, &resp->result))
-    {
-        return false;
-    }
-    return TRUE;
+	if (!xdr_int(xdrsp, &resp->op)) {
+		return false;
+	}
+	if (!xdr_float(xdrsp, &resp->arg1)) {
+		return false;
+	}
+	if (!xdr_float(xdrsp, &resp->arg2)) {
+		return false;
+	}
+	if (!xdr_float(xdrsp, &resp->result)) {
+		return false;
+	}
+	return TRUE;
 }
 
 #define MATH_PROG ((unsigned long)0x20000001)

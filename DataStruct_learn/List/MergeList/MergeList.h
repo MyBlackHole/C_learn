@@ -8,9 +8,9 @@
 #define MERGELIST_H
 
 #include <stdio.h>
-#include <stdlib.h>  //提供malloc、realloc、free、exit原型
+#include <stdlib.h> //提供malloc、realloc、free、exit原型
 
-#include "LinkList.h"  //**▲ 02 线性表**//
+#include "LinkList.h" //**▲ 02 线性表**//
 
 /*
  * ████████ 算法2.12 ████████

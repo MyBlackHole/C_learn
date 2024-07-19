@@ -21,15 +21,16 @@ extern "C" {
 
 typedef struct FilterManager FilterManager;
 
-FilterManager* filter_manager_create(Target* target);
+FilterManager *filter_manager_create(Target *target);
 
-void filter_manager_destroy(FilterManager** filter_manager);
+void filter_manager_destroy(FilterManager **filter_manager);
 
-void filter_manager_set_filter(FilterManager* filter_manager, Filter* filter);
+void filter_manager_set_filter(FilterManager *filter_manager, Filter *filter);
 
-void filter_manager_filter_request(FilterManager* filter_manager, const char* request);
+void filter_manager_filter_request(FilterManager *filter_manager,
+				   const char *request);
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // FILTER_MANAGER_H_
+#endif // FILTER_MANAGER_H_
