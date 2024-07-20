@@ -1,5 +1,4 @@
 #include <arpa/inet.h>
-#include <errno.h>
 #include <linux/if_ether.h>
 #include <net/if.h>
 #include <netinet/in.h>
@@ -37,6 +36,7 @@ int do_promisc(void)
 	printf("Setting interface ::: %s ::: to promisc\n\n", ifr.ifr_name);
 	return 0;
 }
+
 int check_nic(void)
 {
 	struct ifreq ifr;
@@ -58,6 +58,7 @@ int check_nic(void)
 		return -1;
 	}
 }
+
 int main(void)
 {
 	do_promisc();
