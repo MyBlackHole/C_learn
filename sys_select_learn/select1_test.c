@@ -19,9 +19,9 @@ int demo_select1_main(int argc, char *argv[])
 	FD_SET(0, &reads);
 
 	/*
-    timeout.tv_sec=5;
-    timeout.tv_usec=5000;
-    */
+	 * timeout.tv_sec=5;
+	 * timeout.tv_usec=5000;
+	 */
 
 	while (1) {
 		// 为了防止调用了select 函数后，位的内容改变，先提前存一下

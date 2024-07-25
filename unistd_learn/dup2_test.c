@@ -21,12 +21,12 @@ int demo_dup2_main(int argc, char *argv[])
 
 	// 重定向 stdout 到文件
 	// fd 肯能等于 1
-	dfd = dup2(sfd, 1);
+	dfd = dup2(sfd, STDOUT_FILENO);
+	close(sfd);
 	if (dfd < 0) {
 		perror("dup()");
 		exit(EXIT_FAILURE);
 	}
-	close(sfd);
 	puts("black");
 	exit(EXIT_SUCCESS);
 }
