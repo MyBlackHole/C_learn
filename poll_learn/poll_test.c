@@ -35,7 +35,7 @@
 
 #define VNAME(value) (#value)
 
-int main(int argc, char *argv[])
+int demo_poll_main(int argc, char *argv[])
 {
 	ssize_t ret = -1;
 	int fd_in = -1;
