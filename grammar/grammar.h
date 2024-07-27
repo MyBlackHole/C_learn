@@ -31,5 +31,7 @@ DEMO_MAIN_DECL(func);
 DEMO_MAIN_DECL(define);
 DEMO_MAIN_DECL(typedef);
 DEMO_MAIN_DECL(hex_to_int);
+DEMO_MAIN_DECL(static_local);
+DEMO_MAIN_DECL(static_global);
 
 #endif

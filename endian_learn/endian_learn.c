@@ -1,12 +1,10 @@
-#include "sys_stat_learn.h"
+#include "endian_learn.h"
 #include <stddef.h>
 #include <stdio.h>
 #include <string.h>
 
 static demo_t demos[] = {
-	DEMO_MAIN_ITEM(stat1),	    DEMO_MAIN_ITEM(stat2),
-	DEMO_MAIN_ITEM(stat3),	    DEMO_MAIN_ITEM(stat),
-	DEMO_MAIN_ITEM(umask_test), DEMO_MAIN_ITEM(mkfifo),
+	DEMO_MAIN_ITEM(BYTE_ORDER),
 };
 int main(int argc, char **argv)
 {

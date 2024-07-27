@@ -1,7 +1,6 @@
 #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <termios.h>
 #include <unistd.h>
 #ifndef TIOCGWINSZ
@@ -27,7 +26,7 @@ static void sig_winch(int signo)
 int demo_winch_main(void)
 {
 	if (isatty(STDIN_FILENO) == 0) {
-		exit(1);
+		exit(EXIT_FAILURE);
 	}
 	if (signal(SIGWINCH, sig_winch) == SIG_ERR) {
 		perror("signal error");
