@@ -1,11 +1,11 @@
+#define TB_TRACE_MODULE_NAME "list_test"
+#define TB_TRACE_MODULE_DEBUG    (1)
+
 #include <stdlib.h>
-#include <tbox/container/element.h>
-#include <tbox/container/list.h>
-#include <tbox/libc/stdlib/stdlib.h>
-#include <tbox/math/random/random.h>
 #include <tbox/tbox.h>
 
 #define Num 4
+
 
 int demo_list_main(int argc, char *argv[])
 {
@@ -18,7 +18,7 @@ int demo_list_main(int argc, char *argv[])
 
 	tb_assert_and_check_return_val(list, -1);
 
-	int *is = (int *)malloc(sizeof(tb_long_t) * Num);
+	int *is = (int *)tb_malloc(sizeof(tb_long_t) * Num);
 	tb_assert_and_check_return_val(is, -1);
 
 	for (size_t i = 0; i < Num; i++) {
@@ -38,7 +38,9 @@ int demo_list_main(int argc, char *argv[])
 
 	tb_trace_i("list.sizt: %d", tb_list_size(list));
 
+	tb_free(is);
 	tb_list_clear(list);
+	tb_list_exit(list);
 
 	tb_exit();
 	return 0;
