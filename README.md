@@ -4,6 +4,8 @@
 
 - 构建
 ```shell
+paru -S paho-mqtt-c raft
+
 xmake
 ```
 
