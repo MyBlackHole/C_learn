@@ -1,17 +1,23 @@
-#C_learn
+# C_learn
 
 学习语法与第三方库测试
 
-##构建
-```bash xmake
-
+- 构建
+```shell
+xmake
 ```
 
-	##生成索引 compile_commands.json
-```shell xmake project -
-	k compile_commands-- lsp = clangd
+- compile_commands.json
+```bash
+xmake project -k compile_commands --lsp=clangd
 ```
 
-					   ##lib 库检查
-```shell ldconfig - p | grep uv
+- xmakefile	
+```shell
+xmake project -k makefile
+```
+
+- lib 库检查
+```shell
+ldconfig - p | grep uv
 ```
