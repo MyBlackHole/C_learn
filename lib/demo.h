@@ -2,11 +2,17 @@
 #define DEMO_H
 
 // the main item
-#define DEMO_MAIN_ITEM(name) { #name, demo_##name##_main }
+#define DEMO_MAIN_ITEM(name)              \
+	{                                 \
+		#name, demo_##name##_main \
+	}
 
 #define DEMO_MAIN_DECL(name) int demo_##name##_main(int argc, char **argv)
 
-#define DEMO_MAIN_ENV_ITEM(name) { #name, demo_##name##_main }
+#define DEMO_MAIN_ENV_ITEM(name)          \
+	{                                 \
+		#name, demo_##name##_main \
+	}
 
 #define DEMO_MAIN_ENV_DECL(name) \
 	int demo_##name##_main(int argc, char **argv, char **env)

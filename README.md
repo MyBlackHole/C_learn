@@ -21,3 +21,8 @@ xmake project -k makefile
 ```shell
 ldconfig - p | grep uv
 ```
+
+- 测试
+```shell
+xmake run algorithms_learn
+```

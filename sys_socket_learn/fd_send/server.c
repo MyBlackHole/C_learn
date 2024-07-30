@@ -24,7 +24,8 @@ int main(int argc, char *argv[])
 	char buf[100];
 	char *testmsg = "test msg.\n";
 
-	union { // 对齐
+	// 对齐
+	union {
 		struct cmsghdr cm;
 		char control[CMSG_SPACE(sizeof(int))];
 	} control_un;
@@ -34,7 +35,7 @@ int main(int argc, char *argv[])
 	listenfd = socket(AF_UNIX, SOCK_STREAM, 0);
 	if (listenfd < 0) {
 		printf("socket failed.\n");
-		return -1;
+		return EXIT_FAILURE;
 	}
 
 	unlink(UNIXSTR_PATH);
@@ -47,7 +48,7 @@ int main(int argc, char *argv[])
 	if (ret < 0) {
 		printf("bind failed. errno = %d.\n", errno);
 		close(listenfd);
-		return -1;
+		return EXIT_FAILURE;
 	}
 
 	listen(listenfd, 5);
@@ -96,5 +97,5 @@ int main(int argc, char *argv[])
 		}
 	}
 
-	return 0;
+	return EXIT_SUCCESS;
 }

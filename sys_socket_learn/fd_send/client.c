@@ -17,12 +17,14 @@
 int main(int argc, char *argv[])
 {
 	int clifd;
-	struct sockaddr_un servaddr; // IPC
+	// IPC
+	struct sockaddr_un servaddr;
 	int ret;
 	struct msghdr msg;
 	struct iovec iov[1];
 	char buf[100];
-	union { // 保证cmsghdr和msg_control对齐
+	// 保证cmsghdr和msg_control对齐
+	union {
 		struct cmsghdr cm;
 		char control[CMSG_SPACE(sizeof(int))];
 	} control_un;
@@ -32,13 +34,13 @@ int main(int argc, char *argv[])
 	clifd = socket(AF_UNIX, SOCK_STREAM, 0);
 	if (clifd < 0) {
 		printf("socket failed.\n");
-		return -1;
+		return EXIT_FAILURE;
 	}
 
 	fd = open(OPEN_FILE, O_CREAT | O_RDWR, 0777);
 	if (fd < 0) {
 		printf("open test failed.\n");
-		return -1;
+		return EXIT_FAILURE;
 	}
 
 	bzero(&servaddr, sizeof(servaddr));
@@ -48,7 +50,7 @@ int main(int argc, char *argv[])
 	ret = connect(clifd, (struct sockaddr *)&servaddr, sizeof(servaddr));
 	if (ret < 0) {
 		printf("connect failed.\n");
-		return 0;
+		return EXIT_SUCCESS;
 	}
 	// udp需要,tcp无视
 	msg.msg_name = NULL;
@@ -64,16 +66,19 @@ int main(int argc, char *argv[])
 	pcmsg = CMSG_FIRSTHDR(&msg);
 	pcmsg->cmsg_len = CMSG_LEN(sizeof(int));
 	pcmsg->cmsg_level = SOL_SOCKET;
-	pcmsg->cmsg_type = SCM_RIGHTS; // 指明发送的是描述符
-	*((int *)CMSG_DATA(pcmsg)) == fd; // 把描述符写入辅助数据
+	// 指明发送的是描述符
+	pcmsg->cmsg_type = SCM_RIGHTS;
+	// // 把描述符写入辅助数据
+	// *((int *)CMSG_DATA(pcmsg)) == fd;
+	memcpy(CMSG_DATA(pcmsg), &fd, sizeof(int));
 
 	ret = sendmsg(clifd, &msg, 0); // send filedescriptor
 	if (ret < 0) {
 		printf("sendmsg failed, errno = %d, %s\n", errno,
 		       strerror(errno));
-		return -1;
+		return EXIT_FAILURE;
 	}
 	printf("ret = %d, filedescriptor = %d\n", ret, fd);
 	close(fd);
-	return 0;
+	return EXIT_SUCCESS;
 }
