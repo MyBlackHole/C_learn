@@ -46,33 +46,36 @@ int demo_poll_main(int argc, char *argv[])
 	fd_in = open(argv[1], OPEN_FLAGS, OPEN_MODE);
 
 	if (-1 == fd_in) {
-		fprintf(stderr, "open %s failed: ", VNAME(fd_in));
+		fprintf(stderr, "open %s failed: \n", VNAME(fd_in));
 		goto _ERR;
 	}
 
 	ret = write(fd_in, W_DATA, sizeof(W_DATA));
 	if (-1 == ret) {
-		fprintf(stderr, "write %s failed: ", VNAME(fd_in));
+		fprintf(stderr, "write %s failed: \n", VNAME(fd_in));
 		goto _ERR;
 	}
 
 	// 设置偏移
 	ret = lseek(fd_in, 0, SEEK_SET);
 	if (-1 == ret) {
-		fprintf(stderr, "lseek %s failed: ", VNAME(fd_in));
+		fprintf(stderr, "lseek %s failed: \n", VNAME(fd_in));
 		goto _ERR;
 	}
 
 	fd_out = open(argv[2], OPEN_FLAGS, OPEN_MODE);
 	if (-1 == fd_out) {
-		fprintf(stderr, "open %s failed: ", VNAME(fd_out));
+		fprintf(stderr, "open %s failed: \n", VNAME(fd_out));
 		goto _ERR;
 	}
 
 	/*阻塞，等待程序读写操作*/
 	while (1) {
+		
+		memset(fds, 0x00, sizeof(fds));
 		// 初始化pollfd
 		// 可读
+		// fds[0].fd = 100;
 		fds[0].fd = fd_in;
 		fds[0].events = POLLIN;
 
@@ -80,9 +83,17 @@ int demo_poll_main(int argc, char *argv[])
 		fds[1].fd = fd_out;
 		fds[1].events = POLLOUT;
 
+		// ret = poll(fds, 2, 1000);
 		ret = poll(fds, sizeof(fds) / sizeof(fds[0]), -1);
-		if (-1 == ret) {
+		if (ret < 0) {
 			perror("poll failed: ");
+			goto _ERR;
+		}
+		printf("ret = %ld, fds[0].revents = %d, fds[1].revents = %d\n", ret, fds[0].revents, fds[1].revents);
+
+		if (fds[0].revents & POLLNVAL || fds[1].revents & POLLERR)
+		{
+			perror("poll error: ");
 			goto _ERR;
 		}
 
@@ -90,9 +101,13 @@ int demo_poll_main(int argc, char *argv[])
 			// 清空对象内存
 			// memset(r_buf, 0, sizeof(r_buf));
 			ret = read(fd_in, r_buf, sizeof(r_buf));
-			if (-1 == ret) {
+			if (ret < 0) {
 				perror("poll read failed: ");
 				goto _ERR;
+			}
+			else if (0 == ret) {
+				printf("read end of file\n");
+				break;
 			}
 			printf("read = %s\n", r_buf);
 		}
@@ -105,6 +120,7 @@ int demo_poll_main(int argc, char *argv[])
 			}
 			printf("write = %s\n", r_buf);
 		}
+		sleep(1);
 	}
 
 	close(fd_in);
