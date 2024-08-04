@@ -13,5 +13,7 @@ DEMO_MAIN_DECL(ftruncate1);
 DEMO_MAIN_DECL(symlink);
 DEMO_MAIN_DECL(chroot);
 DEMO_MAIN_DECL(sysconf);
+DEMO_MAIN_DECL(link);
+DEMO_MAIN_DECL(access);
 
 #endif

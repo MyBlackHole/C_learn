@@ -10,7 +10,8 @@ static demo_t demos[] = {
 	DEMO_MAIN_ITEM(unlink),		 DEMO_MAIN_ITEM(truncate),
 	DEMO_MAIN_ITEM(ftruncate),	 DEMO_MAIN_ITEM(ftruncate1),
 	DEMO_MAIN_ITEM(symlink),	 DEMO_MAIN_ITEM(chroot),
-	DEMO_MAIN_ITEM(sysconf),
+	DEMO_MAIN_ITEM(sysconf),	 DEMO_MAIN_ITEM(link),
+	DEMO_MAIN_ITEM(access),
 };
 int main(int argc, char **argv)
 {
