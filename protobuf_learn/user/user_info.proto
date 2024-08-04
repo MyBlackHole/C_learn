@@ -1,0 +1,13 @@
+enum UserStatus {
+	UNKNOWN = 0;
+	IDLE = 1;
+	BUSY = 2;
+}
+
+message UserInfo {
+	required string name = 1;
+	required uint32 age = 2;
+	optional string phone = 3;
+	required UserStatus stat = 4;
+	optional string email = 5;
+}

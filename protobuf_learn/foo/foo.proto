@@ -1,0 +1,61 @@
+syntax = "proto2";
+
+package foo;
+
+enum TestEnumSmall {
+  NEG_VALUE = -1;
+  VALUE = 0;
+  OTHER_VALUE = 1;
+}
+
+message SubMess {
+  required int32 test = 4;
+
+  optional int32 val1 = 6;
+  optional int32 val2 = 7;
+  repeated int32 rep = 8;
+  message SubSubMess {
+    optional int32 val1 = 1 [default = 100];
+    repeated int32 rep = 4;
+    optional bytes bytes1 = 2 [default = "a \0 char"];
+    optional string str1 = 3 [default = "hello world\n"];
+  }
+  optional SubSubMess sub1 = 9;
+  optional SubSubMess sub2 = 10;
+};
+
+enum TestEnum {
+  VALUENEG123456 = -123456;
+  VALUENEG1 = -1;
+  VALUE0 = 0;
+  VALUE1 = 1;
+  VALUE127 = 127;
+  VALUE128 = 128;
+  VALUE16383 = 16383;
+  VALUE16384 = 16384;
+  VALUE2097151 = 2097151;
+  VALUE2097152 = 2097152;
+  VALUE268435455 = 268435455;
+  VALUE268435456 = 268435456;
+}
+
+message TestMess {
+  repeated int32 test_int32 = 1;
+  repeated sint32 test_sint32 = 2;
+  repeated sfixed32 test_sfixed32 = 3;
+  repeated int64 test_int64 = 4;
+  repeated sint64 test_sint64 = 5;
+  repeated sfixed64 test_sfixed64 = 6;
+  repeated uint32 test_uint32 = 7;
+  repeated fixed32 test_fixed32 = 8;
+  repeated uint64 test_uint64 = 9;
+  repeated fixed64 test_fixed64 = 10;
+  repeated float test_float = 11;
+  repeated double test_double = 12;
+  repeated bool test_boolean = 13;
+  repeated TestEnumSmall test_enum_small = 14;
+  repeated TestEnum test_enum = 15;
+  repeated string test_string = 16;
+  repeated bytes test_bytes = 17;
+  repeated SubMess test_message = 18;
+}
