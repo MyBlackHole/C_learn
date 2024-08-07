@@ -21,7 +21,7 @@ static demo_t demos[] = {
 	DEMO_MAIN_ITEM(fgetc),	    DEMO_MAIN_ITEM(fflush),
 	DEMO_MAIN_ITEM(feof),	    DEMO_MAIN_ITEM(fdopen),
 	DEMO_MAIN_ITEM(fdopen1),    DEMO_MAIN_ITEM(buf_test),
-	DEMO_MAIN_ITEM(renameat2),
+	DEMO_MAIN_ITEM(renameat2),  DEMO_MAIN_ITEM(popen),
 };
 
 int main(int argc, char **argv)

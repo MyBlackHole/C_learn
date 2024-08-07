@@ -35,5 +35,6 @@ DEMO_MAIN_DECL(fdopen);
 DEMO_MAIN_DECL(fdopen1);
 DEMO_MAIN_DECL(buf_test);
 DEMO_MAIN_DECL(renameat2);
+DEMO_MAIN_DECL(popen);
 
 #endif
