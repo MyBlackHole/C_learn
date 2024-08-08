@@ -7,6 +7,10 @@ int demo_setsid_main(int argc, char **argv)
 {
 	pid_t gpid;
 	pid_t old_gpid;
+	/*// 测试 ssh*/
+	/*close(0);*/
+	/*close(1);*/
+	/*close(2);*/
 	if (fork() > 0) {
 		printf("parent begin\n");
 		// for (size_t i = 0; i < 30; i++)
@@ -16,6 +20,8 @@ int demo_setsid_main(int argc, char **argv)
 		// }
 
 		printf("parent exit\n");
+		/*// 测试 ssh*/
+		/*sleep(10);*/
 		exit(0);
 	}
 	old_gpid = getpgrp();
@@ -26,7 +32,7 @@ int demo_setsid_main(int argc, char **argv)
 	printf("child begin\n");
 
 	for (size_t i = 0; i < 10; i++) {
-		sleep(1);
+		sleep(2);
 		printf("child count:%ld pid:%d\n", i, getpid());
 	}
 

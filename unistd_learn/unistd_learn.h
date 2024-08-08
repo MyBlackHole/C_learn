@@ -15,5 +15,8 @@ DEMO_MAIN_DECL(chroot);
 DEMO_MAIN_DECL(sysconf);
 DEMO_MAIN_DECL(link);
 DEMO_MAIN_DECL(access);
+DEMO_MAIN_DECL(setsid);
+DEMO_MAIN_DECL(pipe2);
+DEMO_MAIN_DECL(pipe_2);
 
 #endif
