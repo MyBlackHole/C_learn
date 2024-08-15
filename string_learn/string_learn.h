@@ -17,10 +17,12 @@ DEMO_MAIN_DECL(strdup_test);
 DEMO_MAIN_DECL(strerror_test);
 DEMO_MAIN_DECL(strlen_test);
 DEMO_MAIN_DECL(strncmp_test);
+DEMO_MAIN_DECL(strncmp1_test);
 DEMO_MAIN_DECL(strncpy_test);
 DEMO_MAIN_DECL(strrchr_test);
 DEMO_MAIN_DECL(strsignal_test);
 DEMO_MAIN_DECL(strstr_test);
 DEMO_MAIN_DECL(strtok_test);
+DEMO_MAIN_DECL(path_splice);
 
 #endif

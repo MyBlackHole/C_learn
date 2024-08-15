@@ -14,6 +14,8 @@ static demo_t demos[] = {
 	DEMO_MAIN_ITEM(strncmp_test),  DEMO_MAIN_ITEM(strncpy_test),
 	DEMO_MAIN_ITEM(strrchr_test),  DEMO_MAIN_ITEM(strsignal_test),
 	DEMO_MAIN_ITEM(strstr_test),   DEMO_MAIN_ITEM(strtok_test),
+	DEMO_MAIN_ITEM(strncmp1_test), DEMO_MAIN_ITEM(path_splice),
+
 };
 int main(int argc, char **argv)
 {
