@@ -9,9 +9,9 @@
 #include <fcntl.h>
 
 /*#define BUFFER_SIZE 165536*/
-/*#define BUFFER_SIZE 65536*/
+#define BUFFER_SIZE 65536
 /*#define BUFFER_SIZE 4096*/
-#define BUFFER_SIZE 64
+/*#define BUFFER_SIZE 64*/
 
 inline static int read_is_ready2(int p_fd, const unsigned int time_ms)
 {
