@@ -37,4 +37,6 @@ DEMO_MAIN_DECL(buf_test);
 DEMO_MAIN_DECL(renameat2);
 DEMO_MAIN_DECL(popen);
 DEMO_MAIN_DECL(popen_w);
+DEMO_MAIN_DECL(popen_close);
+
 #endif
