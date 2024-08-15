@@ -26,10 +26,14 @@ int demo_pipe2_main(int argc, char *argv[])
 
 	memset(buf_a, 'a', BUFFER_SIZE);
 	count = atoi(argv[1]);
-	if (pipe2(pipefd, O_CLOEXEC | O_NONBLOCK) == -1) {
+	if (pipe(pipefd) == -1) {
 		perror("pipe");
 		exit(EXIT_FAILURE);
 	}
+	/*if (pipe2(pipefd, O_CLOEXEC | O_NONBLOCK) == -1) {*/
+	/*	perror("pipe");*/
+	/*	exit(EXIT_FAILURE);*/
+	/*}*/
 	fcntl(pipefd[0], F_SETPIPE_SZ, BUFFER_SIZE);
 	fcntl(pipefd[1], F_SETPIPE_SZ, BUFFER_SIZE);
 	cpid = fork();

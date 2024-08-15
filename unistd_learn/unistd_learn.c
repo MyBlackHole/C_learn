@@ -5,14 +5,24 @@
 #include <string.h>
 
 static demo_t demos[] = {
-	DEMO_MAIN_ITEM(copy_file_range), DEMO_MAIN_ITEM(getcwd),
-	DEMO_MAIN_ITEM(write),		 DEMO_MAIN_ITEM(write1),
-	DEMO_MAIN_ITEM(unlink),		 DEMO_MAIN_ITEM(truncate),
-	DEMO_MAIN_ITEM(ftruncate),	 DEMO_MAIN_ITEM(ftruncate1),
-	DEMO_MAIN_ITEM(symlink),	 DEMO_MAIN_ITEM(chroot),
-	DEMO_MAIN_ITEM(sysconf),	 DEMO_MAIN_ITEM(link),
-	DEMO_MAIN_ITEM(access),		 DEMO_MAIN_ITEM(setsid),
-	DEMO_MAIN_ITEM(pipe2),		 DEMO_MAIN_ITEM(pipe_2),
+	DEMO_MAIN_ITEM(copy_file_range),
+	DEMO_MAIN_ITEM(getcwd),
+	DEMO_MAIN_ITEM(write),
+	DEMO_MAIN_ITEM(write1),
+	DEMO_MAIN_ITEM(unlink),
+	DEMO_MAIN_ITEM(truncate),
+	DEMO_MAIN_ITEM(ftruncate),
+	DEMO_MAIN_ITEM(ftruncate1),
+	DEMO_MAIN_ITEM(symlink),
+	DEMO_MAIN_ITEM(chroot),
+	DEMO_MAIN_ITEM(sysconf),
+	DEMO_MAIN_ITEM(link),
+	DEMO_MAIN_ITEM(access),
+	DEMO_MAIN_ITEM(setsid),
+	DEMO_MAIN_ITEM(pipe2),
+	DEMO_MAIN_ITEM(pipe_2),
+	DEMO_MAIN_ITEM(read),
+	DEMO_MAIN_ITEM(read1),
 };
 int main(int argc, char **argv)
 {
