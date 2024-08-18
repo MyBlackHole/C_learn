@@ -108,7 +108,7 @@ static int __init lkm_init(void)
 	// 获取只读页表的起始地址和结束地址
 	start_rodata = (unsigned long)kallsyms_lookup_name("__start_rodata");
 	end_rodata = (unsigned long)kallsyms_lookup_name("__end_rodata");
-	LOG_INFO("update_mapping_prot:%lx, start_rodata:%lx, end_rodata:%lx.\n",
+	printk(KERN_INFO "update_mapping_prot:%lx, start_rodata:%lx, end_rodata:%lx.\n",
 		 update_mapping_prot, start_rodata, end_rodata);
 	disable_wirte_protection();
 	__sys_call_table[__NR_mkdirat] = (unsigned long)mkdir_hook;
