@@ -16,6 +16,7 @@ package("protobuf-c-rpc")
         if package:debug() then
             table.insert(configs, "--enable-debug")
         end
+        table.insert(configs, "CFLAGS=-g -O0")
         import("package.tools.autoconf").install(package, configs)
     end)
 
