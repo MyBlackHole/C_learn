@@ -20,5 +20,6 @@ DEMO_MAIN_DECL(pipe2);
 DEMO_MAIN_DECL(pipe_2);
 DEMO_MAIN_DECL(read);
 DEMO_MAIN_DECL(read1);
+DEMO_MAIN_DECL(fork);
 
 #endif
