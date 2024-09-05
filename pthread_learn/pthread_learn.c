@@ -9,7 +9,7 @@ static demo_t demos[] = {
 	DEMO_MAIN_ITEM(create3),      DEMO_MAIN_ITEM(pthread_setschedparam),
 	DEMO_MAIN_ITEM(self),	      DEMO_MAIN_ITEM(once),
 	DEMO_MAIN_ITEM(mutex_unlock), DEMO_MAIN_ITEM(rwlock1),
-	DEMO_MAIN_ITEM(rwlock2),
+	DEMO_MAIN_ITEM(rwlock2),      DEMO_MAIN_ITEM(pthread_cancel),
 };
 int main(int argc, char **argv)
 {
