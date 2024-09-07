@@ -9,10 +9,10 @@
  *
  */
 
+#include "ctools.h"
 #include "Shape.h"
 
 #include "ShapeStruct.h"
-#include "ctools.h"
 
 void shape_destory(struct Shape **shape)
 {

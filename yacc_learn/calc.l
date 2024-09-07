@@ -23,6 +23,8 @@ yywrap(void)
 }
 [ \t] ;
 . {
+    (void)input;
+    (void)yyunput;
     fprintf(stderr,"lexical error.\n");
     exit(1);
 }

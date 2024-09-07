@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 
+#include "Shape.h"
 #include "ShapeCache.h"
 
 int main(int argc, char const *argv[])

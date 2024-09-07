@@ -1,4 +1,5 @@
-target("libctools")
+target("ctools")
     set_kind("static")
     add_includedirs("include", {public = true})
-    add_files("**.c")
+    add_files("src/*.c")
+    add_files("src/*.cpp")

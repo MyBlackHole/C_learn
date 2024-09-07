@@ -1,4 +1,4 @@
-set_xmakever("2.3.6")
+set_xmakever("2.9.4")
 set_warnings("all", "error")
 set_languages("c99")
 add_cxflags("-Wno-error=deprecated-declarations", "-fno-strict-aliasing")

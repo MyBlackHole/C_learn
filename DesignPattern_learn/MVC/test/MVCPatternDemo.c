@@ -10,6 +10,7 @@
  */
 
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "StudentController.h"
 
@@ -42,5 +43,5 @@ int main(int argc, char const *argv[])
 	student_view_destroy(&view);
 	student_controller_destroy(&controller);
 
-	return 0;
+	return EXIT_SUCCESS;
 }

@@ -9,10 +9,11 @@
  *
  */
 
+#include "ctools.h"
+#include "cmap.h"
 #include "Shape.h"
 #include "ShapeStruct.h"
-#include "cmap.h"
-#include "ctools.h"
+#include "ShapeCache.h"
 
 static void *shape_map = NULL;
 
@@ -26,7 +27,7 @@ void shape_cache_load_cache(void)
 		shape_map = cmap_create();
 		struct Shape *circle = circle_create();
 		shape_set_id(circle, 1);
-		cmap_put(shape_map, 1, circle);
+		cmap_put((void *)shape_map, 1, (void *)circle);
 
 		struct Shape *square = square_create();
 		shape_set_id(square, 2);
