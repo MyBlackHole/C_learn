@@ -12,6 +12,7 @@
 #include "InitialContext.h"
 
 #include <stdio.h>
+#include <strings.h>
 
 #include "ctools.h"
 

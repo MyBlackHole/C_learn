@@ -164,8 +164,13 @@ typedef struct ControlFileData {
 int main(int argc, char *argv[])
 {
 	ControlFileData control_data;
-	int fd = open("/run/media/black/Data/Documents/c/demo/pg/pg_control",
-		      O_RDONLY);
+
+	if (argc != 2) {
+		printf("Usage: %s pg_control_file_path\n", argv[0]);
+		return EXIT_FAILURE;
+	}
+
+	int fd = open(argv[1], O_RDONLY);
 	if (fd < 0) {
 		perror("open pg_control failed");
 		return EXIT_FAILURE;
@@ -176,6 +181,7 @@ int main(int argc, char *argv[])
 		return EXIT_FAILURE;
 	}
 	printf("time: %ld\n", control_data.checkPointCopy.time);
+	printf("minRecoveryPoint: %ld\n", control_data.minRecoveryPoint);
 	close(fd);
 	return EXIT_SUCCESS;
 }

@@ -8,10 +8,13 @@
  *
  */
 
+#define _GNU_SOURCE
+
 #include <pthread.h>
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
+
 
 int demo_mutex_timedlock_main(void)
 {

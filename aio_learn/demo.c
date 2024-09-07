@@ -1,4 +1,3 @@
-#define _GNU_SOURCE // O_DIRECT
 #include <assert.h>
 #include <fcntl.h>
 #include <libaio.h>

@@ -14,6 +14,8 @@
 #include "CustomerStruct.h"
 #include "ctools.h"
 
+#include <strings.h>
+
 static const char *names[] = { "Rob", "Joe", "Julie" };
 
 extern struct Customer *null_customer_create(void);

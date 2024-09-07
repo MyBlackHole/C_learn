@@ -57,20 +57,20 @@ void test_2()
 	printf("%d", sum(1, 2));
 }
 
-void test_3()
-{
-	int a_1 = 1;
-	typeof(a_1) b_1 = 2;
-	printf("%d", b_1);
-}
-
-void test4()
-{
-	s2 a_1 = { 1, 2 };
-	typeof(s2 *) b_1 = &a_1;
-	printf("%d\n", str(a_1, b));
-	printf("%d\n", str1(b_1, b));
-}
+/*void test_3()*/
+/*{*/
+/*	int a_1 = 1;*/
+/*	typeof(a_1) b_1 = 2;*/
+/*	printf("%d", b_1);*/
+/*}*/
+/**/
+/*void test4()*/
+/*{*/
+/*	s2 a_1 = { 1, 2 };*/
+/*	typeof(s2 *) b_1 = &a_1;*/
+/*	printf("%d\n", str(a_1, b));*/
+/*	printf("%d\n", str1(b_1, b));*/
+/*}*/
 
 void test5()
 {

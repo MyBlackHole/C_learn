@@ -22,6 +22,7 @@
 #include <libudev.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <sys/select.h>
 
 int demo_udev_monitor_receive_device_main()
 {

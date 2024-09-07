@@ -23,8 +23,8 @@ static void add(char *dirname)
 	len = strlen(dirname);
 
 	/*
-     * Skip ., .., and /dev/fd.
-     */
+	* Skip ., .., and /dev/fd.
+	*/
 	if ((dirname[len - 1] == '.') &&
 	    (dirname[len - 2] == '/' ||
 	     (dirname[len - 2] == '.' && dirname[len - 3] == '/')))
@@ -81,8 +81,8 @@ static char *searchdir(char *dirname, struct stat *fdstatp)
 			_POSIX_PATH_MAX - devlen);
 
 		/*
-         * Skip aliases.
-         */
+		 * Skip aliases.
+		 */
 		if (strcmp(pathname, "/dev/stdin") == 0 ||
 		    strcmp(pathname, "/dev/stdout") == 0 ||
 		    strcmp(pathname, "/dev/stderr") == 0)

@@ -3,7 +3,6 @@
    A simple implementation of the unshare(1) command: unshare
    namespaces and execute a command.
 */
-#define _GNU_SOURCE
 
 #include <sched.h>
 #include <stdio.h>

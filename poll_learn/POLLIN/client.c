@@ -9,6 +9,7 @@
 #include <fcntl.h>
 #include <stdio.h>
 #include <string.h>
+#include <strings.h>
 
 #define CONTINUE() (errno == EAGAIN || errno == EINTR || errno == EINPROGRESS)
 

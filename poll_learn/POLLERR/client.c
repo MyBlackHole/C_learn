@@ -1,4 +1,3 @@
-
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
@@ -8,6 +7,7 @@
 #include <fcntl.h>
 #include <stdio.h>
 #include <string.h>
+#include <strings.h>
 
 #define ASYNC_CONTINUE() \
 	(errno == EAGAIN || errno == EINTR || errno == EINPROGRESS)

@@ -12,6 +12,8 @@
 #include "ExpressionStruct.h"
 #include "ctools.h"
 
+#include <strings.h>
+
 typedef struct {
 	const char *data;
 } priv_t;

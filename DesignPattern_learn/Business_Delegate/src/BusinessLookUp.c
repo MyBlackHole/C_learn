@@ -2,6 +2,8 @@
 
 #include "ctools.h"
 
+#include <strings.h>
+
 struct BusinessLookUp {};
 
 BusinessLookUp *business_look_up_create(void)

@@ -33,13 +33,14 @@ static struct file_operations fops = {
 
 static int __init decdev_init(void)
 {
+	// 0 代表动态分配 majorNumber
 	majorNumber = register_chrdev(0, DEVICE_NAME, &fops);
 	Message = kmalloc(200, GFP_KERNEL);
 	Length = 0;
 	if (majorNumber < 0) {
 		return majorNumber;
 	}
-	// 创建设备类
+	// 创建设备类 (创建设备文件时需要指定设备类, 用于自动创建设备节点)
 	decdevClass = class_create(CLASS_NAME);
 	if (IS_ERR(decdevClass)) {
 		unregister_chrdev(majorNumber, DEVICE_NAME);

@@ -1,4 +1,3 @@
-#define _GNU_SOURCE
 #include <errno.h> // errno
 #include <sched.h>
 #include <signal.h>

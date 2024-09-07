@@ -1,10 +1,11 @@
 set_xmakever("2.3.6")
 -- set_warnings("all", "error")
--- set_languages("c99", "cxx11")
+set_languages("c99")
 add_cxflags("-Wno-error=deprecated-declarations", "-fno-strict-aliasing")
 add_mxflags("-Wno-error=deprecated-declarations", "-fno-strict-aliasing")
 
 add_rules("mode.release", "mode.debug")
+add_defines("_GNU_SOURCE=1")
 
 -- 递归遍历获取所有层级子目录
 for _, dir in ipairs(os.dirs(os.curdir() .. "/**")) do
@@ -23,6 +24,14 @@ for _, dir in ipairs(os.dirs(os.curdir() .. "/**")) do
     --     -- print(dir_name)
     -- end
 end
+
+includes("@builtin/xpack")
+xpack("c_learn")
+    set_description("A cross-platform build utility based on Lua.")
+    set_license("Apache-2.0")
+    set_formats("rpm")
+    add_sourcefiles("unistd_learn/xmake.lua")
+    add_targets("unistd_learn")
 
 --
 -- If you want to known more usage about xmake, please see https://xmake.io

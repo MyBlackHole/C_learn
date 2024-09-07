@@ -2,6 +2,7 @@
  * 日志
  * 参数测试
  */
+#include <stdlib.h>
 #include <stdio.h>
 
 #define Logf(SERVER_ID, FORMAT, ...) \
@@ -10,5 +11,5 @@
 int demo_VA_ARGS_main(int argc, char *argv[])
 {
 	Logf(1, "main %d", 1);
-	return 0;
+	return EXIT_SUCCESS;
 }

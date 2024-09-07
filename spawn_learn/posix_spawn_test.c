@@ -1,8 +1,10 @@
 #include <errno.h>
 #include <spawn.h>
+#include <signal.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <getopt.h>
 #include <string.h>
 #include <unistd.h>
 #include <wait.h>

@@ -15,6 +15,8 @@
 #include "StudentView.h"
 #include "ctools.h"
 
+#include <strings.h>
+
 struct Dispatcher {
 	StudentView *student_view;
 	HomeView *home_view;

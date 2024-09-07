@@ -1,4 +1,5 @@
 #include <fcntl.h>
+#include <stdlib.h>
 #include <stdio.h>
 #include <sys/stat.h>
 #include <sys/types.h>
@@ -24,5 +25,5 @@ int demo_ftruncate1_main()
 	}
 
 	close(fd_in);
-	return 0;
+	return EXIT_SUCCESS;
 }
