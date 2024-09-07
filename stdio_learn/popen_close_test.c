@@ -26,8 +26,8 @@ int demo_popen_close_main(int argc, char *argv[])
 
 	printf("p_fp = %p\n", p_fp);
 	printf("close p_fp before waitpid\n");
-	/*ret = pclose(p_fp);*/
-	ret = fclose(p_fp);
+	ret = pclose(p_fp);
+	/*ret = fclose(p_fp);*/
 	if (ret == -1) {
 		printf("Failed to close pipe\n");
 		return EXIT_FAILURE;

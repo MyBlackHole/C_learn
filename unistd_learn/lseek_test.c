@@ -1,5 +1,3 @@
-#define _GNU_SOURCE
-
 #include <fcntl.h>
 #include <stdio.h>
 #include <sys/stat.h>
@@ -21,5 +19,5 @@ int demo_lseek_main(int argc, char *argv[])
 
 	close(fd_i);
 
-	exit(0);
+	exit(EXIT_SUCCESS);
 }

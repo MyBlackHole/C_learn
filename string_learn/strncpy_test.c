@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define NUM 10
+#define NUM 11
 
 int demo_strncpy_test_main()
 {
@@ -16,7 +16,8 @@ int demo_strncpy_test_main()
 
 	//    strncpy
 	char buf[NUM];
-	strncpy(buf, "hello world", sizeof(buf));
+	char src[] = "hello world";
+	strncpy(buf, src, sizeof(buf));
 	printf("%sok", buf);
 	return EXIT_SUCCESS;
 }

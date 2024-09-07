@@ -29,7 +29,7 @@ int demo_create1_main(int argc, char *argv[])
 // 传入的参数是 pthread_create 的第四个
 void *thread_main_1_1(void *arg)
 {
-	int index;
+	/*int index;*/
 	int cnt = *((int *)arg);
 	for (int index = 0; index < cnt; index++) {
 		sleep(SECONDS1);

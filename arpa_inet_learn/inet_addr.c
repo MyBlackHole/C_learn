@@ -21,6 +21,6 @@ int demo_inet_addr_main()
 
 	printf("StrIP: %s\n", strAddr);
 	int ret = inet_aton(strAddr, &netAddr);
-	printf("NetIP: 0x%x\n", netAddr.s_addr);
+	printf("ret = %d, NetIP: 0x%x\n", ret, netAddr.s_addr);
 	return 0;
 }

@@ -17,7 +17,6 @@ int main(int argc, char *argv[])
 	FILE *fps = stdin;
 	FILE *fpd = NULL;
 	char buf[BUFSIZE];
-	int ret = 0;
 	int read_size = 0;
 
 	fpd = fopen(PATH, "w");

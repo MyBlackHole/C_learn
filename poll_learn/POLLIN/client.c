@@ -101,7 +101,7 @@ int connection_refused()
 		return EXIT_FAILURE;
 	}
 
-	struct pollfd pfd;
+	/*struct pollfd pfd = {0};*/
 	while (1) {
 		read_status = read_is_ready(sockfd, 1000);
 		if (!read_status) {
@@ -115,7 +115,7 @@ int connection_refused()
 			if (CONTINUE()) {
 				continue;
 			}
-			fprintf(stderr, "recv: error: %m\n", errno);
+			fprintf(stderr, "recv: error: %s\n", strerror(errno));
 			perror("recv: error");
 			break;
 		}

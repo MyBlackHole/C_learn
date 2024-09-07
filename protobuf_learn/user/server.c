@@ -33,7 +33,7 @@ int main()
 	listen(fd, 5);
 	struct sockaddr_in client_addr = { 0 };
 	int len = sizeof(client_addr);
-	int clientfd = accept(fd, (struct sockaddr *)&client_addr, &len);
+	int clientfd = accept(fd, (struct sockaddr *)&client_addr, (socklen_t *)&len);
 	if (clientfd < 0)
 		return -1;
 
@@ -57,7 +57,7 @@ int main()
 				break;
 			}
 			UserInfo *userInfo =
-				user_info__unpack(NULL, header.length, buf);
+				user_info__unpack(NULL, header.length, (const uint8_t *)buf);
 			if (!userInfo) {
 				printf("user_information__unpack is fail!\n");
 				continue;

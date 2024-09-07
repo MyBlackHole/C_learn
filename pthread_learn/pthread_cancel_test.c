@@ -11,14 +11,16 @@ static void *my_pthread_function1(void *arg)
 		printf("thread function, i: %d\n", i++);
 		sleep(1);
 	}
+	return NULL;
 }
 
 static void *my_pthread_function2(void *arg)
 {
-	int i = 0;
+	/*int i = 0;*/
 
 	while (1) {
 	}
+	return NULL;
 }
 
 int demo_pthread_cancel_main()
@@ -30,6 +32,7 @@ int demo_pthread_cancel_main()
 	
 	printf("pid: %d\n", pid);
 	pthread_create(&tid, NULL, my_pthread_function1, NULL);
+	(void)my_pthread_function2;
 
 	// 将线程分离, 为了可以自动释放资源
 	// 不然需要 pthread_join 等待线程结束后才能释放资源

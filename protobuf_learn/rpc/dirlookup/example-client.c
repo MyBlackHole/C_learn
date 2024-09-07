@@ -31,16 +31,16 @@ static void usage(void)
 	    "  --autoreconnect=MILLIS  Try to reconnect to the client if it fails.\n");
 }
 
-static void *xmalloc(size_t size)
-{
-	void *rv;
-	if (size == 0)
-		return NULL;
-	rv = malloc(size);
-	if (rv == NULL)
-		die("out-of-memory allocating %u bytes", (unsigned)size);
-	return rv;
-}
+/*static void *xmalloc(size_t size)*/
+/*{*/
+/*	void *rv;*/
+/*	if (size == 0)*/
+/*		return NULL;*/
+/*	rv = malloc(size);*/
+/*	if (rv == NULL)*/
+/*		die("out-of-memory allocating %u bytes", (unsigned)size);*/
+/*	return rv;*/
+/*}*/
 
 static protobuf_c_boolean is_whitespace(const char *text)
 {

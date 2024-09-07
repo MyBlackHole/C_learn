@@ -1,4 +1,3 @@
-#define _GNU_SOURCE /* See feature_test_macros(7) */
 #include <errno.h>
 #include <fcntl.h>
 #include <stdio.h>

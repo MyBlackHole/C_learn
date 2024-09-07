@@ -250,6 +250,7 @@ int main(int argc, char **argv)
 		address_type, name, (ProtobufCService *)&the_dir_lookup_service,
 		NULL);
 
+	(void)server;
 	for (;;)
 		protobuf_c_rpc_dispatch_run(protobuf_c_rpc_dispatch_default());
 	return 0;

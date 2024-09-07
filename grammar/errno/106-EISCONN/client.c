@@ -11,9 +11,10 @@
 
 int main(int argc, char **argv)
 {
-	int sockfd, n;
+	int sockfd;
 	char recvline[4096], sendline[4096];
 	struct sockaddr_in servaddr;
+	(void)recvline;
 
 	if (argc != 2) {
 		printf("usage: ./client <ipaddress>\n");

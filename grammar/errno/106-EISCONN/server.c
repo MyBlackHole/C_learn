@@ -13,8 +13,8 @@ int main(int argc, char **argv)
 {
 	int listenfd, connfd;
 	struct sockaddr_in servaddr;
-	char buff[4096];
-	int n;
+	/*char buff[4096];*/
+	/*int n;*/
 
 	if ((listenfd = socket(AF_INET, SOCK_STREAM, 0)) == -1) {
 		printf("create socket error: %s(errno: %d)\n", strerror(errno),

@@ -1,4 +1,5 @@
 #include <arpa/inet.h>
+#include <stdlib.h>
 #include <stdio.h>
 
 int demo_inet_ntop_main(void)
@@ -17,4 +18,5 @@ int demo_inet_ntop_main(void)
 	// 反转换
 	inet_ntop(AF_INET, (void *)&s, IPdotdec, 16);
 	printf("inet_ntop: %s\n", IPdotdec);
+	return EXIT_SUCCESS;
 }

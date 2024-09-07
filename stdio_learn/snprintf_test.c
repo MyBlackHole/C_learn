@@ -18,7 +18,7 @@ int demo_snprintf_main()
 	printf("string:\n%s\ncharacter count = %d\n", buffer, ret);
 
 	// 读取字符串并存储在 buffer 中
-	buf = snprintf(port, 6, "%d\n", int1);
+	buf = snprintf(port, 10, "%d\n", int1);
 
 	// 输出 buffer及字符数
 	printf("string:\n%s\ncharacter count = %d\n", port, buf);

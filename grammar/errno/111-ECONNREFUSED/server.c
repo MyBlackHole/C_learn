@@ -11,10 +11,10 @@
 
 int main(int argc, char **argv)
 {
-	int listenfd, connfd;
+	int listenfd;
 	struct sockaddr_in servaddr;
-	char buff[4096];
-	int n;
+	/*char buff[4096];*/
+	/*int n;*/
 
 	if ((listenfd = socket(AF_INET, SOCK_STREAM, 0)) == -1) {
 		printf("create socket error: %s(errno: %d)\n", strerror(errno),
@@ -43,5 +43,5 @@ int main(int argc, char **argv)
 	printf("======waiting for client's request======\n");
 	getc(stdin);
 	close(listenfd);
-	return 0;
+	return EXIT_SUCCESS;
 }

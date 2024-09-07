@@ -13,7 +13,7 @@ typedef struct IncFileData IncFileData;
 
 int demo_typedef_main(void)
 {
-	int fd_tmp = -1;
+	/*int fd_tmp = -1;*/
 	// char file_path = "/home/black/pg_control.0.block";
 	// char* buff = (char*)malloc(0xa00000 + sizeof(IncFileData));
 	// read(int fd, void *buf, size_t nbytes)

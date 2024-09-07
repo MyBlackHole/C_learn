@@ -39,16 +39,21 @@ inline static int read_is_ready2(int p_fd, const unsigned int time_ms)
 
 int demo_popen_main(int argc, char *argv[])
 {
-	FILE *p_fp;
+	FILE *p_fp = NULL;
 	char buffer[BUFFER_SIZE];
 	int64_t nbytes = 0;
 	int ready = 0;
+	int ret = 0;
 
 	if (argc != 3) {
 		printf("Usage: %s test command\n", argv[0]);
 		return EXIT_FAILURE;
 	}
 	p_fp = popen(argv[2], "r");
+	if (p_fp == NULL) {
+		printf("popen failed: %s(errno: %d)\n", strerror(errno), errno);
+		return EXIT_FAILURE;
+	}
 	/*p_fp = popen("cat /etc/passwd", "r");*/
 	// 打印所有内容
 	if (strcmp(argv[1], "fgets") == 0) {
@@ -75,9 +80,18 @@ int demo_popen_main(int argc, char *argv[])
 		}
 	}
 
-	fclose(p_fp);
-	sleep(30);
-	/*pclose(p_fp);*/
+	/*ret = fclose(p_fp);*/
+	/*if (ret != 0) {*/
+	/*	printf("fclose failed: %s(errno: %d)\n", strerror(errno), errno);*/
+	/*	return EXIT_FAILURE;*/
+	/*}*/
 	/*sleep(30);*/
+	ret = pclose(p_fp);
+	if (ret != 0) {
+		printf("fclose failed: %s(errno: %d)\n", strerror(errno),
+		       errno);
+		return EXIT_FAILURE;
+	}
+	sleep(30);
 	return EXIT_SUCCESS;
 }

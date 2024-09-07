@@ -17,8 +17,8 @@ int main(int argc, char *argv[])
 	socklen_t clnt_addr_size;
 	int str_len;
 	int write_len = 1024 * 1024 * 10;
-	int ret_len = 0;
-	char *write_str = malloc(write_len);
+	/*int ret_len = 0;*/
+	/*char *write_str = malloc(write_len);*/
 
 	char message[1000];
 	if (argc != 2) {

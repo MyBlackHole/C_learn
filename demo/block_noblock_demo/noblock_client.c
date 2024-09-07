@@ -11,7 +11,6 @@ int main(int argc, char *argv[])
 {
 	int sd;
 	struct sockaddr_in serv_addr;
-	int str_len;
 
 	char message[] = "block test message";
 	if (argc != 3) {

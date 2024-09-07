@@ -8,7 +8,7 @@
 
 int demo_memcmp_test_main()
 {
-	int ret;
+	/*int ret;*/
 	const char src[NUM] = "BlackHole";
 	char dest[NUM] = "BlackHole";
 

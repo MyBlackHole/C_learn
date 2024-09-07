@@ -10,7 +10,7 @@
  */
 int demo_inet_ntoa_main()
 {
-	int i;
+	/*int i;*/
 	char lo[] = "127.0.0.1";
 	struct in_addr netAddr;
 
@@ -21,6 +21,6 @@ int demo_inet_ntoa_main()
 
 	printf("StrIP: %s\n", strAddr);
 	int ret = inet_aton(strAddr, &netAddr);
-	printf("NetIP: 0x%x\n", netAddr.s_addr);
-	return 0;
+	printf("ret = %d, NetIP: 0x%x\n", ret, netAddr.s_addr);
+	return EXIT_SUCCESS;
 }

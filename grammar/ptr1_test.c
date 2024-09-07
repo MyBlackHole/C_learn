@@ -17,6 +17,7 @@ int demo_ptr1_main(int argc, char *argv[])
 	// p_num1 所占用内存的值指向的 int 内存不允许改变
 	int num1 = 5;
 	const int *p_num1 = &num1;
+	(void)p_num1;
 	num1 = 6;
 	// 可以
 	p_num1 = (int *)1;
@@ -32,6 +33,7 @@ int demo_ptr1_main(int argc, char *argv[])
 	const int *p_num2 = &num2;
 	// 可以
 	p_num2 = &num3;
+	(void)p_num2;
 
 	// 指针常量
 	//

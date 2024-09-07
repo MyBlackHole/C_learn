@@ -9,7 +9,6 @@
 /* 返回值：如果这个函数成功，函数的返回值非零，如果输入地址不正确则会返回零; */
 int demo_inet_aton_main()
 {
-	int i;
 	char lo[] = "127.0.0.1";
 	struct in_addr netAddr;
 
@@ -20,6 +19,6 @@ int demo_inet_aton_main()
 	printf("StrIP: %s\n", strAddr);
 
 	int ret = inet_aton(strAddr, &netAddr);
-	printf("NetIP: 0x%x\n", netAddr.s_addr);
+	printf("ret = %d, NetIP: 0x%x\n", ret, netAddr.s_addr);
 	return 0;
 }

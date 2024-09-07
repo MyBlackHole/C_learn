@@ -11,8 +11,9 @@
 
 int main(int argc, char **argv)
 {
-	int sockfd, n;
+	int sockfd;
 	char recvline[4096], sendline[4096];
+	(void)recvline;
 	struct sockaddr_in servaddr;
 
 	if (argc != 2) {

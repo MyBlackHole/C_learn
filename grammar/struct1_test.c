@@ -1,6 +1,7 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 struct Line {
 	uint32_t length;
@@ -36,6 +37,7 @@ int demo_struct1_main()
 
 	struct Line *line_ptr =
 		(struct Line *)malloc(sizeof(struct Line) + length);
+	memset(line_ptr, 0, sizeof(struct Line) + length);
 
 	// 代表 contents 100 char
 	line_ptr->length = 100;

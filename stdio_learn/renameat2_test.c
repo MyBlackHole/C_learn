@@ -7,7 +7,7 @@
 
 int test_rename_noreplace()
 {
-	int oldfd, newfd;
+	int oldfd, newfd = -1;
 	char oldpath[] = "/run/media/black/Data/Documents/c/Debug/oldfile1";
 	char newpath[] = "/run/media/black/Data/Documents/c/Debug/newfile1";
 	oldfd = open(oldpath, O_RDONLY);
@@ -28,7 +28,7 @@ int test_rename_noreplace()
 
 int test_rename_exchange()
 {
-	int oldfd, newfd;
+	int oldfd, newfd = -1;
 	char oldpath[] = "/run/media/black/Data/Documents/c/Debug/oldfile2";
 	char newpath[] = "/run/media/black/Data/Documents/c/Debug/newfile2";
 	oldfd = open(oldpath, O_RDONLY);
@@ -57,7 +57,7 @@ int test_rename_exchange()
 
 int test_rename_whiteout()
 {
-	int oldfd, newfd;
+	int oldfd, newfd = -1;
 	char oldpath[] = "/opt/aio/Debug/oldfile3";
 	char newpath[] = "/opt/aio/Debug/newfile3";
 	oldfd = open(oldpath, O_RDONLY);

@@ -2,11 +2,21 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
+/*typedef struct Line3 {*/
+/*	uint8_t data[0];*/
+/*	uint32_t x;*/
+/*	uint32_t y;*/
+/*} Line3;*/
 typedef struct Line3 {
-	uint8_t data[0];
-	uint32_t x;
-	uint32_t y;
+	union {
+		uint8_t data[8];
+		struct {
+			uint32_t x;
+			uint32_t y;
+		};
+	};
 } Line3;
 
 int demo_struct3_main()

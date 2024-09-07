@@ -13,10 +13,10 @@ int demo_getaddrinfo1_main(int argc, char *argv[])
 	struct addrinfo hints;
 	struct addrinfo *result;
 	struct addrinfo *next;
-	int sfd;
+	/*int sfd;*/
 	int ret;
-	size_t len;
-	ssize_t nread;
+	/*size_t len;*/
+	/*ssize_t nread;*/
 	char buf[BUF_SIZE];
 	struct sockaddr_in *ipv4;
 	struct sockaddr_in6 *ipv6;

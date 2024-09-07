@@ -17,7 +17,6 @@ int demo_popen_w_main(int argc, char *argv[])
 	FILE *p_fp;
 	int fd_in;
 	char buffer[BUFFER_SIZE];
-	int64_t nbytes = 0;
 	int read_len = 0;
 	int write_len = 0;
 
