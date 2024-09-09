@@ -1,4 +1,5 @@
 // 信号量用于互斥实例
+#include <stdlib.h>
 #include <pthread.h>
 #include <semaphore.h>
 #include <stdio.h>
@@ -35,7 +36,7 @@ void *thread_fun2(void *arg)
 	return NULL;
 }
 
-int main(void)
+int demo_sem_post_main(void)
 {
 	pthread_t tid1, tid2;
 
@@ -51,5 +52,5 @@ int main(void)
 
 	sem_destroy(&sem); // 销毁信号量
 
-	return 0;
+	return EXIT_SUCCESS;
 }

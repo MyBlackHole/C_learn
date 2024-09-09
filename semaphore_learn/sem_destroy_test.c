@@ -1,29 +1,11 @@
+#include <stdlib.h>
 #include <pthread.h>
 #include <semaphore.h>
 #include <stdio.h>
 
-void *read(void *arg);
-void *accu(void *arg);
 static sem_t sem_one;
 static sem_t sem_two;
 static int num;
-
-int main(int argc, char const *argv[])
-{
-	pthread_t id_t1, id_t2;
-	sem_init(&sem_one, 0, 0);
-	sem_init(&sem_two, 0, 1);
-
-	pthread_create(&id_t1, NULL, read, NULL);
-	pthread_create(&id_t2, NULL, accu, NULL);
-
-	pthread_join(id_t1, NULL);
-	pthread_join(id_t2, NULL);
-
-	sem_destroy(&sem_one);
-	sem_destroy(&sem_two);
-	return 0;
-}
 
 void *read(void *arg)
 {
@@ -48,4 +30,21 @@ void *accu(void *arg)
 	}
 	printf("Result: %d \n", sum);
 	return NULL;
+}
+
+int demo_sem_destroy_main(int argc, char const *argv[])
+{
+	pthread_t id_t1, id_t2;
+	sem_init(&sem_one, 0, 0);
+	sem_init(&sem_two, 0, 1);
+
+	pthread_create(&id_t1, NULL, read, NULL);
+	pthread_create(&id_t2, NULL, accu, NULL);
+
+	pthread_join(id_t1, NULL);
+	pthread_join(id_t2, NULL);
+
+	sem_destroy(&sem_one);
+	sem_destroy(&sem_two);
+	return EXIT_SUCCESS;
 }

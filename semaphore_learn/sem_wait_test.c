@@ -1,4 +1,5 @@
 // 信号量用于同步实例
+#include <stdlib.h>
 #include <pthread.h>
 #include <semaphore.h>
 #include <stdio.h>
@@ -27,7 +28,7 @@ void *pthread_p(void *arg) // 此线程打印ch的值
 	}
 }
 
-int main(int argc, char *argv[])
+int demo_sem_wait_main(int argc, char *argv[])
 {
 	pthread_t tid1, tid2;
 	sem_init(&sem_g, 0, 0); // 初始化信号量为0
@@ -41,5 +42,5 @@ int main(int argc, char *argv[])
 	pthread_join(tid1, NULL);
 	pthread_join(tid2, NULL);
 
-	return 0;
+	return EXIT_SUCCESS;
 }
