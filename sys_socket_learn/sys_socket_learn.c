@@ -11,7 +11,7 @@ static demo_t demos[] = {
 	DEMO_MAIN_ITEM(listen_fork),
 	DEMO_MAIN_ITEM(listen),
 	DEMO_MAIN_ITEM(shutdown),
-
+	DEMO_MAIN_ITEM(AF_LOCAL),
 };
 int main(int argc, char **argv)
 {

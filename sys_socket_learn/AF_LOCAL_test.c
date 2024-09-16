@@ -6,7 +6,7 @@
 #include <sys/un.h>
 #include <unistd.h>
 
-int main()
+int demo_AF_LOCAL_main()
 {
 	int fd = socket(AF_LOCAL, SOCK_STREAM, 0);
 
@@ -43,4 +43,5 @@ int main()
 
 	close(cfd);
 	close(fd);
+	return EXIT_SUCCESS;
 }

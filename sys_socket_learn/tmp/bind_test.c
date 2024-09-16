@@ -32,5 +32,5 @@ int main(int argc, char **argv)
 {
 	int sockfd = make_socket(12345);
 	(void)sockfd;
-	exit(0);
+	exit(EXIT_SUCCESS);
 }

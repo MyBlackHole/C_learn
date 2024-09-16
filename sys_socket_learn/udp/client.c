@@ -1,4 +1,5 @@
 #include <arpa/inet.h>
+#include <stdlib.h>
 #include <stdio.h>
 #include <sys/socket.h>
 #include <sys/types.h>
@@ -13,7 +14,7 @@ int main()
 	struct sockaddr_in addr;
 	addr.sin_family = AF_INET;
 	addr.sin_port = htons(1324);
-	addr.sin_addr.s_addr = inet_addr("192.168.0.143");
+	addr.sin_addr.s_addr = inet_addr("127.0.0.1");
 
 	while (1) {
 		printf("请输入一个数字：");
@@ -33,4 +34,5 @@ int main()
 		}
 	}
 	close(sockfd);
+	return EXIT_SUCCESS;
 }

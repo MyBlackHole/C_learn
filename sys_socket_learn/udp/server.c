@@ -1,4 +1,5 @@
 #include <arpa/inet.h>
+#include <stdlib.h>
 #include <stdio.h>
 #include <sys/socket.h>
 #include <sys/types.h>
@@ -35,4 +36,5 @@ int main()
 		       len);
 	}
 	close(sockfd);
+	return EXIT_SUCCESS;
 }
