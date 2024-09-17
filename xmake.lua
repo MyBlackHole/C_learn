@@ -7,6 +7,9 @@ add_mxflags("-Wno-error=deprecated-declarations", "-fno-strict-aliasing")
 add_rules("mode.release", "mode.debug")
 add_defines("_GNU_SOURCE=1")
 
+-- -- 设置依赖包目录
+-- add_packagedirs("packages")
+
 -- 递归遍历获取所有层级子目录
 for _, dir in ipairs(os.dirs(os.curdir() .. "/**")) do
 -- -- 递归遍历获取子目录

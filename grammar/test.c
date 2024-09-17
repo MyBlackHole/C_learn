@@ -85,5 +85,6 @@ int demo_test_main(int argc, char *argv[])
 	// printf("%d", (1100 & 0x7FFFFFFF) % 5);
 	int i_1 = 3;
 	assert(i_1 > 4);
+	(void)i_1;
 	return 0;
 }

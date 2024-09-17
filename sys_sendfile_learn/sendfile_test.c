@@ -20,7 +20,8 @@ int demo_sendfile_main(int argc, char *argv[])
 			basename(argv[0]));
 		return EXIT_FAILURE;
 	}
-
+	int ret = 0;
+	(void)ret;
 	const char *ip = argv[1];
 	int port = atoi(argv[2]);
 	const char *file_name = argv[3];
@@ -45,7 +46,7 @@ int demo_sendfile_main(int argc, char *argv[])
 	}
 
 	;
-	int ret = bind(sock, (struct sockaddr *)&address, sizeof(address));
+	ret = bind(sock, (struct sockaddr *)&address, sizeof(address));
 	assert(ret != -1);
 
 	ret = listen(sock, 6);

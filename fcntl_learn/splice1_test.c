@@ -28,6 +28,7 @@ int demo_splice1_main(int argc, char *argv[])
 	printf("errno:%d\n", errno);
 
 	assert(ret != -1);
+	printf("splice write %ld bytes to file %s\n", ret, argv[1]);
 
 	close(filefd);
 	return 0;

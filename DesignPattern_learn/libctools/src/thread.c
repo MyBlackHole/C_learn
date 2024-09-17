@@ -1,6 +1,8 @@
 #include "thread.h"
 
 #include <assert.h>
+#include <stdlib.h>
+#include <stdio.h>
 #include <string.h>
 #include <unistd.h>
 
@@ -33,8 +35,16 @@ static void *thread_run(void *data)
 Thread *thread_create(Thread *thread, int (*fn)(void *), void *data,
 		      const char *name)
 {
+	if (name == NULL) {
+		perror("check name\n");
+		exit(EXIT_FAILURE);
+	}
 	thread->func = fn;
 	thread->data = data;
+	if (strlen(name) >= THREAD_FILE_NAME_LENGTH) {
+		perror("name too long\n");
+		exit(EXIT_FAILURE);
+	}
 	strncpy(thread->name, name, THREAD_FILE_NAME_LENGTH);
 	int retval = pthread_create(&thread->id, NULL, thread_run, thread);
 	if (retval) {

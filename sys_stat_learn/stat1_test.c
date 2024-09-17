@@ -27,7 +27,7 @@ int demo_stat1_main(int argc, char *argv[])
 {
 	if (argc < 2) {
 		fprintf(stderr, "<path>");
-		exit(1);
+		exit(EXIT_FAILURE);
 	}
 
 	fprintf(stdout, "%c\n", ftype(argv[1]));

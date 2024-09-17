@@ -11,7 +11,8 @@ int demo_fwrite_main(int argc, char *argv[])
 	char *path = dirname(argv[0]);
 	char *file_path = malloc(strlen(name) + strlen(path));
 	strcpy(file_path, path);
-	strncat(file_path, name, strlen(name));
+	// 多加一个空格
+	strncat(file_path, name, strlen(name) + 1);
 
 	printf("%s\n", file_path);
 	fp_tmp = fopen(file_path, "w");

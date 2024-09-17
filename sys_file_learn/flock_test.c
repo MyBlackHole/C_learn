@@ -13,7 +13,7 @@ int main()
 {
 	char path[] = "/tmp/file.txt";
 	int my_fd = 0;
-	int count;
+	int count = 0;
 
 	my_fd = open(path, O_WRONLY | O_CREAT);
 	if (my_fd < 0) {
@@ -39,5 +39,5 @@ int main()
 
 	close(my_fd);
 
-	return 0;
+	return EXIT_SUCCESS;
 }

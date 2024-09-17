@@ -87,13 +87,22 @@ static void myfunc2(void)
 	myfunc3();
 }
 
+#define MAX_CALLS 100;
+
 void myfunc(int ncalls)
 {
+	static int call_count = MAX_CALLS;
+	if (call_count <= 0) {
+		printf("Maximum number of calls reached.\n");
+		exit(EXIT_FAILURE);
+	}
+
 	if (ncalls > 1) {
-		myfunc(ncalls - 1);
+		/*myfunc(ncalls - 1);*/
 	} else {
 		myfunc2();
 	}
+	return;
 }
 
 int main(int argc, char *argv[])

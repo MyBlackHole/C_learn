@@ -15,9 +15,10 @@ int demo_strncpy_test_main()
 	//    printf("%sok", buf);
 
 	//    strncpy
-	char buf[NUM];
 	char src[] = "hello world";
-	strncpy(buf, src, sizeof(buf));
+	char *buf = malloc(strlen(src) + 1);
+	strncpy(buf, src, strlen(src) + 1);
 	printf("%sok", buf);
+	free(buf);
 	return EXIT_SUCCESS;
 }

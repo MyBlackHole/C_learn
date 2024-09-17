@@ -26,7 +26,7 @@ int demo_splice_main(int argc, char *argv[])
 	assert(filefd > 0);
 
 	int pipefd_stdout[2];
-	size_t ret;
+	size_t ret = 0;
 
 	ret = pipe(pipefd_stdout);
 	assert(ret != -1);
@@ -57,6 +57,7 @@ int demo_splice_main(int argc, char *argv[])
 	printf("errno:%d\n", errno);
 
 	assert(ret != -1);
+	(void)ret;
 
 	close(filefd);
 	close(pipefd_stdout[0]);

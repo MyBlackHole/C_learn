@@ -1,4 +1,5 @@
 #include <assert.h>
+#include <stdlib.h>
 #include <signal.h>
 #include <stdio.h>
 
@@ -17,4 +18,5 @@ int demo_assert_test_main()
 	// assert(1);
 	assert(0);
 	printf("正常结束了");
+	return EXIT_SUCCESS;
 }

@@ -8,8 +8,8 @@ int demo_fs_scandir_main(int argc, char *argv[])
 {
 	struct uv_fs_s req;
 	struct uv_dirent_s entry;
-	int num;
-	int ret;
+	int num = 0;
+	int ret = 0;
 
 	num = uv_fs_scandir(NULL, &req, "/tmp", 0, NULL);
 	for (int i = 0; i < num; i++) {
@@ -18,7 +18,7 @@ int demo_fs_scandir_main(int argc, char *argv[])
 		assert(ret == 0); /* Can't fail in libuv */
 
 		filename = entry.name;
-		printf("%s\n", filename);
+		printf("%s, ret=%d\n", filename, ret);
 	}
 	return EXIT_SUCCESS;
 }
