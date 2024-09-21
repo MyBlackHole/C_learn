@@ -21,6 +21,7 @@ static demo_t demos[] = {
 	DEMO_MAIN_ITEM(setsid),
 	DEMO_MAIN_ITEM(pipe2),
 	DEMO_MAIN_ITEM(pipe_2),
+	DEMO_MAIN_ITEM(pipe_1),
 	DEMO_MAIN_ITEM(read),
 	DEMO_MAIN_ITEM(read1),
 	DEMO_MAIN_ITEM(fork),
