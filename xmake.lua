@@ -1,8 +1,9 @@
 set_xmakever("2.9.4")
 set_warnings("all", "error")
 set_languages("c99")
-add_cxflags("-Wno-error=deprecated-declarations", "-fno-strict-aliasing")
-add_mxflags("-Wno-error=deprecated-declarations", "-fno-strict-aliasing")
+
+-- add_cxflags("-Wno-error=deprecated-declarations", "-fno-strict-aliasing")
+-- add_mxflags("-Wno-error=deprecated-declarations", "-fno-strict-aliasing")
 
 add_rules("mode.release", "mode.debug")
 add_defines("_GNU_SOURCE=1")
