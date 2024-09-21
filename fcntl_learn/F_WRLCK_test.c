@@ -51,7 +51,7 @@ int lock_set(int fd_tmp, short type)
 	} /* end of switch */
 	return EXIT_SUCCESS;
 }
-int demo_WRLCK_main(void)
+int demo_F_WRLCK_main(void)
 {
 	int fd_tmp;
 
