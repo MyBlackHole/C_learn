@@ -4,7 +4,7 @@
 #include <string.h>
 #include <unistd.h>
 
-#include "ev.h"
+#include <ev.h>
 #include "net.h"
 #include "lsquic_utils.h"
 
@@ -49,18 +49,17 @@ static int send_packets_out(void *ctx, const struct lsquic_out_spec *specs,
 			    unsigned n_specs)
 {
 	struct msghdr msg;
-	int *sockfd;
+	State *state = ctx;
 	unsigned n;
 
 	memset(&msg, 0, sizeof(msg));
-	sockfd = (int *)ctx;
 
 	for (n = 0; n < n_specs; ++n) {
 		msg.msg_name = (void *)specs[n].dest_sa;
 		msg.msg_namelen = sizeof(struct sockaddr_in);
 		msg.msg_iov = specs[n].iov;
 		msg.msg_iovlen = specs[n].iovlen;
-		if (sendmsg(*sockfd, &msg, 0) < 0) {
+		if (sendmsg(state->sockfd, &msg, 0) < 0) {
 			perror("cannot send\n");
 			break;
 		}
@@ -228,9 +227,33 @@ void create_event_loop(State *state)
 	ev_init(&state->conn_watcher, process_conns_cb);
 }
 
+/*struct ssl_ctx_st *get_ssl_ctx(void *peer_ctx, const struct sockaddr *local)*/
+/*{*/
+/*	State *state = peer_ctx;*/
+/*	return state->ssl_ctx;*/
+/*}*/
+/**/
+/*void create_ssl_ctx(State *state)*/
+/*{*/
+/*	SSL_CTX *ssl_ctx = SSL_CTX_new(TLS_method());*/
+/*    if (!ssl_ctx)*/
+/*    {*/
+/*        printf("cannot allocate SSL context");*/
+/*        exit(EXIT_FAILURE);*/
+/*    }*/
+/*	SSL_CTX_set_min_proto_version(ssl_ctx, TLS1_3_VERSION);*/
+/*	SSL_CTX_set_max_proto_version(ssl_ctx, TLS1_3_VERSION);*/
+/*    SSL_CTX_set_default_verify_paths(ssl_ctx);*/
+/**/
+/*	state->ssl_ctx = ssl_ctx;*/
+/*}*/
+
 int main(int argc, char **argv)
 {
 	State state;
+	struct lsquic_engine_settings engine_settings;
+
+	/*create_ssl_ctx(&state);*/
 	state.sockfd = create_sock(argv[1], atoi(argv[2]), &state.local_sas);
 	create_event_loop(&state);
 
@@ -245,16 +268,27 @@ int main(int argc, char **argv)
 
 	struct lsquic_engine_api engine_api = {
 		.ea_packets_out = send_packets_out,
-		.ea_packets_out_ctx = (void *)&state.sockfd,
+		.ea_packets_out_ctx = (void *)&state,
 		.ea_stream_if = &stream_if,
 		.ea_stream_if_ctx = (void *)&state,
+		/*.ea_get_ssl_ctx = get_ssl_ctx*/
 	};
 
+	lsquic_engine_init_settings(&engine_settings, 0);
+	engine_settings.es_ecn = LSQUIC_DF_ECN;
+
+	/*   engine_api.ea_settings = &engine_settings;*/
+	/*engine_api.ea_pmi = NULL;*/
+	/*engine_api.ea_pmi_ctx = NULL;*/
+	// 必须要 (handshake: handshake: error:00000001:invalid library (0):OPENSSL_internal:unknown library, ret_code -1)
+	engine_api.ea_alpn = "echo";
+
 	state.engine = lsquic_engine_new(0, &engine_api);
+
 	state.conn = lsquic_engine_connect(state.engine, N_LSQVER,
 					   (struct sockaddr *)&state.local_sas,
 					   (struct sockaddr *)&peer_addr,
-					   (void *)&state.sockfd, NULL, NULL, 0,
+					   (void *)&state, NULL, NULL, 0,
 					   NULL, 0, NULL, 0);
 
 	if (!state.conn) {
