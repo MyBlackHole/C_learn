@@ -11,7 +11,7 @@
 #define PORT 8000
 #define NUM 64
 
-int demo_listen_fork_main(int argc, char *argv[])
+int demo_listen_fork_exec_main(int argc, char *argv[])
 {
 	int ret;
 	char client_addr[INET_ADDRSTRLEN];
@@ -55,18 +55,15 @@ int demo_listen_fork_main(int argc, char *argv[])
 		// setsid();
 		// close(listen_fd);
 
-		fprintf(stdout, "client, pid:%d\n", getpid());
-		while (1) {
-			struct sockaddr_in cli;
-			socklen_t len = sizeof(struct sockaddr_in);
-			client_fd = accept(listen_fd, (struct sockaddr *)&cli,
-					   &len);
-			ip_addr = cli.sin_addr;
-			inet_ntop(AF_INET, &ip_addr, client_addr,
-				  INET_ADDRSTRLEN);
-			printf("child, Client Address is : %s\n", client_addr);
-			close(client_fd);
-		}
+		char listen_fd_str[2];
+		listen_fd_str[0] = listen_fd + '0';
+		listen_fd_str[1] = '\0';
+		fprintf(stdout, "client, pid:%d, listen_fd:%d\n", getpid(), listen_fd);
+
+		char *child_args[] = {"/run/media/black/Data/Documents/c/build/linux/x86_64/debug/sys_socket_learn", "accept", listen_fd_str, NULL };
+		execv("/run/media/black/Data/Documents/c/build/linux/x86_64/debug/sys_socket_learn", child_args);
+		perror("execv error");
+		fprintf(stdout, "client, exit\n");
 		goto RET;
 	}
 
@@ -89,17 +86,12 @@ ERR:
 	return EXIT_FAILURE;
 }
 
-// OUPUT: (只是父监听连接)
-// parent, pid:1234
-// client, pid:1235
-// // xmake run sys_socket_learn connect 8000
-// parent, Client Address is : 127.0.0.1
-
-// OUPUT: (父子进程监听连接)
-// parent, pid:1234
-// client, pid:1235
-// parent, Client Address is : 127.0.0.1
+// OUPUT:
+// xmake run sys_socket_learn listen_fork_exec
+// parent, pid:104843
+// client, pid:104845, listen_fd:6
+// Waiting for client to connect...
 // // xmake run sys_socket_learn connect 8000
 // parent, Client Address is : 127.0.0.1
 // // xmake run sys_socket_learn connect 8000
-// child, Client Address is : 127.0.0.1
+// Client Address is : 127.0.0.1
