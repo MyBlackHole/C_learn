@@ -31,6 +31,12 @@ int demo_listen_main(int argc, char *argv[])
 		goto ERR;
 	}
 
+	ret = setsockopt(listen_fd, SOL_SOCKET, SO_REUSEADDR, &ret, sizeof(int));
+	if (ret < 0) {
+		perror("Setsockopt Error");
+		goto ERR;
+	}
+
 	ret = listen(listen_fd, 64);
 	if (ret < 0) {
 		perror("Listen Error");
@@ -51,3 +57,17 @@ ERR:
 	close(listen_fd);
 	return EXIT_FAILURE;
 }
+
+// OUPUT: (未加监听复用)
+// // 第一个运行正常
+// xmake run sys_socket_learn listen
+// // 第二个运行异常
+// xmake run sys_socket_learn listen
+// Bind Error: Address already in use
+//
+// OUPUT: (加 SO_REUSEADDR (地址复用))
+// // 第一个运行正常
+// xmake run sys_socket_learn listen
+// // 第二个运行异常
+// xmake run sys_socket_learn listen
+// Bind Error: Address already in use

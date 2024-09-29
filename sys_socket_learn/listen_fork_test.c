@@ -60,9 +60,20 @@ int demo_listen_fork_main(int argc, char *argv[])
 
 	if (pid == 0) {
 		// setsid();
-		close(listen_fd);
+		// close(listen_fd);
+
 		fprintf(stdout, "client, pid:%d\n", getpid());
-		my_sleep();
+		while (1) {
+			struct sockaddr_in cli;
+			socklen_t len = sizeof(struct sockaddr_in);
+			client_fd = accept(listen_fd, (struct sockaddr *)&cli,
+					   &len);
+			ip_addr = cli.sin_addr;
+			inet_ntop(AF_INET, &ip_addr, client_addr,
+				  INET_ADDRSTRLEN);
+			printf("child, Client Address is : %s\n", client_addr);
+			close(client_fd);
+		}
 		goto RET;
 	}
 
@@ -74,7 +85,7 @@ int demo_listen_fork_main(int argc, char *argv[])
 		client_fd = accept(listen_fd, (struct sockaddr *)&cli, &len);
 		ip_addr = cli.sin_addr;
 		inet_ntop(AF_INET, &ip_addr, client_addr, INET_ADDRSTRLEN);
-		printf("Client Address is : %s\n", client_addr);
+		printf("parent, Client Address is : %s\n", client_addr);
 		close(client_fd);
 	}
 RET:
@@ -84,3 +95,18 @@ ERR:
 	close(listen_fd);
 	return EXIT_FAILURE;
 }
+
+// OUPUT: (只是父监听连接)
+// parent, pid:1234
+// client, pid:1235
+// // xmake run sys_socket_learn connect 8000
+// parent, Client Address is : 127.0.0.1
+
+// OUPUT: (父子进程监听连接)
+// parent, pid:1234
+// client, pid:1235
+// parent, Client Address is : 127.0.0.1
+// // xmake run sys_socket_learn connect 8000
+// parent, Client Address is : 127.0.0.1
+// // xmake run sys_socket_learn connect 8000
+// child, Client Address is : 127.0.0.1

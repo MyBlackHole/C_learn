@@ -10,5 +10,6 @@ DEMO_MAIN_DECL(listen_fork);
 DEMO_MAIN_DECL(listen);
 DEMO_MAIN_DECL(shutdown);
 DEMO_MAIN_DECL(AF_LOCAL);
+DEMO_MAIN_DECL(connect);
 
 #endif

@@ -12,6 +12,7 @@ static demo_t demos[] = {
 	DEMO_MAIN_ITEM(listen),
 	DEMO_MAIN_ITEM(shutdown),
 	DEMO_MAIN_ITEM(AF_LOCAL),
+	DEMO_MAIN_ITEM(connect),
 };
 int main(int argc, char **argv)
 {
