@@ -13,5 +13,6 @@ DEMO_MAIN_DECL(rwlock1);
 DEMO_MAIN_DECL(rwlock2);
 DEMO_MAIN_DECL(rwlock3);
 DEMO_MAIN_DECL(pthread_cancel);
+DEMO_MAIN_DECL(pthread_attr_setinheritsched);
 
 #endif

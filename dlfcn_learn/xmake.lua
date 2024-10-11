@@ -3,7 +3,7 @@ local dir_path = path.relative(os.curdir(), os.projectdir())
 target("add")
     set_kind("shared")
     add_files("add.c")
-    add_cflags("-fPIC", "-g", "-Wall")
+    add_cflags("-fPIC", "-g")
 
 
 -- 遍历获取文件

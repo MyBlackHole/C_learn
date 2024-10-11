@@ -30,6 +30,9 @@ int demo_link_main()
 }
 
 // Output:
+// ❯ ls -alh build/linux/x86_64/debug/file1.txt build/linux/x86_64/debug/file2.txt
+// Permissions Size User  Date Modified Name
+// .rw-r--r--    13 black 31 Jul 14:43   build/linux/x86_64/debug/file1.txt
 // ❯ xmake run unistd_learn link
 // File file1.txt has been linked to file2.txt.
 // ❯ ls -alh build/linux/x86_64/debug/file1.txt build/linux/x86_64/debug/file2.txt
