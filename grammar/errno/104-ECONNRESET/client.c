@@ -81,3 +81,31 @@ int main()
 
 	return 0;
 }
+
+// output:
+// xmake run errno_104_client
+// connect to server successsend: 1000, erron: 0, Success
+// send: 1000, erron: 11, Resource temporarily unavailable
+// send: 1000, erron: 11, Resource temporarily unavailable
+// send: 1000, erron: 11, Resource temporarily unavailable
+// send: 1000, erron: 11, Resource temporarily unavailable
+// send: 1000, erron: 11, Resource temporarily unavailable
+// send: 1000, erron: 11, Resource temporarily unavailable
+// send: 1000, erron: 11, Resource temporarily unavailable
+// send: 1000, erron: 11, Resource temporarily unavailable
+// send: 1000, erron: 11, Resource temporarily unavailable
+// send: 1000, erron: 11, Resource temporarily unavailable
+// send: 1000, erron: 11, Resource temporarily unavailable
+// send: 1000, erron: 11, Resource temporarily unavailable
+// send: 1000, erron: 11, Resource temporarily unavailable
+// send: 1000, erron: 11, Resource temporarily unavailable
+// send: 1000, erron: 11, Resource temporarily unavailable
+// send: 1000, erron: 11, Resource temporarily unavailable
+// send: 1000, erron: 11, Resource temporarily unavailable
+// send: 1000, erron: 11, Resource temporarily unavailable
+// send: 1000, erron: 11, Resource temporarily unavailable
+// send: 1000, erron: 11, Resource temporarily unavailable
+// send: 1000, erron: 11, Resource temporarily unavailable
+// send: -1, erron: 104, Connection reset by peer
+// send: -1, erron: 32, Broken pipe
+// send: -1, erron: 32, Broken pipe

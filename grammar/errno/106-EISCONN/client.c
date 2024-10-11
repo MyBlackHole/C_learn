@@ -56,3 +56,9 @@ int main(int argc, char **argv)
 
 	return 0;
 }
+
+// output:
+// xmake run errno_106_client 127.0.0.1
+// start 未关闭再次连接:
+// j
+// connect error: Transport endpoint is already connected(errno: 106)

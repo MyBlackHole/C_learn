@@ -11,6 +11,13 @@ struct Line {
 	uint8_t data[];
 };
 
+struct Line2 {
+	uint32_t length;
+
+	// 以下两属性共用内存空间
+	uint8_t contents[10];
+};
+
 struct ObBackupCommonHeader {
 	uint8_t COMMON_HEADER_VERSION;
 	uint8_t MACRO_DATA_HEADER_VERSION;
@@ -59,7 +66,10 @@ int demo_struct2_main()
 	struct Line line;
 	int length = 100;
 
-	printf("%ld\n", sizeof(line));
+	struct Line2 line2;
+
+	printf("line: %ld\n", sizeof(line));
+	printf("line2: %ld\n", sizeof(line2));
 	printf("ObBackupCommonHeader %ld\n",
 	       sizeof(struct ObBackupCommonHeader));
 	printf("ObTenantLogArchiveStatus %ld\n",
@@ -75,7 +85,10 @@ int demo_struct2_main()
 	return EXIT_SUCCESS;
 }
 
-// out:
-// 4
+// OUTPUT:
+// line: 4
+// line2: 16
+// ObBackupCommonHeader 48
+// ObTenantLogArchiveStatus 80
 // contents: 100
 // data: 100

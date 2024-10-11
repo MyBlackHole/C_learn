@@ -73,3 +73,13 @@ int main()
 
 	return EXIT_SUCCESS;
 }
+
+// output:
+// xmake run errno_104_server
+//
+// 运行客户端后(xmake run errno_104_client)
+// accept a connection from 127.0.0.1:49344
+// accept a connection from 127.0.0.1:49344
+// but now I will sleep 15 second, then exit
+// read 19000 bytes from client
+// write 19000 bytes to client

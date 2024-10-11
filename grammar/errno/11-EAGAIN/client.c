@@ -82,7 +82,8 @@ int main()
 	return 0;
 }
 
-// ❯ ./out/obj/errno_learn/EAGAIN/client
+// output:
+// xmake run errno_11_client
 // connect to server successsend: 1024000, erron: 0, Success
 // send: 1024000, erron: 0, Success
 // send: 1024000, erron: 0, Success
@@ -102,3 +103,5 @@ int main()
 // send: -1, erron: 11, Resource temporarily unavailable
 // send: -1, erron: 11, Resource temporarily unavailable
 // send: -1, erron: 104, Connection reset by peer
+// send: -1, erron: 32, Broken pipe
+// send: -1, erron: 32, Broken pipe

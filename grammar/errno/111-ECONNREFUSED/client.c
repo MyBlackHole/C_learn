@@ -53,3 +53,7 @@ int main(int argc, char **argv)
 	close(sockfd);
 	return 0;
 }
+
+// output:
+// xmake run errno_111_client 127.0.0.1
+// connect error: Connection refused(errno: 111)

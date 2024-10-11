@@ -56,3 +56,9 @@ int main(int argc, char **argv)
 	printf("======close======\n");
 	return 0;
 }
+
+// output:
+// xmake run errno_106_server
+// ====== start accept ======
+// 执行客户端连接后(xmake run errno_106_client 127.0.0.1)
+// accept: 7

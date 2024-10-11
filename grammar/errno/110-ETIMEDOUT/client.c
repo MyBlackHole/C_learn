@@ -52,3 +52,7 @@ int main(int argc, char **argv)
 	close(sockfd);
 	return 0;
 }
+
+// output:
+// xmake run errno_110_client 10.6.66.23
+// connect error: Connection timed out(errno: 110)
