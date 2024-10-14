@@ -6,6 +6,7 @@
 
 static demo_t demos[] = {
 	DEMO_MAIN_ITEM(uud_generate),
+	DEMO_MAIN_ITEM(uuid_unparse),
 };
 int main(int argc, char **argv)
 {

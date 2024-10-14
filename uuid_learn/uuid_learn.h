@@ -3,5 +3,6 @@
 
 #include "../lib/demo.h"
 DEMO_MAIN_DECL(uud_generate);
+DEMO_MAIN_DECL(uuid_unparse);
 
 #endif
