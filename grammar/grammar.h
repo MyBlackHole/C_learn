@@ -26,6 +26,7 @@ DEMO_MAIN_DECL(struct);
 DEMO_MAIN_DECL(struct1);
 DEMO_MAIN_DECL(struct2);
 DEMO_MAIN_DECL(struct3);
+DEMO_MAIN_DECL(struct4);
 DEMO_MAIN_DECL(static);
 DEMO_MAIN_DECL(const);
 DEMO_MAIN_DECL(func);

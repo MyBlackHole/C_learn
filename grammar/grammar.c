@@ -20,6 +20,7 @@ static demo_t demos[] = {
 	DEMO_MAIN_ITEM(define),	       DEMO_MAIN_ITEM(typedef),
 	DEMO_MAIN_ITEM(hex_to_int),    DEMO_MAIN_ITEM(static_local),
 	DEMO_MAIN_ITEM(static_global), DEMO_MAIN_ITEM(uint641),
+	DEMO_MAIN_ITEM(struct4),
 };
 int main(int argc, char **argv)
 {
