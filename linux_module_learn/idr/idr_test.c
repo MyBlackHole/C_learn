@@ -4,8 +4,6 @@
 #include <linux/slab.h>
 #include <linux/idr.h>
 
-MODULE_LICENSE("GPL");
-
 struct node {
 	char ch;
 };
@@ -58,3 +56,4 @@ static void __exit testidr_exit(void)
 
 module_init(testidr_init);
 module_exit(testidr_exit);
+MODULE_LICENSE("GPL");

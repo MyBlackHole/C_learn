@@ -1,6 +1,10 @@
 # configfs
 
 ```shell
+mount -t configfs none /sys/kernel/config/
+```
+
+```shell
 sudo insmod configfs_sample.ko
 ❯ ls -alh /sys/kernel/config/
 Permissions Size User Date Modified Name

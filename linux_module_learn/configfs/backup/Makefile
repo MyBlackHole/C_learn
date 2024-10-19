@@ -1,4 +1,4 @@
-obj-m:= AAAA1111.o
+obj-m:=backup.o
 
 CURRENT_PATH:=$(shell pwd)
 LINUX_KERNEL:=$(shell uname -r)

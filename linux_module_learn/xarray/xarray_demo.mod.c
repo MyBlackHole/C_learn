@@ -17,7 +17,8 @@ BUILD_LTO_INFO;
 MODULE_INFO(vermagic, VERMAGIC_STRING);
 MODULE_INFO(name, KBUILD_MODNAME);
 
-__visible struct module __this_module __section(".gnu.linkonce.this_module") = {
+__visible struct module __this_module
+__section(".gnu.linkonce.this_module") = {
 	.name = KBUILD_MODNAME,
 	.init = init_module,
 #ifdef CONFIG_MODULE_UNLOAD
@@ -26,10 +27,12 @@ __visible struct module __this_module __section(".gnu.linkonce.this_module") = {
 	.arch = MODULE_ARCH_INIT,
 };
 
-#ifdef CONFIG_RETPOLINE
+#ifdef CONFIG_MITIGATION_RETPOLINE
 MODULE_INFO(retpoline, "Y");
 #endif
 
+
 MODULE_INFO(depends, "");
+
 
 MODULE_INFO(srcversion, "920B3E0CB73E631C1F8EDE7");
