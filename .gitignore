@@ -26,4 +26,9 @@ build/
 # MacOS Cache
 .DS_Store
 
-
+# Linux modules
+*.ko
+*.mod
+*.symvers
+*.order
+*.mod.c
