@@ -9,6 +9,7 @@ static demo_t demos[] = {
 	DEMO_MAIN_ITEM(alias),	     DEMO_MAIN_ITEM(offsetof),
 	DEMO_MAIN_ITEM(builtin_clz), DEMO_MAIN_ITEM(weak_alias),
 	DEMO_MAIN_ITEM(attribute1),  DEMO_MAIN_ITEM(destructor),
+	DEMO_MAIN_ITEM(sync_fetch_and_add),
 };
 
 int main(int argc, char **argv)

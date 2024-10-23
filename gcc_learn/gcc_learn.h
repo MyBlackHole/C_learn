@@ -10,5 +10,6 @@ DEMO_MAIN_DECL(builtin_clz);
 DEMO_MAIN_DECL(weak_alias);
 DEMO_MAIN_DECL(attribute1);
 DEMO_MAIN_DECL(destructor);
+DEMO_MAIN_DECL(sync_fetch_and_add);
 
 #endif
