@@ -7,7 +7,7 @@
 #include <sys/ipc.h>
 #include <sys/shm.h>
 
-#define PATHNAME "."
+#define PATHNAME "/tmp/sys_mman_learn_ipc"
 #define PROJ_ID 0x6666
 
 int CreateShm(int size);

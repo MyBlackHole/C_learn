@@ -29,5 +29,5 @@ int CreateShm(int size)
 }
 int GetShm(int size)
 {
-	return CommShm(size, IPC_CREAT);
+	return CommShm(size, IPC_EXCL);
 }
