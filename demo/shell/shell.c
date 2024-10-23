@@ -44,7 +44,6 @@ int main(int argc, char *argv[])
 	int port;
 	int one_c;
 	int option_index = 0;
-	static int lopt = 1;
 
 	static struct option long_options[] = {
 		{ "host", required_argument, NULL, 'h' },
@@ -66,11 +65,11 @@ int main(int argc, char *argv[])
 
 		case 'p':
 			port = atoi(optarg);
-			printf("option port %s\n", optarg);
+			printf("option port %d\n", port);
 			break;
 		case 'h':
 			host = optarg;
-			printf("option host %s\n", optarg);
+			printf("option host %s\n", host);
 			break;
 		default:
 			printf(" 未知 %c \n", one_c);

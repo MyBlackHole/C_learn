@@ -70,7 +70,6 @@ static char *read_stdin()
 
 #define setopt(opt, key, var)                   \
 	{                                       \
-		char tmp = 0;                   \
 		size_t len = strlen(key) + 1;   \
 		for (int i = 0; i < len; ++i) { \
 			tmp = *opt++;           \
@@ -89,6 +88,7 @@ int main(int argc, char **argv)
 	{
 		char *opt = NULL;
 		char tmp = 0;
+		(void)tmp;
 
 		opt = *argv++; // unused
 

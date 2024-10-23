@@ -488,7 +488,7 @@ int main(void)
 	int client_sock = -1;
 	struct sockaddr_in client_name;
 	socklen_t client_name_len = sizeof(client_name);
-	pthread_t newthread;
+	/*pthread_t newthread;*/
 
 	server_sock = startup(&port);
 	printf("httpd running on port %d\n", port);

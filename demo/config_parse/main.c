@@ -21,7 +21,7 @@
 
 #include "config.h"
 
-int main(int argc, char **argv)
+int main(int argc, char *argv[])
 {
 	if (argc < 2) {
 		printf("error, please run with config file\r\n");
