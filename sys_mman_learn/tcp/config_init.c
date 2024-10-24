@@ -1,4 +1,5 @@
 #include "config.h"
+#include "config.h"
 #include <signal.h>
 #include <time.h>
 #include <stdio.h>
@@ -19,12 +20,9 @@ static void sig_handler(int sig)
 
 int main(int argc, char *argv[])
 {
-	config_t *p_config = NULL;
+	struct bwlimit *p_bw = NULL;
 	int total_bandwidth = 0;
-	int online_num = 0;
-	long timeout_interval = 5 * USEC_PER_SEC;
 	int loop_interval = 1;
-	time_t current_time = 0;
 	int average_bandwidth = 0;
 
 	if (argc != 2) {
@@ -46,6 +44,11 @@ int main(int argc, char *argv[])
 	signal(SIGSEGV, sig_handler);
 	signal(SIGKILL, sig_handler);
 
+	for (int i = 0; i < p_configs->total_config; i++) {
+		p_bw = &p_configs->bwlimits[i];
+		bandwidth_limit_init(p_bw, 0, COPY_BUFLEN);
+	}
+
 	while (true) {
 		if (p_configs->total_bandwidth <= 0) {
 			printf("total bandwidth is 0, sleep %d\n",
@@ -53,29 +56,23 @@ int main(int argc, char *argv[])
 			sleep(loop_interval);
 			continue;
 		}
-		online_num = 0;
 		average_bandwidth = 0;
-		current_time = uclock();
-		for (int i = 0; i < p_configs->total_config; i++) {
-			p_config = &p_configs->configs[i];
-			if (p_config->current_time + timeout_interval >=
-			    current_time) {
-				online_num++;
-			}
-		}
-		if (online_num == 0) {
-			printf("online_num is 0, sleep %d\n", loop_interval);
+		if (p_configs->config_num == 0) {
+			printf("config_num is 0, sleep %d\n", loop_interval);
 			sleep(loop_interval);
 			continue;
 		}
 
-		average_bandwidth = p_configs->total_bandwidth / online_num;
+		average_bandwidth =
+			p_configs->total_bandwidth / p_configs->config_num;
 		for (int i = 0; i < p_configs->total_config; i++) {
-			p_config = &p_configs->configs[i];
-			p_config->bandwidth = average_bandwidth;
+			p_bw = &p_configs->bwlimits[i];
+			if (p_bw->state) {
+				bandwidth_reset_limit(p_bw, average_bandwidth);
+			}
 		}
 
-		printf("online clients: %d\n", online_num);
+		printf("online clients: %d\n", p_configs->config_num);
 		sleep(loop_interval);
 	}
 	free_configs(p_configs);

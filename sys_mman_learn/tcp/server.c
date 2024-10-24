@@ -54,29 +54,31 @@ int main(int argc, char **argv)
 
 	printf("======waiting for client's request======\n");
 
-	connfd = accept(listenfd, (struct sockaddr *)NULL, NULL);
-	if (connfd == -1) {
-		printf("accept socket error: %s(errno: %d)", strerror(errno),
-		       errno);
-		goto err_out;
-	}
-
 	while (true) {
-		sendlen = send(connfd, buff, MAXLINE, 0);
-		if (sendlen < 0) {
-			printf("send socket error: %s(errno: %d)\n",
+		connfd = accept(listenfd, (struct sockaddr *)NULL, NULL);
+		if (connfd == -1) {
+			printf("accept socket error: %s(errno: %d)",
 			       strerror(errno), errno);
-			close(connfd);
-			break;
+			goto err_out;
 		}
-		if (sendlen == 0) {
-			printf("client closed\n");
-			close(connfd);
-			break;
+
+		while (true) {
+			sendlen = send(connfd, buff, MAXLINE, 0);
+			if (sendlen < 0) {
+				printf("send socket error: %s(errno: %d)\n",
+				       strerror(errno), errno);
+				close(connfd);
+				break;
+			}
+			if (sendlen == 0) {
+				printf("client closed\n");
+				close(connfd);
+				break;
+			}
+			printf("send %d bytes to client\n", sendlen);
 		}
-		printf("send %d bytes to client\n", sendlen);
+		close(connfd);
 	}
-	close(connfd);
 err_out:
 	close(listenfd);
 	return ret;

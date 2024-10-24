@@ -1,4 +1,5 @@
 #include "comm.h"
+#include <signal.h>
 #include <linux/limits.h>
 #include <stdbool.h>
 #include <stdio.h>
@@ -13,6 +14,20 @@
 #include "config.h"
 
 #define MAXLINE 4096
+static configs_t *p_configs = NULL;
+static int client_id = -1;
+
+static void sig_handler(int sig)
+{
+	if (p_configs != NULL) {
+		if (client_id > 0) {
+			put_config(p_configs, client_id);
+		}
+		chmdt_configs(p_configs);
+	}
+	printf("signal %d received, exit...\n", sig);
+	exit(sig);
+}
 
 int main(int argc, char **argv)
 {
@@ -20,13 +35,17 @@ int main(int argc, char **argv)
 	int sockfd;
 	char recvline[MAXLINE] = { 0 };
 	int recvlen = 0;
-	int client_id = 0;
 	char *ipaddress = NULL;
 	int port = 0;
 	struct sockaddr_in servaddr;
 
-	configs_t *p_configs = NULL;
-	config_t *p_config = NULL;
+	struct bwlimit *p_bw = NULL;
+
+	// 信号处理函数
+	signal(SIGINT, sig_handler);
+	signal(SIGTERM, sig_handler);
+	signal(SIGSEGV, sig_handler);
+	signal(SIGKILL, sig_handler);
 
 	if (argc != 4) {
 		printf("usage: ./client <ipaddress> <port> <client_id>\n");
@@ -43,9 +62,12 @@ int main(int argc, char **argv)
 		return EXIT_FAILURE;
 	}
 
-	p_config = get_config(p_configs, client_id);
-
-	cnofig_init(p_config);
+	p_bw = get_config(p_configs, client_id);
+	if (p_bw == NULL) {
+		printf("get_config error\n");
+		ret = -1;
+		goto err_shmdt;
+	}
 
 	sockfd = socket(AF_INET, SOCK_STREAM, 0);
 	if (sockfd < 0) {
@@ -73,7 +95,6 @@ int main(int argc, char **argv)
 	}
 
 	while (true) {
-		config_get_dowload_speed(p_config);
 		recvlen = recv(sockfd, recvline, MAXLINE, 0);
 		if (recvlen < 0) {
 			printf("send msg error: %s(errno: %d)\n",
@@ -86,8 +107,8 @@ int main(int argc, char **argv)
 			break;
 		}
 		recvline[recvlen] = 0;
-		printf("recv len: %d\n", recvlen);
-		config_update_bandwidth(p_config, recvlen);
+		printf("rate limit: %ld, recv len: %d\n", p_bw->rate, recvlen);
+		bandwidth_limit(p_bw, recvlen);
 	}
 err_socket:
 	close(sockfd);

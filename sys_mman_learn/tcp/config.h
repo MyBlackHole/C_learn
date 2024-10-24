@@ -3,6 +3,7 @@
 
 #include <sys/time.h>
 #include <pthread.h>
+#include "bandwidth.h"
 
 #define USEC_PER_SEC 1000000
 
@@ -14,20 +15,20 @@
 
 #define MAX_CONFIG 10
 
-long uclock();
-
 struct config {
 	int master;
 	int bandwidth;
 	int remaining_bandwidth;
 	long current_time;
+	long start_time;
 };
 
 typedef struct config config_t;
 
-int cnofig_init(config_t *config);
-int config_update_bandwidth(config_t *config, int bandwidth);
-int config_get_dowload_speed(config_t *config);
+// long uclock();
+// int cnofig_init(config_t *config);
+// int config_update_bandwidth(config_t *config, int bandwidth);
+// int config_get_dowload_speed(config_t *config);
 
 struct configs {
 	pthread_mutex_t mutex;
@@ -36,15 +37,17 @@ struct configs {
 	pthread_condattr_t cond_attr;
 	int total_bandwidth;
 	int shmid;
+	int config_num;
 	int total_config;
-	struct config configs[MAX_CONFIG];
+	struct bwlimit bwlimits[MAX_CONFIG];
 };
 
 typedef struct configs configs_t;
 
 configs_t *alloc_configs(int total_bandwidth);
 configs_t *get_configs();
-config_t *get_config(configs_t *configs, int index);
+struct bwlimit *get_config(configs_t *configs, int index);
+void put_config(configs_t *configs, int index);
 void chmdt_configs(configs_t *configs);
 void free_configs(configs_t *configs);
 

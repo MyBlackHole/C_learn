@@ -11,6 +11,7 @@ DEMO_MAIN_ENV_DECL(localtime2);
 DEMO_MAIN_ENV_DECL(gettimeofday);
 DEMO_MAIN_ENV_DECL(gettimeofday1);
 DEMO_MAIN_ENV_DECL(gettimeofday2);
+DEMO_MAIN_ENV_DECL(gettimeofday3);
 DEMO_MAIN_ENV_DECL(clock_gettime);
 
 #endif

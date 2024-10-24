@@ -1,7 +1,7 @@
 target("sys_mman_learn_tcp_lib")
     set_kind("static")
-    -- add_includedirs("include", {public = true})
-    add_files("comm.c", "config.c")
+    add_defines("__USE_GNU")
+    add_files("comm.c", "config.c", "bandwidth.c")
 
 target("sys_mman_learn_tcp_client")
     set_kind("binary")
