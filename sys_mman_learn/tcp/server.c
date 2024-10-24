@@ -17,6 +17,15 @@ int main(int argc, char **argv)
 	struct sockaddr_in servaddr;
 	char buff[MAXLINE];
 	int sendlen;
+	int port = 0;
+
+	if (argc != 2) {
+		printf("usage: ./server <port>\n");
+		return EXIT_FAILURE;
+	}
+
+	port = atoi(argv[1]);
+
 	listenfd = socket(AF_INET, SOCK_STREAM, 0);
 	if (listenfd < 0) {
 		printf("create socket error: %s(errno: %d)\n", strerror(errno),
@@ -27,7 +36,7 @@ int main(int argc, char **argv)
 	memset(&servaddr, 0, sizeof(servaddr));
 	servaddr.sin_family = AF_INET;
 	servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
-	servaddr.sin_port = htons(6666);
+	servaddr.sin_port = htons(port);
 
 	ret = bind(listenfd, (struct sockaddr *)&servaddr, sizeof(servaddr));
 	if (ret == -1) {
@@ -66,9 +75,8 @@ int main(int argc, char **argv)
 			break;
 		}
 		printf("send %d bytes to client\n", sendlen);
-
-		/*close(connfd);*/
 	}
+	close(connfd);
 err_out:
 	close(listenfd);
 	return ret;

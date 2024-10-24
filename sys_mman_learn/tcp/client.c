@@ -20,19 +20,33 @@ int main(int argc, char **argv)
 	int sockfd;
 	char recvline[MAXLINE] = { 0 };
 	int recvlen = 0;
+	int client_id = 0;
+	char *ipaddress = NULL;
+	int port = 0;
 	struct sockaddr_in servaddr;
 
-	config_t *p_config = NULL;
 	configs_t *p_configs = NULL;
-	int shmid = GetShm(sizeof(configs_t));
-	p_configs = (configs_t *)shmat(shmid, NULL, 0);
-	p_config = &p_configs->config[TEST1];
-	(void)p_config;
+	config_t *p_config = NULL;
 
-	if (argc != 2) {
-		printf("usage: ./client <ipaddress>\n");
+	if (argc != 4) {
+		printf("usage: ./client <ipaddress> <port> <client_id>\n");
 		return EXIT_FAILURE;
 	}
+
+	ipaddress = argv[1];
+	port = atoi(argv[2]);
+	client_id = atoi(argv[3]);
+
+	p_configs = get_configs();
+	if (p_configs == NULL) {
+		printf("get_configs error\n");
+		return EXIT_FAILURE;
+	}
+
+	p_config = get_config(p_configs, client_id);
+
+	cnofig_init(p_config);
+
 	sockfd = socket(AF_INET, SOCK_STREAM, 0);
 	if (sockfd < 0) {
 		printf("create socket error: %s(errno: %d)\n", strerror(errno),
@@ -43,8 +57,8 @@ int main(int argc, char **argv)
 
 	memset(&servaddr, 0, sizeof(servaddr));
 	servaddr.sin_family = AF_INET;
-	servaddr.sin_port = htons(6666);
-	ret = inet_pton(AF_INET, argv[1], &servaddr.sin_addr);
+	servaddr.sin_port = htons(port);
+	ret = inet_pton(AF_INET, ipaddress, &servaddr.sin_addr);
 	if (ret <= 0) {
 		printf("inet_pton error for %s\n", argv[1]);
 		goto err_socket;
@@ -59,18 +73,25 @@ int main(int argc, char **argv)
 	}
 
 	while (true) {
-		printf("recv server msg: \n");
+		config_get_dowload_speed(p_config);
 		recvlen = recv(sockfd, recvline, MAXLINE, 0);
 		if (recvlen < 0) {
 			printf("send msg error: %s(errno: %d)\n",
 			       strerror(errno), errno);
-			ret = -1;
+			ret = recvlen;
 			goto err_socket;
 		}
+		if (recvlen == 0) {
+			printf("server closed\n");
+			break;
+		}
+		recvline[recvlen] = 0;
+		printf("recv len: %d\n", recvlen);
+		config_update_bandwidth(p_config, recvlen);
 	}
 err_socket:
 	close(sockfd);
 err_shmdt:
-	shmdt(p_configs);
+	chmdt_configs(p_configs);
 	return ret;
 }
