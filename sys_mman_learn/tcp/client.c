@@ -20,7 +20,7 @@ static int client_id = -1;
 static void sig_handler(int sig)
 {
 	if (p_configs != NULL) {
-		if (client_id > 0) {
+		if (client_id >= 0) {
 			put_config(p_configs, client_id);
 		}
 		chmdt_configs(p_configs);
