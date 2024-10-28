@@ -7,20 +7,20 @@
 
 static int wait_mark;
 
-void stop()
+static void stop()
 {
 	printf("stop()\n");
 	wait_mark = 0;
 }
 
-void waiting()
+static void waiting()
 {
 	while (wait_mark != 0) {
 		;
 	}
 }
 
-int main(int argc, const char *argv[])
+int demo_kill_main(int argc, const char *argv[])
 {
 	pid_t p1, p2;
 	signal(SIGINT, stop); // 这里被取消注释了

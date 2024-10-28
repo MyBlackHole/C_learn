@@ -15,7 +15,7 @@ static void sig_int(int signo)
 		printf("\n interrupt SIGQUIT\n");
 	}
 }
-int main(void)
+int demo_sigsuspend_main(void)
 {
 	sigset_t newmask, oldmask, zeromask;
 	if (signal(SIGINT, sig_int) == SIG_ERR) {

@@ -18,7 +18,7 @@ static void pr_ids(char *name)
 	fflush(stdout);
 }
 
-int main(void)
+int demo_signal1_main(void)
 {
 	char c;
 	pid_t pid;

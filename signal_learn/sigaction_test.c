@@ -12,7 +12,7 @@
 		exit(EXIT_FAILURE); \
 	} while (0)
 
-void handler(int num)
+static void handler(int num)
 {
 	if (num == SIGUSR1) {
 		printf("解除阻塞成功recv num:%d \n", num);
@@ -27,7 +27,7 @@ void handler(int num)
 		exit(0);
 	}
 }
-int main(void)
+int demo_sigaction_main(void)
 {
 	pid_t pid;
 	struct sigaction act;

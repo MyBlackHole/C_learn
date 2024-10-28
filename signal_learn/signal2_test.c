@@ -9,14 +9,17 @@
 #define BUFSIZE 10 // 流量速率
 #define MAXTOKEN 1024 // 令牌上限
 static volatile int token = 0; // 积攒的令牌数量
+
 static void alarm_handler(int s)
 {
 	alarm(1);
 	if (token < MAXTOKEN) {
-		token++; // 每秒钟增加令
+		// 每秒钟增加令
+		token++;
 	}
 }
-int main(int argc, char **argv)
+
+int demo_signal2_main(int argc, char **argv)
 {
 	int fd = -1;
 	char buf[BUFSIZE] = "";
@@ -39,11 +42,15 @@ int main(int argc, char **argv)
 	signal(SIGALRM, alarm_handler);
 	alarm(1);
 	while (1) {
-		while (token <= 0) { // 如果令牌数量不足则等待添加令牌
-			pause(); // 因为添加令牌是通过信号实现的，所以可以使用 pause(2)
-				// 实现非忙等（通知法）
+		// 如果令牌数量不足则等待添加令牌
+		while (token <= 0) {
+			// 因为添加令牌是通过信号实现的，所以可以使用 pause(2)
+			// 实现非忙等（通知法）
+			pause();
 		}
-		token--; // 每次读取 BUFSIZE 个字节的数据时要扣减令牌
+
+		// 每次读取 BUFSIZE 个字节的数据时要扣减令牌
+		token--;
 		while ((readsize = read(fd, buf, BUFSIZE)) < 0) {
 			if (readsize < 0) {
 				if (EINTR == errno) {

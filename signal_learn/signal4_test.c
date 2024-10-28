@@ -17,7 +17,7 @@ static void my_alarm(int signo)
 	alarm(1);
 }
 
-int main(void)
+int demo_signal4_main(void)
 {
 	struct passwd *ptr;
 	signal(SIGALRM, my_alarm);

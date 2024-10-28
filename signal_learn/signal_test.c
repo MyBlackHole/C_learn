@@ -7,7 +7,7 @@
 #define MAXLINE 4048
 
 static void sig_int(int signo);
-int main(int argc, char **argv)
+int demo_signal_main(int argc, char **argv)
 {
 	char buf[MAXLINE]; // from apue.h referrnce
 	pid_t pid;

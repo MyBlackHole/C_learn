@@ -9,7 +9,7 @@
  * sigprocmask: 设置或者查询信号启用状态
  */
 
-int main()
+int demo_sigprocmask_main()
 {
 	sigset_t set;
 	sigprocmask(0, NULL, &set);

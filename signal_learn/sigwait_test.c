@@ -4,7 +4,7 @@
 
 static void sig_alrm(int signo);
 static void sig_init(int signo);
-int main()
+int demo_sigwait_main()
 {
 	sigset_t set;
 	int sig;

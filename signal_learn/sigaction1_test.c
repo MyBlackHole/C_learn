@@ -1,8 +1,9 @@
+#include <stdlib.h>
 #include <signal.h>
 #include <stdio.h>
 #include <unistd.h>
 
-void timeout(int sig)
+static void timeout(int sig)
 {
 	if (sig == SIGALRM) {
 		puts("Time out!");
@@ -10,7 +11,7 @@ void timeout(int sig)
 	alarm(2);
 }
 
-int main(int argc, char *argv[])
+int demo_sigaction1_main(int argc, char *argv[])
 {
 	// int i;
 	struct sigaction act;
@@ -25,5 +26,5 @@ int main(int argc, char *argv[])
 		puts("wait...");
 		sleep(100);
 	}
-	return 0;
+	return EXIT_SUCCESS;
 }

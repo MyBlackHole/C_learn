@@ -2,22 +2,23 @@
 #include <stdio.h>
 #include <unistd.h>
 
-void timeout(int sig) // 信号处理器
+static void timeout(int sig) // 信号处理器
 {
 	if (sig == SIGALRM) {
 		puts("Time out!");
 	}
-	alarm(2); // 为了每隔 2 秒重复产生 SIGALRM 信号，在信号处理器中调用 alarm
-		// 函数
+	// 为了每隔 2 秒重复产生 SIGALRM 信号
+	// 在信号处理器中调用 alarm 函数
+	alarm(2);
 }
 
-void keycontrol(int sig) // 信号处理器
+static void keycontrol(int sig) // 信号处理器
 {
 	if (sig == SIGINT)
 		puts("CTRL+C pressed");
 }
 
-int main(int argc, char *argv[])
+int demo_signal5_main(int argc, char *argv[])
 {
 	int i;
 	signal(SIGALRM, timeout); // 注册信号及相应处理器
