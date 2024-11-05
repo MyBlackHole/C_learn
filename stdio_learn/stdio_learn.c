@@ -23,6 +23,7 @@ static demo_t demos[] = {
 	DEMO_MAIN_ITEM(fdopen1),    DEMO_MAIN_ITEM(buf_test),
 	DEMO_MAIN_ITEM(renameat2),  DEMO_MAIN_ITEM(popen),
 	DEMO_MAIN_ITEM(popen_w),    DEMO_MAIN_ITEM(popen_close),
+	DEMO_MAIN_ITEM(rename),
 };
 
 int main(int argc, char **argv)
