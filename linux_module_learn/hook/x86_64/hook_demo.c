@@ -2,6 +2,7 @@
 #include <linux/init.h>
 #include <linux/file.h>
 #include <linux/kernel.h>
+#include <linux/version.h>
 #include <linux/module.h>
 #include <linux/kallsyms.h>
 #include <linux/delay.h>
@@ -14,7 +15,44 @@ static syscall_fn_t orig_open;
 static syscall_fn_t orig_openat;
 static syscall_fn_t orig_write;
 
+/*#if 0*/
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 7, 0)
+#include <linux/kprobes.h>
+
+typedef unsigned long (*kallsyms_lookup_name_t)(const char *name);
+kallsyms_lookup_name_t my_kallsyms_lookup_name;
+
+static char symbol[KSYM_NAME_LEN] = "kallsyms_lookup_name";
+module_param_string(symbol, symbol, KSYM_NAME_LEN, 0644);
+
+/* For each probe you need to allocate a kprobe structure */
+static struct kprobe kp = {
+	.symbol_name = symbol,
+};
+
+unsigned long lookup_name(const char *name);
+unsigned long lookup_name(const char *name)
+{
+	int ret = 0;
+	ret = register_kprobe(&kp);
+	if (ret < 0) {
+		printk("register_kprobe error, %d:[%p]\n", ret, kp.addr);
+		return 0;
+	}
+	unregister_kprobe(&kp);
+	my_kallsyms_lookup_name = (kallsyms_lookup_name_t)kp.addr;
+	return my_kallsyms_lookup_name(name);
+}
+#else
+unsigned long lookup_name(const char *name);
+unsigned long lookup_name(const char *name)
+{
+	return kallsyms_lookup_name(name);
+}
+#endif
+
 static unsigned int cr0 = 0;
+unsigned int clear_and_return_cr0(void);
 unsigned int clear_and_return_cr0(void)
 {
 	unsigned int cr0 = 0;
@@ -26,6 +64,7 @@ unsigned int clear_and_return_cr0(void)
 	return ret;
 }
 
+void setback_cr0(unsigned int val);
 void setback_cr0(unsigned int val)
 {
 	asm volatile("movq %%rax, %%cr0" ::"a"(val));
@@ -48,6 +87,7 @@ void setback_cr0(unsigned int val)
 /*	write_cr0_forced(cr0 & ~X86_CR0_WP);*/
 /*}*/
 
+asmlinkage long open_hook(const struct pt_regs *regs);
 asmlinkage long open_hook(const struct pt_regs *regs)
 {
 	const char __user *filename = NULL;
@@ -58,9 +98,11 @@ asmlinkage long open_hook(const struct pt_regs *regs)
 	filename_len = strncpy_from_user(filename_buf, filename,
 					 sizeof(filename_buf) - 1);
 
+	printk("open path:%s\n", filename);
 	return orig_open(regs);
 }
 
+asmlinkage long openat_hook(const struct pt_regs *regs);
 asmlinkage long openat_hook(const struct pt_regs *regs)
 {
 	const char __user *filename = NULL;
@@ -71,13 +113,14 @@ asmlinkage long openat_hook(const struct pt_regs *regs)
 	filename_len = strncpy_from_user(filename_buf, filename,
 					 sizeof(filename_buf) - 1);
 
+	printk("openat_hook path:%s\n", filename);
 	return orig_openat(regs);
 }
 
 #define KERNEL_LOG_FILE "/tmp/messages"
 #define KERNEL_CONSOLE_FILE "/dev/console"
 
-
+asmlinkage long write_hook(const struct pt_regs *regs);
 asmlinkage long write_hook(const struct pt_regs *regs)
 {
 	unsigned int fd = -1;
@@ -119,19 +162,30 @@ original__:
 
 static int __init open_hook_init(void)
 {
-	__sys_call_table =
-		(unsigned long *)kallsyms_lookup_name("sys_call_table");
-	if (!__sys_call_table)
+	__sys_call_table = (unsigned long *)lookup_name("sys_call_table");
+	if (!__sys_call_table) {
+		printk("__sys_call_table error\n");
 		return -EINVAL;
+	}
 
 	orig_open = (syscall_fn_t)__sys_call_table[__NR_open];
 	orig_openat = (syscall_fn_t)__sys_call_table[__NR_openat];
 	orig_write = (syscall_fn_t)__sys_call_table[__NR_write];
+	printk("orig_open:%p, orig_openat:%p, orig_write:%p\n", orig_open,
+	       orig_openat, orig_write);
 
 	cr0 = clear_and_return_cr0();
+	/*cr0 = read_cr0();*/
 	__sys_call_table[__NR_open] = (unsigned long)open_hook;
 	__sys_call_table[__NR_openat] = (unsigned long)openat_hook;
 	__sys_call_table[__NR_write] = (unsigned long)write_hook;
+
+	printk("open_hook:%p, openat_hook:%p, write_hook:%p\n", open_hook,
+	       openat_hook, write_hook);
+
+	printk("__NR_open:%lx, __NR_openat:%lx, __NR_write:%lx\n",
+	       __sys_call_table[__NR_open], __sys_call_table[__NR_openat],
+	       __sys_call_table[__NR_write]);
 	setback_cr0(cr0);
 	printk("open_hook_init\n");
 

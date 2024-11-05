@@ -1,4 +1,4 @@
-obj-m:= hook_demo.o
+obj-m:= kprobe_example.o
 CURRENT_PATH:=$(shell pwd)
 LINUX_KERNEL:=$(shell uname -r)
 
@@ -8,7 +8,7 @@ else
 	LINUX_KERNEL_PATH:=/lib/modules/$(shell uname -r)/build/
 endif
 
-# CONFIG_MODULE_SIG=n
+CONFIG_MODULE_SIG=n
 
 all:
 	make -C $(LINUX_KERNEL_PATH) M=$(CURRENT_PATH) modules

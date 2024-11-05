@@ -1,4 +1,4 @@
-obj-m:= hook_demo.o
+obj-m:= hook_kallsyms_lookup_name.o
 CURRENT_PATH:=$(shell pwd)
 LINUX_KERNEL:=$(shell uname -r)
 
