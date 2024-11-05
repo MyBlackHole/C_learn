@@ -35,5 +35,7 @@ DEMO_MAIN_DECL(typedef);
 DEMO_MAIN_DECL(hex_to_int);
 DEMO_MAIN_DECL(static_local);
 DEMO_MAIN_DECL(static_global);
+DEMO_MAIN_DECL(while);
+DEMO_MAIN_DECL(read_file_by_semicolon);
 
 #endif
