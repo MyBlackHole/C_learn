@@ -1,19 +1,17 @@
 #include <stdint.h>
+#include <stdlib.h>
 #include <stdio.h>
 #include <strings.h>
 
-#define BASE 10
-#define OFFSET 32
-#define LSNNUM 18
-
-int demo_uint641_main(int argc, char *argv[])
+int demo_uint64_2_main(int argc, char *argv[])
 {
-	// 18446744073709551615
-	uint64_t timetemp = -1;
-	printf("timetemp: %lu\n", timetemp);
-	return 0;
-}
+	uint64_t x = 10000000000;
+	uint64_t y = 1;
+	uint64_t download_average_bandwidth = x / y;
 
+	printf("x / y: %lu\n", download_average_bandwidth);
+	return EXIT_SUCCESS;
+}
 
 // Output:
 // ❯ xmake run grammar uint641
