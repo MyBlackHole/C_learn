@@ -24,5 +24,7 @@ DEMO_MAIN_DECL(strsignal_test);
 DEMO_MAIN_DECL(strstr_test);
 DEMO_MAIN_DECL(strtok_test);
 DEMO_MAIN_DECL(path_splice);
+DEMO_MAIN_DECL(strncmp_3);
+DEMO_MAIN_DECL(memcpy_1);
 
 #endif
