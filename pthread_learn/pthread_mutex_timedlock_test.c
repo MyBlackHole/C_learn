@@ -13,7 +13,6 @@
 #include <string.h>
 #include <time.h>
 
-
 int demo_mutex_timedlock_main(void)
 {
 	int err;

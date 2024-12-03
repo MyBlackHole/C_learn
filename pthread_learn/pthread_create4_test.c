@@ -6,7 +6,7 @@
 
 #define COUNT 10000
 
-void *thread_func_3_4(void *arg)
+static void *thread_func(void *arg)
 {
 	// time_t start_time;
 	// time_t current_time;
@@ -37,10 +37,10 @@ int demo_create4_main(void)
 	pthread_t tid3;
 	pthread_t tid4;
 
-	pthread_create(&tid1, NULL, thread_func_3_4, NULL);
-	pthread_create(&tid2, NULL, thread_func_3_4, NULL);
-	pthread_create(&tid3, NULL, thread_func_3_4, NULL);
-	pthread_create(&tid4, NULL, thread_func_3_4, NULL);
+	pthread_create(&tid1, NULL, thread_func, NULL);
+	pthread_create(&tid2, NULL, thread_func, NULL);
+	pthread_create(&tid3, NULL, thread_func, NULL);
+	pthread_create(&tid4, NULL, thread_func, NULL);
 	pthread_join(tid1, NULL);
 	pthread_join(tid2, NULL);
 	pthread_join(tid3, NULL);

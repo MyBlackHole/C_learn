@@ -29,7 +29,7 @@ int demo_pthread_cancel_main()
 	pid_t pid;
 
 	pid = getpid();
-	
+
 	printf("pid: %d\n", pid);
 	pthread_create(&tid, NULL, my_pthread_function1, NULL);
 	(void)my_pthread_function2;

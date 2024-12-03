@@ -4,10 +4,10 @@
 #include <unistd.h>
 
 /* 初始化互斥锁 */
-pthread_mutex_t mutex_1_2 = PTHREAD_MUTEX_INITIALIZER;
+static pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 
 /* 初始化条件变量 */
-pthread_cond_t cond_5 = PTHREAD_COND_INITIALIZER;
+static pthread_cond_t cond = PTHREAD_COND_INITIALIZER;
 
 int index = 1;
 
@@ -24,8 +24,8 @@ int demo_mutex_lock_main()
 
 	printf("t_a:0x%lx, t_b:0x%lx\n", t_a, t_b);
 	pthread_join(t_b, NULL);
-	pthread_mutex_destroy(&mutex_1_2);
-	pthread_cond_destroy(&cond_5);
+	pthread_mutex_destroy(&mutex);
+	pthread_cond_destroy(&cond);
 
 	exit(0);
 }
@@ -33,16 +33,16 @@ int demo_mutex_lock_main()
 void *thread_3(void *junk)
 {
 	for (index = 1; index <= 9; index++) {
-		pthread_mutex_lock(&mutex_1_2);
+		pthread_mutex_lock(&mutex);
 		printf("call thread1 \n");
 		if (index % 3 == 0) {
-			pthread_cond_signal(&cond_5);
+			pthread_cond_signal(&cond);
 			printf("thread1: ***** i=%d\n", index);
 		} else {
 			printf("thread1: %d\n", index);
 		}
 
-		pthread_mutex_unlock(&mutex_1_2);
+		pthread_mutex_unlock(&mutex);
 
 		printf("thread1: sleep i=%d\n", index);
 		sleep(1);
@@ -54,15 +54,15 @@ void *thread_3(void *junk)
 void *thread_4(void *junk)
 {
 	while (index <= 9) {
-		pthread_mutex_lock(&mutex_1_2);
+		pthread_mutex_lock(&mutex);
 		printf("call thread2 \n");
 		if (index % 3 != 0) {
-			pthread_cond_wait(&cond_5, &mutex_1_2);
+			pthread_cond_wait(&cond, &mutex);
 		}
 
 		printf("thread2: %d\n", index);
 
-		pthread_mutex_unlock(&mutex_1_2);
+		pthread_mutex_unlock(&mutex);
 
 		printf("thread2: sleep i=%d\n", index);
 		sleep(1);

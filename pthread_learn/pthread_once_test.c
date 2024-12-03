@@ -3,7 +3,7 @@
 #include <unistd.h>
 
 // 初始化 once 对象
-pthread_once_t once = PTHREAD_ONCE_INIT;
+static pthread_once_t once = PTHREAD_ONCE_INIT;
 
 // 只会运行一次 (单一对象下 once)
 void once_run(void)

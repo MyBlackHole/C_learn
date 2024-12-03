@@ -17,6 +17,10 @@ static demo_t demos[] = {
 	DEMO_MAIN_ITEM(pthread_cancel),
 	DEMO_MAIN_ITEM(rwlock3),
 	DEMO_MAIN_ITEM(pthread_attr_setinheritsched),
+	DEMO_MAIN_ITEM(setspecific),
+	DEMO_MAIN_ITEM(getspecific),
+	DEMO_MAIN_ITEM(pthread_mutex_consistent),
+
 };
 int main(int argc, char **argv)
 {

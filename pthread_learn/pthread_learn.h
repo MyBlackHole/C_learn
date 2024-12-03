@@ -14,5 +14,8 @@ DEMO_MAIN_DECL(rwlock2);
 DEMO_MAIN_DECL(rwlock3);
 DEMO_MAIN_DECL(pthread_cancel);
 DEMO_MAIN_DECL(pthread_attr_setinheritsched);
+DEMO_MAIN_DECL(setspecific);
+DEMO_MAIN_DECL(getspecific);
+DEMO_MAIN_DECL(pthread_mutex_consistent);
 
 #endif

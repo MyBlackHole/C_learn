@@ -44,6 +44,8 @@ int demo_barrier_init_main(int argc, char *argv[])
 	char *data_time;
 	data_time = malloc(sizeof(char) * DATENUM);
 
+	// 主线程等待子线程初始化
+	// 2 表示等待两个线程
 	pthread_barrier_init(&barrier, NULL, 2);
 	printf("*** main thread barrier init done ***\n");
 	pthread_create(&pid, NULL, initor, NULL);

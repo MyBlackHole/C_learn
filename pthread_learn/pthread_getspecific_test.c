@@ -1,8 +1,9 @@
+#include <stdlib.h>
 #include <pthread.h>
 #include <stdio.h>
 #include <string.h>
 
-pthread_key_t p_key;
+pthread_key_t p_key = 0;
 
 void func1()
 {
@@ -11,7 +12,7 @@ void func1()
 	printf("%d is runing in %s\n", *tmp, __func__);
 }
 
-void *thread_func_3_2(void *args)
+static void *thread_func(void *args)
 {
 	pthread_setspecific(p_key, args);
 	// 获得线程的私有空间
@@ -33,9 +34,9 @@ int demo_getspecific_main()
 	int int_a = 1;
 	int int_b = 2;
 	pthread_key_create(&p_key, NULL);
-	pthread_create(&pa_t, NULL, thread_func_3_2, &int_a);
-	pthread_create(&pb_t, NULL, thread_func_3_2, &int_b);
+	pthread_create(&pa_t, NULL, thread_func, &int_a);
+	pthread_create(&pb_t, NULL, thread_func, &int_b);
 	pthread_join(pa_t, NULL);
 	pthread_join(pb_t, NULL);
-	return 0;
+	return EXIT_SUCCESS;
 }

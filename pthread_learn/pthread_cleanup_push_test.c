@@ -5,6 +5,7 @@
 void cleanup(void *arg)
 {
 	printf("cleanup:%s\n", (char *)arg);
+
 }
 void *thr_fn1(void *arg)
 {

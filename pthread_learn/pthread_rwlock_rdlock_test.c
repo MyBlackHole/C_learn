@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <unistd.h>
 
-pthread_rwlock_t rwlock; // 读写锁
+static pthread_rwlock_t rwlock; // 读写锁
 int num_1 = 1;
 
 // 读操作，其他线程允许读操作，却不允许写操作
