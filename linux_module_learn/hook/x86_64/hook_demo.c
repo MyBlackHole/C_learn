@@ -8,6 +8,7 @@
 #include <linux/delay.h>
 #include "arch.h"
 
+DEFINE_STATIC_SRCU(srcu);
 static unsigned long *__sys_call_table;
 
 typedef long (*syscall_fn_t)(const struct pt_regs *regs);
@@ -105,16 +106,28 @@ asmlinkage long open_hook(const struct pt_regs *regs)
 asmlinkage long openat_hook(const struct pt_regs *regs);
 asmlinkage long openat_hook(const struct pt_regs *regs)
 {
+	int ret = 0;
+	int id = 0;
 	const char __user *filename = NULL;
 	int filename_len = 0;
 	char filename_buf[504] = { 0 };
+	char *file_path = "/home/black/wdg.log";
+	id = srcu_read_lock(&srcu);
+
 	filename = (const char __user *)PT_REGS_PARM2(regs);
 
 	filename_len = strncpy_from_user(filename_buf, filename,
 					 sizeof(filename_buf) - 1);
 
 	printk("openat_hook path:%s\n", filename);
-	return orig_openat(regs);
+
+	if (memcmp(filename_buf, file_path, strlen(file_path)) == 0) {
+		printk(KERN_INFO "hook_openat() called");
+		ssleep(20);
+	}
+	ret = orig_openat(regs);
+	srcu_read_unlock(&srcu, id);
+	return ret;
 }
 
 #define KERNEL_LOG_FILE "/tmp/messages"
@@ -176,9 +189,9 @@ static int __init open_hook_init(void)
 
 	cr0 = clear_and_return_cr0();
 	/*cr0 = read_cr0();*/
-	__sys_call_table[__NR_open] = (unsigned long)open_hook;
+	/*__sys_call_table[__NR_open] = (unsigned long)open_hook;*/
 	__sys_call_table[__NR_openat] = (unsigned long)openat_hook;
-	__sys_call_table[__NR_write] = (unsigned long)write_hook;
+	/*__sys_call_table[__NR_write] = (unsigned long)write_hook;*/
 
 	printk("open_hook:%p, openat_hook:%p, write_hook:%p\n", open_hook,
 	       openat_hook, write_hook);
@@ -195,10 +208,11 @@ static int __init open_hook_init(void)
 static void __exit open_hook_exit(void)
 {
 	cr0 = clear_and_return_cr0();
-	__sys_call_table[__NR_open] = (unsigned long)orig_open;
+	/*__sys_call_table[__NR_open] = (unsigned long)orig_open;*/
 	__sys_call_table[__NR_openat] = (unsigned long)orig_openat;
-	__sys_call_table[__NR_write] = (unsigned long)orig_write;
+	/*__sys_call_table[__NR_write] = (unsigned long)orig_write;*/
 	setback_cr0(cr0);
+	synchronize_srcu(&srcu);
 	printk("open_hook_exit\n");
 }
 
