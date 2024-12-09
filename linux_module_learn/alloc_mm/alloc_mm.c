@@ -1,11 +1,17 @@
+#include "linux/printk.h"
 #include <linux/init.h>
 #include <linux/module.h>
 #include <linux/slab.h>
 #include <linux/vmalloc.h>
+#include <linux/version.h>
 
 static int mem = 64;
 
 #define MB (1024 * 1024)
+
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 0, 0)
+#define MAX_ORDER 12
+#endif
 
 static int __init my_init(void)
 {
@@ -25,6 +31,7 @@ static int __init my_init(void)
 			break;
 		}
 		pr_info("... __get_free_pages OK\n");
+		pr_info("... kbuf %p\n", kbuf);
 		free_pages((unsigned long)kbuf, order);
 	}
 
@@ -39,6 +46,7 @@ static int __init my_init(void)
 			break;
 		}
 		pr_info("... kmalloc OK\n");
+		pr_info("... kbuf %p\n", kbuf);
 		kfree(kbuf);
 	}
 
@@ -51,6 +59,7 @@ static int __init my_init(void)
 			break;
 		}
 		pr_info("... vmalloc OK\n");
+		pr_info("... vm_buff %p\n", vm_buff);
 		vfree(vm_buff);
 	}
 
