@@ -30,8 +30,12 @@ static int __init hb_hello(void)
 	pr_info("ptr = 0x%lx\n", (unsigned long)ptr);
 	pr_info("physical address = 0x%lx\n", (unsigned long)virt_to_phys(ptr));
 	pr_info("physical address = 0x%lx\n", (unsigned long)ptr - PAGE_OFFSET);
-
+	ptr[0] = 0x11;
+	ptr[1] = 0x22;
+	ptr[2] = 0x33;
+	ptr[3] = 0x44;
 	hw_breakpoint_init(&attr);
+	// attr.bp_addr = (unsigned long)virt_to_phys(ptr); /* 待监视的地址 */
 	attr.bp_addr = (unsigned long)ptr; /* 待监视的地址 */
 	attr.bp_len = HW_BREAKPOINT_LEN_4;
 	attr.bp_type = HW_BREAKPOINT_W; /* 待监视的访问类型 */
@@ -70,3 +74,13 @@ module_init(hb_hello);
 module_exit(hb_exit);
 
 MODULE_LICENSE("GPL");
+
+// output:
+//
+// # insmod hw_breakpoint.ko
+// [  300.166282] hw_breakpoint hello world!
+// [  300.168295] ptr = 0000000077b3e6e9
+// [  300.170003] ptr = 0xffff8881e5ca5608
+// [  300.172099] physical address = 0x1e5ca5608
+// [  300.174300] physical address = 0x1e5ca5608
+// [  300.177127] register_wide_hw_breakpoint success
