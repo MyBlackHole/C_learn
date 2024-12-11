@@ -6,9 +6,10 @@
 
 static int __init mymod_init(void)
 {
-	struct module *list_mod, *mod, *relate;
+	struct module *list_mod, *mod;
+	/*struct module *relate;*/
 	int cpu;
-	int zero = 0;
+	/*int zero = 0;*/
 
 	// 打印本模块的模块名和模块状态
 	printk(KERN_ALERT "[insmod mymod] name:%s state:%d\n",
@@ -16,7 +17,7 @@ static int __init mymod_init(void)
 
 	// 遍历模块列表，查找target模块
 	list_for_each_entry(list_mod, THIS_MODULE->list.prev, list) {
-		if (strcmp(mod->name, "hello") == 0) {
+		if (strcmp(mod->name, "fsbackup") == 0) {
 			mod = list_mod;
 		}
 	}
@@ -25,15 +26,15 @@ static int __init mymod_init(void)
 	printk(KERN_ALERT "name:%s state:%d refcnt:%u ", mod->name, mod->state,
 	       module_refcount(mod));
 
-	// 打印出所有依赖target的模块名
-	if (!list_empty(&mod->modules_which_use_me)) {
-		list_for_each_entry(relate, &mod->modules_which_use_me,
-				    modules_which_use_me) {
-			printk(KERN_ALERT "%s ", relate->name);
-		}
-	} else {
-		printk(KERN_ALERT "used by NULL\n");
-	}
+	/*// 打印出所有依赖target的模块名*/
+	/*if (!list_empty(&mod->modules_which_use_me)) {*/
+	/*	list_for_each_entry(relate, &mod->modules_which_use_me,*/
+	/*			    modules_which_use_me) {*/
+	/*		printk(KERN_ALERT "%s ", relate->name);*/
+	/*	}*/
+	/*} else {*/
+	/*	printk(KERN_ALERT "used by NULL\n");*/
+	/*}*/
 
 	// 把target的引用计数置为0
 	for_each_possible_cpu(cpu) {
