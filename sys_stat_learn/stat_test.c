@@ -22,3 +22,13 @@ int demo_stat_main(int argc, char *argv[])
 	fprintf(stdout, "%d\n", flen(argv[1]));
 	exit(0);
 }
+
+// output:
+// ❯ xmake run sys_stat_learn stat /run/
+// 600
+// ❯ xmake run sys_stat_learn stat /run/sshd.pid
+// 4
+// ❯ xmake run sys_stat_learn stat /run/media/black/Data/Documents
+// 0
+// ❯ xmake run sys_stat_learn stat /run/media/black/Data/Documents/c/README.md
+// 340
