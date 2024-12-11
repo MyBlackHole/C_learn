@@ -10,8 +10,8 @@ static demo_t demos[] = {
 	DEMO_MAIN_ITEM(file_flags), DEMO_MAIN_ITEM(fcntl),
 	DEMO_MAIN_ITEM(F_WRLCK),    DEMO_MAIN_ITEM(creat),
 	DEMO_MAIN_ITEM(fallocate),  DEMO_MAIN_ITEM(FD_CLOEXEC),
-	DEMO_MAIN_ITEM(SSH1),  DEMO_MAIN_ITEM(O_CLOEXEC),
-	DEMO_MAIN_ITEM(SSH2),
+	DEMO_MAIN_ITEM(SSH1),	    DEMO_MAIN_ITEM(O_CLOEXEC),
+	DEMO_MAIN_ITEM(SSH2),	    DEMO_MAIN_ITEM(open_3),
 };
 
 int main(int argc, char **argv)
