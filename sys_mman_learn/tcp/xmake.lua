@@ -1,6 +1,6 @@
 target("sys_mman_learn_tcp_lib")
     set_kind("static")
-    add_defines("__USE_GNU")
+    add_defines("_GNU_SOURCE")
     add_files("comm.c", "config.c", "bandwidth.c")
 
 target("sys_mman_learn_tcp_client")

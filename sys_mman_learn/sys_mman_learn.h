@@ -7,5 +7,6 @@ DEMO_MAIN_DECL(shm_writer);
 DEMO_MAIN_DECL(shm_reader);
 DEMO_MAIN_DECL(open_shm);
 DEMO_MAIN_DECL(shm_open);
+DEMO_MAIN_DECL(mmap_phy);
 
 #endif
