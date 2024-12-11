@@ -11,5 +11,7 @@ DEMO_MAIN_DECL(weak_alias);
 DEMO_MAIN_DECL(attribute1);
 DEMO_MAIN_DECL(destructor);
 DEMO_MAIN_DECL(sync_fetch_and_add);
+DEMO_MAIN_DECL(destructor1);
+DEMO_MAIN_DECL(__GNUC__);
 
 #endif
