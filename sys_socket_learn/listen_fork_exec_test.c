@@ -58,10 +58,15 @@ int demo_listen_fork_exec_main(int argc, char *argv[])
 		char listen_fd_str[2];
 		listen_fd_str[0] = listen_fd + '0';
 		listen_fd_str[1] = '\0';
-		fprintf(stdout, "client, pid:%d, listen_fd:%d\n", getpid(), listen_fd);
+		fprintf(stdout, "client, pid:%d, listen_fd:%d\n", getpid(),
+			listen_fd);
 
-		char *child_args[] = {"/run/media/black/Data/Documents/c/build/linux/x86_64/debug/sys_socket_learn", "accept", listen_fd_str, NULL };
-		execv("/run/media/black/Data/Documents/c/build/linux/x86_64/debug/sys_socket_learn", child_args);
+		char *child_args[] = {
+			"/run/media/black/Data/Documents/c/build/linux/x86_64/debug/sys_socket_learn",
+			"accept", listen_fd_str, NULL
+		};
+		execv("/run/media/black/Data/Documents/c/build/linux/x86_64/debug/sys_socket_learn",
+		      child_args);
 		perror("execv error");
 		fprintf(stdout, "client, exit\n");
 		goto RET;

@@ -43,6 +43,10 @@ int read_fd(int s, int *fd)
 		return EXIT_FAILURE;
 	}
 
+	if (cmsg.cm.cmsg_len != CMSG_LEN(sizeof(int))) {
+		return EXIT_FAILURE;
+	}
+
 	memcpy(fd, CMSG_DATA(&cmsg.cm), sizeof(int));
 
 	return EXIT_SUCCESS;

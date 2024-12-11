@@ -31,7 +31,8 @@ int demo_listen_main(int argc, char *argv[])
 		goto ERR;
 	}
 
-	ret = setsockopt(listen_fd, SOL_SOCKET, SO_REUSEADDR, &ret, sizeof(int));
+	ret = setsockopt(listen_fd, SOL_SOCKET, SO_REUSEADDR, &ret,
+			 sizeof(int));
 	if (ret < 0) {
 		perror("Setsockopt Error");
 		goto ERR;
