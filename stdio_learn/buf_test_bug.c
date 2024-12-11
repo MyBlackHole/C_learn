@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 
 int demo_buf_test_main(int argc, char *argv[])
 {

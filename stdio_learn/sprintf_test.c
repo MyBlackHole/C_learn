@@ -9,5 +9,7 @@ int demo_sprintf_main(int argc, char *argv[])
 	int day = 13;
 	sprintf(buf, "%d-%d-%d", year, month, day);
 	puts(buf);
+	sprintf(buf, "%d-%d-%d", year, month, day);
+	puts(buf);
 	exit(EXIT_SUCCESS);
 }
