@@ -6,7 +6,7 @@
 #include <linux/version.h>
 #include <linux/printk.h>
 
-static int mem = 8;
+static int mem = 1;
 
 #define MB (1024 * 1024)
 
@@ -20,30 +20,30 @@ static int __init my_init(void)
 	unsigned long order;
 	unsigned long size;
 	char *vm_buff;
-	char *p_c1 = 0x00000000ca6b6ded;
-	char *p_c2 = 0x000000008e5d0e62;
+	/*char *p_c1 = 0x00000000ca6b6ded;*/
+	/*char *p_c2 = 0x000000008e5d0e62;*/
 
-	struct file *fp = (struct file *)p_c1;
+	/*struct file *fp = (struct file *)p_c1;*/
 
-	if (IS_ERR(fp)) {
-		pr_info("... p1 is not a valid file pointer\n");
-	} else {
-		pr_info("... p1 is a valid file pointer\n");
-		pr_info("... p1->f_count = %ld\n", fp->f_count.counter);
-		pr_info("... p1->f_op->owner = %p\n", fp->f_op);
-	}
+	/*if (IS_ERR(fp)) {*/
+	/*	pr_info("... p1 is not a valid file pointer\n");*/
+	/*} else {*/
+	/*	pr_info("... p1 is a valid file pointer\n");*/
+	/*	pr_info("... p1->f_count = %ld\n", fp->f_count.counter);*/
+	/*	pr_info("... p1->f_op->owner = %p\n", fp->f_op);*/
+	/*}*/
 
-	pr_info("check p1\n");
-	if (virt_addr_valid(p_c1))
-		pr_info("... p1 is valid\n");
-	else
-		pr_info("... p1 is invalid\n");
-
-	pr_info("check p2\n");
-	if (virt_addr_valid(p_c2))
-		pr_info("... p2 is valid\n");
-	else
-		pr_info("... p2 is invalid\n");
+	/*pr_info("check p1\n");*/
+	/*if (virt_addr_valid(p_c1))*/
+	/*	pr_info("... p1 is valid\n");*/
+	/*else*/
+	/*	pr_info("... p1 is invalid\n");*/
+	/**/
+	/*pr_info("check p2\n");*/
+	/*if (virt_addr_valid(p_c2))*/
+	/*	pr_info("... p2 is valid\n");*/
+	/*else*/
+	/*	pr_info("... p2 is invalid\n");*/
 
 	/* try kmalloc */
 	pr_info("kmalloc start ----------------\n");
@@ -64,17 +64,19 @@ static int __init my_init(void)
 			pr_info("... kbuf %p is valid\n", kbuf);
 		else
 			pr_info("... kbuf %p is invalid\n", kbuf);
+		memset(kbuf + size, 0, 3);
 	}
 	pr_info("kmalloc end ----------------\n");
 
 	/* try vmalloc */
 	pr_info("vmalloc start ----------------\n");
-	for (size = 4 * MB; size <= mem * MB; size += 4 * MB) {
+	for (size = 1 * MB; size <= mem * MB; size += 1 * MB) {
 		vm_buff = vmalloc(size);
 		if (!vm_buff) {
 			pr_err("... vmalloc failed\n");
 			break;
 		}
+		/*memset(vm_buff, 0, size);*/
 		if (virt_addr_valid(vm_buff))
 			pr_info("... vm_buff %p is valid\n", vm_buff);
 		else
@@ -87,6 +89,7 @@ static int __init my_init(void)
 			pr_info("... vm_buff %p is valid\n", vm_buff);
 		else
 			pr_info("... vm_buff %p is invalid\n", vm_buff);
+		memset(vm_buff, 0, size + 1);
 	}
 	pr_info("vmalloc end ----------------\n");
 

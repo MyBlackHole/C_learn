@@ -54,11 +54,11 @@ static void book_reclaim_callback(struct rcu_head *rcu)
 	struct book *b = container_of(rcu, struct book, rcu);
 
 	/**
-     * Why print preemt_count??
-     *
-     * To check whether this callback is atomic context or not.
-     * preempt_count here is more than 0. Because it is irq context.
-     */
+	 * Why print preemt_count??
+	 *
+	 * To check whether this callback is atomic context or not.
+	 * preempt_count here is more than 0. Because it is irq context.
+	 */
 	pr_info("callback free : %lx, preempt_count : %d\n", (unsigned long)b,
 		preempt_count());
 	kfree(b);
@@ -78,10 +78,10 @@ static void add_book(int id, const char *name, const char *author)
 	b->borrow = 0;
 
 	/**
-     * list_add_rcu
-     *
-     * add_node(writer - add) use spin_lock()
-     */
+	 * list_add_rcu
+	 *
+	 * add_node(writer - add) use spin_lock()
+	 */
 	spin_lock(&books_lock);
 	list_add_rcu(&b->node, &books);
 	spin_unlock(&books_lock);
@@ -94,11 +94,11 @@ static int borrow_book(int id, int async)
 	struct book *old_b = NULL;
 
 	/**
-     * updater
-     *
-     * (updater) require that alloc new node & copy, update new node & reclaim
-     * old node list_replace_rcu() is used to do that.
-     */
+	 * updater
+	 *
+	 * (updater) require that alloc new node & copy, update new node & reclaim
+	 * old node list_replace_rcu() is used to do that.
+	 */
 	rcu_read_lock();
 
 	list_for_each_entry(b, &books, node) {
@@ -149,11 +149,11 @@ static int is_borrowed_book(int id)
 	struct book *b;
 
 	/**
-     * reader
-     *
-     * iteration(read) require rcu_read_lock(), rcu_read_unlock()
-     * and use list_for_each_entry_rcu()
-     */
+	 * reader
+	 *
+	 * iteration(read) require rcu_read_lock(), rcu_read_unlock()
+	 * and use list_for_each_entry_rcu()
+	 */
 	rcu_read_lock();
 	list_for_each_entry_rcu(b, &books, node) {
 		if (b->id == id) {
@@ -174,11 +174,11 @@ static int return_book(int id, int async)
 	struct book *old_b = NULL;
 
 	/**
-     * updater
-     *
-     * (updater) require that alloc new node & copy, update new node & reclaim
-     * old node list_replace_rcu() is used to do that.
-     */
+	 * updater
+	 *
+	 * (updater) require that alloc new node & copy, update new node & reclaim
+	 * old node list_replace_rcu() is used to do that.
+	 */
 	rcu_read_lock();
 
 	list_for_each_entry(b, &books, node) {
@@ -232,15 +232,15 @@ static void delete_book(int id, int async)
 	list_for_each_entry(b, &books, node) {
 		if (b->id == id) {
 			/**
-             * list_del
-             *
-             * del_node(writer - delete) require locking mechanism.
-             * we can choose 3 ways to lock. Use 'a' here.
-             *
-             *	a.	locking,
-             *	b.	atomic operations, or
-             *	c.	restricting updates to a single task.
-             */
+			 * list_del
+			 *
+			 * del_node(writer - delete) require locking mechanism.
+			 * we can choose 3 ways to lock. Use 'a' here.
+			 *
+			 *	a.	locking,
+			 *	b.	atomic operations, or
+			 *	c.	restricting updates to a single task.
+			 */
 			list_del_rcu(&b->node);
 			spin_unlock(&books_lock);
 
@@ -265,12 +265,12 @@ static void print_book(int id)
 	rcu_read_lock();
 	list_for_each_entry_rcu(b, &books, node) {
 		if (b->id == id) {
-			/**
-             * Why print address of "struct book *b"??
-             *
-             * If b was updated, address of b must be different.
-             * We can know whether b is updated or not by address.
-             */
+			/*
+			 * Why print address of "struct book *b"??
+			 *
+			 * If b was updated, address of b must be different.
+			 * We can know whether b is updated or not by address.
+			 */
 			pr_info("id : %d, name : %s, author : %s, borrow : %d, addr : %lx\n",
 				b->id, b->name, b->author, b->borrow,
 				(unsigned long)b);

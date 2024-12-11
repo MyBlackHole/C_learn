@@ -6,6 +6,9 @@
 __attribute__((optimize("O0"))) static int __init lk_hello(void)
 {
 	printk("hello world!\n");
+	const void *ptr = 0x0000000087de68e7;
+	printk("%ld!\n", PTR_ERR(ptr));
+	
 	// char *buf_path;
 	// buf_path = kmalloc(12, 0);
 	// if (buf_path == NULL)
