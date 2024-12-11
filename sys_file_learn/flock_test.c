@@ -9,13 +9,13 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
-int main()
+int demo_flock_main()
 {
-	char path[] = "/tmp/file.txt";
+	char path[] = "file.txt";
 	int my_fd = 0;
 	int count = 0;
 
-	my_fd = open(path, O_WRONLY | O_CREAT);
+	my_fd = open(path, O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
 	if (my_fd < 0) {
 		fprintf(stderr, "%s\n", strerror(errno));
 		exit(EXIT_FAILURE);
@@ -23,10 +23,12 @@ int main()
 
 	// 堵塞获取
 	if (flock(my_fd, LOCK_EX) == 0) {
+	/*if (flock(my_fd, LOCK_EX | LOCK_NB) == 0) {*/
 		printf("the file was locked.\n");
 	} else {
 		printf("the file was not locked.\n");
 	}
+	/*close(my_fd);*/
 
 	while (1) {
 		sleep(1);
