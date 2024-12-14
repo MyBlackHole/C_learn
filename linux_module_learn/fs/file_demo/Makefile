@@ -1,4 +1,4 @@
-obj-m += demo.o
+obj-m += file_demo.o
  
 CURRENT_PATH:=$(shell pwd)
 LINUX_KERNEL:=$(shell uname -r)
