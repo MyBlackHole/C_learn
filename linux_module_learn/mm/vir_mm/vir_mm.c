@@ -9,10 +9,12 @@
 
 static int __init my_init(void)
 {
-	unsigned long *ptr = 0xffff8881e6168008;
+	unsigned long *ptr = 0xffff88822d600000;
 
 	pr_info("Module init\n");
+	pr_info("ptr is %s\n", (char *)ptr);
 	*ptr = 0x99999999;
+	pr_info("ptr is %s\n", (char *)ptr);
 	pr_info("New Data: 0x%08lx\n", *ptr);
 	return 0;
 }
@@ -41,3 +43,17 @@ MODULE_LICENSE("GPL v2");
 // [  336.739025] VA: 0x00000000fdfb87db
 // [  336.740912] Old Data: 0x44332211
 // [  336.743147] New Data: 0x99999999
+//
+// 2 output:
+//
+// # insmod kmalloc_mm.ko
+// [  265.194533] ... kmalloc success, size=1048576, addr=ffff88822d600000
+// 
+// # insmod vir_mm.ko
+// [  511.652841] Module init
+// [  511.653849] ptr is wdg
+// [  511.654828] ptr is
+// [  511.655987] New Data: 0x99999999
+// # rmmod kmalloc_mm.ko
+// [  536.052739] Module exit
+// [  536.054408] kbuf is
