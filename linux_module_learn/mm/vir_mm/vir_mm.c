@@ -5,13 +5,16 @@
 #include <linux/vmalloc.h>
 #include <linux/version.h>
 
-#define KB (1024)
+static unsigned long mem_addr = 0;
+module_param(mem_addr, ulong, 0600);
 
 static int __init my_init(void)
 {
-	unsigned long *ptr = 0xffff88822d600000;
+	unsigned long *ptr = mem_addr;
 
-	pr_info("Module init\n");
+	if (ptr == 0) {
+		return -EINVAL;
+	}
 	pr_info("ptr is %s\n", (char *)ptr);
 	*ptr = 0x99999999;
 	pr_info("ptr is %s\n", (char *)ptr);
@@ -48,7 +51,7 @@ MODULE_LICENSE("GPL v2");
 //
 // # insmod kmalloc_mm.ko
 // [  265.194533] ... kmalloc success, size=1048576, addr=ffff88822d600000
-// 
+//
 // # insmod vir_mm.ko
 // [  511.652841] Module init
 // [  511.653849] ptr is wdg
@@ -57,3 +60,9 @@ MODULE_LICENSE("GPL v2");
 // # rmmod kmalloc_mm.ko
 // [  536.052739] Module exit
 // [  536.054408] kbuf is
+//
+//
+// 3 output:
+//
+//
+// insmod vir_mm.ko mem_addr=18446612691421233152
