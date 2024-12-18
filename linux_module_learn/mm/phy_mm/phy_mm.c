@@ -13,7 +13,7 @@ static int __init my_init(void)
 	volatile u32 *va_data;
 
 	pr_info("Module init\n");
-	va_addr = ioremap(0x1e5ca5608, 1024);
+	va_addr = ioremap(0x22df4e128, 1024);
 
 	if (va_addr == NULL) {
 		pr_err("Failed to ioremap\n");

@@ -8,5 +8,6 @@ DEMO_MAIN_DECL(shm_reader);
 DEMO_MAIN_DECL(open_shm);
 DEMO_MAIN_DECL(shm_open);
 DEMO_MAIN_DECL(mmap_phy);
+DEMO_MAIN_DECL(MAP_ANONYMOUS);
 
 #endif

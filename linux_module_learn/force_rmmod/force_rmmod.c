@@ -53,23 +53,21 @@ static int force_cleanup_module(char *del_mod_name)
 	//  找到待删除模块的内核module信息
 	/////////////////////
 #if 0
-    //  方法一, 遍历内核模块树list_mod查询
-    struct module *list_mod = NULL;
-    /*  遍历模块列表, 查找 del_mod_name 模块  */
-    list_for_each_entry(list_mod, THIS_MODULE->list.prev, list)
-    {
-        if (strcmp(list_mod->name, del_mod_name) == 0)
-        {
-            mod = list_mod;
-        }
-    }
+	//  方法一, 遍历内核模块树list_mod查询
+	struct module *list_mod = NULL;
+	/*  遍历模块列表, 查找 del_mod_name 模块  */
+	list_for_each_entry(list_mod, THIS_MODULE->list.prev, list) {
+		if (strcmp(list_mod->name, del_mod_name) == 0) {
+			mod = list_mod;
+		}
+	}
 
-    /*  如果未找到 del_mod_name 则直接退出  */
-    if(mod == NULL)
-    {
-        printk("[%s] module %s not found\n", THIS_MODULE->name, modname);
-        return -1;
-    }
+	/*  如果未找到 del_mod_name 则直接退出  */
+	if (mod == NULL) {
+		printk("[%s] module %s not found\n", THIS_MODULE->name,
+		       modname);
+		return -1;
+	}
 #endif
 
 	//  方法二, 通过find_mod函数查找

@@ -26,7 +26,7 @@ static void handler(int sig, siginfo_t *si, void *unused)
 	exit(EXIT_FAILURE);
 }
 
-int main(int argc, char *argv[])
+int demo_mprotect_main(int argc, char *argv[])
 {
 	int pagesize;
 	struct sigaction sa;

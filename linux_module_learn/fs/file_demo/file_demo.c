@@ -26,7 +26,10 @@ int __init my_init(void)
 		printk("create file error\n");
 		return -1;
 	}
-	pr_info("fp->f_op is %lx\n", (unsigned long)&fp->f_op);
+	pr_info("&fp->f_op is %lx\n", (unsigned long)&fp->f_op);
+	pr_info("fp->f_op is %lx\n", (unsigned long)fp->f_op);
+	pr_info("fp->f_op phy addr is 0x%lx\n",
+		(unsigned long)virt_to_phys((void *)(unsigned long)&fp->f_op));
 	pr_info("fp->f_count is %ld\n", fp->f_count.counter);
 	/*pr_info("%ld, %ld, %ld, %ld\n", offsetof(struct file, f_op),*/
 	/*	offsetof(struct file, f_flags), offsetof(struct file, f_pos),*/
@@ -47,6 +50,8 @@ void __exit my_exit(void)
 	pr_info("open demo exit\n");
 	pr_info("fp->f_op is %lx\n", (unsigned long)&fp->f_op);
 	pr_info("fp->f_count is %ld\n", fp->f_count.counter);
+	pr_info("fp->f_op phy addr is 0x%lx\n",
+		(unsigned long)virt_to_phys((void *)(unsigned long)&fp->f_op));
 	filp_close(fp, NULL);
 }
 
