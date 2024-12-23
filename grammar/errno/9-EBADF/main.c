@@ -28,9 +28,15 @@ int main(int argc, char *argv[])
 	ret = write(fd, str, strlen(str));
 	if (ret == -1) {
 		perror("write");
-		fprintf(stderr, "Error writing to file, errno = %d", errno);
+		fprintf(stderr, "Error writing to file, errno = %d\n", errno);
 		return EXIT_FAILURE;
 	}
 	// EBADF
 	return EXIT_SUCCESS;
 }
+
+// output:
+//
+// ❯ xmake run errno_9_main
+// write: Bad file descriptor
+// Error writing to file, errno = 9
