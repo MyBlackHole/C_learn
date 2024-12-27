@@ -5,7 +5,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-int main()
+int demo_socketpair_main()
 {
 	int fd[2];
 	int r = socketpair(AF_UNIX, SOCK_STREAM, 0, fd);

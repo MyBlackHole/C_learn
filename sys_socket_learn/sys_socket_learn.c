@@ -15,6 +15,7 @@ static demo_t demos[] = {
 	DEMO_MAIN_ITEM(AF_LOCAL),
 	DEMO_MAIN_ITEM(connect),
 	DEMO_MAIN_ITEM(accept),
+	DEMO_MAIN_ITEM(socketpair),
 };
 int main(int argc, char **argv)
 {

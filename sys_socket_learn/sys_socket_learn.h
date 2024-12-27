@@ -13,5 +13,6 @@ DEMO_MAIN_DECL(shutdown);
 DEMO_MAIN_DECL(AF_LOCAL);
 DEMO_MAIN_DECL(connect);
 DEMO_MAIN_DECL(accept);
+DEMO_MAIN_DECL(socketpair);
 
 #endif
