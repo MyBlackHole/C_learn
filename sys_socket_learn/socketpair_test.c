@@ -16,6 +16,7 @@ int demo_socketpair_main()
 
 	if (fork()) { /* 父进程 */
 		int val = 0;
+		printf("parent fd[0] = %d, fd[1] = %d\n", fd[0], fd[1]);
 		close(fd[1]);
 		while (1) {
 			sleep(1);
@@ -27,6 +28,7 @@ int demo_socketpair_main()
 		}
 	} else { /*子进程*/
 		int val;
+		printf("child fd[0] = %d, fd[1] = %d\n", fd[0], fd[1]);
 		close(fd[0]);
 		while (1) {
 			read(fd[1], &val, sizeof(val));
