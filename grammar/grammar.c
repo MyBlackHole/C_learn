@@ -38,6 +38,7 @@ static demo_t demos[] = {
 	DEMO_MAIN_ITEM(uint64_1),
 	DEMO_MAIN_ITEM(struct4),
 	DEMO_MAIN_ITEM(while),
+	DEMO_MAIN_ITEM(while_malloc),
 	DEMO_MAIN_ITEM(read_file_by_semicolon),
 	DEMO_MAIN_ITEM(uint64_2),
 	DEMO_MAIN_ITEM(uint16_t),
