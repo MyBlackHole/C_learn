@@ -23,5 +23,6 @@ DEMO_MAIN_DECL(read);
 DEMO_MAIN_DECL(read1);
 DEMO_MAIN_DECL(fork);
 DEMO_MAIN_DECL(dup21);
+DEMO_MAIN_DECL(pread_1);
 
 #endif

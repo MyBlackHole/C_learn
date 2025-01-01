@@ -20,7 +20,7 @@ static demo_t demos[] = {
 	DEMO_MAIN_ITEM(setspecific),
 	DEMO_MAIN_ITEM(getspecific),
 	DEMO_MAIN_ITEM(pthread_mutex_consistent),
-
+	DEMO_MAIN_ITEM(create5),
 };
 int main(int argc, char **argv)
 {
