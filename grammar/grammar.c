@@ -39,10 +39,11 @@ static demo_t demos[] = {
 	DEMO_MAIN_ITEM(struct4),
 	DEMO_MAIN_ITEM(while),
 	DEMO_MAIN_ITEM(while_malloc),
+	DEMO_MAIN_ITEM(while_time),
 	DEMO_MAIN_ITEM(read_file_by_semicolon),
 	DEMO_MAIN_ITEM(uint64_2),
 	DEMO_MAIN_ITEM(uint16_t),
-
+	DEMO_MAIN_ITEM(stack_space_usage),
 };
 int main(int argc, char **argv)
 {
