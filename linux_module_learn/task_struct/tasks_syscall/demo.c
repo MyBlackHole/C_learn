@@ -15,14 +15,18 @@ static int __init demo_init(void)
 	for_each_process_thread(p, t) {
 		// lock the process task_struct while we access fields
 		task_lock(p);
-		syscall_num = task_pt_regs(t)->orig_ax;
+		if (try_get_task_stack(t)) {
+			syscall_num = task_pt_regs(t)->orig_ax;
+		} else {
+			syscall_num = -1;
+		}
 		pr_info("%8d %8d %16s %8d %8d", t->pid, t->tgid, t->comm,
 			t->prio, syscall_num);
 
-		// change the name of systemd process
-		if (strcmp(t->comm, "systemd") == 0) {
-			strcpy(t->comm, "hidden");
-		}
+		/*// change the name of systemd process*/
+		/*if (strcmp(t->comm, "systemd") == 0) {*/
+		/*	strcpy(t->comm, "hidden");*/
+		/*}*/
 		task_unlock(p);
 	}
 	rcu_read_unlock();
