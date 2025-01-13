@@ -18,5 +18,6 @@ DEMO_MAIN_DECL(SSH2);
 DEMO_MAIN_DECL(open_3);
 DEMO_MAIN_DECL(open_4);
 DEMO_MAIN_DECL(open_5);
+DEMO_MAIN_DECL(open_6);
 
 #endif

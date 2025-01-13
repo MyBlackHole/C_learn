@@ -13,6 +13,7 @@ static demo_t demos[] = {
 	DEMO_MAIN_ITEM(SSH1),	    DEMO_MAIN_ITEM(O_CLOEXEC),
 	DEMO_MAIN_ITEM(SSH2),	    DEMO_MAIN_ITEM(open_3),
 	DEMO_MAIN_ITEM(open_4),	    DEMO_MAIN_ITEM(open_5),
+	DEMO_MAIN_ITEM(open_6),
 };
 
 int main(int argc, char **argv)
