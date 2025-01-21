@@ -7,6 +7,7 @@
 static demo_env_t demos[] = {
 	DEMO_MAIN_ENV_ITEM(demo1),
 	DEMO_MAIN_ENV_ITEM(demo2),
+	DEMO_MAIN_ENV_ITEM(demo3),
 };
 
 int main(int argc, char **argv, char **env)
