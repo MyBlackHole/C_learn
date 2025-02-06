@@ -16,12 +16,12 @@ int demo_ftruncate1_main()
 	fd_in = open("/home/black/1.txt", O_RDWR | O_CREAT, ALLPERMS);
 	if (fd_in < 0) {
 		printf("open failed\n");
-		return -1;
+		return EXIT_FAILURE;
 	}
 
 	if (ftruncate(fd_in, 0)) {
 		printf("ftruncate error\n");
-		return -1;
+		return EXIT_FAILURE;
 	}
 
 	close(fd_in);
