@@ -42,5 +42,6 @@ DEMO_MAIN_DECL(while_malloc);
 DEMO_MAIN_DECL(while_time);
 DEMO_MAIN_DECL(read_file_by_semicolon);
 DEMO_MAIN_DECL(stack_space_usage);
+DEMO_MAIN_DECL(disassemble);
 
 #endif
