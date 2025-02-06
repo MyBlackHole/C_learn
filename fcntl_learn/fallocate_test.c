@@ -4,7 +4,7 @@
 #include <string.h>
 #include <unistd.h>
 
-#define FILE_SIZE 10 * 1024 * 1024 * 1024ULL
+#define FILE_SIZE 10 * 1024
 
 #define G_SIZE 10
 
@@ -24,8 +24,10 @@ int demo_fallocate_main()
 		return -1;
 	}
 
-	// ret = fallocate(fd, 0, 0, file_size);
-	ret = posix_fallocate(tmp_fd, 0, (off_t)FILE_SIZE);
+	/*ftruncate(tmp_fd, 0);*/
+	ret = fallocate(tmp_fd, FALLOC_FL_ZERO_RANGE, 0, (off_t)FILE_SIZE);
+	/*ret = fallocate(tmp_fd, 0, 0, (off_t)FILE_SIZE);*/
+	/*ret = posix_fallocate(tmp_fd, 0, (off_t)FILE_SIZE);*/
 	if (ret < 0) {
 		printf("ret = %d, errno = %d,  %s\n", ret, errno,
 		       strerror(errno));
