@@ -11,6 +11,7 @@
 #include <linux/slab.h>
 #include <linux/module.h>
 #include <linux/init.h>
+#include <linux/delay.h>
 
 /*
  * This module shows how to create a kset in sysfs called
@@ -159,6 +160,7 @@ static ssize_t b_store(struct foo_obj *foo_obj, struct foo_attribute *attr,
 		foo_obj->baz = var;
 	else
 		foo_obj->bar = var;
+	ssleep(10);
 	return count;
 }
 

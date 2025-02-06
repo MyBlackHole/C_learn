@@ -18,23 +18,23 @@ int main(int argc, char **argv)
 {
 	int sockfd;
 	/*
-    struct sockaddr_nl {
-     __kernel_sa_family_t    nl_family;  // AF_NETLINK （跟AF_INET对应）
-     unsigned short  nl_pad;     // zero
-     __u32       nl_pid;     // port ID  （通信端口号）
-     __u32       nl_groups;  //multicast groups mask
-};
-    */
+	 struct sockaddr_nl {
+	     __kernel_sa_family_t    nl_family;  // AF_NETLINK （跟AF_INET对应）
+	     unsigned short  nl_pad;     // zero
+	     __u32       nl_pid;     // port ID  （通信端口号）
+	     __u32       nl_groups;  //multicast groups mask
+	 };
+	*/
 	struct sockaddr_nl saddr, daddr;
 	/* struct nlmsghd 是netlink消息头
- struct nlmsghdr {
-     __u32       nlmsg_len;  // Length of message including header
-     __u16       nlmsg_type; // Message content
-     __u16       nlmsg_flags;    // Additional flags
-     __u32       nlmsg_seq;  // Sequence number
-     __u32       nlmsg_pid;  // Sending process port ID
- };
- */
+	 struct nlmsghdr {
+	     __u32       nlmsg_len;  // Length of message including header
+	     __u16       nlmsg_type; // Message content
+	     __u16       nlmsg_flags;    // Additional flags
+	     __u32       nlmsg_seq;  // Sequence number
+	     __u32       nlmsg_pid;  // Sending process port ID
+	 };
+	 */
 	struct nlmsghdr *nlh;
 	user_msg_info u_info;
 	char *msg = "hell kernel, I am user process!";

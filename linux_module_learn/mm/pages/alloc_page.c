@@ -22,7 +22,7 @@ int __init alloc_pages_init(void)
 void __exit alloc_pages_exit(void)
 {
 	if (pages) {
-		__free_pages(pages, 3); //释放所分配的8个页
+		__free_pages(pages, 4); //释放所分配的8个页
 		printk("__free_pages ok! \n");
 	}
 	printk("exit\n");

@@ -580,8 +580,16 @@ EXPORT_SYMBOL_GPL(kjson_dump);
 
 int kjson_dump_to_file(struct kjson_container *ctn, struct file *fp)
 {
-	struct kjstring_t *json_dmp = NULL;
 	int ret;
+
+	const char json_str[KJSON_MEMORY_BUFFER_SIZE];
+	struct kjstring_t __kj_iterator = {
+		.buffer_size = KJSON_MEMORY_BUFFER_SIZE + 1,
+		.off = 0,
+		.c_str_data = json_str,
+		.is_file = true,
+		.fp = fp,
+	};
 
 	if (unlikely(!ctn))
 		return -EINVAL;
@@ -589,8 +597,7 @@ int kjson_dump_to_file(struct kjson_container *ctn, struct file *fp)
 	if ((json_dmp = kjstring_alloc(KJSON_MEMORY_DUMP_SIZE)) == NULL)
 		return -ENOMEM;
 
-	ret = kjson_dump_process_container(ctn, json_dmp);
-	kjstring_free(json_dmp);
+	ret = kjson_dump_process_container(ctn, __kj_iterator);
 
 	return ret;
 }

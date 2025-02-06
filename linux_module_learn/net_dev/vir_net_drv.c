@@ -46,9 +46,8 @@ static int __init virt_net_init(void)
 	printk(KERN_ERR "%s,%d\n", __FUNCTION__, __LINE__);
 
 	//1、分配一个 net_device 结构体
-	vnet_dev = alloc_netdev(
-		0, "vnet%d", NET_NAME_UNKNOWN,
-		ether_setup); //生成一个net_device结构体，对其成员赋值并返回该结构体的指针
+	//生成一个net_device结构体，对其成员赋值并返回该结构体的指针
+	vnet_dev = alloc_netdev(0, "vnet%d", NET_NAME_UNKNOWN, ether_setup);
 
 	//2、设置
 	//网络设备的操作集，这个参数一定要有！否则驱动无法加载
