@@ -10,7 +10,7 @@ void cmd_add(void);
 int get_token(void);
 jmp_buf jmpbuffer;
 
-int main(void)
+int demo_setjmp_main(void)
 {
 	char line[MAXLINE];
 	if (setjmp(jmpbuffer) != 0) {
@@ -22,7 +22,7 @@ int main(void)
 		}
 	}
 
-	exit(0);
+	exit(EXIT_SUCCESS);
 }
 
 char *tok_ptr;
@@ -41,7 +41,7 @@ void do_line(char *ptr)
 
 void cmd_add(void)
 {
-	int token;
+	/*int token;*/
 	longjmp(jmpbuffer, 1);
 	// reset the processing for this command
 }

@@ -7,7 +7,7 @@ static void f2(void);
 static jmp_buf jmpbuffer;
 static int globval;
 
-int main(void)
+int demo_longjmp_main(void)
 {
 	int autoval;
 	register int regival;
@@ -28,7 +28,7 @@ int main(void)
 	staval = 99;
 	printf("regival:%d\n", regival);
 	f1(autoval, regival, volval, staval);
-	exit(0);
+	exit(EXIT_SUCCESS);
 }
 
 static void f1(int i, int j, int k, int l)
