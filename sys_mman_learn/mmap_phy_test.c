@@ -93,8 +93,8 @@ static int devmem_write(unsigned long writeAddr, unsigned long *buf,
 				close(fd);
 				return -1;
 			}
-			printf("map_base over 4k = [%p].\n",
-			       map_base); // 翻页打印提示
+			// 翻页打印提示
+			printf("map_base over 4k = [%p].\n", map_base);
 		}
 
 		virt_addr = map_base + (addr & MAP_MASK); // 映射地址
@@ -173,9 +173,10 @@ static int devmem_read(unsigned long readAddr, unsigned long *buf,
 			}
 		}
 
-		virt_addr = map_base +
-			    (addr & MAP_MASK); // 将内核空间映射到用户空间操作
-		buf[i] = *((unsigned long *)virt_addr); // 读取数据
+		// 将内核空间映射到用户空间操作
+		virt_addr = map_base + (addr & MAP_MASK);
+		// 读取数据
+		buf[i] = *((unsigned long *)virt_addr);
 		addr += 4;
 		offset_len += 4;
 	}

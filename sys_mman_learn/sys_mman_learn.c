@@ -8,7 +8,8 @@ static demo_t demos[] = {
 	DEMO_MAIN_ITEM(mmap),	      DEMO_MAIN_ITEM(shm_reader),
 	DEMO_MAIN_ITEM(shm_writer),   DEMO_MAIN_ITEM(open_shm),
 	DEMO_MAIN_ITEM(shm_open),     DEMO_MAIN_ITEM(mmap_phy),
-	DEMO_MAIN_ITEM(MAP_ANONYMOUS)
+	DEMO_MAIN_ITEM(MAP_ANONYMOUS),
+	DEMO_MAIN_ITEM(mmap_array)
 
 };
 int main(int argc, char **argv)
