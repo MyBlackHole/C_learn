@@ -2,7 +2,12 @@ obj-m:=module_param_test.o
 
 CURRENT_PATH:=$(shell pwd)
 LINUX_KERNEL:=$(shell uname -r)
-LINUX_KERNEL_PATH:=/usr/src/linux-headers-$(LINUX_KERNEL)
+
+ifneq ($(KDIR),)
+	LINUX_KERNEL_PATH:=$(KDIR)
+else
+	LINUX_KERNEL_PATH:=/lib/modules/$(shell uname -r)/build/
+endif
 
 all:
 	make -C $(LINUX_KERNEL_PATH) M=$(CURRENT_PATH) modules  #编译模块

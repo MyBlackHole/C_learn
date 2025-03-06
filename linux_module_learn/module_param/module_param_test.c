@@ -4,6 +4,19 @@
 #define MY_MAJOR 0x09
 static int global_val_test = MY_MAJOR;
 module_param(global_val_test, int, 0644);
+
+/*static int __init global_val_test_check(const char *val,*/
+/*					struct kernel_param *kp)*/
+/*{*/
+/*	long int temp;*/
+/*	if (kstrtol(val, 10, &temp) == 0 && temp >= 0 && temp <= 100) {*/
+/*		return 0; // 参数有效*/
+/*	}*/
+/*	return -EINVAL; // 参数无效*/
+/*}*/
+/**/
+/*module_param_cb(global_val_test, global_val_test_check, NULL, S_IRUGO);*/
+
 // // 参数描述 modinfo module_param_test.ko
 // MODULE_PARM_DESC(global_val_test, "global_val_test value");
 
