@@ -28,6 +28,8 @@ static demo_t demos[] = {
 	DEMO_MAIN_ITEM(dup21),
 	DEMO_MAIN_ITEM(pread_1),
 	DEMO_MAIN_ITEM(getuid),
+	DEMO_MAIN_ITEM(pwrite),
+	DEMO_MAIN_ITEM(pwrite_io),
 };
 int main(int argc, char **argv)
 {

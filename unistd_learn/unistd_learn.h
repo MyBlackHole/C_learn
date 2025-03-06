@@ -25,5 +25,7 @@ DEMO_MAIN_DECL(fork);
 DEMO_MAIN_DECL(dup21);
 DEMO_MAIN_DECL(pread_1);
 DEMO_MAIN_DECL(getuid);
+DEMO_MAIN_DECL(pwrite);
+DEMO_MAIN_DECL(pwrite_io);
 
 #endif
