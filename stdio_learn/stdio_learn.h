@@ -39,5 +39,7 @@ DEMO_MAIN_DECL(popen);
 DEMO_MAIN_DECL(popen_w);
 DEMO_MAIN_DECL(popen_close);
 DEMO_MAIN_DECL(rename);
+DEMO_MAIN_DECL(setvbuf);
+
 
 #endif
