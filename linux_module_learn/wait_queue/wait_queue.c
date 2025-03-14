@@ -6,20 +6,20 @@
 #include <linux/wait.h>
 #include <linux/kthread.h>
 
-static int read_count = 0;
+static atomic_t read_count = ATOMIC_INIT(0);
 static struct task_struct *wait_thread;
 // Initializing waitqueue statically
-DECLARE_WAIT_QUEUE_HEAD(test_waitqueue);
-static int wait_queue_flag = 0;
+DECLARE_WAIT_QUEUE_HEAD(test_wait_queue);
+static atomic_t wait_queue_flag = ATOMIC_INIT(0);
 
 static int my_waitqueue_show(struct seq_file *m, void *v)
 {
-	printk(KERN_ALERT "Read function\n");
-	seq_printf(m, "read_count = %d\n", read_count);
-	wait_queue_flag = 1;
+	printk(KERN_INFO "Read function\n");
+	seq_printf(m, "read_count = %d\n", atomic_read(&read_count));
+	atomic_set(&wait_queue_flag, 1);
 
 	// wake up only one process from wait queue
-	wake_up_interruptible(&test_waitqueue);
+	wake_up_interruptible(&test_wait_queue);
 	return 0;
 }
 
@@ -37,68 +37,102 @@ static struct file_operations test_wait_queue_fops = {
 
 static int wait_function(void *unused)
 {
-	while (1) {
-		printk(KERN_ALERT "Waiting For Event...\n");
+	while (!kthread_should_stop()) {
+		printk(KERN_INFO "Waiting For Event...\n");
 		// sleep until wait_queue_flag != 0
-		wait_event_interruptible(test_waitqueue, wait_queue_flag != 0);
-		if (wait_queue_flag == 2) {
-			printk(KERN_ALERT "Event Came From Exit Function\n");
+		if (wait_event_interruptible(test_wait_queue,
+					     atomic_read(&wait_queue_flag) !=
+							     0 ||
+						     kthread_should_stop())) {
+			if (kthread_should_stop())
+				break;
+			continue;
+		}
+		if (atomic_read(&wait_queue_flag) == 2) {
+			printk(KERN_INFO "Event Came From Exit Function\n");
 			return 0;
 		}
-		printk(KERN_ALERT "Event Came From Read Function - %d\n",
-		       ++read_count);
-		wait_queue_flag = 0;
+		printk(KERN_INFO "Event Came From Read Function - %d\n",
+		       atomic_read(&read_count));
+		atomic_inc(&read_count);
+		atomic_set(&wait_queue_flag, 0);
 	}
 
 	return 0;
 }
 
-static int __init mywaitqueue_init(void)
+static int __init wait_queue_init(void)
 {
 	struct proc_dir_entry *pe;
 
-	printk(KERN_ALERT "[Hello] mywaitqueue \n");
+	printk(KERN_INFO "[Hello] mywaitqueue \n");
 	pe = proc_create("test_wait_queue", 0644, NULL, &test_wait_queue_fops);
 	if (!pe)
 		return -ENOMEM;
 
 	// Create the kernel thread with name "MyWaitThread"
-	wait_thread = kthread_create(wait_function, NULL, "MyWaitThread");
-	if (wait_thread) {
-		printk(KERN_ALERT "Thread created successfully\n");
-		wake_up_process(wait_thread);
-	} else {
-		printk(KERN_ALERT "Thread creation failed\n");
+	wait_thread = kthread_run(wait_function, NULL, "MyWaitThread");
+	if (IS_ERR(wait_thread)) {
+		proc_remove(pe);
+		printk(KERN_ERR "Thread creation failed\n");
+		return PTR_ERR(wait_thread);
 	}
 
 	return 0;
 }
 
-static void __exit mywaitqueue_exit(void)
+static void __exit wait_queue_exit(void)
 {
-	wait_queue_flag = 2;
-	wake_up_interruptible(&test_waitqueue);
-	printk(KERN_ALERT "[Goodbye] mywaitqueue\n");
+	atomic_set(&wait_queue_flag, 2);
+	wake_up_interruptible(&test_wait_queue);
+	if (wait_thread)
+		kthread_stop(wait_thread);
+	printk(KERN_INFO "[Goodbye] mywaitqueue\n");
 	remove_proc_entry("test_wait_queue", NULL);
 }
 
-module_init(mywaitqueue_init);
-module_exit(mywaitqueue_exit);
+module_init(wait_queue_init);
+module_exit(wait_queue_exit);
 MODULE_LICENSE("GPL");
-
 
 /*
 # insmod wait_queue.ko
-[344058.385713] [Hello] mywaitqueue
-[344058.387597] Thread created successfully
-[344058.389426] Waiting For Event...
-
-# ls -alh /proc/test_wait_queue
--rw-r--r--    1 root     root           0 Dec 10 02:59 /proc/test_wait_queue
-
+[182363.054074] wait_queue: loading out-of-tree module taints kernel.
+[182363.059294] [Hello] mywaitqueue
+[182363.062260] Waiting For Event...
+# rmmod wait_queue.ko
+[182369.623671] Event Came From Exit Function
+[182369.626703] [Goodbye] mywaitqueue
+# insmod wait_queue.ko
+[182373.599418] [Hello] mywaitqueue
+[182373.602407] Waiting For Event...
 # cat /proc/test_wait_queue
-[344129.841706] Read function
-[344129.842985] Event Came From Read Function - 1
+[182395.557732] Read function
 read_count = 0
-[344129.844965] Waiting For Event...
+# [182395.560124] Event Came From Read Function - 0
+[182395.562759] Waiting For Event...
+# rmmod wait_queue.ko
+[182402.369440] Event Came From Exit Function
+[182402.372048] [Goodbye] mywaitqueue
+# insmod wait_queue.ko
+[182458.125664] [Hello] mywaitqueue
+[182458.128377] Waiting For Event...
+# cat /proc/test_wait_queue
+[182481.416750] Read function
+read_count = 0
+[182481.418408] Event Came From Read Function - 0
+[182481.422052] Waiting For Event...
+# cat /proc/test_wait_queue
+[182482.437127] Read function
+read_count = 1
+[182482.439690] Event Came From Read Function - 1
+[182482.442564] Waiting For Event...
+# cat /proc/test_wait_queue
+[182483.667564] Read function
+[182483.669334] Event Came From Read Function - 2
+read_count = 2
+[182483.672574] Waiting For Event...
+# rmmod wait_queue.ko
+[182485.976539] Event Came From Exit Function
+[182485.979385] [Goodbye] mywaitqueue
 */
