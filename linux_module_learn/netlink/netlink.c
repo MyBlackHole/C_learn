@@ -35,6 +35,7 @@ int send_usrmsg(char *pbuf, uint16_t len)
 
 	/* 拷贝数据发送 */
 	memcpy(nlmsg_data(nlh), pbuf, len);
+	/* 单播发送 */
 	ret = netlink_unicast(nlsk, nl_skb, USER_PORT, MSG_DONTWAIT);
 
 	return ret;
@@ -47,6 +48,9 @@ static void netlink_rcv_msg(struct sk_buff *skb)
 	char *kmsg = "hello users";
 	// 从skb中获取data字段，并转换成nlh进行读取
 	nlh = nlmsg_hdr(skb);
+
+	/*if (skb->len > NLMSG_SPACE(0))*/
+
 	// 读取nlh后面的数据部分
 	umsg = NLMSG_DATA(nlh);
 	if (umsg) {
@@ -63,11 +67,20 @@ static int __init test_netlink_init(void)
 {
 	nlsk = (struct sock *)netlink_kernel_create(&init_net, NETLINK_TEST,
 						    &cfg);
+	if (!nlsk) {
+		printk("netlink_kernel_create failure\n");
+		return -1;
+	}
 	return 0;
 }
 
 static void __exit test_netlink_exit(void)
 {
+	if (nlsk) {
+		netlink_kernel_release(nlsk);
+		nlsk = NULL;
+	}
+
 	printk("exit......\n");
 }
 MODULE_LICENSE("GPL");

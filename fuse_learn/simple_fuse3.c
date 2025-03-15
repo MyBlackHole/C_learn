@@ -149,7 +149,7 @@ static void show_help(const char *progname)
 }
 
 // ./out/obj/fuse_learn/hello /tmp/fuse_mount_test
-int main(int argc, char *argv[])
+int demo_fuse3_main(int argc, char *argv[])
 {
 	int ret;
 	struct fuse_args args = FUSE_ARGS_INIT(argc, argv);

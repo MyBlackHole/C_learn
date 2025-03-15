@@ -45,6 +45,8 @@ static demo_t demos[] = {
 	DEMO_MAIN_ITEM(uint16_t),
 	DEMO_MAIN_ITEM(stack_space_usage),
 	DEMO_MAIN_ITEM(disassemble),
+	DEMO_MAIN_ITEM(log_test),
+	DEMO_MAIN_ITEM(test2),
 
 };
 int main(int argc, char **argv)
