@@ -38,7 +38,7 @@ static void socket_worker(struct work_struct *work)
 			       &s_work->sock);
 	if (ret < 0) {
 		pr_err("Failed to create socket: %d\n", ret);
-		goto release_socket;
+		goto out;
 	}
 
 	// 2. 设置目标地址
@@ -62,12 +62,14 @@ static void socket_worker(struct work_struct *work)
 		struct kvec vec = { .iov_base = s_work->message,
 				    .iov_len = strlen(s_work->message) };
 		struct msghdr msg_hdr = { .msg_flags = 0 };
+		pr_info("vec.iov_len = %ld\n", vec.iov_len);
 		ret = kernel_sendmsg(s_work->sock, &msg_hdr, &vec, 1,
 				     vec.iov_len);
 		if (ret < 0) {
 			pr_err("Send failed: %d\n", ret);
 		} else {
-			pr_info("Sent %d bytes: %s\n", ret, s_work->message);
+			pr_info("Sent %d\n", ret);
+			/*pr_info("Sent %d bytes: %s\n", ret, s_work->message);*/
 		}
 	}
 
@@ -76,6 +78,9 @@ release_socket:
 		sock_release(s_work->sock);
 		s_work->sock = NULL;
 	}
+out:
+	vfree(s_work->message);
+	s_work->message = NULL;
 }
 
 // 模块初始化
@@ -91,13 +96,16 @@ static int __init workqueue_socket_init(void)
 	// 初始化工作队列项
 	INIT_WORK(&s_work->work, socket_worker);
 
-	// 准备消息数据
-	s_work->message = kstrdup("Hello from kernel workqueue!", GFP_KERNEL);
+	s_work->message = vmalloc(1024 * 1024 * 10);
+	/*// 准备消息数据*/
+	/*s_work->message = kstrdup("Hello from kernel workqueue!", GFP_KERNEL);*/
 	if (!s_work->message) {
 		kfree(s_work);
 		pr_err("Failed to allocate message\n");
 		return -ENOMEM;
 	}
+	memset(s_work->message, 'a', 1024 * 1024 * 10);
+	s_work->message[1024 * 1024 * 10 - 1] = '\0';
 
 	// 调度工作到系统默认工作队列
 	schedule_work(&s_work->work);
@@ -108,14 +116,18 @@ static int __init workqueue_socket_init(void)
 // 模块退出
 static void __exit workqueue_socket_exit(void)
 {
+	pr_info("cancel_work_sync\n");
 	// 等待工作项完成执行
 	cancel_work_sync(&s_work->work);
 
+	pr_info("sock_release\n");
 	// 清理资源（worker可能已释放sock，此处检查冗余释放）
 	if (s_work->sock) {
 		sock_release(s_work->sock);
 	}
-	kfree(s_work->message);
+	pr_info("kfree\n");
+	if (s_work->message)
+		vfree(s_work->message);
 	kfree(s_work);
 	pr_info("Module unloaded\n");
 }
