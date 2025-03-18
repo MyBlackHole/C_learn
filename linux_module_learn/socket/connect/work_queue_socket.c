@@ -2,6 +2,7 @@
 #include <linux/module.h>
 #include <linux/kernel.h>
 #include <linux/net.h>
+#include <net/tcp.h>
 #include <linux/inet.h>
 #include <linux/in.h>
 #include <linux/socket.h>
@@ -47,9 +48,16 @@ static void socket_worker(struct work_struct *work)
 	sin.sin_port = htons(target_port);
 	sin.sin_addr.s_addr = in_aton(target_ip);
 
+retry_connect:
 	// 3. 发起连接（可能阻塞）
+	// 修改为非阻塞模式，避免阻塞内核线程
 	ret = s_work->sock->ops->connect(s_work->sock, (struct sockaddr *)&sin,
-					 sizeof(sin), 0);
+					 sizeof(sin), O_NONBLOCK);
+	if (ret == -EINPROGRESS || ret == -EALREADY) {
+		pr_warn("Connect in progress: %d\n", ret);
+		ssleep(1);
+		goto retry_connect;
+	}
 	if (ret < 0) {
 		pr_err("Connect failed: %d\n", ret);
 		goto release_socket;
