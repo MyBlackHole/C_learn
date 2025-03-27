@@ -102,6 +102,9 @@ void __exit test_server_exit(void)
 
 	/* 唤醒内核线程 */
 	send_sig(SIGINT, task, 1);
+	/* 会导致内核线程以退出情况下执行下面的代码
+	 * 从而导致内核崩溃*/
+	ssleep(10);
 	/* 需要确保内核线程没有退出
 	 * 不然会导致内核崩溃*/
 	ret = kthread_stop(task);

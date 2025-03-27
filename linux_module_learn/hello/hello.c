@@ -5,7 +5,7 @@
 
 static int a = 10;
 
-__attribute__((optimize("O0"))) static int __init lk_hello(void)
+__attribute__((optimize("O0"))) static int __init hello_init(void)
 {
 	pr_info("hello world!\n");
 	const void *ptr = 0x0000000087de68e7;
@@ -28,10 +28,10 @@ __attribute__((optimize("O0"))) static int __init lk_hello(void)
 	// kfree(buf_path);
 	return 0;
 }
-static void __exit lk_exit(void)
+static void __exit hello_exit(void)
 {
 	printk("good bye!\n");
 }
-module_init(lk_hello);
-module_exit(lk_exit);
+module_init(hello_init);
+module_exit(hello_exit);
 MODULE_LICENSE("GPL");
