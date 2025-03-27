@@ -5,7 +5,8 @@
 #include <unistd.h>
 
 /* 此空间不会影响栈空间的占用 */
-char g_buffer[1024 * 1024 * 1024]; // 1MB buffer
+char g_buffer[1 * 1024 * 1024]; // 1MB buffer
+/*char g_buffer[1024 * 1024 * 1024]; // 1GB buffer*/
 
 int demo_stack_space_usage_main()
 {
