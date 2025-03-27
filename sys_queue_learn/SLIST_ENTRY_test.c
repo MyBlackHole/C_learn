@@ -84,7 +84,7 @@ void num_mergeSort(num_head *head)
 	SLIST_FIRST(head) = mergeSort(SLIST_FIRST(head));
 }
 
-int main(void)
+int demo_SLIST_ENTRY_main(void)
 {
 	/* 从堆空间申请链表表头并初始化 */
 	num_head *p_head = malloc(sizeof(num_head));
