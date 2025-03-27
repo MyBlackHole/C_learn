@@ -4,7 +4,9 @@
 #include <linux/kobject.h>
 #include <linux/types.h>
 
-#define MONITOR_ARRAY_SIZE 128
+#define MONITOR_ARRAY_SIZE 12800
+/*#define MONITOR_ARRAY_SIZE 1280*/
+/*#define MONITOR_ARRAY_SIZE 128*/
 #define PATH_MAX_LEN 512
 #define CONF_PATH_MAX_LEN PATH_MAX_LEN
 #define APP_NAME_LEN 128
@@ -58,13 +60,13 @@ static int __init hello_mm_init(void)
 {
 	int i = 0;
 	pr_info("hello world!\n");
-	pr_info("monitor_config_obj mm size: %ld, pointer: %p\n",
-		sizeof(monitor_config_obj), monitor_config_obj);
 	for (i = 0; i < MONITOR_ARRAY_SIZE; i++) {
 		pr_info("monitor_config_obj[%d] mm size: %ld, pointer: %p\n", i,
 			sizeof(monitor_config_obj[i]), &monitor_config_obj[i]);
 		pr_info("hook status: %d", monitor_config_obj[i].hook_status);
 	}
+	pr_info("monitor_config_obj mm size: %ld, pointer: %p\n",
+		sizeof(monitor_config_obj), monitor_config_obj);
 	return 0;
 }
 static void __exit hello_mm_exit(void)
