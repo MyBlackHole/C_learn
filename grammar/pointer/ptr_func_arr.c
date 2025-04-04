@@ -4,11 +4,19 @@
 
 #define FUNC_NUM 10
 
-int (*funcs[FUNC_NUM])();
+static int (*funcs[FUNC_NUM])();
 
-extern int func1();
+static int func1()
+{
+	printf("This is func1.\n");
+	return 0;
+}
 
-extern int func2();
+static int func2()
+{
+	printf("This is func2.\n");
+	return 0;
+}
 
 int demo_func_main(int argc, char *argv[])
 {

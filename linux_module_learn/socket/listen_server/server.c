@@ -73,6 +73,7 @@ static struct server_session *server_session_add(struct socket *sock, int state)
 	s->sock = sock;
 
 	list_add(&s->list, &session_list);
+	// server_session_set_timer(s, 100 * HZ);
 	pr_info("New session %p\n", s);
 
 	return s;
@@ -197,14 +198,20 @@ static struct server_session *server_process_rx(struct server_session *s)
 	iov.iov_base = s->buffer;
 	iov.iov_len = (size_t)buflen;
 
-	s->state = SERVER_RX;
 	len = kernel_recvmsg(sock, &msg, &iov, 1, buflen, MSG_DONTWAIT);
 
 	if (len < 0) {
-		printk("receiving message error\n");
+		if (len != -EAGAIN) {
+			s->state = SERVER_CLOSED;
+			printk("receiving message error, len=%d\n", len);
+		} else {
+			// s->state = SERVER_RX;
+			s->recv_len = 0;
+		}
 	} else {
+		s->state = SERVER_RX;
 		s->recv_len = len;
-		printk("receiving: %s\n", s->buffer);
+		printk("receiving: %s, len=%d\n", s->buffer, len);
 	}
 
 	/*if (s && (s->state == SERVER_CLOSED))*/
@@ -218,19 +225,20 @@ static struct server_session *server_process_tx(struct server_session *s)
 	struct socket *sock = s->sock;
 	/*struct sock *sk = sock->sk;*/
 	struct kvec iov;
-	int len, buflen = sizeof(s->buffer);
+	int len = 0;
 	struct msghdr msg = {
 		NULL,
 	};
 
 	iov.iov_base = s->buffer;
 	iov.iov_len = s->recv_len;
+	pr_info("sending: %s, len=%d\n", s->buffer, s->recv_len);
 
 	s->state = SERVER_TX;
-	len = kernel_sendmsg(sock, &msg, &iov, 1, buflen);
+	len = kernel_sendmsg(sock, &msg, &iov, 1, s->recv_len);
 
 	if (len < 0)
-		printk("sending message error\n");
+		printk("sending message error, len=%d\n", len);
 	else
 		printk("sending: %s\n", s->buffer);
 
@@ -255,6 +263,7 @@ static void server_process_sessions(void)
 	server_lock();
 
 	list_for_each_entry_safe(s, n, &session_list, list) {
+		pr_info("Processing session %p state %ld\n", s, s->state);
 		if (test_and_clear_bit(ETIMEDOUT, &s->flags)) {
 			s->state = ETIMEDOUT;
 			server_session_del(s);
@@ -266,10 +275,8 @@ static void server_process_sessions(void)
 			continue;
 		case SERVER_OPEN:
 			server_process_rx(s);
-			break;
 		case SERVER_RX:
 			server_process_tx(s);
-			break;
 		default:
 			server_process_closed(s);
 			break;

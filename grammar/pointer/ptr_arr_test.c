@@ -21,7 +21,7 @@ static void test()
 	}
 }
 
-int demo_arr1_main(int argc, char *argv[])
+int demo_ptr_arr1_main(int argc, char *argv[])
 {
 	test();
 

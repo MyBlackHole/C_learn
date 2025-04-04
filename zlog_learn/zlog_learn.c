@@ -1,15 +1,12 @@
-#include "lz4_learn.h"
+#include "zlog_learn.h"
 
 #include <stddef.h>
 #include <stdio.h>
 #include <string.h>
 
 static demo_t demos[] = {
-	DEMO_MAIN_ITEM(lz4),
-	DEMO_MAIN_ITEM(LZ4_compress_HC),
-	DEMO_MAIN_ITEM(LZ4_decompress_safe),
+	DEMO_MAIN_ITEM(main),
 };
-
 int main(int argc, char **argv)
 {
 	// find the main func from the first argument

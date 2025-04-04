@@ -47,7 +47,7 @@ void test2()
 //   }
 // }
 
-int demo_arr_main(int argc, char *argv[])
+int demo_ptr_arr1_main(int argc, char *argv[])
 {
 	test1();
 	test2();

@@ -25,14 +25,15 @@ int demo_glob_main(int argc, char *argv[])
 	}
 
 	// err = glob(argv[1], 0, NULL, &globres);
-	err = glob(argv[1], GLOB_TILDE, err_func, &globres);
+	/*err = glob(argv[1], GLOB_TILDE, err_func, &globres);*/
+	err = glob(argv[1], GLOB_ERR, err_func, &globres);
 	if (err) {
 		fprintf(stderr, "ERROR %d\n", err);
 		exit(1);
 	}
 
 	for (index = 0; index < globres.gl_pathc; index++) {
-		puts(globres.gl_pathv[index]);
+		printf("%s\n", globres.gl_pathv[index]);
 	}
 	globfree(&globres);
 	return 0;

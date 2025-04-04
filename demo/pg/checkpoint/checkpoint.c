@@ -5,6 +5,9 @@
 #include <unistd.h>
 #include <stdio.h>
 
+typedef uint64_t XLogRecPtr;
+#define LSN_FORMAT_ARGS(lsn) ((uint32_t)((lsn) >> 32)), ((uint32_t)(lsn))
+
 typedef enum DBState {
 	DB_STARTUP = 0,
 	DB_SHUTDOWNED,
@@ -182,6 +185,9 @@ int main(int argc, char *argv[])
 	}
 	printf("time: %ld\n", control_data.checkPointCopy.time);
 	printf("minRecoveryPoint: %ld\n", control_data.minRecoveryPoint);
+	printf("minRecoveryPoint: %X/%X\n",
+	       LSN_FORMAT_ARGS(control_data.minRecoveryPoint));
+
 	close(fd);
 	return EXIT_SUCCESS;
 }
