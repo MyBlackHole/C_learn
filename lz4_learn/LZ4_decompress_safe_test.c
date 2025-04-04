@@ -68,6 +68,8 @@ int demo_LZ4_decompress_safe_main(int argc, char **argv)
 		ret = -EXIT_FAILURE;
 		goto close_dst_fd;
 	}
+	printf("Decompressed %lu bytes from %s to %s\n", dst_size, src_file,
+	       dst_file);
 	if (write(d_fd, dst_buffer, dst_size) != dst_size) {
 		printf("Failed to write dst_file: %s\n", dst_file);
 		ret = -EXIT_FAILURE;
