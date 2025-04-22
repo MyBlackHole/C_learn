@@ -4,9 +4,9 @@
 #include <string.h>
 
 static demo_t demos[] = {
-	DEMO_MAIN_ITEM(signalfd_test),
-	DEMO_MAIN_ITEM(signalfd1_test),
-	DEMO_MAIN_ITEM(signalfd2_test),
+	DEMO_MAIN_ITEM(signalfd),
+	DEMO_MAIN_ITEM(signalfd_1),
+	DEMO_MAIN_ITEM(signalfd_2),
 };
 int main(int argc, char **argv)
 {

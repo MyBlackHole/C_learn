@@ -12,9 +12,12 @@ void signalCallBackFunc(int signalFd)
 	struct signalfd_siginfo fd_siginfo;
 	printf("signalCallBackFunc\n");
 	read(signalFd, &fd_siginfo, sizeof(struct signalfd_siginfo));
+	printf("signal %d received\n", fd_siginfo.ssi_signo);
+	printf("pid %d, uid %d, fd %d\n", fd_siginfo.ssi_pid,
+	       fd_siginfo.ssi_uid, fd_siginfo.ssi_fd);
 }
 
-int demo_signalfd1_test_main()
+int demo_signalfd_1_main()
 {
 	printf("%d\n", getpid());
 	int epfd = epoll_create1(0);

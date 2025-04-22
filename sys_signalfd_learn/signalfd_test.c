@@ -19,7 +19,7 @@
 // 1633334
 // Got SIGQUIT
 // kill -QUIT 1633334
-int demo_signalfd_test_main(void)
+int demo_signalfd_main(void)
 {
 	printf("%d\n", getpid());
 	int sfd;

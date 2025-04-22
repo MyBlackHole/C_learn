@@ -24,7 +24,7 @@
 // Got SIGQUIT
 // $
 
-int demo_signalfd2_test_main(int argc, char *argv[])
+int demo_signalfd_2_main(int argc, char *argv[])
 {
 	sigset_t mask;
 	int sfd;
