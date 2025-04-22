@@ -187,6 +187,13 @@ int main(int argc, char *argv[])
 	printf("minRecoveryPoint: %ld\n", control_data.minRecoveryPoint);
 	printf("minRecoveryPoint: %X/%X\n",
 	       LSN_FORMAT_ARGS(control_data.minRecoveryPoint));
+	printf("backupStartPoint: %X/%X\n",
+	       LSN_FORMAT_ARGS(control_data.backupStartPoint));
+	printf("backupEndPoint: %X/%X\n",
+	       LSN_FORMAT_ARGS(control_data.backupEndPoint));
+	printf("backupEndRequired: %d\n", control_data.backupEndRequired);
+	printf("checkPoint: %X/%X\n",
+	       LSN_FORMAT_ARGS(control_data.checkPoint));
 
 	close(fd);
 	return EXIT_SUCCESS;
