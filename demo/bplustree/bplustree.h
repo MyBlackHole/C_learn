@@ -74,13 +74,20 @@ static inline int list_empty(const struct list_head *head)
 }
 
 typedef struct bplus_node {
+	/* 当前节点的偏移量 */
 	off_t self;
+	/* 父节点的偏移量 */
 	off_t parent;
+	/* 前一个兄弟节点的偏移量 */
 	off_t prev;
+	/* 后一个兄弟节点的偏移量 */
 	off_t next;
+	/* 节点类型，0表示叶子节点，1表示非叶子节点 */
 	int type;
 	/* If leaf node, it specifies  count of entries,
-     * if non-leaf node, it specifies count of children(branches) */
+	 * if non-leaf node, it specifies count of children(branches) */
+	/* 如果是叶节点，则指定条目数；
+	 * 如果是非叶节点，则指定子节点（分支）数 */
 	int children;
 } bplus_node;
 
@@ -114,15 +121,20 @@ typedef struct free_block {
 } free_block;
 
 struct bplus_tree {
+	/* 块缓存区
+	 * 缓存 5 个块*/
 	char *caches;
 	int used[MIN_CACHE_NUM];
-	// 索引存放的文件名
+	/* 索引存放的文件名 */
 	char filename[1024];
+	/* 文件描述符 */
 	int fd;
 	int level;
+	/* 根节点的偏移量 */
 	off_t root;
+	/* 文件大小 */
 	off_t file_size;
-	// 释放块的双向链表
+	/* 空闲块的双向链表 */
 	struct list_head free_blocks;
 };
 

@@ -20,7 +20,9 @@ enum {
 };
 
 enum {
+	/* 叶子节点 */
 	BPLUS_TREE_LEAF,
+	/* 非叶子节点 */
 	BPLUS_TREE_NON_LEAF = 1,
 };
 
@@ -30,40 +32,52 @@ enum {
 };
 
 #define ADDR_STR_WIDTH 16
+/* 获取数据开始地址 */
 #define offset_ptr(node) ((char *)(node) + sizeof(*node))
 #define key(node) ((key_t *)offset_ptr(node))
 #define data(node) ((long *)(offset_ptr(node) + _max_entries * sizeof(key_t)))
 #define sub(node) \
 	((off_t *)(offset_ptr(node) + (_max_order - 1) * sizeof(key_t)))
-
+/* 块大小 */
 static int _block_size;
 static int _max_entries;
 static int _max_order;
 
+/* 是否叶子节点 */
 static inline int is_leaf(struct bplus_node *node)
 {
 	return node->type == BPLUS_TREE_LEAF;
 }
 
+/* 搜索 key
+ * 二分查找 */
 static int key_binary_search(struct bplus_node *node, key_t target)
 {
+	/* 获取 key 数组 */
 	key_t *arr = key(node);
+	/* 获取 key 数组长度 */
 	int len = is_leaf(node) ? node->children : node->children - 1;
 	int low = -1;
 	int high = len;
 
 	while (low + 1 < high) {
+		/* 获取中间索引 */
 		int mid = low + (high - low) / 2;
 		if (target > arr[mid]) {
+			/* 目标在右半部分 */
 			low = mid;
 		} else {
+			/* 目标在左半部分 */
 			high = mid;
 		}
 	}
 
 	if (high >= len || arr[high] != target) {
+		/* 未找到目标
+		 * -1 是为了返回值不要等于 0 */
 		return -high - 1;
 	} else {
+		/* 找到目标 */
 		return high;
 	}
 }
@@ -74,6 +88,7 @@ static inline int parent_key_index(struct bplus_node *parent, key_t key)
 	return index >= 0 ? index : -index - 2;
 }
 
+/* 获取空闲节点 */
 static inline struct bplus_node *cache_refer(struct bplus_tree *tree)
 {
 	int i;
@@ -85,8 +100,10 @@ static inline struct bplus_node *cache_refer(struct bplus_tree *tree)
 		}
 	}
 	assert(0);
+	return NULL;
 }
 
+/* 缓存释放节点 */
 static inline void cache_defer(struct bplus_tree *tree, struct bplus_node *node)
 {
 	/* return the node cache borrowed from */
@@ -95,6 +112,7 @@ static inline void cache_defer(struct bplus_tree *tree, struct bplus_node *node)
 	tree->used[i] = 0;
 }
 
+/* 创建新节点 */
 static struct bplus_node *node_new(struct bplus_tree *tree)
 {
 	struct bplus_node *node = cache_refer(tree);
@@ -113,6 +131,7 @@ static inline struct bplus_node *non_leaf_new(struct bplus_tree *tree)
 	return node;
 }
 
+/* 创建叶子节点 */
 static inline struct bplus_node *leaf_new(struct bplus_tree *tree)
 {
 	struct bplus_node *node = node_new(tree);
@@ -120,14 +139,18 @@ static inline struct bplus_node *leaf_new(struct bplus_tree *tree)
 	return node;
 }
 
+/* 节点获取数据 */
 static struct bplus_node *node_fetch(struct bplus_tree *tree, off_t offset)
 {
 	if (offset == INVALID_OFFSET) {
 		return NULL;
 	}
 
+	/* 获取空闲节点 */
 	struct bplus_node *node = cache_refer(tree);
+	/* 读取节点数据 */
 	int len = pread(tree->fd, node, _block_size, offset);
+	(void)len;
 	assert(len == _block_size);
 	return node;
 }
@@ -139,36 +162,46 @@ static struct bplus_node *node_seek(struct bplus_tree *tree, off_t offset)
 	}
 
 	int i;
+	/* 读取 offset 所在的块
+	 * 同时将块缓存起来*/
 	for (i = 0; i < MIN_CACHE_NUM; i++) {
 		if (!tree->used[i]) {
 			char *buf = tree->caches + _block_size * i;
 			int len = pread(tree->fd, buf, _block_size, offset);
+			(void)len;
 			assert(len == _block_size);
 			return (struct bplus_node *)buf;
 		}
 	}
 	assert(0);
+	return NULL;
 }
 
+/* 数据持久化 */
 static inline void node_flush(struct bplus_tree *tree, struct bplus_node *node)
 {
 	if (node != NULL) {
 		int len = pwrite(tree->fd, node, _block_size, node->self);
+		(void)len;
 		assert(len == _block_size);
 		cache_defer(tree, node);
 	}
 }
 
+/* 获取新块 */
 static off_t new_node_append(struct bplus_tree *tree, struct bplus_node *node)
 {
 	/* assign new offset to the new node */
 	if (list_empty(&tree->free_blocks)) {
+		/* 分配新的块 */
 		node->self = tree->file_size;
 		tree->file_size += _block_size;
 	} else {
+		/* 从空闲块链表中分配 */
 		struct free_block *block;
 		block = list_first_entry(&tree->free_blocks, struct free_block,
 					 link);
+		/* 移除已分配的块 */
 		list_del(&block->link);
 		node->self = block->offset;
 		free(block);
@@ -246,11 +279,13 @@ static long bplus_tree_search(struct bplus_tree *tree, key_t key)
 	return ret;
 }
 
+/* 插入到链表左节点 */
 static void left_node_add(struct bplus_tree *tree, struct bplus_node *node,
 			  struct bplus_node *left)
 {
 	new_node_append(tree, left);
 
+	/* 获取当前节点的前一个节点 */
 	struct bplus_node *prev = node_fetch(tree, node->prev);
 	if (prev != NULL) {
 		prev->next = left->self;
@@ -523,6 +558,7 @@ static int non_leaf_insert(struct bplus_tree *tree, struct bplus_node *node,
 	return 0;
 }
 
+/* 叶子向左分裂 */
 static key_t leaf_split_left(struct bplus_tree *tree, struct bplus_node *leaf,
 			     struct bplus_node *left, key_t key, long data,
 			     int insert)
@@ -562,6 +598,7 @@ static key_t leaf_split_left(struct bplus_tree *tree, struct bplus_node *leaf,
 	return key(leaf)[0];
 }
 
+/* 叶子向右分裂 */
 static key_t leaf_split_right(struct bplus_tree *tree, struct bplus_node *leaf,
 			      struct bplus_node *right, key_t key, long data,
 			      int insert)
@@ -607,33 +644,44 @@ static void leaf_simple_insert(struct bplus_tree *tree, struct bplus_node *leaf,
 	leaf->children++;
 }
 
+/* 插入一个键值对 */
 static int leaf_insert(struct bplus_tree *tree, struct bplus_node *leaf,
 		       key_t key, long data)
 {
 	/* Search key location */
+	/* 搜索键的位置 */
 	int insert = key_binary_search(leaf, key);
 	if (insert >= 0) {
 		/* Already exists */
+		/* 键已经存在 */
 		return -1;
 	}
 	insert = -insert - 1;
 
 	/* fetch from free node caches */
+	/* 从空闲节点缓存中获取位置 */
 	int i = ((char *)leaf - tree->caches) / _block_size;
+	/* 标记节点使用 */
 	tree->used[i] = 1;
 
 	/* leaf is full */
 	if (leaf->children == _max_entries) {
+		/* 节点满了
+		 * 拆分节点 */
+
 		key_t split_key;
 		/* split = [m/2] */
 		int split = (_max_entries + 1) / 2;
+		/* 创建新的页子节点 */
 		struct bplus_node *sibling = leaf_new(tree);
 
 		/* sibling leaf replication due to location of insertion */
 		if (insert < split) {
+			/* 应该插入到左边兄弟的节点 */
 			split_key = leaf_split_left(tree, leaf, sibling, key,
 						    data, insert);
 		} else {
+			/* 应该插入到右边兄弟的节点 */
 			split_key = leaf_split_right(tree, leaf, sibling, key,
 						     data, insert);
 		}
@@ -656,6 +704,7 @@ static int leaf_insert(struct bplus_tree *tree, struct bplus_node *leaf,
 
 static int bplus_tree_insert(struct bplus_tree *tree, key_t key, long data)
 {
+	/* 取得根节点 */
 	struct bplus_node *node = node_seek(tree, tree->root);
 	while (node != NULL) {
 		if (is_leaf(node)) {
@@ -1206,22 +1255,26 @@ struct bplus_tree *bplus_tree_init(char *filename, int block_size)
 		return NULL;
 	}
 
-	// 分配内存同时初始化为 0
+	/* 分配内存同时初始化为 0 */
 	struct bplus_tree *tree = calloc(1, sizeof(*tree));
 	assert(tree != NULL);
-	// 链表初始化
+	/* 链表初始化 */
 	list_init(&tree->free_blocks);
-	// 拷贝文件名
+	/* 拷贝文件名 */
 	strcpy(tree->filename, filename);
 
 	/* load index boot file */
-	// 打开拼接后的文件
+	/* 打开索引 boot 文件 */
 	int fd = open(strcat(tree->filename, ".boot"), O_RDWR, 0644);
 	if (fd >= 0) {
+		/* 读取根节点地址 */
 		tree->root = offset_load(fd);
+		/* 读取块大小 */
 		_block_size = offset_load(fd);
+		/* 读取文件大小 */
 		tree->file_size = offset_load(fd);
 		/* load free blocks */
+		/* 读取空闲块列表 */
 		while ((i = offset_load(fd)) != INVALID_OFFSET) {
 			struct free_block *block = malloc(sizeof(*block));
 			assert(block != NULL);
@@ -1247,14 +1300,17 @@ struct bplus_tree *bplus_tree_init(char *filename, int block_size)
 	tree->caches = malloc(_block_size * MIN_CACHE_NUM);
 
 	/* open data file */
+	/* 打开数据文件 */
 	tree->fd = bplus_open(filename);
 	assert(tree->fd >= 0);
 	return tree;
 }
 
+/* 持久化树 meta 信息 */
 void bplus_tree_deinit(struct bplus_tree *tree)
 {
 	int fd = open(tree->filename, O_CREAT | O_RDWR, 0644);
+	(void)fd;
 	assert(fd >= 0);
 	assert(offset_store(fd, tree->root) == ADDR_STR_WIDTH);
 	assert(offset_store(fd, _block_size) == ADDR_STR_WIDTH);
