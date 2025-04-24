@@ -1,3 +1,4 @@
+#include "asm/syscall.h"
 #include <linux/uaccess.h>
 #include <linux/init.h>
 #include <linux/file.h>
@@ -6,6 +7,7 @@
 #include <linux/module.h>
 #include <linux/kallsyms.h>
 #include <linux/delay.h>
+
 #include "arch.h"
 
 DEFINE_STATIC_SRCU(srcu);
@@ -15,6 +17,10 @@ typedef long (*syscall_fn_t)(const struct pt_regs *regs);
 static syscall_fn_t orig_open;
 static syscall_fn_t orig_openat;
 static syscall_fn_t orig_write;
+static syscall_fn_t orig_unlink;
+static syscall_fn_t orig_open_tmp;
+static syscall_fn_t orig_openat_tmp;
+static syscall_fn_t orig_write_tmp;
 
 /*#if 0*/
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 7, 0)
@@ -175,42 +181,62 @@ original__:
 
 static int __init open_hook_init(void)
 {
+	// int ret = 0;
+	// struct pt_regs regs = { 0 };
+	// char *path = "/home/black/wdg.log.bak";
+
 	__sys_call_table = (unsigned long *)lookup_name("sys_call_table");
 	if (!__sys_call_table) {
 		printk("__sys_call_table error\n");
 		return -EINVAL;
 	}
 
+	printk("__sys_call_table:%lx\n", (unsigned long)__sys_call_table);
+
 	orig_open = (syscall_fn_t)__sys_call_table[__NR_open];
 	orig_openat = (syscall_fn_t)__sys_call_table[__NR_openat];
 	orig_write = (syscall_fn_t)__sys_call_table[__NR_write];
-	printk("orig_open:%p, orig_openat:%p, orig_write:%p\n", orig_open,
-	       orig_openat, orig_write);
+	orig_unlink = (syscall_fn_t)__sys_call_table[__NR_unlink];
+	printk("orig_open:%lx, orig_openat:%lx, orig_write:%lx\n",
+	       (unsigned long)orig_open, (unsigned long)orig_openat,
+	       (unsigned long)orig_write);
 
 	cr0 = clear_and_return_cr0();
 	/*cr0 = read_cr0();*/
-	/*__sys_call_table[__NR_open] = (unsigned long)open_hook;*/
+	__sys_call_table[__NR_open] = (unsigned long)open_hook;
 	__sys_call_table[__NR_openat] = (unsigned long)openat_hook;
-	/*__sys_call_table[__NR_write] = (unsigned long)write_hook;*/
+	__sys_call_table[__NR_write] = (unsigned long)write_hook;
 
-	printk("open_hook:%p, openat_hook:%p, write_hook:%p\n", open_hook,
-	       openat_hook, write_hook);
+	orig_open_tmp = (syscall_fn_t)__sys_call_table[__NR_open];
+	orig_openat_tmp = (syscall_fn_t)__sys_call_table[__NR_openat];
+	orig_write_tmp = (syscall_fn_t)__sys_call_table[__NR_write];
 
-	printk("__NR_open:%lx, __NR_openat:%lx, __NR_write:%lx\n",
-	       __sys_call_table[__NR_open], __sys_call_table[__NR_openat],
-	       __sys_call_table[__NR_write]);
+	printk("open_hook:%lx, openat_hook:%lx, write_hook:%lx\n",
+	       (unsigned long)open_hook, (unsigned long)openat_hook,
+	       (unsigned long)write_hook);
+
+	printk("orig_open_tmp:%lx, orig_openat_tmp:%lx, orig_write_tmp:%lx\n",
+	       (unsigned long)orig_open_tmp, (unsigned long)orig_openat_tmp,
+	       (unsigned long)orig_write_tmp);
 	setback_cr0(cr0);
 	printk("open_hook_init\n");
 
+	// PT_REGS_PARM1(&regs) = (unsigned long)path;
+	// ret = (*orig_unlink)(&regs);
+	// if (ret < 0) {
+	// 	printk("orig_unlink error:%d\n", ret);
+	// } else {
+	// 	printk("orig_unlink success, ret:%d\n", ret);
+	// }
 	return 0;
 }
 
 static void __exit open_hook_exit(void)
 {
 	cr0 = clear_and_return_cr0();
-	/*__sys_call_table[__NR_open] = (unsigned long)orig_open;*/
+	__sys_call_table[__NR_open] = (unsigned long)orig_open;
 	__sys_call_table[__NR_openat] = (unsigned long)orig_openat;
-	/*__sys_call_table[__NR_write] = (unsigned long)orig_write;*/
+	__sys_call_table[__NR_write] = (unsigned long)orig_write;
 	setback_cr0(cr0);
 	synchronize_srcu(&srcu);
 	printk("open_hook_exit\n");
