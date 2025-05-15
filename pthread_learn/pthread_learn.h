@@ -19,5 +19,6 @@ DEMO_MAIN_DECL(getspecific);
 DEMO_MAIN_DECL(pthread_mutex_consistent);
 DEMO_MAIN_DECL(create5);
 DEMO_MAIN_DECL(test_thread_ftruncate_write);
+DEMO_MAIN_DECL(pthread_key_t);
 
 #endif

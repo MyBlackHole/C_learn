@@ -22,6 +22,7 @@ static demo_t demos[] = {
 	DEMO_MAIN_ITEM(pthread_mutex_consistent),
 	DEMO_MAIN_ITEM(create5),
 	DEMO_MAIN_ITEM(test_thread_ftruncate_write),
+	DEMO_MAIN_ITEM(pthread_key_t),
 };
 int main(int argc, char **argv)
 {
