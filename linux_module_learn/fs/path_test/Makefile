@@ -1,7 +1,7 @@
 PWD = $(shell pwd)
 KVERS =$(shell uname -r)
 LINUX_KERNEL_PATH =/lib/modules/${KVERS}/build/
-obj-m += d_path_test.o
+obj-m += path_test.o
  
 ifneq ($(KDIR),)
 	LINUX_KERNEL_PATH:=$(KDIR)

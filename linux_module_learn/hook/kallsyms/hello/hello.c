@@ -47,7 +47,7 @@ static int __init hello_init(void)
 	}
 
 	printk("found KKK_test_func = %p\n", fptr_ref);
-	fptr_ref(0);
+	fptr_ref(666);
 
 	return 0;
 }
