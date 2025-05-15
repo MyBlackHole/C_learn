@@ -7,11 +7,18 @@
 
 #define NUM 11
 
-int demo_strncpy_test_main()
+int demo_strlcpy_test_main()
 {
 	char src[] = "hello world";
 	char buf[4] = { 0 };
-	strncpy(buf, src, sizeof(buf));
+	strlcpy(buf, src, sizeof(buf));
 	printf("%sok", buf);
 	return EXIT_SUCCESS;
 }
+
+
+// Output:
+// ❯ xmake run string_learn strncpy_test
+// hellhello worldok%
+// ❯ xmake run string_learn strlcpy_test
+// helok%
