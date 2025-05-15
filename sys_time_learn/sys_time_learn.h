@@ -6,6 +6,7 @@ DEMO_MAIN_ENV_DECL(timeval);
 DEMO_MAIN_ENV_DECL(timer1);
 DEMO_MAIN_ENV_DECL(time);
 DEMO_MAIN_ENV_DECL(localtime);
+DEMO_MAIN_ENV_DECL(localtime_r);
 DEMO_MAIN_ENV_DECL(localtime1);
 DEMO_MAIN_ENV_DECL(localtime2);
 DEMO_MAIN_ENV_DECL(gettimeofday);

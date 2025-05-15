@@ -10,7 +10,7 @@ static demo_env_t demos[] = {
 	DEMO_MAIN_ENV_ITEM(localtime1),	   DEMO_MAIN_ENV_ITEM(localtime2),
 	DEMO_MAIN_ENV_ITEM(gettimeofday),  DEMO_MAIN_ENV_ITEM(gettimeofday1),
 	DEMO_MAIN_ENV_ITEM(gettimeofday2), DEMO_MAIN_ENV_ITEM(clock_gettime),
-	DEMO_MAIN_ENV_ITEM(gettimeofday3),
+	DEMO_MAIN_ENV_ITEM(gettimeofday3), DEMO_MAIN_ENV_ITEM(localtime_r),
 };
 
 int main(int argc, char **argv, char **env)
