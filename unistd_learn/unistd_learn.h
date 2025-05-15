@@ -27,5 +27,7 @@ DEMO_MAIN_DECL(pread_1);
 DEMO_MAIN_DECL(getuid);
 DEMO_MAIN_DECL(pwrite);
 DEMO_MAIN_DECL(pwrite_io);
+DEMO_MAIN_DECL(execve);
+DEMO_MAIN_DECL(write3);
 
 #endif
