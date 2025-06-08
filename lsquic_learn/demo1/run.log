@@ -1,0 +1,15 @@
+#0  __pthread_kill_implementation (threadid=<optimized out>, signo=signo@entry=6, no_tid=no_tid@entry=0) at pthread_kill.c:44
+#1  0x00007ffff79b6463 in __pthread_kill_internal (threadid=<optimized out>, signo=6) at pthread_kill.c:78
+#2  0x00007ffff795d120 in __GI_raise (sig=sig@entry=6) at ../sysdeps/posix/raise.c:26
+#3  0x00007ffff79444c3 in __GI_abort () at abort.c:79
+#4  0x00007ffff79443df in __assert_fail_base (fmt=0x7ffff7ad4c20 "%s%s%s:%u: %s%sAssertion `%s' failed.\n%n", assertion=assertion@entry=0x5555557e9b18 "conn->ifc_conn.cn_conn_ctx == NULL",
+    file=file@entry=0x5555557e80a8 "/home/black/.xmake/cache/packages/2409/l/lsquic/v4.0.9/source/src/liblsquic/lsquic_full_conn_ietf.c", line=line@entry=3199, function=function@entry=0x5555557f0280 <__PRETTY_FUNCTION__.33> "ietf_full_conn_ci_destroy") at assert.c:94
+#5  0x00007ffff7955177 in __assert_fail (assertion=0x5555557e9b18 "conn->ifc_conn.cn_conn_ctx == NULL", file=0x5555557e80a8 "/home/black/.xmake/cache/packages/2409/l/lsquic/v4.0.9/source/src/liblsquic/lsquic_full_conn_ietf.c", line=3199,
+    function=0x5555557f0280 <__PRETTY_FUNCTION__.33> "ietf_full_conn_ci_destroy") at assert.c:103
+#6  0x00005555555b43e3 in ietf_full_conn_ci_destroy (lconn=0x555555aae010) at /home/black/.xmake/cache/packages/2409/l/lsquic/v4.0.9/source/src/liblsquic/lsquic_full_conn_ietf.c:3199
+#7  0x000055555558f982 in destroy_conn (engine=0x555555a78da0, conn=0x555555aae010, now=1723112099) at /home/black/.xmake/cache/packages/2409/l/lsquic/v4.0.9/source/src/liblsquic/lsquic_engine.c:977
+#8  0x0000555555593db5 in engine_decref_conn (engine=0x555555a78da0, conn=0x555555aae010, flags=LSCONN_CLOSING) at /home/black/.xmake/cache/packages/2409/l/lsquic/v4.0.9/source/src/liblsquic/lsquic_engine.c:2083
+#9  0x0000555555597878 in process_connections (engine=0x555555a78da0, next_conn=0x555555593f61 <conn_iter_next_tickable>, now=1723111954) at /home/black/.xmake/cache/packages/2409/l/lsquic/v4.0.9/source/src/liblsquic/lsquic_engine.c:3120
+#10 0x00005555555944f3 in lsquic_engine_process_conns (engine=0x555555a78da0) at /home/black/.xmake/cache/packages/2409/l/lsquic/v4.0.9/source/src/liblsquic/lsquic_engine.c:2244
+#11 0x0000555555586653 in tut_process_conns (tut=0x7fffffffcc40) at lsquic_learn/demo1/tut.c:823
+#12 0x000055555558793b in main (argc=7, argv=0x7fffffffd0b8) at lsquic_learn/demo1/tut.c:1261

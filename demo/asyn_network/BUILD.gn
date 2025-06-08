@@ -1,0 +1,14 @@
+executable("main") {
+  cflags = ["-g"]
+
+  sources = [
+    "ae.c",
+    "ae_epoll.c",
+    "ae.h",
+    "anet.c",
+    "anet.h",
+    "main.c",
+    "zmalloc.c",
+    "zmalloc.h",
+  ]
+}

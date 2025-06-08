@@ -1,0 +1,8 @@
+# 在 out/ 下
+shared_library("sbt") {
+  cflags = ["-fPIC", "-g", "-Wall"]
+  libs = ["pthread"]
+  sources = [
+    "sbt.c",
+  ]
+}

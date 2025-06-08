@@ -1,0 +1,9 @@
+# sudo apt-get install libsystemd-dev
+executable("sd_notify_test") {
+  cflags = ["-g", "-Wall"]
+  libs = ["systemd"]
+  sources = [
+    "sd_notify_test.c",
+  ]
+}
+

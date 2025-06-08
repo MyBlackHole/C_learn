@@ -1,0 +1,7 @@
+executable("unshare") {
+  cflags = ["-g", "-Wall"]
+
+  sources = [
+    "unshare.c",
+  ]
+}

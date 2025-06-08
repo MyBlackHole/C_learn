@@ -1,0 +1,17 @@
+executable("SLinkList-main") {
+  include_dirs = ["//DataStruct_learn/Status"]
+  deps = [":SLinkList"]
+  sources = [
+    "SLinkList-main.c",
+  ]
+}
+
+static_library("SLinkList") {
+  deps = ["//DataStruct_learn/Status:Status"]
+  include_dirs = ["//DataStruct_learn/Status"]
+  sources = [
+    "SLinkList.c",
+    "SLinkList.h",
+  ]
+}
+

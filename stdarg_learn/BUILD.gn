@@ -1,0 +1,14 @@
+executable("va_end_test") {
+  cflags = ["-g", "-Wall"]
+  sources = [
+    "va_end_test.c",
+  ]
+}
+
+executable("va_start_test") {
+  cflags = ["-g", "-Wall"]
+  sources = [
+    "va_start_test.c",
+  ]
+}
+

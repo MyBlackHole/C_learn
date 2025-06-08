@@ -1,0 +1,24 @@
+executable("getnameinfo_test") {
+  cflags = ["-g", "-Wall"]
+  sources = ["getnameinfo_test.c"]
+}
+
+executable("gethostbyaddr_test") {
+  cflags = ["-g", "-Wall"]
+  sources = ["gethostbyaddr_test.c"]
+}
+
+executable("gethostbyname_test") {
+  cflags = ["-g", "-Wall"]
+  sources = ["gethostbyname_test.c"]
+}
+
+executable("getaddrinfo_test") {
+  cflags = ["-g", "-Wall"]
+  sources = ["getaddrinfo_test.c"]
+}
+
+executable("getaddrinfo1_test") {
+  cflags = ["-g", "-Wall"]
+  sources = ["getaddrinfo1_test.c"]
+}

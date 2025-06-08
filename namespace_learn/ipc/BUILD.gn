@@ -1,0 +1,7 @@
+executable("ipc") {
+  cflags = ["-g", "-Wall"]
+
+  sources = [
+    "ipc.c",
+  ]
+}

@@ -1,0 +1,7 @@
+executable("mnt") {
+  cflags = ["-g", "-Wall"]
+
+  sources = [
+    "mnt.c",
+  ]
+}

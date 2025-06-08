@@ -1,0 +1,16 @@
+executable("test") {
+  cflags = ["-g", "-Wall"]
+  deps = [":LinkedHashMap"]
+  sources = [
+    "test.c",
+  ]
+}
+
+static_library("LinkedHashMap") {
+  cflags = ["-g", "-Wall"]
+  sources = [
+    "LinkedHashMap.c",
+    "LinkedHashMap.h",
+  ]
+}
+

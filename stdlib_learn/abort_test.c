@@ -1,0 +1,9 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int argc, char *argv[])
+{
+	printf("calling abort \n");
+	abort();
+	return 0;
+}

@@ -1,0 +1,25 @@
+-- -- 使用非系统的protobuf-c库，并设置为静态库
+-- add_requires("protobuf-c", {system = false, configs = {static = true}, debug = is_mode("debug")})
+-- -- add_requires("protobuf-c")
+--
+-- target("sctp_rpc_rpc_server")
+--     set_kind("binary")
+--     add_packages("protobuf-c")
+--     add_links("protobuf-c-rpc", "example-word-funcs-service")
+--     -- add_rules("protobuf.c")
+--     add_files("sctp-channel.c", "example-server.c")
+--
+-- target("sctp_rpc_rpc_client")
+--     set_kind("binary")
+--     add_packages("protobuf-c")
+--     add_links("protobuf-c-rpc", "example-word-funcs-service")
+--     -- add_rules("protobuf.c")
+--     add_files("example-client.c")
+--
+-- target("example-word-funcs-service")
+--     set_kind("static")
+--     add_packages("protobuf-c")
+--     add_includedirs(".", {public = true})
+--     add_rules("protobuf.c")
+--     add_files("example-word-funcs-service.c", "sctp-channel.c")
+--     add_files("*.proto", {proto_rootdir = "protobuf_learn/rpc/sctp-rpc"})

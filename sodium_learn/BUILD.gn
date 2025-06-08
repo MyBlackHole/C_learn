@@ -1,0 +1,41 @@
+executable("crypto_aead_xchacha20poly1305_ietf_encrypt_detached_test") {
+  cflags = ["-g", "-Wall"]
+
+  ldflags = ["-lsodium"]
+
+  sources = [
+    "crypto_aead_xchacha20poly1305_ietf_encrypt_detached_test.c",
+  ]
+}
+
+executable("crypto_aead_xchacha20poly1305_ietf_decrypt_detached_test") {
+  cflags = ["-g", "-Wall"]
+
+  ldflags = ["-lsodium"]
+
+  sources = [
+    "crypto_aead_xchacha20poly1305_ietf_decrypt_detached_test.c",
+  ]
+}
+
+executable("sodium_bin2base64_test") {
+  cflags = ["-g", "-Wall"]
+
+  ldflags = ["-lsodium"]
+
+  sources = [
+    "sodium_bin2base64_test.c",
+  ]
+}
+
+executable("sodium_base642bin_test") {
+  cflags = ["-g", "-Wall"]
+
+  ldflags = ["-lsodium"]
+
+  sources = [
+    "sodium_base642bin_test.c",
+  ]
+}
+
+

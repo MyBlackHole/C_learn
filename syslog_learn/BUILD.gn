@@ -1,0 +1,6 @@
+executable("openlog_test") {
+  cflags = ["-g", "-Wall"]
+  sources = [
+    "openlog_test.c",
+  ]
+}

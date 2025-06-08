@@ -1,0 +1,14 @@
+executable("statfs_test") {
+  cflags = ["-g", "-Wall"]
+  sources = [
+    "statfs_test.c",
+  ]
+
+}
+
+executable("statvfs_test") {
+  cflags = ["-g", "-Wall"]
+  sources = [
+    "statvfs_test.c",
+  ]
+}

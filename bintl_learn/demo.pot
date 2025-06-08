@@ -1,0 +1,33 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+# 待翻译的文字，msgid字符串是由GNU gettext工具产生和管理，并不允许翻译人员改动
+msgid ""
+# 对应的翻译后文字
+msgstr "" 
+# 项目名称版本，一般为该包名称 如:dome,亦可空缺
+"Project-Id-Version: PACKAGE VERSION\n" 
+# Bugs信息报告方法
+"Report-Msgid-Bugs-To: \n" 
+# pot文件创建时间
+"POT-Creation-Date: 2023-06-10 10:52+0800\n" 
+# 生成po文件的时间
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n" 
+# 最后翻译者信息，格式：名称<邮箱>
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n" 
+# 翻译小组名称，上游社区本地化群组的翻译成员填入其组织信息，亦可以不填
+"Language-Team: LANGUAGE <LL@li.org>\n" 
+"Language: \n"
+# MIME版本，一般取默认即可，不影响翻译文件
+"MIME-Version: 1.0\n" 
+# 刚创建的pot文件默认为“charset=CHARSET”，编辑po文件时，注意要将字符调整为可移植的编码格式，原文 这里写的是UTF-8，会报错(估计作者是想写utf8的)否则会有如下警告：（hello.po：警告：字符集“CHARSET”不是可移植的编码名称。将消息转换为用户字符集可能不工作。改成utf8也会有这个警告，所以笔者改成了GB2312）
+"Content-Type: text/plain; charset=utf-8\n" 
+"Content-Transfer-Encoding: 8bit\n"
+
+#: dome.c:21
+#, c-format
+msgid "Hello, World!\n"
+msgstr "你好，世界!"

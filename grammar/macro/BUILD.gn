@@ -1,0 +1,9 @@
+executable("define_test") {
+  cflags = ["-g", "-Wall"]
+  sources = [ "define_test.c" ]
+}
+
+executable("macro") {
+  cflags = ["-g", "-Wall"]
+  sources = [ "macro.c" ]
+}

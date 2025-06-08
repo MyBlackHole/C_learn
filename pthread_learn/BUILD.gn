@@ -1,0 +1,70 @@
+executable("pthread_getname_np_test") {
+  cflags = ["-g", "-Wall"]
+  sources = [
+    "pthread_getname_np_test.c",
+  ]
+}
+
+executable("pthread_barrier_init_test") {
+  cflags = ["-g", "-Wall"]
+  sources = [
+    "pthread_barrier_init_test.c",
+  ]
+}
+
+executable("pthread_create3_test") {
+  cflags = ["-g", "-Wall"]
+  sources = [
+    "pthread_create3_test.c",
+  ]
+}
+
+executable("pthread_cond_broadcast_test") {
+  cflags = ["-g", "-Wall"]
+  sources = [
+    "pthread_cond_broadcast_test.c",
+  ]
+}
+
+executable("pthread_attr_init_test") {
+  cflags = ["-g", "-Wall"]
+  sources = [
+    "pthread_attr_init_test.c",
+  ]
+}
+
+executable("pthread_cond_init_test") {
+  cflags = ["-g", "-Wall"]
+  sources = [
+    "pthread_cond_init_test.c",
+  ]
+}
+
+executable("pthread_getspecific_test") {
+  cflags = ["-g", "-Wall"]
+  sources = [
+    "pthread_getspecific_test.c",
+  ]
+}
+
+executable("pthread_self_test") {
+  cflags = ["-g", "-Wall"]
+  sources = [
+    "pthread_self_test.c",
+  ]
+}
+
+executable("pthread_once_test") {
+  cflags = ["-g", "-Wall"]
+  sources = [
+    "pthread_once_test.c",
+  ]
+}
+
+executable("pthread_mutex_lock_test") {
+  cflags = ["-g", "-Wall"]
+  sources = [
+    "pthread_mutex_lock_test.c",
+  ]
+}
+

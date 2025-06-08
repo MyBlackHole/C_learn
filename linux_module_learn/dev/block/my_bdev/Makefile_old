@@ -1,0 +1,24 @@
+# 生成模块名
+MODULE_NAME:=my_null_blk
+
+# 作为模块编译
+CONFIG_TOUCHSCREEN_FOCALTECH=m
+
+CONFIG_MODULE_SIG=n
+
+SRC_PATH:=
+
+EXTRA_CFLAGS += -I$(PWD)/
+
+obj-$(CONFIG_TOUCHSCREEN_FOCALTECH) := $(MODULE_NAME).o $(SRC_PATH)zoned.o
+# $(MODULE_NAME)-objs := $(SRC_PATH)my_trace.o
+
+CURRENT_PATH := $(shell pwd)
+LINUX_KERNEL := $(shell uname -r)
+LINUX_KERNEL_PATH := /usr/src/linux-headers-$(LINUX_KERNEL)
+
+all:
+	make -C $(LINUX_KERNEL_PATH) M=$(CURRENT_PATH) KCFLAGS+=-DDEBUG modules
+clean:
+	make -C $(LINUX_KERNEL_PATH) M=$(CURRENT_PATH) clean
+

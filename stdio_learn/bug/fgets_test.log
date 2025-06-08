@@ -1,0 +1,3 @@
+read_size = 65536
+read size = 13, fgets() = Hello, world!
+line = 54, fgets() = Hello, world!

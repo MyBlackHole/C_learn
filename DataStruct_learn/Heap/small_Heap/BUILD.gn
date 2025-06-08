@@ -1,0 +1,15 @@
+executable("main") {
+  sources = [
+    "main.c",
+  ]
+  deps = [":small_Heap"]
+}
+
+
+static_library("small_Heap") {
+  sources = [
+    "xdd.c",
+    "xdd.h",
+  ]
+}
+

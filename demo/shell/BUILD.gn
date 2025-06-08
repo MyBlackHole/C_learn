@@ -1,0 +1,4 @@
+executable("shell") {
+  cflags = ["-g"]
+  sources = ["shell.c"]
+}

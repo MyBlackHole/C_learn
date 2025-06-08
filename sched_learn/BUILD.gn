@@ -1,0 +1,65 @@
+executable("CPU_ZERO_test") {
+  cflags = ["-g", "-Wall"]
+
+  sources = [
+    "CPU_ZERO_test.c",
+  ]
+}
+
+executable("CLONE_NEWUTS_test") {
+  cflags = ["-g", "-Wall"]
+
+  sources = [
+    "CLONE_NEWUTS_test.c",
+  ]
+}
+
+executable("CPU_CLR_test") {
+  cflags = ["-g", "-Wall"]
+
+  sources = [
+    "CPU_CLR_test.c",
+  ]
+}
+
+executable("setns_test") {
+  cflags = ["-g", "-Wall"]
+
+  sources = [
+    "setns_test.c",
+  ]
+}
+
+executable("clone_test") {
+  cflags = ["-g", "-Wall"]
+
+  sources = [
+    "clone_test.c",
+  ]
+}
+
+executable("CLONE_NEWIPC_test") {
+  cflags = ["-g", "-Wall"]
+
+  sources = [
+    "CLONE_NEWIPC_test.c",
+  ]
+}
+
+executable("CLONE_NEWPID_test") {
+  cflags = ["-g", "-Wall"]
+
+  sources = [
+    "CLONE_NEWPID_test.c",
+  ]
+}
+
+executable("CLONE_NEWUSER_test") {
+  cflags = ["-g", "-Wall"]
+
+  ldflags = ["-lcap"]
+
+  sources = [
+    "CLONE_NEWUSER_test.c",
+  ]
+}

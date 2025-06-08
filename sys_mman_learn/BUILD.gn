@@ -1,0 +1,4 @@
+executable("mmap_test") {
+  cflags = ["-g", "-Wall"]
+  sources = [ "mmap_test.c" ]
+}

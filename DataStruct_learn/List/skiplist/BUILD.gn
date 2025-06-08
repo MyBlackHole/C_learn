@@ -1,0 +1,15 @@
+executable("skiplist_test") {
+  cflags = ["-g", "-Wall"]
+  deps = [":skiplist"]
+  sources = [
+    "skiplist_test.c",
+  ]
+}
+
+static_library("skiplist") {
+  cflags = ["-g", "-Wall"]
+  sources = [
+    "skiplist.h",
+  ]
+}
+

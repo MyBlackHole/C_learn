@@ -1,0 +1,15 @@
+executable("select_test") {
+  cflags = ["-g", "-Wall"]
+
+  sources = [
+    "select_test.c",
+  ]
+}
+
+executable("select1_test") {
+  cflags = ["-g", "-Wall"]
+  sources = [
+    "select1_test.c",
+  ]
+}
+

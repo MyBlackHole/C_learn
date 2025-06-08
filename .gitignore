@@ -1,0 +1,34 @@
+# executives
+*.swp
+*.exe
+*.out
+# objective files
+*.o
+*.obj
+cmake-build-debug/
+.idea/
+.cache/
+*.build
+.ccls-cache
+out
+tags
+compile_commands.json
+*.cmd
+*.mod
+*.ko
+*.symvers
+*.order
+
+# Xmake cache
+.xmake/
+build/
+
+# MacOS Cache
+.DS_Store
+
+# Linux modules
+*.ko
+*.mod
+*.symvers
+*.order
+*.mod.c

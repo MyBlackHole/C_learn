@@ -1,0 +1,7 @@
+executable("pcap_lookupdev_test") {
+  cflags = ["-g", "-Wall"]
+  libs = ["pcap"]
+  sources = [
+    "pcap_lookupdev_test.c",
+  ]
+}

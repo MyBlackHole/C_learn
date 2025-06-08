@@ -1,0 +1,4 @@
+executable("1") {
+  cflags = ["-g", "-Wall"]
+  sources = ["1.c"]
+}

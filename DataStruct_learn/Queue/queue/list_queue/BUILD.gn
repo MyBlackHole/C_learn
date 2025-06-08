@@ -1,0 +1,16 @@
+executable("test") {
+  cflags = ["-g", "-Wall"]
+  deps = [":list_queue"]
+  sources = [
+    "test.c",
+  ]
+}
+
+static_library("list_queue") {
+  cflags = ["-g", "-Wall"]
+  sources = [
+    "list_queue.c",
+    "list_queue.h",
+  ]
+}
+

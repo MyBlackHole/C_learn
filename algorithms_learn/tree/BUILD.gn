@@ -1,0 +1,14 @@
+executable("1") {
+  cflags = ["-g", "-Wall"]
+  sources = ["1.c"]
+}
+
+executable("2") {
+  cflags = ["-g", "-Wall"]
+  sources = ["2.c"]
+}
+
+executable("3") {
+  cflags = ["-g", "-Wall"]
+  sources = ["3.c"]
+}

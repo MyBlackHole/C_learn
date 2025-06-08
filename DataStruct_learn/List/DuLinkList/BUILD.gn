@@ -1,0 +1,19 @@
+executable("DuLinkList-main") {
+  cflags = ["-g", "-Wall"]
+  include_dirs = ["//DataStruct_learn/Status"]
+  deps = [":DuLinkList"]
+  sources = [
+    "DuLinkList-main.c",
+  ]
+}
+
+static_library("DuLinkList") {
+  cflags = ["-g", "-Wall"]
+  deps = ["//DataStruct_learn/Status:Status"]
+  include_dirs = ["//DataStruct_learn/Status"]
+  sources = [
+    "DuLinkList.c",
+    "DuLinkList.h",
+  ]
+}
+
