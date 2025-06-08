@@ -1,7 +1,0 @@
-executable("getrlimit") {
-  cflags = ["-g", "-Wall"]
-
-  sources = [
-    "getrlimit.c",
-  ]
-}

@@ -1,6 +1,0 @@
-executable("user") {
-  cflags = ["-g", "-Wall"]
-  sources = [
-    "user.c",
-  ]
-}

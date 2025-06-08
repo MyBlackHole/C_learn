@@ -1,9 +1,0 @@
-executable("test") {
-  cflags = ["-g", "-Wall"]
-
-  ldflags = ["-lcurl"]
-
-  sources = [
-    "test.c",
-  ]
-}

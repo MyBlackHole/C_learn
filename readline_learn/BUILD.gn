@@ -1,7 +1,0 @@
-executable("main") {
-  cflags = ["-g", "-Wall"]
-  libs = ["readline"]
-  sources = [
-    "main.c",
-  ]
-}

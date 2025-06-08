@@ -1,8 +1,0 @@
-executable("io_uring_test") {
-  cflags = ["-g", "-Wall"]
-  # sudo apt install liburing-dev
-  ldflags = ["-luring"]
-  sources = [
-    "io_uring_test.c",
-  ]
-}

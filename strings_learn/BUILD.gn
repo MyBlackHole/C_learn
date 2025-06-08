@@ -1,7 +1,0 @@
-executable("strcasecmp_test") {
-  cflags = ["-g", "-Wall"]
-
-  sources = [
-    "strcasecmp_test.c",
-  ]
-}

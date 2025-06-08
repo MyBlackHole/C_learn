@@ -1,7 +1,0 @@
-executable("test") {
-  cflags = ["-g", "-Wall"]
-  ldflags = ["-lstdc++"]
-  sources = [
-    "test.cpp",
-  ]
-}

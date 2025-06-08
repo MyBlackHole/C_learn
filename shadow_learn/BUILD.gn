@@ -1,4 +1,0 @@
-executable("getspnam_test") {
-  cflags = ["-g", "-Wall"]
-  sources = ["getspnam_test.c"]
-}

@@ -1,8 +1,0 @@
-executable("waitpid_test") {
-  cflags = ["-g", "-Wall"]
-  sources = [
-    "waitpid_test.c",
-  ]
-
-}
-

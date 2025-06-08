@@ -1,9 +1,0 @@
-executable("main") {
-  cflags = ["-g", "-Wall"]
-
-  libs = ["rt", "dl", "snappy", "gflags", "z", "bz2", "lz4", "zstd", "uring", "pthread", "rocksdb"]
-# g++ rocksdb_client_test.cc -o simple ../librocksdb.a -I../include -lpthread -ldl -lrt -lsnappy -lgflags -lz -lbz2 -llz4 -lzstd -luring
-  sources = [
-    "main.c",
-  ]
-}

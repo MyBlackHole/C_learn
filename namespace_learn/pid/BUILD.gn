@@ -1,7 +1,0 @@
-executable("pid") {
-  cflags = ["-g", "-Wall"]
-
-  sources = [
-    "pid.c",
-  ]
-}
