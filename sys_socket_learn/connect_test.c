@@ -7,16 +7,16 @@
 
 int demo_connect_main(int argc, char *argv[])
 {
-	if (argc != 2) {
-		fprintf(stderr, "Usage: %s <port>\n", argv[0]);
+	if (argc != 3) {
+		fprintf(stderr, "Usage: %s <ip> <port>\n", argv[0]);
 		return EXIT_FAILURE;
 	}
 
 	int sockfd;
 	struct sockaddr_in addr;
 	addr.sin_family = AF_INET;
-	addr.sin_port = htons(atoi(argv[1]));
-	addr.sin_addr.s_addr = inet_addr("127.0.0.1");
+	addr.sin_addr.s_addr = inet_addr(argv[1]);
+	addr.sin_port = htons(atoi(argv[2]));
 
 	if ((sockfd = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
 		perror("socket");
