@@ -41,7 +41,7 @@ void os_setup_limits(bool max)
 	}
 }
 
-int demo_setrlimit_main(int argc, char *argv[])
+int demo_setrlimit_1_main(int argc, char *argv[])
 {
 	char c;
 	bool max = false;

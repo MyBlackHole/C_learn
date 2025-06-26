@@ -5,9 +5,9 @@
 
 static demo_t demos[] = {
 	DEMO_MAIN_ITEM(getrlimit),
-	DEMO_MAIN_ITEM(setrlimit),
 	DEMO_MAIN_ITEM(test_nofile),
-
+	DEMO_MAIN_ITEM(setrlimit_1),
+	DEMO_MAIN_ITEM(setrlimit_2),
 };
 
 int main(int argc, char **argv)
