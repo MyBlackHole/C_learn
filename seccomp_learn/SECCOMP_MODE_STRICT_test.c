@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include <errno.h>
 #include <stdio.h>
 #include <string.h>
@@ -26,5 +27,5 @@ int demo_STRICT_main()
 		perror(strerror(errno));
 	}
 
-	return 0;
+	return EXIT_SUCCESS;
 }

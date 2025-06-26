@@ -5,6 +5,7 @@
 
 static demo_t demos[] = {
 	DEMO_MAIN_ITEM(STRICT),
+	DEMO_MAIN_ITEM(seccomp_rule_add),
 };
 int main(int argc, char **argv)
 {
