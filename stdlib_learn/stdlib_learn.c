@@ -7,6 +7,7 @@
 static demo_t demos[] = {
 	DEMO_MAIN_ITEM(exit),
 	DEMO_MAIN_ITEM(malloc_1),
+	DEMO_MAIN_ITEM(free_1),
 };
 
 int main(int argc, char **argv)
